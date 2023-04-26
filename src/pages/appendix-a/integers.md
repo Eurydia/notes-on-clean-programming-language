@@ -270,7 +270,7 @@ The run-time error has the following message:
 
 ## Bitwise operations
 
-### Bitwise NOT
+### Bitwise NEGATE
 
 **Signature**: $A_{\text{Int}}\rightarrow\text{Int}$.
 

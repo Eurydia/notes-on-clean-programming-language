@@ -13,7 +13,7 @@ Data of last revision: 12 APR 2023
 
 ## Logical operations 
 
-### Logical negation
+### Logical NEGATE
 
 **Signature**: $A_{\text{Bool}}\rightarrow\text{Bool}$.
 
@@ -46,7 +46,7 @@ False && True  // False
 False && False // False
 ```
 
-### Logical AND
+### Logical OR
 
 **Signature**: $A_{\text{Bool}}{~}B_{\text{Bool}}\rightarrow\text{Bool}$.
 

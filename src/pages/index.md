@@ -1,0 +1,1129 @@
+---
+layout: "@layouts/Blog.astro"
+title: Cleanpedia
+Last updated: April 15th, 2023
+
+Revisions: 2
+Data of last revision: 12 APR 2023
+---
+
+## Table of contents
+
+1. [Introduction](#introduction)
+2. [Types](#types)
+	1. [Type specification](#type-specification)
+	2. [Primitive types](#primitive-types)
+		1. [Integers](#integers)
+		2. [Real numbers](#real-numbers)
+		3. [Characters](#characters)
+		4. [Booleans](#booleans)
+	3. Structured types
+		1. Lists
+		2. Arrays
+		3. Tuples
+3. Comprehensions
+4. Functions
+	1. Definitions
+	2. Invocation
+	3. Symbolic functions
+	4. Lambda functions
+5. Scoping
+	1. Function-local definition
+	2. Guard-local definition
+6. Pattern matching
+7. Appendix A: Built-in operations and functions
+8. Appendix B: Error troubleshooting
+9. Appendix C: CRU (Code Ready to Use)
+
+## Introduction
+
+My **motivation** is to create an accessible, concise, and clear documentation which can be used by those who wishes to learn Clean.
+
+The same information can be found on:
+- [Cloogle](https://cloogle.org/) which is the language's search engine, and
+- [language report](https://cloogle.org/doc/) which describes the syntax and BNF of Clean.
+
+## Types
+
+Types define the kind of data used in a program and the operations that can be performed on it.
+Correct usage is important for program functionality and efficiency.
+
+Types can only interact with themselves due to lack of implicit type conversion.
+
+### Type specification
+
+#### Variable specification
+
+**Syntax**
+
+The syntax for specifying a variable type is shown below.
+
+```
+// Language: Clean
+
+exVar :: T
+```
+
+Practically, variable specifications may look similar to the following:
+
+```
+// Language: Clean
+
+width :: Int
+width =  12
+
+area :: Int
+area =  width * width
+```
+
+**Possible error**
+
+It is important to keep in mind that a variable declaration must immediately follow its type specification.
+
+```
+// Language: Clean
+
+exInt :: Int
+
+...code...
+
+exInt =  12 // NOT OK :(
+```
+
+In this case, $\text{exInt}$ will cause a compilation error with a message which states:
+
+```
+Error [...]: function body expected.
+```
+
+To resolve the error, simply move the variable declaration up
+
+```
+// Language: Clean
+
+exInt :: Int
+exInt =  12  // OK
+
+...code...
+```
+
+or move the type specification down.
+
+```
+// Language: Clean
+
+...code...
+
+exInt :: Int
+exInt =  12  // OK
+```
+
+#### Function specification
+
+**Syntax**
+
+The syntax for specifying a function type is shown below.
+
+```
+// Language: Clean
+
+exFuncX :: T            -> K
+
+exFuncY :: T K          -> V
+
+exFuncZ :: T1 T2 ... Tn -> K
+```
+
+$\text{exFuncX}$ has one parameter of type $T$.
+Its return type is $K$.
+
+$\text{exFuncY}$ has two parameters.
+The first parameters has type $T$, and the second of $K$.
+Its return type is $V$.
+
+$\text{exFuncZ}$ has $n$ parameters.
+The $n$-th parameter has type $T_{n}$.
+
+**Class context**
+
+Class context ensures that operations are available on a generic type.
+
+It has the following syntax:
+
+```
+// Language: Clean
+
+exFuncX :: T   -> K | + T
+
+exFuncY :: T K -> V | +, / T
+
+exFuncZ :: T K -> V | + T & ^ K
+```
+
+In $\text{exFuncX}$, $+$ must be available on $T$.
+
+In $\text{exFuncY}$, $+$ and $/$ must be available on $T$.
+
+In $\text{exFuncZ}$, $+$ must be available on $T$ and $^\wedge$  must be available on $K$.
+
+More context can be added by following the same pattern.
+
+#### Algebraic type
+
+**tba**
+
+#### Higher-order types
+
+**tba**
+
+### Primitive types
+
+#### Integers
+
+**Type annotation**: $\text{Int}$
+
+**Constructions**
+
+There are four methods to construct an $\text{Int}$ literal:
+
+- decimal notation,
+
+	```
+	// Language: Clean
+	
+	decimal :: Int
+	decimal =  999
+	decimal =  99
+	decimal =  9
+	```
+
+- octal notation: prefixing a number with $0$,
+
+	```
+	// Language: Clean
+	
+	octal :: Int
+	octal =  01747 // decimal 999
+	octal =  0143  // decimal 99
+	octal =  011   // decimal 9
+	```
+
+- hexadecimal notation: prefixing a number with $0\text{x}$, and
+
+	```
+	// Language: Clean
+	
+	hexadecimal :: Int
+	hexadecimal =  0x3E7 // decinal 999
+	hexadecimal =  0x63  // decimal 99
+	hexadecimal =  0x9   // decimal 9
+	```
+
+ - scientific notation.
+
+	```
+	// Language: Clean
+	
+	scientific :: Int
+	scientific =  0.999E3 // 999
+	scientific =  0.99E2  // 99
+	scientific =  0.9E1   // 9
+	```
+
+When constructing an integer using scientific notation, it is possible to construct a real number instead.
+
+```
+// Language: Clean
+
+maybeInt :: Int
+maybeInt =  0.9E0 // 0.9 :(
+```
+
+In such a case, a compilation error will be thrown with the following message.
+
+```
+Type error [...]: cannot unify demanded type with offered type:
+Int
+Real
+```
+
+To resolve this issue, ensure that an integer is constructed.
+
+**Operations**:
+- [arithmetic operations](appendix-a/integers#arithmetic-operations),
+- [relational operations](appendix-a/integer#relational-operations),
+- [bitwise operations](appendix-a/integers#bitwise-operations),
+- [standard functions](appendix-a/integer#standard-functions), and
+- [property functions](appendix-a/integers#property-functions).
+
+**Type conversions**
+
+Using a built-in function, other types can be explicitly converted to $\text{Int}$.
+It can convert the following types:
+
+- $\text{Int}\rightarrow\text{Int}$: does nothing,
+
+- $\text{Real}\rightarrow\text{Int}$: rounds the number to an integer,
+
+	```
+	// Language: Clean
+	
+	toInt   1.5  //  2
+	toInt   1.4  //  1
+	toInt   0.0  //  0
+	toInt (-1.4) // -1
+	toInt (-1.5) // -2
+	```
+
+- $\text{Char}\rightarrow\text{Int}$: converts the character to its ASCII value, and
+
+	```
+	// Language: Clean
+	
+	toInt '1' //  49
+	toInt '9' //  59
+	toInt 'A' //  65
+	toInt 'Z' //  90
+	toInt 'a' //  97
+	toInt 'z' // 122
+	```
+
+- $\text{\{Char\}}\rightarrow\text{Int}$: converts the string to an integer.
+
+	```
+	// Language: Clean
+	
+	toInt "1.0"  //  0	
+	toInt "1"    //  1
+	toInt "0"    //  0
+	toInt "-1"   // -1
+	toInt "-1.0" //  0
+	```
+
+#### Real numbers
+
+**Type annotation**: $\text{Real}$
+
+**Constructions**
+
+There are two methods to construct a $\text{Real}$ literal:
+
+- decimal notation, and
+
+	```
+	// Language: Clean
+	
+	decimal :: Real
+	decimal =  999.9
+	decimal =  99.9
+	decimal =  9.9
+	```
+
+- scientific notation.
+
+	```
+	// Language: Clean
+	
+	scientific :: Real
+	scientific = 0.9999E3 // decimal 999.9
+	scientific = 0.999E2  // decimal 99.9
+	scientific = 0.99E1   // decimal 9.9
+	```
+
+$\text{Real}$ literals cannot be constructed using octal or hexadecimal notation.
+
+**Operations**:
+- [arithmetic operations](appendix-a/real-numbers#arithmetic-operations),
+- [relational operations](appendix-a/real-numbers#relational-operations),
+- [standard functions](appendix-a/real-numbers#standard-functions), and
+- [trigonometric functions](appendix-a/real-numbers#trigonometric-functions).
+
+**Type conversions**
+
+Using a built-in function, other types can be explicitly converted to $\text{Real}$.
+It can convert the following types:
+
+- $\text{Real}\rightarrow\text{Real}$: does nothing,
+
+- $\text{Int}\rightarrow\text{Real}$, and
+
+	```
+	// Language: Clean
+	
+	toReal   2  //  2.0
+	toReal   1  //  1.0
+	toReal   0  //  0.0
+	toReal (-1) // -1.0
+	toReal (-2) // -2.0
+	```
+
+- $\text{\{Char\}}\rightarrow\text{Real}$: converts the string to a real number.
+
+	```
+	// Language: Clean
+	
+	toReal "1.0"  //  1.0
+	toReal "1"    //  1.0
+	toReal "0"    //  0.0
+	toReal "-1"   // -1
+	toReal "-1.0" // -1.0
+	```
+
+#### Characters
+
+**Type annotation**: $\text{Char}$
+
+**Construction**
+
+There is only one method to construct a $\text{Char}$ literal:
+
+```
+// Language: Clean
+
+character :: Char
+character =  '1'
+character =  'a'
+character =  'A'
+```
+
+**Operations**:
+- [arithmetic operations](appendix-a/characters#arithmetic-operations),
+- [relational operations](appendix-a/characters#relational-operations),
+- [standard functions](appendix-a/characters#standard-functions), and
+- [property functions](appendix-a/characters#property-functions).
+
+**Type conversions** 
+
+Using a built-in function, types can be explicitly converted to $\text{Char}$.
+It can convert the following types:
+
+- $\text{Char}\rightarrow\text{Char}$: does nothing, and
+
+- $\text{Int}\rightarrow\text{Char}$: converts the ASCII value to its character.
+
+	```
+	// Language: Clean
+	
+	toChar 49 // '1'
+	toChar 65 // 'A'
+	toChar 97 // 'a'
+	```
+
+#### Booleans
+
+**Type annotation**: $\text{Bool}$
+
+**Constructions**
+
+There is one method to construct a $\text{Bool}$ literal:
+
+```
+// Language: Clean
+
+boolean :: Bool
+boolean =  True
+boolean =  False
+```
+
+**Operation**:
+- [logical operations](appendix-a/booleans#logical-operations).
+
+**Explicit type conversion**: 
+
+```
+// Language: Clean
+
+toBool :: Bool -> Bool    // does nothing
+```
+
+### Structured types
+
+#### Lists
+
+**Characteristics**:
+- holds one type, and
+- can have infinite length.
+
+**Annotation**: $\text{[T]}$
+
+**Constructions**:
+
+```
+// Language: Clean
+
+A :: [Char] 
+A =  ['a', 'b', 'c']            // individual elements
+
+B :: [Char]
+B =  ['a' : ['b', 'c']]         // from head and tail
+
+C :: [Char]
+C =  ['a' : ['b' : ['c' : []]]] 
+
+D :: [Char] 
+D =  ['abc']                    // shorthand for [Char] lists
+```
+
+**Operations**:
+- [[#Lists: Standard operators]]
+- [[#Lists: Relational operators]]
+- [[#Lists: Methods]]
+- [[#Lists: Manipulation methods]]
+- [[#Lists: Set-like methods]]
+- [[#Lists: Logical methods]]
+
+#### Arrays
+
+**Characteristcs**:
+- holds one type, and
+- has finite length.
+
+**Annotation**: $\text{\{T\}}$
+
+**Constructions**:
+
+```
+// Language: Clean
+
+A :: {Char}
+A =  {'a', 'b', 'c'}
+
+B :: String
+B =  "abc"             // also an array of characters
+```
+
+**Operations**:
+- [[#Arrays: Standard operators]]
+- [[#Arrays: Methods]]
+
+#### Tuples
+
+**Characteristcs**:
+- can hold multiple type,
+- must hold at least two items, and
+- has finite length.
+
+**Annotation**: $(\text{T}_{1}, ..., \text{T}_{n})$
+
+**Constructions**:
+
+```
+// Language: Clean
+
+A :: (Int, Char)
+A =  (49, '1')
+
+B :: (Real, Bool, String)
+B =  (0.2, False, "Hi")
+
+C :: (Int)
+C =  (2, 6)                // NOT OK should be (Int, Int)
+```
+
+**Operations**:
+-  [[#Tuples: Relational operators]]
+- [[#Tuples: Methods]]
+
+## Comprehensions
+
+Both arrays and lists can be constructed with comprehension.
+Use **$[...]$** to construct a list and **$\{...\}$** to construct an array.
+
+```
+// Language: Clean
+A :: [T]
+A =  [el \\ el <- list]                  // extract from a list
+
+B :: [T]
+B =  [el \\ el <-: array]                // extract from an array
+
+C :: [(T, K)]
+C =  [(x, y) \\ x <- xs , y <- ys]       // cartesian product
+
+D :: [(T, K)]
+D =  [(x, y) \\ x <- xs & y <- ys]       // pair-wise zip
+
+F :: [T]
+F =  [x \\ x <- xs | P x]                // same as filter
+
+G :: [(T, K)]
+G =  [(x, y) \\ x <- xs, y <- [1..x]]    // nested
+```
+
+## Functions
+
+### Definition
+
+A Syntax for function can be as minimal as shown below.
+
+```
+// Language: Clean
+
+func_x :: T   -> K
+func_x    ... =  ...
+```
+
+Conditional branches in functions can be defined as shown below.
+
+```
+// Language: Clean
+
+// using guards
+
+func_y :: Int Int -> Int
+func_y    x   y
+| y == 0          = abort "Division by zero"
+| otherwise       = x / y
+
+// using patterns
+
+func_z :: Int Int -> Int
+func_z    _   0   =  abort "Division by zero"
+func_z    x   y   =  x / y 
+```
+
+### Invocation
+
+Invoking a function in Clean differs slightly from traditional languages.
+
+In traditional languages, such as Python, a pair of parentheses is used to **invoke** a function.
+They can be omitted entirely.
+
+```
+// Language: Clean
+
+f argA ... argZ
+```
+
+### Symbolic functions
+
+By using prentheses, special symbols can be used as function names . 
+
+```
+// Language: Clean
+
+(^^) :: T K -> V
+```
+
+Any function can be converted into an operator.
+However, it must have an arity of exactly two.
+
+```
+// Language: Clean
+
+(^^) infix  0 :: T K -> V
+
+(^^) infixl 0 :: T K -> V  // left-associated
+
+(^^) infixr 0 :: T K -> V  // right-associated
+```
+
+The $\text {infix}$ macros allows the function to be place between its arguments.
+
+The number succeeding the macro represents the precedence from $0$ to $9$.
+Higher precedence means the operator binds more tightly to its arguments.
+
+``` 
+// Language: Clean
+
+A ^^ B   // invoked as operator
+
+(^^) A B // invoked as regular function
+```
+
+### Lambda functions
+
+The basic syntax for lambda function is shown below.
+
+```
+// Language: Clean
+
+\(paramA, ..., paramZ) = ...
+```
+
+Conditional branches is also supported by lambda functions using `case ... of` expression.
+
+```
+// Language: Clean
+
+\(x, y, z) = case x of 
+3 -> y
+_ -> z
+```
+
+## Scoping
+
+There are two levels of local definitions:
+
+### Function-local definitions 
+
+Using **$\text{where}$** keyword, functions and variables can be scoped to a function.
+
+```
+// Language: Clean
+
+func_x :: T   -> K
+func_x    ... =  ...
+where
+	...
+```
+
+### Guard-local definitions 
+
+Using **$\text{with}$** keyword, functions and variables can be scoped to guards of a function.
+
+```
+// Language: Clean
+
+func_y :: T   -> K
+func_y    ... =  ...
+| ... = ...
+with
+	...
+| otherwise = ...
+```
+
+## Pattern matching
+
+Destructing an iterator can be done using **$\text{x , y}$** and **$\text{x : rest}$** pattern.
+
+```
+// Language: Clean
+
+func_x :: [T]       -> K
+func_x    [x, y, z] =  ...
+
+func_x [3, 5 ,6]       // x=3; y=5; z=6
+func_x [1, 2]          // run-time error
+func_x [3, 5, 6, 7]    // run-time error
+```
+
+Without the greedy operator, the pattern must be an exact match, otherwise a run-time error is thrown.
+
+```
+// Language: Clean
+
+func_y :: [T]      -> K
+func_y    [x : rest] =  ...
+
+func_y [3, 5, 6]   // x=3; rest=[5, 6]
+func_y [1]         // x=1; rest=[]
+func_y []          // run-time error
+```
+
+Attempting to destucture an empty iterator will thrown a run-time error.
+To avoid this pitfall, a function pattern should defined.
+
+```
+// Language: Clean
+
+func_y :: [T]      -> K
+func_y    []       =  ...
+func_y    [x : rest] =  ...
+
+func_y [3, 5, 6]   // x=3; rest=[5, 6]
+func_y [1]         // x=1; rest=[]
+func_y []          // destructuring did not occur
+                   // and no error is thrown
+```
+
+A complex destructuring pattern can be done as follow:
+
+```
+// Language: Clean
+
+func_z :: [T]      -> K
+func_z    [x, y : rest] =  ...
+
+func_y [1, 2, 3, 4] // x=1; y=2; rest=[3, 4]
+func_y [3, 5, 6]    // x=3; y=5; rest=[6]
+func_y [1]          // run-time error
+```
+
+---
+
+### $\text{[T]}$ built-ins
+
+#### Standard operators
+
+| Operators                 | Meaning                               |
+| ------------------------- | ------------------------------------- |
+| <nobr>`X !! i`</nobr>     | $i$-th element of $X$[^3]             |
+| <nobr>`X ++ Y`</nobr>     | Append $Y$ to $X$                     |
+| <nobr>`X % (i, j)`</nobr> | Slice $X$ from $i$ to $j$ (inclusive) |
+
+Definitions:
+- $X, Y$ are lists, and
+- $i, j$ are integers.
+
+[^3]: It will throw a run-time error if index is out of range.
+Negative indexing is not allowed.
+
+#### Relational operators
+
+| Operator                                 | Meaning                  |
+| ---------------------------------------- | ------------------------ |
+| <nobr>`X == Y`</nobr>                    | Equals to                |
+| <nobr><code>X &#60;&#62; Y</code></nobr> | Not equal to             |
+| <nobr><code>X &#62; Y</code></nobr>       | Greater than             |
+| <nobr><code>X &#60; Y</code></nobr>       | Less than                |
+| <nobr><code>X &#62; Y</code></nobr>       | Greater than or equal to |
+| <nobr><code>X &#60;= Y</code></nobr>      | Less than or equal to    |
+
+Definitions:
+- $X, Y$ are lists.
+
+#### Standard methods
+
+The stardard list methods are as follow:
+
+| Name                       | Meaning                                   | Signature                                             |
+| -------------------------- | ----------------------------------------- | ----------------------------------------------------- |
+| <nobr>`reverse X`</nobr>   | Reveresed of $X$                          | <nobr>`[T] -> [T]`</nobr>                             |
+| <nobr>`length X`</nobr>    | Length of $X$                             | <nobr>`[T] -> Int`</nobr>                             |
+| <nobr>`sum X`</nobr>       | Sum of $X$                                | <nobr><code>[T] -> T &#124; zero, + T</code></nobr>   |
+| <nobr>`prod X`</nobr>      | Product of $X$                            | <nobr><code>[T] -> T &#124; one, * T</code></nobr>    |
+| <nobr>`avg X`</nobr>       | Average of $X$[^4]                        | <nobr><code>[T] -> T &#124; IncDec, / T</code></nobr> |
+| <nobr>`flatten X`</nobr>   | Flattened $X$                             | <nobr>`[[T]] -> [T]`</nobr>                           |
+| <nobr>`isEmpty X`</nobr>   | Empty check on $X$                        | <nobr>`[T] -> Bool`</nobr>                            |
+| <nobr>`repeat k`</nobr>    | Create an infinite list consisting of $k$ | <nobr>`T -> [T]`</nobr>                               |
+| <nobr>`repeatn n k`</nobr> | Create a list of $k$ with $n$ elements    | <nobr>`Int T -> [T]`</nobr>                           |
+| <nobr>`iterate F k`</nobr> | Repeatedly applying $F$ to $k$            | <nobr>`(T -> T) T -> [T]`</nobr>                      |
+
+Definitions:
+- $X$ is a list of type $T$, 
+- $k$ is a generic entity, and
+- $F$ is function with the $T\rightarrow T$ signature.
+
+#### Lists manipulation methods
+
+| Name                          | Meaning                                               | Signature                             |
+| ----------------------------- | ----------------------------------------------------- | ------------------------------------- |
+| <nobr>`hd X`</nobr>           | First element of $X$[^4]                              | <nobr>`[T] -> T`</nobr>               |
+| <nobr>`tl X`</nobr>           | All except first element $X$[^4]                      | <nobr>`[T] -> [T]`</nobr>             |
+| <nobr>`last X`</nobr>         | Last element of $X$[^4]                               | <nobr>`[T] -> T`</nobr>               |
+| <nobr>`init X`</nobr>         | All except last element of $X$[^4]                    | <nobr>`[T] -> [T]`</nobr>             |
+| <nobr>`take n X`</nobr>       | Take the first $n$ elements of $X$                    | <nobr>`Int [T] -> [T]`</nobr>         |
+| <nobr>`takeWhile P X`</nobr>  | Take elements of $X$ until $P$ is false               | <nobr>`(T -> Bool) [T] -> [T]`</nobr> |
+| <nobr>`drop n X`</nobr>       | Discard the first $n$ elements of $X$                 | <nobr>`Int [T] -> [T]`</nobr>         |
+| <nobr>`dropWhile P X`</nobr>  | Discard elements of $X$ until $P$ is false            | <nobr>`(T -> Bool) [T] -> [T]`</nobr> |
+| <nobr>`filter P X`</nobr>     | Filter $X$ using $P$                                  | <nobr>`(T -> Bool) [T] -> [T]`</nobr> |
+| <nobr>`map F X`</nobr>        | Apply $F$ to every element of $X$                     | <nobr>`(T -> K) [T] -> [K]`</nobr>    |
+| <nobr>`removeDup X`</nobr>    | Unique elements of $X$                                | <nobr>`[T] -> [T]`</nobr>             |
+| <nobr>`insertAt i a X`</nobr> | Insert $a$ into $X$ at $i$-th element (shifted right) | <nobr>`Int T [T] -> [T]`</nobr>       |
+| <nobr>`removeAt i X`</nobr>   | Remove $i$-th element of $X$                          | <nobr>`Int [T] -> [T]`</nobr>         |
+| <nobr>`updateAt i a X`</nobr> | Replace $i$-th element of $X$ with $a$                | <nobr>`Int T [T] -> [T]`</nobr>       |
+| <nobr>`splitAt i X`</nobr>    | Split $X$ into two at $i$-th index (left preferred)   | <nobr>`Int [T] -> ([T], [T])`</nobr>  |
+
+[^4]: It will throw a run-time error if invoked on an empty list.
+
+Definitions:
+- $X$ is a list of type $T$,
+- $a$ has $T$ type,
+- $i, n$ are integers,
+- $P$ is a predicate with $T\rightarrow\text{Bool}$ signature, and
+- $F$ is a function with $T\rightarrow K$ signature .
+
+#### Set-like methods
+
+| Name                             | Meaning                             | Signature                      |
+| -------------------------------- | ----------------------------------- | ------------------------------ |
+| <nobr>`isMember a X`</nobr>      | True if $a$ is in $X$               | <nobr>`T [T] -> Bool`</nobr>   |
+| <nobr>`isAnyMember X Y`</nobr>   | True if $X$ intersects with $Y$     | <nobr>`[T] [T] -> Bool`</nobr> |
+| <nobr>`removeMember a X`</nobr>  | Remove all $a$ from $X$             | <nobr>`T [T] -> [T]`</nobr>    |
+| <nobr>`removeMembers X Y`</nobr> | Remove all elements of $Y$ from $X$ | <nobr>`[T] [T] -> [T]`</nobr>  |
+
+Definitions:
+- $X, Y$ are lists of type $T$,
+- $a$ has $T$ type,
+
+#### Logical methods
+
+| Name                   | Meaning                               | Signature                              |
+| ---------------------- | ------------------------------------- | -------------------------------------- |
+| <nobr>`and Xb`</nobr>  | True if every element in $Xb$ is true | <nobr>`[Bool] -> Bool`</nobr>          |
+| <nobr>`or Xb`</nobr>   | True if some element in $Xb$ is true  | <nobr>`[Bool] -> Bool`</nobr>          |
+| <nobr>`all P X`</nobr> | $P$ is true for every element in $X$  | <nobr>`(T -> Bool) [T] -> Bool`</nobr> |
+| <nobr>`any P X`</nobr> | $P$ is true for some element in $X$   | <nobr>`(T -> Bool) [T] -> Bool`</nobr> |
+
+Definitions:
+- $Xb$ is a list of type $\text {Bool}$,
+- $X$ is a list of type $T$, and
+- $P$ is a predicate with $T\rightarrow\text{Bool}$ signature.
+
+---
+
+### Arrays operations, methods and functions
+
+#### Standard operators
+
+| Operator             | Meaning                   |
+| -------------------- | ------------------------- |
+| <nobr>`X.[i]`</nobr> | $i$-th element of $X$[^3] |
+
+Definitions:
+- $X$ is an array, and
+- $i$ is an integer.
+
+#### Standard methods
+
+| Name                        | Meaning                                | Signature                       |
+| --------------------------- | -------------------------------------- | ------------------------------- |
+| <nobr>`size X`</nobr>       | Size of X                              | <nobr>`{T} -> Int`</nobr>       |
+| <nobr>`select X i`</nobr>   | $i$-th element of X                    | <nobr>`{T} Int -> T`</nobr>     |
+| <nobr>`update X i a`</nobr> | Replace $i$-th element of $X$ with $a$ | <nobr>`{T} Int T -> {T}`</nobr> |
+
+Definitions:
+- $X$ is an array,
+- $a$ has $T$ type,
+- $i$ is an integer.
+
+---
+
+## Tuples: Relational operators
+
+Relational operations on tuples are the same as on integers.
+The semantic meaning is an element-wise comparison.
+
+See [[#Integers: Relational operations]].
+
+## Tuples: Methods
+
+| Name                  | Meaning               | Signature                     |
+| --------------------- | --------------------- | ----------------------------- |
+| <nobr>`fst X`</nobr>  | First element of $X$  | <nobr>`(T, K) -> T`</nobr>    |
+| <nobr>`snd X`</nobr>  | Second element of $X$ | <nobr>`(T, K) -> K`</nobr>    |
+| <nobr>`fst3 Y`</nobr> | First element of $Y$  | <nobr>`(T, K, V) -> T`</nobr> |
+| <nobr>`snd3 Y`</nobr> | Second element of $Y$ | <nobr>`(T, K, V) -> K`</nobr> |
+| <nobr>`thd3 Y`</nobr> | Third element of $Y$  | <nobr>`(T, K, V) -> V`</nobr> |
+
+Definitions:
+- $X$ is a two-element tuple, and
+- $Y$ is a three-element tuple.
+
+---
+
+## Appendix B: Common errors
+
+### Multiple entry points error
+
+**Error message**:
+
+```
+Error [..., ... ,...]: multiply defined
+```
+
+**Solution**:
+
+Ensure that your programm has only one **Start**.
+
+**Meaning**:
+
+In Clean, **Start** is used as the entry point of a programm.
+Consequently, there should be only **Start**.
+
+In this case, there are more than one **Start** and the compiler is unsure which entry point should be used.
+
+**Example**:
+
+```
+// Language: Clean
+
+// ... CODE ...
+
+Start = invoke X Y      // <- Start is defined here
+
+// ... CODE ...
+
+Start = computeSumOf Z  // <- but also here :(
+```
+
+### Incorrect type error
+
+**Error message**:
+
+```markdown
+...
+Type error [...,...,...]: ... : cannot unify demanded type with offered type:
+...
+```
+
+**Solution**:
+
+Ensure that expression types and expected types are correct.
+
+**Meaning**:
+
+This error can be caused by many things, but commonly by a misunderstading of expression types and actualy return types.
+
+**Example**:
+
+```
+// Language: Clean
+
+intToDigit :: Int -> [Int]
+intToDigit    n   =  ...
+
+Start = intToDigit 2.3
+```
+
+---
+
+## Appendix C: Code recipes
+
+This section contains a collection of common and useful functions.
+Each solution includes the implementation as well as the explanation.
+
+### Breaking an integer into digits
+
+**Signature**: $\text{Int}\rightarrow\text{[Int]}$
+
+**Expected result**:
+
+```
+// Language: Clean
+
+toDigits 123   // [1, 2, 3]
+toDigits 12321 // [1, 2, 3, 2, 1]
+```
+
+#### Using recursive function
+
+```
+// Language: Clean
+
+toDigits :: Int -> [Int]
+toDigits n 
+| n < 10 = [n]
+| otherwise = (toDigits (n / 10)) ++ [last_digit]
+where
+	last_digit :: Int
+	last_digit = n rem 10
+```
+
+**Conversions**: $\text{Int}\rightarrow\text{[Int]}$
+
+**Explanation**:
+
+Given an integer $n$, while $n$ has more than one digit, extract the last digits by using $n\mod 10$.
+The total digits of $n$ is reduced by one.
+
+If $n$ has one digits, return $n$ then stop the recursion.
+
+#### Using list comprehension
+
+```
+// Language: Clean
+
+toDigits :: Int -> [Int]
+toDigits n = [(toInt d) - 48 \\ d <-: (toString n)]
+```
+
+**Conversions**: $\text{Int}\rightarrow\text{\{Char\}}\rightarrow\text{[Int]}$
+
+**Explanation**:
+
+Since $n$ is an integer, it has to be converted to a string.
+The reason being that an integer cannot be used as a generator, but a string can.
+
+Each digits of $n$ is stored in the variable $d$ which is converted from **a character** to **an integer** based on its ASCII value.
+
+To offset the ASCII value, $48$ is subtracted from it.
+
+### Computing divisors of an integer
+
+**Signature**: $\text{Int}\rightarrow\text{[Int]}$
+
+**Expected result**:
+
+```
+// Language: Clean
+
+divisorsOf 9  // [1, 3, 9]
+divisorsOf 16 // [1, 2, 4, 8, 16]
+divisorsOf 2  // [1, 2]
+divisorsOf 0  // [0]
+```
+
+#### Using comprehension
+
+```
+// Language: Clean
+
+divisorsOf :: Int -> [Int]
+divisorsOf 0 = [0]
+divisorsOf n = filter isDivisor [d \\ d <- ds]
+where
+	ds :: [Int]
+	ds = [2..(n - 1)]
+
+	isDivisors :: Int -> Bool
+	isDivisors k = (n rem k) == 0
+```
+
+**Conversions**: $\text{Int}\rightarrow\text{[Int]}$
+
+**Explanation**:
+
+For $n \gt 0$, a list of integers from $2$ to $n - 1$ is constructed.
+Integers which are not a divisor of $n$ is discarded. 
+
+### Checking if an integer is prime
+
+**Signature**: $\text{Int} \rightarrow\text{Bool}$
+
+**Expected result**:
+
+```
+// Language: Clean
+
+isPrime 9 // False
+isPrime 3 // True
+isPrime 1 // False
+isPrime 0 // False
+```
+
+#### Counting divisors list (comprehension)
+
+```
+// Language: Clean
+
+isPrime :: Int -> Bool
+isPrime 0 = False
+isPrime 1 = False
+isPrime n = length (filter isDivisorOfN [d \\ d <- ds]) == 0
+where
+	ds :: [Int]
+	ds =  [2..(n - 1)]
+
+	isDivisorOfN :: Int -> Bool
+	isDivisorOfN k = (n rem k) == 0
+```
+
+**Conversions**: $\text{Int}\rightarrow\text{[Int]}\rightarrow\text{Int}\rightarrow\text{Bool}$
+
+**Explanation**:
+
+For $n \gt 1$, a list of integers from $2$ to $n - 1$ is constructed.
+The list filtered to only contain divisors of $n$.
+
+If the divisor list is empty, $n$ is a prime number.
+
+#### Using list of booleans
+
+```
+isPrime :: Int -> Bool
+isPrime 0 = False
+isPrime 1 = False
+isPrime n = not (or [n rem d == 0 \\ d <- [2..(n - 1)]]) 
+```
+
+**Conversions**: $\text{Int}\rightarrow\text{[Int]}\rightarrow\text{[Bool]}\rightarrow\text{Bool}$
+
+------
+
+## About
+
+If you notice any errors or have suggestions for improvements, please feel free to contact me through the following channels:
+- Email: b9xp3x@inf.elte.hu
+- Instragram: [@_kornthana](https://www.instagram.com/_kornthana/)

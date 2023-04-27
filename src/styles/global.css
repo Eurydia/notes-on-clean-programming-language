@@ -126,20 +126,23 @@ a:hover {
 
 table {
   @apply block
-w-full
+  w-full
   border-collapse
   overflow-x-auto
   whitespace-nowrap
   md:whitespace-normal;
 }
+tbody {
+  @apply block w-full;
+}
+
+tr {
+  @apply w-full;
+}
 
 th,
 td {
   @apply px-4 py-2;
-
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--color-chocolate);
 }
 
 th {
@@ -153,16 +156,4 @@ ol {
 
 ol {
   list-style: decimal;
-}
-
-nav {
-  @apply w-full;
-}
-
-nav > ul {
-  @apply flex list-none flex-row;
-}
-
-nav > ul > li {
-  @apply flex-grow break-words;
 }

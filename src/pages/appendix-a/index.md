@@ -16,4 +16,4 @@ Data of last revision: 12 APR 2023
 
 ## Introdution
 
-This appendix be referred to by other parts of the reference to increase readability and clarity.
+This appendix is referred to by other parts of the reference to increase readability and clarity.

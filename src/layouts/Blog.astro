@@ -24,15 +24,15 @@ const { frontmatter } = Astro.props;
     <title>{frontmatter.title}</title>
   </head>
   <body>
+    <nav>
+     <ul>
+       <li><a href="/cleanpedia/">Home</a></li>
+       <li><a href="/cleanpedia/appendix-a/">Appendix A</a></li>
+       <li><a href="/appendix-b/">Appendix B</a></li>
+       <li><a href="/appendix-c/">Appendix C</a></li>
+     </ul>
+     </nav>
     <main>
-     <nav>
-      <ul>
-        <li><a href="/cleanpedia/">Home</a></li>
-        <li><a href="/cleanpedia/appendix-a/">Appendix A</a></li>
-        <li><a href="/appendix-b/">Appendix B</a></li>
-        <li><a href="/appendix-c/">Appendix C</a></li>
-      </ul>
-      </nav>
       <h1>{frontmatter.title}</h1>
       <slot />
     </main>

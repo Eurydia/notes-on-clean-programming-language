@@ -253,7 +253,7 @@ To resolve this issue, ensure that an integer is constructed.
 - [arithmetic operations](appendix-a/integers#arithmetic-operations),
 - [relational operations](appendix-a/integer#relational-operations),
 - [bitwise operations](appendix-a/integers#bitwise-operations),
-- [standard functions](appendix-a/integer#standard-functions), and
+- [standard functions](appendix-a/integers#standard-functions), and
 - [property functions](appendix-a/integers#property-functions).
 
 **Type conversions**

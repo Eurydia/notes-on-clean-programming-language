@@ -579,7 +579,7 @@ r =  fromInt   2  //  2.0
 r =  fromInt   1  //  1.0
 r =  fromInt   0  //  0.0
 r =  fromInt (-1) // -1.0
-r =  fInt (-2) // -2.0
+r =  fromInt (-2) // -2.0
 ```
 
 ### Integers to characters

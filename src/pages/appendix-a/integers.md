@@ -575,11 +575,11 @@ Since $k$ does not have a type specification, $\text{fromInt}$ does not know whi
 // Language: Clean
 
 r :: Real
-r =  toInt   2  //  2.0
-r =  toInt   1  //  1.0
-r =  toInt   0  //  0.0
-r =  toInt (-1) // -1.0
-r =  toInt (-2) // -2.0
+r =  fromInt   2  //  2.0
+r =  fromInt   1  //  1.0
+r =  fromInt   0  //  0.0
+r =  fromInt (-1) // -1.0
+r =  fInt (-2) // -2.0
 ```
 
 ### Integers to characters

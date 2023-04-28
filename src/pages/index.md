@@ -263,8 +263,8 @@ To resolve this issue, ensure that an integer is constructed.
 - [property functions](appendix-a/integers#property-functions).
 
 **Type conversions**
-- [conversion to integer](appendix-a/integers#to-integer-conversions), and
-- [conversion from integer](appendix-a/integers#from-integer-conversions).
+- [to integer conversions](appendix-a/integers#to-integer-conversions), and
+- [from integer conversions](appendix-a/integers#from-integer-conversions).
 
 ### Real numbers
 

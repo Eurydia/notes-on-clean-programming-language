@@ -13,14 +13,14 @@ Data of last revision: 12 APR 2023
 2. [Types](#types)
 	1. [Type specification](#type-specification)
 3. [Primitive types](#primitive-types)
-		1. [Integers](#integers)
-		2. [Real numbers](#real-numbers)
-		3. [Characters](#characters)
-		4. [Booleans](#booleans)
+	1. [Integers](#integers)
+	2. [Real numbers](#real-numbers)
+	3. [Characters](#characters)
+	4. [Booleans](#booleans)
 4. [Structured types](#structured-types)
-		1. Lists
-		2. Arrays
-		3. Tuples
+	1. Lists
+	2. Arrays
+	3. Tuples
 5. Comprehensions
 6. Functions
 	1. Definitions

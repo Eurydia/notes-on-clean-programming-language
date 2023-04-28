@@ -12,10 +12,9 @@ Data of last revision: 12 APR 2023
 - [Arithmetic operations](#arithmetic-operations)
 - [Relational operations](#relational-operations)
 - [Bitwise operations](#bitwise-operations)
-- [Standard functions](#standard-functions)
+- [Basic functions](#basic-functions)
 - [Property functions](#property-functions)
-- [To integer conversions](#to-integer-conversions)
-- [From integer conversions](#from-integer-conversions)
+- [Conversions to integers](#conversions-to-integers)
  
 ## Arithmetic operations 
 
@@ -378,7 +377,7 @@ bitnot   5 //  -6
 
 ---
 
-## Standard functions
+## Basic functions
 
 ### Sign function
 
@@ -492,7 +491,7 @@ isOdd -2 // True
 
 ---
 
-## To integer conversions
+## Conversions to integers
 
 ### Real numbers to integers
 
@@ -547,79 +546,6 @@ toInt "1"    //  1
 toInt "0"    //  0
 toInt "-1"   // -1
 toInt "-1.0" //  0
-```
-
-[Back to top](#)
-
----
-
-## From integer conversions
-
-It is important to recognize that this family of conversions operates based on context of types.
-
-```
-k = fromInt 9 // ???
-```
-
-Since $k$ does not have a type specification, $\text{fromInt}$ does not know which type to convert to.
-
-### Integers to real numbers
-
-**Signature**: $A_{\text{Int}}\rightarrow\text{Real}$.
-
-**Behavior**: converts $A$ to a real number.
-
-**Usage**
-
-```
-// Language: Clean
-
-r :: Real
-r =  fromInt   2  //  2.0
-r =  fromInt   1  //  1.0
-r =  fromInt   0  //  0.0
-r =  fromInt (-1) // -1.0
-r =  fromInt (-2) // -2.0
-```
-
-### Integers to characters
-
-**Signature**: $A_{\text{Int}}\rightarrow\text{Char}$.
-
-**Behavior**: converts $A$ to its ASCII character.
-
-
-**Usage**
-
-```
-// Language: Clean
-
-c :: Char
-c =  fromInt 49  // '1'
-c =  fromInt 59  // '9'
-c =  fromInt 65  // 'A'
-c =  fromInt 90  // 'Z'
-c =  fromInt 97  // 'a'
-c =  fromInt 122 // 'z'
-```
-
-### Integers to strings
-
-**Signature**: $A_{\text{Int}}\rightarrow\text{String}$.
-
-**Behavior**: converts $A$ to a string.
-
-**Usage**
-
-```
-// Language: Clean
-
-s :: String
-s =  fromInt   2  // "0"	
-s =  fromInt   1  // "1"
-s =  fromInt   0  // "0"
-s =  fromInt (-1) // "-1"
-s =  fromInt (-2) // "-2"
 ```
 
 [Back to top](#)

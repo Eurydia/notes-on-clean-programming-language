@@ -11,14 +11,15 @@ Data of last revision: 12 APR 2023
 
 - [Arithmetic operations](#arithmetic-operations)
 - [Relational operations](#relational-operations)
-- [Standard functions](#standard-functions)
+- [Basic functions](#basic-functions)
 - [Property functions](#property-functions)
+- [Conversions to characters](#conversions-to-characters)
  
 ## Arithmetic operations 
 
 ### Addition
 
-**Signature**: $A_{\text{Char}}{~}B_{\text{Char}}\rightarrow\text{Char}$.
+**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Char}$.
 
 **Behavior**: adds $A$ and $B$ together.
 
@@ -34,7 +35,7 @@ Data of last revision: 12 APR 2023
 
 ### Subtraction
 
-**Signature**: $A_{\text{Char}}{~}B_{\text{Char}}\rightarrow\text{Char}$.
+**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Char}$.
 
 **Behavior**: subtracts $B$ from $A$.
 
@@ -56,7 +57,7 @@ Data of last revision: 12 APR 2023
 
 ### Equal to
 
-**Signature**: $A_{\text{Char}}{~}B_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is equal to $B$.
 
@@ -73,7 +74,7 @@ Data of last revision: 12 APR 2023
 
 ### Not equal to
 
-**Signature**: $A_{\text{Char}}{~}B_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is not equal to $B$.
 
@@ -90,7 +91,7 @@ Data of last revision: 12 APR 2023
 
 ### Less than
 
-**Signature**: $A_{\text{Char}}{~}B_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is less than $B$.
 
@@ -107,7 +108,7 @@ Data of last revision: 12 APR 2023
 
 ### Less than or equal to
 
-**Signature**: $A_{\text{Char}}{~}B_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is less than or equal to $B$.
 
@@ -124,7 +125,7 @@ Data of last revision: 12 APR 2023
 
 ### Greater than
 
-**Signature**: $A_{\text{Char}}{~}B_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is greater than $B$.
 
@@ -141,7 +142,7 @@ Data of last revision: 12 APR 2023
 
 ### Greater than or equal to
 
-**Signature**: $A_{\text{Char}}{~}B_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is greater than or equal to $B$.
 
@@ -160,7 +161,7 @@ Data of last revision: 12 APR 2023
 
 ---
 
-## Standard functions
+## Basic functions
 
 ### Upper case
 
@@ -257,7 +258,7 @@ isAlphanum '-' // False
 
 **Signature**: $A_{\text{Char}}\rightarrow\text{Bool}$.
 
-**Behavior**: checks if $A$ is a alphabet or not.
+**Behavior**: checks if $A$ is an alphabet or not.
 
 **Usage**
 
@@ -393,6 +394,28 @@ isSpace 'a'  // False
 isSpace 'A'  // False
 isSpace '-'  // False
 isSpace '\t' // True
+```
+
+[Back to top](#)
+
+---
+
+## Conversions to characters
+
+### Integers to characters
+
+**Signature**: $A_{\text{Int}}\rightarrow\text{Char}$.
+
+**Behavior**: converts $A$ to its ASCII character.
+
+**Usage**
+
+```
+// Language: Clean
+
+toChar 49 // '1'
+toChar 65 // 'A'
+toChar 97 // 'a'
 ```
 
 [Back to top](#)

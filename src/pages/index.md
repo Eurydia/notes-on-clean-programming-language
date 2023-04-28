@@ -188,51 +188,51 @@ More context can be added by following the same pattern.
 
 **Constructions**
 
-There are four methods to construct an $\text{Int}$ literal:
+There are four methods to construct an $\text{Int}$ literal.
 
-- with decimal notation,
+$\text{Int}$ literal construction from decimal notation:
 
-	```
-	// Language: Clean
-	
-	decimal :: Int
-	decimal =  999
-	decimal =  99
-	decimal =  9
-	```
+```
+// Language: Clean
 
-- with octal notation: prefixing a number with $0$,
+decimal :: Int
+decimal =  999
+decimal =  99
+decimal =  9
+```
 
-	```
-	// Language: Clean
-	
-	octal :: Int
-	octal =  01747 // decimal 999
-	octal =  0143  // decimal 99
-	octal =  011   // decimal 9
-	```
+$\text{Int}$ literal construction using octal notation with $0$ prefix:
 
-- with hexadecimal notation: prefixing a number with $0\text{x}$, and
+```
+// Language: Clean
 
-	```
-	// Language: Clean
-	
-	hexadecimal :: Int
-	hexadecimal =  0x3E7 // decinal 999
-	hexadecimal =  0x63  // decimal 99
-	hexadecimal =  0x9   // decimal 9
-	```
+octal :: Int
+octal =  01747 // decimal 999
+octal =  0143  // decimal 99
+octal =  011   // decimal 9
+```
 
- - with scientific notation.
+$\text{Int}$ literal construction using hexadecimal notation with $0\text{x}$ prefix:
 
-	```
-	// Language: Clean
-	
-	scientific :: Int
-	scientific =  0.999E3 // 999
-	scientific =  0.99E2  // 99
-	scientific =  0.9E1   // 9
-	```
+```
+// Language: Clean
+
+hexadecimal :: Int
+hexadecimal =  0x3E7 // decinal 999
+hexadecimal =  0x63  // decimal 99
+hexadecimal =  0x9   // decimal 9
+```
+
+ $\text{Int}$ literal construction using scientific notation:
+
+```
+// Language: Clean
+
+scientific :: Int
+scientific =  0.999E3 // 999
+scientific =  0.99E2  // 99
+scientific =  0.9E1   // 9
+```
 
 When constructing an integer using scientific notation, it is possible to construct a real number instead.
 
@@ -243,7 +243,7 @@ maybeInt :: Int
 maybeInt =  0.9E0 // 0.9 :(
 ```
 
-In such a case, a compilation error will be thrown with the following message.
+In such a case, a compile-time error will be thrown with the following message.
 
 ```
 Type error [...]: cannot unify demanded type with offered type:
@@ -259,12 +259,18 @@ To resolve this issue, ensure that an integer is constructed.
 - [bitwise operations](appendix-a/integers#bitwise-operations).
 
 **Functions**:
-- [standard functions](appendix-a/integers#standard-functions), and
+- [basic functions](appendix-a/integers#basic-functions), and
 - [property functions](appendix-a/integers#property-functions).
 
 **Type conversions**
-- [to integer conversions](appendix-a/integers#to-integer-conversions), and
-- [from integer conversions](appendix-a/integers#from-integer-conversions).
+
+The built-in function $\text{toInt}$ explicitly converts other types to $\text{Int}$.
+It supports the conversion of the following types:
+- $\text{Real}\rightarrow\text{Int}$,
+- $\text{Char}\rightarrow\text{Int}$, and
+- $\text{String}\rightarrow\text{Int}$.
+
+See also [conversions to integers](appendix-a/integers#conversions-to-integers).
 
 ### Real numbers
 
@@ -272,68 +278,49 @@ To resolve this issue, ensure that an integer is constructed.
 
 **Constructions**
 
-There are two methods to construct a $\text{Real}$ literal:
+There are two methods to construct a $\text{Real}$ literal.
 
-- with decimal notation, and
+$\text{Real}$ literal construction using decimal notation:
 
-	```
-	// Language: Clean
-	
-	decimal :: Real
-	decimal =  999.9
-	decimal =  99.9
-	decimal =  9.9
-	```
+```
+// Language: Clean
 
-- with scientific notation.
+decimal :: Real
+decimal =  999.9
+decimal =  99.9
+decimal =  9.9
+```
 
-	```
-	// Language: Clean
-	
-	scientific :: Real
-	scientific = 0.9999E3 // decimal 999.9
-	scientific = 0.999E2  // decimal 99.9
-	scientific = 0.99E1   // decimal 9.9
-	```
+$\text{Real}$ literal construction using scientific notation:
+
+```
+// Language: Clean
+
+scientific :: Real
+scientific = 0.9999E3 // decimal 999.9
+scientific = 0.999E2  // decimal 99.9
+scientific = 0.99E1   // decimal 9.9
+```
 
 $\text{Real}$ literals cannot be constructed using octal or hexadecimal notation.
 
 **Operations**:
-- [arithmetic operations](appendix-a/real-numbers#arithmetic-operations),
-- [relational operations](appendix-a/real-numbers#relational-operations),
-- [standard functions](appendix-a/real-numbers#standard-functions), and
-- [trigonometric functions](appendix-a/real-numbers#trigonometric-functions).
+- [arithmetic operations](appendix-a/real-numbers#arithmetic-operations), and
+- [relational operations](appendix-a/real-numbers#relational-operations).
+
+**Functions**:
+- [basic functions](appendix-a/real-numbers#basic-functions),
+- [trigonometric functions](appendix-a/real-numbers#trigonometric-functions), and
+- [property functions](appendix-a/real-numbers#property-functions).
 
 **Type conversions**
 
-Using a built-in function, other types can be explicitly converted to $\text{Real}$.
-It can convert the following types:
-
-- $\text{Real}\rightarrow\text{Real}$: does nothing,
-
+The built-in function $\text{toReal}$ explicitly converts other types to $\text{Real}$.
+It supports the following types:
 - $\text{Int}\rightarrow\text{Real}$, and
+- $\text{String}\rightarrow\text{Real}$.
 
-	```
-	// Language: Clean
-	
-	toReal   2  //  2.0
-	toReal   1  //  1.0
-	toReal   0  //  0.0
-	toReal (-1) // -1.0
-	toReal (-2) // -2.0
-	```
-
-- $\text{\{Char\}}\rightarrow\text{Real}$: converts the string to a real number.
-
-	```
-	// Language: Clean
-	
-	toReal "1.0"  //  1.0
-	toReal "1"    //  1.0
-	toReal "0"    //  0.0
-	toReal "-1"   // -1
-	toReal "-1.0" // -1.0
-	```
+See also [conversions to real numbers](appendix-a/real-numbers#conversions-to-real-numbers).
 
 ### Characters
 
@@ -353,27 +340,18 @@ character =  'A'
 ```
 
 **Operations**:
-- [arithmetic operations](appendix-a/characters#arithmetic-operations),
-- [relational operations](appendix-a/characters#relational-operations),
-- [standard functions](appendix-a/characters#standard-functions), and
+- [arithmetic operations](appendix-a/characters#arithmetic-operations), and
+- [relational operations](appendix-a/characters#relational-operations).
+
+**Functions**:
+- [basic functions](appendix-a/characters#basic-functions), and
 - [property functions](appendix-a/characters#property-functions).
 
 **Type conversions** 
 
-Using a built-in function, types can be explicitly converted to $\text{Char}$.
-It can convert the following types:
+The built-in function $\text{toChar}$ explicitly converts $\text{Int}$ to $\text{Char}$.
 
-- $\text{Char}\rightarrow\text{Char}$: does nothing, and
-
-- $\text{Int}\rightarrow\text{Char}$: converts the ASCII value to its character.
-
-	```
-	// Language: Clean
-	
-	toChar 49 // '1'
-	toChar 65 // 'A'
-	toChar 97 // 'a'
-	```
+See also [conversions to characters](appendix-a/characters#conversions-to-characters).
 
 ### Booleans
 
@@ -394,16 +372,6 @@ boolean =  False
 **Operation**:
 - [logical operations](appendix-a/booleans#logical-operations).
 
-**Explicit type conversion**: 
-
-The built-in function $\text{toBool}$ only has $\text{Bool}\rightarrow\text{Bool}$ signature, but logical expressions will result in a boolean value.
-
-```
-// Language: Clean
-
-toBool :: Bool -> Bool    // does nothing
-```
-
 [Back to top](#)
 
 ---
@@ -415,48 +383,59 @@ toBool :: Bool -> Bool    // does nothing
 **Type Annotation**: $\text{[T]}$
 
 **Characteristics**:
-- holds one type, and
-- has dynamic size.
+- hold one type, and
+- have dynamic size.
 
 **Constructions**
 
-There multiple methods to construct a $\text{List}$ literal:
+There multiple methods to construct a $\text{[T]}$ literal.
 
-- with explicit enumeration of elements,
+$\text{[T]}$ literal construction using explicit enumeration of elements:
 
-	```
-	// Language: Clean
-	list :: [Int]
-	list =  [1, 3, 5, 7, 9]
-	list =  [1 : [3, 5, 7, 9]]  
-	list =  [1, 3, 5 : [7, 9]]
-	list =  [1 : [3 : [5 : [7 : [9 : []]]]]]  
-	list =  [1 : 3 : 5 : 7 : 9 : []]  
-	```
+```
+// Language: Clean
 
-- with DotDot expressions, and
+list :: [Int]
+list =  [1, 3, 5, 7, 9]
+```
 
-	```
-	// Language: Clean
-	
-	list :: [Int]
-	list =  [1, 3..9] // [1, 3, 5, 7, 9]  
-	list =  [1..9]    // [1, 2, 3, 4, 5, 6, 7, 8, 9]  
-	list =  [1..]     // [1, 2, 3, 4, 5, ...]  
-	```
+$\text{[T]}$  literal construction using head and tails:
 
-- with list comprehensions.
+```
+// Language: Clean
 
-There are special shorthands for constructing the frequently used $[\text{Char}]$.
+list :: [Int]
+list =  [1 : [3, 5, 7, 9]]
+list =  [1, 3, 5 : [7, 9]]
+list =  [1 : [3 : [5 : [7 : [9 : []]]]]]  
+list =  [1 : 3 : 5 : 7 : 9 : []]  
+```
+
+Shorthands are provided for $\text{[T]}$ construction.
+
+$\text{[T]}$ construction using DotDot expressions:
+
+```
+// Language: Clean
+
+list :: [Int]
+list =  [1, 3..9] // [1, 3, 5, 7, 9]  
+list =  [1..9]    // [1, 2, 3, 4, 5, 6, 7, 8, 9]  
+list =  [1..]     // [1, 2, 3, 4, 5, ...]  
+```
+
+$\text{[T]}$ construction using [list comprehensions](#comprehensions).
+
+Special shorthands are provided for $[\text{Char}]$ constructions.
 
 ```
 // Language: Clean
 
 charList :: [Char]
 charList =  ['a', 'b', 'c']  
-charList =  ['abc']         // ['a', 'b', 'c']
-charList =  ['ab','c']      // ['a', 'b', 'c']
-charList =  ['a'..'c']      // ['a', 'b', 'c']
+charList =  ['abc']
+charList =  ['ab','c']
+charList =  ['a'..'c']
 ```
 
 **Operations**:
@@ -467,7 +446,7 @@ charList =  ['a'..'c']      // ['a', 'b', 'c']
 - [[#Lists: Set-like methods]]
 - [[#Lists: Logical methods]]
 
-#### Arrays
+### Arrays
 
 **Characteristcs**:
 - holds one type, and
@@ -491,7 +470,7 @@ B =  "abc"             // also an array of characters
 - [[#Arrays: Standard operators]]
 - [[#Arrays: Methods]]
 
-#### Tuples
+### Tuples
 
 **Characteristcs**:
 - can hold multiple type,
@@ -516,8 +495,12 @@ C =  (2, 6)                // NOT OK should be (Int, Int)
 ```
 
 **Operations**:
--  [[#Tuples: Relational operators]]
+- [[#Tuples: Relational operators]]
 - [[#Tuples: Methods]]
+
+[Back to top](#)
+
+---
 
 ## Comprehensions
 

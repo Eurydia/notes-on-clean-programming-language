@@ -11,8 +11,10 @@ Data of last revision: 12 APR 2023
 
 - [Arithmetic operations](#arithmetic-operations)
 - [Relational operations](#relational-operations)
-- [Standard functions](#standard-functions)
+- [Basic functions](#basic-functions)
 - [Trigonometric functions](#trigonometric-functions)
+- [Property functions](#property-functions)
+- [Conversions to real numbers](#conversions-to-real-numbers)
  
 ## Arithmetic operations
 
@@ -34,7 +36,7 @@ Data of last revision: 12 APR 2023
 
 ### Addition
 
-**Signature**: $A_{\text{Real}}{~}B_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Real}$.
 
 **Behavior**: adds $A$ and $B$ together.
 
@@ -51,7 +53,7 @@ Data of last revision: 12 APR 2023
 
 ### Subtraction
 
-**Signature**: $A_{\text{Real}}{~}B_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Real}$.
 
 **Behavior**: subtracts $B$ from $A$.
 
@@ -68,7 +70,7 @@ Data of last revision: 12 APR 2023
 
 ### Multiplication
 
-**Signature**: $A_{\text{Real}}\;B_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Real}$.
 
 **Behavior**: multiplies $A$ with $B$.
 
@@ -85,7 +87,7 @@ Data of last revision: 12 APR 2023
 
 ### Division
 
-**Signature**: $A_{\text{Real}}{~}B_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Real}$.
 
 **Behavior**: divides $A$ with $B$. 
 
@@ -104,7 +106,7 @@ Data of last revision: 12 APR 2023
 
 ### Exponentiation
 
-**Signature**: $A_{\text{Real}}{~}B_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Real}$.
 
 **Behavior**: raises $A$ to the $B$-th power.
 
@@ -130,7 +132,7 @@ Data of last revision: 12 APR 2023
 
 ###  Equal to
 
-**Signature**: $A_{\text{Real}}{~}B_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is equal to $B$.
 
@@ -148,7 +150,7 @@ Data of last revision: 12 APR 2023
 
 ### Not equal to
 
-**Signature**: $A_{\text{Real}}{~}B_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is not equal to $B$.
 
@@ -166,7 +168,7 @@ Data of last revision: 12 APR 2023
 
 ### Less than
 
-**Signature**: $A_{\text{Real}}{~}B_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is less than $B$.
 
@@ -184,7 +186,7 @@ Data of last revision: 12 APR 2023
 
 ### Less than or equal to
 
-**Signature**: $A_{\text{Real}}{~}B_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is less than or equal to $B$.
 
@@ -202,7 +204,7 @@ Data of last revision: 12 APR 2023
 
 ### Greater than
 
-**Signature**: $A_{\text{Real}}{~}B_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is greater than $B$.
 
@@ -220,7 +222,7 @@ Data of last revision: 12 APR 2023
 
 ### Greater than or equal to
 
-**Signature**: $A_{\text{Real}}{~}B_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is greater than or equal to $B$.
 
@@ -240,7 +242,7 @@ Data of last revision: 12 APR 2023
 
 ---
 
-## Standard functions
+## Basic functions
 
 ### Sign function
 
@@ -601,6 +603,112 @@ atanh   0.0  //  0.0
 atanh (-0.5) // -0.549306144334055
 atanh (-1.5) //  #NAN
 atanh (-2.5) //  #NAN
+```
+
+[Back to top](#)
+
+---
+
+## Property functions
+
+### Not a number property
+
+**Signature**: $A_{\text{Real}}\rightarrow\text{Bool}$.
+
+**Behavior**: checks if $A$ is $\text{NaN}$ or not.
+
+**Usage**
+
+```
+// Language: Clean
+
+isNaN  2.0 // False
+isNaN  0.0 // False
+isNaN (sqrt (-1.0)) // True
+isNaN (ln   (-1.0)) // True
+isNaN ((-1.0) /   0.0)  // False
+isNaN (  0.0  ^ (-1.0)) // False
+```
+
+### Infinity property
+
+**Signature**: $A_{\text{Real}}\rightarrow\text{Bool}$.
+
+**Behavior**: checks if $A$ is an infinite representation or not.
+
+**Usage**
+
+```
+// Language: Clean
+
+isInfinity 2.0 // False
+isInfinity 0.0 // False
+isInfinity (sqrt (-1.0)) // False
+isInfinity (ln   (-1.0)) // False
+isInfinity ((-1.0) /   0.0)  // True
+isInfinity (  0.0  ^ (-1.0)) // True
+```
+
+### Finite property
+
+**Signature**: $A_{\text{Real}}\rightarrow\text{Bool}$.
+
+**Behavior**: checks if $A$ is finite or not.
+
+**Usage**
+
+```
+// Language: Clean
+
+isFinite 2.0 // True
+isFinite 0.0 // True
+isFinite (sqrt (-1.0)) // False
+isFinite (ln   (-1.0)) // False
+isFinite ((-1.0) /   0.0)  // False
+isFinite (  0.0  ^ (-1.0)) // False
+```
+
+[Back to top](#)
+
+---
+
+
+## Conversions to real numbers
+
+### Integers to real numbers
+
+**Signature**: $A_{\text{Int}}\rightarrow\text{Real}$.
+
+**Behavior**: converts $A$ to a real number.
+
+**Usage**
+
+```
+// Language: Clean
+
+toReal   2  //  2.0
+toReal   1  //  1.0
+toReal   0  //  0.0
+toReal (-1) // -1.0
+toReal (-2) // -2.0
+```
+
+### Strings to real numbers
+
+**Signature**: $A_{\text{String}}\rightarrow\text{Real}$.
+
+**Behavior**: converts $A$ to an real number.
+
+**Usage**
+
+```
+// Language: Clean
+
+toReal "1.0"  //  1.0
+toReal "1"    //  1.0
+toReal "0"    //  0.0
+toReal "-1"   // -1.0
+toReal "-1.0" //  1.0
 ```
 
 [Back to top](#)

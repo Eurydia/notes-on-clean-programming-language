@@ -9,16 +9,26 @@ Data of last revision: 12 APR 2023
 
 ## Table of contents
 
-- [Standatd operations](#standard-operations)
+- [Basic operations](#basic-operations)
 - [Relational operations](#relational-operations)
-- [Standard functions](#standard-functions)
+- [Basic functions](#basic-functions)
+- [Higher-order functions](#higher-order-functions)
 - [Property functions](#property-functions)
  
-## Standard operations 
+## Basic operations 
 
 ### Concatenation
 
-**Signature**: $A_{\text{[T]}}\ B_{\text{[T]}}\rightarrow\text{[T]}$.
+**Signature**
+
+$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$
+
+where 
+- $A, B, R$ are of type $[T]$.
 
 **Behavior**: appends $B$ to the end of $A$.
 
@@ -34,20 +44,31 @@ Data of last revision: 12 APR 2023
 
 ### Indexing
 
-**Signature**: $A_{\text{[T]}}\ B_{\text{Int}}\rightarrow\text{T}$.
+**Signature**
 
-**Behavior**: returns element at $B$-th index of $A$.
-A run-time error is thrown if $B$ is not a valid index.
+$$
+\begin{align*}
+A\rightarrow{i}\rightarrow{R}
+\end{align*}
+$$
+
+where :
+- $A$ is of type $[T]$,
+- $i$ is of typer $\text{Int}$, and
+- $R$ is of type $T$.
+
+**Behavior**: returns element at $i$-th index of $A$.
+A run-time error is thrown if $i$ is not a valid index.
 
 **Usage**
 
 ```
 // Language: Clean
  
-[1, 2, 3, 4, 5] !!   5  // NOT OK :(
-[1, 2, 3, 4, 5] !!   2  // 3
-[1, 2, 3, 4, 5] !!   0  // 1
-[1, 2, 3, 4, 5] !! (-1) // NOT OK :(
+[1, 2, 3] !!   5  // NOT OK :(
+[1, 2, 3] !!   2  // 3
+[1, 2, 3] !!   0  // 1
+[1, 2, 3] !! (-1) // NOT OK :(
 ```
 
 **Note**:
@@ -60,19 +81,29 @@ Subscript error in !!,index too large
 
 ### Slicing
 
-**Signature**: $A_{\text{[T]}}\ (B_{\text{Int}},\ C_{\text{Int}})\rightarrow\text{[T]}$.
+**Signature**
 
-**Behavior**: returns elements of $A$ which are inside $[B,\ C]$ interval.
+$$
+\begin{align*}
+A\rightarrow(i, j)\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A, R$ are of type $[T]$, and
+- $i, j$ are of type $\text{Int}$.
+
+**Behavior**: returns elements of $A$ which are inside $[i, j]$ interval.
 
 **Usage**
 
 ```
 // Language: Clean
  
-[1, 2, 3, 4, 5] % (  2,  4)  // [3, 4, 5]
-[1, 2, 3, 4, 5] % (  0,  4)  // [1, 2, 3, 4, 5]
-[1, 2, 3, 4, 5] % ((-1), 0)  // [1, 2]
-[1, 2, 3, 4, 5] % ((-2), 5)  // [1, 2, 3, 4, 5]
+[1, 2, 3] % (  2,  4)  // [3]
+[1, 2, 3] % (  0,  2)  // [1, 2, 3]
+[1, 2, 3] % ((-1), 0)  // [1, 2]
+[1, 2, 3] % ((-2), 5)  // [1, 2, 3]
 ```
 
 [Back to top](#)
@@ -83,7 +114,19 @@ Subscript error in !!,index too large
 
 ### Equal to
 
-**Signature**: $A_{\text{[T]}}\ B_{\text{[T]}}\rightarrow\text{Bool}\ |\ \text{Eq}\ \text{T}$.
+**Signature**
+
+$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A, B$ are of type $[T]$, and
+- $R$ is of type $\text{Bool}$.
+
+Additionally, equality operation must be defined on $T$.
 
 **Behavior**: checks if $A$ is equal to $B$.
 
@@ -102,7 +145,19 @@ Subscript error in !!,index too large
 
 ### Not equal to
 
-**Signature**: $A_{\text{[T]}}\ B_{\text{[T]}}\rightarrow\text{Bool}\ |\ \text{Eq}\ \text{T}$.
+**Signature**
+
+$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A, B$ are of type $[T]$, and
+- $R$ is of type $\text{Bool}$.
+
+Additionally, equality operation must be defined on $T$.
 
 **Behavior**: checks if $A$ is not equal to $B$.
 
@@ -121,7 +176,19 @@ Subscript error in !!,index too large
 
 ### Less than
 
-**Signature**: $A_{\text{[T]}}\ B_{\text{[T]}}\rightarrow\text{Bool}\ |\ \text{Ord}\ \text{T}$.
+**Signature**
+
+$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A, B$ are of type $[T]$, and
+- $R$ is of type $\text{Bool}$.
+
+Additionally, inequality operations must be defined on $T$.
 
 **Behavior**: checks if $A$ is less than $B$.
 
@@ -140,7 +207,19 @@ Subscript error in !!,index too large
 
 ### Less than or equal to
 
-**Signature**: $A_{\text{[T]}}\ B_{\text{[T]}}\rightarrow\text{Bool}\ |\ \text{Ord}\ \text{T}$.
+**Signature**
+
+$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A, B$ are of type $[T]$, and
+- $R$ is of type $\text{Bool}$.
+
+Additionally, inequality operations must be defined on $T$.
 
 **Behavior**: checks if $A$ is less than or equal to $B$.
 
@@ -159,7 +238,19 @@ Subscript error in !!,index too large
 
 ### Greater than
 
-**Signature**: $A_{\text{[T]}}\ B_{\text{[T]}}\rightarrow\text{Bool}\ |\ \text{Ord}\ \text{T}$.
+**Signature**
+
+$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A, B$ are of type $[T]$, and
+- $R$ is of type $\text{Bool}$.
+
+Additionally, inequality operations must be defined on $T$.
 
 **Behavior**: checks if $A$ is greater than $B$.
 
@@ -178,7 +269,19 @@ Subscript error in !!,index too large
 
 ### Greater than or equal to
 
-**Signature**: $A_{\text{[T]}}\ B_{\text{[T]}}\rightarrow\text{Bool}\ |\ \text{Ord}\ \text{T}$.
+**Signature**
+
+$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A, B$ are of type $[T]$, and
+- $R$ is of type $\text{Bool}$.
+
+Additionally, inequality operations must be defined on $T$.
 
 **Behavior**: checks if $A$ is greater than or equal to $B$.
 
@@ -199,30 +302,23 @@ Subscript error in !!,index too large
 
 ---
 
-## Standard functions
+##  Basic functions
 
-### Reverse function
+### length
 
-**Signature**: $A_{\text{[T]}}\rightarrow\text{[T]}$.
+**Signature**
 
-**Behavior**: returns a reversed copy of $A$.
+$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$
 
-**Usage**
+where:
+- $A$ is of type $[T]$, and
+- $R$ is of type $\text{Int}$.
 
-```
-// Language: Clean
-
-reverse [1, 2, 3] // [3, 2, 1]
-reverse [1, 2]    // [2, 1]
-reverse [1]       // [1]
-reverse []        // []
-```
-
-### Length function
-
-**Signature**: $A_{\text{[T]}}\rightarrow\text{Int}$.
-
-**Behavior**: returns the length of $A$.
+**Behavior**: returns length of $A$.
 
 **Usage**
 
@@ -235,74 +331,21 @@ length [1]       // 1
 length []        // 0
 ```
 
-### Summation
+### flatten
 
-**Signature**: $A_{\text{[T]}}\rightarrow\text{T}\ |\ +\ ,\ \text{one}\ \text{T}$.
+**signature** 
 
-**Behavior**: returns summation of $A$.
+$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$
 
-**Usage**
+where:
+- $A$ is of type $[[T]]$, and
+- $R$ is of type $[T]$.
 
-```
-// Language: Clean
-
-sum [1, 2, 3] // 6
-sum [1, 2]    // 3
-sum [1]       // 1
-sum []        // 0
-```
-
-### Product
-
-**Signature**: $A_{\text{[T]}}\rightarrow\text{T}\ |\ *\ ,\ \text{one}\ \text{T}$.
-
-**Behavior**: returns product of $A$.
-
-**Usage**
-
-```
-// Language: Clean
-
-prod [1, 2, 3] // 6
-prod [1, 2]    // 2
-prod [1]       // 1
-prod []        // 1
-```
-
-### Average function
-
-**Signature**: $A_{\text{[T]}}\rightarrow\text{T}\ |\ {/}\ ,\ +\ ,\ \text{zero}\ ,\text{one}\ \text{T}$.
-
-**Behavior**: returns average of $A$.
-A run-time error will be thrown if $A$ is an empty list.
-
-**Usage**
-
-```
-// Language: Clean
-
-avg [1.0, 2.0, 3.0] // 3.0
-avg [1.0, 2.0]      // 1.5
-avg [1.0]           // 1.0
-avg [1, 2, 3]       // 3
-avg [1, 2]          // 1
-avg [1]             // 1
-avg []              // NOT OK :(
-```
-
-**Note**:
-
-The run-time error has the following message:
-
-```
-avg called with empty list
-```
-
-### Flatten function
-
-**Signature**: $A_{\text{[[T]]}}\rightarrow\text{[T]}$.
-
-**Behavior**: returns a copy of flattened $A$.
+**Behavior**: returns a flattened copy of $A$.
 
 **Usage**
 
@@ -315,65 +358,19 @@ flatten [[1, 2, 3]]     // [1, 2, 3]
 flatten []              // []
 ```
 
-### Infinite repeat function
+### hd
 
-**Signature**: $A_{\text{T}}\rightarrow\text{[T]}$.
+**Signature**
 
-**Behavior**: generates an infinite list of $A$.
+$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$
 
-**Usage**
-
-```
-// Language: Clean
-
-repeat 0    // [0, 0, 0, ...]
-repeat 1.0  // [1.0, 1.0, 1.0, ...]
-repeat 'a'  // ['a', 'a', 'a', ...] 
-repeat True // [True, True, True, ...]
-```
-
-### Finite repeat function
-
-**Signature**: $B_{\text{Int}}\ A_{\text{T}}\rightarrow\text{[T]}$.
-
-**Behavior**: generates a list of $A$ with length of $B$.
-
-**Usage**
-
-```
-// Language: Clean
-
-repeatn 0 0    // []
-repeatn 1 1.0  // [1.0]
-repeatn 2 'a'  // ['a', 'a'] 
-repeatn 3 True // [True, True, True]
-```
-
-### Iteration function
-
-**Signature**: $f_{\text{T}\rightarrow\text{T}}\ A_{\text{T}}\rightarrow\text{[T]}$.
-
-**Behavior**: generates an infinite list by repeatedly apply $f$ to $A$.
-
-**Usage**
-
-```
-// Language: Clean
-
-iterate ((+) 1) 0 // [0, 1, 2, ...]
-iterate ((*) 2) 1 // [1, 2, 4, ...]
-iterate toInt   0 // [0, 0, 0, ...]
-```
-
-[Back to top](#)
-
----
-
-## Extraction functions
-
-### First element
-
-**Signature**: $A_{\text{[T]}}\rightarrow\text{T}$.
+where:
+- $A$ is of type $[T]$, and
+- $R$ is of type $T$.
 
 **Behavior**: returns the first element of $A$.
 A run-time error will be thrown if $A$ is empty.
@@ -397,9 +394,19 @@ The run-time error has the following message:
 hd of []
 ```
 
-### All but first
+### tl
 
-**Signature**: $A_{\text{[T]}}\rightarrow\text{[T]}$.
+**Signature**
+
+$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[T]$, and
+- $R$ is of type $[T]$.
 
 **Behavior**: returns all except the first element of $A$.
 A run-time error will be thrown if $A$ is empty.
@@ -423,9 +430,19 @@ The run-time error has the following message:
 tl of []
 ```
 
-### Last element
+### last
 
-**Signature**: $A_{\text{[T]}}\rightarrow\text{T}$.
+**Signature**
+
+$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[T]$, and
+- $R$ is of type $T$.
 
 **Behavior**: returns the last element of $A$.
 A run-time error will be thrown if $A$ is empty.
@@ -449,9 +466,19 @@ The run-time error has the following message:
 last of []
 ```
 
-### All but last
+### init
 
-**Signature**: $A_{\text{[T]}}\rightarrow\text{[T]}$.
+**Signature**
+
+$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[T]$, and
+- $R$ is of type $[T]$.
 
 **Behavior**: returns all except the last element of $A$.
 A run-time error will be thrown if $A$ is empty.
@@ -475,6 +502,719 @@ The run-time error has the following message:
 init of []
 ```
 
+### take
+
+**Signature**
+
+$$
+\begin{align*}
+n\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $n$ is of type $\text{Int}$,
+- $A$ is of type $[T]$, and
+- $R$ is of type $[T]$.
+
+**Behavior**: returns the first $n$ elements of $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+take 2 [1, 2, 3] // [1, 2]
+take 1 [1, 2]    // [1]
+take 0 [1]       // []
+take 0 []        // []
+```
+
+### drop
+
+**Signature**
+
+$$
+\begin{align*}
+n\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $n$ is of type $\text{Int}$,
+- $A$ is of type $[T]$, and
+- $R$ is of type $[T]$.
+
+**Behavior**: returns all but the first $n$ elements of $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+drop 2 [1, 2, 3] // [3]
+drop 1 [1, 2]    // [2]
+drop 1 [1]       // []
+drop 0 []        // []
+```
+
+### reverse
+
+**Signature**
+
+$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A, R$ is of type $[T]$.
+
+**Behavior**: returns a reversed copy of $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+reverse [1, 2, 3] // [3, 2, 1]
+reverse [1, 2]    // [2, 1]
+reverse [1]       // [1]
+reverse []        // []
+```
+
+### insertAt
+
+**Signature**
+
+$$
+\begin{align*}
+i\rightarrow{a}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $i$ is of type $\text{Int}$,
+- $a$ is of type $T$, and
+- $A, R$ is of type $[T]$.
+
+**Behavior**: inserts $a$ into the $i$-th index of $A$.
+The previous element is shifted to the right to make room.
+
+**Usage**
+
+```
+// Language: Clean
+
+insertAt   2  9 [1, 2] // [1, 2, 9]
+insertAt   1  9 [1, 2] // [1, 9, 2]
+insertAt   0  9 [1, 2] // [9, 1, 2]
+insertAt (-1) 9 [1, 2] // [1, 2, 9]
+```
+
+### removeAt
+
+**Signature**
+
+$$
+\begin{align*}
+i\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $i$ is of type $\text{Int}$, and
+- $A, R$ is of type $[T]$.
+
+**Behavior**: removes the element at $i$-th index of $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+removeAt   2  [1, 2] // [1, 2]
+removeAt   1  [1, 2] // [1]
+removeAt   0  [1, 2] // [2]
+removeAt (-1) [1, 2] // [1,2]
+```
+
+### updateAt
+
+**Signature**
+
+$$
+\begin{align*}
+i\rightarrow{a}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $i$ is of type $\text{Int}$,
+- $a$ is of type $T$, and
+- $A, R$ is of type $[T]$.
+
+**Behavior**: replaces the element at $i$-th index of $A$ with $a$.
+
+**Usage**
+
+```
+// Language: Clean
+
+updateAt   2  9 [1, 2] // [1, 2]
+updateAt   1  9 [1, 2] // [1, 9]
+updateAt   0  9 [1, 2] // [9, 2]
+updateAt (-1) 9 [1, 2] // [1, 2]
+```
+
+### splitAt
+
+**Signature**
+
+$$
+\begin{align*}
+i\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $i$ is of type $\text{Int}$,
+- $A$ is of type $[T]$, and
+- $R$ is of type $([T], [T])$.
+
+**Behavior**: splits $A$ into two at $i$-th index.
+The element at $i$-th index goes to the second half.
+
+**Usage**
+
+```
+// Language: Clean
+
+splitAt   2  [1, 2] // ([1, 2], [])
+splitAt   1  [1, 2] // ([1], [2])
+splitAt   0  [1, 2] // ([], [1, 2])
+splitAt (-1) [1, 2] // ([1, 2], [])
+```
+
+### indexList
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[T]$, and
+- $R$ is of type $[\text{Int}]$.
+
+**Behavior**: generates a list indexes from $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+indexList [3, 2, 1] // [0, 1, 2]
+indexList [1, 2]    // [0, 1]
+indexList [2]       // [0]
+indexList []        // []
+```
+
+### repeat
+
+**Signature**
+
+$$
+\begin{align*}
+{a}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $T$, and
+- $R$ is of type $[T]$.
+
+**Behavior**: generates an infinite list of the same element $a$.
+
+**Usage**
+
+```
+// Language: Clean
+
+repeat 0    // [0, 0, 0, ...]
+repeat 1.0  // [1.0, 1.0, 1.0, ...]
+repeat 'a'  // ['a', 'a', 'a', ...] 
+repeat True // [True, True, True, ...]
+```
+
+### repeatn
+
+**signature** 
+
+$$
+\begin{align*}
+{n}\rightarrow{a}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $n$ is of type $\text{Int}$,
+- $a$ is of type $T$, and
+- $R$ is of type $[T]$.
+
+**Behavior**: generates a list of the same element $a$ with length of $n$.
+
+**Usage**
+
+```
+// Language: Clean
+
+repeatn 0 0    // []
+repeatn 1 1.0  // [1.0]
+repeatn 2 'a'  // ['a', 'a'] 
+repeatn 3 True // [True, True, True]
+```
+
+### unzip
+
+**signature** 
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[(T, K)]$, and
+- $R$ is of type $([T], [K])$.
+
+**Behavior**: unzips $A$ into a tuple of two lists.
+
+**Usage**
+
+```
+// Language: Clean
+
+unzip [(1, 'a'), (2, 'b')] // ([1, 2],['a', 'b'])
+unzip []                   // ([], [])
+```
+
+### zip2
+
+**Signature** 
+
+$$
+\begin{align*}
+{A}\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[T]$,
+- $B$ is of type $[K]$, and
+- $R$ is of type $[(T, K)]$.
+
+**Behavior**: zips $A$ and $B$ into a list of $2$-tuples.
+
+**Usage**
+
+```
+// Language: Clean
+
+zip2 [1, 2] ['a', 'b'] // [(1, 'a'), (2, 'b')]
+zip2 [1]    ['a', 'b'] // [(1, 'a')]
+zip2 [1, 2] ['a']      // [(1, 'a')]
+zip2 [] []             // []
+```
+
+### zip
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $([T], [K])$, and
+- $R$ is of type $[(T, K)]$.
+
+**Behavior**: zips components of $A$ into a list of $2$-tuples.
+
+**Usage**
+
+```
+// Language: Clean
+
+zip ([1, 2], ['a', 'b']) // [(1, 'a'), (2, 'b')]
+zip ([1], ['a', 'b'])    // [(1, 'a')]
+zip ([1, 2], ['a'])      // [(1, 'a')]
+zip ([], [])             // []
+```
+
+### diag3
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{B}\rightarrow{C}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[T]$,
+- $B$ is of type $[K]$,
+- $C$ is of type $[V]$, and
+- $R$ is of type $[(T, K, V)]$.
+
+**Behavior**: generates the Cartesian product of $A$, $B$, and $C$.
+
+**Usage**
+
+```
+// Language: Clean
+
+diag3 [1, 2] ['a'] ['A']
+// [(1,'a','A'),(2,'a','A')]
+
+diag3 [] ['a'] ['A']
+// []
+```
+
+### diag2
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[T]$,
+- $B$ is of type $[K]$, and
+- $R$ is of type $[(T, K)]$.
+
+**Behavior**: generates the Cartesian product of $A$ and $B$.
+
+**Usage**
+
+```
+// Language: Clean
+
+diag2 [1, 2] ['a', 'b']
+// [(1,'a'),(2,'a'),(1,'b'),(2,'b')]
+
+diag2 [] ['a', 'b']
+// []
+```
+
+### and
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[\text{Bool}]$,
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: returns true if and only if every element of $A$ is true.
+
+**Usage**
+
+```
+// Language: Clean
+
+and [False, False] // False
+and [False, True]   // True
+and [True, True]   // True
+and [False]        // False
+and [True]         // True
+and []             // True
+```
+
+### or
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[\text{Bool}]$,
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: returns false if and only if every element of $A$ is false.
+
+**Usage**
+
+```
+// Language: Clean
+
+or [False, False] // False
+or [False, True]  // True
+or [True, True]   // True
+or [False]        // False
+or [True]         // True
+or []             // False
+```
+
+### isMember
+
+**Signature**
+
+$$
+\begin{align*}
+a\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where 
+- $a$ is of type $T$,
+- $A$ is of type $[T]$, and
+- $R$ is of type $\text{Bool}$.
+
+Additionally, equality operation must be defined on $T$.
+
+**Behavior**: checks $a$ is a member of $A$ or not.
+
+**Usage**
+
+```
+// Language: Clean
+
+isMember 4 [1, 2, 3] // False
+isMember 2 [1, 2, 3] // True
+isMember 1 []        // False
+```
+
+### isAnyMember
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$
+
+where 
+- $A$ is of type $[T]$,
+- $B$ is of type $[T]$, and
+- $R$ is of type $\text{Bool}$.
+
+Additionally, equality operation must be defined on $T$.
+
+**Behavior**: returns true if any element of $B$ is also a member of $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+isAnyMember [1, 2] [1, 2] // True
+isAnyMember [1, 2] [3, 4] // False
+isAnyMember [1, 2] []     // False
+isAnyMember [] [1, 2]     // False
+```
+
+### removeDup
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where 
+- $A$ is of type $[T]$, and
+- $R$ is of type $[T]$.
+
+Additionally, equality operation must be defined on $T$.
+
+**Behavior**: removes duplicate elements from $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+removeDup [1, 2, 2, 3] // [1, 2, 3]
+removeDup [1, 2, 3, 4] // [1, 2, 3, 4]
+removeDup []           // []
+```
+
+### removeMember
+
+**Signature**
+
+$$
+\begin{align*}
+{a}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where 
+- $a$ is of type $T$, and
+- $A, R$ is of type $[T]$.
+
+Additionally, equality operation must be defined on $T$.
+
+**Behavior**: removes the first occurence of $a$ from $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+removeMember 4 [1, 2, 2, 3] // [1, 2, 2, 3]
+removeMember 2 [1, 2, 2, 3] // [1, 2, 3]
+removeMember 1 [1, 2, 2, 3] // [2, 2, 3]
+removeMember 0 []           // []
+```
+
+### removeMembers
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$
+
+where 
+- $A, B, R$ is of type $[T]$.
+
+Additionally, equality operation must be defined on $T$.
+
+**Behavior**: removes the first occurrences of the elements of $B$ from $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+removeMembers [1, 2, 3] [] // [1, 2, 3]
+removeMembers [2, 3] [1]   // [2, 3]
+removeMembers [1, 1] [1]   // [1]
+removeMembers [] [1, 2]    // []
+```
+
+### removeIndex
+
+**Signature**
+
+$$
+\begin{align*}
+{a}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where 
+- $a$ is of type $T$,
+- $A$ is of type $[\text{T}]$, and
+- $R$ is of type $(\text{Int}, [\text{T}])$.
+
+Additionally, equality operation must be defined on $T$.
+
+**Behavior**: removes the first occurrence of $a$ from $A$ and returns the its index.
+A run-time error will be thrown if $a$ is not a member of $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+removeIndex 2 [1, 2, 2, 3] // (1, [1, 2, 3])
+removeIndex 1 [1, 2, 2, 3] // (0, [2, 2, 3])
+removeIndex 4 [1, 2, 2, 3] // NOT OK :(
+```
+
+**Note**
+
+The run-time error has the following message:
+
+```
+Error in removeIndex: element not found
+```
+
+### limit
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where 
+- $A, R$ is of type $[\text{T}]$.
+
+Additionally, equality operation must be defined on $T$.
+
+**Behavior**: returns the first element of $A$ for which the next element is the same.
+A run-time error will be thrown if no such element exists.
+
+**Usage**
+
+```
+// Language: Clean
+
+limit [1, 2, 2, 3] // 2
+limit [1, 2, 3]    // (0, [2, 2, 3])
+limit []
+```
+
+**Note**
+
+The run-time error has the following message:
+
+```
+incorrect use of limit
+```
+
+[Back to top](#)
+
+---
+
+## Higher-order functions
+
+### Iteration function
+
+**signature** $f_{\text{T}\rightarrow\text{T}}\ A_{\text{T}}\rightarrow[T]$.
+
+**Behavior**: generates an infinite list by repeatedly apply $f$ to $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+iterate ((+) 1) 0 // [0, 1, 2, ...]
+iterate ((*) 2) 1 // [1, 2, 4, ...]
+iterate toInt   0 // [0, 0, 0, ...]
+```
 
 [Back to top](#)
 
@@ -484,7 +1224,7 @@ init of []
 
 ### Empty property
 
-**Signature**: $A_{\text{[T]}}\rightarrow\text{Bool}$.
+**signature** $A_{[T]}\rightarrow\text{Bool}$.
 
 **Behavior**: checks if $A$ is empty or not.
 
@@ -500,42 +1240,3 @@ isEmpty [1] // False
 [Back to top](#)
 
 ---
-
-#### Lists manipulation methods
-
-| Name                          | Meaning                                               | Signature                             |
-| ----------------------------- | ----------------------------------------------------- | ------------------------------------- |
-| <nobr>`take n X`</nobr>       | Take the first $n$ elements of $X$                    | <nobr>`Int [T] -> [T]`</nobr>         |
-| <nobr>`takeWhile P X`</nobr>  | Take elements of $X$ until $P$ is false               | <nobr>`(T -> Bool) [T] -> [T]`</nobr> |
-| <nobr>`drop n X`</nobr>       | Discard the first $n$ elements of $X$                 | <nobr>`Int [T] -> [T]`</nobr>         |
-| <nobr>`dropWhile P X`</nobr>  | Discard elements of $X$ until $P$ is false            | <nobr>`(T -> Bool) [T] -> [T]`</nobr> |
-| <nobr>`filter P X`</nobr>     | Filter $X$ using $P$                                  | <nobr>`(T -> Bool) [T] -> [T]`</nobr> |
-| <nobr>`map F X`</nobr>        | Apply $F$ to every element of $X$                     | <nobr>`(T -> K) [T] -> [K]`</nobr>    |
-| <nobr>`insertAt i a X`</nobr> | Insert $a$ into $X$ at $i$-th element (shifted right) | <nobr>`Int T [T] -> [T]`</nobr>       |
-| <nobr>`removeAt i X`</nobr>   | Remove $i$-th element of $X$                          | <nobr>`Int [T] -> [T]`</nobr>         |
-| <nobr>`updateAt i a X`</nobr> | Replace $i$-th element of $X$ with $a$                | <nobr>`Int T [T] -> [T]`</nobr>       |
-| <nobr>`splitAt i X`</nobr>    | Split $X$ into two at $i$-th index (left preferred)   | <nobr>`Int [T] -> ([T], [T])`</nobr>  |
-
-#### Set-like methods
-
-| Name                             | Meaning                             | Signature                      |
-| -------------------------------- | ----------------------------------- | ------------------------------ |
-| <nobr>`isMember a X`</nobr>      | True if $a$ is in $X$               | <nobr>`T [T] -> Bool`</nobr>   |
-| <nobr>`removeDup X`</nobr>    | Unique elements of $X$                                | <nobr>`[T] -> [T]`</nobr>             |
-| <nobr>`isAnyMember X Y`</nobr>   | True if $X$ intersects with $Y$     | <nobr>`[T] [T] -> Bool`</nobr> |
-| <nobr>`removeMember a X`</nobr>  | Remove all $a$ from $X$             | <nobr>`T [T] -> [T]`</nobr>    |
-| <nobr>`removeMembers X Y`</nobr> | Remove all elements of $Y$ from $X$ | <nobr>`[T] [T] -> [T]`</nobr>  |
-
-#### Logical methods
-
-| Name                   | Meaning                               | Signature                              |
-| ---------------------- | ------------------------------------- | -------------------------------------- |
-| <nobr>`and Xb`</nobr>  | True if every element in $Xb$ is true | <nobr>`[Bool] -> Bool`</nobr>          |
-| <nobr>`or Xb`</nobr>   | True if some element in $Xb$ is true  | <nobr>`[Bool] -> Bool`</nobr>          |
-| <nobr>`all P X`</nobr> | $P$ is true for every element in $X$  | <nobr>`(T -> Bool) [T] -> Bool`</nobr> |
-| <nobr>`any P X`</nobr> | $P$ is true for some element in $X$   | <nobr>`(T -> Bool) [T] -> Bool`</nobr> |
-
-Definitions:
-- $Xb$ is a list of type $\text {Bool}$,
-- $X$ is a list of type $T$, and
-- $P$ is a predicate with $T\rightarrow\text{Bool}$ signature.

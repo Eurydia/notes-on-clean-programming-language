@@ -12,28 +12,28 @@ Data of last revision: 12 APR 2023
 1. [Introduction](#introduction)
 2. [Types](#types)
 	1. [Type specification](#type-specification)
-	2. [Primitive types](#primitive-types)
+3. [Primitive types](#primitive-types)
 		1. [Integers](#integers)
 		2. [Real numbers](#real-numbers)
 		3. [Characters](#characters)
 		4. [Booleans](#booleans)
-	3. Structured types
+4. [Structured types](#structured-types)
 		1. Lists
 		2. Arrays
 		3. Tuples
-3. Comprehensions
-4. Functions
+5. Comprehensions
+6. Functions
 	1. Definitions
 	2. Invocation
 	3. Symbolic functions
 	4. Lambda functions
-5. Scoping
+7. Scoping
 	1. Function-local definition
 	2. Guard-local definition
-6. Pattern matching
-7. Appendix A: Built-in operations and functions
-8. Appendix B: Error troubleshooting
-9. Appendix C: CRU (Code Ready to Use)
+8. Pattern matching
+9. Appendix A: Built-in operations and functions
+10. Appendix B: Error troubleshooting
+11. Appendix C: CRU (Code Ready to Use)
 
 ## Introduction
 
@@ -176,9 +176,13 @@ More context can be added by following the same pattern.
 
 **tba**
 
-### Primitive types
+[Back to top](#)
 
-#### Integers
+---
+
+## Primitive types
+
+### Integers
 
 **Type annotation**: $\text{Int}$
 
@@ -186,7 +190,7 @@ More context can be added by following the same pattern.
 
 There are four methods to construct an $\text{Int}$ literal:
 
-- decimal notation,
+- with decimal notation,
 
 	```
 	// Language: Clean
@@ -197,7 +201,7 @@ There are four methods to construct an $\text{Int}$ literal:
 	decimal =  9
 	```
 
-- octal notation: prefixing a number with $0$,
+- with octal notation: prefixing a number with $0$,
 
 	```
 	// Language: Clean
@@ -208,7 +212,7 @@ There are four methods to construct an $\text{Int}$ literal:
 	octal =  011   // decimal 9
 	```
 
-- hexadecimal notation: prefixing a number with $0\text{x}$, and
+- with hexadecimal notation: prefixing a number with $0\text{x}$, and
 
 	```
 	// Language: Clean
@@ -219,7 +223,7 @@ There are four methods to construct an $\text{Int}$ literal:
 	hexadecimal =  0x9   // decimal 9
 	```
 
- - scientific notation.
+ - with scientific notation.
 
 	```
 	// Language: Clean
@@ -251,56 +255,18 @@ To resolve this issue, ensure that an integer is constructed.
 
 **Operations**:
 - [arithmetic operations](appendix-a/integers#arithmetic-operations),
-- [relational operations](appendix-a/integer#relational-operations),
-- [bitwise operations](appendix-a/integers#bitwise-operations),
+- [relational operations](appendix-a/integers#relational-operations), and
+- [bitwise operations](appendix-a/integers#bitwise-operations).
+
+**Functions**:
 - [standard functions](appendix-a/integers#standard-functions), and
 - [property functions](appendix-a/integers#property-functions).
 
 **Type conversions**
+- [conversion to integer](appendix-a/integers#to-integer-conversions), and
+- [conversion from integer](appendix-a/integers#from-integer-conversions).
 
-Using a built-in function, other types can be explicitly converted to $\text{Int}$.
-It can convert the following types:
-
-- $\text{Int}\rightarrow\text{Int}$: does nothing,
-
-- $\text{Real}\rightarrow\text{Int}$: rounds the number to an integer,
-
-	```
-	// Language: Clean
-	
-	toInt   1.5  //  2
-	toInt   1.4  //  1
-	toInt   0.0  //  0
-	toInt (-1.4) // -1
-	toInt (-1.5) // -2
-	```
-
-- $\text{Char}\rightarrow\text{Int}$: converts the character to its ASCII value, and
-
-	```
-	// Language: Clean
-	
-	toInt '1' //  49
-	toInt '9' //  59
-	toInt 'A' //  65
-	toInt 'Z' //  90
-	toInt 'a' //  97
-	toInt 'z' // 122
-	```
-
-- $\text{\{Char\}}\rightarrow\text{Int}$: converts the string to an integer.
-
-	```
-	// Language: Clean
-	
-	toInt "1.0"  //  0	
-	toInt "1"    //  1
-	toInt "0"    //  0
-	toInt "-1"   // -1
-	toInt "-1.0" //  0
-	```
-
-#### Real numbers
+### Real numbers
 
 **Type annotation**: $\text{Real}$
 
@@ -308,7 +274,7 @@ It can convert the following types:
 
 There are two methods to construct a $\text{Real}$ literal:
 
-- decimal notation, and
+- with decimal notation, and
 
 	```
 	// Language: Clean
@@ -319,7 +285,7 @@ There are two methods to construct a $\text{Real}$ literal:
 	decimal =  9.9
 	```
 
-- scientific notation.
+- with scientific notation.
 
 	```
 	// Language: Clean
@@ -369,13 +335,13 @@ It can convert the following types:
 	toReal "-1.0" // -1.0
 	```
 
-#### Characters
+### Characters
 
 **Type annotation**: $\text{Char}$
 
 **Construction**
 
-There is only one method to construct a $\text{Char}$ literal:
+There is only one method to construct a $\text{Char}$ literal.
 
 ```
 // Language: Clean
@@ -409,13 +375,13 @@ It can convert the following types:
 	toChar 97 // 'a'
 	```
 
-#### Booleans
+### Booleans
 
 **Type annotation**: $\text{Bool}$
 
-**Constructions**
+**Construction**
 
-There is one method to construct a $\text{Bool}$ literal:
+There is one method to construct a $\text{Bool}$ literal.
 
 ```
 // Language: Clean
@@ -430,38 +396,67 @@ boolean =  False
 
 **Explicit type conversion**: 
 
+The built-in function $\text{toBool}$ only has $\text{Bool}\rightarrow\text{Bool}$ signature, but logical expressions will result in a boolean value.
+
 ```
 // Language: Clean
 
 toBool :: Bool -> Bool    // does nothing
 ```
 
-### Structured types
+[Back to top](#)
 
-#### Lists
+---
+
+## Structured types
+
+### Lists
+
+**Type Annotation**: $\text{[T]}$
 
 **Characteristics**:
 - holds one type, and
-- can have infinite length.
+- has dynamic size.
 
-**Annotation**: $\text{[T]}$
+**Constructions**
 
-**Constructions**:
+There multiple methods to construct a $\text{List}$ literal:
+
+- with explicit enumeration of elements,
+
+	```
+	// Language: Clean
+	list :: [Int]
+	list =  [1, 3, 5, 7, 9]
+	list =  [1 : [3, 5, 7, 9]]  
+	list =  [1, 3, 5 : [7, 9]]
+	list =  [1 : [3 : [5 : [7 : [9 : []]]]]]  
+	list =  [1 : 3 : 5 : 7 : 9 : []]  
+	```
+
+- with DotDot expressions, and
+
+	```
+	// Language: Clean
+	
+	list :: [Int]
+	list =  [1, 3..9] // [1, 3, 5, 7, 9]  
+	list =  [1..9]    // [1, 2, 3, 4, 5, 6, 7, 8, 9]  
+	list =  [1..]     // [1, 2, 3, 4, 5, ...]  
+	```
+
+- with list comprehensions.
+
+There are special shorthands for constructing the frequently used $[\text{Char}]$.
 
 ```
 // Language: Clean
 
-A :: [Char] 
-A =  ['a', 'b', 'c']            // individual elements
-
-B :: [Char]
-B =  ['a' : ['b', 'c']]         // from head and tail
-
-C :: [Char]
-C =  ['a' : ['b' : ['c' : []]]] 
-
-D :: [Char] 
-D =  ['abc']                    // shorthand for [Char] lists
+charList :: [Char]
+charList =  ['a', 'b', 'c']  
+charList =  ['abc']         // ['a', 'b', 'c']
+charList =  ['ab','c']      // ['a', 'b', 'c']
+charList =  ['a'..'c']      // ['a', 'b', 'c']
 ```
 
 **Operations**:
@@ -476,7 +471,7 @@ D =  ['abc']                    // shorthand for [Char] lists
 
 **Characteristcs**:
 - holds one type, and
-- has finite length.
+- has fixed size.
 
 **Annotation**: $\text{\{T\}}$
 

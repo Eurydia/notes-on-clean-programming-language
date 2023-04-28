@@ -14,6 +14,8 @@ Data of last revision: 12 APR 2023
 - [Bitwise operations](#bitwise-operations)
 - [Standard functions](#standard-functions)
 - [Property functions](#property-functions)
+- [To integer conversions](#to-integer-conversions)
+- [From integer conversions](#from-integer-conversions)
  
 ## Arithmetic operations 
 
@@ -484,6 +486,140 @@ isOdd  1 // False
 isOdd  0 // False
 isOdd -1 // False
 isOdd -2 // True
+```
+
+[Back to top](#)
+
+---
+
+## To integer conversions
+
+### Real numbers to integers
+
+**Signature**: $A_{\text{Real}}\rightarrow\text{Int}$.
+
+**Behavior**: rounds $A$ to its nearest integer.
+
+**Usage**
+
+```
+// Language: Clean
+
+toInt   1.5  //  2
+toInt   1.4  //  1
+toInt   0.0  //  0
+toInt (-1.4) // -1
+toInt (-1.5) // -2
+```
+
+### Characters to integers
+
+**Signature**: $A_{\text{Char}}\rightarrow\text{Int}$.
+
+**Behavior**: converts $A$ to its ASCII value.
+
+**Usage**
+
+```
+// Language: Clean
+
+toInt '1' //  49
+toInt '9' //  59
+toInt 'A' //  65
+toInt 'Z' //  90
+toInt 'a' //  97
+toInt 'z' // 122
+```
+
+### Strings to integers
+
+**Signature**: $A_{\text{String}}\rightarrow\text{Int}$.
+
+**Behavior**: converts $A$ to an integer.
+
+**Usage**
+
+```
+// Language: Clean
+
+toInt "1.0"  //  0	
+toInt "1"    //  1
+toInt "0"    //  0
+toInt "-1"   // -1
+toInt "-1.0" //  0
+```
+
+[Back to top](#)
+
+---
+
+## From integer conversions
+
+It is important to recognize that this family of conversions operates based on context of types.
+
+```
+k = fromInt 9 // ???
+```
+
+Since $k$ does not have a type specification, $\text{fromInt}$ does not know which type to convert to.
+
+### Integers to real numbers
+
+**Signature**: $A_{\text{Int}}\rightarrow\text{Real}$.
+
+**Behavior**: converts $A$ to a real number.
+
+**Usage**
+
+```
+// Language: Clean
+
+r :: Real
+r =  toInt   2  //  2.0
+r =  toInt   1  //  1.0
+r =  toInt   0  //  0.0
+r =  toInt (-1) // -1.0
+r =  toInt (-2) // -2.0
+```
+
+### Integers to characters
+
+**Signature**: $A_{\text{Int}}\rightarrow\text{Char}$.
+
+**Behavior**: converts $A$ to its ASCII character.
+
+
+**Usage**
+
+```
+// Language: Clean
+
+c :: Char
+c =  fromInt 49  // '1'
+c =  fromInt 59  // '9'
+c =  fromInt 65  // 'A'
+c =  fromInt 90  // 'Z'
+c =  fromInt 97  // 'a'
+c =  fromInt 122 // 'z'
+```
+
+### Integers to strings
+
+**Signature**: $A_{\text{Int}}\rightarrow\text{String}$.
+
+**Behavior**: converts $A$ to a string.
+
+**Usage**
+
+```
+// Language: Clean
+
+s :: String
+s =  fromInt   2  // "0"	
+s =  fromInt   1  // "1"
+s =  fromInt   0  // "0"
+s =  fromInt (-1) // "-1"
+s =  fromInt (-2) // "-2"
 ```
 
 [Back to top](#)

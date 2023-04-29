@@ -12,6 +12,9 @@ Data of last revision: 12 APR 2023
 - [Basic operations](#basic-operations)
 - [Relational operations](#relational-operations)
 - [Basic functions](#basic-functions)
+- [Character list functions](#character-list-functions)
+- [Boolean list functions](#boolean-list-functions)
+- [Ordering functions](#ordering-functions)
 - [Higher-order functions](#higher-order-functions)
 - [Property functions](#property-functions)
  
@@ -918,64 +921,6 @@ diag2 [] ['a', 'b']
 // []
 ```
 
-### and
-
-**Signature**
-
-$$
-\begin{align*}
-{A}\rightarrow{R}
-\end{align*}
-$$
-
-where:
-- $A$ is of type $[\text{Bool}]$,
-- $R$ is of type $\text{Bool}$.
-
-**Behavior**: returns true if and only if every element of $A$ is true.
-
-**Usage**
-
-```
-// Language: Clean
-
-and [False, False] // False
-and [False, True]   // True
-and [True, True]   // True
-and [False]        // False
-and [True]         // True
-and []             // True
-```
-
-### or
-
-**Signature**
-
-$$
-\begin{align*}
-{A}\rightarrow{R}
-\end{align*}
-$$
-
-where:
-- $A$ is of type $[\text{Bool}]$,
-- $R$ is of type $\text{Bool}$.
-
-**Behavior**: returns false if and only if every element of $A$ is false.
-
-**Usage**
-
-```
-// Language: Clean
-
-or [False, False] // False
-or [False, True]  // True
-or [True, True]   // True
-or [False]        // False
-or [True]         // True
-or []             // False
-```
-
 ### isMember
 
 **Signature**
@@ -1292,6 +1237,429 @@ The run-time error has the following message:
 
 ```
 avg called with empty list
+```
+
+[Back to top](#)
+
+---
+
+## Character list functions
+
+### cjustify
+
+**Signature**
+
+$$
+\begin{align*}
+n\rightarrow{A_{c}}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $n$ is of type $\text{Int}$,
+- $A$ is of type $[\text{Char}]$, and
+- $R$ is of type $[\text{Char}]$.
+
+**Behavior**: center-aligns $A_{c}$ with left and right spaces.
+
+**Usage**
+
+```
+// Language: Clean
+
+cjustify 5 ['a', 'b', 'c'] // [' ', 'a', 'b', 'c', ' ']
+cjustify 5 ['a', 'b']      // [' ', 'a', 'b', ' ', ' ']
+cjustify 3 ['a', 'b']      // ['a', 'b', ' ']
+cjustify 3 ['a']           // [' ', 'a', ' ']
+cjustify 1 ['a', 'b']      // ['a', 'b']
+```
+
+### ljustify
+
+**Signature**
+
+$$
+\begin{align*}
+n\rightarrow{A_{c}}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $n$ is of type $\text{Int}$,
+- $A$ is of type $[\text{Char}]$, and
+- $R$ is of type $[\text{Char}]$.
+
+**Behavior**: left-aligns $A_{c}$ with spaces.
+
+**Usage**
+
+```
+// Language: Clean
+
+ljustify 5 ['a', 'b', 'c'] // ['a', 'b', 'c', ' ', ' ']
+ljustify 5 ['a', 'b']      // ['a', 'b', ' ', ' ', ' ']
+ljustify 3 ['a', 'b']      // ['a', 'b', ' ']
+ljustify 3 ['a']           // ['a', ' ', ' ']
+ljustify 1 ['a', 'b']      // ['a', 'b']
+```
+
+### rjustify
+
+**Signature**
+
+$$
+\begin{align*}
+n\rightarrow{A_{c}}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $n$ is of type $\text{Int}$,
+- $A$ is of type $[\text{Char}]$, and
+- $R$ is of type $[\text{Char}]$.
+
+**Behavior**: right-aligns $A_{c}$ with spaces.
+
+**Usage**
+
+```
+// Language: Clean
+
+rjustify 5 ['a', 'b', 'c'] // [' ', ' ', 'a', 'b', 'c']
+rjustify 5 ['a', 'b']      // [' ', ' ', 'a', 'b']
+rjustify 3 ['a', 'b']      // [' ', 'a', 'b']
+rjustify 3 ['a']           // [' ', ' ', 'a']
+rjustify 1 ['a', 'b']      // ['a', 'b']
+```
+
+### flatlines
+
+**Signature**
+
+$$
+\begin{align*}
+{A_{c}}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $n$ is of type $\text{Int}$,
+- $A$ is of type $[[\text{Char}]]$, and
+- $R$ is of type $[\text{Char}]$.
+
+**Behavior**: joins elements of $A$ with $\text{\\n}$ characters.
+
+**Usage**
+
+```
+// Language: Clean
+
+flatlines [['a'], ['b']] // ['a', '\n', 'b', '\n']
+flatlines ['a']          // ['a', '\n']
+flatlines []             // []
+```
+
+### mklines
+
+**Signature**
+
+$$
+\begin{align*}
+A_{c}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $n$ is of type $\text{Int}$,
+- $A$ is of type $[\text{Char}]$, and
+- $R$ is of type $[[\text{Char}]]$.
+
+**Behavior**: splits $A_{c}$ at $\text{\\n}$ characters.
+
+**Usage**
+
+```
+// Language: Clean
+
+mklines ['a', '\n', 'b', '\n'] // [['a'], ['b']]
+mklines ['a', '\n']            // [['a']]
+mklines []                     // []
+```
+
+[Back to top](#)
+
+---
+
+## Boolean list functions
+
+### and
+
+**Signature**
+
+$$
+\begin{align*}
+{A_{b}}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A_{b}$ is of type $[\text{Bool}]$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: returns true if and only if every element of $A_{b}$ is true.
+
+**Usage**
+
+```
+// Language: Clean
+
+and [False, False] // False
+and [False, True]   // True
+and [True, True]   // True
+and [False]        // False
+and [True]         // True
+and []             // True
+```
+
+### or
+
+**Signature**
+
+$$
+\begin{align*}
+{A_{b}}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A_{b}$ is of type $[\text{Bool}]$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: returns false if and only if every element of $A_{b}$ is false.
+
+**Usage**
+
+```
+// Language: Clean
+
+or [False, False] // False
+or [False, True]  // True
+or [True, True]   // True
+or [False]        // False
+or [True]         // True
+or []             // False
+```
+
+[Back to top](#)
+
+---
+
+
+## Ordering functions
+
+### sort
+
+**Signature** 
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[T]$, and
+- $R$ is of type $[T]$.
+
+Additionally, equality operation must be defined on $T$.
+
+**Behavior**: sorts $A$ in ascending order using mergesort.
+
+**Usage**
+
+```
+// Language: Clean
+
+sort [1, 1, 1] // [1, 1, 1]
+sort [1, 2, 3] // [1, 2, 3]
+sort [2, 1, 3] // [1, 2, 3]
+sort []        // []
+```
+
+### sortBy
+
+**Signature** 
+
+$$
+\begin{align*}
+{P}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $P$ is of type $(T\rightarrow{T}\rightarrow\text{Bool})$, 
+- $A$ is of type $[T]$, and
+- $R$ is of type $[T]$.
+
+**Behavior**: sorts $A$ using an ordering function $P$.
+
+**Usage**
+
+```
+// Language: Clean
+
+sortBy (>) [1, 1, 1] // [1, 1, 1]
+sortBy (>) [1, 2, 3] // [3, 2, 1]
+sortBy (>) [2, 1, 3] // [3, 2, 1]
+sortby (>) []        // []
+```
+
+### maxList
+
+**Signature** 
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[T]$, and
+- $R$ is of type $T$.
+
+Additionally, inequality operation must be defined on $T$.
+
+**Behavior**: returns the biggest element of $A$.
+A run-time error will be thrown if $A$ is empty.
+
+**Usage**
+
+```
+// Language: Clean
+
+maxList [1, 1, 1] // 1
+maxList [1, 2, 3] // 3
+maxList []        // NOT OK :(
+```
+
+**Note**:
+
+The run-time error has the following message:
+
+```
+maxList of []
+```
+
+### maxListBy
+
+**Signature**
+
+$$
+\begin{align*}
+{P}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $P$ is of type $(T\rightarrow{T}\rightarrow\text{Bool})$, 
+- $A$ is of type $[T]$, and
+- $R$ is of type $T$.
+
+**Behavior**: returns the biggest element of $A$ using an ordering function $P$.
+A run-time error will be thrown if $A$ is empty.
+
+**Usage**
+
+```
+// Language: Clean
+
+maxListBy (<) [1, 2, 3] // 3
+maxListBy (>) [1, 1, 1] // 1
+maxListBy (>) [1, 2, 3] // 1
+maxListBy (>) []        // NOT OK :(
+```
+
+**Note**:
+
+The run-time error has the following message:
+
+```
+maxListBy of []
+```
+
+### minList
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[T]$, and
+- $R$ is of type $T$.
+
+Additionally, inequality operation must be defined on $T$.
+
+**Behavior**: returns the smallest element of $A$.
+A run-time error will be thrown if $A$ is empty.
+
+**Usage**
+
+```
+// Language: Clean
+
+minList [1, 1, 1] // 1
+minList [1, 2, 3] // 1
+minList []        // NOT OK :(
+```
+
+**Note**:
+
+The run-time error has the following message:
+
+```
+minList of []
+```
+
+### minListBy
+
+**Signature** 
+
+$$
+\begin{align*}
+{P}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $P$ is of type $(T\rightarrow{T}\rightarrow\text{Bool})$, 
+- $A$ is of type $[T]$, and
+- $R$ is of type $T$.
+
+**Behavior**: returns the smallest element of $A$ using an ordering function $P$.
+A run-time error will be thrown if $A$ is empty.
+
+**Usage**
+
+```
+// Language: Clean
+
+minListBy (<) [1, 2, 3] // 1
+minListBy (>) [1, 1, 1] // 1
+minListBy (>) [1, 2, 3] // 3
+minListBy (>) []        // NOT OK :(
+```
+
+**Note**:
+
+The run-time error has the following message:
+
+```
+minListBy of []
 ```
 
 [Back to top](#)
@@ -1672,7 +2040,7 @@ all isOdd  [] // True
 
 ## Property functions
 
-### Empty property
+### isEmpty
 
 **Signature**
 

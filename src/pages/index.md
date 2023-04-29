@@ -439,12 +439,19 @@ charList =  ['a'..'c']
 ```
 
 **Operations**:
-- [[#Lists: Standard operators]]
-- [[#Lists: Relational operators]]
-- [[#Lists: Methods]]
-- [[#Lists: Manipulation methods]]
-- [[#Lists: Set-like methods]]
-- [[#Lists: Logical methods]]
+- [basic operations](#appendix-a/lists#basic-operations)
+- [relational operations](#appendix-a/lists#relational-operations)
+
+**Functions**:
+- [basic functions](appendix-a/lists#basic-functions)
+- [ordering functions](appendix-a/lists#ordering-functions)
+- [higher-order functions](appendix-a/lists#higher-order-functions)
+
+**Functions on $[\text{Bool}]$**:
+- [boolean list functions](appendix-a/lists#boolean-list-functions)
+
+**Functions on $[\text{Char}]$**:
+- [character list functions](appendix-a/lists#character-list-functions)
 
 ### Arrays
 

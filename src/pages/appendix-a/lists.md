@@ -318,7 +318,7 @@ where:
 - $A$ is of type $[T]$, and
 - $R$ is of type $\text{Int}$.
 
-**Behavior**: returns length of $A$.
+**Behavior**: returns number of elements in $A$.
 
 **Usage**
 
@@ -333,7 +333,7 @@ length []        // 0
 
 ### flatten
 
-**signature** 
+**Signature** 
 
 $$
 \begin{align*}
@@ -345,7 +345,7 @@ where:
 - $A$ is of type $[[T]]$, and
 - $R$ is of type $[T]$.
 
-**Behavior**: returns a flattened copy of $A$.
+**Behavior**: concatenates elements $A$.
 
 **Usage**
 
@@ -753,7 +753,7 @@ repeat True // [True, True, True, ...]
 
 ### repeatn
 
-**signature** 
+**Signature** 
 
 $$
 \begin{align*}
@@ -781,7 +781,7 @@ repeatn 3 True // [True, True, True]
 
 ### unzip
 
-**signature** 
+**Signature** 
 
 $$
 \begin{align*}
@@ -1132,8 +1132,8 @@ $$
 
 where 
 - $a$ is of type $T$,
-- $A$ is of type $[\text{T}]$, and
-- $R$ is of type $(\text{Int}, [\text{T}])$.
+- $A$ is of type $[T]$, and
+- $R$ is of type $(\text{Int}, [T])$.
 
 Additionally, equality operation must be defined on $T$.
 
@@ -1169,7 +1169,8 @@ $$
 $$
 
 where 
-- $A, R$ is of type $[\text{T}]$.
+- $A$ is of type $[T]$, and
+- $R$ is of type $T$.
 
 Additionally, equality operation must be defined on $T$.
 
@@ -1182,8 +1183,8 @@ A run-time error will be thrown if no such element exists.
 // Language: Clean
 
 limit [1, 2, 2, 3] // 2
-limit [1, 2, 3]    // (0, [2, 2, 3])
-limit []
+limit [1, 2, 3]    // NOT OK :(
+limit []           // NOT OK :(
 ```
 
 **Note**
@@ -1194,17 +1195,339 @@ The run-time error has the following message:
 incorrect use of limit
 ```
 
+### sum
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where 
+- $A$ is of type $[T]$, and
+- $R$ is of type $T$.
+
+Additionally, addition and zero unit must be defined on $T$.
+
+**Behavior**: returns sum of $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+sum [1, 2, 3, 4] // 10
+sum [1, 2, 3]    // 6
+sum [1, 2]       // 3
+sum [1]          // 1
+sum []           // zero
+```
+
+### prod
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where 
+- $A$ is of type $[T]$, and
+- $R$ is of type $T$.
+
+Additionally, multiplication and one unit must be defined on $T$.
+
+**Behavior**: returns product of $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+prod [1, 2, 3, 4] // 24
+prod [1, 2, 3]    // 6
+prod [1, 2]       // 3
+prod [1]          // 1
+prod []           // one
+```
+
+### avg
+
+**Signature**
+
+$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$
+
+where 
+- $A$ is of type $[T]$, and
+- $R$ is of type $T$.
+
+Additionally, addition, zero unit, and division must be defined on $T$.
+
+**Behavior**: returns average $A$.
+A runt-time error will be thrown if $A$ is empty.
+
+**Usage**
+
+```
+// Language: Clean
+
+avg [1, 2, 3, 4] // 2
+avg [1, 2, 3]    // 2
+avg [1, 2]       // 1
+avg [1]          // 1
+avg []           // NOT OK :(
+```
+
+**Note**:
+
+The run-time error has the following message:
+
+```
+avg called with empty list
+```
+
 [Back to top](#)
 
 ---
 
 ## Higher-order functions
 
-### Iteration function
+### takeWhile
 
-**signature** $f_{\text{T}\rightarrow\text{T}}\ A_{\text{T}}\rightarrow[T]$.
+**Signature** 
+$$
+\begin{align*}
+P\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
 
-**Behavior**: generates an infinite list by repeatedly apply $f$ to $A$.
+where:
+- $P$ is of type $(T\rightarrow{\text{Bool}})$, and
+- $A, R$ is of type $[T]$.
+
+**Behavior**: takes elements from the start of $A$ as long as $P$ is true.
+
+**Usage**
+
+```
+// Language: Clean
+
+takeWhile isOdd  [1, 1, 1] // [1, 1, 1]
+takeWhile isOdd  [1, 2, 3] // [1]
+takeWhile isEven [1, 2, 3] // []
+takeWhile isOdd  []        // []
+```
+
+### dropWhile
+
+**Signature** 
+$$
+\begin{align*}
+P\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $P$ is of type $(T\rightarrow{\text{Bool}})$, and
+- $A, R$ is of type $[T]$.
+
+**Behavior**: discards elements from the start of $A$ as long as $P$ is true.
+
+**Usage**
+
+```
+// Language: Clean
+
+dropWhile isOdd  [1, 1, 1] // []
+dropWhile isOdd  [1, 2, 3] // [2, 3]
+dropWhile isEven [1, 2, 3] // [1, 2, 3]
+dropWhile isOdd  []        // []
+```
+
+### span
+
+**Signature** 
+$$
+\begin{align*}
+P\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $P$ is of type $(T\rightarrow{\text{Bool}})$,
+- $A$ is of type $[T]$, and
+- $R$ is of type $([T], [T])$
+
+**Behavior**: splits $A$ into two.
+The first sublist contains elements which $P$ holds true, and the second contains the rest.
+
+**Usage**
+
+```
+// Language: Clean
+
+span isOdd  [1, 2, 3] // ([1], [2, 3])
+span isEven [1, 2, 3] // ([ ], [1, 2, 3])
+span isOdd  [2, 3, 4] // ([ ], [2, 3, 4])
+span isEven [2, 3, 4] // ([2], [3, 4])
+span isOdd  []        // ([ ], [])
+```
+
+### filter
+
+**Signature** 
+$$
+\begin{align*}
+P\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $P$ is of type $(T\rightarrow{\text{Bool}})$, and
+- $A, R$ is of type $[T]$.
+
+**Behavior**: filters $A$ using $P$.
+
+**Usage**
+
+```
+// Language: Clean
+
+filter isEven [2, 3, 4] // [2, 4]
+filter isEven [1, 2, 3] // [2, 3]
+filter isOdd  [1, 2, 3] // [1]
+filter isOdd  [2, 3, 4] // [3]
+filter isOdd  []        // []
+```
+
+### insert
+
+**Signature** 
+$$
+\begin{align*}
+P\rightarrow{a}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $P$ is of type $(T\rightarrow{T}\rightarrow{\text{Bool}})$, 
+- $a$ is of type $T$, and
+- $A, R$ is of type $[T]$.
+
+**Behavior**: inserts $a$ in to $A$ when $P$ holds.
+
+**Usage**
+
+```
+// Language: Clean
+
+insert (<>) 2 [2, 3] // [2, 2, 3]
+insert (==) 2 [1, 1] // [1, 1, 2]
+```
+
+### foldr
+
+**Signature** 
+
+$$
+\begin{align*}
+f\rightarrow{k}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $f$ is of type $(T\rightarrow{K}\rightarrow{K})$, 
+- $k, R$ is of type $K$, and
+- $A$ is of type $[T]$.
+
+**Behavior**: folds $A$ using a right-associative operation $f$.
+
+**Usage**
+
+```
+// Language: Clean
+
+foldr (+) 0 [1, 2, 3]
+// 1 + (2 + (3 + 0))
+// 6
+
+foldr (+) 0 [3, 2, 1]
+// 3 + (2 + (1 + 0))
+// 6
+
+foldr (^) 1 [1, 2, 3]
+// 1 ^ (2 ^ (3 ^ 1))
+// 1
+
+foldr (^) 1 [3, 2, 1]
+// 3 ^ (2 ^ (1 ^ 1))
+// 9
+```
+
+### foldl
+
+**Signature** 
+
+$$
+\begin{align*}
+f\rightarrow{t}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $f$ is of type $(T\rightarrow{K}\rightarrow{T})$, 
+- $t$ is of type $T$,
+- $A$ is of type $[K]$, and
+- $R$ is of type $T$.
+
+**Behavior**: folds $A$ using a left-associative operation $f$.
+
+**Usage**
+
+```
+// Language: Clean
+
+foldl (+) 0 [1, 2, 3]
+// ((0 + 1) + 2) + 3
+// 6
+
+foldr (+) 0 [3, 2, 1]
+// ((0 + 3) + 2) + 1
+// 6
+
+foldl (^) 1 [1, 2, 3]
+// ((1 ^ 1) ^ 2) ^ 3
+// 1
+
+foldl (^) 1 [3, 2, 1]
+// ((1 ^ 3) ^ 2)  ^ 1
+// 1
+```
+
+### iterate
+
+**Signature** 
+
+$$
+\begin{align*}
+f\rightarrow{a}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $f$ is of type $(T\rightarrow{T})$,
+- $a$ is of type $T$, and
+- $R$ is of type $[T]$.
+
+**Behavior**: generates an infinite list by repeatedly apply $f$ to $a$.
 
 **Usage**
 
@@ -1213,7 +1536,134 @@ incorrect use of limit
 
 iterate ((+) 1) 0 // [0, 1, 2, ...]
 iterate ((*) 2) 1 // [1, 2, 4, ...]
-iterate toInt   0 // [0, 0, 0, ...]
+iterate toInt   1 // [1, 1, 1, ...]
+```
+
+### map
+
+**Signature** 
+
+$$
+\begin{align*}
+f\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $f$ is of type $T\rightarrow{K}$,
+- $A$ is of type $[T]$, and
+- $R$ is of type $[K]$.
+
+**Behavior**: applies $f$ to every element of $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+map isEven  [1, 2, 3] // [False, True, False]
+map toReal  [1, 2, 3] // [1.0, 2.0, 3.0]
+map ((+) 2) [1, 2, 3] // [3, 4, 5]
+```
+
+### scan
+
+**Signature** 
+
+$$
+\begin{align*}
+f\rightarrow{a}\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $f$ is of type $(T\rightarrow{K}\rightarrow{T})$, 
+- $a$ is of type $T$,
+- $B$ is of type $[K]$, and
+- $R$ is of type $[T]$.
+
+**Behavior**: generates a list of reduced values from apply $f$ to $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+scan (+) 0 [1, 2, 3]
+// [0, 0 + 1, (0 + 1) + 2, ((0 + 1) + 2) + 3]
+// [0, 1, 3, 6]
+
+scan (+) 0 [3, 2, 1]
+// [0, 0 + 3, (0 + 3) + 2, ((0 + 3) + 2) + 1]
+// [0, 3, 5, 6]
+
+scan (^) 1 [1, 2, 3]
+// [1, 1 ^ 1, (1 ^ 1) ^ 2, ((1 ^ 1) ^ 2) ^ 3]
+// [1, 1, 1, 1]
+
+scan (^) 1 [3, 2, 1]
+// [1, 1 ^ 3, (1 ^ 3) ^ 2, ((1 ^ 3) ^ 2) ^ 1]
+// [1, 1, 1, 1]
+```
+
+### any
+
+**Signature** 
+
+$$
+\begin{align*}
+P\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $P$ is of type $(T\rightarrow\text{Bool})$, 
+- $A$ is of type $[T]$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: returns false if and only if $P$ does not hold for any element of $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+any isEven [1, 2, 3] // True
+any isOdd  [1, 2, 3] // True
+any isEven [1, 3, 5] // False
+any isOdd  [2, 4, 6] // False
+any isEven [] // False
+any isOdd  [] // False
+```
+
+### all
+
+**Signature** 
+
+$$
+\begin{align*}
+P\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $P$ is of type $(T\rightarrow\text{Bool})$, 
+- $A$ is of type $[T]$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: returns true if and only if $P$ holds for every element of $A$.
+
+**Usage**
+
+```
+// Language: Clean
+
+all isEven [1, 2, 3] // False
+all isOdd  [1, 2, 3] // False
+all isEven [2, 4, 6] // True
+all isOdd  [1, 3, 5] // True
+all isEven [] // True
+all isOdd  [] // True
 ```
 
 [Back to top](#)
@@ -1224,7 +1674,17 @@ iterate toInt   0 // [0, 0, 0, ...]
 
 ### Empty property
 
-**signature** $A_{[T]}\rightarrow\text{Bool}$.
+**Signature**
+
+$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $A$ is of type $[T]$, and
+- $R$ is of type $\text{Bool}$.
 
 **Behavior**: checks if $A$ is empty or not.
 

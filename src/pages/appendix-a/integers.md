@@ -10,19 +10,57 @@ Data of last revision: 12 APR 2023
 ## Table of contents
 
 - [Arithmetic operations](#arithmetic-operations)
+	- [Negation](#negation)
+	- [Addition](#addition)
+	- [Subtraction](#subtraction)
+	- [Multiplication](#multiplication)
+	- [Floor division](#floor-division)
+	- [Reminder division](#reminder-division)
+	- [Exponentiation](#exponentiation)
 - [Relational operations](#relational-operations)
-- [Bitwise operations](#bitwise-operations)
+	- [Equal to](#equal-to)
+	- [Not equal to](#not-equal-to)
+	- [Less than](#less-than)
+	- [Less than or equal to](#less-than-or-equal-to)
+	- [Greater than](#greater-than)
+	- [Greater than or equal to](#greater-than-or-equal-to)
+- [Bitwise operations](#bitwise-operarions)
+	- [Bitwise NEGATE](#bitwise-negate)
+	- [Bitwise OR](#bitwise-or)
+	- [Bitwise AND](#bitwise-and)
+	- [Bitwise XOR](#bitwise-xor)
+	- [Bitwise left shift](#bitwise-left-shift)
+	- [Bitwise right shift](#bitwise-right-shift)
 - [Basic functions](#basic-functions)
+	- [sign](#sign)
+	- [abs](#abs)
+	- [gcd](#gcd)
+	- [lcm](#lcm)
 - [Property functions](#property-functions)
+	- [isEven](#iseven)
+	- [isOdd](#isodd)
 - [Conversions to integers](#conversions-to-integers)
+	- [Real numbers to integers](#real-numbers-to-integers)
+	- [Characters to integers](#characters-to-integers)
+	- [Strings to integers](#strings-to-integers)
  
 ## Arithmetic operations 
 
 ### Negation
 
-**Signature**: $A_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: inverts the sign of $A$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: inverts the sign of $a$.
 
 **Usage**
 
@@ -36,9 +74,20 @@ Data of last revision: 12 APR 2023
 
 ### Addition
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature** 
 
-**Behavior**: adds $A$ and $B$ together.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: adds $a$ and $b$ together.
 
 **Usage**
 
@@ -53,9 +102,20 @@ Data of last revision: 12 APR 2023
 
 ### Subtraction
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: subtracts $B$ from $A$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: subtracts $b$ from $a$.
 
 **Usage**
 
@@ -70,9 +130,20 @@ Data of last revision: 12 APR 2023
 
 ### Multiplication
 
-**Signature**: $A_{\text{Int}}\;B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: multiplies $A$ with $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: multiplies $a$ with $b$.
 
 **Usage**
 
@@ -87,10 +158,21 @@ Data of last revision: 12 APR 2023
 
 ### Floor division
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: floor divides $A$ with $B$.
-Crashes if $B$ is $0$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+- 
+**Behavior**: floor divides $a$ with $b$.
+Crashes if $b$ is $0$.
 
 **Usage**
 
@@ -106,9 +188,20 @@ Crashes if $B$ is $0$.
 
 ### Reminder division
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns modulo of $A$ divides by $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+- 
+**Behavior**: returns reminder of $a$ divides by $b$.
 
 **Usage**
 
@@ -127,10 +220,21 @@ $\text{rem}$  and $\text{mod}$ are alias of one another.
 
 ### Exponentiation
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns $A$ raised to the $B$-th power.
-A run-time error will be thrown if $B$ is negative.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: raises $a$ to the $b$-th power.
+A run-time error will be thrown if $b$ is negative.
 
 **Usage**
 
@@ -159,9 +263,20 @@ The run-time error has the following message:
 
 ### Equal to
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is equal to $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is equal to $b$.
 
 **Usage**
 
@@ -177,9 +292,20 @@ The run-time error has the following message:
 
 ### Not equal to
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is not equal to $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is not equal to $b$.
 
 **Usage**
 
@@ -195,9 +321,20 @@ The run-time error has the following message:
 
 ### Less than
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is less than $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is less than $b$.
 
 **Usage**
 
@@ -213,9 +350,20 @@ The run-time error has the following message:
 
 ### Less than or equal to
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is less than or equal to $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is less than or equal to $b$.
 
 **Usage**
 
@@ -231,9 +379,20 @@ The run-time error has the following message:
 
 ### Greater than
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is greater than $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is greater than $b$.
 
 **Usage**
 
@@ -249,9 +408,20 @@ The run-time error has the following message:
 
 ### Greater than or equal to
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is greater than or equal to $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is greater than or equal to $b$.
 
 **Usage**
 
@@ -273,9 +443,19 @@ The run-time error has the following message:
 
 ### Bitwise NEGATE
 
-**Signature**: $A_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns bit-wise one complement of $A$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: returns bit-wise one complement of $a$.
 
 **Usage**
 
@@ -290,9 +470,20 @@ bitnot   5 //  -6
 
 ### Bitwise OR
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns bit-wise OR of $A$ and $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: returns bit-wise OR of $a$ and $b$.
 
 **Usage**
 
@@ -307,9 +498,20 @@ bitnot   5 //  -6
 
 ### Bitwise AND
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns bit-wise AND of $A$ and $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: returns bit-wise AND of $a$ and $b$.
 
 **Usage**
 
@@ -324,9 +526,20 @@ bitnot   5 //  -6
 
 ### Bitwise XOR
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns bit-wise XOR of $A$ and $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: returns bit-wise XOR of $a$ and $b$.
 
 **Usage**
 
@@ -341,9 +554,20 @@ bitnot   5 //  -6
 
 ### Bitwise left shift
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns $A$ shifted to the left by $B$ bits.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: shifts $a$ to the left by $b$ bits.
 
 **Usage**
 
@@ -358,9 +582,20 @@ bitnot   5 //  -6
 
 ### Bitwise right shift
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns $A$ shifted to the right by $B$ bits.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: shifts $a$ to the right by $b$ bits.
 
 **Usage**
 
@@ -379,11 +614,21 @@ bitnot   5 //  -6
 
 ## Basic functions
 
-### Sign function
+### sign
 
-**Signature**: $A_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns the sign of $A$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: returns sign of $a$.
 
 **Usage**
 
@@ -395,11 +640,21 @@ sign   0  //  0
 sign (-1) // -1
 ```
 
-### Absolute function
+### abs
 
-**Signature**: $A_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns $\lvert{A}\rvert$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: returns absolute value of $a$.
 
 **Usage**
 
@@ -411,11 +666,22 @@ abs   0  // 0
 abs (-1) // 1
 ```
 
-### Greatest common divisor
+### gcd
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns the greatest common divisor of $A$ and $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: returns greatest common divisor of $a$ and $b$.
 
 **Usage**
 
@@ -428,11 +694,22 @@ gcd   3  (-2) // 1
 gcd (-3) (-2) // 1
 ```
 
-### Least common multiple
+### lcm
 
-**Signature**: $A_{\text{Int}}{~}B_{\text{Int}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns the least common multiple of $A$ and $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$,
+- $b$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: returns least common multiple of $a$ and $b$.
 
 **Usage**
 
@@ -451,11 +728,21 @@ lcm (-3) (-2) // 6
 
 ## Property functions
 
-### Even property
+### isEven
 
-**Signature**: $A_{\text{Int}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is an even integer or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is an even integer or not.
 
 **Usage**
 
@@ -469,11 +756,21 @@ isEven -1 // True
 isEven -2 // False
 ```
 
-### Odd property
+### isOdd
 
-**Signature**: $A_{\text{Int}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is an odd integer or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is an odd integer or not.
 
 **Usage**
 
@@ -495,9 +792,19 @@ isOdd -2 // True
 
 ### Real numbers to integers
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: rounds $A$ to its nearest integer.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: rounds $a$ to its nearest integer.
 
 **Usage**
 
@@ -513,9 +820,17 @@ toInt (-1.5) // -2
 
 ### Characters to integers
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Int}$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
 
-**Behavior**: converts $A$ to its ASCII value.
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: converts $a$ to its ASCII value.
 
 **Usage**
 
@@ -532,9 +847,17 @@ toInt 'z' // 122
 
 ### Strings to integers
 
-**Signature**: $A_{\text{String}}\rightarrow\text{Int}$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
 
-**Behavior**: converts $A$ to an integer.
+where:
+- $a$ is of type $\text{String}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: converts $a$ to an integer.
 
 **Usage**
 

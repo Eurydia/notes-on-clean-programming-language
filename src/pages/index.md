@@ -18,7 +18,7 @@ Data of last revision: 12 APR 2023
 	3. [Characters](#characters)
 	4. [Booleans](#booleans)
 4. [Structured types](#structured-types)
-	1. Lists
+	1. [Lists](#lists)
 	2. Arrays
 	3. Tuples
 5. Comprehensions
@@ -380,7 +380,7 @@ boolean =  False
 
 ### Lists
 
-**Type Annotation**: $\text{[T]}$
+**Type Annotation**: $[T]$
 
 **Characteristics**:
 - hold one type, and

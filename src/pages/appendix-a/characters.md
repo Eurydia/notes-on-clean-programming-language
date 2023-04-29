@@ -10,18 +10,51 @@ Data of last revision: 12 APR 2023
 ## Table of contents
 
 - [Arithmetic operations](#arithmetic-operations)
+	- [Addition](#addition)
+	- [Subtraction](#subtraction)
 - [Relational operations](#relational-operations)
+	- [Equal to](#equal-to)
+	- [Not equal to](#not-equal-to)
+	- [Less than](#less-than)
+	- [Less than or equal to](#less-than-or-equal-to)
+	- [Greater than](#greater-than)
+	- [Greater than or equal to](#greater-than-or-equal-to)
 - [Basic functions](#basic-functions)
+	- [toUpper](#toupper)
+	- [toLower](#tolower)
 - [Property functions](#property-functions)
+	- [isLower](#islower)
+	- [isUpper](#isupper)
+	- [isAlphanum](#isalphanum)
+	- [isAlpha](#isalpha)
+	- [isDigit](#isdigit)
+	- [isOctDigit](#isoctdigit)
+	- [isHexDigit](#ishexdigit)
+	- [isAscii](#isascii)
+	- [isControl](#iscontrol)
+	- [isPrint](#isprint)
+	- [isSpace](#isspace)
 - [Conversions to characters](#conversions-to-characters)
+	- [Integers to characters](#integers-to-characters)
  
 ## Arithmetic operations 
 
 ### Addition
 
-**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Char}$.
+**Signature**
 
-**Behavior**: adds $A$ and $B$ together.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$,
+- $b$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Char}$.
+
+**Behavior**: adds $a$ and $b$ together.
 
 **Usage**
 
@@ -35,9 +68,20 @@ Data of last revision: 12 APR 2023
 
 ### Subtraction
 
-**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Char}$.
+**Signature**
 
-**Behavior**: subtracts $B$ from $A$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$,
+- $b$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Char}$.
+
+**Behavior**: subtracts $b$ from $a$.
 
 **Usage**
 
@@ -57,9 +101,20 @@ Data of last revision: 12 APR 2023
 
 ### Equal to
 
-**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is equal to $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$,
+- $b$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is equal to $b$.
 
 **Usage**
 
@@ -74,9 +129,20 @@ Data of last revision: 12 APR 2023
 
 ### Not equal to
 
-**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is not equal to $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$,
+- $b$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is not equal to $b$.
 
 **Usage**
 
@@ -91,9 +157,20 @@ Data of last revision: 12 APR 2023
 
 ### Less than
 
-**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is less than $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$,
+- $b$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is less than $b$.
 
 **Usage**
 
@@ -108,9 +185,20 @@ Data of last revision: 12 APR 2023
 
 ### Less than or equal to
 
-**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is less than or equal to $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$,
+- $b$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is less than or equal to $b$.
 
 **Usage**
 
@@ -125,9 +213,20 @@ Data of last revision: 12 APR 2023
 
 ### Greater than
 
-**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is greater than $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$,
+- $b$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is greater than $b$.
 
 **Usage**
 
@@ -142,9 +241,20 @@ Data of last revision: 12 APR 2023
 
 ### Greater than or equal to
 
-**Signature**: $A_{\text{Char}}\ B_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is greater than or equal to $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$,
+- $b$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is greater than or equal to $b$.
 
 **Usage**
 
@@ -163,11 +273,21 @@ Data of last revision: 12 APR 2023
 
 ## Basic functions
 
-### Upper case
+### toUpper
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Char}$.
+**Signature**
 
-**Behavior**: returns upper case of $A$ if possible.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: returns upper case of $a$ if possible.
 
 **Usage**
 
@@ -180,11 +300,21 @@ toUpper 'A' // 'A'
 toUpper '-' // '-'
 ```
 
-### Lower case
+### toLower
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Char}$.
+**Signature**
 
-**Behavior**: returns lower case of $A$ if possible.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: returns lower case of $a$ if possible.
 
 **Usage**
 
@@ -203,11 +333,21 @@ toLower '-' // '-'
 
 ## Property functions
 
-### Lower case property
+### isLower
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is an lower case character or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is an lower case character or not.
 
 **Usage**
 
@@ -220,11 +360,21 @@ isLower 'A' // False
 isLower '-' // False
 ```
 
-### Upper case property
+### isUpper
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is an upper case character or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is an upper case character or not.
 
 **Usage**
 
@@ -237,11 +387,21 @@ isUpepr 'A' // True
 isUpper '-' // False
 ```
 
-### Alphanumeric property
+### isAlphanum
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is alphanumeric or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is alphanumeric or not.
 
 **Usage**
 
@@ -254,11 +414,21 @@ isAlphanum 'A' // True
 isAlphanum '-' // False
 ```
 
-### Alphabetic property
+### isAlpha
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is an alphabet or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is an alphabet or not.
 
 **Usage**
 
@@ -271,11 +441,21 @@ isAlpha 'A' // True
 isAlpha '-' // False
 ```
 
-### Numeric property
+### isDigit
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is a digit or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is a digit or not.
 
 **Usage**
 
@@ -288,11 +468,21 @@ isDigit 'A' // False
 isDigit '-' // False
 ```
 
-### Octal numeric property
+### isOctDigit
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is an octal digit or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is an octal digit or not.
 
 **Usage**
 
@@ -306,11 +496,21 @@ isOctDigit 'A' // False
 isOctDigit '-' // False
 ```
 
-### Hexadecimal numeric property
+### isHexDigit
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is a hexadecimal digit or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is a hexadecimal digit or not.
 
 **Usage**
 
@@ -324,11 +524,21 @@ isHexDigit 'A' // True
 isHexDigit '-' // False
 ```
 
-### ASCII property
+### isAscii
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is an ASCII character or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$is an ASCII character or not.
 
 **Usage**
 
@@ -342,11 +552,21 @@ isAscii '-' // True
 isAscii 'Ç' // False
 ```
 
-### Control character property
+### isControl
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is a control character or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is a control character or not.
 
 **Usage**
 
@@ -360,11 +580,21 @@ isControl '-'  // False
 isControl '\t' // True
 ```
 
-### Printable property
+### isPrint
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is printable or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is printable or not.
 
 **Usage**
 
@@ -378,11 +608,21 @@ isPrint '-'  // True
 isPrint '\t' // False
 ```
 
-### Space property
+### isSpace
 
-**Signature**: $A_{\text{Char}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is a space character or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Char}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is a space character or not.
 
 **Usage**
 
@@ -404,9 +644,19 @@ isSpace '\t' // True
 
 ### Integers to characters
 
-**Signature**: $A_{\text{Int}}\rightarrow\text{Char}$.
+**Signature**
 
-**Behavior**: converts $A$ to its ASCII character.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Char}$.
+
+**Behavior**: converts $a$ to its ASCII character.
 
 **Usage**
 

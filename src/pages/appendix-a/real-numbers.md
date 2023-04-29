@@ -10,19 +10,65 @@ Data of last revision: 12 APR 2023
 ## Table of contents
 
 - [Arithmetic operations](#arithmetic-operations)
+	- [Negation](#negation)
+	- [Addition](#addition)
+	- [Subtraction](#subtraction)
+	- [Multiplication](#multiplication)
+	- [Division](#division)
+	- [Exponentiation](#exponentiation)
 - [Relational operations](#relational-operations)
+	- [Equal to](#equal-to)
+	- [Not equal to](#not-equal-to)
+	- [Less than](#less-than)
+	- [Less than or equal to](#less-than-or-equal-to)
+	- [Greater than](#greater-than)
+	- [Greater than or equal to](#greater-than-or-equal-to)
 - [Basic functions](#basic-functions)
+	- [sign](#sign)
+	- [abs](#abs)
+	- [entier](#entier)
+	- [ln](#ln)
+	- [log10](#log10)
+	- [exp](#exp)
+	- [sqrt](#sqrt)
 - [Trigonometric functions](#trigonometric-functions)
+	- [sin](#sin)
+	- [cos](#cos)
+	- [tan](#tan)
+	- [asin](#asin)
+	- [acos](#acos)
+	- [atan](#atan)
+	- [sinh](#sinh)
+	- [cosh](#cosh)
+	- [tanh](#tanh)
+	- [asinh](#asinh)
+	- [acosh](#acosh)
+	- [atanh](#atanh)
 - [Property functions](#property-functions)
+	- [isNaN](#isNaN)
+	- [isInfinity](#isInfinity)
+	- [isFinite](#isIFnite)
 - [Conversions to real numbers](#conversions-to-real-numbers)
+	- [Integers to real numbers](#integers-to-real-numbers)
+	- [Strings to real numbers](#strings-to-real-numbers)
  
 ## Arithmetic operations
 
 ### Negation
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: inverts the sign of $A$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: inverts the sign of $a$.
 
 **Usage**
 
@@ -36,9 +82,20 @@ Data of last revision: 12 APR 2023
 
 ### Addition
 
-**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: adds $A$ and $B$ together.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$,
+- $b$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: adds $a$ and $b$ together.
 
 **Usage**
 
@@ -53,9 +110,20 @@ Data of last revision: 12 APR 2023
 
 ### Subtraction
 
-**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: subtracts $B$ from $A$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$,
+- $b$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: subtracts $b$ from $a$.
 
 **Usage**
 
@@ -70,9 +138,20 @@ Data of last revision: 12 APR 2023
 
 ### Multiplication
 
-**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: multiplies $A$ with $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$,
+- $b$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: multiplies $a$ with $b$.
 
 **Usage**
 
@@ -87,9 +166,20 @@ Data of last revision: 12 APR 2023
 
 ### Division
 
-**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: divides $A$ with $B$. 
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$,
+- $b$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: divides $a$ with $b$. 
 
 **Usage**
 
@@ -106,9 +196,20 @@ Data of last revision: 12 APR 2023
 
 ### Exponentiation
 
-**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: raises $A$ to the $B$-th power.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$,
+- $b$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: raises $a$ to the $b$-th power.
 
 **Usage**
 
@@ -132,9 +233,20 @@ Data of last revision: 12 APR 2023
 
 ###  Equal to
 
-**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is equal to $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$,
+- $b$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is equal to $b$.
 
 **Usage**
 
@@ -150,9 +262,20 @@ Data of last revision: 12 APR 2023
 
 ### Not equal to
 
-**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is not equal to $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$,
+- $b$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is not equal to $b$.
 
 **Usage**
 
@@ -168,9 +291,20 @@ Data of last revision: 12 APR 2023
 
 ### Less than
 
-**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is less than $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$,
+- $b$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is less than $b$.
 
 **Usage**
 
@@ -186,9 +320,20 @@ Data of last revision: 12 APR 2023
 
 ### Less than or equal to
 
-**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is less than or equal to $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$,
+- $b$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is less than or equal to $b$.
 
 **Usage**
 
@@ -204,9 +349,20 @@ Data of last revision: 12 APR 2023
 
 ### Greater than
 
-**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is greater than $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$,
+- $b$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is greater than $b$.
 
 **Usage**
 
@@ -222,9 +378,20 @@ Data of last revision: 12 APR 2023
 
 ### Greater than or equal to
 
-**Signature**: $A_{\text{Real}}\ B_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is greater than or equal to $B$.
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$,
+- $b$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is greater than or equal to $b$.
 
 **Usage**
 
@@ -244,11 +411,21 @@ Data of last revision: 12 APR 2023
 
 ## Basic functions
 
-### Sign function
+### sign
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns the sign of $A$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns sign of $a$.
 
 **Usage**
 
@@ -260,11 +437,21 @@ sign   0.0  //  0
 sign (-1.0) // -1
 ```
 
-### Absolute function
+### abs
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns $\lvert{A}\rvert$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns absolute value of $a$.
 
 **Usage**
 
@@ -276,11 +463,21 @@ abs   0.0 //  0.0
 abs (-1.0) // 1.0
 ```
 
-### Floor function
+### entier
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Int}$.
+**Signature**
 
-**Behavior**: returns $\lfloor{A}\rfloor$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Int}$.
+
+**Behavior**: returns floor of $a$.
 
 **Usage**
 
@@ -292,11 +489,21 @@ entier   0.0  //  0
 entier (-1.5) // -2
 ```
 
-### Natural logarithm
+### ln
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns $\ln A$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns natural logarithm of $a$.
 
 **Usage**
 
@@ -309,11 +516,21 @@ ln   0.0  // -#INF
 ln (-1.5) //  #NAN
 ln (-2.5) //  #NAN
 ```
-### Common logarithm
+### log10
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns $\log_{10}A$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns logarithm base $10$ of $a$.
 
 **Usage**
 
@@ -327,11 +544,21 @@ log10 (-1.5) //  #NAN
 log10 (-2.5) //  #NAN
 ```
 
-### Natural exponent
+### exp
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns $e$ raised to $A$-th power.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: raises $e$ to $a$-th power.
 
 **Usage**
 
@@ -345,11 +572,21 @@ exp (-1.5) //  0.22313016014843
 exp (-2.5) //  0.0820849986238988
 ```
 
-### Square root
+### sqrt
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns $\sqrt{A}$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns square root of $a$.
 
 **Usage**
 
@@ -369,11 +606,21 @@ sqrt (-2.5) // #NAN
 
 ## Trigonometric functions
 
-### Sine
+### sin
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns $\sin(A)$ .
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns $\sin(a)$ .
 
 **Usage**
 
@@ -387,11 +634,21 @@ sin (-1.5) // -0.997494986604054
 sin (-2.5) // -0.598472144103956
 ```
 
-### Cosine
+### cos
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns $\cos(A)$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns $\cos(a)$.
 
 **Usage**
 
@@ -405,11 +662,21 @@ cos (-1.5) //  0.0707372016677029
 cos (-2.5) // -0.801143615546934
 ```
 
-### Tangent
+### tan
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns $\tan(A)$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns $\tan(a)$.
 
 **Usage**
 
@@ -423,11 +690,21 @@ tan (-1.5) // -14.1014199471717
 tan (-2.5) //   0.74702229723866
 ```
 
-### Inverse of sine
+### asin
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns ${\sin}^{-1}(A)$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns ${\sin}^{-1}(a)$.
 The domain is in interval $[-1,1]$.
 
 **Usage**
@@ -444,11 +721,21 @@ asin (-1.5) //  #NAN
 asin (-2.5) //  #NAN
 ```
 
-### Inverse of cosine
+### acos
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns ${\cos}^{-1}(A)$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns ${\cos}^{-1}(a)$.
 The domain is in interval $[-1,1]$.
 
 **Usage**
@@ -465,11 +752,21 @@ acos (-1.5) // #NAN
 acos (-2.5) // #NAN
 ```
 
-### Inverse of tangent
+### atan
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns ${\tan}^{-1}(A)$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns ${\tan}^{-1}(a)$.
 
 **Usage**
 
@@ -485,11 +782,21 @@ acos (-1.5) // -0.982793723247329
 acos (-2.5) // -1.19028994968253
 ```
 
-### Hyperbolic sine
+### sinh
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns $\sinh(A)$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns $\sinh(a)$.
 
 **Usage**
 
@@ -505,11 +812,21 @@ sinh (-1.5) // -2.12927945509482
 sinh (-2.5) // -6.05020448103979
 ```
 
-### Hyperbolic cosine
+### cosh
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns $\cosh(A)$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns $\cosh(a)$.
 
 **Usage**
 
@@ -525,11 +842,21 @@ cosh (-1.5) // -2.35240961524325
 cosh (-2.5) // -6.13228947966369
 ```
 
-### Hyperbolic tangent
+### tanh
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns $\tanh(A)$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns $\tanh(a)$.
 
 **Usage**
 
@@ -545,11 +872,21 @@ tanh (-1.5) // -0.905148253644866
 tanh (-2.5) // -0.98661429815143
 ```
 
-### Inverse of hyperbolic sine
+### asinh
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns ${\sinh}^{-1}(A)$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns ${\sinh}^{-1}(a)$.
 
 **Usage**
 
@@ -565,11 +902,21 @@ asinh (-1.5) // -1.19476321728711
 asinh (-2.5) // -1.6472311463711
 ```
 
-### Inverse of hyperbolic cosine
+### acosh
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns ${\cosh}^{-1}(A)$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns ${\cosh}^{-1}(a)$.
 
 **Usage**
 
@@ -585,11 +932,21 @@ cosh (-1.5) // #NAN
 cosh (-2.5) // #NAN
 ```
 
-### Inverse of hyperbolic tangent
+### atanh
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: returns ${\tanh}^{-1}(A)$.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: returns ${\tanh}^{-1}(a)$.
 
 **Usage**
 
@@ -611,11 +968,21 @@ atanh (-2.5) //  #NAN
 
 ## Property functions
 
-### Not a number property
+### isNaN
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is $\text{NaN}$ or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is $\text{NaN}$ or not.
 
 **Usage**
 
@@ -630,11 +997,21 @@ isNaN ((-1.0) /   0.0)  // False
 isNaN (  0.0  ^ (-1.0)) // False
 ```
 
-### Infinity property
+### isInfinity
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is an infinite representation or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is an infinite representation or not.
 
 **Usage**
 
@@ -649,11 +1026,21 @@ isInfinity ((-1.0) /   0.0)  // True
 isInfinity (  0.0  ^ (-1.0)) // True
 ```
 
-### Finite property
+### isFinite
 
-**Signature**: $A_{\text{Real}}\rightarrow\text{Bool}$.
+**Signature**
 
-**Behavior**: checks if $A$ is finite or not.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Real}$, and
+- $R$ is of type $\text{Bool}$.
+
+**Behavior**: checks if $a$ is finite or not.
 
 **Usage**
 
@@ -677,9 +1064,20 @@ isFinite (  0.0  ^ (-1.0)) // False
 
 ### Integers to real numbers
 
-**Signature**: $A_{\text{Int}}\rightarrow\text{Real}$.
 
-**Behavior**: converts $A$ to a real number.
+**Signature**
+
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{Int}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: converts $a$ to a real number.
 
 **Usage**
 
@@ -695,9 +1093,19 @@ toReal (-2) // -2.0
 
 ### Strings to real numbers
 
-**Signature**: $A_{\text{String}}\rightarrow\text{Real}$.
+**Signature**
 
-**Behavior**: converts $A$ to an real number.
+$$
+\begin{align*}
+a\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$ is of type $\text{String}$, and
+- $R$ is of type $\text{Real}$.
+
+**Behavior**: converts $a$ to an real number.
 
 **Usage**
 

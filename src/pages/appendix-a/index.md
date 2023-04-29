@@ -13,6 +13,7 @@ Data of last revision: 12 APR 2023
 - [Real number operations and functions](./real-numbers)
 - [Character operations and functions](./characters)
 - [Boolean operations](./booleans)
+- [List operations and functions](./lists)
 
 ## Introdution
 

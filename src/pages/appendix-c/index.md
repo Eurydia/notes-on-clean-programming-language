@@ -1,6 +1,6 @@
 ---
 layout: "@layouts/Blog.astro"
-title: "Appendix C: CRU"
+title: "Appendix C: Recipes"
 ---
 
 ## Table of contents

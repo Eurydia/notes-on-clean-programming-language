@@ -28,9 +28,6 @@ Last updated: April 15th, 2023
 	1. Function-local definition
 	2. Guard-local definition
 8. Pattern matching
-9. [Appendix A: Built-in operations and functions](appendix-a/)
-10. [Appendix B: Error troubleshooting](appendix-b/)
-11. [Appendix C: CRU (Code Ready to Use)](appendix-c/)
 
 ## Introduction
 

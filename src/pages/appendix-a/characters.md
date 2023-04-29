@@ -10,32 +10,10 @@ Data of last revision: 12 APR 2023
 ## Table of contents
 
 - [Arithmetic operations](#arithmetic-operations)
-	- [Addition](#addition)
-	- [Subtraction](#subtraction)
 - [Relational operations](#relational-operations)
-	- [Equal to](#equal-to)
-	- [Not equal to](#not-equal-to)
-	- [Less than](#less-than)
-	- [Less than or equal to](#less-than-or-equal-to)
-	- [Greater than](#greater-than)
-	- [Greater than or equal to](#greater-than-or-equal-to)
 - [Basic functions](#basic-functions)
-	- [toUpper](#toupper)
-	- [toLower](#tolower)
 - [Property functions](#property-functions)
-	- [isLower](#islower)
-	- [isUpper](#isupper)
-	- [isAlphanum](#isalphanum)
-	- [isAlpha](#isalpha)
-	- [isDigit](#isdigit)
-	- [isOctDigit](#isoctdigit)
-	- [isHexDigit](#ishexdigit)
-	- [isAscii](#isascii)
-	- [isControl](#iscontrol)
-	- [isPrint](#isprint)
-	- [isSpace](#isspace)
 - [Conversions to characters](#conversions-to-characters)
-	- [Integers to characters](#integers-to-characters)
  
 ## Arithmetic operations 
 

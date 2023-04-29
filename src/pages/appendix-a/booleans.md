@@ -10,9 +10,6 @@ Data of last revision: 12 APR 2023
 ## Table of contents
 
 - [Logical operations](#logical-operations)
-	- [Logical NEGATE](#logical-negate)
-	- [Logical AND](#logical-and)
-	- [Logical OR](#logical-or)
 
 ## Logical operations 
 

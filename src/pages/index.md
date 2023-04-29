@@ -8,7 +8,6 @@ Last updated: April 15th, 2023
 
 1. [Introduction](#introduction)
 2. [Types](#types)
-	1. [Type specification](#type-specification)
 3. [Primitive types](#primitive-types)
 	1. [Integers](#integers)
 	2. [Real numbers](#real-numbers)

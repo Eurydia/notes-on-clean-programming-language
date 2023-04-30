@@ -427,7 +427,7 @@ where:
 - $a$ is of type $\text{Int}$, and
 - $R$ is of type $\text{Int}$.
 
-**Behavior**: returns bit-wise one complement of $a$.
+**Behavior**: returns bit-wise two complement of $a$.
 
 **Usage**
 

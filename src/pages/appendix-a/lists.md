@@ -57,7 +57,7 @@ $$
 
 where :
 - $A$ is of type $[T]$,
-- $i$ is of typer $\text{Int}$, and
+- $i$ is of type $\text{Int}$, and
 - $R$ is of type $T$.
 
 **Behavior**: returns element at $i$-th index of $A$.

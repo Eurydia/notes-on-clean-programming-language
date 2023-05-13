@@ -1,10 +1,10 @@
 ---
 layout: "@layouts/Blog.astro"
 title: Cleanpedia
-Last updated: April 15th, 2023
+Last updated: May 10, 2023
 ---
 
-## Table of contents
+## Contents
 
 1. [Introduction](#introduction)
 2. [Types](#types)
@@ -252,13 +252,13 @@ Real
 To resolve this issue, ensure that an integer is constructed.
 
 **Operations**:
-- [arithmetic operations](appendix-a/integers#arithmetic-operations),
-- [relational operations](appendix-a/integers#relational-operations), and
-- [bitwise operations](appendix-a/integers#bitwise-operations).
+- [arithmetic operations](stdint.md#arithmetic-operations),
+- [relational operations](stdint.md#relational-operations), and
+- [bitwise operations](stdint.md#bitwise-operations).
 
 **Functions**:
-- [basic functions](appendix-a/integers#basic-functions), and
-- [property functions](appendix-a/integers#property-functions).
+- [basic functions](stdint.md#basic-functions), and
+- [property functions](stdint.md#property-functions).
 
 **Type conversions**
 
@@ -268,7 +268,7 @@ It supports the conversion of the following types:
 - $\text{Char}\rightarrow\text{Int}$, and
 - $\text{String}\rightarrow\text{Int}$.
 
-See also [conversions to integers](appendix-a/integers#conversions-to-integers).
+See also [conversions to integers](stdint.md#conversions-to-integers).
 
 ### Real numbers
 
@@ -303,13 +303,13 @@ scientific = 0.99E1   // decimal 9.9
 $\text{Real}$ literals cannot be constructed using octal or hexadecimal notation.
 
 **Operations**:
-- [arithmetic operations](appendix-a/real-numbers#arithmetic-operations), and
-- [relational operations](appendix-a/real-numbers#relational-operations).
+- [arithmetic operations](stdreal.md#arithmetic-operations), and
+- [relational operations](stdreal.md#relational-operations).
 
 **Functions**:
-- [basic functions](appendix-a/real-numbers#basic-functions),
-- [trigonometric functions](appendix-a/real-numbers#trigonometric-functions), and
-- [property functions](appendix-a/real-numbers#property-functions).
+- [basic functions](stdreal.md#basic-functions),
+- [trigonometric functions](stdreal.md#trigonometric-functions), and
+- [property functions](stdreal.md#property-functions).
 
 **Type conversions**
 
@@ -318,7 +318,7 @@ It supports the following types:
 - $\text{Int}\rightarrow\text{Real}$, and
 - $\text{String}\rightarrow\text{Real}$.
 
-See also [conversions to real numbers](appendix-a/real-numbers#conversions-to-real-numbers).
+See also [conversions to real numbers](stdreal.md#conversions-to-real-numbers).
 
 ### Characters
 
@@ -338,18 +338,18 @@ character =  'A'
 ```
 
 **Operations**:
-- [arithmetic operations](appendix-a/characters#arithmetic-operations), and
-- [relational operations](appendix-a/characters#relational-operations).
+- [arithmetic operations](stdchar.md#arithmetic-operations), and
+- [relational operations](stdchar.md#relational-operations).
 
 **Functions**:
-- [basic functions](appendix-a/characters#basic-functions), and
-- [property functions](appendix-a/characters#property-functions).
+- [basic functions](stdchar.md#basic-functions), and
+- [property functions](stdchar.md#property-functions).
 
 **Type conversions** 
 
 The built-in function $\text{toChar}$ explicitly converts $\text{Int}$ to $\text{Char}$.
 
-See also [conversions to characters](appendix-a/characters#conversions-to-characters).
+See also [conversions to characters](stdchar.md#conversions-to-characters).
 
 ### Booleans
 
@@ -368,7 +368,7 @@ boolean =  False
 ```
 
 **Operation**:
-- [logical operations](appendix-a/booleans#logical-operations).
+- [logical operations](appendix-a/stdbool#logical-operations).
 
 [Back to top](#)
 

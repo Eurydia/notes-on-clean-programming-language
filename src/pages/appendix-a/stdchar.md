@@ -1,13 +1,11 @@
 ---
 layout: "@layouts/Blog.astro"
-title: "Appendix A: Characters"
+title: "Appendix A: StdChar"
 
-Last updated: April 26th, 2023
-Revisions: 2
-Data of last revision: 12 APR 2023
+Last updated: May 10th, 2023
 ---
 
-## Table of contents
+## Contents
 
 - [Arithmetic operations](#arithmetic-operations)
 - [Relational operations](#relational-operations)
@@ -28,11 +26,9 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$,
-- $b$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Char}$.
+- $a$, $b$, and $R$ are of type $\text{Char}$.
 
-**Behavior**: adds $a$ and $b$ together.
+**Behavior**: $a$ and $b$ are converted to their ASCII values, then their sum is converted back to a character.
 
 **Usage**
 
@@ -55,11 +51,9 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$,
-- $b$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Char}$.
+- $a$, $b$, and $R$ are of type $\text{Char}$.
 
-**Behavior**: subtracts $b$ from $a$.
+**Behavior**: $a$ and $b$ are converted to their ASCII values, then result of their subtraction is converted back to a character.
 
 **Usage**
 
@@ -68,7 +62,7 @@ where:
 
 'z' - '0' // 122 - 48 -> 74 ('J')
 'z' - '1' // 122 - 49 -> 73 ('I')
-'z' - '2' //  97 + 50 -> 72 ('H)
+'z' - '2' //  97 + 50 -> 72 ('H')
 ```
 
 [Back to top](#)
@@ -88,11 +82,10 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$,
-- $b$ is of type $\text{Char}$, and
+- $a$, $b$ are of type $\text{Char}$, and
 - $R$ is of type $\text{Bool}$.
 
-**Behavior**: checks if $a$ is equal to $b$.
+**Behavior**: checks if $a$ is lexographically equal to $b$.
 
 **Usage**
 
@@ -116,11 +109,10 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$,
-- $b$ is of type $\text{Char}$, and
+- $a$, $b$ are of type $\text{Char}$, and
 - $R$ is of type $\text{Bool}$.
 
-**Behavior**: checks if $a$ is not equal to $b$.
+**Behavior**: checks if $a$ is lexographically not equal to $b$.
 
 **Usage**
 
@@ -144,11 +136,10 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$,
-- $b$ is of type $\text{Char}$, and
+- $a$, $b$ are of type $\text{Char}$, and
 - $R$ is of type $\text{Bool}$.
 
-**Behavior**: checks if $a$ is less than $b$.
+**Behavior**: checks if $a$ is lexographically less than $b$.
 
 **Usage**
 
@@ -172,11 +163,10 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$,
-- $b$ is of type $\text{Char}$, and
+- $a$, $b$ are of type $\text{Char}$, and
 - $R$ is of type $\text{Bool}$.
 
-**Behavior**: checks if $a$ is less than or equal to $b$.
+**Behavior**: checks if $a$ is lexographically less than or equal to $b$.
 
 **Usage**
 
@@ -200,11 +190,10 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$,
-- $b$ is of type $\text{Char}$, and
+- $a$, $b$ are of type $\text{Char}$, and
 - $R$ is of type $\text{Bool}$.
 
-**Behavior**: checks if $a$ is greater than $b$.
+**Behavior**: checks if $a$ is lexographically greater than $b$.
 
 **Usage**
 
@@ -228,11 +217,10 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$,
-- $b$ is of type $\text{Char}$, and
+- $a$, $b$ are of type $\text{Char}$, and
 - $R$ is of type $\text{Bool}$.
 
-**Behavior**: checks if $a$ is greater than or equal to $b$.
+**Behavior**: checks if $a$ is lexographically greater than or equal to $b$.
 
 **Usage**
 

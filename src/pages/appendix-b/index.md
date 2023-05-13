@@ -36,7 +36,7 @@ toDigits 1234 // [1, 2, 3, 4]
 toDigits 4567 // [4, 5, 6, 7]
 ```
 
-### Using recursive function
+### Recursion
 
 **Implementation**:
 
@@ -44,42 +44,59 @@ toDigits 4567 // [4, 5, 6, 7]
 // Language: Clean
 
 toDigits :: Int -> [Int]
-toDigits n 
-| n < 10 = [n]
-| otherwise = (toDigits (n / 10)) ++ [ld]
-where
-	ld :: Int
-	ld = n rem 10
+toDigits    n 
+| (abs n) < 10  =  [n]
+| otherwise     =  (toDigits (n / 10)) ++ [n rem 10]
 ```
 
-**Conversions**: $\text{Int}\rightarrow\text{[Int]}$
+**Conversion pathway**
+
+$$
+\begin{align*}
+\text{Int}\rightarrow\text{[Int]}
+\end{align*}
+$$
 
 **Explanation**:
 
-Given an integer $n$, while $n$ has more than one digit, extract the last digits by using $n\mod 10$.
-The total digits of $n$ is reduced by one.
+Given an integer $n$, the last digit is placed on the end of a list.
+To get the last digit of $n$, we take advantage of the $\text{mod}$ operation. 
 
-If $n$ has one digits, return $n$ then stop the recursion.
+Before the next iteration, $n$ is divided by $10$, this step removes the last digit of $n$ since it has already been placed in the list.
 
-### Using list comprehension
+$\text{abs}$ expands domain from $[0,\ \infty)$ to $(-\infty,\ \infty)$.
+
+### List comprehension
 
 ```
 // Language: Clean
 
 toDigits :: Int -> [Int]
-toDigits n = [(toInt d) - 48 \\ d <-: (toString n)]
+toDigits    n   =  [(toInt d) - 48 \\ d <-: (toString n)]
 ```
 
-**Conversions**: $\text{Int}\rightarrow\text{\{Char\}}\rightarrow\text{[Int]}$
+**Conversion  pathway**
+
+$$
+\begin{align*}
+\text{Int}\rightarrow\text{String}\rightarrow\text{Char}\rightarrow\text{Int}\rightarrow[\text{Int}]
+\end{align*}
+$$
 
 **Explanation**:
 
-Since $n$ is an integer, it has to be converted to a string.
-The reason being that an integer cannot be used as a generator, but a string can.
+Since arrays can be freely converted to lists and vice versa, we can convert $n$ to an array.
 
-Each digits of $n$ is stored in the variable $d$ which is converted from **a character** to **an integer** based on its ASCII value.
+In this case, $n$ is converted into an array of $\text{Char}$.
+$\text{toInt}$ then converts each digit of $n$ to $\text{Int}$.
 
-To offset the ASCII value, $48$ is subtracted from it.
+However, the $\text{Char}\rightarrow\text{Int}$ conversions are ASCII based.
+That is 
+- character $1$ converts to integer value $49$, 
+- character $2$ converts to integer value $50$, and so on.
+
+In the final step, an offset value of $48$ is subtracted from the result.
+
 
 [Back to top](#)
 
@@ -100,28 +117,34 @@ divisorsOf 2  // [1, 2]
 divisorsOf 0  // [0]
 ```
 
-### Using comprehension
+### List comprehension
 
 ```
 // Language: Clean
 
-divisorsOf :: Int -> [Int]
-divisorsOf 0 = [0]
-divisorsOf n = filter isDivisor [d \\ d <- ds]
-where
-	ds :: [Int]
-	ds = [2..(n - 1)]
+isDivisible :: Int Int -> Bool
+isDivisible    x   y   =  (x rem y) == 0
 
-	isDivisors :: Int -> Bool
-	isDivisors k = (n rem k) == 0
+divisorsOf :: Int -> [Int]
+divisorsOf    0   =  [0]
+divisorsOf    n   =  [d \\ d <- [1..(abs n)] | isDivisible n d]
 ```
 
-**Conversions**: $\text{Int}\rightarrow\text{[Int]}$
+**Conversions**
+
+$$
+\text{Int}\rightarrow[\text{Int}]
+$$
 
 **Explanation**:
 
-For $n \gt 0$, a list of integers from $2$ to $n - 1$ is constructed.
-Integers which are not a divisor of $n$ is discarded. 
+A list of integers is generated.
+It contains integers in $[1,\ \lvert{n}\rvert]$ interval.
+
+The helper function $\text{isDivisible}$ determines which integer will be placed in the list, and which integer will be discarded.
+
+If an integer $d$ is a divisor of $n$, it is included in the list.
+If it does not full divide $n$, it is discarded.
 
 [Back to top](#)
 

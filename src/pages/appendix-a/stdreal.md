@@ -11,7 +11,7 @@ Data of last revision: MAY 13th, 2023
 
 - [Part I: Arithmetic Operations](#part-i-arithmetic-operations)
 - [Part II: Relational Operations](#part-ii-relational-operations)
-- [Part: III: Basic Functions](#part-iii-basic-functions)
+- [Part III: Basic Functions](#part-iii-basic-functions)
 - [Part IV: Trigonometric functions](#part-iv-trigonometric-functions)
 - [Part V: Property Functions](#part-v-property-functions)
 - [Part VI: Conversions To Real Numbers](#part-vi-conversions-to-real-numbers)

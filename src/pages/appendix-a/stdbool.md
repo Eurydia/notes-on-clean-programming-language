@@ -2,18 +2,18 @@
 layout: "@layouts/Blog.astro"
 title: "Appendix A: StdBool"
 
-Last updated: May 10th, 2023
+Last updated: MAY 13th, 2023
+Revisions: 3
+Data of last revision: MAY 13th, 2023
 ---
 
-## Table ontents
+## Contents
 
-- [Logical operations](#logical-operations)
-- [Conversions to booleans](#conversions-to-booleans)
-- [Conversions from booleans](#conversions-from-booleans)
+- [Part I: Logical Operations](#part-i-logical-operations)
 
-## Logical operations 
+## Part I: Logical Operations 
 
-### Logical NEGATE
+### 1.1 Logical NEGATE
 
 **Signature**
 
@@ -24,7 +24,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\text{Bool}$.
+- $a$ and $R$ are of type $\textbf{Bool}$.
 
 **Behavior**: negates the logical value of $a$.
 
@@ -33,12 +33,12 @@ where:
 ```
 // Language: Clean
 
-not True       // False
-not False      // True
-not (not True) // True
+not True        // False
+not False       // True
+not (not True)  // True
 ```
 
-### Logical AND
+### 1.2 Logical AND
 
 **Signature**
 
@@ -49,7 +49,7 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$, $b$, and $R$ are of type $\text{Bool}$.
+- $a$, $b$, and $R$ are of type $\textbf{Bool}$.
 
 **Behavior**: returns true if and only if both $a$ and $b$ are true.
 
@@ -58,13 +58,13 @@ where:
 ```
 // Language: Clean
 
-True  && True  // True
-True  && False // False
-False && True  // False
-False && False // False
+True  && True   // True
+True  && False  // False
+False && True   // False
+False && False  // False
 ```
 
-### Logical OR
+### 1.3 Logical OR
 
 **Signature**
 
@@ -75,7 +75,7 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$, $b$, and $R$ are of type $\text{Bool}$.
+- $a$, $b$, and $R$ are of type $\textbf{Bool}$.
 
 **Behavior**: returns false if and only if both $a$ and $b$ are false.
 
@@ -84,99 +84,36 @@ where:
 ```
 // Language: Clean
 
-True  || True  // True
-True  || False // True
-False || True  // True
-False || False // False
+True  || True   // True
+True  || False  // True
+False || True   // True
+False || False  // False
 ```
 
-[Back to top](#)
-
----
-
-## Conversions to booleans
-
-### Booleans to booleans
+### 1.4 Logical EQUIVALENCE
 
 **Signature**
 
 $$
 \begin{align*}
-a\rightarrow{R}
+a\rightarrow{b}\rightarrow{R}
 \end{align*}
 $$
 
 where:
-- $a$, and $R$ are of type $\text{Bool}$.
+- $a$, $b$, and $R$ are of type $\textbf{Bool}$.
 
-**Behavior**: does nothing.
+**Behavior**: returns true if and only if both $a$ and $b$ share the same truth value.
 
-**Example**
-
-```
-// Language: Clean
-
-toBool True  // True
-toBool False // False
-```
-
-[Back to top](#)
-
----
-
-## Conversions from booleans
-
-The expected types must be specified for functions of this category.
-
-### Boolean to Boolean
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where:
-- $a$, and $R$ are of type $\text{Bool}$.
-
-**Behavior**: does nothing.
-
-**Example**
+**Usage**
 
 ```
 // Language: Clean
 
-Start :: Bool
-Start =  fromBool True  // True
-Start =  fromBool False // False
-```
-
-### Boolean to strings
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where:
-- $a$ is of type $\text{Bool}$, and
-- $R$ i s of type $\text{String}$.
-
-**Behavior**: converts $a$ into a string literal.
-
-**Example**
-
-```
-// Language: Clean
-
-Start :: String
-Start =  fromBool True  // "True"
-Start =  fromBool False // "False"
+True  == True   // True
+True  == False  // False
+False == True   // False
+False == False  // True
 ```
 
 [Back to top](#)

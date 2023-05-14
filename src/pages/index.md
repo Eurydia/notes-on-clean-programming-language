@@ -441,15 +441,15 @@ charList =  ['a'..'c']
 - [relational operations](#appendix-a/lists#relational-operations)
 
 **Functions**:
-- [basic functions](appendix-a/lists#basic-functions)
-- [ordering functions](appendix-a/lists#ordering-functions)
-- [higher-order functions](appendix-a/lists#higher-order-functions)
+- [basic functions](stdordlist.md#basic-functions)
+- [ordering functions](stdordlist.md#ordering-functions)
+- [higher-order functions](stdordlist.md#higher-order-functions)
 
 **Functions on $[\text{Bool}]$**:
-- [boolean list functions](appendix-a/lists#boolean-list-functions)
+- [boolean list functions](stdordlist.md#boolean-list-functions)
 
 **Functions on $[\text{Char}]$**:
-- [character list functions](appendix-a/lists#character-list-functions)
+- [character list functions](stdordlist.md#character-list-functions)
 
 ### Arrays
 

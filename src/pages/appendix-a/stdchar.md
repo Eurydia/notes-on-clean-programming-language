@@ -2,20 +2,22 @@
 layout: "@layouts/Blog.astro"
 title: "Appendix A: StdChar"
 
-Last updated: May 10th, 2023
+Last updated: MAY 13th, 2023
+Revisions: 3
+Data of last revision: MAY 13th, 2023
 ---
 
 ## Contents
 
-- [Arithmetic operations](#arithmetic-operations)
-- [Relational operations](#relational-operations)
-- [Basic functions](#basic-functions)
-- [Property functions](#property-functions)
-- [Conversions to characters](#conversions-to-characters)
+- [Part I: Arithmetic Operations](#part-i-arithmetic-operations)
+- [Part II: Relational Operations](#part-ii-relational-operations)
+- [Part III: Basic Functions](#part-iii-basic-functions)
+- [Part IV: Property Functions](#part-iv-property-functions)
+- [Part V: Conversions To Characters](#part-v-conversions-to-characters)
  
-## Arithmetic operations 
+## Part I: Arithmetic Operations 
 
-### Addition
+### 1.1 Addition
 
 **Signature**
 
@@ -26,7 +28,7 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$, $b$, and $R$ are of type $\text{Char}$.
+- $a$, $b$, and $R$ are of type $\textbf{Char}$.
 
 **Behavior**: $a$ and $b$ are converted to their ASCII values, then their sum is converted back to a character.
 
@@ -35,12 +37,12 @@ where:
 ```
 // Language: Clean
 
-'1' + '1' //  49 + 49 ->  98 ('b')
-'A' + 'A' //  65 + 65 -> 130 ('é')
-'a' + 'a' //  97 + 97 -> 194 ('┬')
+'1' + '1'  // 49 + 49 ->  98 ('b')
+'A' + 'A'  // 65 + 65 -> 130 ('é')
+'a' + 'a'  // 97 + 97 -> 194 ('┬')
 ```
 
-### Subtraction
+### 1.2 Subtraction
 
 **Signature**
 
@@ -51,7 +53,7 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$, $b$, and $R$ are of type $\text{Char}$.
+- $a$, $b$, and $R$ are of type $\textbf{Char}$.
 
 **Behavior**: $a$ and $b$ are converted to their ASCII values, then result of their subtraction is converted back to a character.
 
@@ -60,45 +62,18 @@ where:
 ```
 // Language: Clean
 
-'z' - '0' // 122 - 48 -> 74 ('J')
-'z' - '1' // 122 - 49 -> 73 ('I')
-'z' - '2' //  97 + 50 -> 72 ('H')
+'z' - '0'  // 122 - 48 -> 74 ('J')
+'z' - '1'  // 122 - 49 -> 73 ('I')
+'z' - '2'  //  97 + 50 -> 72 ('H')
 ```
 
 [Back to top](#)
 
 ---
 
-## Relational operations
+## Part II: Relational Operations
 
-### Equal to
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
-
-where:
-- $a$, $b$ are of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
-
-**Behavior**: checks if $a$ is lexographically equal to $b$.
-
-**Usage**
-
-```
-// Language: Clean
-
-'1' == 'A' // False
-'a' == '1' // False
-'A' == 'a' // False
-'1' == '1' // True
-```
-
-### Not equal to
+### 2.1 Equal To
 
 **Signature**
 
@@ -109,23 +84,23 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$, $b$ are of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$, $b$ are of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
-**Behavior**: checks if $a$ is lexographically not equal to $b$.
+**Behavior**: checks if $a$ is lexicography equal to $b$.
 
 **Usage**
 
 ```
 // Language: Clean
 
-'1' <> 'A' // True
-'a' <> '1' // True
-'A' <> 'a' // True
-'1' <> '1' // False
+'1' == 'A'  // False
+'a' == '1'  // False
+'A' == 'a'  // False
+'1' == '1'  // True
 ```
 
-### Less than
+### 2.2 Not Equal To
 
 **Signature**
 
@@ -136,23 +111,23 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$, $b$ are of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$, $b$ are of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
-**Behavior**: checks if $a$ is lexographically less than $b$.
+**Behavior**: checks if $a$ is lexicography not equal to $b$.
 
 **Usage**
 
 ```
 // Language: Clean
 
-'1' < 'A' // True
-'a' < '1' // False
-'A' < 'a' // True
-'1' < '1' // False
+'1' <> 'A'  // True
+'a' <> '1'  // True
+'A' <> 'a'  // True
+'1' <> '1'  // False
 ```
 
-### Less than or equal to
+### 2.3 Less Than
 
 **Signature**
 
@@ -163,23 +138,23 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$, $b$ are of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$, $b$ are of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
-**Behavior**: checks if $a$ is lexographically less than or equal to $b$.
+**Behavior**: checks if $a$ is lexicography less than $b$.
 
 **Usage**
 
 ```
 // Language: Clean
 
-'1' <= 'A' // True
-'a' <= '1' // False
-'A' <= 'a' // True
-'1' <= '1' // True
+'1' < 'A'  // True
+'a' < '1'  // False
+'A' < 'a'  // True
+'1' < '1'  // False
 ```
 
-### Greater than
+### 2.4 Less Than Or Equal To
 
 **Signature**
 
@@ -190,23 +165,23 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$, $b$ are of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$, $b$ are of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
-**Behavior**: checks if $a$ is lexographically greater than $b$.
+**Behavior**: checks if $a$ is lexicography less than or equal to $b$.
 
 **Usage**
 
 ```
 // Language: Clean
 
-'1' > 'A' // False
-'a' > '1' // True
-'A' > 'a' // False
-'1' > '1' // False
+'1' <= 'A'  // True
+'a' <= '1'  // False
+'A' <= 'a'  // True
+'1' <= '1'  // True
 ```
 
-### Greater than or equal to
+### 2.5 Greater Than
 
 **Signature**
 
@@ -217,29 +192,56 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$, $b$ are of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$, $b$ are of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
-**Behavior**: checks if $a$ is lexographically greater than or equal to $b$.
+**Behavior**: checks if $a$ is lexicography greater than $b$.
 
 **Usage**
 
 ```
 // Language: Clean
 
-'1' >= 'A' // False
-'a' >= '1' // True
-'A' >= 'a' // False
-'1' >= '1' // True
+'1' > 'A'  // False
+'a' > '1'  // True
+'A' > 'a'  // False
+'1' > '1'  // False
+```
+
+### 2.6 Greater Than Or Equal To
+
+**Signature**
+
+$$
+\begin{align*}
+a\rightarrow{b}\rightarrow{R}
+\end{align*}
+$$
+
+where:
+- $a$, $b$ are of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
+
+**Behavior**: checks if $a$ is lexicography greater than or equal to $b$.
+
+**Usage**
+
+```
+// Language: Clean
+
+'1' >= 'A'  // False
+'a' >= '1'  // True
+'A' >= 'a'  // False
+'1' >= '1'  // True
 ```
 
 [Back to top](#)
 
 ---
 
-## Basic functions
+## Part III: Basic Functions
 
-### toUpper
+### 3.1 toUpper
 
 **Signature**
 
@@ -250,8 +252,8 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: returns upper case of $a$ if possible.
 
@@ -260,13 +262,13 @@ where:
 ```
 // Language: Clean
 
-toUpper '1' // '1'
-toUpper 'a' // 'A'
-toUpper 'A' // 'A'
-toUpper '-' // '-'
+toUpper '1'  // '1'
+toUpper 'a'  // 'A'
+toUpper 'A'  // 'A'
+toUpper '-'  // '-'
 ```
 
-### toLower
+### 3.2 toLower
 
 **Signature**
 
@@ -277,8 +279,8 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: returns lower case of $a$ if possible.
 
@@ -287,19 +289,19 @@ where:
 ```
 // Language: Clean
 
-toLower '1' // '1'
-toLower 'a' // 'a'
-toLower 'A' // 'a'
-toLower '-' // '-'
+toLower '1'  // '1'
+toLower 'a'  // 'a'
+toLower 'A'  // 'a'
+toLower '-'  // '-'
 ```
 
 [Back to top](#)
 
 ---
 
-## Property functions
+## Part IV: Property Functions
 
-### isLower
+### 4.1 isLower
 
 **Signature**
 
@@ -310,8 +312,8 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: checks if $a$ is an lower case character or not.
 
@@ -320,13 +322,13 @@ where:
 ```
 // Language: Clean
 
-isLower '1' // False
-isLower 'a' // True
-isLower 'A' // False
-isLower '-' // False
+isLower '1'  // False
+isLower 'a'  // True
+isLower 'A'  // False
+isLower '-'  // False
 ```
 
-### isUpper
+### 4.2 isUpper
 
 **Signature**
 
@@ -337,8 +339,8 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: checks if $a$ is an upper case character or not.
 
@@ -347,13 +349,13 @@ where:
 ```
 // Language: Clean
 
-isUpper '1' // False
-isUpper 'a' // False
-isUpepr 'A' // True
-isUpper '-' // False
+isUpper '1'  // False
+isUpper 'a'  // False
+isUpepr 'A'  // True
+isUpper '-'  // False
 ```
 
-### isAlphanum
+### 4.3 isAlphanum
 
 **Signature**
 
@@ -364,8 +366,8 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: checks if $a$ is alphanumeric or not.
 
@@ -374,13 +376,13 @@ where:
 ```
 // Language: Clean
 
-isAlphanum '1' // True
-isAlphanum 'a' // True
-isAlphanum 'A' // True
-isAlphanum '-' // False
+isAlphanum '1'  // True
+isAlphanum 'a'  // True
+isAlphanum 'A'  // True
+isAlphanum '-'  // False
 ```
 
-### isAlpha
+### 4.4 isAlpha
 
 **Signature**
 
@@ -391,8 +393,8 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: checks if $a$ is an alphabet or not.
 
@@ -401,13 +403,13 @@ where:
 ```
 // Language: Clean
 
-isAlpha '1' // False
-isAlpha 'a' // True
-isAlpha 'A' // True
-isAlpha '-' // False
+isAlpha '1'  // False
+isAlpha 'a'  // True
+isAlpha 'A'  // True
+isAlpha '-'  // False
 ```
 
-### isDigit
+### 4.5 isDigit
 
 **Signature**
 
@@ -418,8 +420,8 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: checks if $a$ is a digit or not.
 
@@ -428,13 +430,13 @@ where:
 ```
 // Language: Clean
 
-isDigit '1' // True
-isDigit 'a' // False
-isDigit 'A' // False
-isDigit '-' // False
+isDigit '1'  // True
+isDigit 'a'  // False
+isDigit 'A'  // False
+isDigit '-'  // False
 ```
 
-### isOctDigit
+### 4.6 isOctDigit
 
 **Signature**
 
@@ -445,8 +447,8 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: checks if $a$ is an octal digit or not.
 
@@ -455,14 +457,14 @@ where:
 ```
 // Language: Clean
 
-isOctDigit '1' // True
-isOctDigit '8' // False
-isOctDigit 'a' // False
-isOctDigit 'A' // False
-isOctDigit '-' // False
+isOctDigit '1'  // True
+isOctDigit '8'  // False
+isOctDigit 'a'  // False
+isOctDigit 'A'  // False
+isOctDigit '-'  // False
 ```
 
-### isHexDigit
+### 4.7 isHexDigit
 
 **Signature**
 
@@ -473,8 +475,8 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: checks if $a$ is a hexadecimal digit or not.
 
@@ -483,14 +485,14 @@ where:
 ```
 // Language: Clean
 
-isHexDigit '1' // True
-isHexDigit 'G' // False
-isHexDigit 'a' // True
-isHexDigit 'A' // True
-isHexDigit '-' // False
+isHexDigit '1'  // True
+isHexDigit 'G'  // False
+isHexDigit 'a'  // True
+isHexDigit 'A'  // True
+isHexDigit '-'  // False
 ```
 
-### isAscii
+### 4.8 isAscii
 
 **Signature**
 
@@ -501,24 +503,25 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
-**Behavior**: checks if $a$is an ASCII character or not.
+**Behavior**: checks if $a$ is an ASCII character or not.
+Internally, it checks whether the ASCII value of $a$ is less than $128$ or not.
 
 **Usage**
 
 ```
 // Language: Clean
 
-isAscii '1' // True
-isAscii 'a' // True
-isAscii 'A' // True
-isAscii '-' // True
-isAscii 'Ç' // False
+isAscii '1'  // True
+isAscii 'a'  // True
+isAscii 'A'  // True
+isAscii '-'  // True
+isAscii 'Ç'  // False
 ```
 
-### isControl
+### 4.9 isControl
 
 **Signature**
 
@@ -529,24 +532,25 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: checks if $a$ is a control character or not.
+Internally, it checks whether ASCII value of $a$ is between $[0,\ 31]\cup\{127\}$ or not.
 
 **Usage**
 
 ```
 // Language: Clean
 
-isControl '1'  // False
-isControl 'a'  // False
-isControl 'A'  // False
-isControl '-'  // False
-isControl '\t' // True
+isControl '1'   // False
+isControl 'a'   // False
+isControl 'A'   // False
+isControl '-'   // False
+isControl '\t'  // True
 ```
 
-### isPrint
+### 4.10 isPrint
 
 **Signature**
 
@@ -557,10 +561,11 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: checks if $a$ is printable or not.
+Internally, it checks whether ASCII value of $a$ is between $[32,\ 126]$ or not.
 
 **Usage**
 
@@ -574,7 +579,7 @@ isPrint '-'  // True
 isPrint '\t' // False
 ```
 
-### isSpace
+### 4.11 isSpace
 
 **Signature**
 
@@ -585,30 +590,40 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Char}$, and
-- $R$ is of type $\text{Bool}$.
+- $a$ is of type $\textbf{Char}$, and
+- $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: checks if $a$ is a space character or not.
+Internally, it checks whether $a$ is one of the follow character of not:
+
+```
+' '  
+'\t'
+'\n'
+'\r' 
+'\f'
+'\v'
+```
 
 **Usage**
 
 ```
 // Language: Clean
 
-isSpace '1'  // False
-isSpace 'a'  // False
-isSpace 'A'  // False
-isSpace '-'  // False
-isSpace '\t' // True
+isSpace '1'   // False
+isSpace 'a'   // False
+isSpace 'A'   // False
+isSpace '-'   // False
+isSpace '\t'  // True
 ```
 
 [Back to top](#)
 
 ---
 
-## Conversions to characters
+## Part V: Conversions To Characters
 
-### Integers to characters
+### 5.1 Integers To Characters
 
 **Signature**
 
@@ -619,8 +634,8 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Int}$, and
-- $R$ is of type $\text{Char}$.
+- $a$ is of type $\textbf{Int}$, and
+- $R$ is of type $\textbf{Char}$.
 
 **Behavior**: converts $a$ to its ASCII character.
 

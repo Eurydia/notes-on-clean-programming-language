@@ -13,8 +13,10 @@ Some functions which can be easily synthesized from other functions are omitted.
 The Standard Enviroment includes, but not limited to, the following modules:
 - [StdBool](./stdbool)
 - [StdChar](./stdchar)
+- [StdCharList](./stdcharlist)
 - [StdInt](./stdint)
+- [StdList](./stdlist)
+- [StdOrdList](./stdordlist)
 - [StdReal](./stdreal)
-- [Boolean operations](stdbool.md)
-- [List operations and functions](./lists)
+- [StdTuple](./stdtuple)
 

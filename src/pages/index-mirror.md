@@ -479,7 +479,7 @@ Certain types like integers, Booleans, characters, real numbers, lists, tuples a
 
 ### 2.1 Primitive Types
 
-#### 2.1.1 Integer Type
+#### 2.1.1 Integers
 
 **Type annotation**: $\textbf{Int}$
 
@@ -491,9 +491,9 @@ From decimal notation:
 // Language: Clean
 
 n ::  Int
-n =: -13
-n =:  0
-n =:  13
+n =  -13
+n =   0
+n =   13
 ```
 
 From octal notation by prefixing octal digits with $\textbf{0}$:
@@ -502,9 +502,9 @@ From octal notation by prefixing octal digits with $\textbf{0}$:
 // Language: Clean
 
 n ::  Int
-n =: -015  // dec -13
-n =:  0
-n =:  015  // dec  13
+n =  -015  // dec -13
+n =   0
+n =   015  // dec  13
 ```
 
 From hexadecimal notation by prefixing hexadecimal digits with $\textbf{0x}$:
@@ -513,14 +513,14 @@ From hexadecimal notation by prefixing hexadecimal digits with $\textbf{0x}$:
 // Language: Clean
 
 n ::  Int
-n =: -0xD  // dec -13
-n =:  0
-n =:  0xd  // dec  13
+n =  -0xD  // dec -13
+n =   0
+n =   0xd  // dec  13
 ```
 
-More information about built-in operations and functions on integers can be found on [Appendix A: StdInt](./appendix-a/stdint).
+More information about built-in operations and functions on integers can be found on [Appendix A: StdInt](appendix-a/stdint).
 
-#### 2.1.2 Real Number Type
+#### 2.1.2 Real Numbers
 
 **Type annotation**: $\textbf{Real}$
 
@@ -532,20 +532,314 @@ From decimal notation:
 // Language: Clean
 
 n ::  Real
-n =: -1.3
-n =:  0.0
-n =:  1.3
+n =  -1.3
+n =   0.0
+n =   1.3
 ```
 
-From scientific notation by prefixing hexadecimal digits with $\textbf{0x}$:
+From scientific notation:
 
 ```
 // Language: Clean
 
 n ::  Int
-n =: -13E-2  // -0.13
-n =:  0E0    //  0
-n =:  13E-2  //  0.13
+n =  -13E-2  // -0.13
+n =   0E0    //  0
+n =   13E-2  //  0.13
 ```
 
-More information about built-in operations and functions on integers can be found on [Appendix A: StdReal](./appendix-a/stdreal).
+More information about built-in operations and functions on real numbers can be found on [Appendix A: StdReal](appendix-a/stdreal).
+
+#### 2.1.3 Booleans
+
+**Type annotation**: $\textbf{Bool}$
+
+**Constructor**
+
+```
+// Language: Clean
+
+b :: Bool
+b =  True
+b =  False
+```
+
+More information about built-in operations and functions on Booleans can be found on [Appendix A: StdBool](appendix-a/stdbool).
+
+
+#### 2.1.4 Characters
+
+**Type annotation**: $\textbf{Char}$
+
+**Constructor**
+
+```
+// Language: Clean
+
+c :: Char
+b =  'a'
+b =  '9'
+b =  'Z'
+b =  '+'
+```
+
+More information about built-in operations and functions on characters can be found on [Appendix A: StdChar](appendix-a/stdchar).
+
+#### 2.1.5 Parameter-Matching Primitive Types
+
+Constants of primitive types can be specified as pattern.
+
+Using integers as pattern:
+
+```
+// Language: Clean
+
+fib :: Int -> Int  
+fib    1   =  1  
+fib    2   =  1  
+fib    n   =  fib (n - 1) + fib (n - 2)
+```
+
+Using characters as pattern:
+
+```
+// Language: Clean
+
+isLetterA :: Char -> Bool
+isLetterA    'a'  =  True
+isLetterA    'A'  =  True
+isLetterA    _    =  False
+```
+
+### 2.2 Built-In Generic Types
+
+#### 2.2.1 Lists
+
+**Annotation**: 
+$[\textbf{Int}]$, 
+$[\textbf{Char}]$, 
+$[\textbf{T}]$, 
+et cetera.
+
+A list can contain an infinite number of elements. 
+All elements must be of the same type. 
+
+**Constructions**
+
+From explicit enumeration of the elements:
+
+```
+// Language: Clean
+
+[1, 3, 5, 7, 9]
+[1 : [3, 5, 7, 9]]  
+[1, 3, 5 : [7, 9]]
+[1 : [3 : [5 : [7 : [9 : []]]]]]  
+[1 : 3 : 5 : 7 : 9 : []]  
+```
+
+From implicit enumeration with $\textbf{dot-dot}$ expression:
+
+```
+// Language: Clean
+
+[1..]       // infitite list [1, 2, 3, ...]
+[1, 3..]    // infinite list [1, 3, 5, ...]
+[1..5]      // [1, 2, 3, 4, 5]
+[1, 3..10]  // [1, 3, 5, 7, 9]
+```
+
+It  should be noted that $\textbf{dot-dot}$ expressions requires $\text{StdEnum}$ module.
+
+From list comprehension:
+
+```
+// Language: Clean
+
+// extract from a list
+[el \\ el <- list]
+
+// extract from an array
+[el \\ el <-: array]
+
+// cartesian product
+[(x, y) \\ x <- xs , y <- ys]
+
+// pair-wise zip
+[(x, y) \\ x <- xs & y <- ys]
+
+// same as filter
+[x \\ x <- xs | P x]
+
+// nested
+[(x, y) \\ x <- xs, y <- [1..x]]
+```
+
+A special notation for constructing a list of characters is also provided:
+
+```
+// Language: Clean
+
+['a', 'b', 'c']  
+['abc']
+['ab','c']
+```
+
+More information about built-in operations and functions on lists can be found on:
+- [Appendix A: StdCharList](appendix-a/stdcharlist),
+- [Appendix A: StdList](appendix-a/stdlist), and
+- [Appendix A: StdOrdList](appendix-a/stdordlist).
+
+**De-structuring lists**
+
+Lists can be de-structured as follow:
+
+```
+// Language: Clean
+
+getFst :: [T]       -> T
+getFst    [x, _, _] =  x
+
+getSnd :: [T]       -> T
+getSnd    [_, y, _] =  y
+
+getThd :: [T]       -> T
+getThd    [_, _, z] =  z
+```
+
+The results of these function calls are as expected:
+
+```
+// Language: Clean
+
+getFst [1, 2, 3]  // 1
+getSnd [1, 2, 3]  // 2
+getThd [1, 2, 3]  // 3
+```
+
+However, all three functions will result in a run-time error if it is invoked with a list which does not have exactly three elements.
+
+```
+// Language: Clean
+
+getFst [1]          // NOT OK :(
+getSnd [1, 2]       // NOT OK :(
+getThd [1, 2, 3, 4] // NOT OK :(
+```
+
+To remedy this issue, an addition de-structuring element should be introduce.
+
+```
+// Language: Clean
+
+getFstAny :: [T]     -> T
+getFstAny    [x : r] =  x
+
+getSndAny :: [T]        -> T
+getSndAny    [_, y : r] =  y
+
+getThdAny :: [T]           -> T
+getThdAny    [_, _, z : r] =  z
+```
+
+The de-structuring is greedy.
+
+```
+// Language: Clean
+
+getFstAny [1]           // 1
+                        // r = []
+
+getFstAny [1, 2]        // 1
+                        // r = [2]
+
+getFstAny [1, 2, 3, 4]  // 1
+                        // r = [2, 3, 4]
+```
+
+However, the second function still requires the list to have at least two elements.
+
+```
+// Language: Clean
+
+getSndAny [1]           // NOT OK :(
+
+getSndAny [1, 2]        // 2
+                        // r = []
+
+getSndAny [1, 2, 3, 4]  // 2
+                        // r = [3, 4]
+```
+
+Similarly, the third function requires a list with at least three elements.
+
+```
+// Language: Clean
+
+getThdAny [1]           // NOT OK :(
+
+getThdAny [1, 2]        // NOT OK :(
+
+getThdAny [1, 2, 3, 4]  // 3
+                        // r = [4]
+```
+
+#### 2.2.2 Tuples
+
+**Annotation**: 
+$(\textbf{T},\ \textbf{K})$, 
+$(\textbf{T},\ \textbf{K},\ \textbf{V})$, 
+$(\textbf{T},\ \textbf{K},\ \textbf{V},\ \textbf{E})$ 
+et cetera.
+
+A tuple contains finite number of elements. 
+Elements do not have to be the same type.
+Every type appears in a tuple must be specified, and singleton tuples are not allowed.
+
+**Construction**
+
+```
+// Language: Clean
+
+A :: (Int, Char)
+A =  (49, '1')
+
+B :: (Real, Bool, String)
+B =  (0.2, False, "Hi")
+
+C :: (Int)
+C =  (2, 6)  // NOT OK should be (Int, Int)
+```
+
+**De-structuring tuples**
+
+Tuples can be de-structured in a similar methods to lists.
+
+
+#### 2.2.3 Arrays
+
+**Annotation**: 
+$\{\textbf{Int}\}$, 
+$\{\textbf{Char}\}$, 
+$\{\textbf{T}\}$, 
+et cetera.
+
+An array contains a finite number of elements.
+Elements of an array have to be of the same type.
+
+**Construction**
+
+```
+// Language: Clean
+
+{1, 2, 3, 4}
+{1.0, 2.0, 3.0, 4.0}
+
+"abc" 
+// equivalent to
+// {'a', 'b', 'c'}
+```
+
+**De-structuring arrays**
+
+Arrays can be de-structured in a similar methods to lists.

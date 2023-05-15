@@ -11,7 +11,16 @@ Data of last revision: 12 APR 2023
 
 ## CHAPTER I: Functions
 
-### 1.1 Defining a Function
+### 1.1 Defining A Function
+
+An implementation of a function has the following syntax.
+
+```
+// Language: Clean
+
+[fnName] [fnParams] =  [fnBody]
+[fnName] [fnParams] => [fnBody]
+```
 
 A function definition consists of, at least, one implementation.
 
@@ -22,20 +31,19 @@ isNatural :: Int -> Bool
 isNatural    n   =  n > 0
 ```
 
-If a function has multiple implementations, each implementation must share the the same identifier.
+If a function has multiple implementations, each implementation must share the the same name.
 
 ```
 // Language: Clean
 
 fib :: Int -> Int
-fib    1   =  1                          // 1st implementation
-fib    2   =  1                          // 2nd  
-fib    n   =  fib (n - 1) + fib (n - 2)  // 3rd
+fib    1   =  1
+fib    2   =  1  
+fib    n   =  fib (n - 1) + fib (n - 2)
 ```
 
-It is required that the Implementations of a function are textually grouped together.
+It is required that implementations of a function are textually grouped together.
 As such, the following is not allowed.
-
 
 ```
 // Language: Clean
@@ -49,9 +57,11 @@ fib    2   =  1
 ```
 
 Implementations are tried in textual order.
-An implementation will be chosen for evaluation, if the arguments of a function call matched with the parameters.
+An implementation will be chosen, if the arguments of a function call matched with the parameters.
 
 For example:
+
+When invoked with $2$, the first implementation is tried.
 
 ```
 // Language: Clean
@@ -59,14 +69,16 @@ For example:
 fib 2
 ```
 
-When invoked with $2$, the first implementation is tried, but the argument ($2$) fails to match with the parameter ($1$).
+The argument ($2$) fails to match with the parameter ($1$).
 Therefore, the first implementation is not evaluated.
 
-Next, the second implementation is tried.
+The second implementation is tried.
 The argument matches with the parameter.
 Thus, the second implementation is evaluated.
 
 In this call, the third implementation is never reached.
+
+Similarly, if it is invoked with $9$, the first and second implementation are tried, but the third is evaluated.
 
 ```
 // Language: Clean
@@ -74,9 +86,7 @@ In this call, the third implementation is never reached.
 fib 9
 ```
 
-Similarly, if it is invoked with $9$, the first and second implementation are tried, but the third is evaluated.
-
-Following this logic, if the implementation order is changed, then the function would cease to work.
+Following this logic, if the implementation order is changed, then the function would behave unintentionally.
 
 ```
 // Language: Clean
@@ -87,29 +97,83 @@ fib    1   =  1                          // 1st
 fib    2   =  2                          // 2nd
 ```
 
-Since $n$ will match with any integer, any implementation following it is never reached.
+In this case, $n$ will match with any integer, any implementation following it is never reached.
 
 It is important to recognize that, this parameter-matching behavior is not the same as performing equality checks.
 
 **Guarded bodies**
 
-A guarded body belongs to an implementation of a function.
+A guarded body can be introduce to an implementation of a function.
 It allows an implementation to have multiple function bodies, instead of just one.
+
+It has the following syntax.
 
 ```
 // Language: Clean
 
-fib :: Int -> Int
-fib    n
-| n == 1   =  1                          // 1st guarded body
-| n == 2   =  1                          // 2nd
-| n >  2   =  fib (n - 1) + fib (n - 2)  // 3rd
+[fnName] [fnParams]
+| [guardA]         = [bodyA]
+| [guardB]         = [bodyB]
+| [guardC]         = [bodyC]
 ```
 
-The function above has one implementation, but three guarded bodies.
-The guards are tried in textual order, but only after their implementation is chosen for evaluration.
+Additionally, guarded bodies can be nested. 
 
-For a guarded body to be evaluated, its guard must evaluates to $\textbf{True}$.
+```
+// Language: Clean
+
+[fnName] [fnParams]
+| [guardA]
+    | [guardAA]    = [bodyAA]
+    | [guardAB]    = [bodyAB]
+| [guardB]         = [bodyB]
+| [guardC]         = [bodyC]
+```
+
+A guard is a Boolean expression.
+
+```
+// Language: Clean
+
+signum :: Int -> Int
+signum    0   =  0
+signum    n
+| n > 0       =  1
+| n < 0       = -1
+```
+
+Guards are tried in textual order, but only after their implementation is chosen.
+
+For example:
+
+When called with $0$, the first implementation is tried.
+
+```
+// Language: Clean
+
+signum 0
+```
+
+The argument and parameter match.
+Thus, the body of the first implementation is evaluated.
+
+In this call, none of the guards were tried, since the implementation that they belong to was not chosen.
+
+Instead, if it is called with a non-zero integer, the first implementation will fail to match.
+
+```
+// Language: Clean
+
+signum -9
+```
+
+In this case, the first guard ($n\gt{0}$) is tried.
+It evaluates to $\textbf{False}$.
+Its body is not evaluated.
+
+The second guard is tried ($n\lt{0}$).
+It evaluates to $\textbf{True}$.
+Therefore, the body of the second guard is evaluated.
 
 Alternatively, $\textbf{otherwise}$ keyword can be used instead of an expression.
 Its value is always $\textbf{True}$.
@@ -117,29 +181,31 @@ Its value is always $\textbf{True}$.
 ```
 // Language: Clean
 
-fib :: Int  -> Int
-fib    n
-| n == 1    =  1                          // 1st guarded body
-| n == 2    =  1                          // 2nd
-| otherwise =  fib (n - 1) + fib (n - 2)  // 3rd
+signum :: Int -> Int
+signum    0   =  0
+signum    n
+| n > 0       =  1
+| otherwise   = -1
 ```
 
-As such, the guard order also matters.
+As such, order of the guarded bodies also matters.
 
 ```
 // Language: Clean
 
-fib :: Int  -> Int
-fib    n
-| otherwise =  fib (n - 1) + fib (n - 2)  // 3rd
-| n == 1    =  1                          // 1st
-| n == 2    =  1                          // 2nd
+
+signum :: Int -> Int
+signum    0   =  0
+signum    n
+| otherwise   = -1
+| n > 0       =  1
 ```
 
-It is important to recognize that, guarded bodies without $\textbf{otherwise}$ can turn an implementation into a partial function. 
+**Partial functions**
 
-When a partial function is invoked outside the domain it will result into a run-time error.
-At compile time this cannot be detected.
+It is important to recognize that, an implementation with guarded bodies can be partial.
+
+Such implementations will result in a run-time error when invoked outside its domain.
 
 ```
 // Language: Clean
@@ -151,24 +217,21 @@ fib    n
 | n >  2   =  fib (n - 1) + fib (n - 2)
 ```
 
-The implementation above is a partial function.
-It results in a run-time error if it is invoked with $n\le{0}$.
+The function above is partial.
+It results in a run-time error when invoked any integer less than one.
 
-Additionally, guards can be nested. 
+This partial behavior extends to a function definition as well.
 
 ```
 // Language: Clean
 
-func :: T K       -> V
-func    A B
-| conditionX
-	| conditionXA =  ...
-	| conditionXB =  ...
-	| otherwise   =  ...
-| conditionY      =  ...
+fib :: Int -> Int
+fib    1   =  1
+fib    2   =  1
+fib    n   =  fib (n - 1) + fib (n - 2)
 ```
 
-To ensure that at least one of a nested guard will be successful, it must always use $\textbf{otherwise}$.
+This version also results in run-time error when invoked with $n\le{0}$, even though it does not have guarded bodies.
 
 ### 1.2 Operators
 
@@ -178,7 +241,7 @@ They can be applied in infix position or invoked like ordinary functions.
 ```
 // Language: Clean
 
-1 + 1   // applied as an operator
+1 + 1  // applied as an operator
 ```
 
 To invoke an operator as an ordinary function, the operator name must be placed inside parentheses, and in front of its argument.
@@ -186,10 +249,10 @@ To invoke an operator as an ordinary function, the operator name must be placed 
 ```
 // Language: Clean
 
-(+) 1 1 // invoked as an ordinary function
+(+) 1 1  // invoked as an ordinary function
 ```
 
-When applied in an infix position, both arguments must be given.
+When applied in infix position, both arguments must be given.
 Operators can be curried, but only when they are invoked as ordinary functions.
 
 **Operator precedence**
@@ -211,7 +274,16 @@ The fixity is left-associated by default.
 **Defining an operator**
 
 An operator can be defined by placing its name between parentheses.
-It can be treated as if it was an ordinary function.
+It can be implemented as if it was an ordinary function.
+
+```
+// Language: Clean
+
+([fnName]) [fnParamL] [fnParamR] =  [fnBody]
+([fnName]) [fnParamL] [fnParamR] => [fnBody]
+```
+
+Precedence and fixity of an operator can be defined in its type declaration, but they can be omitted.
 
 ```
 // Language: Clean
@@ -221,7 +293,7 @@ It can be treated as if it was an ordinary function.
 (->)             _    _     =  True
 ```
 
-Definition with omitted fixity and precedence  can be done as follow:
+Definition with omitted fixity and precedence can be done as follow:
 
 ```
 // Language: Clean
@@ -240,8 +312,8 @@ It is not allowed to apply operators with equal precedence in an expression in s
 True -> False <=> False
 ```
 
-In this case, $\rightarrow$ operator is a right-associated.
-It implies that the expression should be evaluated as
+The $\rightarrow$ operator is a right-associated.
+It implies that the expression should be evaluated as follows.
 
 ```
 // Langauge: Clean
@@ -249,8 +321,8 @@ It implies that the expression should be evaluated as
 True -> (False <=> False)
 ```
 
-But $\iff$ operator is left associated.
-It implies that the expression should be evaluated as
+However, the $\iff$ operator is left associated.
+It implies that the expression should be evaluated as follows.
 
 ```
 // Langauge: Clean
@@ -262,111 +334,107 @@ Since both operators have the same precedence and the order of evaluation cannot
 
 ### 1.3 Lambda Functions
 
-A lambda function is defined which can have several formal arguments that can be patterns as common in ordinary function definitions.
+A lambda function is defined "on the spot" as an expression.
 However, it cannot have local definitions or guards.
 
-A simple lambda function can be defined as follows.
+A lambda function has following syntax.
 
 ```
 // Language: Clean
 
-\x = x + 2
+\[fnParam] =  [fnBody]
+\[fnParam] -> [fnBody]
 ```
 
-A lambda function can have multiple parameters.
-Parameters are separated by spaces.
-
-```
-// Language: Clean
-
-\x y z = x * (y + z)
-```
-
-Alternatively, $\rightarrow$ can be used to separated parameters from function body.
+Parameters of a lambda function are separated by spaces.
 
 ```
 // Language: Clean
 
-\x     -> x + 2
-\x y z -> x * (y + z)
+\paramA        = ...
+\paramA paramB = ...
 ```
 
 ### 1.4 Case Expressions
 
-In a case expression, cases are tried in textual order.
+In a $\textbf{case..in}$ expression, cases are tried in textual order.
 Each case contains a pattern and a case body.
 
 ```
 // Language: Clean
 
-case expr of
-patternA  =  bodyA
-...
-patternZ  =  bodyZ
+case [expr] of
+[casePatternA] =  [caseBodyA]
+[casePatternB] =  [caseBodyB]
+[casePatternC] =  [caseBodyC]
+
+case [expr] of
+[casePatternX] -> [caseBodyX]
+[casePatternY] -> [caseBodyY]
+[casePatternZ] -> [caseBodyZ]
 ```
 
-Cases are similar to function implementations.
-This is because a case expression is internally translated to a function definition. 
+Guards can be introduce to a case which allows a case to have multiple guarded bodies.
+
+```
+// Language: Clean
+
+case [expr] of
+[patternA]
+| [guardA] = [bodyAA]
+| [guardB] = [bodyAB]
+| [guardC] = [bodyAC]
+[patternB] = [bodyB]
+```
+
+Internally, a $\textbf{case..in}$ expression is translated to a function definition.
+The cases are transformed into an implementation.
+
+```
+// Langauge: Clean
+
+_caseFn [casePatternA] = [caseBodyA]
+_caseFn [casePatternB] = [caseBodyB]
+_caseFn [casePatternC] = [caseBodyC]
+```
 
 Consequently, this can result in a run-time error when none of pattern matches since the expression is translated into a partial function.
 
-```
-// Language: Clean
-
-case 3 of
-1    = ...
-2    = ...
-```
-
-When a pattern matches the corresponding case, it will be chosen for evaluation 
-
-Guards can be used in case expressions as well, which allows each case to have more than one case body.
-
-```
-// Language: Clean
-
-case n of
-1            = ...
-2            = ...
-n
-| conditionX = ...
-| conditionY = ...
-| otherwise  = ...
-```
-
-Alternatively, $\rightarrow$ can be used to separate case pattern from case body.
-
-```
-// Language: Clean
-
-case n of
-1            -> ...
-2            -> ...
-n
-| conditionX -> ...
-| conditionY -> ...
-| otherwise  -> ...
-```
-
 ### 1.5 Pattern-Match Expressions
 
-A pattern-match expression is useful when dealing with algebraic types and algebraic constructors.
+A pattern-match expression checks an expression against a pattern or not.
 
 ```
 // Language: Clean
 
-expr := pattern
+[expr] := [pattern]
 ```
 
-Internally, it is compiled down to a $\textbf{case}$ expression.
-
-It checks an expression against a pattern, which either yield $\textbf{True}$ or $\textbf{False}$.
+Internally, it compiles down to a $\textbf{case..of}$ expression.
+It yields $\textbf{True}$ or $\textbf{False}$ similar to an equality check.
 
 ```
-:: T = X Int | Y Int Int | Z
+// Language: Clean
 
-isXorY T -> Bool
-isXorY a =  a =: (X _) || a =: (Y _ _)
+case [expr] of
+[pattern] = True
+_         = False
+
+```
+
+It is useful when dealing with algebraic types.
+
+```
+// Language: Clean
+
+:: Tree a = Node a (Tree a) (Tree a)
+          | Leaf
+
+isLeaf :: (Tree a) -> Bool
+isLeaf    t        =  t := (Leaf)
+
+isNode :: (Tree a) -> Bool
+isNode    t        =  t := (Tree x l r)
 ```
 
 ### 1.5 Local Definitions
@@ -379,8 +447,8 @@ A $\textbf{let}..\textbf{in}$ expression introduces a new scope inside an expres
 // Language: Clean
 
 let
-	localX  = ...
-	localY = ...
+    localX  = ...
+    localY = ...
 in expr
 ```
 
@@ -389,37 +457,37 @@ Anything defined inside a $\textbf{let}..\textbf{in}$ expression only has meanin
 ```
 // Language: Clean
 
-[let a = i * i in (a, a) \\ i <- [0..n]]
+[let 
+    a = i * i 
+in (a, a) \\ i <- [0..n]]
 ```
 
 #### 1.5.2 Where Blocks
 
-A $\textbf{where}$ block can be placed at the end of a function implementation which introduces a new scope.
+A $\textbf{where}$ block can be added at the end of a function implementation which introduces a new scope.
 
 ```
 // Language: Clean
 
-absolute :: Int -> Int
-absolute    n
-| n == 0        =  0
-| n <  0        =  negN
-| otherwise     =  n
+[fnName] [fnParam]
+| [guardA] = [bodyA]
+| [guardB] = [bodyB]
+| [guardC] = [bodyC]
 where
-	negN :: Int
-	negN =  n * (-1)
+	localX = [expr]
 ```
 
-This scope only has meaning in its corresponding implementation.
+For example:
 
 ```
 // Language: Clean
 
 absolute :: Int -> Int
-absolute    0   =  z
+absolute    0   =  z  // 1st impl
 where
 	z :: Int
 	z =  0
-absolute    n
+absolute    n         // 2nd impl
 | n <  0        =  negN
 | otherwise     =  n
 where
@@ -429,29 +497,25 @@ where
 
 The second implementation does not have access to $\text{z}$ which is defined in the first implementation.
 
-In addition, $\textbf{where}$ blocks can be nested.
-
-```
-// Language: Clean
-
-primes :: [Int]  
-primes =  sieve [2..]  
-where 
-    sieve :: [Int]  -> [Int]
-    sieve    [pr:r] =  [pr:sieve (f pr r)]  
-    where
-        f :: Int [Int]  -> [Int]
-        f    pr  [n:r]  
-        | n mod pr == 0 =  f pr r  
-        | otherwise     =  [n:f pr r]
-```
-
-In the function shown above, $\text{f}$ function is local to $\text{sieve}$ and $\text{sieve}$ function is local to $\text{primes}$.
-
-
 #### 1.5.3 With Blocks
 
-A $\textbf{with}$ block can be placed at the end of a guard which introduces a new scope.
+A $\textbf{with}$ block can be added at the end of a guarded body which introduces a new scope.
+
+
+```
+// Langauge: Clean
+
+[fnName] [fnParam]
+| [guardA] = [bodyA]
+with
+    localX = [expr]
+| [guardB] = [bodyB]
+with
+	localY = [expr]
+| [guardC] = [bodyC]
+```
+
+For example:
 
 ```
 // Language: Clean
@@ -465,9 +529,8 @@ with
 	negN =  n * (-1)
 | otherwise     =  n
 ```
-The scope only has meaning in its corresponding guard.
 
-The $\textbf{otherwise}$ guard does not have access to $\text{negN}$.
+The third guarded body does not have access to $\text{negN}$, which is local to the second guarded body.
 
 [Back to top](#)
 
@@ -490,10 +553,10 @@ From decimal notation:
 ```
 // Language: Clean
 
-n ::  Int
-n =  -13
-n =   0
-n =   13
+n :: Int
+n = -13
+n =  0
+n =  13
 ```
 
 From octal notation by prefixing octal digits with $\textbf{0}$:
@@ -501,10 +564,10 @@ From octal notation by prefixing octal digits with $\textbf{0}$:
 ```
 // Language: Clean
 
-n ::  Int
-n =  -015  // dec -13
-n =   0
-n =   015  // dec  13
+n :: Int
+n = -015  // dec -13
+n =  0
+n =  015  // dec  13
 ```
 
 From hexadecimal notation by prefixing hexadecimal digits with $\textbf{0x}$:
@@ -512,10 +575,10 @@ From hexadecimal notation by prefixing hexadecimal digits with $\textbf{0x}$:
 ```
 // Language: Clean
 
-n ::  Int
-n =  -0xD  // dec -13
-n =   0
-n =   0xd  // dec  13
+n :: Int
+n = -0xD  // dec -13
+n =  0
+n =  0xd  // dec  13
 ```
 
 More information about built-in operations and functions on integers can be found on [Appendix A: StdInt](appendix-a/stdint).
@@ -531,10 +594,10 @@ From decimal notation:
 ```
 // Language: Clean
 
-n ::  Real
-n =  -1.3
-n =   0.0
-n =   1.3
+n :: Real
+n = -1.3
+n =  0.0
+n =  1.3
 ```
 
 From scientific notation:
@@ -542,10 +605,10 @@ From scientific notation:
 ```
 // Language: Clean
 
-n ::  Int
-n =  -13E-2  // -0.13
-n =   0E0    //  0
-n =   13E-2  //  0.13
+n :: Real
+n = -13E-2  // -0.13
+n =  0E0    //  0
+n =  13E-2  //  0.13
 ```
 
 More information about built-in operations and functions on real numbers can be found on [Appendix A: StdReal](appendix-a/stdreal).
@@ -554,7 +617,7 @@ More information about built-in operations and functions on real numbers can be 
 
 **Type annotation**: $\textbf{Bool}$
 
-**Constructor**
+**Constructors**
 
 ```
 // Language: Clean
@@ -571,7 +634,7 @@ More information about built-in operations and functions on Booleans can be foun
 
 **Type annotation**: $\textbf{Char}$
 
-**Constructor**
+**Constructors**
 
 ```
 // Language: Clean
@@ -589,7 +652,7 @@ More information about built-in operations and functions on characters can be fo
 
 Constants of primitive types can be specified as pattern.
 
-Using integers as pattern:
+Using integer constants as pattern:
 
 ```
 // Language: Clean
@@ -600,7 +663,7 @@ fib    2   =  1
 fib    n   =  fib (n - 1) + fib (n - 2)
 ```
 
-Using characters as pattern:
+Using character constants as pattern:
 
 ```
 // Language: Clean
@@ -608,14 +671,14 @@ Using characters as pattern:
 isLetterA :: Char -> Bool
 isLetterA    'a'  =  True
 isLetterA    'A'  =  True
-isLetterA    _    =  False
+isLetterA     _   =  False
 ```
 
-### 2.2 Built-In Generic Types
+### 2.2 Lists
 
-#### 2.2.1 Lists
+#### 2.2.1 Defining A List
 
-**Annotation**: 
+**Type annotation**: 
 $[\textbf{Int}]$, 
 $[\textbf{Char}]$, 
 $[\textbf{T}]$, 
@@ -624,7 +687,7 @@ et cetera.
 A list can contain an infinite number of elements. 
 All elements must be of the same type. 
 
-**Constructions**
+**Constructors**
 
 From explicit enumeration of the elements:
 
@@ -690,21 +753,21 @@ More information about built-in operations and functions on lists can be found o
 - [Appendix A: StdList](appendix-a/stdlist), and
 - [Appendix A: StdOrdList](appendix-a/stdordlist).
 
-**De-structuring lists**
+#### 2.2.2 List Patterns
 
-Lists can be de-structured as follow:
+Lists can be specified as patterns as follow:
 
 ```
 // Language: Clean
 
 getFst :: [T]       -> T
-getFst    [x, _, _] =  x
+getFst    [x, y, z] =  x
 
 getSnd :: [T]       -> T
-getSnd    [_, y, _] =  y
+getSnd    [x, y, z] =  y
 
 getThd :: [T]       -> T
-getThd    [_, _, z] =  z
+getThd    [x, y, z] =  z
 ```
 
 The results of these function calls are as expected:
@@ -717,17 +780,17 @@ getSnd [1, 2, 3]  // 2
 getThd [1, 2, 3]  // 3
 ```
 
-However, all three functions will result in a run-time error if it is invoked with a list which does not have exactly three elements.
+However, they will result in a run-time error if it is invoked with a list which does not have exactly three elements.
 
 ```
 // Language: Clean
 
 getFst [1]          // NOT OK :(
 getSnd [1, 2]       // NOT OK :(
-getThd [1, 2, 3, 4] // NOT OK :(
+getThd [4, 3, 2, 1] // NOT OK :(
 ```
 
-To remedy this issue, an addition de-structuring element should be introduce.
+To remedy this issue, an addition element should be introduce.
 
 ```
 // Language: Clean
@@ -736,25 +799,26 @@ getFstAny :: [T]     -> T
 getFstAny    [x : r] =  x
 
 getSndAny :: [T]        -> T
-getSndAny    [_, y : r] =  y
+getSndAny    [x, y : r] =  y
 
 getThdAny :: [T]           -> T
-getThdAny    [_, _, z : r] =  z
+getThdAny    [x, y, z : r] =  z
 ```
 
-The de-structuring is greedy.
+The right-hand side of colon ($:$) matches with any number of elements, including zero.
+It is worth noting that $r$ is always a list.
 
 ```
 // Language: Clean
 
-getFstAny [1]           // 1
+getFstAny [1]           // x = 1
                         // r = []
 
-getFstAny [1, 2]        // 1
+getFstAny [1, 2]        // x = 1
                         // r = [2]
 
-getFstAny [1, 2, 3, 4]  // 1
-                        // r = [2, 3, 4]
+getFstAny [4, 3, 2, 1]  // x = 4
+                        // r = [3, 2, 1]
 ```
 
 However, the second function still requires the list to have at least two elements.
@@ -764,11 +828,13 @@ However, the second function still requires the list to have at least two elemen
 
 getSndAny [1]           // NOT OK :(
 
-getSndAny [1, 2]        // 2
+getSndAny [1, 2]        // x = 1
+                        // y = 2
                         // r = []
 
-getSndAny [1, 2, 3, 4]  // 2
-                        // r = [3, 4]
+getSndAny [4, 3 ,2 ,1]  // x = 4
+                        // y = 3
+                        // r = [2, 1]
 ```
 
 Similarly, the third function requires a list with at least three elements.
@@ -780,13 +846,17 @@ getThdAny [1]           // NOT OK :(
 
 getThdAny [1, 2]        // NOT OK :(
 
-getThdAny [1, 2, 3, 4]  // 3
-                        // r = [4]
+getThdAny [4, 3, 2, 1]  // x = 4
+                        // y = 3
+                        // z = 2
+                        // r = [1]
 ```
 
-#### 2.2.2 Tuples
+### 2.3 Tuples
 
-**Annotation**: 
+#### 2.3.1 Defining A Tuple
+
+**Type annotation**: 
 $(\textbf{T},\ \textbf{K})$, 
 $(\textbf{T},\ \textbf{K},\ \textbf{V})$, 
 $(\textbf{T},\ \textbf{K},\ \textbf{V},\ \textbf{E})$ 
@@ -796,7 +866,7 @@ A tuple contains finite number of elements.
 Elements do not have to be the same type.
 Every type appears in a tuple must be specified, and singleton tuples are not allowed.
 
-**Construction**
+**Constructors**
 
 ```
 // Language: Clean
@@ -809,16 +879,44 @@ B =  (0.2, False, "Hi")
 
 C :: (Int)
 C =  (2, 6)  // NOT OK should be (Int, Int)
+
+D :: (Int)
+D =  (2)     // NOT OK
 ```
 
-**De-structuring tuples**
+#### 2.3.2 Tuple Patterns
 
-Tuples can be de-structured in a similar methods to lists.
+Tuples can be used as patterns in a similar way to lists.
+However, colon ($:$) is not allowed in tuple patterns.
 
+```
+// Language: Clean
 
-#### 2.2.3 Arrays
+getFst :: (T, K, V) -> T
+getFst    (x, y, z) =  x
 
-**Annotation**: 
+getSnd :: (T, K, V) -> K
+getSnd    (x, y, z) =  y
+
+getThd :: (T, K, V) -> V
+getThd    (x, y, z) =  z
+```
+
+The results of these function calls are as expected:
+
+```
+// Language: Clean
+
+getFst (1, 'a', 1.0)  // 1
+getSnd (1, 'a', 1.0)  // 'a'
+getThd (1, 'a', 1.0)  // 1.0
+```
+
+### 2.4 Arrays
+
+#### 2.4.1 Defining An Array
+
+**Type annotation**: 
 $\{\textbf{Int}\}$, 
 $\{\textbf{Char}\}$, 
 $\{\textbf{T}\}$, 
@@ -827,7 +925,7 @@ et cetera.
 An array contains a finite number of elements.
 Elements of an array have to be of the same type.
 
-**Construction**
+**Constructors**
 
 ```
 // Language: Clean
@@ -839,7 +937,3 @@ Elements of an array have to be of the same type.
 // equivalent to
 // {'a', 'b', 'c'}
 ```
-
-**De-structuring arrays**
-
-Arrays can be de-structured in a similar methods to lists.

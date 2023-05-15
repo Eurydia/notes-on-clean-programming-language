@@ -119,7 +119,7 @@ A\rightarrow{B}\rightarrow{R}
 $$
 
 where:
-- $A, B$ are of type $[\textbf{T}]$, and
+- $A$ and $B$ are of type $[\textbf{T}]$, and
 - $R$ is of type $\textbf{Bool}$.
 
 Additionally, equality operation must be defined on $\textbf{T}$.
@@ -150,7 +150,7 @@ A\rightarrow{B}\rightarrow{R}
 $$
 
 where:
-- $A, B$ are of type $[\textbf{T}]$, and
+- $A$ and $B$ are of type $[\textbf{T}]$, and
 - $R$ is of type $\textbf{Bool}$.
 
 Additionally, equality operation must be defined on $\textbf{T}$.
@@ -181,7 +181,7 @@ A\rightarrow{B}\rightarrow{R}
 $$
 
 where:
-- $A, B$ are of type $[\textbf{T}]$, and
+- $A$ and $B$ are of type $[\textbf{T}]$, and
 - $R$ is of type $\textbf{Bool}$.
 
 Additionally, relational operations must be defined on $\text{T}$.
@@ -212,7 +212,7 @@ A\rightarrow{B}\rightarrow{R}
 $$
 
 where:
-- $A, B$ are of type $[\textbf{T}]$, and
+- $A$ and $B$ are of type $[\textbf{T}]$, and
 - $R$ is of type $\textbf{Bool}$.
 
 Additionally, relational operations must be defined on $\text{T}$.
@@ -243,7 +243,7 @@ A\rightarrow{B}\rightarrow{R}
 $$
 
 where:
-- $A, B$ are of type $[\textbf{T}]$, and
+- $A$ and $B$ are of type $[\textbf{T}]$, and
 - $R$ is of type $\textbf{Bool}$.
 
 Additionally, relational operations must be defined on $\textbf{T}$.
@@ -274,7 +274,7 @@ A\rightarrow{B}\rightarrow{R}
 $$
 
 where:
-- $A, B$ are of type $[\textbf{T}]$, and
+- $A$ and $B$ are of type $[\textbf{T}]$, and
 - $R$ is of type $\textbf{Bool}$.
 
 Additionally, relational operations must be defined on $\textbf{T}$.

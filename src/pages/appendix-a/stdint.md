@@ -11,7 +11,7 @@ Data of last revision: MAY 13th, 2023
 
 - [Part I: Arithmetic Operations](#part-i-arithmetic-operations)
 - [Part II: Relational Operations](#part-ii-relational-operations)
-- [Part III: Bitwise Operations](#part-iii-bitwise-operarions)
+- [Part III: Bitwise Operations](#part-iii-bitwise-operations)
 - [Part IV: Basic Functions](#part-iv-basic-functions)
 - [Part V: Property Functions](#part-v-property-functions)
 - [Part VI: Conversions To Integers](#part-vi-conversions-to-integers)
@@ -312,8 +312,7 @@ a\rightarrow{b}\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\textbf{Int}$,
-- $b$ is of type $\textbf{Int}$, and
+- $a$ and $b$ are of type $\textbf{Int}$, and
 - $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: checks if $a$ is less than or equal to $b$.

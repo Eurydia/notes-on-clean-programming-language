@@ -1,490 +1,894 @@
 ---
 layout: "@layouts/Blog.astro"
 title: Cleanpedia
-Last updated: May 10, 2023
+Last updated: May 13th, 2023
+
+Revisions: 2
+Data of last revision: 12 APR 2023
 ---
 
 ## Contents
 
-1. [Introduction](#introduction)
-2. [Types](#types)
-3. [Primitive types](#primitive-types)
-	1. [Integers](#integers)
-	2. [Real numbers](#real-numbers)
-	3. [Characters](#characters)
-	4. [Booleans](#booleans)
-4. [Structured types](#structured-types)
-	1. [Lists](#lists)
-	2. Arrays
-	3. Tuples
-5. Comprehensions
-6. Functions
-	1. Definitions
-	2. Invocation
-	3. Symbolic functions
-	4. Lambda functions
-7. Scoping
-	1. Function-local definition
-	2. Guard-local definition
-8. Pattern matching
+- [Introduction](#introduction)
+- [Chapter I: Functions](#chapter-i-functions)
+- [Chapter II: Built-in Types](#chapter-ii-built-in-types)
+- [Chapter III: Defining New Types](#chapter-iii-defining-new-types)
+- [Chapter IV: Overloading](#chapter-iv-overloading)
+- [Appendix A: Standard Environment](./appendix-a)
 
 ## Introduction
 
-My motivation is to create an accessible, concise, and clear documentation which can be used by those who wishes to learn Clean.
+The motivation of this reference is to create an accessible, concise, and clear documentation for those who are seeking to learn CLEAN.
 
 The same information can be found on:
-- [Cloogle](https://cloogle.org/) which is the language's search engine, and
-- [language report](https://cloogle.org/doc/) which describes the syntax and BNF of Clean.
+
+-   [Cloogle](https://cloogle.org/) which is the language’s search engine, and
+-   [language report](https://cloogle.org/doc/) which describes the syntax and BNF of Clean.
 
 If you notice any mistake or have suggestions for improvements, please feel free to contact me through the following channels:
-- Email: b9xp3x@inf.elte.hu
-- Instragram: [@_kornthana](https://www.instagram.com/_kornthana/)
-- Telegram channel:  https://t.me/+El6CtwOD8KxhYmU9
 
-## Types
+-   Email: [b9xp3x@inf.elte.hu](mailto:b9xp3x@inf.elte.hu)
+-   Instagram: [@_kornthana](https://www.instagram.com/_kornthana/)
+-   Telegram channel: [https://t.me/+El6CtwOD8KxhYmU9](https://t.me/+El6CtwOD8KxhYmU9)
 
-Types define the kind of data used in a program and the operations that can be performed on it.
-Correct usage is important for program functionality and efficiency.
+## Chapter I: Functions
 
-Types can only interact with themselves due to lack of implicit type conversion.
+### 1.1 Defining A Function
 
-### Variable specification
-
-**Syntax**
-
-The syntax for specifying a variable type is shown below.
+An implementation of a function has the following syntax.
 
 ```
 // Language: Clean
 
-exVar :: T
+[fnName] [fnParams] =  [fnBody]
+[fnName] [fnParams] => [fnBody]
 ```
 
-Practically, variable specifications may look similar to the following:
-
-```
-// Language: Clean
-
-width :: Int
-width =  12
-
-area :: Int
-area =  width * width
-```
-
-**Possible error**
-
-It is important to keep in mind that a variable declaration must immediately follow its type specification.
+A function definition consists of, at least, one implementation.
 
 ```
 // Language: Clean
 
-exInt :: Int
-
-...code...
-
-exInt =  12 // NOT OK :(
+isNatural :: Int -> Bool
+isNatural    n   =  n > 0
 ```
 
-In this case, $\text{exInt}$ will cause a compilation error with a message which states:
-
-```
-Error [...]: function body expected.
-```
-
-To resolve the error, simply move the variable declaration up
+If a function has multiple implementations, each implementation must share the the same name.
 
 ```
 // Language: Clean
 
-exInt :: Int
-exInt =  12  // OK
-
-...code...
+fib :: Int -> Int
+fib    1   =  1
+fib    2   =  1  
+fib    n   =  fib (n - 1) + fib (n - 2)
 ```
 
-or move the type specification down.
-
-```
-// Language: Clean
-
-...code...
-
-exInt :: Int
-exInt =  12  // OK
-```
-
-#### Function specification
-
-**Syntax**
-
-The syntax for specifying a function type is shown below.
+It is required that implementations of a function are textually grouped together.
+As such, the following is not allowed.
 
 ```
 // Language: Clean
 
-exFuncX :: T            -> K
+fib :: Int -> Int
+fib    1   =  1
 
-exFuncY :: T K          -> V
+// ...some code
 
-exFuncZ :: T1 T2 ... Tn -> K
+fib    2   =  1
 ```
 
-$\text{exFuncX}$ has one parameter of type $T$.
-Its return type is $K$.
+Implementations are tried in textual order.
+An implementation will be chosen, if the arguments of a function call matched with the parameters.
 
-$\text{exFuncY}$ has two parameters.
-The first parameters has type $T$, and the second of $K$.
-Its return type is $V$.
+For example:
 
-$\text{exFuncZ}$ has $n$ parameters.
-The $n$-th parameter has type $T_{n}$.
-
-**Class context**
-
-Class context ensures that operations are available on a generic type.
-
-It has the following syntax:
+When invoked with $2$, the first implementation is tried.
 
 ```
 // Language: Clean
 
-exFuncX :: T   -> K | + T
-
-exFuncY :: T K -> V | +, / T
-
-exFuncZ :: T K -> V | + T & ^ K
+fib 2
 ```
 
-In $\text{exFuncX}$, $+$ must be available on $T$.
+The argument ($2$) fails to match with the parameter ($1$).
+Therefore, the first implementation is not evaluated.
 
-In $\text{exFuncY}$, $+$ and $/$ must be available on $T$.
+The second implementation is tried.
+The argument matches with the parameter.
+Thus, the second implementation is evaluated.
 
-In $\text{exFuncZ}$, $+$ must be available on $T$ and $^\wedge$  must be available on $K$.
+In this call, the third implementation is never reached.
 
-More context can be added by following the same pattern.
+Similarly, if it is invoked with $9$, the first and second implementation are tried, but the third is evaluated.
 
-### Type definition
+```
+// Language: Clean
 
-### Algebraic type
+fib 9
+```
 
-**tba**
+Following this logic, if the implementation order is changed, then the function would behave unintentionally.
 
-### Higher-order types
+```
+// Language: Clean
 
-**tba**
+fib :: Int -> Int
+fib    n   =  fib (n - 1) + fib (n - 2)  // 3rd
+fib    1   =  1                          // 1st
+fib    2   =  2                          // 2nd
+```
+
+In this case, $n$ will match with any integer, any implementation following it is never reached.
+
+It is important to recognize that, this parameter-matching behavior is not the same as performing equality checks.
+
+**Guarded bodies**
+
+A guarded body can be introduce to an implementation of a function.
+It allows an implementation to have multiple function bodies, instead of just one.
+
+It has the following syntax.
+
+```
+// Language: Clean
+
+[fnName] [fnParams]
+| [guardA]         = [bodyA]
+| [guardB]         = [bodyB]
+| [guardC]         = [bodyC]
+```
+
+Additionally, guarded bodies can be nested. 
+
+```
+// Language: Clean
+
+[fnName] [fnParams]
+| [guardA]
+    | [guardAA]    = [bodyAA]
+    | [guardAB]    = [bodyAB]
+| [guardB]         = [bodyB]
+| [guardC]         = [bodyC]
+```
+
+A guard is a Boolean expression.
+
+```
+// Language: Clean
+
+signum :: Int -> Int
+signum    0   =  0
+signum    n
+| n > 0       =  1
+| n < 0       = -1
+```
+
+Guards are tried in textual order, but only after their implementation is chosen.
+
+For example:
+
+When called with $0$, the first implementation is tried.
+
+```
+// Language: Clean
+
+signum 0
+```
+
+The argument and parameter match.
+Thus, the body of the first implementation is evaluated.
+
+In this call, none of the guards were tried, since the implementation that they belong to was not chosen.
+
+Instead, if it is called with a non-zero integer, the first implementation will fail to match.
+
+```
+// Language: Clean
+
+signum -9
+```
+
+In this case, the first guard ($n\gt{0}$) is tried.
+It evaluates to $\textbf{False}$.
+Its body is not evaluated.
+
+The second guard is tried ($n\lt{0}$).
+It evaluates to $\textbf{True}$.
+Therefore, the body of the second guard is evaluated.
+
+Alternatively, $\textbf{otherwise}$ keyword can be used instead of an expression.
+Its value is always $\textbf{True}$.
+
+```
+// Language: Clean
+
+signum :: Int -> Int
+signum    0   =  0
+signum    n
+| n > 0       =  1
+| otherwise   = -1
+```
+
+As such, order of the guarded bodies also matters.
+
+```
+// Language: Clean
+
+
+signum :: Int -> Int
+signum    0   =  0
+signum    n
+| otherwise   = -1
+| n > 0       =  1
+```
+
+**Partial functions**
+
+It is important to recognize that, an implementation with guarded bodies can be partial.
+
+Such implementations will result in a run-time error when invoked outside its domain.
+
+```
+// Language: Clean
+
+fib :: Int -> Int
+fib    n
+| n == 1   =  1                          
+| n == 2   =  1                         
+| n >  2   =  fib (n - 1) + fib (n - 2)
+```
+
+The function above is partial.
+It results in a run-time error when invoked any integer less than one.
+
+This partial behavior extends to a function definition as well.
+
+```
+// Language: Clean
+
+fib :: Int -> Int
+fib    1   =  1
+fib    2   =  1
+fib    n   =  fib (n - 1) + fib (n - 2)
+```
+
+This version also results in run-time error when invoked with $n\le{0}$, even though it does not have guarded bodies.
+
+### 1.2 Operators
+
+Operators are arity-two functions.
+They can be applied in infix position or invoked like ordinary functions.
+
+```
+// Language: Clean
+
+1 + 1  // applied as an operator
+```
+
+To invoke an operator as an ordinary function, the operator name must be placed inside parentheses, and in front of its argument.
+
+```
+// Language: Clean
+
+(+) 1 1  // invoked as an ordinary function
+```
+
+When applied in infix position, both arguments must be given.
+Operators can be curried, but only when they are invoked as ordinary functions.
+
+**Operator precedence**
+
+The precedence determines how tightly an operator binds to its argument.
+Precedence can be between zero and nine with higher number having higher precedence.
+
+The precedence of an operator is nine by default.
+
+**Operator fixity**
+
+The fixity is important when evaluating two operators of the same precedence.
+There are two relevant fixities:
+- $\textbf{infixl}$ for left-associated operators, and
+- $\textbf{infixr}$ for right-associated operators.
+
+The fixity is left-associated by default.
+
+**Defining an operator**
+
+An operator can be defined by placing its name between parentheses.
+It can be implemented as if it was an ordinary function.
+
+```
+// Language: Clean
+
+([fnName]) [fnParamL] [fnParamR] =  [fnBody]
+([fnName]) [fnParamL] [fnParamR] => [fnBody]
+```
+
+Precedence and fixity of an operator can be defined in its type declaration, but they can be omitted.
+
+```
+// Language: Clean
+
+(->) infixr 9 :: Bool Bool  -> Bool
+(->)             True False =  False
+(->)             _    _     =  True
+```
+
+Definition with omitted fixity and precedence can be done as follow:
+
+```
+// Language: Clean
+
+(<=>) :: Bool Bool -> Bool
+(<=>)    x    y    =  x == y
+```
+
+**Conflict between operators**
+
+It is not allowed to apply operators with equal precedence in an expression in such a way that their fixity conflict. 
+
+```
+// Language: Clean
+
+True -> False <=> False
+```
+
+The $\rightarrow$ operator is a right-associated.
+It implies that the expression should be evaluated as follows.
+
+```
+// language: Clean
+
+True -> (False <=> False)
+```
+
+However, the $\iff$ operator is left associated.
+It implies that the expression should be evaluated as follows.
+
+```
+// language: Clean
+
+(True -> False) <=> False
+```
+
+Since both operators have the same precedence and the order of evaluation cannot be decided by their fixity, this expression will result in a compile-time error.
+
+### 1.3 Lambda Functions
+
+A lambda function is defined "on the spot" as an expression.
+However, it cannot have local definitions or guards.
+
+A lambda function has following syntax.
+
+```
+// Language: Clean
+
+\[fnParam] =  [fnBody]
+\[fnParam] -> [fnBody]
+```
+
+Parameters of a lambda function are separated by spaces.
+
+```
+// Language: Clean
+
+\paramA        = ...
+\paramA paramB = ...
+```
+
+### 1.4 Case Expressions
+
+In a $\textbf{case..in}$ expression, cases are tried in textual order.
+Each case contains a pattern and a case body.
+
+```
+// Language: Clean
+
+case [expr] of
+[casePatternA] =  [caseBodyA]
+[casePatternB] =  [caseBodyB]
+[casePatternC] =  [caseBodyC]
+
+case [expr] of
+[casePatternX] -> [caseBodyX]
+[casePatternY] -> [caseBodyY]
+[casePatternZ] -> [caseBodyZ]
+```
+
+Guards can be introduce to a case which allows a case to have multiple guarded bodies.
+
+```
+// Language: Clean
+
+case [expr] of
+[patternA]
+| [guardA] = [bodyAA]
+| [guardB] = [bodyAB]
+| [guardC] = [bodyAC]
+[patternB] = [bodyB]
+```
+
+Internally, a $\textbf{case..in}$ expression is translated to a function definition.
+The cases are transformed into an implementation.
+
+```
+// language: Clean
+
+_caseFn [casePatternA] = [caseBodyA]
+_caseFn [casePatternB] = [caseBodyB]
+_caseFn [casePatternC] = [caseBodyC]
+```
+
+Consequently, this can result in a run-time error when none of pattern matches since the expression is translated into a partial function.
+
+### 1.5 Pattern-Match Expressions
+
+A pattern-match expression checks an expression against a pattern or not.
+
+```
+// Language: Clean
+
+[expr] := [pattern]
+```
+
+Internally, it compiles down to a $\textbf{case..of}$ expression.
+It yields $\textbf{True}$ or $\textbf{False}$ similar to an equality check.
+
+```
+// Language: Clean
+
+case [expr] of
+[pattern] = True
+_         = False
+
+```
+
+It is useful when dealing with algebraic types.
+
+```
+// Language: Clean
+
+:: Tree a = Node a (Tree a) (Tree a)
+          | Leaf
+
+isLeaf :: (Tree a) -> Bool
+isLeaf    t        =  t := (Leaf)
+
+isNode :: (Tree a) -> Bool
+isNode    t        =  t := (Tree x l r)
+```
+
+### 1.5 Local Definitions
+
+#### 1.5.1 Let Expressions
+
+A $\textbf{let}..\textbf{in}$ expression introduces a new scope inside an expression.
+
+```
+// Language: Clean
+
+let
+    localX  = ...
+    localY = ...
+in expr
+```
+
+Anything defined inside a $\textbf{let}..\textbf{in}$ expression only has meaning in $\text{expr}$.
+
+```
+// Language: Clean
+
+[let 
+    a = i * i 
+in (a, a) \\ i <- [0..n]]
+```
+
+#### 1.5.2 Where Blocks
+
+A $\textbf{where}$ block can be added at the end of a function implementation which introduces a new scope.
+
+```
+// Language: Clean
+
+[fnName] [fnParam]
+| [guardA] = [bodyA]
+| [guardB] = [bodyB]
+| [guardC] = [bodyC]
+where
+    localX = [expr]
+```
+
+For example:
+
+```
+// Language: Clean
+
+absolute :: Int -> Int
+absolute    0   =  z  // 1st impl
+where
+    z :: Int
+    z =  0
+absolute    n         // 2nd impl
+| n <  0        =  negN
+| otherwise     =  n
+where
+    negN :: Int
+    negN =  n * (-1)
+```
+
+The second implementation does not have access to $\text{z}$ which is defined in the first implementation.
+
+#### 1.5.3 With Blocks
+
+A $\textbf{with}$ block can be added at the end of a guarded body which introduces a new scope.
+
+
+```
+// language: Clean
+
+[fnName] [fnParam]
+| [guardA] = [bodyA]
+with
+    localX = [expr]
+| [guardB] = [bodyB]
+with
+    localY = [expr]
+| [guardC] = [bodyC]
+```
+
+For example:
+
+```
+// Language: Clean
+
+absolute :: Int -> Int
+absolute    n
+| n == 0        =  0
+| n <  0        =  negN
+with
+    negN :: Int
+    negN =  n * (-1)
+| otherwise     =  n
+```
+
+The third guarded body does not have access to $\text{negN}$, which is local to the second guarded body.
 
 [Back to top](#)
 
 ---
 
-## Primitive types
+## Chapter II: Built-In Types
 
-### Integers
+Certain types like integers, Booleans, characters, real numbers, lists, tuples and arrays are  frequently used that they have been predefined for reasons of efficiency and convenience.
 
-**Type annotation**: $\text{Int}$
+### 2.1 Primitive Types
 
-**Constructions**
+#### 2.1.1 Integers
 
-There are four methods to construct an $\text{Int}$ literal.
+**Type annotation**: $\textbf{Int}$
 
-$\text{Int}$ literal construction from decimal notation:
+**Constructors**
 
-```
-// Language: Clean
-
-decimal :: Int
-decimal =  999
-decimal =  99
-decimal =  9
-```
-
-$\text{Int}$ literal construction using octal notation with $0$ prefix:
+From decimal notation:
 
 ```
 // Language: Clean
 
-octal :: Int
-octal =  01747 // decimal 999
-octal =  0143  // decimal 99
-octal =  011   // decimal 9
+n :: Int
+n = -13
+n =  0
+n =  13
 ```
 
-$\text{Int}$ literal construction using hexadecimal notation with $0\text{x}$ prefix:
-
-```
-// Language: Clean
-
-hexadecimal :: Int
-hexadecimal =  0x3E7 // decinal 999
-hexadecimal =  0x63  // decimal 99
-hexadecimal =  0x9   // decimal 9
-```
-
- $\text{Int}$ literal construction using scientific notation:
+From octal notation by prefixing octal digits with $\textbf{0}$:
 
 ```
 // Language: Clean
 
-scientific :: Int
-scientific =  0.999E3 // 999
-scientific =  0.99E2  // 99
-scientific =  0.9E1   // 9
+n :: Int
+n = -015  // dec -13
+n =  0
+n =  015  // dec  13
 ```
 
-When constructing an integer using scientific notation, it is possible to construct a real number instead.
-
-```
-// Language: Clean
-
-maybeInt :: Int
-maybeInt =  0.9E0 // 0.9 :(
-```
-
-In such a case, a compile-time error will be thrown with the following message.
-
-```
-Type error [...]: cannot unify demanded type with offered type:
-Int
-Real
-```
-
-To resolve this issue, ensure that an integer is constructed.
-
-**Operations**:
-- [arithmetic operations](stdint.md#arithmetic-operations),
-- [relational operations](stdint.md#relational-operations), and
-- [bitwise operations](stdint.md#bitwise-operations).
-
-**Functions**:
-- [basic functions](stdint.md#basic-functions), and
-- [property functions](stdint.md#property-functions).
-
-**Type conversions**
-
-The built-in function $\text{toInt}$ explicitly converts other types to $\text{Int}$.
-It supports the conversion of the following types:
-- $\text{Real}\rightarrow\text{Int}$,
-- $\text{Char}\rightarrow\text{Int}$, and
-- $\text{String}\rightarrow\text{Int}$.
-
-See also [conversions to integers](stdint.md#conversions-to-integers).
-
-### Real numbers
-
-**Type annotation**: $\text{Real}$
-
-**Constructions**
-
-There are two methods to construct a $\text{Real}$ literal.
-
-$\text{Real}$ literal construction using decimal notation:
+From hexadecimal notation by prefixing hexadecimal digits with $\textbf{0x}$:
 
 ```
 // Language: Clean
 
-decimal :: Real
-decimal =  999.9
-decimal =  99.9
-decimal =  9.9
+n :: Int
+n = -0xD  // dec -13
+n =  0
+n =  0xd  // dec  13
 ```
 
-$\text{Real}$ literal construction using scientific notation:
+More information about built-in operations and functions on integers can be found on [Appendix A: StdInt](appendix-a/stdint).
 
-```
-// Language: Clean
+#### 2.1.2 Real Numbers
 
-scientific :: Real
-scientific = 0.9999E3 // decimal 999.9
-scientific = 0.999E2  // decimal 99.9
-scientific = 0.99E1   // decimal 9.9
-```
+**Type annotation**: $\textbf{Real}$
 
-$\text{Real}$ literals cannot be constructed using octal or hexadecimal notation.
+**Constructors**
 
-**Operations**:
-- [arithmetic operations](stdreal.md#arithmetic-operations), and
-- [relational operations](stdreal.md#relational-operations).
-
-**Functions**:
-- [basic functions](stdreal.md#basic-functions),
-- [trigonometric functions](stdreal.md#trigonometric-functions), and
-- [property functions](stdreal.md#property-functions).
-
-**Type conversions**
-
-The built-in function $\text{toReal}$ explicitly converts other types to $\text{Real}$.
-It supports the following types:
-- $\text{Int}\rightarrow\text{Real}$, and
-- $\text{String}\rightarrow\text{Real}$.
-
-See also [conversions to real numbers](stdreal.md#conversions-to-real-numbers).
-
-### Characters
-
-**Type annotation**: $\text{Char}$
-
-**Construction**
-
-There is only one method to construct a $\text{Char}$ literal.
+From decimal notation:
 
 ```
 // Language: Clean
 
-character :: Char
-character =  '1'
-character =  'a'
-character =  'A'
+n :: Real
+n = -1.3
+n =  0.0
+n =  1.3
 ```
 
-**Operations**:
-- [arithmetic operations](stdchar.md#arithmetic-operations), and
-- [relational operations](stdchar.md#relational-operations).
-
-**Functions**:
-- [basic functions](stdchar.md#basic-functions), and
-- [property functions](stdchar.md#property-functions).
-
-**Type conversions** 
-
-The built-in function $\text{toChar}$ explicitly converts $\text{Int}$ to $\text{Char}$.
-
-See also [conversions to characters](stdchar.md#conversions-to-characters).
-
-### Booleans
-
-**Type annotation**: $\text{Bool}$
-
-**Construction**
-
-There is one method to construct a $\text{Bool}$ literal.
+From scientific notation:
 
 ```
 // Language: Clean
 
-boolean :: Bool
-boolean =  True
-boolean =  False
+n :: Real
+n = -13E-2  // -0.13
+n =  0E0    //  0
+n =  13E-2  //  0.13
 ```
 
-**Operation**:
-- [logical operations](appendix-a/stdbool#logical-operations).
+More information about built-in operations and functions on real numbers can be found on [Appendix A: StdReal](appendix-a/stdreal).
 
-[Back to top](#)
+#### 2.1.3 Booleans
 
----
+**Type annotation**: $\textbf{Bool}$
 
-## Structured types
-
-### Lists
-
-**Type Annotation**: $[T]$
-
-**Characteristics**:
-- hold one type, and
-- have dynamic size.
-
-**Constructions**
-
-There multiple methods to construct a $\text{[T]}$ literal.
-
-$\text{[T]}$ literal construction using explicit enumeration of elements:
+**Constructors**
 
 ```
 // Language: Clean
 
-list :: [Int]
-list =  [1, 3, 5, 7, 9]
+b :: Bool
+b =  True
+b =  False
 ```
 
-$\text{[T]}$  literal construction using head and tails:
+More information about built-in operations and functions on Booleans can be found on [Appendix A: StdBool](appendix-a/stdbool).
 
-```
-// Language: Clean
 
-list :: [Int]
-list =  [1 : [3, 5, 7, 9]]
-list =  [1, 3, 5 : [7, 9]]
-list =  [1 : [3 : [5 : [7 : [9 : []]]]]]  
-list =  [1 : 3 : 5 : 7 : 9 : []]  
-```
+#### 2.1.4 Characters
 
-Shorthands are provided for $\text{[T]}$ construction.
+**Type annotation**: $\textbf{Char}$
 
-$\text{[T]}$ construction using DotDot expressions:
+**Constructors**
 
 ```
 // Language: Clean
 
-list :: [Int]
-list =  [1, 3..9] // [1, 3, 5, 7, 9]  
-list =  [1..9]    // [1, 2, 3, 4, 5, 6, 7, 8, 9]  
-list =  [1..]     // [1, 2, 3, 4, 5, ...]  
+c :: Char
+b =  'a'
+b =  '9'
+b =  'Z'
+b =  '+'
 ```
 
-$\text{[T]}$ construction using [list comprehensions](#comprehensions).
+More information about built-in operations and functions on characters can be found on [Appendix A: StdChar](appendix-a/stdchar).
 
-Special shorthands are provided for $[\text{Char}]$ constructions.
+#### 2.1.5 Parameter-Matching Primitive Types
 
-```
-// Language: Clean
+Constants of primitive types can be specified as pattern.
 
-charList :: [Char]
-charList =  ['a', 'b', 'c']  
-charList =  ['abc']
-charList =  ['ab','c']
-charList =  ['a'..'c']
-```
-
-**Operations**:
-- [basic operations](#appendix-a/lists#basic-operations)
-- [relational operations](#appendix-a/lists#relational-operations)
-
-**Functions**:
-- [basic functions](stdordlist.md#basic-functions)
-- [ordering functions](stdordlist.md#ordering-functions)
-- [higher-order functions](stdordlist.md#higher-order-functions)
-
-**Functions on $[\text{Bool}]$**:
-- [boolean list functions](stdordlist.md#boolean-list-functions)
-
-**Functions on $[\text{Char}]$**:
-- [character list functions](stdordlist.md#character-list-functions)
-
-### Arrays
-
-**Characteristcs**:
-- holds one type, and
-- has fixed size.
-
-**Annotation**: $\text{\{T\}}$
-
-**Constructions**:
+Using integer constants as pattern:
 
 ```
 // Language: Clean
 
-A :: {Char}
-A =  {'a', 'b', 'c'}
-
-B :: String
-B =  "abc"             // also an array of characters
+fib :: Int -> Int  
+fib    1   =  1  
+fib    2   =  1  
+fib    n   =  fib (n - 1) + fib (n - 2)
 ```
 
-**Operations**:
-- [[#Arrays: Standard operators]]
-- [[#Arrays: Methods]]
+Using character constants as pattern:
 
-### Tuples
+```
+// Language: Clean
 
-**Characteristcs**:
-- can hold multiple type,
-- must hold at least two items, and
-- has finite length.
+isLetterA :: Char -> Bool
+isLetterA    'a'  =  True
+isLetterA    'A'  =  True
+isLetterA     _   =  False
+```
 
-**Annotation**: $(\text{T}_{1}, ..., \text{T}_{n})$
+### 2.2 Lists
 
-**Constructions**:
+#### 2.2.1 Defining A List
+
+**Type annotation**: 
+$[\textbf{Int}]$, 
+$[\textbf{Char}]$, 
+$[\textbf{T}]$, 
+et cetera.
+
+A list can contain an infinite number of elements. 
+All elements must be of the same type. 
+
+**Constructors**
+
+From explicit enumeration of the elements:
+
+```
+// Language: Clean
+
+[1, 3, 5, 7, 9]
+[1 : [3, 5, 7, 9]]  
+[1, 3, 5 : [7, 9]]
+[1 : [3 : [5 : [7 : [9 : []]]]]]  
+[1 : 3 : 5 : 7 : 9 : []]  
+```
+
+From implicit enumeration with $\textbf{dot-dot}$ expression:
+
+```
+// Language: Clean
+
+[1..]       // infitite list [1, 2, 3, ...]
+[1, 3..]    // infinite list [1, 3, 5, ...]
+[1..5]      // [1, 2, 3, 4, 5]
+[1, 3..10]  // [1, 3, 5, 7, 9]
+```
+
+It  should be noted that $\textbf{dot-dot}$ expressions requires $\text{StdEnum}$ module.
+
+From list comprehension:
+
+```
+// Language: Clean
+
+// extract from a list
+[el \\ el <- list]
+
+// extract from an array
+[el \\ el <-: array]
+
+// cartesian product
+[(x, y) \\ x <- xs , y <- ys]
+
+// pair-wise zip
+[(x, y) \\ x <- xs & y <- ys]
+
+// same as filter
+[x \\ x <- xs | P x]
+
+// nested
+[(x, y) \\ x <- xs, y <- [1..x]]
+```
+
+A special notation for constructing a list of characters is also provided:
+
+```
+// Language: Clean
+
+['a', 'b', 'c']  
+['abc']
+['ab','c']
+```
+
+More information about built-in operations and functions on lists can be found on:
+- [Appendix A: StdCharList](appendix-a/stdcharlist),
+- [Appendix A: StdList](appendix-a/stdlist), and
+- [Appendix A: StdOrdList](appendix-a/stdordlist).
+
+#### 2.2.2 List Patterns
+
+Lists can be specified as patterns as follow:
+
+```
+// Language: Clean
+
+getFst :: [T]       -> T
+getFst    [x, y, z] =  x
+
+getSnd :: [T]       -> T
+getSnd    [x, y, z] =  y
+
+getThd :: [T]       -> T
+getThd    [x, y, z] =  z
+```
+
+The results of these function calls are as expected:
+
+```
+// Language: Clean
+
+getFst [1, 2, 3]  // 1
+getSnd [1, 2, 3]  // 2
+getThd [1, 2, 3]  // 3
+```
+
+However, they will result in a run-time error if it is invoked with a list which does not have exactly three elements.
+
+```
+// Language: Clean
+
+getFst [1]          // NOT OK :(
+getSnd [1, 2]       // NOT OK :(
+getThd [4, 3, 2, 1] // NOT OK :(
+```
+
+To remedy this issue, an addition element should be introduce.
+
+```
+// Language: Clean
+
+getFstAny :: [T]     -> T
+getFstAny    [x : r] =  x
+
+getSndAny :: [T]        -> T
+getSndAny    [x, y : r] =  y
+
+getThdAny :: [T]           -> T
+getThdAny    [x, y, z : r] =  z
+```
+
+The right-hand side of colon ($:$) matches with any number of elements, including zero.
+It is worth noting that $r$ is always a list.
+
+```
+// Language: Clean
+
+getFstAny [1]           // x = 1
+                        // r = []
+
+getFstAny [1, 2]        // x = 1
+                        // r = [2]
+
+getFstAny [4, 3, 2, 1]  // x = 4
+                        // r = [3, 2, 1]
+```
+
+However, the second function still requires the list to have at least two elements.
+
+```
+// Language: Clean
+
+getSndAny [1]           // NOT OK :(
+
+getSndAny [1, 2]        // x = 1
+                        // y = 2
+                        // r = []
+
+getSndAny [4, 3 ,2 ,1]  // x = 4
+                        // y = 3
+                        // r = [2, 1]
+```
+
+Similarly, the third function requires a list with at least three elements.
+
+```
+// Language: Clean
+
+getThdAny [1]           // NOT OK :(
+
+getThdAny [1, 2]        // NOT OK :(
+
+getThdAny [4, 3, 2, 1]  // x = 4
+                        // y = 3
+                        // z = 2
+                        // r = [1]
+```
+
+### 2.3 Tuples
+
+#### 2.3.1 Defining A Tuple
+
+**Type annotation**: 
+$(\textbf{T},\ \textbf{K})$, 
+$(\textbf{T},\ \textbf{K},\ \textbf{V})$, 
+$(\textbf{T},\ \textbf{K},\ \textbf{V},\ \textbf{E})$ 
+et cetera.
+
+A tuple contains finite number of elements. 
+Elements do not have to be the same type.
+Every type appears in a tuple must be specified, and singleton tuples are not allowed.
+
+**Constructors**
 
 ```
 // Language: Clean
@@ -496,281 +900,687 @@ B :: (Real, Bool, String)
 B =  (0.2, False, "Hi")
 
 C :: (Int)
-C =  (2, 6)                // NOT OK should be (Int, Int)
+C =  (2, 6)  // NOT OK should be (Int, Int)
+
+D :: (Int)
+D =  (2)     // NOT OK
 ```
 
-**Operations**:
-- [[#Tuples: Relational operators]]
-- [[#Tuples: Methods]]
+More information about built-in operations and functions on lists can be found on:
+- [Appendix A: StdTuple](appendix-a/stdtuple).
+
+
+#### 2.3.2 Tuple Patterns
+
+Tuples can be used as patterns in a similar way to lists.
+However, colon ($:$) is not allowed in tuple patterns.
+
+```
+// Language: Clean
+
+getFst :: (T, K, V) -> T
+getFst    (x, y, z) =  x
+
+getSnd :: (T, K, V) -> K
+getSnd    (x, y, z) =  y
+
+getThd :: (T, K, V) -> V
+getThd    (x, y, z) =  z
+```
+
+The results of these function calls are as expected:
+
+```
+// Language: Clean
+
+getFst (1, 'a', 1.0)  // 1
+getSnd (1, 'a', 1.0)  // 'a'
+getThd (1, 'a', 1.0)  // 1.0
+```
+
+### 2.4 Arrays
+
+#### 2.4.1 Defining An Array
+
+**Type annotation**: 
+$\{\textbf{Int}\}$, 
+$\{\textbf{Char}\}$, 
+$\{\textbf{T}\}$, 
+et cetera.
+
+An array contains a finite number of elements.
+Elements of an array have to be of the same type.
+
+**Constructors**
+
+```
+// Language: Clean
+
+{1, 2, 3, 4}
+{1.0, 2.0, 3.0, 4.0}
+
+"abc" 
+// equivalent to
+// {'a', 'b', 'c'}
+```
+
+An array can be constructed from comprehension by surrounding a comprehension with $\{\ldots\}$.
+
+More information about built-in operations and functions on lists can be found on:
+- [Appendix A: StdArray](appendix-a/stdarray), and
+- [Appendix A: StdString](appendix-a/stdstring).
 
 [Back to top](#)
 
 ---
 
-## Comprehensions
+## Chapter III: Defining New Types
 
-Both arrays and lists can be constructed with comprehension.
-Use **$[...]$** to construct a list and **$\{...\}$** to construct an array.
+As a strongly typed language, every object and function in CLEAN has a type. 
+The basic can be extended with algebraic types, record types, abstract types and synonym types.
 
-```
-// Language: Clean
-A :: [T]
-A =  [el \\ el <- list]                  // extract from a list
+New types can only be defined on the global level. 
 
-B :: [T]
-B =  [el \\ el <-: array]                // extract from an array
+### 3.1 Algebraic Data Types
 
-C :: [(T, K)]
-C =  [(x, y) \\ x <- xs , y <- ys]       // cartesian product
+#### 3.1.1 Defining An Algebraic Data Type
 
-D :: [(T, K)]
-D =  [(x, y) \\ x <- xs & y <- ys]       // pair-wise zip
+An algebraic data type introduces a new data structure and a constructor.
 
-F :: [T]
-F =  [x \\ x <- xs | P x]                // same as filter
-
-G :: [(T, K)]
-G =  [(x, y) \\ x <- xs, y <- [1..x]]    // nested
-```
-
-## Functions
-
-### Definition
-
-A Syntax for function can be as minimal as shown below.
+It has the following syntax.
 
 ```
 // Language: Clean
 
-func_x :: T   -> K
-func_x    ... =  ...
+:: [tName] = [tConstructor]
 ```
 
-Conditional branches in functions can be defined as shown below.
-
-```
-// Language: Clean
-
-// using guards
-
-func_y :: Int Int -> Int
-func_y    x   y
-| y == 0          = abort "Division by zero"
-| otherwise       = x / y
-
-// using patterns
-
-func_z :: Int Int -> Int
-func_z    _   0   =  abort "Division by zero"
-func_z    x   y   =  x / y 
-```
-
-### Invocation
-
-Invoking a function in Clean differs slightly from traditional languages.
-
-In traditional languages, such as Python, a pair of parentheses is used to **invoke** a function.
-They can be omitted entirely.
+An algebraic data type can have multiple constructors.
+Constructors defined in the same global scope must have names.
+Constructors must be separated by a vertical bar ($|$).
 
 ```
 // Language: Clean
 
-f argA ... argZ
+:: [tName] = [tConstructorA] | [tConstructorB] | [tConstructorC]
 ```
 
-### Symbolic functions
-
-By using prentheses, special symbols can be used as function names . 
+For readability, constructors may be placed on different lines.
 
 ```
 // Language: Clean
 
-(^^) :: T K -> V
+:: [tName] = [tConstructorA] 
+           | [tConstructorB] 
+           | [tConstructorC]
 ```
 
-Any function can be converted into an operator.
-However, it must have an arity of exactly two.
-
-```
-// Language: Clean
-
-(^^) infix  0 :: T K -> V
-
-(^^) infixl 0 :: T K -> V  // left-associated
-
-(^^) infixr 0 :: T K -> V  // right-associated
-```
-
-The $\text {infix}$ macros allows the function to be place between its arguments.
-
-The number succeeding the macro represents the precedence from $0$ to $9$.
-Higher precedence means the operator binds more tightly to its arguments.
-
-``` 
-// Language: Clean
-
-A ^^ B   // invoked as operator
-
-(^^) A B // invoked as regular function
-```
-
-### Lambda functions
-
-The basic syntax for lambda function is shown below.
+For example, a basic algebraic type can be defined as follows.
 
 ```
 // Language: Clean
 
-\(paramA, ..., paramZ) = ...
+:: Mood = Happy | Sad
 ```
 
-Conditional branches is also supported by lambda functions using `case ... of` expression.
+Constructors also accept types as arguments, but they must be declared on the left-hand side.
+Once declared, these generic types can be referred to by any of its constructors.
+
+```
+// language: Clean
+
+:: [tName] T K = [tConstructorA] T
+               | [tConstructorB] K
+               | [tConstructorC] T K
+```
+
+For example, a binary tree, which is has a recursive structure can be defined as follows.
+
+```
+// language: Clean
+
+:: Tree = Branch Tree Tree
+        | Leaf
+```
+
+An infix constructor is defined by surrounding its name with parentheses.
+They must have an arity of two.
+The precedence and fixity of an such constructor follows that of an operator, which is discussed in Chapter I.
 
 ```
 // Language: Clean
 
-\(x, y, z) = case x of 
-3 -> y
-_ -> z
+:: [tName] T K =  [tConstructorA]  T
+               |  [tConstructorB]  K
+               | ([tConstructorC]) T K
+               
+:: [tName] T K =  [tConstructorA]  T
+               |  [tConstructorB]  K
+               | ([tConstructorC]) [fixity] [precedence] T K
 ```
 
-## Scoping
+For example, the $\text{Branch}$ constructor can be rewritten as an infix constructor.
 
-There are two levels of local definitions:
+```
+// language: Clean
 
-### Function-local definitions 
+:: TreeInfix = (/\) infixr 0 Tree Tree
+             | Leaf
+```
 
-Using **$\text{where}$** keyword, functions and variables can be scoped to a function.
+The precedence and fixity of an infix constructor can be omitted.
+The default precedence is $9$, and the default fixity is $\textbf{infixl}$.
+
+```
+// language: Clean
+
+:: TreeInfix = (/\) Tree Tree
+             | Leaf
+```
+
+#### 3.1.2 Creating Objects Of Algebraic Data Types
+
+Objects of simple algebraic data types are created by invoking one of its constructors.
 
 ```
 // Language: Clean
 
-func_x :: T   -> K
-func_x    ... =  ...
+:: Mood = Sad | Happy
+
+A :: Mood
+A =  Happy
+
+B :: Mood
+B =  Sad
+```
+
+If a constructor accepts arguments, it should be invoked with appropriate arguments.
+
+```
+// Language: Clean
+
+:: Tree = Branch Tree Tree
+        | Leaf
+
+A :: Tree
+A =  Leaf
+
+B :: Tree
+B =  Branch Leaf Leaf
+
+C :: Tree
+C =  Branch Leaf (Branch Leaf Leaf)
+```
+
+Infix constructors behave in a similar way.
+
+```
+// language: Clean
+
+:: TreeInfix = (/\) TreeInfix TreeInfix
+               | Leaf
+
+A :: TreeInfix 
+A =  Leaf
+
+B :: TreeInfix 
+B =  Leaf /\ Leaf
+
+C :: TreeInfix 
+C =  (/\) Leaf Leaf
+
+D :: TreeInfix 
+D =  Leaf /\ (Leaf /\ Leaf)
+```
+
+#### 3.1.3 Algebraic Data Type Patterns
+
+To use a algebraic data type as a pattern, use its constructors.
+
+```
+// Language: Clean
+
+:: Mood = Sad | Happy
+
+isHappy :: Mood    -> Bool
+isHappy    (Happy) =  True
+isHappy    _       =  False
+```
+
+With the same process, complex algebraic data types can be used as patterns as well.
+
+```
+// Language: Clean
+
+:: Tree = Branch Tree Tree
+        | Leaf
+
+isBranch :: Tree           -> Bool
+isBranch    (Branch l r)   =  True
+isBranch    _              =  False
+
+:: TreeInfix = (/\) TreeInfix TreeInfix
+               | Leaf
+
+isBranchInfix :: TreeInfix -> Bool
+isBranchInfix   (l/\r)     =  True
+isBranchInfix   _          =  False
+```
+
+### 3.2 Record Types
+
+A record type is an algebraic data type in which exactly one constructor is defined. 
+A field name is attached to each of the arguments of the constructor.
+
+#### 3.2.1 Defining A Record Type
+
+A record type is a tuple-like algebraic data structure that has the advantage that its elements can be selected by field name rather than by position.
+
+A simple record type can be defined as follows.
+
+```
+// Language: Clean
+
+:: [tName] = { [fieldName] :: [fieldType] }
+```
+
+Fields must be separated commas ($,$).
+
+```
+// Language: Clean
+
+:: [tName] = { [fNameA] :: [fTypeA] , [fNameB] :: [fTypeB] , [fNameC] :: [fTypeC]  }
+```
+
+To increase readability, fields can be placed on different lines.
+
+```
+// Language: Clean
+
+:: [tName] = { [fNameA] :: [fTypeA] 
+             , [fNameB] :: [fTypeB] 
+             , [fNameC] :: [fTypeC] 
+             }
+```
+
+For example, a record type for representing  complex numbers can be defined as follows.
+
+```
+// Language: Clean
+
+:: Complex = { re :: Real
+             , im :: Real
+             }
+```
+
+#### 3.2.2 Creating Objects Of Record Types
+
+The field names are case-sensitive, but the field order does not matter.
+Every field of a record type must be given.
+
+```
+// Language
+
+:: Complex = { re :: Real
+             , im :: Real
+             }
+
+A :: Complex
+A =  { re = 1.0 , im = 0.0 }
+
+B :: Complex
+B =  { im = 1.0 , re = 0.0}
+```
+
+The name of a record type can be added to the constructor.
+In such a case, the type annotation can be omitted.
+
+```
+// Language: Clean
+
+:: Point = { x :: Int
+           , y :: Int
+           }
+
+:: Position = { x :: Int
+              , y :: Int
+              }
+
+// A :: Point
+// A =  { x = 0 , y = 0 }
+A =  { Point | x = 0 , y = 0 }
+
+// B :: Position
+// B =  { x = 0 , y = 0 }
+B =  { Position | x = 0 , y = 0 }
+```
+
+**Record update**
+
+A new record object can be constructed from an existing one.
+
+```
+// Language: Clean
+
+{ [oldObject] & [fName] = [newValue] }
+```
+
+Multiple fields can be updated all at once.
+
+```
+// Language: Clean
+
+{ [oldObject] & [fNameA] = [newValueA] , [fNameB] = [newValueB] }
+```
+
+For example:
+
+```
+// Language: Clean
+
+:: PosThree = { x :: Int
+              , y :: Int
+              , z :: Int
+              }
+
+A :: PosThree
+A =  { x = 0 , y = 0 , z = 0 }  // (PosThree 0 0 0)
+
+B :: PosThree
+B =  { A & x = 1 , y = 1 }      // (PosThree 1 1 0)
+```
+
+#### 3.2.3 Record Type Patterns
+
+An object of type record can be specified as pattern. 
+Not every field must be used.
+
+```
+// Language: Clean
+
+:: PosThree = { x :: Int
+              , y :: Int
+              , z :: Int
+              }
+
+isZeroX :: PosThree -> Bool
+isZeroX    { x=0 }  =  True
+isZeroX    _        =  False
+
+A :: PosThree
+A =  { x = 0 , y = 0 , z = 0 }
+
+isZeroX A  // True
+
+B :: PosThree
+B =  { A & x = 1 , y = 1 }
+
+isZeroX B  // False
+```
+
+Alternatively, record fields can be extracted without patterns.
+
+```
+// Language: Clean
+
+:: PosThree = { x :: Int
+              , y :: Int
+              , z :: Int
+              }
+
+isZeroY :: PosThree -> Bool
+isZeroY    { y=r }    =  r == 0
+```
+
+In the implementation above, the record field $y$ is extracted to $r$.
+It can be used referred by the body.
+
+Record fields can be extracted to an identifier of the same name.
+
+```
+:: PosThree = { x :: Int
+              , y :: Int
+              , z :: Int
+              }
+
+isZeroZ :: PosThree -> Bool
+isZeroZ    { z }    =  z == 0
+```
+
+The implementation above is equivalent to the following:
+
+```
+// Language: Clean
+
+isZeroZ :: PosThree -> Bool
+isZeroZ    { z=z }  =  z == 0
+```
+
+
+**Record field selection**
+
+The value of a record field can be selected using dot operator ($.$).
+
+```
+// Language: Clean
+
+[recordObj].[fName]
+```
+
+For example, a simple getter function on $\textbf{Point}$ can be defined as follows.
+
+```
+:: Point = { x :: Int
+           , y :: Int
+           }
+
+getX :: Point -> Int
+getX    p     =  p.x
+
+A :: Point
+A =  { x = 1 , y = 0 }
+
+getX a  // 1
+```
+
+### 3.3 Synonym Types
+
+Synonym types allow for an introduction of a new type name for an existing type.
+
+#### 3.3.1 Defining A Synonym Type
+
+A simple synonym type has the follow syntax:
+
+```
+// Language: Clean
+
+:: [tName] :== [existingType]
+```
+
+For example, an array of characters can be viewed as a string.
+
+```
+// Language: Clean
+
+:: String :== {Char}
+```
+
+Synonym types also accept generic types as arguments.
+
+```
+// Language: Clean
+
+:: [tName] T K :== [existingType] T K
+```
+
+For example, an arity-two operator can be shortened with a synonym type.
+
+```
+// Language: Clean
+
+:: Op T :== T T -> T
+
+// add :: Int Int -> Int
+add :: (Op Int)
+```
+
+[Back to top](#)
+
+---
+
+## Chapter IV: Overloading
+
+### 4.1  Overloaded Operators And Functions
+
+Functions and operators are defined on built-in types.
+However, when interacting with custom data types, they do not have any defined function or operator.
+
+That is, adding two objects of $\textbf{Complex}$  type is not allowed.
+
+```
+// Language: Clean
+
+:: Complex = { re :: Real
+             , im :: Real
+             }
+
+a :: Complex
+a =  { re = 0.0 , im = 1.0 }
+
+b :: Complex
+b =  { re = 0.0 , im = 1.0 }
+
+a + b  // NOT OK :(
+```
+
+This happens because addition is not defined on $\textbf{Complex}$ type.
+
+In this case, addition can be overloaded on $\textbf{Complex}$ type.
+
+```
+// Language: Clean
+
+instance + Complex
 where
-	...
+    (+) x y = { Complex | re=(x.re + y.re) , im=(x.im + y.im)}
+
+a + b  // (Complex 0.0 2.0)
 ```
 
-### Guard-local definitions 
+Only after overloading the addition operation on $\textbf{Complex}$ that the addition is allowed.
+In other word, the complier now knows the meaning of complex number addition.
 
-Using **$\text{with}$** keyword, functions and variables can be scoped to guards of a function.
+A list of functions and operations which can be overloaded can be found on [Appendix A: StdOverloaded](appendix-a/stdoverloaded).
 
-```
-// Language: Clean
+#### 4.1.1 Defining An Overloaded Function Or Operator
 
-func_y :: T   -> K
-func_y    ... =  ...
-| ... = ...
-with
-	...
-| otherwise = ...
-```
-
-## Pattern matching
-
-Destructing an iterator can be done using **$\text{x , y}$** and **$\text{x : rest}$** pattern.
+To overload the built-in functions and operations, the general syntax is as follows.
 
 ```
 // Language: Clean
 
-func_x :: [T]       -> K
-func_x    [x, y, z] =  ...
-
-func_x [3, 5 ,6]       // x=3; y=5; z=6
-func_x [1, 2]          // run-time error
-func_x [3, 5, 6, 7]    // run-time error
+instance [clsName] [typeVars]
+where
+    [fnImplementation]
+    [opImplementation]
 ```
 
-Without the greedy operator, the pattern must be an exact match, otherwise a run-time error is thrown.
-
-```
-// Language: Clean
-
-func_y :: [T]      -> K
-func_y    [x : rest] =  ...
-
-func_y [3, 5, 6]   // x=3; rest=[5, 6]
-func_y [1]         // x=1; rest=[]
-func_y []          // run-time error
-```
-
-Attempting to destucture an empty iterator will thrown a run-time error.
-To avoid this pitfall, a function pattern should defined.
+Functions and operators can be defined in terms of existing overloaded functions.
+This is especially useful when dealing with generic types.
 
 ```
 // Language: Clean
 
-func_y :: [T]      -> K
-func_y    []       =  ...
-func_y    [x : rest] =  ...
-
-func_y [3, 5, 6]   // x=3; rest=[5, 6]
-func_y [1]         // x=1; rest=[]
-func_y []          // destructuring did not occur
-                   // and no error is thrown
+increment :: T -> T
+increment    x =  x + 1
 ```
 
-A complex destructuring pattern can be done as follow:
+It is adding an object of type $\textbf{T}$ and $1$ which is an integer.
+Unless the addition is instantiated for mentioned types, this implementation would not work as intended.
+
+One way to ensure that it works for all type is to introduce class context.
+
+```
+increment :: T -> T | + T & one T
+increment    x =  x + one
+```
+
+The new implementation requires that the addition operation, as well as, $\textbf{one}$ unit is defined on a generic type $\textbf{T}$.
+
+In this case, the function is defined in terms of an overloaded function and a unit.
+
+Such declaration has the following syntax.
 
 ```
 // Language: Clean
 
-func_z :: [T]      -> K
-func_z    [x, y : rest] =  ...
-
-func_y [1, 2, 3, 4] // x=1; y=2; rest=[3, 4]
-func_y [3, 5, 6]    // x=3; y=5; rest=[6]
-func_y [1]          // run-time error
+[fnName] :: [typeVars] -> [typeVar] | [clsConstraints]
 ```
 
----
+Class constraints are separated by ampersands ($\&$).
 
-### Arrays operations, methods and functions
+### 4.2 Classes
 
-#### Standard operators
+A class gives name to a group of overloaded functions and operators.
+These functions and operators are members of the class.
 
-| Operator             | Meaning                   |
-| -------------------- | ------------------------- |
-| <nobr>`X.[i]`</nobr> | $i$-th element of $X$[^3] |
+```
+// Language: Clean
 
-Definitions:
-- $X$ is an array, and
-- $i$ is an integer.
+class Equal T
+where
+    (==) infixl 4 :: T T -> Bool
+    (<>) infixl 4 :: T T -> Bool
+```
 
-#### Standard methods
+The class $\text{Eq}$ has two members.
+They are equality and inequality operators.
 
-| Name                        | Meaning                                | Signature                       |
-| --------------------------- | -------------------------------------- | ------------------------------- |
-| <nobr>`size X`</nobr>       | Size of X                              | <nobr>`{T} -> Int`</nobr>       |
-| <nobr>`select X i`</nobr>   | $i$-th element of X                    | <nobr>`{T} Int -> T`</nobr>     |
-| <nobr>`update X i a`</nobr> | Replace $i$-th element of $X$ with $a$ | <nobr>`{T} Int T -> {T}`</nobr> |
+To instantiate a class, all of its members must be implemented.
 
-Definitions:
-- $X$ is an array,
-- $a$ has $T$ type,
-- $i$ is an integer.
+```
+// Language: Clean
 
----
+instance Equal Complex
+where
+    (==) x y = (x.re == y.re) && (x.im == y.im)
+    (<>) x y = (x.re <> y.re) || (x.im <> y.im))
+```
 
-## Tuples: Relational operators
+A list of classes can be found on [Appendix A: StdClass](appendix-a/stdclass).
 
-Relational operations on tuples are the same as on integers.
-The semantic meaning is an element-wise comparison.
 
-See [[#Integers: Relational operations]].
+#### 4.2.1 Defining A Class
 
-## Tuples: Methods
+As shown above, a class simple provides a name to collection of logically-linked functions and operations.
 
-| Name                  | Meaning               | Signature                     |
-| --------------------- | --------------------- | ----------------------------- |
-| <nobr>`fst X`</nobr>  | First element of $X$  | <nobr>`(T, K) -> T`</nobr>    |
-| <nobr>`snd X`</nobr>  | Second element of $X$ | <nobr>`(T, K) -> K`</nobr>    |
-| <nobr>`fst3 Y`</nobr> | First element of $Y$  | <nobr>`(T, K, V) -> T`</nobr> |
-| <nobr>`snd3 Y`</nobr> | Second element of $Y$ | <nobr>`(T, K, V) -> K`</nobr> |
-| <nobr>`thd3 Y`</nobr> | Third element of $Y$  | <nobr>`(T, K, V) -> V`</nobr> |
+It can be defined with the following syntax.
 
-Definitions:
-- $X$ is a two-element tuple, and
-- $Y$ is a three-element tuple.
+```
+// Language: Clean
+
+class [clsName] [typeVars]
+where
+    [fnDeclaration]
+    [opDeclaration]
+```
+
+Type variables declared can be referred to by all of its member, but they must be given as arguments when the class is instantiated.
+
+```
+// Language: Clean
+
+class MinMaxC T K
+where
+    minC :: T T -> K
+    maxC :: T T -> K
+
+instance MinMax Real Int
+where
+    minC x y = toInt (min x y)
+    maxC x y = toInt (max x y)
+```
+
+[Back to top](#)
 
 ---

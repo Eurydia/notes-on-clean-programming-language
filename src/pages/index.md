@@ -35,91 +35,112 @@ If you notice any mistake or have suggestions for improvements, please feel free
 
 ### 1.1 Defining A Function
 
-An implementation of a function has the following syntax.
+**Implementation**
+
+A control function implementation may be written as follows:
 
 ```
 // Language: Clean
 
-[fnName] [fnParams] =  [fnBody]
-[fnName] [fnParams] => [fnBody]
+fnName param = body
 ```
 
-A function definition consists of, at least, one implementation.
-
-```
-// Language: Clean
-
-isNatural :: Int -> Bool
-isNatural    n   =  n > 0
-```
-
-If a function has multiple implementations, each implementation must share the the same name.
+A function type can be placed before an implementation.
+The topics of typing functions are discussed in more details in later parts of this chapter.
 
 ```
 // Language: Clean
 
-fib :: Int -> Int
-fib    1   =  1
-fib    2   =  1  
-fib    n   =  fib (n - 1) + fib (n - 2)
+fnName :: T      -> K
+fnName    param  =  body
 ```
 
-It is required that implementations of a function are textually grouped together.
+Parameters of a function are space separated.
+
+```
+// Language: Clean
+
+fnName :: T      K      -> V
+fnName    paramA paramB =  body
+```
+
+On global scope, $\implies$ may be used to separate function parameters from function body.
+
+```
+// Langauge: Clean
+// In global scope
+
+fn :: T      K      -> V
+fn    paramA paramB => body
+```
+
+A simple function can be defined as follows.
+
+```
+// Language: Clean
+
+increment :: Int -> Int
+increment    n   =  n + 1
+```
+
+It is allowed for a function to be implemented multiple times, but implementations must be grouped together.
+
+```
+// Language: Clean
+
+isNice :: Int -> Bool
+isNice    8   => True
+isNice    _   => False
+```
+
 As such, the following is not allowed.
 
 ```
 // Language: Clean
 
-fib :: Int -> Int
-fib    1   =  1
+isNice :: Int -> Bool
+isNice    8   => True
 
-// ...some code
+6 + 2
 
-fib    2   =  1
+isNice    _   => False
 ```
 
-Implementations are tried in textual order.
-An implementation will be chosen, if the arguments of a function call matched with the parameters.
+Implementations are tried in textual order, and an implementation is chosen, if the arguments of a function call matched with the parameters.
 
-For example:
-
-When invoked with $2$, the first implementation is tried.
 
 ```
 // Language: Clean
 
-fib 2
+isNice 9  // False
 ```
 
-The argument ($2$) fails to match with the parameter ($1$).
-Therefore, the first implementation is not evaluated.
+The argument ($9$) does not match with the parameter ($8$) of the first implementation.
+Therefore, it is not evaluated.
 
-The second implementation is tried.
-The argument matches with the parameter.
+The argument matches with the parameter of the second implementation.
 Thus, the second implementation is evaluated.
 
-In this call, the third implementation is never reached.
-
-Similarly, if it is invoked with $9$, the first and second implementation are tried, but the third is evaluated.
+Similarly, if it is invoked with $8$, the first implementation is evaluated, and the second is never tried.
 
 ```
 // Language: Clean
 
-fib 9
+fib 8  // True
 ```
 
-Following this logic, if the implementation order is changed, then the function would behave unintentionally.
+Following this logic, if order of implementation is changed, then the function would behave in unintended ways.
 
 ```
 // Language: Clean
 
-fib :: Int -> Int
-fib    n   =  fib (n - 1) + fib (n - 2)  // 3rd
-fib    1   =  1                          // 1st
-fib    2   =  2                          // 2nd
+isNice :: Int -> Int
+isNice    _   => False
+isNice    8   => True
 ```
 
-In this case, $n$ will match with any integer, any implementation following it is never reached.
+Wildcards ($\_$) matches with any argument of a function call.
+Therefore, the second implementation is never reached.
 
 It is important to recognize that, this parameter-matching behavior is not the same as performing equality checks.
 

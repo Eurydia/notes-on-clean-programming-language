@@ -1,0 +1,113 @@
+{
+  "main": {
+    "id": "2de967a74bcfe11d",
+    "type": "split",
+    "children": [
+      {
+        "id": "1a16759c727a4f3a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "46585dc91a77cbac",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "index.md",
+                "mode": "source",
+                "source": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b3d216f6cf9b2c16",
+    "type": "split",
+    "children": [
+      {
+        "id": "c12b7e8a3ab92d61",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b4a9d22c913809f9",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "9234166d2ce2b096",
+    "type": "split",
+    "children": [
+      {
+        "id": "c90ab0003efacd51",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d7eedc9c13544191",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d3390cb50fba78b5",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d64ca8b0d3947737",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "index.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "46585dc91a77cbac",
+  "lastOpenFiles": []
+}

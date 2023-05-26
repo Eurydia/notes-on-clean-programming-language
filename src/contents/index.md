@@ -1,20 +1,49 @@
----
-layout: "@layouts/Blog.astro"
-title: Cleanpedia
-Last updated: May 13th, 2023
-
-Revisions: 2
-Data of last revision: 12 APR 2023
----
+# Cleanpedia
 
 ## Contents
 
 - [Introduction](#introduction)
-- [Chapter I: Functions](#chapter-i-functions)
-- [Chapter II: Built-in Types](#chapter-ii-built-in-types)
-- [Chapter III: Defining New Types](#chapter-iii-defining-new-types)
-- [Chapter IV: Overloading](#chapter-iv-overloading)
-- [Appendix A: Standard Environment](./appendix-a)
+- [Functions](#functions)
+  - [Defining A Function](#defining-a-function)
+  - [Operators](#operators)
+  - [Lambda Functions](#lambda-functions)
+  - [Case Expressions](#case-expressions)
+  - [Pattern-Match Expressions](#pattern-match-expressions)
+  - [Local Definitions](#local-definitions)
+    - [Let Expressions](#let-expressions)
+    - [Where Blocks](#where-blocks)
+    - [With Blocks](#with-blocks)
+- [Built-In Types](#built-in-types)
+  - [Primitive Types](#primitive-types)
+    - [Integers](#integers)
+    - [Real Numbers](#real-numbers)
+    - [Booleans](#booleans)
+    - [Characters](#characters)
+    - [Parameter-Matching Primitive Types](#parameter-matching-primitive-types)
+  - [Lists](#lists)
+    - [Defining A List](#defining-a-list)
+    - [List Patterns](#list-patterns)
+  - [Tuples](#tuples)
+    - [Defining A Tuple](#defining-a-tuple)
+    - [Tuple Patterns](#tuple-patterns)
+  - [Arrays](#arrays)
+    - [Defining An Array](#defining-an-array)
+- [Defining New Types](#defining-new-types)
+  - [Algebraic Data Types](#algebraic-data-types)
+    - [Defining An Algebraic Data Type](#defining-an-algebraic-data-type)
+    - [Creating Objects Of Algebraic Data Types](#creating-objects-of-algebraic-data-types)
+    - [Algebraic Data Type Patterns](#algebraic-data-type-patterns)
+  - [Record Types](#record-types)
+    - [Defining A Record Type](#defining-a-record-type)
+    - [Creating Objects Of Record Types](#creating-objects-of-record-types)
+    - [Record Type Patterns](#record-type-patterns)
+  - [Synonym Types](#synonym-types)
+    - [Defining A Synonym Type](#defining-a-synonym-type)
+- [Overloading](#overloading)
+  - [Overloaded Functions](#overloaded-functions)
+    - [Defining An Overloaded Function](#defining-an-overloaded-function)
+  - [Classes](#classes)
+    - [Defining A Class](#defining-a-class)
 
 ## Introduction
 
@@ -22,18 +51,18 @@ The motivation of this reference is to create an accessible, concise, and clear 
 
 The same information can be found on:
 
--   [Cloogle](https://cloogle.org/) which is the language’s search engine, and
--   [language report](https://cloogle.org/doc/) which describes the syntax and BNF of Clean.
+- [Cloogle](https://cloogle.org/) which is the language’s search engine, and
+- [language report](https://cloogle.org/doc/) which describes the syntax and BNF of Clean.
 
 If you notice any mistake or have suggestions for improvements, please feel free to contact me through the following channels:
 
--   Email: [b9xp3x@inf.elte.hu](mailto:b9xp3x@inf.elte.hu)
--   Instagram: [@_kornthana](https://www.instagram.com/_kornthana/)
--   Telegram channel: [https://t.me/+El6CtwOD8KxhYmU9](https://t.me/+El6CtwOD8KxhYmU9)
+- Email: [b9xp3x@inf.elte.hu](mailto:b9xp3x@inf.elte.hu)
+- Instagram: [@\_kornthana](https://www.instagram.com/_kornthana/)
+- Telegram channel: [https://t.me/+El6CtwOD8KxhYmU9](https://t.me/+El6CtwOD8KxhYmU9)
 
-## Chapter I: Functions
+## Functions
 
-### 1.1 Defining A Function
+### Defining A Function
 
 **Implementation**
 
@@ -108,7 +137,6 @@ isNice    _   => False
 
 Implementations are tried in textual order, and an implementation is chosen, if the arguments of a function call matched with the parameters.
 
-
 ```
 // Language: Clean
 
@@ -160,7 +188,7 @@ It has the following syntax.
 | [guardC]         = [bodyC]
 ```
 
-Additionally, guarded bodies can be nested. 
+Additionally, guarded bodies can be nested.
 
 ```
 // Language: Clean
@@ -255,8 +283,8 @@ Such implementations will result in a run-time error when invoked outside its do
 
 fib :: Int -> Int
 fib    n
-| n == 1   =  1                          
-| n == 2   =  1                         
+| n == 1   =  1
+| n == 2   =  1
 | n >  2   =  fib (n - 1) + fib (n - 2)
 ```
 
@@ -276,7 +304,7 @@ fib    n   =  fib (n - 1) + fib (n - 2)
 
 This version also results in run-time error when invoked with $n\le{0}$, even though it does not have guarded bodies.
 
-### 1.2 Operators
+### Operators
 
 Operators are arity-two functions.
 They can be applied in infix position or invoked like ordinary functions.
@@ -309,6 +337,7 @@ The precedence of an operator is nine by default.
 
 The fixity is important when evaluating two operators of the same precedence.
 There are two relevant fixities:
+
 - $\textbf{infixl}$ for left-associated operators, and
 - $\textbf{infixr}$ for right-associated operators.
 
@@ -347,7 +376,7 @@ Definition with omitted fixity and precedence can be done as follow:
 
 **Conflict between operators**
 
-It is not allowed to apply operators with equal precedence in an expression in such a way that their fixity conflict. 
+It is not allowed to apply operators with equal precedence in an expression in such a way that their fixity conflict.
 
 ```
 // Language: Clean
@@ -375,7 +404,7 @@ It implies that the expression should be evaluated as follows.
 
 Since both operators have the same precedence and the order of evaluation cannot be decided by their fixity, this expression will result in a compile-time error.
 
-### 1.3 Lambda Functions
+### Lambda Functions
 
 A lambda function is defined "on the spot" as an expression.
 However, it cannot have local definitions or guards.
@@ -398,7 +427,7 @@ Parameters of a lambda function are separated by spaces.
 \paramA paramB = ...
 ```
 
-### 1.4 Case Expressions
+### Case Expressions
 
 In a $\textbf{case..in}$ expression, cases are tried in textual order.
 Each case contains a pattern and a case body.
@@ -443,7 +472,7 @@ _caseFn [casePatternC] = [caseBodyC]
 
 Consequently, this can result in a run-time error when none of pattern matches since the expression is translated into a partial function.
 
-### 1.5 Pattern-Match Expressions
+### Pattern-Match Expressions
 
 A pattern-match expression checks an expression against a pattern or not.
 
@@ -480,9 +509,9 @@ isNode :: (Tree a) -> Bool
 isNode    t        =  t := (Tree x l r)
 ```
 
-### 1.5 Local Definitions
+### Local Definitions
 
-#### 1.5.1 Let Expressions
+#### Let Expressions
 
 A $\textbf{let}..\textbf{in}$ expression introduces a new scope inside an expression.
 
@@ -505,7 +534,7 @@ Anything defined inside a $\textbf{let}..\textbf{in}$ expression only has meanin
 in (a, a) \\ i <- [0..n]]
 ```
 
-#### 1.5.2 Where Blocks
+#### Where Blocks
 
 A $\textbf{where}$ block can be added at the end of a function implementation which introduces a new scope.
 
@@ -540,10 +569,9 @@ where
 
 The second implementation does not have access to $\text{z}$ which is defined in the first implementation.
 
-#### 1.5.3 With Blocks
+#### With Blocks
 
 A $\textbf{with}$ block can be added at the end of a guarded body which introduces a new scope.
-
 
 ```
 // language: Clean
@@ -579,13 +607,13 @@ The third guarded body does not have access to $\text{negN}$, which is local to 
 
 ---
 
-## Chapter II: Built-In Types
+## Built-In Types
 
-Certain types like integers, Booleans, characters, real numbers, lists, tuples and arrays are  frequently used that they have been predefined for reasons of efficiency and convenience.
+Certain types like integers, Booleans, characters, real numbers, lists, tuples and arrays are frequently used that they have been predefined for reasons of efficiency and convenience.
 
-### 2.1 Primitive Types
+### Primitive Types
 
-#### 2.1.1 Integers
+#### Integers
 
 **Type annotation**: $\textbf{Int}$
 
@@ -626,7 +654,7 @@ n =  0xd  // dec  13
 
 More information about built-in operations and functions on integers can be found on [Appendix A: StdInt](appendix-a/stdint).
 
-#### 2.1.2 Real Numbers
+#### Real Numbers
 
 **Type annotation**: $\textbf{Real}$
 
@@ -656,7 +684,7 @@ n =  13E-2  //  0.13
 
 More information about built-in operations and functions on real numbers can be found on [Appendix A: StdReal](appendix-a/stdreal).
 
-#### 2.1.3 Booleans
+#### Booleans
 
 **Type annotation**: $\textbf{Bool}$
 
@@ -672,8 +700,7 @@ b =  False
 
 More information about built-in operations and functions on Booleans can be found on [Appendix A: StdBool](appendix-a/stdbool).
 
-
-#### 2.1.4 Characters
+#### Characters
 
 **Type annotation**: $\textbf{Char}$
 
@@ -691,7 +718,7 @@ b =  '+'
 
 More information about built-in operations and functions on characters can be found on [Appendix A: StdChar](appendix-a/stdchar).
 
-#### 2.1.5 Parameter-Matching Primitive Types
+#### Parameter-Matching Primitive Types
 
 Constants of primitive types can be specified as pattern.
 
@@ -700,9 +727,9 @@ Using integer constants as pattern:
 ```
 // Language: Clean
 
-fib :: Int -> Int  
-fib    1   =  1  
-fib    2   =  1  
+fib :: Int -> Int
+fib    1   =  1
+fib    2   =  1
 fib    n   =  fib (n - 1) + fib (n - 2)
 ```
 
@@ -717,18 +744,18 @@ isLetterA    'A'  =  True
 isLetterA     _   =  False
 ```
 
-### 2.2 Lists
+### Lists
 
-#### 2.2.1 Defining A List
+#### Defining A List
 
-**Type annotation**: 
-$[\textbf{Int}]$, 
-$[\textbf{Char}]$, 
-$[\textbf{T}]$, 
+**Type annotation**:
+$[\textbf{Int}]$,
+$[\textbf{Char}]$,
+$[\textbf{T}]$,
 et cetera.
 
-A list can contain an infinite number of elements. 
-All elements must be of the same type. 
+A list can contain an infinite number of elements.
+All elements must be of the same type.
 
 **Constructors**
 
@@ -738,10 +765,10 @@ From explicit enumeration of the elements:
 // Language: Clean
 
 [1, 3, 5, 7, 9]
-[1 : [3, 5, 7, 9]]  
+[1 : [3, 5, 7, 9]]
 [1, 3, 5 : [7, 9]]
-[1 : [3 : [5 : [7 : [9 : []]]]]]  
-[1 : 3 : 5 : 7 : 9 : []]  
+[1 : [3 : [5 : [7 : [9 : []]]]]]
+[1 : 3 : 5 : 7 : 9 : []]
 ```
 
 From implicit enumeration with $\textbf{dot-dot}$ expression:
@@ -755,7 +782,7 @@ From implicit enumeration with $\textbf{dot-dot}$ expression:
 [1, 3..10]  // [1, 3, 5, 7, 9]
 ```
 
-It  should be noted that $\textbf{dot-dot}$ expressions requires $\text{StdEnum}$ module.
+It should be noted that $\textbf{dot-dot}$ expressions requires $\text{StdEnum}$ module.
 
 From list comprehension:
 
@@ -786,17 +813,18 @@ A special notation for constructing a list of characters is also provided:
 ```
 // Language: Clean
 
-['a', 'b', 'c']  
+['a', 'b', 'c']
 ['abc']
 ['ab','c']
 ```
 
 More information about built-in operations and functions on lists can be found on:
+
 - [Appendix A: StdCharList](appendix-a/stdcharlist),
 - [Appendix A: StdList](appendix-a/stdlist), and
 - [Appendix A: StdOrdList](appendix-a/stdordlist).
 
-#### 2.2.2 List Patterns
+#### List Patterns
 
 Lists can be specified as patterns as follow:
 
@@ -895,17 +923,17 @@ getThdAny [4, 3, 2, 1]  // x = 4
                         // r = [1]
 ```
 
-### 2.3 Tuples
+### Tuples
 
-#### 2.3.1 Defining A Tuple
+#### Defining A Tuple
 
-**Type annotation**: 
-$(\textbf{T},\ \textbf{K})$, 
-$(\textbf{T},\ \textbf{K},\ \textbf{V})$, 
-$(\textbf{T},\ \textbf{K},\ \textbf{V},\ \textbf{E})$ 
+**Type annotation**:
+$(\textbf{T},\ \textbf{K})$,
+$(\textbf{T},\ \textbf{K},\ \textbf{V})$,
+$(\textbf{T},\ \textbf{K},\ \textbf{V},\ \textbf{E})$
 et cetera.
 
-A tuple contains finite number of elements. 
+A tuple contains finite number of elements.
 Elements do not have to be the same type.
 Every type appears in a tuple must be specified, and singleton tuples are not allowed.
 
@@ -928,10 +956,10 @@ D =  (2)     // NOT OK
 ```
 
 More information about built-in operations and functions on lists can be found on:
+
 - [Appendix A: StdTuple](appendix-a/stdtuple).
 
-
-#### 2.3.2 Tuple Patterns
+#### Tuple Patterns
 
 Tuples can be used as patterns in a similar way to lists.
 However, colon ($:$) is not allowed in tuple patterns.
@@ -959,14 +987,14 @@ getSnd (1, 'a', 1.0)  // 'a'
 getThd (1, 'a', 1.0)  // 1.0
 ```
 
-### 2.4 Arrays
+### Arrays
 
-#### 2.4.1 Defining An Array
+#### Defining An Array
 
-**Type annotation**: 
-$\{\textbf{Int}\}$, 
-$\{\textbf{Char}\}$, 
-$\{\textbf{T}\}$, 
+**Type annotation**:
+$\{\textbf{Int}\}$,
+$\{\textbf{Char}\}$,
+$\{\textbf{T}\}$,
 et cetera.
 
 An array contains a finite number of elements.
@@ -980,7 +1008,7 @@ Elements of an array have to be of the same type.
 {1, 2, 3, 4}
 {1.0, 2.0, 3.0, 4.0}
 
-"abc" 
+"abc"
 // equivalent to
 // {'a', 'b', 'c'}
 ```
@@ -988,6 +1016,7 @@ Elements of an array have to be of the same type.
 An array can be constructed from comprehension by surrounding a comprehension with $\{\ldots\}$.
 
 More information about built-in operations and functions on lists can be found on:
+
 - [Appendix A: StdArray](appendix-a/stdarray), and
 - [Appendix A: StdString](appendix-a/stdstring).
 
@@ -995,16 +1024,16 @@ More information about built-in operations and functions on lists can be found o
 
 ---
 
-## Chapter III: Defining New Types
+## Defining New Types
 
-As a strongly typed language, every object and function in CLEAN has a type. 
+As a strongly typed language, every object and function in CLEAN has a type.
 The basic can be extended with algebraic types, record types, abstract types and synonym types.
 
-New types can only be defined on the global level. 
+New types can only be defined on the global level.
 
-### 3.1 Algebraic Data Types
+### Algebraic Data Types
 
-#### 3.1.1 Defining An Algebraic Data Type
+#### Defining An Algebraic Data Type
 
 An algebraic data type introduces a new data structure and a constructor.
 
@@ -1031,8 +1060,8 @@ For readability, constructors may be placed on different lines.
 ```
 // Language: Clean
 
-:: [tName] = [tConstructorA] 
-           | [tConstructorB] 
+:: [tName] = [tConstructorA]
+           | [tConstructorB]
            | [tConstructorC]
 ```
 
@@ -1074,7 +1103,7 @@ The precedence and fixity of an such constructor follows that of an operator, wh
 :: [tName] T K =  [tConstructorA]  T
                |  [tConstructorB]  K
                | ([tConstructorC]) T K
-               
+
 :: [tName] T K =  [tConstructorA]  T
                |  [tConstructorB]  K
                | ([tConstructorC]) [fixity] [precedence] T K
@@ -1099,7 +1128,7 @@ The default precedence is $9$, and the default fixity is $\textbf{infixl}$.
              | Leaf
 ```
 
-#### 3.1.2 Creating Objects Of Algebraic Data Types
+#### Creating Objects Of Algebraic Data Types
 
 Objects of simple algebraic data types are created by invoking one of its constructors.
 
@@ -1141,20 +1170,20 @@ Infix constructors behave in a similar way.
 :: TreeInfix = (/\) TreeInfix TreeInfix
                | Leaf
 
-A :: TreeInfix 
+A :: TreeInfix
 A =  Leaf
 
-B :: TreeInfix 
+B :: TreeInfix
 B =  Leaf /\ Leaf
 
-C :: TreeInfix 
+C :: TreeInfix
 C =  (/\) Leaf Leaf
 
-D :: TreeInfix 
+D :: TreeInfix
 D =  Leaf /\ (Leaf /\ Leaf)
 ```
 
-#### 3.1.3 Algebraic Data Type Patterns
+#### Algebraic Data Type Patterns
 
 To use a algebraic data type as a pattern, use its constructors.
 
@@ -1188,12 +1217,12 @@ isBranchInfix   (l/\r)     =  True
 isBranchInfix   _          =  False
 ```
 
-### 3.2 Record Types
+### Record Types
 
-A record type is an algebraic data type in which exactly one constructor is defined. 
+A record type is an algebraic data type in which exactly one constructor is defined.
 A field name is attached to each of the arguments of the constructor.
 
-#### 3.2.1 Defining A Record Type
+#### Defining A Record Type
 
 A record type is a tuple-like algebraic data structure that has the advantage that its elements can be selected by field name rather than by position.
 
@@ -1218,13 +1247,13 @@ To increase readability, fields can be placed on different lines.
 ```
 // Language: Clean
 
-:: [tName] = { [fNameA] :: [fTypeA] 
-             , [fNameB] :: [fTypeB] 
-             , [fNameC] :: [fTypeC] 
+:: [tName] = { [fNameA] :: [fTypeA]
+             , [fNameB] :: [fTypeB]
+             , [fNameC] :: [fTypeC]
              }
 ```
 
-For example, a record type for representing  complex numbers can be defined as follows.
+For example, a record type for representing complex numbers can be defined as follows.
 
 ```
 // Language: Clean
@@ -1234,7 +1263,7 @@ For example, a record type for representing  complex numbers can be defined as f
              }
 ```
 
-#### 3.2.2 Creating Objects Of Record Types
+#### Creating Objects Of Record Types
 
 The field names are case-sensitive, but the field order does not matter.
 Every field of a record type must be given.
@@ -1311,9 +1340,9 @@ B :: PosThree
 B =  { A & x = 1 , y = 1 }      // (PosThree 1 1 0)
 ```
 
-#### 3.2.3 Record Type Patterns
+#### Record Type Patterns
 
-An object of type record can be specified as pattern. 
+An object of type record can be specified as pattern.
 Not every field must be used.
 
 ```
@@ -1377,7 +1406,6 @@ isZeroZ :: PosThree -> Bool
 isZeroZ    { z=z }  =  z == 0
 ```
 
-
 **Record field selection**
 
 The value of a record field can be selected using dot operator ($.$).
@@ -1404,11 +1432,11 @@ A =  { x = 1 , y = 0 }
 getX a  // 1
 ```
 
-### 3.3 Synonym Types
+### Synonym Types
 
 Synonym types allow for an introduction of a new type name for an existing type.
 
-#### 3.3.1 Defining A Synonym Type
+#### Defining A Synonym Type
 
 A simple synonym type has the follow syntax:
 
@@ -1449,14 +1477,14 @@ add :: (Op Int)
 
 ---
 
-## Chapter IV: Overloading
+## Overloading
 
-### 4.1  Overloaded Operators And Functions
+### Overloaded Functions
 
 Functions and operators are defined on built-in types.
 However, when interacting with custom data types, they do not have any defined function or operator.
 
-That is, adding two objects of $\textbf{Complex}$  type is not allowed.
+That is, adding two objects of $\textbf{Complex}$ type is not allowed.
 
 ```
 // Language: Clean
@@ -1493,7 +1521,7 @@ In other word, the complier now knows the meaning of complex number addition.
 
 A list of functions and operations which can be overloaded can be found on [Appendix A: StdOverloaded](appendix-a/stdoverloaded).
 
-#### 4.1.1 Defining An Overloaded Function Or Operator
+#### Defining An Overloaded Function
 
 To overload the built-in functions and operations, the general syntax is as follows.
 
@@ -1540,7 +1568,7 @@ Such declaration has the following syntax.
 
 Class constraints are separated by ampersands ($\&$).
 
-### 4.2 Classes
+### Classes
 
 A class gives name to a group of overloaded functions and operators.
 These functions and operators are members of the class.
@@ -1570,8 +1598,7 @@ where
 
 A list of classes can be found on [Appendix A: StdClass](appendix-a/stdclass).
 
-
-#### 4.2.1 Defining A Class
+#### Defining A Class
 
 As shown above, a class simple provides a name to collection of logically-linked functions and operations.
 

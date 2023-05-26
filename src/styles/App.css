@@ -1,0 +1,15 @@
+h1 {
+  counter-reset: header-a;
+}
+
+h2::before {
+  content: "Chapter " counter(header-a, upper-roman) ": ";
+  counter-increment: header-a;
+  counter-reset: header-b;
+}
+
+h3::before {
+  content: counter(header-a) "." counter(header-b) " ";
+  counter-increment: header-b;
+  counter-reset: header-c;
+}

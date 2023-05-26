@@ -1,5 +1,5 @@
-# cleanpedia
+# Cleanpedia
 
 A language reference for Clean.
 
-Ths repo contains the source code for Cleanpedia.
+This repo contains the source code for Cleanpedia.

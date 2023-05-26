@@ -1,0 +1,10 @@
+{
+  "trashOption": "local",
+  "livePreview": false,
+  "foldIndent": false,
+  "foldHeading": false,
+  "useMarkdownLinks": true,
+  "newFileLocation": "root",
+  "showInlineTitle": false,
+  "newLinkFormat": "shortest"
+}

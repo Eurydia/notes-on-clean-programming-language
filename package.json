@@ -1,24 +1,35 @@
 {
   "name": "cleanpedia",
-  "type": "module",
+  "private": true,
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^3.1.1",
-    "astro": "^2.3.0",
-    "astro-relative-links": "^0.3.3",
-    "rehype-katex": "^6.0.2",
-    "remark-math": "^5.1.1",
-    "tailwindcss": "^3.3.1"
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/ia-writer-quattro": "^5.0.1",
+    "@mui/material": "^5.13.2",
+    "markdown-to-jsx": "^7.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remark-gfm": "^3.0.1",
+    "vite-tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
-    "prettier": "^2.8.7",
-    "prettier-plugin-tailwindcss": "^0.2.7"
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2"
   }
 }

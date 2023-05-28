@@ -8,167 +8,242 @@
 <script src=https://eurydia.github.io/cleanpedia/js/code-title.b35124ad8db0ba37162b886afb711cbc.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/clipboard.c20857734e53a3fb733b7443879efa61.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/callouts.7723cac461d613d118ee8bb8216b9838.min.js></script>
-<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.4b8932dff83560361940e2f233c34ed7.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.6962b7a814e559ca3cdc9179dd1583a0.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!0);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=(e=document)=>{addCopyButtons(),addTitleToCodeBlocks(),renderMathInElement(e.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})}</script><script type=module>
+<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.5c5973f2ed40f1a50d68985e01c5beb3.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.ab85ee75d5bcc4c1f406037c9c273272.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!0);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=(e=document)=>{addCopyButtons(),addTitleToCodeBlocks(),renderMathInElement(e.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})}</script><script type=module>
     import { attachSPARouting } from "https:\/\/eurydia.github.io\/cleanpedia\/js\/router.9d4974281069e9ebb189f642ae1e3ca2.min.js"
     attachSPARouting(init, render)
   </script></head><body><div class=singlePage><header><h1 id=page-title><a href=https://eurydia.github.io/cleanpedia/>Cleanpedia</a></h1><div class=spacer></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
-<label id=toggle-label-light for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="dayIcon" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35"><title>Light Mode</title><path d="M6 17.5C6 16.672 5.328 16 4.5 16h-3C.672 16 0 16.672.0 17.5S.672 19 1.5 19h3C5.328 19 6 18.328 6 17.5zM7.5 26c-.414.0-.789.168-1.061.439l-2 2C4.168 28.711 4 29.086 4 29.5 4 30.328 4.671 31 5.5 31c.414.0.789-.168 1.06-.44l2-2C8.832 28.289 9 27.914 9 27.5 9 26.672 8.329 26 7.5 26zm10-20C18.329 6 19 5.328 19 4.5v-3C19 .672 18.329.0 17.5.0S16 .672 16 1.5v3C16 5.328 16.671 6 17.5 6zm10 3c.414.0.789-.168 1.06-.439l2-2C30.832 6.289 31 5.914 31 5.5 31 4.672 30.329 4 29.5 4c-.414.0-.789.168-1.061.44l-2 2C26.168 6.711 26 7.086 26 7.5 26 8.328 26.671 9 27.5 9zM6.439 8.561C6.711 8.832 7.086 9 7.5 9 8.328 9 9 8.328 9 7.5c0-.414-.168-.789-.439-1.061l-2-2C6.289 4.168 5.914 4 5.5 4 4.672 4 4 4.672 4 5.5c0 .414.168.789.439 1.06l2 2.001zM33.5 16h-3c-.828.0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5h3c.828.0 1.5-.672 1.5-1.5S34.328 16 33.5 16zM28.561 26.439C28.289 26.168 27.914 26 27.5 26c-.828.0-1.5.672-1.5 1.5.0.414.168.789.439 1.06l2 2C28.711 30.832 29.086 31 29.5 31c.828.0 1.5-.672 1.5-1.5.0-.414-.168-.789-.439-1.061l-2-2zM17.5 29c-.829.0-1.5.672-1.5 1.5v3c0 .828.671 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3C19 29.672 18.329 29 17.5 29zm0-22C11.71 7 7 11.71 7 17.5S11.71 28 17.5 28 28 23.29 28 17.5 23.29 7 17.5 7zm0 18c-4.136.0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5 7.5 3.364 7.5 7.5S21.636 25 17.5 25z"/></svg></label><label id=toggle-label-dark for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nightIcon" viewBox="0 0 100 100" style="enable-background='new 0 0 100 100'"><title>Dark Mode</title><path d="M96.76 66.458c-.853-.852-2.15-1.064-3.23-.534-6.063 2.991-12.858 4.571-19.655 4.571C62.022 70.495 50.88 65.88 42.5 57.5 29.043 44.043 25.658 23.536 34.076 6.47c.532-1.08.318-2.379-.534-3.23-.851-.852-2.15-1.064-3.23-.534-4.918 2.427-9.375 5.619-13.246 9.491-9.447 9.447-14.65 22.008-14.65 35.369.0 13.36 5.203 25.921 14.65 35.368s22.008 14.65 35.368 14.65c13.361.0 25.921-5.203 35.369-14.65 3.872-3.871 7.064-8.328 9.491-13.246C97.826 68.608 97.611 67.309 96.76 66.458z"/></svg></label></div></header><article><aside class=mainTOC><details open><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#introduction>Introduction</a></li><li><a href=#functions>Functions</a><ol><li><a href=#defining-a-function>Defining A Function</a></li><li><a href=#operators>Operators</a></li><li><a href=#lambda-functions>Lambda Functions</a></li><li><a href=#case-expressions>Case Expressions</a></li><li><a href=#pattern-match-expressions>Pattern-Match Expressions</a></li><li><a href=#local-definitions>Local Definitions</a></li></ol></li><li><a href=#built-in-types>Built-In Types</a><ol><li><a href=#primitive-types>Primitive Types</a></li><li><a href=#lists>Lists</a></li><li><a href=#tuples>Tuples</a></li><li><a href=#arrays>Arrays</a></li></ol></li><li><a href=#defining-new-types>Defining New Types</a><ol><li><a href=#algebraic-data-types>Algebraic Data Types</a></li><li><a href=#record-types>Record Types</a></li><li><a href=#synonym-types>Synonym Types</a></li></ol></li><li><a href=#overloading>Overloading</a><ol><li><a href=#overloaded-operators-and-functions>Overloaded Operators And Functions</a></li><li><a href=#classes>Classes</a></li></ol></li><li><a href=#appendix-a-standard-environment>Appendix A: Standard Environment</a></li></ol></nav></details></aside><a href=#introduction><h2 id=introduction><span class=hanchor arialabel=Anchor># </span>Introduction</h2></a><p>The motivation of this reference is to create an accessible, concise, and clear documentation for those who are seeking to learn CLEAN.</p><p>The same information can be found on:</p><ul><li><a href=https://cloogle.org/ rel=noopener>Cloogle</a> which is the language’s search engine, and</li><li><a href=https://cloogle.org/doc/ rel=noopener>language report</a> which describes the syntax and BNF of Clean.</li></ul><p>If you notice any mistake or have suggestions for improvements, please feel free to contact me through the following channels:</p><ul><li>Email:
+<label id=toggle-label-light for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="dayIcon" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35"><title>Light Mode</title><path d="M6 17.5C6 16.672 5.328 16 4.5 16h-3C.672 16 0 16.672.0 17.5S.672 19 1.5 19h3C5.328 19 6 18.328 6 17.5zM7.5 26c-.414.0-.789.168-1.061.439l-2 2C4.168 28.711 4 29.086 4 29.5 4 30.328 4.671 31 5.5 31c.414.0.789-.168 1.06-.44l2-2C8.832 28.289 9 27.914 9 27.5 9 26.672 8.329 26 7.5 26zm10-20C18.329 6 19 5.328 19 4.5v-3C19 .672 18.329.0 17.5.0S16 .672 16 1.5v3C16 5.328 16.671 6 17.5 6zm10 3c.414.0.789-.168 1.06-.439l2-2C30.832 6.289 31 5.914 31 5.5 31 4.672 30.329 4 29.5 4c-.414.0-.789.168-1.061.44l-2 2C26.168 6.711 26 7.086 26 7.5 26 8.328 26.671 9 27.5 9zM6.439 8.561C6.711 8.832 7.086 9 7.5 9 8.328 9 9 8.328 9 7.5c0-.414-.168-.789-.439-1.061l-2-2C6.289 4.168 5.914 4 5.5 4 4.672 4 4 4.672 4 5.5c0 .414.168.789.439 1.06l2 2.001zM33.5 16h-3c-.828.0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5h3c.828.0 1.5-.672 1.5-1.5S34.328 16 33.5 16zM28.561 26.439C28.289 26.168 27.914 26 27.5 26c-.828.0-1.5.672-1.5 1.5.0.414.168.789.439 1.06l2 2C28.711 30.832 29.086 31 29.5 31c.828.0 1.5-.672 1.5-1.5.0-.414-.168-.789-.439-1.061l-2-2zM17.5 29c-.829.0-1.5.672-1.5 1.5v3c0 .828.671 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3C19 29.672 18.329 29 17.5 29zm0-22C11.71 7 7 11.71 7 17.5S11.71 28 17.5 28 28 23.29 28 17.5 23.29 7 17.5 7zm0 18c-4.136.0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5 7.5 3.364 7.5 7.5S21.636 25 17.5 25z"/></svg></label><label id=toggle-label-dark for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nightIcon" viewBox="0 0 100 100" style="enable-background='new 0 0 100 100'"><title>Dark Mode</title><path d="M96.76 66.458c-.853-.852-2.15-1.064-3.23-.534-6.063 2.991-12.858 4.571-19.655 4.571C62.022 70.495 50.88 65.88 42.5 57.5 29.043 44.043 25.658 23.536 34.076 6.47c.532-1.08.318-2.379-.534-3.23-.851-.852-2.15-1.064-3.23-.534-4.918 2.427-9.375 5.619-13.246 9.491-9.447 9.447-14.65 22.008-14.65 35.369.0 13.36 5.203 25.921 14.65 35.368s22.008 14.65 35.368 14.65c13.361.0 25.921-5.203 35.369-14.65 3.872-3.871 7.064-8.328 9.491-13.246C97.826 68.608 97.611 67.309 96.76 66.458z"/></svg></label></div></header><article><aside class=mainTOC><details open><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#introduction>Introduction</a></li><li><a href=#functions>Functions</a><ol><li><a href=#defining-a-function>Defining A Function</a></li><li><a href=#guarded-expressions>Guarded expressions</a></li><li><a href=#partial-functions>Partial functions</a></li><li><a href=#operators>Operators</a></li><li><a href=#lambda-functions>Lambda Functions</a></li><li><a href=#case-expressions>Case Expressions</a></li><li><a href=#pattern-match-expressions>Pattern-Match Expressions</a></li><li><a href=#local-definitions>Local Definitions</a></li></ol></li><li><a href=#built-in-types>Built-In Types</a><ol><li><a href=#primitive-types>Primitive Types</a></li><li><a href=#lists>Lists</a></li><li><a href=#tuples>Tuples</a></li><li><a href=#arrays>Arrays</a></li></ol></li><li><a href=#defining-new-types>Defining New Types</a><ol><li><a href=#algebraic-data-types>Algebraic Data Types</a></li><li><a href=#record-types>Record Types</a></li><li><a href=#synonym-types>Synonym Types</a></li></ol></li><li><a href=#overloading>Overloading</a><ol><li><a href=#overloaded-functions>Overloaded Functions</a></li><li><a href=#classes>Classes</a></li></ol></li><li><a href=#appendix-a-standard-environment>Appendix A: Standard Environment</a></li></ol></nav></details></aside><a href=#introduction><h2 id=introduction><span class=hanchor arialabel=Anchor># </span>Introduction</h2></a><p>The motivation of this reference is to create an accessible, concise, and clear documentation for those who are seeking to learn CLEAN.</p><p>The same information can be found on:</p><ul><li><a href=https://cloogle.org/ rel=noopener>Cloogle</a> which is the language’s search engine, and</li><li><a href=https://cloogle.org/doc/ rel=noopener>language report</a> which describes the syntax and BNF of Clean.</li></ul><p>However, this documentation is not official.
+Terminologies and explanations may not be entirely true to the references used.</p><p>In addition, the language report, which was the primary source of this documentation, was written for the version 2.0 of CLEAN.</p><p>If you notice any mistake or have suggestions for improvements, please feel free to contact me through the following channels:</p><ul><li>Email:
 <a rel=noopener class="internal-link broken" data-src=mailto:b9xp3x@inf.elte.hu>b9xp3x@inf.elte.hu</a></li><li>Instagram:
 <a href=https://www.instagram.com/_kornthana/ rel=noopener>@_kornthana</a></li><li>Telegram channel:
-<a href=https://t.me/+El6CtwOD8KxhYmU9 rel=noopener>https://t.me/+El6CtwOD8KxhYmU9</a></li></ul><a href=#functions><h2 id=functions><span class=hanchor arialabel=Anchor># </span>Functions</h2></a><a href=#defining-a-function><h3 id=defining-a-function><span class=hanchor arialabel=Anchor># </span>Defining A Function</h3></a><p><strong>Implementation</strong></p><p>A control function implementation may be written as follows:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+<a href=https://t.me/+El6CtwOD8KxhYmU9 rel=noopener>https://t.me/+El6CtwOD8KxhYmU9</a></li></ul><a href=#functions><h2 id=functions><span class=hanchor arialabel=Anchor># </span>Functions</h2></a><a href=#defining-a-function><h3 id=defining-a-function><span class=hanchor arialabel=Anchor># </span>Defining A Function</h3></a><p>A function definition consists of, at least, one implementation, and a control implementation may be written as follows:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>fnName param = body
-</span></span></code></pre></td></tr></table></div></div><p>A function type can be placed before an implementation.
-The topics of typing functions are discussed in more details in later parts of this chapter.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>functionA parameter = expression
+</span></span></code></pre></td></tr></table></div></div><p>Multiple parameters are space separated.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
-</span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>fnName :: T      -&gt; K
-</span></span><span class=line><span class=cl>fnName    param  =  body
-</span></span></code></pre></td></tr></table></div></div><p>Parameters of a function are space separated.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>fnName :: T      K      -&gt; V
-</span></span><span class=line><span class=cl>fnName    paramA paramB =  body
-</span></span></code></pre></td></tr></table></div></div><p>On global scope, $\implies$ may be used to separate function parameters from function body.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>functionB paramA paramB = expression
+</span></span></code></pre></td></tr></table></div></div><p>In global scope, right arrow (<code>=></code>) may be used to separate parameters from expression.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
+</span><span class=lnt>6
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Langauge: Clean
+</span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>// In global scope
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>fn :: T      K      -&gt; V
-</span></span><span class=line><span class=cl>fn    paramA paramB =&gt; body
-</span></span></code></pre></td></tr></table></div></div><p>A simple function can be defined as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>functionA parameter     =&gt; expression
+</span></span><span class=line><span class=cl>functionB paramA paramB =&gt; expression
+</span></span></code></pre></td></tr></table></div></div><p>The simplest functions consist of one implementation.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>negate x = x * (-1)
+</span></span></code></pre></td></tr></table></div></div><p>If a function has multiple implementations, they must be grouped together.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>increment :: Int -&gt; Int
-</span></span><span class=line><span class=cl>increment    n   =  n + 1
-</span></span></code></pre></td></tr></table></div></div><p>It is allowed for a function to be implemented multiple times, but implementations must be grouped together.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>safeDiv m 0 = 0
+</span></span><span class=line><span class=cl>safeDiv m n = m / n
+</span></span></code></pre></td></tr></table></div></div><p>Therefore, the following snippet is illegal.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>isNice :: Int -&gt; Bool
-</span></span><span class=line><span class=cl>isNice    8   =&gt; True
-</span></span><span class=line><span class=cl>isNice    _   =&gt; False
-</span></span></code></pre></td></tr></table></div></div><p>As such, the following is not allowed.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>safeDiv m 0 = 0
+</span></span><span class=line><span class=cl>6 + 2 - 1
+</span></span><span class=line><span class=cl>safeDiv m n = m / n
+</span></span></code></pre></td></tr></table></div></div><p><strong>Implementation signature</strong></p><p>Every implementation must have the same signature as the first.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>badSafeDiv m 0 =  False
+</span></span><span class=line><span class=cl>badSafeDiv m n =  m / n
+</span></span></code></pre></td></tr></table></div></div><p>The second implementation of <code>badSafeDiv</code> disobeyed the signature of the first implementation by returning an integer, instead of a Boolean value.</p><p><strong>Implementation selection order</strong></p><p>Implementations are tried in textual order.
+An implementation is selected if arguments of a function call matches with its parameters.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>safeDiv 9 6  // False
+</span></span></code></pre></td></tr></table></div></div><p>In the first implementation, parameter $m$ matches with argument $9$, but parameter $0$ does not match with argument $6$.
+Thus, the first implementation is not selected.</p><p>In the second implementation, both parameters match with both arguments.
+Thus, the second implementation is selected for evaluation.</p><p>It should be noted that; if implementation order is changed, then the function would have unintended behaviors.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>safeDivAlt m n = m / n
+</span></span><span class=line><span class=cl>safeDivAlt m 0 = 0
+</span></span></code></pre></td></tr></table></div></div><p>The second implementation is never reached.
+Even if it is invoked with $0$ as the second argument.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>safeDivAlt 9 0  // Uh oh
+</span></span></code></pre></td></tr></table></div></div><p>With the current implementation of <code>safeDivAlt</code>, it is clear that the second implementation is never reached.</p><p>It is important to recognize that, this parameter-argument matching is not the same as performing equality checks.</p><a href=#guarded-expressions><h3 id=guarded-expressions><span class=hanchor arialabel=Anchor># </span>Guarded expressions</h3></a><p>One or more guarded expressions can be introduced to an implementation.
+Guarded expressions allow an implementation to have multiple bodies, instead of one.</p><p>A control implementation with one guarded body may be written as follows:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>functionC parameter
+</span></span><span class=line><span class=cl>| guard = expresssion
+</span></span></code></pre></td></tr></table></div></div><p>An implementation with multiple guarded bodies may be written as follows:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span><span class=lnt>6
-</span><span class=lnt>7
-</span><span class=lnt>8
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>isNice :: Int -&gt; Bool
-</span></span><span class=line><span class=cl>isNice    8   =&gt; True
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>6 + 2
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>isNice    _   =&gt; False
-</span></span></code></pre></td></tr></table></div></div><p>Implementations are tried in textual order, and an implementation is chosen, if the arguments of a function call matched with the parameters.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>isNice 9  // False
-</span></span></code></pre></td></tr></table></div></div><p>The argument ($9$) does not match with the parameter ($8$) of the first implementation.
-Therefore, it is not evaluated.</p><p>The argument matches with the parameter of the second implementation.
-Thus, the second implementation is evaluated.</p><p>Similarly, if it is invoked with $8$, the first implementation is evaluated, and the second is never tried.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>fib 8  // True
-</span></span></code></pre></td></tr></table></div></div><p>Following this logic, if order of implementation is changed, then the function would behave in unintended ways.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>isNice :: Int -&gt; Int
-</span></span><span class=line><span class=cl>isNice    _   =&gt; False
-</span></span><span class=line><span class=cl>isNice    8   =&gt; True
-</span></span></code></pre></td></tr></table></div></div><p>Wildcards ($_$) matches with any argument of a function call.
-Therefore, the second implementation is never reached.</p><p>It is important to recognize that, this parameter-matching behavior is not the same as performing equality checks.</p><p><strong>Guarded bodies</strong></p><p>A guarded body can be introduce to an implementation of a function.
-It allows an implementation to have multiple function bodies, instead of just one.</p><p>It has the following syntax.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span><span class=lnt>6
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>[fnName] [fnParams]
-</span></span><span class=line><span class=cl>| [guardA]         = [bodyA]
-</span></span><span class=line><span class=cl>| [guardB]         = [bodyB]
-</span></span><span class=line><span class=cl>| [guardC]         = [bodyC]
+</span></span><span class=line><span class=cl>functionD parameter
+</span></span><span class=line><span class=cl>| guardA = expressionA
+</span></span><span class=line><span class=cl>| guardB = expressionB
+</span></span><span class=line><span class=cl>| guardC = expressionC
 </span></span></code></pre></td></tr></table></div></div><p>Additionally, guarded bodies can be nested.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span><span class=lnt>6
-</span><span class=lnt>7
-</span><span class=lnt>8
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>[fnName] [fnParams]
-</span></span><span class=line><span class=cl>| [guardA]
-</span></span><span class=line><span class=cl>    | [guardAA]    = [bodyAA]
-</span></span><span class=line><span class=cl>    | [guardAB]    = [bodyAB]
-</span></span><span class=line><span class=cl>| [guardB]         = [bodyB]
-</span></span><span class=line><span class=cl>| [guardC]         = [bodyC]
-</span></span></code></pre></td></tr></table></div></div><p>A guard is a Boolean expression.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>functionE parameter
+</span></span><span class=line><span class=cl>| guardA
+</span></span><span class=line><span class=cl>    | guardAA    = expressionAA
+</span></span><span class=line><span class=cl>    | guardAB    = expressionAB
+</span></span></code></pre></td></tr></table></div></div><p><strong>Guarded expression signature</strong></p><p>A guard evaluates to a Boolean value.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span><span class=lnt>6
-</span><span class=lnt>7
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>signum :: Int -&gt; Int
-</span></span><span class=line><span class=cl>signum    0   =  0
-</span></span><span class=line><span class=cl>signum    n
-</span></span><span class=line><span class=cl>| n &gt; 0       =  1
-</span></span><span class=line><span class=cl>| n &lt; 0       = -1
-</span></span></code></pre></td></tr></table></div></div><p>Guards are tried in textual order, but only after their implementation is chosen.</p><p>For example:</p><p>When called with $0$, the first implementation is tried.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>signum 0 =  0
+</span></span><span class=line><span class=cl>signum n
+</span></span><span class=line><span class=cl>| n &gt; 0  =  1
+</span></span><span class=line><span class=cl>| n &lt; 0  = -1
+</span></span></code></pre></td></tr></table></div></div><p>The definition of <code>signum</code> has two implementations, and its second implementation has two guarded expressions.</p><p>The guarded expressions must obey the same signature rule as its implementation.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>badSignum 0 =  0
+</span></span><span class=line><span class=cl>badSignum n
+</span></span><span class=line><span class=cl>| n &gt; 0     =  True
+</span></span><span class=line><span class=cl>| n &lt; 0     = -1
+</span></span></code></pre></td></tr></table></div></div><p>According to first implementation of <code>badSignum</code>, every implementation must return an integer.
+However, one of the guarded expression returns a Boolean value, which is not allowed.</p><p><code>badSignum</code> can be rewritten to have only one implementation.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>badSignumAlt n
+</span></span><span class=line><span class=cl>| n == 0    =  0
+</span></span><span class=line><span class=cl>| n &gt;  0    =  True
+</span></span><span class=line><span class=cl>| n &lt;  0    = -1
+</span></span></code></pre></td></tr></table></div></div><p>Unfortunately, this new definition is still illegal.
+The first guarded expression forces others to return an integer, but the second returns a Boolean value.</p><p><strong>Guarded expression selection order</strong></p><p>Guarded expressions are tried in textual order, but only after their implementation is chosen.</p><p>That is, if <code>signum</code> is called with $0$, then parameter $0$ of the first implementation matches with argument $0$.
+Thus, the first implementation is selected.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>signum 0
-</span></span></code></pre></td></tr></table></div></div><p>The argument and parameter match.
-Thus, the body of the first implementation is evaluated.</p><p>In this call, none of the guards were tried, since the implementation that they belong to was not chosen.</p><p>Instead, if it is called with a non-zero integer, the first implementation will fail to match.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>In this call, none of the guards were tried because the implementation that they belong to is not selected.</p><p>Instead, if <code>signum</code> is called with a non-zero integer, the first implementation fails to match.
+The second implementation is then selected.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>signum -9
-</span></span></code></pre></td></tr></table></div></div><p>In this case, the first guard ($n\gt{0}$) is tried.
-It evaluates to $\textbf{False}$.
-Its body is not evaluated.</p><p>The second guard is tried ($n\lt{0}$).
-It evaluates to $\textbf{True}$.
-Therefore, the body of the second guard is evaluated.</p><p>Alternatively, $\textbf{otherwise}$ keyword can be used instead of an expression.
-Its value is always $\textbf{True}$.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>The first guard ($n \gt 0$) is tried.
+It evaluates to false, and its expression is not selected.</p><p>The second guard is tried ($n \lt 0$).
+It evaluates to true, and its expression is selected.</p><p>Similarly, the same happens for nested guarded expressions.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>someFuncA parameter = expression
+</span></span><span class=line><span class=cl>someFuncA parameter
+</span></span><span class=line><span class=cl>| guardA
+</span></span><span class=line><span class=cl>    | guardAA       = expressionAA
+</span></span></code></pre></td></tr></table></div></div><p>In <code>someFuncA</code> defined above, for <code>expresssionAA</code> to be selected, the second implementation must be selected, as well as, <code>guardA</code> and <code>guardAA</code> must evaluate to true.</p><p>In addition, <code>otherwise</code> keyword may used in place of a guard.
+It always evaluates to true.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>signumAlt 0 =  0
+</span></span><span class=line><span class=cl>signumAlt n
+</span></span><span class=line><span class=cl>| n &gt; 0     =  1
+</span></span><span class=line><span class=cl>| otherwise = -1
+</span></span></code></pre></td></tr></table></div></div><p>The order of the guarded bodies also matters.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>badSignumAlt 0 =  0
+</span></span><span class=line><span class=cl>badSignumAlt n
+</span></span><span class=line><span class=cl>| otherwise    = -1
+</span></span><span class=line><span class=cl>| n &gt; 0        =  1
+</span></span></code></pre></td></tr></table></div></div><a href=#partial-functions><h3 id=partial-functions><span class=hanchor arialabel=Anchor># </span>Partial functions</h3></a><p>Partial functions result in a run-time error when called with values outside of its domain.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fibPartial 1 = 1
+</span></span><span class=line><span class=cl>fibPartial 2 = 1
+</span></span><span class=line><span class=cl>fibPartial n = fibPartial (n - 1) + fibPartial (n - 2)
+</span></span></code></pre></td></tr></table></div></div><p>The definition of <code>fibPartial</code> is partial.
+It results in a run-time error when called any integer less than one.</p><p>Implementations with guarded expressions can be partial as well.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fibPartialAlt n
+</span></span><span class=line><span class=cl>| n == 1    = 1
+</span></span><span class=line><span class=cl>| n == 2    = 1
+</span></span><span class=line><span class=cl>| otherwise = fibPartialAlt (n - 1) + fibPartialAlt (n - 2)
+</span></span></code></pre></td></tr></table></div></div><p>By extending its domain, a partial function can be transformed into a complete function.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -177,62 +252,36 @@ Its value is always $\textbf{True}$.</p><div class=highlight><div class=chroma><
 </span><span class=lnt>7
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>signum :: Int -&gt; Int
-</span></span><span class=line><span class=cl>signum    0   =  0
-</span></span><span class=line><span class=cl>signum    n
-</span></span><span class=line><span class=cl>| n &gt; 0       =  1
-</span></span><span class=line><span class=cl>| otherwise   = -1
-</span></span></code></pre></td></tr></table></div></div><p>As such, order of the guarded bodies also matters.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span><span class=lnt>6
-</span><span class=lnt>7
-</span><span class=lnt>8
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>signum :: Int -&gt; Int
-</span></span><span class=line><span class=cl>signum    0   =  0
-</span></span><span class=line><span class=cl>signum    n
-</span></span><span class=line><span class=cl>| otherwise   = -1
-</span></span><span class=line><span class=cl>| n &gt; 0       =  1
-</span></span></code></pre></td></tr></table></div></div><p><strong>Partial functions</strong></p><p>It is important to recognize that, an implementation with guarded bodies can be partial.</p><p>Such implementations will result in a run-time error when invoked outside its domain.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span><span class=lnt>6
-</span><span class=lnt>7
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>fib :: Int -&gt; Int
-</span></span><span class=line><span class=cl>fib    n
-</span></span><span class=line><span class=cl>| n == 1   =  1
-</span></span><span class=line><span class=cl>| n == 2   =  1
-</span></span><span class=line><span class=cl>| n &gt;  2   =  fib (n - 1) + fib (n - 2)
-</span></span></code></pre></td></tr></table></div></div><p>The function above is partial.
-It results in a run-time error when invoked any integer less than one.</p><p>This partial behavior extends to a function definition as well.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>fibComplete n
+</span></span><span class=line><span class=cl>| n &lt;  0    = 0
+</span></span><span class=line><span class=cl>| n == 1    = 1
+</span></span><span class=line><span class=cl>| n == 2    = 1
+</span></span><span class=line><span class=cl>| otherwise = fibComplete (n - 1) + fibComplete (n - 2)
+</span></span></code></pre></td></tr></table></div></div><p>However, this solution might not make semantic sense to do so.
+Alternatively, <code>abort</code> from <code>StdMisc</code> can be used to solve the semantic issue.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span><span class=lnt>6
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>fib :: Int -&gt; Int
-</span></span><span class=line><span class=cl>fib    1   =  1
-</span></span><span class=line><span class=cl>fib    2   =  1
-</span></span><span class=line><span class=cl>fib    n   =  fib (n - 1) + fib (n - 2)
-</span></span></code></pre></td></tr></table></div></div><p>This version also results in run-time error when invoked with $n\le{0}$, even though it does not have guarded bodies.</p><a href=#operators><h3 id=operators><span class=hanchor arialabel=Anchor># </span>Operators</h3></a><p>Operators are arity-two functions.
+</span></span><span class=line><span class=cl>fibCompleteAlt n
+</span></span><span class=line><span class=cl>| n &lt;= 0    = abort &#34;fibCompleteAlt called outside of domain&#34;
+</span></span><span class=line><span class=cl>| n == 1    = 1
+</span></span><span class=line><span class=cl>| n == 2    = 1
+</span></span><span class=line><span class=cl>| otherwise = fibCompleteAlt (n - 1) + fibCompleteAlt (n - 2)
+</span></span></code></pre></td></tr></table></div></div><p><code>abort</code> terminates the execution of the program with a custom error message.
+<code>fibComplete</code> still works as intended, but it will stops the program and throws an error</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>fibCompleteAlt called outside of domain
+</span></span></code></pre></td></tr></table></div></div><p>when it is called with $n\le{0}$.</p><p>The module <code>StdMisc</code> is discussed in more details
+<a rel=noopener class="internal-link broken" data-src=/cleanpedia/appendix-a/stdmisc>here</a>.</p><a href=#operators><h3 id=operators><span class=hanchor arialabel=Anchor># </span>Operators</h3></a><p>Operators are arity-two functions.
 They can be applied in infix position or invoked like ordinary functions.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>1 + 1  // applied as an operator
-</span></span></code></pre></td></tr></table></div></div><p>To invoke an operator as an ordinary function, the operator name must be placed inside parentheses, and in front of its argument.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>To invoke an operator as an ordinary function, the operator name must be placed inside parentheses, and in front of its arguments.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
@@ -240,48 +289,58 @@ They can be applied in infix position or invoked like ordinary functions.</p><di
 </span></span><span class=line><span class=cl>(+) 1 1  // invoked as an ordinary function
 </span></span></code></pre></td></tr></table></div></div><p>When applied in infix position, both arguments must be given.
 Operators can be curried, but only when they are invoked as ordinary functions.</p><p><strong>Operator precedence</strong></p><p>The precedence determines how tightly an operator binds to its argument.
-Precedence can be between zero and nine with higher number having higher precedence.</p><p>The precedence of an operator is nine by default.</p><p><strong>Operator fixity</strong></p><p>The fixity is important when evaluating two operators of the same precedence.
-There are two relevant fixities:</p><ul><li>$\textbf{infixl}$ for left-associated operators, and</li><li>$\textbf{infixr}$ for right-associated operators.</li></ul><p>The fixity is left-associated by default.</p><p><strong>Defining an operator</strong></p><p>An operator can be defined by placing its name between parentheses.
+Precedence can be between $0$ and $9$ with higher number having higher precedence.</p><p>The precedence of an operator is $9$ by default.</p><p><strong>Operator fixity</strong></p><p>The fixity is important when evaluating two operators of the same precedence.
+There are two relevant fixities:</p><ul><li><code>infixl</code> for left-associated operators, and</li><li><code>infixr</code> for right-associated operators.</li></ul><p>The fixity of an operator is <code>infixl</code> by default.</p><p><strong>Defining an operator</strong></p><p>An operator can be defined by placing its name between parentheses.
 It can be implemented as if it was an ordinary function.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
-</span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>([fnName]) [fnParamL] [fnParamR] =  [fnBody]
-</span></span><span class=line><span class=cl>([fnName]) [fnParamL] [fnParamR] =&gt; [fnBody]
-</span></span></code></pre></td></tr></table></div></div><p>Precedence and fixity of an operator can be defined in its type declaration, but they can be omitted.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>(operatorA) paramL paramR =  expression
+</span></span></code></pre></td></tr></table></div></div><p>In global scope, right arrow (<code>=></code>) may be used to separated parameters from expression, much like a function.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>(-&gt;) infixr 9 :: Bool Bool  -&gt; Bool
-</span></span><span class=line><span class=cl>(-&gt;)             True False =  False
-</span></span><span class=line><span class=cl>(-&gt;)             _    _     =  True
-</span></span></code></pre></td></tr></table></div></div><p>Definition with omitted fixity and precedence can be done as follow:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
+</span></span><span class=line><span class=cl>// In global scope
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(operatorB) paramL paramR =&gt; expression
+</span></span></code></pre></td></tr></table></div></div><p><strong>Operator conflict</strong></p><p>Operators can conflict with one another.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>(&lt;=&gt;) :: Bool Bool -&gt; Bool
-</span></span><span class=line><span class=cl>(&lt;=&gt;)    x    y    =  x == y
-</span></span></code></pre></td></tr></table></div></div><p><strong>Conflict between operators</strong></p><p>It is not allowed to apply operators with equal precedence in an expression in such a way that their fixity conflict.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>(&lt;=&gt;) infixl 9 :: Bool  Bool  -&gt; Bool
+</span></span><span class=line><span class=cl>(&lt;=&gt;)          :: True  True  =  True
+</span></span><span class=line><span class=cl>(&lt;=&gt;)          :: False False =  True
+</span></span><span class=line><span class=cl>(&lt;=&gt;)          :: _     _     =  False
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(--&gt;) infixr 9 :: Bool  Bool  -&gt; Bool
+</span></span><span class=line><span class=cl>(--&gt;)          :: False True  =  False
+</span></span><span class=line><span class=cl>(--&gt;)          :: _     _     =  True
+</span></span></code></pre></td></tr></table></div></div><p>It is not allowed to apply operators with equal precedence in an expression in such a way that their fixity conflict.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>True -&gt; False &lt;=&gt; False
-</span></span></code></pre></td></tr></table></div></div><p>The $\rightarrow$ operator is a right-associated.
+</span></span><span class=line><span class=cl>True --&gt; False &lt;=&gt; False
+</span></span></code></pre></td></tr></table></div></div><p><code>--></code> operator is a right-associated.
 It implies that the expression should be evaluated as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>True -&gt; (False &lt;=&gt; False)
-</span></span></code></pre></td></tr></table></div></div><p>However, the $\iff$ operator is left associated.
+</span></span><span class=line><span class=cl>True --&gt; (False &lt;=&gt; False)
+</span></span></code></pre></td></tr></table></div></div><p>However, <code>&lt;=></code> operator is left associated.
 It implies that the expression should be evaluated as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
@@ -1370,7 +1429,7 @@ It can be used referred by the body.</p><p>Record fields can be extracted to an 
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>// add :: Int Int -&gt; Int
 </span></span><span class=line><span class=cl>add :: (Op Int)
-</span></span></code></pre></td></tr></table></div></div><hr><a href=#overloading><h2 id=overloading><span class=hanchor arialabel=Anchor># </span>Overloading</h2></a><a href=#overloaded-operators-and-functions><h3 id=overloaded-operators-and-functions><span class=hanchor arialabel=Anchor># </span>Overloaded Operators And Functions</h3></a><p>Functions and operators are defined on built-in types.
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#overloading><h2 id=overloading><span class=hanchor arialabel=Anchor># </span>Overloading</h2></a><a href=#overloaded-functions><h3 id=overloaded-functions><span class=hanchor arialabel=Anchor># </span>Overloaded Functions</h3></a><p>Functions and operators are defined on built-in types.
 However, when interacting with custom data types, they do not have any defined function or operator.</p><p>That is, adding two objects of $\textbf{Complex}$ type is not allowed.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
@@ -1472,7 +1531,7 @@ They are equality and inequality operators.</p><p>To instantiate a class, all of
 </span></span><span class=line><span class=cl>    (==) x y = (x.re == y.re) &amp;&amp; (x.im == y.im)
 </span></span><span class=line><span class=cl>    (&lt;&gt;) x y = (x.re &lt;&gt; y.re) || (x.im &lt;&gt; y.im))
 </span></span></code></pre></td></tr></table></div></div><p>A list of classes can be found on
-<a href=/cleanpedia/appendix-a/stdclass/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdclass/>Appendix A: StdClass</a>.</p><p><a href=/cleanpedia/appendix-a/stdclass rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdclass>stdclass</a></p><a href=#defining-a-class><h4 id=defining-a-class><span class=hanchor arialabel=Anchor># </span>Defining A Class</h4></a><p>As shown above, a class simple provides a name to collection of logically-linked functions and operations.</p><p>It can be defined with the following syntax.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+<a href=/cleanpedia/appendix-a/stdclass/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdclass/>Appendix A: StdClass</a>.</p><a href=#defining-a-class><h4 id=defining-a-class><span class=hanchor arialabel=Anchor># </span>Defining A Class</h4></a><p>As shown above, a class simple provides a name to collection of logically-linked functions and operations.</p><p>It can be defined with the following syntax.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4

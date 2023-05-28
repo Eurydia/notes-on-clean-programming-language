@@ -1,0 +1,1510 @@
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.96.0"><meta charset=utf-8><meta name=description content="A language reference for CLEAN."><title>Cleanpedia</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" type=image/png href=https://eurydia.github.io/cleanpedia//icon.png><link href=https://eurydia.github.io/cleanpedia/styles.b3e1e36b0403ac565c9392b3e23ef3b6.min.css rel=stylesheet><link href=https://eurydia.github.io/cleanpedia/styles/_light_syntax.86a48a52faebeaaf42158b72922b1c90.min.css rel=stylesheet id=theme-link><script src=https://eurydia.github.io/cleanpedia/js/darkmode.c7bf66e3c7098cf23280f76232e7b9e4.min.js></script>
+<script src=https://eurydia.github.io/cleanpedia/js/util.9825137f5e7825e8553c68ce39ac9e44.min.js></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity=sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity=sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity=sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR crossorigin=anonymous></script>
+<script src=https://unpkg.com/@floating-ui/core@0.7.3></script>
+<script src=https://unpkg.com/@floating-ui/dom@0.5.4></script>
+<script src=https://eurydia.github.io/cleanpedia/js/popover.abe6a51cc7138c5dff00f151dd627ad1.min.js></script>
+<script src=https://eurydia.github.io/cleanpedia/js/code-title.b35124ad8db0ba37162b886afb711cbc.min.js></script>
+<script src=https://eurydia.github.io/cleanpedia/js/clipboard.c20857734e53a3fb733b7443879efa61.min.js></script>
+<script src=https://eurydia.github.io/cleanpedia/js/callouts.7723cac461d613d118ee8bb8216b9838.min.js></script>
+<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.198c9aecd76388452e5585e58fa97531.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.495fee9b7ed070ce927ea2dea3aff713.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!0);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=(e=document)=>{addCopyButtons(),addTitleToCodeBlocks(),renderMathInElement(e.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})}</script><script type=module>
+    import { attachSPARouting } from "https:\/\/eurydia.github.io\/cleanpedia\/js\/router.9d4974281069e9ebb189f642ae1e3ca2.min.js"
+    attachSPARouting(init, render)
+  </script></head><body><div class=singlePage><header><h1 id=page-title><a href=https://eurydia.github.io/cleanpedia/>Cleanpedia</a></h1><div class=spacer></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
+<label id=toggle-label-light for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="dayIcon" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35"><title>Light Mode</title><path d="M6 17.5C6 16.672 5.328 16 4.5 16h-3C.672 16 0 16.672.0 17.5S.672 19 1.5 19h3C5.328 19 6 18.328 6 17.5zM7.5 26c-.414.0-.789.168-1.061.439l-2 2C4.168 28.711 4 29.086 4 29.5 4 30.328 4.671 31 5.5 31c.414.0.789-.168 1.06-.44l2-2C8.832 28.289 9 27.914 9 27.5 9 26.672 8.329 26 7.5 26zm10-20C18.329 6 19 5.328 19 4.5v-3C19 .672 18.329.0 17.5.0S16 .672 16 1.5v3C16 5.328 16.671 6 17.5 6zm10 3c.414.0.789-.168 1.06-.439l2-2C30.832 6.289 31 5.914 31 5.5 31 4.672 30.329 4 29.5 4c-.414.0-.789.168-1.061.44l-2 2C26.168 6.711 26 7.086 26 7.5 26 8.328 26.671 9 27.5 9zM6.439 8.561C6.711 8.832 7.086 9 7.5 9 8.328 9 9 8.328 9 7.5c0-.414-.168-.789-.439-1.061l-2-2C6.289 4.168 5.914 4 5.5 4 4.672 4 4 4.672 4 5.5c0 .414.168.789.439 1.06l2 2.001zM33.5 16h-3c-.828.0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5h3c.828.0 1.5-.672 1.5-1.5S34.328 16 33.5 16zM28.561 26.439C28.289 26.168 27.914 26 27.5 26c-.828.0-1.5.672-1.5 1.5.0.414.168.789.439 1.06l2 2C28.711 30.832 29.086 31 29.5 31c.828.0 1.5-.672 1.5-1.5.0-.414-.168-.789-.439-1.061l-2-2zM17.5 29c-.829.0-1.5.672-1.5 1.5v3c0 .828.671 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3C19 29.672 18.329 29 17.5 29zm0-22C11.71 7 7 11.71 7 17.5S11.71 28 17.5 28 28 23.29 28 17.5 23.29 7 17.5 7zm0 18c-4.136.0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5 7.5 3.364 7.5 7.5S21.636 25 17.5 25z"/></svg></label><label id=toggle-label-dark for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nightIcon" viewBox="0 0 100 100" style="enable-background='new 0 0 100 100'"><title>Dark Mode</title><path d="M96.76 66.458c-.853-.852-2.15-1.064-3.23-.534-6.063 2.991-12.858 4.571-19.655 4.571C62.022 70.495 50.88 65.88 42.5 57.5 29.043 44.043 25.658 23.536 34.076 6.47c.532-1.08.318-2.379-.534-3.23-.851-.852-2.15-1.064-3.23-.534-4.918 2.427-9.375 5.619-13.246 9.491-9.447 9.447-14.65 22.008-14.65 35.369.0 13.36 5.203 25.921 14.65 35.368s22.008 14.65 35.368 14.65c13.361.0 25.921-5.203 35.369-14.65 3.872-3.871 7.064-8.328 9.491-13.246C97.826 68.608 97.611 67.309 96.76 66.458z"/></svg></label></div></header><article><aside class=mainTOC><details><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#introduction>Introduction</a></li><li><a href=#functions>Functions</a><ol><li><a href=#defining-a-function>Defining A Function</a></li><li><a href=#operators>Operators</a></li><li><a href=#lambda-functions>Lambda Functions</a></li><li><a href=#case-expressions>Case Expressions</a></li><li><a href=#pattern-match-expressions>Pattern-Match Expressions</a></li><li><a href=#local-definitions>Local Definitions</a></li></ol></li><li><a href=#built-in-types>Built-In Types</a><ol><li><a href=#primitive-types>Primitive Types</a></li><li><a href=#lists>Lists</a></li><li><a href=#tuples>Tuples</a></li><li><a href=#arrays>Arrays</a></li></ol></li><li><a href=#defining-new-types>Defining New Types</a><ol><li><a href=#algebraic-data-types>Algebraic Data Types</a></li><li><a href=#record-types>Record Types</a></li><li><a href=#synonym-types>Synonym Types</a></li></ol></li><li><a href=#overloading>Overloading</a><ol><li><a href=#overloaded-operators-and-functions>Overloaded Operators And Functions</a></li><li><a href=#classes>Classes</a></li></ol></li><li><a href=#appendix-a-standard-environment>Appendix A: Standard Environment</a></li></ol></nav></details></aside><a href=#introduction><h2 id=introduction><span class=hanchor arialabel=Anchor># </span>Introduction</h2></a><p>The motivation of this reference is to create an accessible, concise, and clear documentation for those who are seeking to learn CLEAN.</p><p>The same information can be found on:</p><ul><li><a href=https://cloogle.org/ rel=noopener>Cloogle</a> which is the language’s search engine, and</li><li><a href=https://cloogle.org/doc/ rel=noopener>language report</a> which describes the syntax and BNF of Clean.</li></ul><p>If you notice any mistake or have suggestions for improvements, please feel free to contact me through the following channels:</p><ul><li>Email:
+<a rel=noopener class="internal-link broken" data-src=mailto:b9xp3x@inf.elte.hu>b9xp3x@inf.elte.hu</a></li><li>Instagram:
+<a href=https://www.instagram.com/_kornthana/ rel=noopener>@_kornthana</a></li><li>Telegram channel:
+<a href=https://t.me/+El6CtwOD8KxhYmU9 rel=noopener>https://t.me/+El6CtwOD8KxhYmU9</a></li></ul><a href=#functions><h2 id=functions><span class=hanchor arialabel=Anchor># </span>Functions</h2></a><a href=#defining-a-function><h3 id=defining-a-function><span class=hanchor arialabel=Anchor># </span>Defining A Function</h3></a><p><strong>Implementation</strong></p><p>A control function implementation may be written as follows:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fnName param = body
+</span></span></code></pre></td></tr></table></div></div><p>A function type can be placed before an implementation.
+The topics of typing functions are discussed in more details in later parts of this chapter.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fnName :: T      -&gt; K
+</span></span><span class=line><span class=cl>fnName    param  =  body
+</span></span></code></pre></td></tr></table></div></div><p>Parameters of a function are space separated.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fnName :: T      K      -&gt; V
+</span></span><span class=line><span class=cl>fnName    paramA paramB =  body
+</span></span></code></pre></td></tr></table></div></div><p>On global scope, $\implies$ may be used to separate function parameters from function body.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Langauge: Clean
+</span></span><span class=line><span class=cl>// In global scope
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fn :: T      K      -&gt; V
+</span></span><span class=line><span class=cl>fn    paramA paramB =&gt; body
+</span></span></code></pre></td></tr></table></div></div><p>A simple function can be defined as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>increment :: Int -&gt; Int
+</span></span><span class=line><span class=cl>increment    n   =  n + 1
+</span></span></code></pre></td></tr></table></div></div><p>It is allowed for a function to be implemented multiple times, but implementations must be grouped together.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isNice :: Int -&gt; Bool
+</span></span><span class=line><span class=cl>isNice    8   =&gt; True
+</span></span><span class=line><span class=cl>isNice    _   =&gt; False
+</span></span></code></pre></td></tr></table></div></div><p>As such, the following is not allowed.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isNice :: Int -&gt; Bool
+</span></span><span class=line><span class=cl>isNice    8   =&gt; True
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>6 + 2
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isNice    _   =&gt; False
+</span></span></code></pre></td></tr></table></div></div><p>Implementations are tried in textual order, and an implementation is chosen, if the arguments of a function call matched with the parameters.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isNice 9  // False
+</span></span></code></pre></td></tr></table></div></div><p>The argument ($9$) does not match with the parameter ($8$) of the first implementation.
+Therefore, it is not evaluated.</p><p>The argument matches with the parameter of the second implementation.
+Thus, the second implementation is evaluated.</p><p>Similarly, if it is invoked with $8$, the first implementation is evaluated, and the second is never tried.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fib 8  // True
+</span></span></code></pre></td></tr></table></div></div><p>Following this logic, if order of implementation is changed, then the function would behave in unintended ways.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isNice :: Int -&gt; Int
+</span></span><span class=line><span class=cl>isNice    _   =&gt; False
+</span></span><span class=line><span class=cl>isNice    8   =&gt; True
+</span></span></code></pre></td></tr></table></div></div><p>Wildcards ($_$) matches with any argument of a function call.
+Therefore, the second implementation is never reached.</p><p>It is important to recognize that, this parameter-matching behavior is not the same as performing equality checks.</p><p><strong>Guarded bodies</strong></p><p>A guarded body can be introduce to an implementation of a function.
+It allows an implementation to have multiple function bodies, instead of just one.</p><p>It has the following syntax.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[fnName] [fnParams]
+</span></span><span class=line><span class=cl>| [guardA]         = [bodyA]
+</span></span><span class=line><span class=cl>| [guardB]         = [bodyB]
+</span></span><span class=line><span class=cl>| [guardC]         = [bodyC]
+</span></span></code></pre></td></tr></table></div></div><p>Additionally, guarded bodies can be nested.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[fnName] [fnParams]
+</span></span><span class=line><span class=cl>| [guardA]
+</span></span><span class=line><span class=cl>    | [guardAA]    = [bodyAA]
+</span></span><span class=line><span class=cl>    | [guardAB]    = [bodyAB]
+</span></span><span class=line><span class=cl>| [guardB]         = [bodyB]
+</span></span><span class=line><span class=cl>| [guardC]         = [bodyC]
+</span></span></code></pre></td></tr></table></div></div><p>A guard is a Boolean expression.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>signum :: Int -&gt; Int
+</span></span><span class=line><span class=cl>signum    0   =  0
+</span></span><span class=line><span class=cl>signum    n
+</span></span><span class=line><span class=cl>| n &gt; 0       =  1
+</span></span><span class=line><span class=cl>| n &lt; 0       = -1
+</span></span></code></pre></td></tr></table></div></div><p>Guards are tried in textual order, but only after their implementation is chosen.</p><p>For example:</p><p>When called with $0$, the first implementation is tried.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>signum 0
+</span></span></code></pre></td></tr></table></div></div><p>The argument and parameter match.
+Thus, the body of the first implementation is evaluated.</p><p>In this call, none of the guards were tried, since the implementation that they belong to was not chosen.</p><p>Instead, if it is called with a non-zero integer, the first implementation will fail to match.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>signum -9
+</span></span></code></pre></td></tr></table></div></div><p>In this case, the first guard ($n\gt{0}$) is tried.
+It evaluates to $\textbf{False}$.
+Its body is not evaluated.</p><p>The second guard is tried ($n\lt{0}$).
+It evaluates to $\textbf{True}$.
+Therefore, the body of the second guard is evaluated.</p><p>Alternatively, $\textbf{otherwise}$ keyword can be used instead of an expression.
+Its value is always $\textbf{True}$.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>signum :: Int -&gt; Int
+</span></span><span class=line><span class=cl>signum    0   =  0
+</span></span><span class=line><span class=cl>signum    n
+</span></span><span class=line><span class=cl>| n &gt; 0       =  1
+</span></span><span class=line><span class=cl>| otherwise   = -1
+</span></span></code></pre></td></tr></table></div></div><p>As such, order of the guarded bodies also matters.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>signum :: Int -&gt; Int
+</span></span><span class=line><span class=cl>signum    0   =  0
+</span></span><span class=line><span class=cl>signum    n
+</span></span><span class=line><span class=cl>| otherwise   = -1
+</span></span><span class=line><span class=cl>| n &gt; 0       =  1
+</span></span></code></pre></td></tr></table></div></div><p><strong>Partial functions</strong></p><p>It is important to recognize that, an implementation with guarded bodies can be partial.</p><p>Such implementations will result in a run-time error when invoked outside its domain.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fib :: Int -&gt; Int
+</span></span><span class=line><span class=cl>fib    n
+</span></span><span class=line><span class=cl>| n == 1   =  1
+</span></span><span class=line><span class=cl>| n == 2   =  1
+</span></span><span class=line><span class=cl>| n &gt;  2   =  fib (n - 1) + fib (n - 2)
+</span></span></code></pre></td></tr></table></div></div><p>The function above is partial.
+It results in a run-time error when invoked any integer less than one.</p><p>This partial behavior extends to a function definition as well.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fib :: Int -&gt; Int
+</span></span><span class=line><span class=cl>fib    1   =  1
+</span></span><span class=line><span class=cl>fib    2   =  1
+</span></span><span class=line><span class=cl>fib    n   =  fib (n - 1) + fib (n - 2)
+</span></span></code></pre></td></tr></table></div></div><p>This version also results in run-time error when invoked with $n\le{0}$, even though it does not have guarded bodies.</p><a href=#operators><h3 id=operators><span class=hanchor arialabel=Anchor># </span>Operators</h3></a><p>Operators are arity-two functions.
+They can be applied in infix position or invoked like ordinary functions.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>1 + 1  // applied as an operator
+</span></span></code></pre></td></tr></table></div></div><p>To invoke an operator as an ordinary function, the operator name must be placed inside parentheses, and in front of its argument.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(+) 1 1  // invoked as an ordinary function
+</span></span></code></pre></td></tr></table></div></div><p>When applied in infix position, both arguments must be given.
+Operators can be curried, but only when they are invoked as ordinary functions.</p><p><strong>Operator precedence</strong></p><p>The precedence determines how tightly an operator binds to its argument.
+Precedence can be between zero and nine with higher number having higher precedence.</p><p>The precedence of an operator is nine by default.</p><p><strong>Operator fixity</strong></p><p>The fixity is important when evaluating two operators of the same precedence.
+There are two relevant fixities:</p><ul><li>$\textbf{infixl}$ for left-associated operators, and</li><li>$\textbf{infixr}$ for right-associated operators.</li></ul><p>The fixity is left-associated by default.</p><p><strong>Defining an operator</strong></p><p>An operator can be defined by placing its name between parentheses.
+It can be implemented as if it was an ordinary function.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>([fnName]) [fnParamL] [fnParamR] =  [fnBody]
+</span></span><span class=line><span class=cl>([fnName]) [fnParamL] [fnParamR] =&gt; [fnBody]
+</span></span></code></pre></td></tr></table></div></div><p>Precedence and fixity of an operator can be defined in its type declaration, but they can be omitted.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(-&gt;) infixr 9 :: Bool Bool  -&gt; Bool
+</span></span><span class=line><span class=cl>(-&gt;)             True False =  False
+</span></span><span class=line><span class=cl>(-&gt;)             _    _     =  True
+</span></span></code></pre></td></tr></table></div></div><p>Definition with omitted fixity and precedence can be done as follow:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(&lt;=&gt;) :: Bool Bool -&gt; Bool
+</span></span><span class=line><span class=cl>(&lt;=&gt;)    x    y    =  x == y
+</span></span></code></pre></td></tr></table></div></div><p><strong>Conflict between operators</strong></p><p>It is not allowed to apply operators with equal precedence in an expression in such a way that their fixity conflict.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>True -&gt; False &lt;=&gt; False
+</span></span></code></pre></td></tr></table></div></div><p>The $\rightarrow$ operator is a right-associated.
+It implies that the expression should be evaluated as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>True -&gt; (False &lt;=&gt; False)
+</span></span></code></pre></td></tr></table></div></div><p>However, the $\iff$ operator is left associated.
+It implies that the expression should be evaluated as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(True -&gt; False) &lt;=&gt; False
+</span></span></code></pre></td></tr></table></div></div><p>Since both operators have the same precedence and the order of evaluation cannot be decided by their fixity, this expression will result in a compile-time error.</p><a href=#lambda-functions><h3 id=lambda-functions><span class=hanchor arialabel=Anchor># </span>Lambda Functions</h3></a><p>A lambda function is defined &ldquo;on the spot&rdquo; as an expression.
+However, it cannot have local definitions or guards.</p><p>A lambda function has following syntax.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>\[fnParam] =  [fnBody]
+</span></span><span class=line><span class=cl>\[fnParam] -&gt; [fnBody]
+</span></span></code></pre></td></tr></table></div></div><p>Parameters of a lambda function are separated by spaces.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>\paramA        = ...
+</span></span><span class=line><span class=cl>\paramA paramB = ...
+</span></span></code></pre></td></tr></table></div></div><a href=#case-expressions><h3 id=case-expressions><span class=hanchor arialabel=Anchor># </span>Case Expressions</h3></a><p>In a $\textbf{case..in}$ expression, cases are tried in textual order.
+Each case contains a pattern and a case body.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>case [expr] of
+</span></span><span class=line><span class=cl>[casePatternA] =  [caseBodyA]
+</span></span><span class=line><span class=cl>[casePatternB] =  [caseBodyB]
+</span></span><span class=line><span class=cl>[casePatternC] =  [caseBodyC]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>case [expr] of
+</span></span><span class=line><span class=cl>[casePatternX] -&gt; [caseBodyX]
+</span></span><span class=line><span class=cl>[casePatternY] -&gt; [caseBodyY]
+</span></span><span class=line><span class=cl>[casePatternZ] -&gt; [caseBodyZ]
+</span></span></code></pre></td></tr></table></div></div><p>Guards can be introduce to a case which allows a case to have multiple guarded bodies.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>case [expr] of
+</span></span><span class=line><span class=cl>[patternA]
+</span></span><span class=line><span class=cl>| [guardA] = [bodyAA]
+</span></span><span class=line><span class=cl>| [guardB] = [bodyAB]
+</span></span><span class=line><span class=cl>| [guardC] = [bodyAC]
+</span></span><span class=line><span class=cl>[patternB] = [bodyB]
+</span></span></code></pre></td></tr></table></div></div><p>Internally, a $\textbf{case..in}$ expression is translated to a function definition.
+The cases are transformed into an implementation.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>_caseFn [casePatternA] = [caseBodyA]
+</span></span><span class=line><span class=cl>_caseFn [casePatternB] = [caseBodyB]
+</span></span><span class=line><span class=cl>_caseFn [casePatternC] = [caseBodyC]
+</span></span></code></pre></td></tr></table></div></div><p>Consequently, this can result in a run-time error when none of pattern matches since the expression is translated into a partial function.</p><a href=#pattern-match-expressions><h3 id=pattern-match-expressions><span class=hanchor arialabel=Anchor># </span>Pattern-Match Expressions</h3></a><p>A pattern-match expression checks an expression against a pattern or not.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[expr] := [pattern]
+</span></span></code></pre></td></tr></table></div></div><p>Internally, it compiles down to a $\textbf{case..of}$ expression.
+It yields $\textbf{True}$ or $\textbf{False}$ similar to an equality check.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>case [expr] of
+</span></span><span class=line><span class=cl>[pattern] = True
+</span></span><span class=line><span class=cl>_         = False
+</span></span></code></pre></td></tr></table></div></div><p>It is useful when dealing with algebraic types.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Tree a = Node a (Tree a) (Tree a)
+</span></span><span class=line><span class=cl>          | Leaf
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isLeaf :: (Tree a) -&gt; Bool
+</span></span><span class=line><span class=cl>isLeaf    t        =  t := (Leaf)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isNode :: (Tree a) -&gt; Bool
+</span></span><span class=line><span class=cl>isNode    t        =  t := (Tree x l r)
+</span></span></code></pre></td></tr></table></div></div><a href=#local-definitions><h3 id=local-definitions><span class=hanchor arialabel=Anchor># </span>Local Definitions</h3></a><a href=#let-expressions><h4 id=let-expressions><span class=hanchor arialabel=Anchor># </span>Let Expressions</h4></a><p>A $\textbf{let}..\textbf{in}$ expression introduces a new scope inside an expression.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>let
+</span></span><span class=line><span class=cl>    localX  = ...
+</span></span><span class=line><span class=cl>    localY = ...
+</span></span><span class=line><span class=cl>in expr
+</span></span></code></pre></td></tr></table></div></div><p>Anything defined inside a $\textbf{let}..\textbf{in}$ expression only has meaning in $\text{expr}$.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[let 
+</span></span><span class=line><span class=cl>    a = i * i 
+</span></span><span class=line><span class=cl>in (a, a) \\ i &lt;- [0..n]]
+</span></span></code></pre></td></tr></table></div></div><a href=#where-blocks><h4 id=where-blocks><span class=hanchor arialabel=Anchor># </span>Where Blocks</h4></a><p>A $\textbf{where}$ block can be added at the end of a function implementation which introduces a new scope.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[fnName] [fnParam]
+</span></span><span class=line><span class=cl>| [guardA] = [bodyA]
+</span></span><span class=line><span class=cl>| [guardB] = [bodyB]
+</span></span><span class=line><span class=cl>| [guardC] = [bodyC]
+</span></span><span class=line><span class=cl>where
+</span></span><span class=line><span class=cl>    localX = [expr]
+</span></span></code></pre></td></tr></table></div></div><p>For example:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>absolute :: Int -&gt; Int
+</span></span><span class=line><span class=cl>absolute    0   =  z  // 1st impl
+</span></span><span class=line><span class=cl>where
+</span></span><span class=line><span class=cl>    z :: Int
+</span></span><span class=line><span class=cl>    z =  0
+</span></span><span class=line><span class=cl>absolute    n         // 2nd impl
+</span></span><span class=line><span class=cl>| n &lt;  0        =  negN
+</span></span><span class=line><span class=cl>| otherwise     =  n
+</span></span><span class=line><span class=cl>where
+</span></span><span class=line><span class=cl>    negN :: Int
+</span></span><span class=line><span class=cl>    negN =  n * (-1)
+</span></span></code></pre></td></tr></table></div></div><p>The second implementation does not have access to $\text{z}$ which is defined in the first implementation.</p><a href=#with-blocks><h4 id=with-blocks><span class=hanchor arialabel=Anchor># </span>With Blocks</h4></a><p>A $\textbf{with}$ block can be added at the end of a guarded body which introduces a new scope.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[fnName] [fnParam]
+</span></span><span class=line><span class=cl>| [guardA] = [bodyA]
+</span></span><span class=line><span class=cl>with
+</span></span><span class=line><span class=cl>    localX = [expr]
+</span></span><span class=line><span class=cl>| [guardB] = [bodyB]
+</span></span><span class=line><span class=cl>with
+</span></span><span class=line><span class=cl>    localY = [expr]
+</span></span><span class=line><span class=cl>| [guardC] = [bodyC]
+</span></span></code></pre></td></tr></table></div></div><p>For example:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>absolute :: Int -&gt; Int
+</span></span><span class=line><span class=cl>absolute    n
+</span></span><span class=line><span class=cl>| n == 0        =  0
+</span></span><span class=line><span class=cl>| n &lt;  0        =  negN
+</span></span><span class=line><span class=cl>with
+</span></span><span class=line><span class=cl>    negN :: Int
+</span></span><span class=line><span class=cl>    negN =  n * (-1)
+</span></span><span class=line><span class=cl>| otherwise     =  n
+</span></span></code></pre></td></tr></table></div></div><p>The third guarded body does not have access to $\text{negN}$, which is local to the second guarded body.</p><hr><a href=#built-in-types><h2 id=built-in-types><span class=hanchor arialabel=Anchor># </span>Built-In Types</h2></a><p>Certain types like integers, Booleans, characters, real numbers, lists, tuples and arrays are frequently used that they have been predefined for reasons of efficiency and convenience.</p><a href=#primitive-types><h3 id=primitive-types><span class=hanchor arialabel=Anchor># </span>Primitive Types</h3></a><a href=#integers><h4 id=integers><span class=hanchor arialabel=Anchor># </span>Integers</h4></a><p><strong>Type annotation</strong>: $\textbf{Int}$</p><p><strong>Constructors</strong></p><p>From decimal notation:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>n :: Int
+</span></span><span class=line><span class=cl>n = -13
+</span></span><span class=line><span class=cl>n =  0
+</span></span><span class=line><span class=cl>n =  13
+</span></span></code></pre></td></tr></table></div></div><p>From octal notation by prefixing octal digits with $\textbf{0}$:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>n :: Int
+</span></span><span class=line><span class=cl>n = -015  // dec -13
+</span></span><span class=line><span class=cl>n =  0
+</span></span><span class=line><span class=cl>n =  015  // dec  13
+</span></span></code></pre></td></tr></table></div></div><p>From hexadecimal notation by prefixing hexadecimal digits with $\textbf{0x}$:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>n :: Int
+</span></span><span class=line><span class=cl>n = -0xD  // dec -13
+</span></span><span class=line><span class=cl>n =  0
+</span></span><span class=line><span class=cl>n =  0xd  // dec  13
+</span></span></code></pre></td></tr></table></div></div><p>More information about built-in operations and functions on integers can be found on
+<a rel=noopener class="internal-link broken" data-src=appendix-a/stdint>Appendix A: StdInt</a>.</p><a href=#real-numbers><h4 id=real-numbers><span class=hanchor arialabel=Anchor># </span>Real Numbers</h4></a><p><strong>Type annotation</strong>: $\textbf{Real}$</p><p><strong>Constructors</strong></p><p>From decimal notation:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>n :: Real
+</span></span><span class=line><span class=cl>n = -1.3
+</span></span><span class=line><span class=cl>n =  0.0
+</span></span><span class=line><span class=cl>n =  1.3
+</span></span></code></pre></td></tr></table></div></div><p>From scientific notation:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>n :: Real
+</span></span><span class=line><span class=cl>n = -13E-2  // -0.13
+</span></span><span class=line><span class=cl>n =  0E0    //  0
+</span></span><span class=line><span class=cl>n =  13E-2  //  0.13
+</span></span></code></pre></td></tr></table></div></div><p>More information about built-in operations and functions on real numbers can be found on
+<a rel=noopener class="internal-link broken" data-src=appendix-a/stdreal>Appendix A: StdReal</a>.</p><a href=#booleans><h4 id=booleans><span class=hanchor arialabel=Anchor># </span>Booleans</h4></a><p><strong>Type annotation</strong>: $\textbf{Bool}$</p><p><strong>Constructors</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>b :: Bool
+</span></span><span class=line><span class=cl>b =  True
+</span></span><span class=line><span class=cl>b =  False
+</span></span></code></pre></td></tr></table></div></div><p>More information about built-in operations and functions on Booleans can be found on
+<a rel=noopener class="internal-link broken" data-src=appendix-a/stdbool>Appendix A: StdBool</a>.</p><a href=#characters><h4 id=characters><span class=hanchor arialabel=Anchor># </span>Characters</h4></a><p><strong>Type annotation</strong>: $\textbf{Char}$</p><p><strong>Constructors</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>c :: Char
+</span></span><span class=line><span class=cl>b =  &#39;a&#39;
+</span></span><span class=line><span class=cl>b =  &#39;9&#39;
+</span></span><span class=line><span class=cl>b =  &#39;Z&#39;
+</span></span><span class=line><span class=cl>b =  &#39;+&#39;
+</span></span></code></pre></td></tr></table></div></div><p>More information about built-in operations and functions on characters can be found on
+<a rel=noopener class="internal-link broken" data-src=appendix-a/stdchar>Appendix A: StdChar</a>.</p><a href=#parameter-matching-primitive-types><h4 id=parameter-matching-primitive-types><span class=hanchor arialabel=Anchor># </span>Parameter-Matching Primitive Types</h4></a><p>Constants of primitive types can be specified as pattern.</p><p>Using integer constants as pattern:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fib :: Int -&gt; Int
+</span></span><span class=line><span class=cl>fib    1   =  1
+</span></span><span class=line><span class=cl>fib    2   =  1
+</span></span><span class=line><span class=cl>fib    n   =  fib (n - 1) + fib (n - 2)
+</span></span></code></pre></td></tr></table></div></div><p>Using character constants as pattern:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isLetterA :: Char -&gt; Bool
+</span></span><span class=line><span class=cl>isLetterA    &#39;a&#39;  =  True
+</span></span><span class=line><span class=cl>isLetterA    &#39;A&#39;  =  True
+</span></span><span class=line><span class=cl>isLetterA     _   =  False
+</span></span></code></pre></td></tr></table></div></div><a href=#lists><h3 id=lists><span class=hanchor arialabel=Anchor># </span>Lists</h3></a><a href=#defining-a-list><h4 id=defining-a-list><span class=hanchor arialabel=Anchor># </span>Defining A List</h4></a><p><strong>Type annotation</strong>:
+$[\textbf{Int}]$,
+$[\textbf{Char}]$,
+$[\textbf{T}]$,
+et cetera.</p><p>A list can contain an infinite number of elements.
+All elements must be of the same type.</p><p><strong>Constructors</strong></p><p>From explicit enumeration of the elements:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[1, 3, 5, 7, 9]
+</span></span><span class=line><span class=cl>[1 : [3, 5, 7, 9]]
+</span></span><span class=line><span class=cl>[1, 3, 5 : [7, 9]]
+</span></span><span class=line><span class=cl>[1 : [3 : [5 : [7 : [9 : []]]]]]
+</span></span><span class=line><span class=cl>[1 : 3 : 5 : 7 : 9 : []]
+</span></span></code></pre></td></tr></table></div></div><p>From implicit enumeration with $\textbf{dot-dot}$ expression:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[1..]       // infitite list [1, 2, 3, ...]
+</span></span><span class=line><span class=cl>[1, 3..]    // infinite list [1, 3, 5, ...]
+</span></span><span class=line><span class=cl>[1..5]      // [1, 2, 3, 4, 5]
+</span></span><span class=line><span class=cl>[1, 3..10]  // [1, 3, 5, 7, 9]
+</span></span></code></pre></td></tr></table></div></div><p>It should be noted that $\textbf{dot-dot}$ expressions requires $\text{StdEnum}$ module.</p><p>From list comprehension:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>// extract from a list
+</span></span><span class=line><span class=cl>[el \\ el &lt;- list]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>// extract from an array
+</span></span><span class=line><span class=cl>[el \\ el &lt;-: array]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>// cartesian product
+</span></span><span class=line><span class=cl>[(x, y) \\ x &lt;- xs , y &lt;- ys]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>// pair-wise zip
+</span></span><span class=line><span class=cl>[(x, y) \\ x &lt;- xs &amp; y &lt;- ys]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>// same as filter
+</span></span><span class=line><span class=cl>[x \\ x &lt;- xs | P x]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>// nested
+</span></span><span class=line><span class=cl>[(x, y) \\ x &lt;- xs, y &lt;- [1..x]]
+</span></span></code></pre></td></tr></table></div></div><p>A special notation for constructing a list of characters is also provided:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+</span></span><span class=line><span class=cl>[&#39;abc&#39;]
+</span></span><span class=line><span class=cl>[&#39;ab&#39;,&#39;c&#39;]
+</span></span></code></pre></td></tr></table></div></div><p>More information about built-in operations and functions on lists can be found on:</p><ul><li><a rel=noopener class="internal-link broken" data-src=appendix-a/stdcharlist>Appendix A: StdCharList</a>,</li><li><a rel=noopener class="internal-link broken" data-src=appendix-a/stdlist>Appendix A: StdList</a>, and</li><li><a rel=noopener class="internal-link broken" data-src=appendix-a/stdordlist>Appendix A: StdOrdList</a>.</li></ul><a href=#list-patterns><h4 id=list-patterns><span class=hanchor arialabel=Anchor># </span>List Patterns</h4></a><p>Lists can be specified as patterns as follow:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getFst :: [T]       -&gt; T
+</span></span><span class=line><span class=cl>getFst    [x, y, z] =  x
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getSnd :: [T]       -&gt; T
+</span></span><span class=line><span class=cl>getSnd    [x, y, z] =  y
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getThd :: [T]       -&gt; T
+</span></span><span class=line><span class=cl>getThd    [x, y, z] =  z
+</span></span></code></pre></td></tr></table></div></div><p>The results of these function calls are as expected:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getFst [1, 2, 3]  // 1
+</span></span><span class=line><span class=cl>getSnd [1, 2, 3]  // 2
+</span></span><span class=line><span class=cl>getThd [1, 2, 3]  // 3
+</span></span></code></pre></td></tr></table></div></div><p>However, they will result in a run-time error if it is invoked with a list which does not have exactly three elements.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getFst [1]          // NOT OK :(
+</span></span><span class=line><span class=cl>getSnd [1, 2]       // NOT OK :(
+</span></span><span class=line><span class=cl>getThd [4, 3, 2, 1] // NOT OK :(
+</span></span></code></pre></td></tr></table></div></div><p>To remedy this issue, an addition element should be introduce.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getFstAny :: [T]     -&gt; T
+</span></span><span class=line><span class=cl>getFstAny    [x : r] =  x
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getSndAny :: [T]        -&gt; T
+</span></span><span class=line><span class=cl>getSndAny    [x, y : r] =  y
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getThdAny :: [T]           -&gt; T
+</span></span><span class=line><span class=cl>getThdAny    [x, y, z : r] =  z
+</span></span></code></pre></td></tr></table></div></div><p>The right-hand side of colon ($:$) matches with any number of elements, including zero.
+It is worth noting that $r$ is always a list.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getFstAny [1]           // x = 1
+</span></span><span class=line><span class=cl>                        // r = []
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getFstAny [1, 2]        // x = 1
+</span></span><span class=line><span class=cl>                        // r = [2]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getFstAny [4, 3, 2, 1]  // x = 4
+</span></span><span class=line><span class=cl>                        // r = [3, 2, 1]
+</span></span></code></pre></td></tr></table></div></div><p>However, the second function still requires the list to have at least two elements.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getSndAny [1]           // NOT OK :(
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getSndAny [1, 2]        // x = 1
+</span></span><span class=line><span class=cl>                        // y = 2
+</span></span><span class=line><span class=cl>                        // r = []
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getSndAny [4, 3 ,2 ,1]  // x = 4
+</span></span><span class=line><span class=cl>                        // y = 3
+</span></span><span class=line><span class=cl>                        // r = [2, 1]
+</span></span></code></pre></td></tr></table></div></div><p>Similarly, the third function requires a list with at least three elements.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getThdAny [1]           // NOT OK :(
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getThdAny [1, 2]        // NOT OK :(
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getThdAny [4, 3, 2, 1]  // x = 4
+</span></span><span class=line><span class=cl>                        // y = 3
+</span></span><span class=line><span class=cl>                        // z = 2
+</span></span><span class=line><span class=cl>                        // r = [1]
+</span></span></code></pre></td></tr></table></div></div><a href=#tuples><h3 id=tuples><span class=hanchor arialabel=Anchor># </span>Tuples</h3></a><a href=#defining-a-tuple><h4 id=defining-a-tuple><span class=hanchor arialabel=Anchor># </span>Defining A Tuple</h4></a><p><strong>Type annotation</strong>:
+$(\textbf{T},\ \textbf{K})$,
+$(\textbf{T},\ \textbf{K},\ \textbf{V})$,
+$(\textbf{T},\ \textbf{K},\ \textbf{V},\ \textbf{E})$
+et cetera.</p><p>A tuple contains finite number of elements.
+Elements do not have to be the same type.
+Every type appears in a tuple must be specified, and singleton tuples are not allowed.</p><p><strong>Constructors</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>A :: (Int, Char)
+</span></span><span class=line><span class=cl>A =  (49, &#39;1&#39;)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>B :: (Real, Bool, String)
+</span></span><span class=line><span class=cl>B =  (0.2, False, &#34;Hi&#34;)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>C :: (Int)
+</span></span><span class=line><span class=cl>C =  (2, 6)  // NOT OK should be (Int, Int)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>D :: (Int)
+</span></span><span class=line><span class=cl>D =  (2)     // NOT OK
+</span></span></code></pre></td></tr></table></div></div><p>More information about built-in operations and functions on lists can be found on:</p><ul><li><a rel=noopener class="internal-link broken" data-src=appendix-a/stdtuple>Appendix A: StdTuple</a>.</li></ul><a href=#tuple-patterns><h4 id=tuple-patterns><span class=hanchor arialabel=Anchor># </span>Tuple Patterns</h4></a><p>Tuples can be used as patterns in a similar way to lists.
+However, colon ($:$) is not allowed in tuple patterns.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getFst :: (T, K, V) -&gt; T
+</span></span><span class=line><span class=cl>getFst    (x, y, z) =  x
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getSnd :: (T, K, V) -&gt; K
+</span></span><span class=line><span class=cl>getSnd    (x, y, z) =  y
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getThd :: (T, K, V) -&gt; V
+</span></span><span class=line><span class=cl>getThd    (x, y, z) =  z
+</span></span></code></pre></td></tr></table></div></div><p>The results of these function calls are as expected:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getFst (1, &#39;a&#39;, 1.0)  // 1
+</span></span><span class=line><span class=cl>getSnd (1, &#39;a&#39;, 1.0)  // &#39;a&#39;
+</span></span><span class=line><span class=cl>getThd (1, &#39;a&#39;, 1.0)  // 1.0
+</span></span></code></pre></td></tr></table></div></div><a href=#arrays><h3 id=arrays><span class=hanchor arialabel=Anchor># </span>Arrays</h3></a><a href=#defining-an-array><h4 id=defining-an-array><span class=hanchor arialabel=Anchor># </span>Defining An Array</h4></a><p><strong>Type annotation</strong>:
+${\textbf{Int}}$,
+${\textbf{Char}}$,
+${\textbf{T}}$,
+et cetera.</p><p>An array contains a finite number of elements.
+Elements of an array have to be of the same type.</p><p><strong>Constructors</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>{1, 2, 3, 4}
+</span></span><span class=line><span class=cl>{1.0, 2.0, 3.0, 4.0}
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>&#34;abc&#34;
+</span></span><span class=line><span class=cl>// equivalent to
+</span></span><span class=line><span class=cl>// {&#39;a&#39;, &#39;b&#39;, &#39;c&#39;}
+</span></span></code></pre></td></tr></table></div></div><p>An array can be constructed from comprehension by surrounding a comprehension with ${\ldots}$.</p><p>More information about built-in operations and functions on lists can be found on:</p><ul><li><a rel=noopener class="internal-link broken" data-src=appendix-a/stdarray>Appendix A: StdArray</a>, and</li><li><a rel=noopener class="internal-link broken" data-src=appendix-a/stdstring>Appendix A: StdString</a>.</li></ul><hr><a href=#defining-new-types><h2 id=defining-new-types><span class=hanchor arialabel=Anchor># </span>Defining New Types</h2></a><p>As a strongly typed language, every object and function in CLEAN has a type.
+The basic can be extended with algebraic types, record types, abstract types and synonym types.</p><p>New types can only be defined on the global level.</p><a href=#algebraic-data-types><h3 id=algebraic-data-types><span class=hanchor arialabel=Anchor># </span>Algebraic Data Types</h3></a><a href=#defining-an-algebraic-data-type><h4 id=defining-an-algebraic-data-type><span class=hanchor arialabel=Anchor># </span>Defining An Algebraic Data Type</h4></a><p>An algebraic data type introduces a new data structure and a constructor.</p><p>It has the following syntax.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: [tName] = [tConstructor]
+</span></span></code></pre></td></tr></table></div></div><p>An algebraic data type can have multiple constructors.
+Constructors defined in the same global scope must have names.
+Constructors must be separated by a vertical bar ($|$).</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: [tName] = [tConstructorA] | [tConstructorB] | [tConstructorC]
+</span></span></code></pre></td></tr></table></div></div><p>For readability, constructors may be placed on different lines.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: [tName] = [tConstructorA]
+</span></span><span class=line><span class=cl>           | [tConstructorB]
+</span></span><span class=line><span class=cl>           | [tConstructorC]
+</span></span></code></pre></td></tr></table></div></div><p>For example, a basic algebraic type can be defined as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Mood = Happy | Sad
+</span></span></code></pre></td></tr></table></div></div><p>Constructors also accept types as arguments, but they must be declared on the left-hand side.
+Once declared, these generic types can be referred to by any of its constructors.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: [tName] T K = [tConstructorA] T
+</span></span><span class=line><span class=cl>               | [tConstructorB] K
+</span></span><span class=line><span class=cl>               | [tConstructorC] T K
+</span></span></code></pre></td></tr></table></div></div><p>For example, a binary tree, which is has a recursive structure can be defined as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Tree = Branch Tree Tree
+</span></span><span class=line><span class=cl>        | Leaf
+</span></span></code></pre></td></tr></table></div></div><p>An infix constructor is defined by surrounding its name with parentheses.
+They must have an arity of two.
+The precedence and fixity of an such constructor follows that of an operator, which is discussed in Chapter I.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: [tName] T K =  [tConstructorA]  T
+</span></span><span class=line><span class=cl>               |  [tConstructorB]  K
+</span></span><span class=line><span class=cl>               | ([tConstructorC]) T K
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: [tName] T K =  [tConstructorA]  T
+</span></span><span class=line><span class=cl>               |  [tConstructorB]  K
+</span></span><span class=line><span class=cl>               | ([tConstructorC]) [fixity] [precedence] T K
+</span></span></code></pre></td></tr></table></div></div><p>For example, the $\text{Branch}$ constructor can be rewritten as an infix constructor.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: TreeInfix = (/\) infixr 0 Tree Tree
+</span></span><span class=line><span class=cl>             | Leaf
+</span></span></code></pre></td></tr></table></div></div><p>The precedence and fixity of an infix constructor can be omitted.
+The default precedence is $9$, and the default fixity is $\textbf{infixl}$.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: TreeInfix = (/\) Tree Tree
+</span></span><span class=line><span class=cl>             | Leaf
+</span></span></code></pre></td></tr></table></div></div><a href=#creating-objects-of-algebraic-data-types><h4 id=creating-objects-of-algebraic-data-types><span class=hanchor arialabel=Anchor># </span>Creating Objects Of Algebraic Data Types</h4></a><p>Objects of simple algebraic data types are created by invoking one of its constructors.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Mood = Sad | Happy
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>A :: Mood
+</span></span><span class=line><span class=cl>A =  Happy
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>B :: Mood
+</span></span><span class=line><span class=cl>B =  Sad
+</span></span></code></pre></td></tr></table></div></div><p>If a constructor accepts arguments, it should be invoked with appropriate arguments.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Tree = Branch Tree Tree
+</span></span><span class=line><span class=cl>        | Leaf
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>A :: Tree
+</span></span><span class=line><span class=cl>A =  Leaf
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>B :: Tree
+</span></span><span class=line><span class=cl>B =  Branch Leaf Leaf
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>C :: Tree
+</span></span><span class=line><span class=cl>C =  Branch Leaf (Branch Leaf Leaf)
+</span></span></code></pre></td></tr></table></div></div><p>Infix constructors behave in a similar way.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: TreeInfix = (/\) TreeInfix TreeInfix
+</span></span><span class=line><span class=cl>               | Leaf
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>A :: TreeInfix
+</span></span><span class=line><span class=cl>A =  Leaf
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>B :: TreeInfix
+</span></span><span class=line><span class=cl>B =  Leaf /\ Leaf
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>C :: TreeInfix
+</span></span><span class=line><span class=cl>C =  (/\) Leaf Leaf
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>D :: TreeInfix
+</span></span><span class=line><span class=cl>D =  Leaf /\ (Leaf /\ Leaf)
+</span></span></code></pre></td></tr></table></div></div><a href=#algebraic-data-type-patterns><h4 id=algebraic-data-type-patterns><span class=hanchor arialabel=Anchor># </span>Algebraic Data Type Patterns</h4></a><p>To use a algebraic data type as a pattern, use its constructors.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Mood = Sad | Happy
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isHappy :: Mood    -&gt; Bool
+</span></span><span class=line><span class=cl>isHappy    (Happy) =  True
+</span></span><span class=line><span class=cl>isHappy    _       =  False
+</span></span></code></pre></td></tr></table></div></div><p>With the same process, complex algebraic data types can be used as patterns as well.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Tree = Branch Tree Tree
+</span></span><span class=line><span class=cl>        | Leaf
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isBranch :: Tree           -&gt; Bool
+</span></span><span class=line><span class=cl>isBranch    (Branch l r)   =  True
+</span></span><span class=line><span class=cl>isBranch    _              =  False
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: TreeInfix = (/\) TreeInfix TreeInfix
+</span></span><span class=line><span class=cl>               | Leaf
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isBranchInfix :: TreeInfix -&gt; Bool
+</span></span><span class=line><span class=cl>isBranchInfix   (l/\r)     =  True
+</span></span><span class=line><span class=cl>isBranchInfix   _          =  False
+</span></span></code></pre></td></tr></table></div></div><a href=#record-types><h3 id=record-types><span class=hanchor arialabel=Anchor># </span>Record Types</h3></a><p>A record type is an algebraic data type in which exactly one constructor is defined.
+A field name is attached to each of the arguments of the constructor.</p><a href=#defining-a-record-type><h4 id=defining-a-record-type><span class=hanchor arialabel=Anchor># </span>Defining A Record Type</h4></a><p>A record type is a tuple-like algebraic data structure that has the advantage that its elements can be selected by field name rather than by position.</p><p>A simple record type can be defined as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: [tName] = { [fieldName] :: [fieldType] }
+</span></span></code></pre></td></tr></table></div></div><p>Fields must be separated commas ($,$).</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: [tName] = { [fNameA] :: [fTypeA] , [fNameB] :: [fTypeB] , [fNameC] :: [fTypeC]  }
+</span></span></code></pre></td></tr></table></div></div><p>To increase readability, fields can be placed on different lines.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: [tName] = { [fNameA] :: [fTypeA]
+</span></span><span class=line><span class=cl>             , [fNameB] :: [fTypeB]
+</span></span><span class=line><span class=cl>             , [fNameC] :: [fTypeC]
+</span></span><span class=line><span class=cl>             }
+</span></span></code></pre></td></tr></table></div></div><p>For example, a record type for representing complex numbers can be defined as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Complex = { re :: Real
+</span></span><span class=line><span class=cl>             , im :: Real
+</span></span><span class=line><span class=cl>             }
+</span></span></code></pre></td></tr></table></div></div><a href=#creating-objects-of-record-types><h4 id=creating-objects-of-record-types><span class=hanchor arialabel=Anchor># </span>Creating Objects Of Record Types</h4></a><p>The field names are case-sensitive, but the field order does not matter.
+Every field of a record type must be given.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Complex = { re :: Real
+</span></span><span class=line><span class=cl>             , im :: Real
+</span></span><span class=line><span class=cl>             }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>A :: Complex
+</span></span><span class=line><span class=cl>A =  { re = 1.0 , im = 0.0 }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>B :: Complex
+</span></span><span class=line><span class=cl>B =  { im = 1.0 , re = 0.0}
+</span></span></code></pre></td></tr></table></div></div><p>The name of a record type can be added to the constructor.
+In such a case, the type annotation can be omitted.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Point = { x :: Int
+</span></span><span class=line><span class=cl>           , y :: Int
+</span></span><span class=line><span class=cl>           }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Position = { x :: Int
+</span></span><span class=line><span class=cl>              , y :: Int
+</span></span><span class=line><span class=cl>              }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>// A :: Point
+</span></span><span class=line><span class=cl>// A =  { x = 0 , y = 0 }
+</span></span><span class=line><span class=cl>A =  { Point | x = 0 , y = 0 }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>// B :: Position
+</span></span><span class=line><span class=cl>// B =  { x = 0 , y = 0 }
+</span></span><span class=line><span class=cl>B =  { Position | x = 0 , y = 0 }
+</span></span></code></pre></td></tr></table></div></div><p><strong>Record update</strong></p><p>A new record object can be constructed from an existing one.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>{ [oldObject] &amp; [fName] = [newValue] }
+</span></span></code></pre></td></tr></table></div></div><p>Multiple fields can be updated all at once.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>{ [oldObject] &amp; [fNameA] = [newValueA] , [fNameB] = [newValueB] }
+</span></span></code></pre></td></tr></table></div></div><p>For example:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: PosThree = { x :: Int
+</span></span><span class=line><span class=cl>              , y :: Int
+</span></span><span class=line><span class=cl>              , z :: Int
+</span></span><span class=line><span class=cl>              }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>A :: PosThree
+</span></span><span class=line><span class=cl>A =  { x = 0 , y = 0 , z = 0 }  // (PosThree 0 0 0)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>B :: PosThree
+</span></span><span class=line><span class=cl>B =  { A &amp; x = 1 , y = 1 }      // (PosThree 1 1 0)
+</span></span></code></pre></td></tr></table></div></div><a href=#record-type-patterns><h4 id=record-type-patterns><span class=hanchor arialabel=Anchor># </span>Record Type Patterns</h4></a><p>An object of type record can be specified as pattern.
+Not every field must be used.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: PosThree = { x :: Int
+</span></span><span class=line><span class=cl>              , y :: Int
+</span></span><span class=line><span class=cl>              , z :: Int
+</span></span><span class=line><span class=cl>              }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isZeroX :: PosThree -&gt; Bool
+</span></span><span class=line><span class=cl>isZeroX    { x=0 }  =  True
+</span></span><span class=line><span class=cl>isZeroX    _        =  False
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>A :: PosThree
+</span></span><span class=line><span class=cl>A =  { x = 0 , y = 0 , z = 0 }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isZeroX A  // True
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>B :: PosThree
+</span></span><span class=line><span class=cl>B =  { A &amp; x = 1 , y = 1 }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isZeroX B  // False
+</span></span></code></pre></td></tr></table></div></div><p>Alternatively, record fields can be extracted without patterns.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: PosThree = { x :: Int
+</span></span><span class=line><span class=cl>              , y :: Int
+</span></span><span class=line><span class=cl>              , z :: Int
+</span></span><span class=line><span class=cl>              }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isZeroY :: PosThree -&gt; Bool
+</span></span><span class=line><span class=cl>isZeroY    { y=r }    =  r == 0
+</span></span></code></pre></td></tr></table></div></div><p>In the implementation above, the record field $y$ is extracted to $r$.
+It can be used referred by the body.</p><p>Record fields can be extracted to an identifier of the same name.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>:: PosThree = { x :: Int
+</span></span><span class=line><span class=cl>              , y :: Int
+</span></span><span class=line><span class=cl>              , z :: Int
+</span></span><span class=line><span class=cl>              }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isZeroZ :: PosThree -&gt; Bool
+</span></span><span class=line><span class=cl>isZeroZ    { z }    =  z == 0
+</span></span></code></pre></td></tr></table></div></div><p>The implementation above is equivalent to the following:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isZeroZ :: PosThree -&gt; Bool
+</span></span><span class=line><span class=cl>isZeroZ    { z=z }  =  z == 0
+</span></span></code></pre></td></tr></table></div></div><p><strong>Record field selection</strong></p><p>The value of a record field can be selected using dot operator ($.$).</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[recordObj].[fName]
+</span></span></code></pre></td></tr></table></div></div><p>For example, a simple getter function on $\textbf{Point}$ can be defined as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>:: Point = { x :: Int
+</span></span><span class=line><span class=cl>           , y :: Int
+</span></span><span class=line><span class=cl>           }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getX :: Point -&gt; Int
+</span></span><span class=line><span class=cl>getX    p     =  p.x
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>A :: Point
+</span></span><span class=line><span class=cl>A =  { x = 1 , y = 0 }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>getX a  // 1
+</span></span></code></pre></td></tr></table></div></div><a href=#synonym-types><h3 id=synonym-types><span class=hanchor arialabel=Anchor># </span>Synonym Types</h3></a><p>Synonym types allow for an introduction of a new type name for an existing type.</p><a href=#defining-a-synonym-type><h4 id=defining-a-synonym-type><span class=hanchor arialabel=Anchor># </span>Defining A Synonym Type</h4></a><p>A simple synonym type has the follow syntax:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: [tName] :== [existingType]
+</span></span></code></pre></td></tr></table></div></div><p>For example, an array of characters can be viewed as a string.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: String :== {Char}
+</span></span></code></pre></td></tr></table></div></div><p>Synonym types also accept generic types as arguments.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: [tName] T K :== [existingType] T K
+</span></span></code></pre></td></tr></table></div></div><p>For example, an arity-two operator can be shortened with a synonym type.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Op T :== T T -&gt; T
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>// add :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>add :: (Op Int)
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#overloading><h2 id=overloading><span class=hanchor arialabel=Anchor># </span>Overloading</h2></a><a href=#overloaded-operators-and-functions><h3 id=overloaded-operators-and-functions><span class=hanchor arialabel=Anchor># </span>Overloaded Operators And Functions</h3></a><p>Functions and operators are defined on built-in types.
+However, when interacting with custom data types, they do not have any defined function or operator.</p><p>That is, adding two objects of $\textbf{Complex}$ type is not allowed.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>:: Complex = { re :: Real
+</span></span><span class=line><span class=cl>             , im :: Real
+</span></span><span class=line><span class=cl>             }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>a :: Complex
+</span></span><span class=line><span class=cl>a =  { re = 0.0 , im = 1.0 }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>b :: Complex
+</span></span><span class=line><span class=cl>b =  { re = 0.0 , im = 1.0 }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>a + b  // NOT OK :(
+</span></span></code></pre></td></tr></table></div></div><p>This happens because addition is not defined on $\textbf{Complex}$ type.</p><p>In this case, addition can be overloaded on $\textbf{Complex}$ type.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>instance + Complex
+</span></span><span class=line><span class=cl>where
+</span></span><span class=line><span class=cl>    (+) x y = { Complex | re=(x.re + y.re) , im=(x.im + y.im)}
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>a + b  // (Complex 0.0 2.0)
+</span></span></code></pre></td></tr></table></div></div><p>Only after overloading the addition operation on $\textbf{Complex}$ that the addition is allowed.
+In other word, the complier now knows the meaning of complex number addition.</p><p>A list of functions and operations which can be overloaded can be found on
+<a rel=noopener class="internal-link broken" data-src=appendix-a/stdoverloaded>Appendix A: StdOverloaded</a>.</p><a href=#defining-an-overloaded-function-or-operator><h4 id=defining-an-overloaded-function-or-operator><span class=hanchor arialabel=Anchor># </span>Defining An Overloaded Function Or Operator</h4></a><p>To overload the built-in functions and operations, the general syntax is as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>instance [clsName] [typeVars]
+</span></span><span class=line><span class=cl>where
+</span></span><span class=line><span class=cl>    [fnImplementation]
+</span></span><span class=line><span class=cl>    [opImplementation]
+</span></span></code></pre></td></tr></table></div></div><p>Functions and operators can be defined in terms of existing overloaded functions.
+This is especially useful when dealing with generic types.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>increment :: T -&gt; T
+</span></span><span class=line><span class=cl>increment    x =  x + 1
+</span></span></code></pre></td></tr></table></div></div><p>It is adding an object of type $\textbf{T}$ and $1$ which is an integer.
+Unless the addition is instantiated for mentioned types, this implementation would not work as intended.</p><p>One way to ensure that it works for all type is to introduce class context.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>increment :: T -&gt; T | + T &amp; one T
+</span></span><span class=line><span class=cl>increment    x =  x + one
+</span></span></code></pre></td></tr></table></div></div><p>The new implementation requires that the addition operation, as well as, $\textbf{one}$ unit is defined on a generic type $\textbf{T}$.</p><p>In this case, the function is defined in terms of an overloaded function and a unit.</p><p>Such declaration has the following syntax.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[fnName] :: [typeVars] -&gt; [typeVar] | [clsConstraints]
+</span></span></code></pre></td></tr></table></div></div><p>Class constraints are separated by ampersands ($&$).</p><a href=#classes><h3 id=classes><span class=hanchor arialabel=Anchor># </span>Classes</h3></a><p>A class gives name to a group of overloaded functions and operators.
+These functions and operators are members of the class.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>class Equal T
+</span></span><span class=line><span class=cl>where
+</span></span><span class=line><span class=cl>    (==) infixl 4 :: T T -&gt; Bool
+</span></span><span class=line><span class=cl>    (&lt;&gt;) infixl 4 :: T T -&gt; Bool
+</span></span></code></pre></td></tr></table></div></div><p>The class $\text{Eq}$ has two members.
+They are equality and inequality operators.</p><p>To instantiate a class, all of its members must be implemented.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>instance Equal Complex
+</span></span><span class=line><span class=cl>where
+</span></span><span class=line><span class=cl>    (==) x y = (x.re == y.re) &amp;&amp; (x.im == y.im)
+</span></span><span class=line><span class=cl>    (&lt;&gt;) x y = (x.re &lt;&gt; y.re) || (x.im &lt;&gt; y.im))
+</span></span></code></pre></td></tr></table></div></div><p>A list of classes can be found on
+<a rel=noopener class="internal-link broken" data-src=appendix-a/stdclass>Appendix A: StdClass</a>.</p><a href=#defining-a-class><h4 id=defining-a-class><span class=hanchor arialabel=Anchor># </span>Defining A Class</h4></a><p>As shown above, a class simple provides a name to collection of logically-linked functions and operations.</p><p>It can be defined with the following syntax.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>class [clsName] [typeVars]
+</span></span><span class=line><span class=cl>where
+</span></span><span class=line><span class=cl>    [fnDeclaration]
+</span></span><span class=line><span class=cl>    [opDeclaration]
+</span></span></code></pre></td></tr></table></div></div><p>Type variables declared can be referred to by all of its member, but they must be given as arguments when the class is instantiated.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>class MinMaxC T K
+</span></span><span class=line><span class=cl>where
+</span></span><span class=line><span class=cl>    minC :: T T -&gt; K
+</span></span><span class=line><span class=cl>    maxC :: T T -&gt; K
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>instance MinMax Real Int
+</span></span><span class=line><span class=cl>where
+</span></span><span class=line><span class=cl>    minC x y = toInt (min x y)
+</span></span><span class=line><span class=cl>    maxC x y = toInt (max x y)
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#appendix-a-standard-environment><h2 id=appendix-a-standard-environment><span class=hanchor arialabel=Anchor># </span>Appendix A: Standard Environment</h2></a><p>More information about Standard Environment can be found
+<a href=/cleanpedia/appendix-b/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-b/>here</a>.</p></article><hr><div class=page-end id=footer><div class=backlinks-container><h3>Backlinks</h3><ul class=backlinks><li>No backlinks found</li></ul></div><div><script src=https://cdn.jsdelivr.net/npm/d3@6.7.0/dist/d3.min.js integrity="sha256-+7jaYCp29O1JusNWHaYtgUn6EhuP0VaFuswhNV06MyI=" crossorigin=anonymous></script><h3>Interactive Graph</h3><div id=graph-container></div><style>:root{--g-node:var(--secondary);--g-node-active:var(--primary);--g-node-inactive:var(--visited);--g-link:var(--outlinegray);--g-link-active:#5a7282}</style><script src=https://eurydia.github.io/cleanpedia/js/graph.abd4bc2af3869a96524d7d23b76152c7.js></script></div></div><div id=contact_buttons><footer><p>Made by Thanakorn Phuttharaksa using <a href=https://github.com/jackyzha0/quartz>Quartz</a>, © 2023</p><ul><li><a href=https://www.instagram.com/_kornthana/>Instagram</a></li><li><a href=mailto:b9xp3x@inf.elte.hu>Email</a></li><li><a href=https://t.me/+El6CtwOD8KxhYmU9>Telegram</a></li></ul></footer></div></div></body></html>

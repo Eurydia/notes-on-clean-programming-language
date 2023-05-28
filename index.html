@@ -8,7 +8,7 @@
 <script src=https://eurydia.github.io/cleanpedia/js/code-title.b35124ad8db0ba37162b886afb711cbc.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/clipboard.c20857734e53a3fb733b7443879efa61.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/callouts.7723cac461d613d118ee8bb8216b9838.min.js></script>
-<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.969648b126da0de475b3602c9ea9eab3.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.d29b97f845511ff3b2c46f5775f010c6.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!0);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=(e=document)=>{addCopyButtons(),addTitleToCodeBlocks(),renderMathInElement(e.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})}</script><script type=module>
+<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.418eb8c14fdb3d52f85177ef93f8cdde.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.d705ee35d182ed74443241bf6bd43091.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!0);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=(e=document)=>{addCopyButtons(),addTitleToCodeBlocks(),renderMathInElement(e.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})}</script><script type=module>
     import { attachSPARouting } from "https:\/\/eurydia.github.io\/cleanpedia\/js\/router.9d4974281069e9ebb189f642ae1e3ca2.min.js"
     attachSPARouting(init, render)
   </script></head><body><div class=singlePage><header><h1 id=page-title><a href=https://eurydia.github.io/cleanpedia/>Cleanpedia</a></h1><div class=spacer></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
@@ -28,7 +28,7 @@ Terminologies and explanations may not be entirely true to the references used.<
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>functionB paramA paramB = expression
-</span></span></code></pre></td></tr></table></div></div><p>In global scope, right arrow (<code>=></code>) may be used to separate parameters from expression.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>In global scope, right double arrow (<code>=></code>) may be used to separate parameters from expression.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -70,8 +70,8 @@ Terminologies and explanations may not be entirely true to the references used.<
 </span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>badSafeDiv m 0 =  False
-</span></span><span class=line><span class=cl>badSafeDiv m n =  m / n
+</span></span><span class=line><span class=cl>badSafeDiv m 0 = False
+</span></span><span class=line><span class=cl>badSafeDiv m n = m / n
 </span></span></code></pre></td></tr></table></div></div><p>The second implementation of <code>badSafeDiv</code> disobeyed the signature of the first implementation by returning an integer, instead of a Boolean value.</p><p><strong>Implementation selection order</strong></p><p>Implementations are tried in textual order.
 An implementation is selected if arguments of a function call matches with its parameters.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
@@ -127,8 +127,8 @@ Guarded expressions allow an implementation to have multiple bodies, instead of 
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>functionE parameter
 </span></span><span class=line><span class=cl>| guardA
-</span></span><span class=line><span class=cl>    | guardAA    = expressionAA
-</span></span><span class=line><span class=cl>    | guardAB    = expressionAB
+</span></span><span class=line><span class=cl>    | guardAA = expressionAA
+</span></span><span class=line><span class=cl>    | guardAB = expressionAB
 </span></span></code></pre></td></tr></table></div></div><p><strong>Guarded expression signature</strong></p><p>A guard evaluates to a Boolean value.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
@@ -163,9 +163,9 @@ However, one of the guarded expression returns a Boolean value, which is not all
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>badSignumAlt n
-</span></span><span class=line><span class=cl>| n == 0    =  0
-</span></span><span class=line><span class=cl>| n &gt;  0    =  True
-</span></span><span class=line><span class=cl>| n &lt;  0    = -1
+</span></span><span class=line><span class=cl>| n == 0 =  0
+</span></span><span class=line><span class=cl>| n &gt;  0 =  True
+</span></span><span class=line><span class=cl>| n &lt;  0 = -1
 </span></span></code></pre></td></tr></table></div></div><p>Unfortunately, this new definition is still illegal.
 The first guarded expression forces others to return an integer, but the second returns a Boolean value.</p><p><strong>Guarded expression selection order</strong></p><p>Guarded expressions are tried in textual order, but only after their implementation is chosen.</p><p>That is, if <code>signum</code> is called with $0$, then parameter $0$ of the first implementation matches with argument $0$.
 Thus, the first implementation is selected.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -296,8 +296,8 @@ It can be implemented as if it was an ordinary function.</p><div class=highlight
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>(operatorA) paramL paramR =  expression
-</span></span></code></pre></td></tr></table></div></div><p>In global scope, right arrow (<code>=></code>) may be used to separated parameters from expression, much like a function.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>(operatorA) paramL paramR = expression
+</span></span></code></pre></td></tr></table></div></div><p>In global scope, right double arrow (<code>=></code>) may be used to separated parameters from expression, much like a function.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -333,61 +333,80 @@ It can be implemented as if it was an ordinary function.</p><div class=highlight
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>True --&gt; False &lt;=&gt; False
-</span></span></code></pre></td></tr></table></div></div><p><code>--></code> operator is a right-associated.
+</span></span></code></pre></td></tr></table></div></div><p>The logical implication operator (<code>--></code>) is a right-associated.
 It implies that the expression should be evaluated as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>True --&gt; (False &lt;=&gt; False)
-</span></span></code></pre></td></tr></table></div></div><p>However, <code>&lt;=></code> operator is left associated.
+</span></span></code></pre></td></tr></table></div></div><p>However, the logical equivalence operator (<code>&lt;=></code> ) is left associated.
 It implies that the expression should be evaluated as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>(True -&gt; False) &lt;=&gt; False
-</span></span></code></pre></td></tr></table></div></div><p>Since both operators have the same precedence and the order of evaluation cannot be decided by their fixity, this expression will result in a compile-time error.</p><a href=#lambda-functions><h3 id=lambda-functions><span class=hanchor arialabel=Anchor># </span>Lambda Functions</h3></a><p>A lambda function is defined &ldquo;on the spot&rdquo; as an expression.
-However, it cannot have local definitions or guards.</p><p>A lambda function has following syntax.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>(True --&gt; False) &lt;=&gt; False
+</span></span></code></pre></td></tr></table></div></div><p>Since both operators have the same precedence and the order of evaluation cannot be decided by their fixity, this expression will result in a compile-time error.</p><a href=#lambda-functions><h3 id=lambda-functions><span class=hanchor arialabel=Anchor># </span>Lambda Functions</h3></a><p>A control lambda function may be written as follows:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>\ parameter = expression
+</span></span></code></pre></td></tr></table></div></div><p>Parameters of a lambda function are space separated.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>\ paramA paramB = expression
+</span></span></code></pre></td></tr></table></div></div><p>Alternatively, dot (<code>.</code>) and right arrow (<code>-></code>) may be used to separate parameters from expression.
+It should be noted that they carry different semantic meanings.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>\[fnParam] =  [fnBody]
-</span></span><span class=line><span class=cl>\[fnParam] -&gt; [fnBody]
-</span></span></code></pre></td></tr></table></div></div><p>Parameters of a lambda function are separated by spaces.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>\ parameter     .  expression
+</span></span><span class=line><span class=cl>\ paramA paramB -&gt; expression
+</span></span></code></pre></td></tr></table></div></div><p>Guarded expressions can be introduced as well.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>\ parameter | guardA = expressionA | guardB = expressionB | guardC = expressionC
+</span></span></code></pre></td></tr></table></div></div><p>To increase readability, a lambda definition maybe placed between a pair of parenthesis, which allows it to span multiple lines.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(\ parameter 
+</span></span><span class=line><span class=cl>| guardA = expressionA 
+</span></span><span class=line><span class=cl>| guardB = expressionB 
+</span></span><span class=line><span class=cl>| guardC = expressionC)
+</span></span></code></pre></td></tr></table></div></div><a href=#case-expressions><h3 id=case-expressions><span class=hanchor arialabel=Anchor># </span>Case Expressions</h3></a><p>A<code>case..of..</code> expression matches a given expression with one of its patterns, and a control expression with one pattern may be written as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>\paramA        = ...
-</span></span><span class=line><span class=cl>\paramA paramB = ...
-</span></span></code></pre></td></tr></table></div></div><a href=#case-expressions><h3 id=case-expressions><span class=hanchor arialabel=Anchor># </span>Case Expressions</h3></a><p>In a $\textbf{case..in}$ expression, cases are tried in textual order.
-Each case contains a pattern and a case body.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
+</span></span><span class=line><span class=cl>case expression of
+</span></span><span class=line><span class=cl>pattern = altExpression
+</span></span></code></pre></td></tr></table></div></div><p>Multiple patterns and alternative expressions can be introduced in the same way.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>case [expr] of
-</span></span><span class=line><span class=cl>[casePatternA] =  [caseBodyA]
-</span></span><span class=line><span class=cl>[casePatternB] =  [caseBodyB]
-</span></span><span class=line><span class=cl>[casePatternC] =  [caseBodyC]
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>case [expr] of
-</span></span><span class=line><span class=cl>[casePatternX] -&gt; [caseBodyX]
-</span></span><span class=line><span class=cl>[casePatternY] -&gt; [caseBodyY]
-</span></span><span class=line><span class=cl>[casePatternZ] -&gt; [caseBodyZ]
-</span></span></code></pre></td></tr></table></div></div><p>Guards can be introduce to a case which allows a case to have multiple guarded bodies.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>case expression of
+</span></span><span class=line><span class=cl>patternA = altExpressionA
+</span></span><span class=line><span class=cl>patternB = altExpressionB
+</span></span><span class=line><span class=cl>patternC = altExpressionC
+</span></span></code></pre></td></tr></table></div></div><p>Alternatively, right double arrow (<code>=></code>) and right arrow (<code>-></code>) may be used to separated a pattern from an alternative expression, but they are not allowed to mix.</p><p>Guarded expressions can be introduced as well, which allows a case to have multiple guarded bodies.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -397,60 +416,53 @@ Each case contains a pattern and a case body.</p><div class=highlight><div class
 </span><span class=lnt>8
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>case [expr] of
-</span></span><span class=line><span class=cl>[patternA]
-</span></span><span class=line><span class=cl>| [guardA] = [bodyAA]
-</span></span><span class=line><span class=cl>| [guardB] = [bodyAB]
-</span></span><span class=line><span class=cl>| [guardC] = [bodyAC]
-</span></span><span class=line><span class=cl>[patternB] = [bodyB]
-</span></span></code></pre></td></tr></table></div></div><p>Internally, a $\textbf{case..in}$ expression is translated to a function definition.
-The cases are transformed into an implementation.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>case expression of
+</span></span><span class=line><span class=cl>patternA
+</span></span><span class=line><span class=cl>| guardA = altExpressionAA
+</span></span><span class=line><span class=cl>| guardB = altExpressionAB
+</span></span><span class=line><span class=cl>| guardC = altExpressionAC
+</span></span><span class=line><span class=cl>patternB = altExpressionB
+</span></span></code></pre></td></tr></table></div></div><p>Internally, a <code>case..of..</code> expression is compiled to a function.
+That is, each case is transformed into an implementation of a function.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>_caseFn [casePatternA] = [caseBodyA]
-</span></span><span class=line><span class=cl>_caseFn [casePatternB] = [caseBodyB]
-</span></span><span class=line><span class=cl>_caseFn [casePatternC] = [caseBodyC]
-</span></span></code></pre></td></tr></table></div></div><p>Consequently, this can result in a run-time error when none of pattern matches since the expression is translated into a partial function.</p><a href=#pattern-match-expressions><h3 id=pattern-match-expressions><span class=hanchor arialabel=Anchor># </span>Pattern-Match Expressions</h3></a><p>A pattern-match expression checks an expression against a pattern or not.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>__compiledExpr patternA = altExpressionA
+</span></span><span class=line><span class=cl>__compiledExpr patternB = altExpressionB
+</span></span><span class=line><span class=cl>__compiledExpr patternC = altExpressionC
+</span></span></code></pre></td></tr></table></div></div><p>This explains why guarded expressions can be introduced.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>__compiledExpr patternA
+</span></span><span class=line><span class=cl>| guardAA               = altExpressionAA
+</span></span><span class=line><span class=cl>| guardAB               = altExpressionAB
+</span></span><span class=line><span class=cl>| guardAC               = altExpressionAC
+</span></span><span class=line><span class=cl>__compiledExpr patternB = altExpressionB
+</span></span></code></pre></td></tr></table></div></div><p>Consequently, such an expression can result in a run-time error since it is translated into a partial function.</p><a href=#pattern-match-expressions><h3 id=pattern-match-expressions><span class=hanchor arialabel=Anchor># </span>Pattern-Match Expressions</h3></a><p>A pattern-match expression checks an expression against a pattern, and a control expression may be written as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>[expr] := [pattern]
-</span></span></code></pre></td></tr></table></div></div><p>Internally, it compiles down to a $\textbf{case..of}$ expression.
-It yields $\textbf{True}$ or $\textbf{False}$ similar to an equality check.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>expression =: pattern
+</span></span></code></pre></td></tr></table></div></div><p>If a given expression matches with the pattern, it yields <code>true</code>.</p><p>Internally, it is compiled down to a <code>case..of..</code> expression.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>case [expr] of
-</span></span><span class=line><span class=cl>[pattern] = True
-</span></span><span class=line><span class=cl>_         = False
-</span></span></code></pre></td></tr></table></div></div><p>It is useful when dealing with algebraic types.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>:: Tree a = Node a (Tree a) (Tree a)
-</span></span><span class=line><span class=cl>          | Leaf
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>isLeaf :: (Tree a) -&gt; Bool
-</span></span><span class=line><span class=cl>isLeaf    t        =  t := (Leaf)
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>isNode :: (Tree a) -&gt; Bool
-</span></span><span class=line><span class=cl>isNode    t        =  t := (Tree x l r)
+</span></span><span class=line><span class=cl>case expression of
+</span></span><span class=line><span class=cl>pattern = True
+</span></span><span class=line><span class=cl>_       = False
 </span></span></code></pre></td></tr></table></div></div><a href=#local-definitions><h3 id=local-definitions><span class=hanchor arialabel=Anchor># </span>Local Definitions</h3></a><a href=#let-expressions><h4 id=let-expressions><span class=hanchor arialabel=Anchor># </span>Let Expressions</h4></a><p>A $\textbf{let}..\textbf{in}$ expression introduces a new scope inside an expression.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
@@ -1566,4 +1578,4 @@ They are equality and inequality operators.</p><p>To instantiate a class, all of
 </span></span><span class=line><span class=cl>    minC x y = toInt (min x y)
 </span></span><span class=line><span class=cl>    maxC x y = toInt (max x y)
 </span></span></code></pre></td></tr></table></div></div><hr><a href=#appendix-a-standard-environment><h2 id=appendix-a-standard-environment><span class=hanchor arialabel=Anchor># </span>Appendix A: Standard Environment</h2></a><p>More information about Standard Environment can be found
-<a href=/cleanpedia/appendix-a/intro/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/intro/>here</a></p></article><hr><div class=page-end id=footer><div class=backlinks-container><h3>Backlinks</h3><ul class=backlinks><li>No backlinks found</li></ul></div><div><script src=https://cdn.jsdelivr.net/npm/d3@6.7.0/dist/d3.min.js integrity="sha256-+7jaYCp29O1JusNWHaYtgUn6EhuP0VaFuswhNV06MyI=" crossorigin=anonymous></script><h3>Interactive Graph</h3><div id=graph-container></div><style>:root{--g-node:var(--secondary);--g-node-active:var(--primary);--g-node-inactive:var(--visited);--g-link:var(--outlinegray);--g-link-active:#5a7282}</style><script src=https://eurydia.github.io/cleanpedia/js/graph.abd4bc2af3869a96524d7d23b76152c7.js></script></div></div><div id=contact_buttons><footer><p>Made by Thanakorn Phuttharaksa using <a href=https://github.com/jackyzha0/quartz>Quartz</a>, © 2023</p><ul><li><a href=https://www.instagram.com/_kornthana/>Instagram</a></li><li><a href=mailto:b9xp3x@inf.elte.hu>Email</a></li><li><a href=https://t.me/+El6CtwOD8KxhYmU9>Telegram</a></li></ul></footer></div></div></body></html>
+<a href=/cleanpedia/appendix-a/_intro/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/_intro/>here</a>.</p></article><hr><div class=page-end id=footer><div class=backlinks-container><h3>Backlinks</h3><ul class=backlinks><li>No backlinks found</li></ul></div><div><script src=https://cdn.jsdelivr.net/npm/d3@6.7.0/dist/d3.min.js integrity="sha256-+7jaYCp29O1JusNWHaYtgUn6EhuP0VaFuswhNV06MyI=" crossorigin=anonymous></script><h3>Interactive Graph</h3><div id=graph-container></div><style>:root{--g-node:var(--secondary);--g-node-active:var(--primary);--g-node-inactive:var(--visited);--g-link:var(--outlinegray);--g-link-active:#5a7282}</style><script src=https://eurydia.github.io/cleanpedia/js/graph.abd4bc2af3869a96524d7d23b76152c7.js></script></div></div><div id=contact_buttons><footer><p>Made by Thanakorn Phuttharaksa using <a href=https://github.com/jackyzha0/quartz>Quartz</a>, © 2023</p><ul><li><a href=https://www.instagram.com/_kornthana/>Instagram</a></li><li><a href=mailto:b9xp3x@inf.elte.hu>Email</a></li><li><a href=https://t.me/+El6CtwOD8KxhYmU9>Telegram</a></li></ul></footer></div></div></body></html>

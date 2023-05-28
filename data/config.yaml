@@ -1,0 +1,27 @@
+name: Thanakorn Phuttharaksa
+enableToc: true
+openToc: false
+enableLinkPreview: true
+enableLatex: true
+enableCodeBlockTitle: true
+enableCodeBlockCopy: true
+enableCallouts: true
+enableSPA: true
+enableFooter: true
+enableContextualBacklinks: true
+enableRecentNotes: false
+enableGitHubEdit: false
+GitHubLink: https://github.com/eurydia/cleanpedia/tree/hugo/content
+enableSemanticSearch: false
+operandApiKey: "REPLACE-WITH-YOUR-OPERAND-API-KEY"
+description:
+  A language reference for CLEAN.
+page_title:
+  "Cleanpedia"
+links:
+  - link_name: Instagram
+    link: https://www.instagram.com/_kornthana/
+  - link_name: Email
+    link: mailto:b9xp3x@inf.elte.hu
+  - link_name: Telegram
+    link: https://t.me/+El6CtwOD8KxhYmU9

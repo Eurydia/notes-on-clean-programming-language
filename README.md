@@ -1,5 +1,5 @@
-# cleanpedia
+# Cleanpedia
 
-A language reference for Clean.
+A language reference for CLEAN.
 
-Ths repo contains the source code for Cleanpedia.
+This repository contains the source code for Cleanpedia powered by [Quartz 3.3](https://github.com/jackyzha0/quartz).

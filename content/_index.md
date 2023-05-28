@@ -11,6 +11,11 @@ The same information can be found on:
 - [Cloogle](https://cloogle.org/) which is the language’s search engine, and
 - [language report](https://cloogle.org/doc/) which describes the syntax and BNF of Clean.
 
+However, this documentation is not official.
+Terminologies and explanations may not be entirely true to the references used.
+
+In addition, the language report, which was the primary source of this documentation, was written for the version 2.0 of CLEAN.
+
 If you notice any mistake or have suggestions for improvements, please feel free to contact me through the following channels:
 
 - Email: [b9xp3x@inf.elte.hu](mailto:b9xp3x@inf.elte.hu)
@@ -21,128 +26,135 @@ If you notice any mistake or have suggestions for improvements, please feel free
 
 ### Defining A Function
 
-**Implementation**
-
-A control function implementation may be written as follows:
+A function definition consists of, at least, one implementation, and a control implementation may be written as follows:
 
 ```
 // Language: Clean
 
-fnName param = body
+functionA parameter = expression
 ```
 
-A function type can be placed before an implementation.
-The topics of typing functions are discussed in more details in later parts of this chapter.
-
-```
-// Language: Clean
-
-fnName :: T      -> K
-fnName    param  =  body
-```
-
-Parameters of a function are space separated.
+Multiple parameters are space separated.
 
 ```
 // Language: Clean
 
-fnName :: T      K      -> V
-fnName    paramA paramB =  body
+functionB paramA paramB = expression
 ```
 
-On global scope, $\implies$ may be used to separate function parameters from function body.
+In global scope, right arrow (`=>`) may be used to separate parameters from expression.
 
 ```
 // Langauge: Clean
+
 // In global scope
 
-fn :: T      K      -> V
-fn    paramA paramB => body
+functionA parameter     => expression
+functionB paramA paramB => expression
 ```
 
-A simple function can be defined as follows.
-
-```
-// Language: Clean
-
-increment :: Int -> Int
-increment    n   =  n + 1
-```
-
-It is allowed for a function to be implemented multiple times, but implementations must be grouped together.
+The simplest functions consist of one implementation.
 
 ```
 // Language: Clean
 
-isNice :: Int -> Bool
-isNice    8   => True
-isNice    _   => False
+negate x = x * (-1)
 ```
 
-As such, the following is not allowed.
+If a function has multiple implementations, they must be grouped together.
 
 ```
 // Language: Clean
 
-isNice :: Int -> Bool
-isNice    8   => True
-
-6 + 2
-
-isNice    _   => False
+safeDiv m 0 = 0
+safeDiv m n = m / n
 ```
 
-Implementations are tried in textual order, and an implementation is chosen, if the arguments of a function call matched with the parameters.
+Therefore, the following snippet is illegal.
 
 ```
 // Language: Clean
 
-isNice 9  // False
+safeDiv m 0 = 0
+6 + 2 - 1
+safeDiv m n = m / n
 ```
 
-The argument ($9$) does not match with the parameter ($8$) of the first implementation.
-Therefore, it is not evaluated.
+**Implementation signature**
 
-The argument matches with the parameter of the second implementation.
-Thus, the second implementation is evaluated.
-
-Similarly, if it is invoked with $8$, the first implementation is evaluated, and the second is never tried.
+Every implementation must have the same signature as the first.
 
 ```
 // Language: Clean
 
-fib 8  // True
+badSafeDiv m 0 =  False
+badSafeDiv m n =  m / n
 ```
 
-Following this logic, if order of implementation is changed, then the function would behave in unintended ways.
+The second implementation of `badSafeDiv` disobeyed the signature of the first implementation by returning an integer, instead of a Boolean value.
 
-```
-// Language: Clean
+**Implementation selection order**
 
-isNice :: Int -> Int
-isNice    _   => False
-isNice    8   => True
-```
-
-Wildcards ($\_$) matches with any argument of a function call.
-Therefore, the second implementation is never reached.
-
-It is important to recognize that, this parameter-matching behavior is not the same as performing equality checks.
-
-**Guarded bodies**
-
-A guarded body can be introduce to an implementation of a function.
-It allows an implementation to have multiple function bodies, instead of just one.
-
-It has the following syntax.
+Implementations are tried in textual order.
+An implementation is selected if arguments of a function call matches with its parameters.
 
 ```
 // Language: Clean
 
-[fnName] [fnParams]
-| [guardA]         = [bodyA]
-| [guardB]         = [bodyB]
-| [guardC]         = [bodyC]
+safeDiv 9 6  // False
+```
+
+In the first implementation, parameter $m$ matches with argument $9$, but parameter $0$ does not match with argument $6$.
+Thus, the first implementation is not selected.
+
+In the second implementation, both parameters match with both arguments.
+Thus, the second implementation is selected for evaluation.
+
+It should be noted that; if implementation order is changed, then the function would have unintended behaviors.
+
+```
+// Language: Clean
+
+safeDivAlt m n = m / n
+safeDivAlt m 0 = 0
+```
+
+The second implementation is never reached.
+Even if it is invoked with $0$ as the second argument.
+
+```
+// Language: Clean
+
+safeDivAlt 9 0  // Uh oh
+```
+
+With the current implementation of `safeDivAlt`, it is clear that the second implementation is never reached.
+
+It is important to recognize that, this parameter-argument matching is not the same as performing equality checks.
+
+### Guarded expressions
+
+One or more guarded expressions can be introduced to an implementation.
+Guarded expressions allow an implementation to have multiple bodies, instead of one.
+
+A control implementation with one guarded body may be written as follows:
+
+```
+// Language: Clean
+
+functionC parameter
+| guard = expresssion
+```
+
+An implementation with multiple guarded bodies may be written as follows:
+
+```
+// Language: Clean
+
+functionD parameter
+| guardA = expressionA
+| guardB = expressionB
+| guardC = expressionC
 ```
 
 Additionally, guarded bodies can be nested.
@@ -150,31 +162,61 @@ Additionally, guarded bodies can be nested.
 ```
 // Language: Clean
 
-[fnName] [fnParams]
-| [guardA]
-    | [guardAA]    = [bodyAA]
-    | [guardAB]    = [bodyAB]
-| [guardB]         = [bodyB]
-| [guardC]         = [bodyC]
+functionE parameter
+| guardA
+    | guardAA    = expressionAA
+    | guardAB    = expressionAB
 ```
 
-A guard is a Boolean expression.
+**Guarded expression signature**
+
+A guard evaluates to a Boolean value.
 
 ```
 // Language: Clean
 
-signum :: Int -> Int
-signum    0   =  0
-signum    n
-| n > 0       =  1
-| n < 0       = -1
+signum 0 =  0
+signum n
+| n > 0  =  1
+| n < 0  = -1
 ```
 
-Guards are tried in textual order, but only after their implementation is chosen.
+The definition of `signum` has two implementations, and its second implementation has two guarded expressions.
 
-For example:
+The guarded expressions must obey the same signature rule as its implementation.
 
-When called with $0$, the first implementation is tried.
+```
+// Language: Clean
+
+badSignum 0 =  0
+badSignum n
+| n > 0     =  True
+| n < 0     = -1
+```
+
+According to first implementation of `badSignum`, every implementation must return an integer.
+However, one of the guarded expression returns a Boolean value, which is not allowed.
+
+`badSignum` can be rewritten to have only one implementation.
+
+```
+// Language: Clean
+
+badSignumAlt n
+| n == 0    =  0
+| n >  0    =  True
+| n <  0    = -1
+```
+
+Unfortunately, this new definition is still illegal.
+The first guarded expression forces others to return an integer, but the second returns a Boolean value.
+
+**Guarded expression selection order**
+
+Guarded expressions are tried in textual order, but only after their implementation is chosen.
+
+That is, if `signum` is called with $0$, then parameter $0$ of the first implementation matches with argument $0$.
+Thus, the first implementation is selected.
 
 ```
 // Language: Clean
@@ -182,12 +224,10 @@ When called with $0$, the first implementation is tried.
 signum 0
 ```
 
-The argument and parameter match.
-Thus, the body of the first implementation is evaluated.
+In this call, none of the guards were tried because the implementation that they belong to is not selected.
 
-In this call, none of the guards were tried, since the implementation that they belong to was not chosen.
-
-Instead, if it is called with a non-zero integer, the first implementation will fail to match.
+Instead, if `signum` is called with a non-zero integer, the first implementation fails to match.
+The second implementation is then selected.
 
 ```
 // Language: Clean
@@ -195,71 +235,108 @@ Instead, if it is called with a non-zero integer, the first implementation will 
 signum -9
 ```
 
-In this case, the first guard ($n\gt{0}$) is tried.
-It evaluates to $\textbf{False}$.
-Its body is not evaluated.
+The first guard ($n \gt 0$) is tried.
+It evaluates to false, and its expression is not selected.
 
-The second guard is tried ($n\lt{0}$).
-It evaluates to $\textbf{True}$.
-Therefore, the body of the second guard is evaluated.
+The second guard is tried ($n \lt 0$).
+It evaluates to true, and its expression is selected.
 
-Alternatively, $\textbf{otherwise}$ keyword can be used instead of an expression.
-Its value is always $\textbf{True}$.
+Similarly, the same happens for nested guarded expressions.
 
 ```
 // Language: Clean
 
-signum :: Int -> Int
-signum    0   =  0
-signum    n
-| n > 0       =  1
-| otherwise   = -1
+someFuncA parameter = expression
+someFuncA parameter
+| guardA
+    | guardAA       = expressionAA
 ```
 
-As such, order of the guarded bodies also matters.
+In `someFuncA` defined above, for `expresssionAA` to be selected, the second implementation must be selected, as well as, `guardA` and `guardAA` must evaluate to true.
 
-```
-// Language: Clean
-
-
-signum :: Int -> Int
-signum    0   =  0
-signum    n
-| otherwise   = -1
-| n > 0       =  1
-```
-
-**Partial functions**
-
-It is important to recognize that, an implementation with guarded bodies can be partial.
-
-Such implementations will result in a run-time error when invoked outside its domain.
+In addition, `otherwise` keyword may used in place of a guard.
+It always evaluates to true.
 
 ```
 // Language: Clean
 
-fib :: Int -> Int
-fib    n
-| n == 1   =  1
-| n == 2   =  1
-| n >  2   =  fib (n - 1) + fib (n - 2)
+signumAlt 0 =  0
+signumAlt n
+| n > 0     =  1
+| otherwise = -1
 ```
 
-The function above is partial.
-It results in a run-time error when invoked any integer less than one.
-
-This partial behavior extends to a function definition as well.
+The order of the guarded bodies also matters.
 
 ```
 // Language: Clean
 
-fib :: Int -> Int
-fib    1   =  1
-fib    2   =  1
-fib    n   =  fib (n - 1) + fib (n - 2)
+badSignumAlt 0 =  0
+badSignumAlt n
+| otherwise    = -1
+| n > 0        =  1
 ```
 
-This version also results in run-time error when invoked with $n\le{0}$, even though it does not have guarded bodies.
+### Partial functions
+
+Partial functions result in a run-time error when called with values outside of its domain.
+
+```
+// Language: Clean
+
+fibPartial 1 = 1
+fibPartial 2 = 1
+fibPartial n = fibPartial (n - 1) + fibPartial (n - 2)
+```
+
+The definition of `fibPartial` is partial.
+It results in a run-time error when called any integer less than one.
+
+Implementations with guarded expressions can be partial as well.
+
+```
+// Language: Clean
+
+fibPartialAlt n
+| n == 1    = 1
+| n == 2    = 1
+| otherwise = fibPartialAlt (n - 1) + fibPartialAlt (n - 2)
+```
+
+By extending its domain, a partial function can be transformed into a complete function.
+
+```
+// Language: Clean
+
+fibComplete n
+| n <  0    = 0
+| n == 1    = 1
+| n == 2    = 1
+| otherwise = fibComplete (n - 1) + fibComplete (n - 2)
+```
+
+However, this solution might not make semantic sense to do so.
+Alternatively, `abort` from `StdMisc` can be used to solve the semantic issue.
+
+```
+// Language: Clean
+fibCompleteAlt n
+| n <= 0    = abort "fibCompleteAlt called outside of domain"
+| n == 1    = 1
+| n == 2    = 1
+| otherwise = fibCompleteAlt (n - 1) + fibCompleteAlt (n - 2)
+```
+
+`abort` terminates the execution of the program with a custom error message.
+`fibComplete` still works as intended, but it will stops the program and throws an error
+
+```
+fibCompleteAlt called outside of domain
+```
+
+when it is called with $n\le{0}$.
+
+The module `StdMisc` is discussed in more details [here](/cleanpedia/appendix-a/stdmisc).
 
 ### Operators
 
@@ -272,7 +349,7 @@ They can be applied in infix position or invoked like ordinary functions.
 1 + 1  // applied as an operator
 ```
 
-To invoke an operator as an ordinary function, the operator name must be placed inside parentheses, and in front of its argument.
+To invoke an operator as an ordinary function, the operator name must be placed inside parentheses, and in front of its arguments.
 
 ```
 // Language: Clean
@@ -286,19 +363,19 @@ Operators can be curried, but only when they are invoked as ordinary functions.
 **Operator precedence**
 
 The precedence determines how tightly an operator binds to its argument.
-Precedence can be between zero and nine with higher number having higher precedence.
+Precedence can be between $0$ and $9$ with higher number having higher precedence.
 
-The precedence of an operator is nine by default.
+The precedence of an operator is $9$ by default.
 
 **Operator fixity**
 
 The fixity is important when evaluating two operators of the same precedence.
 There are two relevant fixities:
 
-- $\textbf{infixl}$ for left-associated operators, and
-- $\textbf{infixr}$ for right-associated operators.
+- `infixl` for left-associated operators, and
+- `infixr` for right-associated operators.
 
-The fixity is left-associated by default.
+The fixity of an operator is `infixl` by default.
 
 **Defining an operator**
 
@@ -308,49 +385,54 @@ It can be implemented as if it was an ordinary function.
 ```
 // Language: Clean
 
-([fnName]) [fnParamL] [fnParamR] =  [fnBody]
-([fnName]) [fnParamL] [fnParamR] => [fnBody]
+(operatorA) paramL paramR =  expression
 ```
 
-Precedence and fixity of an operator can be defined in its type declaration, but they can be omitted.
-
-```
-// Language: Clean
-
-(->) infixr 9 :: Bool Bool  -> Bool
-(->)             True False =  False
-(->)             _    _     =  True
-```
-
-Definition with omitted fixity and precedence can be done as follow:
+In global scope, right arrow (`=>`) may be used to separated parameters from expression, much like a function.
 
 ```
 // Language: Clean
 
-(<=>) :: Bool Bool -> Bool
-(<=>)    x    y    =  x == y
+// In global scope
+
+(operatorB) paramL paramR => expression
 ```
 
-**Conflict between operators**
+**Operator conflict**
+
+Operators can conflict with one another.
+
+```
+// Language: Clean
+
+(<=>) infixl 9 :: Bool  Bool  -> Bool
+(<=>)          :: True  True  =  True
+(<=>)          :: False False =  True
+(<=>)          :: _     _     =  False
+
+(-->) infixr 9 :: Bool  Bool  -> Bool
+(-->)          :: False True  =  False
+(-->)          :: _     _     =  True
+```
 
 It is not allowed to apply operators with equal precedence in an expression in such a way that their fixity conflict.
 
 ```
 // Language: Clean
 
-True -> False <=> False
+True --> False <=> False
 ```
 
-The $\rightarrow$ operator is a right-associated.
+`-->` operator is a right-associated.
 It implies that the expression should be evaluated as follows.
 
 ```
 // language: Clean
 
-True -> (False <=> False)
+True --> (False <=> False)
 ```
 
-However, the $\iff$ operator is left associated.
+However, `<=>` operator is left associated.
 It implies that the expression should be evaluated as follows.
 
 ```
@@ -560,8 +642,6 @@ with
 
 The third guarded body does not have access to $\text{negN}$, which is local to the second guarded body.
 
-
-
 ---
 
 ## Built-In Types
@@ -609,7 +689,7 @@ n =  0
 n =  0xd  // dec  13
 ```
 
-More information about built-in operations and functions on integers can be found on [Appendix A: StdInt](appendix-a/stdint.md).
+More information about built-in operations and functions on integers can be found on [Appendix A: StdInt](appendix-a/stdint).
 
 #### Real Numbers
 
@@ -639,7 +719,7 @@ n =  0E0    //  0
 n =  13E-2  //  0.13
 ```
 
-More information about built-in operations and functions on real numbers can be found on [Appendix A: StdReal](appendix-a/stdreal.md).
+More information about built-in operations and functions on real numbers can be found on [Appendix A: StdReal](appendix-a/stdreal).
 
 #### Booleans
 
@@ -655,7 +735,7 @@ b =  True
 b =  False
 ```
 
-More information about built-in operations and functions on Booleans can be found on [Appendix A: StdBool](appendix-a/stdbool.md).
+More information about built-in operations and functions on Booleans can be found on [Appendix A: StdBool](appendix-a/stdbool).
 
 #### Characters
 
@@ -673,7 +753,7 @@ b =  'Z'
 b =  '+'
 ```
 
-More information about built-in operations and functions on characters can be found on [Appendix A: StdChar](appendix-a/stdchar.md).
+More information about built-in operations and functions on characters can be found on [Appendix A: StdChar](appendix-a/stdchar).
 
 #### Parameter-Matching Primitive Types
 
@@ -777,9 +857,9 @@ A special notation for constructing a list of characters is also provided:
 
 More information about built-in operations and functions on lists can be found on:
 
-- [Appendix A: StdCharList](appendix-a/stdcharlist.md),
-- [Appendix A: StdList](appendix-a/stdlist.md), and
-- [Appendix A: StdOrdList](appendix-a/stdordlist.md).
+- [Appendix A: StdCharList](appendix-a/stdcharlist),
+- [Appendix A: StdList](appendix-a/stdlist), and
+- [Appendix A: StdOrdList](appendix-a/stdordlist).
 
 #### List Patterns
 
@@ -914,7 +994,7 @@ D =  (2)     // NOT OK
 
 More information about built-in operations and functions on lists can be found on:
 
-- [Appendix A: StdTuple](appendix-a/stdtuple.md).
+- [Appendix A: StdTuple](appendix-a/stdtuple).
 
 #### Tuple Patterns
 
@@ -974,8 +1054,8 @@ An array can be constructed from comprehension by surrounding a comprehension wi
 
 More information about built-in operations and functions on lists can be found on:
 
-- [Appendix A: StdArray](appendix-a/stdarray.md), and
-- [Appendix A: StdString](appendix-a/stdstring.md).
+- [Appendix A: StdArray](appendix-a/stdarray), and
+- [Appendix A: StdString](appendix-a/stdstring).
 
 ---
 
@@ -1432,7 +1512,7 @@ add :: (Op Int)
 
 ## Overloading
 
-### Overloaded Operators And Functions
+### Overloaded Functions
 
 Functions and operators are defined on built-in types.
 However, when interacting with custom data types, they do not have any defined function or operator.
@@ -1472,7 +1552,7 @@ a + b  // (Complex 0.0 2.0)
 Only after overloading the addition operation on $\textbf{Complex}$ that the addition is allowed.
 In other word, the complier now knows the meaning of complex number addition.
 
-A list of functions and operations which can be overloaded can be found on [Appendix A: StdOverloaded](appendix-a/stdoverloaded.md).
+A list of functions and operations which can be overloaded can be found on [Appendix A: StdOverloaded](appendix-a/stdoverloaded).
 
 #### Defining An Overloaded Function Or Operator
 
@@ -1549,9 +1629,7 @@ where
     (<>) x y = (x.re <> y.re) || (x.im <> y.im))
 ```
 
-A list of classes can be found on [Appendix A: StdClass](appendix-a/stdclass.md).
-
-[[appendix-a/stdclass|stdclass]]
+A list of classes can be found on [Appendix A: StdClass](appendix-a/stdclass).
 
 #### Defining A Class
 
@@ -1584,7 +1662,7 @@ where
     maxC x y = toInt (max x y)
 ```
 
---- 
+---
 
 ## Appendix A: Standard Environment
 

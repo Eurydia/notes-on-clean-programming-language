@@ -1,4 +1,4 @@
-baseURL = "https://eurydia.github.io/cleanpedia/"
+baseURL = "https://eurydia.github.io/cleanpedia"
 languageCode = "en-us"
 relativeURLs = false
 disablePathToLower = true

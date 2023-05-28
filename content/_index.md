@@ -1,8 +1,5 @@
 ---
 title: Cleanpedia
-
-Revisions: 2
-Data of last revision: 12 APR 2023
 ---
 
 ## Introduction
@@ -1589,4 +1586,4 @@ where
 
 ## Appendix A: Standard Environment
 
-More information about Standard Environment can be found [here](appendix-b/index.md).
+More information about Standard Environment can be found [here](appendix-a/index.md).

@@ -1551,6 +1551,8 @@ where
 
 A list of classes can be found on [Appendix A: StdClass](appendix-a/stdclass.md).
 
+[[appendix-a/stdclass|stdclass]]
+
 #### Defining A Class
 
 As shown above, a class simple provides a name to collection of logically-linked functions and operations.

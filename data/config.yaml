@@ -10,7 +10,7 @@ enableSPA: true
 enableFooter: true
 enableContextualBacklinks: true
 enableRecentNotes: false
-enableGitHubEdit: false
+enableGitHubEdit: true
 GitHubLink: https://github.com/eurydia/cleanpedia/tree/development/content
 enableSemanticSearch: false
 operandApiKey: ""

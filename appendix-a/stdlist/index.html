@@ -1,0 +1,892 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="Basic Operations Concatenation Signature
+$$ \begin{align*} A\rightarrow{B}\rightarrow{R} \end{align*} $$
+where
+ $A$, $B$, and $R$ are of type $[\textbf{T}]$.  Behavior: appends $B$ to the end of $A$."><title>Appendix A: StdList</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" type=image/png href=https://eurydia.github.io/cleanpedia//icon.png><link href=https://eurydia.github.io/cleanpedia/styles.b3e1e36b0403ac565c9392b3e23ef3b6.min.css rel=stylesheet><link href=https://eurydia.github.io/cleanpedia/styles/_light_syntax.86a48a52faebeaaf42158b72922b1c90.min.css rel=stylesheet id=theme-link><script src=https://eurydia.github.io/cleanpedia/js/darkmode.c7bf66e3c7098cf23280f76232e7b9e4.min.js></script>
+<script src=https://eurydia.github.io/cleanpedia/js/util.9825137f5e7825e8553c68ce39ac9e44.min.js></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity=sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity=sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity=sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR crossorigin=anonymous></script>
+<script src=https://unpkg.com/@floating-ui/core@0.7.3></script>
+<script src=https://unpkg.com/@floating-ui/dom@0.5.4></script>
+<script src=https://eurydia.github.io/cleanpedia/js/popover.abe6a51cc7138c5dff00f151dd627ad1.min.js></script>
+<script src=https://eurydia.github.io/cleanpedia/js/code-title.b35124ad8db0ba37162b886afb711cbc.min.js></script>
+<script src=https://eurydia.github.io/cleanpedia/js/clipboard.c20857734e53a3fb733b7443879efa61.min.js></script>
+<script src=https://eurydia.github.io/cleanpedia/js/callouts.7723cac461d613d118ee8bb8216b9838.min.js></script>
+<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.c62530d520cab4cda7a95566e645b16b.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.ec6e385799a0da6a20cd76d815cba98e.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!0);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=(e=document)=>{addCopyButtons(),addTitleToCodeBlocks(),renderMathInElement(e.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})}</script><script type=module>
+    import { attachSPARouting } from "https:\/\/eurydia.github.io\/cleanpedia\/js\/router.9d4974281069e9ebb189f642ae1e3ca2.min.js"
+    attachSPARouting(init, render)
+  </script></head><body><div class=singlePage><header><h1 id=page-title><a href=https://eurydia.github.io/cleanpedia/>Cleanpedia</a></h1><div class=spacer></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
+<label id=toggle-label-light for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="dayIcon" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35"><title>Light Mode</title><path d="M6 17.5C6 16.672 5.328 16 4.5 16h-3C.672 16 0 16.672.0 17.5S.672 19 1.5 19h3C5.328 19 6 18.328 6 17.5zM7.5 26c-.414.0-.789.168-1.061.439l-2 2C4.168 28.711 4 29.086 4 29.5 4 30.328 4.671 31 5.5 31c.414.0.789-.168 1.06-.44l2-2C8.832 28.289 9 27.914 9 27.5 9 26.672 8.329 26 7.5 26zm10-20C18.329 6 19 5.328 19 4.5v-3C19 .672 18.329.0 17.5.0S16 .672 16 1.5v3C16 5.328 16.671 6 17.5 6zm10 3c.414.0.789-.168 1.06-.439l2-2C30.832 6.289 31 5.914 31 5.5 31 4.672 30.329 4 29.5 4c-.414.0-.789.168-1.061.44l-2 2C26.168 6.711 26 7.086 26 7.5 26 8.328 26.671 9 27.5 9zM6.439 8.561C6.711 8.832 7.086 9 7.5 9 8.328 9 9 8.328 9 7.5c0-.414-.168-.789-.439-1.061l-2-2C6.289 4.168 5.914 4 5.5 4 4.672 4 4 4.672 4 5.5c0 .414.168.789.439 1.06l2 2.001zM33.5 16h-3c-.828.0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5h3c.828.0 1.5-.672 1.5-1.5S34.328 16 33.5 16zM28.561 26.439C28.289 26.168 27.914 26 27.5 26c-.828.0-1.5.672-1.5 1.5.0.414.168.789.439 1.06l2 2C28.711 30.832 29.086 31 29.5 31c.828.0 1.5-.672 1.5-1.5.0-.414-.168-.789-.439-1.061l-2-2zM17.5 29c-.829.0-1.5.672-1.5 1.5v3c0 .828.671 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3C19 29.672 18.329 29 17.5 29zm0-22C11.71 7 7 11.71 7 17.5S11.71 28 17.5 28 28 23.29 28 17.5 23.29 7 17.5 7zm0 18c-4.136.0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5 7.5 3.364 7.5 7.5S21.636 25 17.5 25z"/></svg></label><label id=toggle-label-dark for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nightIcon" viewBox="0 0 100 100" style="enable-background='new 0 0 100 100'"><title>Dark Mode</title><path d="M96.76 66.458c-.853-.852-2.15-1.064-3.23-.534-6.063 2.991-12.858 4.571-19.655 4.571C62.022 70.495 50.88 65.88 42.5 57.5 29.043 44.043 25.658 23.536 34.076 6.47c.532-1.08.318-2.379-.534-3.23-.851-.852-2.15-1.064-3.23-.534-4.918 2.427-9.375 5.619-13.246 9.491-9.447 9.447-14.65 22.008-14.65 35.369.0 13.36 5.203 25.921 14.65 35.368s22.008 14.65 35.368 14.65c13.361.0 25.921-5.203 35.369-14.65 3.872-3.871 7.064-8.328 9.491-13.246C97.826 68.608 97.611 67.309 96.76 66.458z"/></svg></label></div></header><article><h1>Appendix A: StdList</h1><p class=meta>Last updated
+May 28, 2023
+<a href=https://github.com/eurydia/cleanpedia/tree/development/content/appendix-a/stdlist.md rel=noopener>Edit Source</a></p><ul class=tags></ul><aside class=mainTOC><details open><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#basic-operations>Basic Operations</a><ol><li><a href=#concatenation>Concatenation</a></li><li><a href=#indexing>Indexing</a></li><li><a href=#slicing>Slicing</a></li></ol></li><li><a href=#relational-operations>Relational Operations</a><ol><li><a href=#equal-to>Equal To</a></li><li><a href=#not-equal-to>Not Equal To</a></li><li><a href=#less-than>Less Than</a></li><li><a href=#less-than-or-equal-to>Less Than Or Equal To</a></li><li><a href=#greater-than>Greater Than</a></li><li><a href=#greater-than-or-equal-to>Greater Than Or Equal To</a></li></ol></li><li><a href=#basic-functions>Basic functions</a><ol><li><a href=#length><code>length</code></a></li><li><a href=#flatten><code>flatten</code></a></li><li><a href=#hd><code>hd</code></a></li><li><a href=#tl><code>tl</code></a></li><li><a href=#last><code>last</code></a></li><li><a href=#init><code>init</code></a></li><li><a href=#take><code>take</code></a></li><li><a href=#drop><code>drop</code></a></li><li><a href=#reverse><code>reverse</code></a></li><li><a href=#insertat><code>insertAt</code></a></li><li><a href=#removeat><code>removeAt</code></a></li><li><a href=#updateat><code>updateAt</code></a></li><li><a href=#splitat><code>splitAt</code></a></li><li><a href=#indexlist><code>indexList</code></a></li><li><a href=#repeat><code>repeat</code></a></li><li><a href=#repeatn><code>repeatn</code></a></li><li><a href=#ismember><code>isMember</code></a></li><li><a href=#isanymember><code>isAnyMember</code></a></li><li><a href=#removedup><code>removeDup</code></a></li><li><a href=#removemember><code>removeMember</code></a></li><li><a href=#removemembers><code>removeMembers</code></a></li><li><a href=#removeindex><code>removeIndex</code></a></li><li><a href=#sum><code>sum</code></a></li><li><a href=#prod><code>prod</code></a></li><li><a href=#avg><code>avg</code></a></li><li><a href=#and><code>and</code></a></li><li><a href=#or><code>or</code></a></li></ol></li><li><a href=#higher-order-functions>Higher-Order Functions</a><ol><li><a href=#takewhile><code>takeWhile</code></a></li><li><a href=#dropwhile><code>dropWhile</code></a></li><li><a href=#filter><code>filter</code></a></li><li><a href=#foldr><code>foldr</code></a></li><li><a href=#foldl><code>foldl</code></a></li><li><a href=#iterate><code>iterate</code></a></li><li><a href=#map><code>map</code></a></li><li><a href=#scan><code>scan</code></a></li><li><a href=#any><code>any</code></a></li><li><a href=#all><code>all</code></a></li></ol></li><li><a href=#property-functions>Property Functions</a><ol><li><a href=#isempty><code>isEmpty</code></a></li></ol></li></ol></nav></details></aside><a href=#basic-operations><h2 id=basic-operations><span class=hanchor arialabel=Anchor># </span>Basic Operations</h2></a><a href=#concatenation><h3 id=concatenation><span class=hanchor arialabel=Anchor># </span>Concatenation</h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$</p><p>where</p><ul><li>$A$, $B$, and $R$ are of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: appends $B$ to the end of $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl>[1, 2, 3] ++ [4, 5]  // [1, 2, 3, 4, 5]
+</span></span><span class=line><span class=cl>[1, 2, 3] ++ [4]     // [1, 2, 3, 4]
+</span></span><span class=line><span class=cl>[1, 2, 3] ++ []      // [1, 2, 3]
+</span></span></code></pre></td></tr></table></div></div><a href=#indexing><h3 id=indexing><span class=hanchor arialabel=Anchor># </span>Indexing</h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{i}\rightarrow{R}
+\end{align*}
+$$</p><p>where :</p><ul><li>$A$ is of type $[\textbf{T}]$,</li><li>$i$ is of type $\textbf{Int}$, and</li><li>$R$ is of type $\textbf{T}$.</li></ul><p><strong>Behavior</strong>: returns element at $i$-th index of $A$.
+Results in a run-time error if $i$ is not a valid index.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Subscript error in !!,index too large
+</span></span></code></pre></td></tr></table></div></div><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl>[1, 2, 3] !!   5   // NOT OK :(
+</span></span><span class=line><span class=cl>[1, 2, 3] !!   2   // 3
+</span></span><span class=line><span class=cl>[1, 2, 3] !!   0   // 1
+</span></span><span class=line><span class=cl>[1, 2, 3] !! (-1)  // NOT OK :(
+</span></span></code></pre></td></tr></table></div></div><a href=#slicing><h3 id=slicing><span class=hanchor arialabel=Anchor># </span>Slicing</h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow(i, j)\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A, R$ are of type $[\textbf{T}]$, and</li><li>$i, j$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: returns elements of $A$ which are inside $[i, j]$ interval.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl>[1, 2, 3] % (  2,  4)  // [3]
+</span></span><span class=line><span class=cl>[1, 2, 3] % (  0,  2)  // [1, 2, 3]
+</span></span><span class=line><span class=cl>[1, 2, 3] % ((-1), 0)  // [1, 2]
+</span></span><span class=line><span class=cl>[1, 2, 3] % ((-2), 5)  // [1, 2, 3]
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#relational-operations><h2 id=relational-operations><span class=hanchor arialabel=Anchor># </span>Relational Operations</h2></a><a href=#equal-to><h3 id=equal-to><span class=hanchor arialabel=Anchor># </span>Equal To</h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ and $B$ are of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p>Additionally, equality operation must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: checks if $A$ is equal to $B$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[]     == []      // True
+</span></span><span class=line><span class=cl>[1, 2] == [1, 2]  // True
+</span></span><span class=line><span class=cl>[1, 2] == [1]     // False
+</span></span><span class=line><span class=cl>[1]    == [1, 2]  // False
+</span></span><span class=line><span class=cl>[1, 2] == [1, 3]  // False
+</span></span><span class=line><span class=cl>[1, 3] == [1, 2]  // False
+</span></span></code></pre></td></tr></table></div></div><a href=#not-equal-to><h3 id=not-equal-to><span class=hanchor arialabel=Anchor># </span>Not Equal To</h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ and $B$ are of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p>Additionally, equality operation must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: checks if $A$ is not equal to $B$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[]     &lt;&gt; []        // False
+</span></span><span class=line><span class=cl>[1, 2] &lt;&gt; [1, 2]    // False
+</span></span><span class=line><span class=cl>[1, 2] &lt;&gt; [1]       // True
+</span></span><span class=line><span class=cl>[1]    &lt;&gt; [1, 2]    // True
+</span></span><span class=line><span class=cl>[1, 2] &lt;&gt; [1, 3]    // True
+</span></span><span class=line><span class=cl>[1, 3] &lt;&gt; [1, 2]    // True
+</span></span></code></pre></td></tr></table></div></div><a href=#less-than><h3 id=less-than><span class=hanchor arialabel=Anchor># </span>Less Than</h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ and $B$ are of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p>Additionally, relational operations must be defined on $\text{T}$.</p><p><strong>Behavior</strong>: checks if $A$ is less than $B$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[]     &lt; []      // False
+</span></span><span class=line><span class=cl>[1, 2] &lt; [1, 2]  // False
+</span></span><span class=line><span class=cl>[1, 2] &lt; [1]     // False
+</span></span><span class=line><span class=cl>[1]    &lt; [1, 2]  // True
+</span></span><span class=line><span class=cl>[1, 2] &lt; [1, 3]  // True
+</span></span><span class=line><span class=cl>[1, 3] &lt; [1, 2]  // False
+</span></span></code></pre></td></tr></table></div></div><a href=#less-than-or-equal-to><h3 id=less-than-or-equal-to><span class=hanchor arialabel=Anchor># </span>Less Than Or Equal To</h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ and $B$ are of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p>Additionally, relational operations must be defined on $\text{T}$.</p><p><strong>Behavior</strong>: checks if $A$ is less than or equal to $B$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[]     &lt;= []     // True
+</span></span><span class=line><span class=cl>[1, 2] &lt;= [1, 2] // True
+</span></span><span class=line><span class=cl>[1, 2] &lt;= [1]    // False
+</span></span><span class=line><span class=cl>[1]    &lt;= [1, 2] // True
+</span></span><span class=line><span class=cl>[1, 2] &lt;= [1, 3] // True
+</span></span><span class=line><span class=cl>[1, 3] &lt;= [1, 2] // False
+</span></span></code></pre></td></tr></table></div></div><a href=#greater-than><h3 id=greater-than><span class=hanchor arialabel=Anchor># </span>Greater Than</h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ and $B$ are of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p>Additionally, relational operations must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: checks if $A$ is greater than $B$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[]     &gt; []      // False
+</span></span><span class=line><span class=cl>[1, 2] &gt; [1, 2]  // False
+</span></span><span class=line><span class=cl>[1, 2] &gt; [1]     // True
+</span></span><span class=line><span class=cl>[1]    &gt; [1, 2]  // False
+</span></span><span class=line><span class=cl>[1, 2] &gt; [1, 3]  // False
+</span></span><span class=line><span class=cl>[1, 3] &gt; [1, 2]  // True
+</span></span></code></pre></td></tr></table></div></div><a href=#greater-than-or-equal-to><h3 id=greater-than-or-equal-to><span class=hanchor arialabel=Anchor># </span>Greater Than Or Equal To</h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ and $B$ are of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p>Additionally, relational operations must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: checks if $A$ is greater than or equal to $B$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[]     &gt;= []      // True
+</span></span><span class=line><span class=cl>[1, 2] &gt;= [1, 2]  // True
+</span></span><span class=line><span class=cl>[1, 2] &gt;= [1]     // True
+</span></span><span class=line><span class=cl>[1]    &gt;= [1, 2]  // False
+</span></span><span class=line><span class=cl>[1, 2] &gt;= [1, 3]  // False
+</span></span><span class=line><span class=cl>[1, 3] &gt;= [1, 2]  // True
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#basic-functions><h2 id=basic-functions><span class=hanchor arialabel=Anchor># </span>Basic functions</h2></a><a href=#length><h3 id=length><span class=hanchor arialabel=Anchor># </span><code>length</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: returns number of elements in $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>length [1, 2, 3]  // 3
+</span></span><span class=line><span class=cl>length [1, 2]     // 2
+</span></span><span class=line><span class=cl>length [1]        // 1
+</span></span><span class=line><span class=cl>length []         // 0
+</span></span></code></pre></td></tr></table></div></div><a href=#flatten><h3 id=flatten><span class=hanchor arialabel=Anchor># </span><code>flatten</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ is of type $<a class="internal-link broken">\textbf{T}</a>$, and</li><li>$R$ is of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: concatenates elements $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>flatten [[1], [2], [3]]  // [1, 2, 3]
+</span></span><span class=line><span class=cl>flatten [[1], [2, 3]]    // [1, 2, 3]
+</span></span><span class=line><span class=cl>flatten [[1, 2, 3]]      // [1, 2, 3]
+</span></span><span class=line><span class=cl>flatten []               // []
+</span></span></code></pre></td></tr></table></div></div><a href=#hd><h3 id=hd><span class=hanchor arialabel=Anchor># </span><code>hd</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{T}$.</li></ul><p><strong>Behavior</strong>: returns the first element of $A$.
+Results in a run-time error if $A$ is empty.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>hd of []
+</span></span></code></pre></td></tr></table></div></div><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>hd [1, 2, 3]  // 1
+</span></span><span class=line><span class=cl>hd [1, 2]     // 1
+</span></span><span class=line><span class=cl>hd [1]        // 1
+</span></span><span class=line><span class=cl>hd []         // NOT OK
+</span></span></code></pre></td></tr></table></div></div><a href=#tl><h3 id=tl><span class=hanchor arialabel=Anchor># </span><code>tl</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ and $R$ are of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: returns all except the first element of $A$.
+A run-time error will be thrown if $A$ is empty.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>tl of []
+</span></span></code></pre></td></tr></table></div></div><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>tl [1, 2, 3]  // [2, 3]
+</span></span><span class=line><span class=cl>tl [1, 2]     // [2]
+</span></span><span class=line><span class=cl>tl [1]        // []
+</span></span><span class=line><span class=cl>tl []         // NOT OK
+</span></span></code></pre></td></tr></table></div></div><a href=#last><h3 id=last><span class=hanchor arialabel=Anchor># </span><code>last</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{T}$.</li></ul><p><strong>Behavior</strong>: returns the last element of $A$.
+Results in a run-time error if $A$ is empty.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>last of []
+</span></span></code></pre></td></tr></table></div></div><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>last [1, 2, 3]  // 3
+</span></span><span class=line><span class=cl>last [1, 2]     // 2
+</span></span><span class=line><span class=cl>last [1]        // 1
+</span></span><span class=line><span class=cl>last []         // NOT OK
+</span></span></code></pre></td></tr></table></div></div><a href=#init><h3 id=init><span class=hanchor arialabel=Anchor># </span><code>init</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ and $R$ are of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: returns all except the last element of $A$.
+Results in a run-time error if $A$ is empty.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>init of []
+</span></span></code></pre></td></tr></table></div></div><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>init [1, 2, 3]  // [1, 2]
+</span></span><span class=line><span class=cl>init [1, 2]     // [1]
+</span></span><span class=line><span class=cl>init [1]        // []
+</span></span><span class=line><span class=cl>init []         // NOT OK
+</span></span></code></pre></td></tr></table></div></div><a href=#take><h3 id=take><span class=hanchor arialabel=Anchor># </span><code>take</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+n\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$n$ is of type $\textbf{Int}$, and</li><li>$A$ and $R$ are of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: returns the first $n$ elements of $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>take 2 [1, 2, 3]  // [1, 2]
+</span></span><span class=line><span class=cl>take 1 [1, 2]     // [1]
+</span></span><span class=line><span class=cl>take 0 [1]        // []
+</span></span><span class=line><span class=cl>take 0 []         // []
+</span></span></code></pre></td></tr></table></div></div><a href=#drop><h3 id=drop><span class=hanchor arialabel=Anchor># </span><code>drop</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+n\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$n$ is of type $\textbf{Int}$, and</li><li>$A$ and $R$ are of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: returns all but the first $n$ elements of $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>drop 2 [1, 2, 3]  // [3]
+</span></span><span class=line><span class=cl>drop 1 [1, 2]     // [2]
+</span></span><span class=line><span class=cl>drop 1 [1]        // []
+</span></span><span class=line><span class=cl>drop 0 []         // []
+</span></span></code></pre></td></tr></table></div></div><a href=#reverse><h3 id=reverse><span class=hanchor arialabel=Anchor># </span><code>reverse</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ and $R$ are of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: returns a reversed copy of $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>reverse [1, 2, 3]  // [3, 2, 1]
+</span></span><span class=line><span class=cl>reverse [1, 2]     // [2, 1]
+</span></span><span class=line><span class=cl>reverse [1]        // [1]
+</span></span><span class=line><span class=cl>reverse []         // []
+</span></span></code></pre></td></tr></table></div></div><a href=#insertat><h3 id=insertat><span class=hanchor arialabel=Anchor># </span><code>insertAt</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+i\rightarrow{a}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$i$ is of type $\textbf{Int}$,</li><li>$a$ is of type $\textbf{T}$, and</li><li>$A$ and $R$ are of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: inserts $a$ into the $i$-th index of $A$.
+The previous element is shifted to the right to make room.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>insertAt   2  9 [1, 2]  // [1, 2, 9]
+</span></span><span class=line><span class=cl>insertAt   1  9 [1, 2]  // [1, 9, 2]
+</span></span><span class=line><span class=cl>insertAt   0  9 [1, 2]  // [9, 1, 2]
+</span></span><span class=line><span class=cl>insertAt (-1) 9 [1, 2]  // [1, 2, 9]
+</span></span></code></pre></td></tr></table></div></div><a href=#removeat><h3 id=removeat><span class=hanchor arialabel=Anchor># </span><code>removeAt</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+i\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$i$ is of type $\textbf{Int}$, and</li><li>$A$ and $R$ are of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: removes the element at $i$-th index of $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>removeAt   2  [1, 2]  // [1, 2]
+</span></span><span class=line><span class=cl>removeAt   1  [1, 2]  // [1]
+</span></span><span class=line><span class=cl>removeAt   0  [1, 2]  // [2]
+</span></span><span class=line><span class=cl>removeAt (-1) [1, 2]  // [1,2]
+</span></span></code></pre></td></tr></table></div></div><a href=#updateat><h3 id=updateat><span class=hanchor arialabel=Anchor># </span><code>updateAt</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+i\rightarrow{a}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$i$ is of type $\textbf{Int}$,</li><li>$a$ is of type $\textbf{T}$, and</li><li>$A$ and $R$ are of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: replaces the element at $i$-th index of $A$ with $a$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>updateAt   2  9 [1, 2]  // [1, 2]
+</span></span><span class=line><span class=cl>updateAt   1  9 [1, 2]  // [1, 9]
+</span></span><span class=line><span class=cl>updateAt   0  9 [1, 2]  // [9, 2]
+</span></span><span class=line><span class=cl>updateAt (-1) 9 [1, 2]  // [1, 2]
+</span></span></code></pre></td></tr></table></div></div><a href=#splitat><h3 id=splitat><span class=hanchor arialabel=Anchor># </span><code>splitAt</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+i\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$i$ is of type $\textbf{Int}$,</li><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $([\textbf{T}], [\textbf{T}])$.</li></ul><p><strong>Behavior</strong>: splits $A$ into two at $i$-th index.
+The element at $i$-th index goes to the second half.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>splitAt   2  [1, 2]  // ([1, 2], [])
+</span></span><span class=line><span class=cl>splitAt   1  [1, 2]  // ([1], [2])
+</span></span><span class=line><span class=cl>splitAt   0  [1, 2]  // ([], [1, 2])
+</span></span><span class=line><span class=cl>splitAt (-1) [1, 2]  // ([1, 2], [])
+</span></span></code></pre></td></tr></table></div></div><a href=#indexlist><h3 id=indexlist><span class=hanchor arialabel=Anchor># </span><code>indexList</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $[\textbf{Int}]$.</li></ul><p><strong>Behavior</strong>: generates a list of indexes from $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>indexList [3, 2, 1]  // [0, 1, 2]
+</span></span><span class=line><span class=cl>indexList [1, 2]     // [0, 1]
+</span></span><span class=line><span class=cl>indexList [2]        // [0]
+</span></span><span class=line><span class=cl>indexList []         // []
+</span></span></code></pre></td></tr></table></div></div><a href=#repeat><h3 id=repeat><span class=hanchor arialabel=Anchor># </span><code>repeat</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{a}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$a$ is of type $\textbf{T}$, and</li><li>$R$ is of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: generates an infinite list of the same element $a$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>repeat 0     // [0, 0, 0, ...]
+</span></span><span class=line><span class=cl>repeat 1.0   // [1.0, 1.0, 1.0, ...]
+</span></span><span class=line><span class=cl>repeat &#39;a&#39;   // [&#39;a&#39;, &#39;a&#39;, &#39;a&#39;, ...] 
+</span></span><span class=line><span class=cl>repeat True  // [True, True, True, ...]
+</span></span></code></pre></td></tr></table></div></div><a href=#repeatn><h3 id=repeatn><span class=hanchor arialabel=Anchor># </span><code>repeatn</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{n}\rightarrow{a}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$n$ is of type $\textbf{Int}$,</li><li>$a$ is of type $\textbf{T}$, and</li><li>$R$ is of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: generates a list of the same element $a$ with length of $n$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>repeatn 0 0     // []
+</span></span><span class=line><span class=cl>repeatn 1 1.0   // [1.0]
+</span></span><span class=line><span class=cl>repeatn 2 &#39;a&#39;   // [&#39;a&#39;, &#39;a&#39;] 
+</span></span><span class=line><span class=cl>repeatn 3 True  // [True, True, True]
+</span></span></code></pre></td></tr></table></div></div><a href=#ismember><h3 id=ismember><span class=hanchor arialabel=Anchor># </span><code>isMember</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+a\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where</p><ul><li>$a$ is of type $\textbf{T}$,</li><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p>Additionally, equality operation must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: checks $a$ is a member of $A$ or not.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isMember 4 [1, 2, 3]  // False
+</span></span><span class=line><span class=cl>isMember 2 [1, 2, 3]  // True
+</span></span><span class=line><span class=cl>isMember 1 []         // False
+</span></span></code></pre></td></tr></table></div></div><a href=#isanymember><h3 id=isanymember><span class=hanchor arialabel=Anchor># </span><code>isAnyMember</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{A}\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$</p><p>where</p><ul><li>$A$ and $B$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p>Additionally, equality operation must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: returns true if any element of $B$ is also a element of $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isAnyMember [1, 2] [1, 2]  // True
+</span></span><span class=line><span class=cl>isAnyMember [1, 2] [3, 4]  // False
+</span></span><span class=line><span class=cl>isAnyMember [1, 2] []      // False
+</span></span><span class=line><span class=cl>isAnyMember [] [1, 2]      // False
+</span></span></code></pre></td></tr></table></div></div><a href=#removedup><h3 id=removedup><span class=hanchor arialabel=Anchor># </span><code>removeDup</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where</p><ul><li>$A$ and $R$ are of type $[\textbf{T}]$.</li></ul><p>Additionally, equality operation must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: removes duplicate elements from $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>removeDup [1, 2, 2, 3]  // [1, 2, 3]
+</span></span><span class=line><span class=cl>removeDup [1, 2, 3, 4]  // [1, 2, 3, 4]
+</span></span><span class=line><span class=cl>removeDup []            // []
+</span></span></code></pre></td></tr></table></div></div><a href=#removemember><h3 id=removemember><span class=hanchor arialabel=Anchor># </span><code>removeMember</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{a}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where</p><ul><li>$a$ is of type $\textbf{T}$, and</li><li>$A$ and $R$ are of type $[\textbf{T}]$.</li></ul><p>Additionally, equality operation must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: removes the first occurrence of $a$ from $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>removeMember 4 [1, 2, 2, 3]  // [1, 2, 2, 3]
+</span></span><span class=line><span class=cl>removeMember 2 [1, 2, 2, 3]  // [1, 2, 3]
+</span></span><span class=line><span class=cl>removeMember 1 [1, 2, 2, 3]  // [2, 2, 3]
+</span></span><span class=line><span class=cl>removeMember 0 []            // []
+</span></span></code></pre></td></tr></table></div></div><a href=#removemembers><h3 id=removemembers><span class=hanchor arialabel=Anchor># </span><code>removeMembers</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{A}\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$</p><p>where</p><ul><li>$A$, $B$, and $R$ are of type $[\textbf{T}]$.</li></ul><p>Additionally, equality operation must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: removes the first occurrences of the elements of $B$ from $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>removeMembers [1, 2, 3] []  // [1, 2, 3]
+</span></span><span class=line><span class=cl>removeMembers [2, 3] [1]    // [2, 3]
+</span></span><span class=line><span class=cl>removeMembers [1, 1] [1]    // [1]
+</span></span><span class=line><span class=cl>removeMembers [] [1, 2]     // []
+</span></span></code></pre></td></tr></table></div></div><a href=#removeindex><h3 id=removeindex><span class=hanchor arialabel=Anchor># </span><code>removeIndex</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{a}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where</p><ul><li>$a$ is of type $\textbf{T}$,</li><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $(\textbf{Int}, [\textbf{T}])$.</li></ul><p>Additionally, equality operation must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: removes the first occurrence of $a$ from $A$ and returns the its index, as well as, the new list.
+Results in a run-time error if $a$ is not a member of $A$.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Error in removeIndex: element not found
+</span></span></code></pre></td></tr></table></div></div><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>removeIndex 2 [1, 2, 2, 3]  // (1, [1, 2, 3])
+</span></span><span class=line><span class=cl>removeIndex 1 [1, 2, 2, 3]  // (0, [2, 2, 3])
+</span></span><span class=line><span class=cl>removeIndex 4 [1, 2, 2, 3]  // NOT OK :(
+</span></span></code></pre></td></tr></table></div></div><a href=#sum><h3 id=sum><span class=hanchor arialabel=Anchor># </span><code>sum</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where</p><ul><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{T}$.</li></ul><p>Additionally, addition and zero unit must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: returns sum of $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>sum [1, 2, 3, 4]  // 10
+</span></span><span class=line><span class=cl>sum [1, 2, 3]     // 6
+</span></span><span class=line><span class=cl>sum [1, 2]        // 3
+</span></span><span class=line><span class=cl>sum [1]           // 1
+</span></span></code></pre></td></tr></table></div></div><a href=#prod><h3 id=prod><span class=hanchor arialabel=Anchor># </span><code>prod</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where</p><ul><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{T}$.</li></ul><p>Additionally, multiplication and one unit must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: returns product of $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>prod [1, 2, 3, 4]  // 24
+</span></span><span class=line><span class=cl>prod [1, 2, 3]     // 6
+</span></span><span class=line><span class=cl>prod [1, 2]        // 3
+</span></span><span class=line><span class=cl>prod [1]           // 1
+</span></span></code></pre></td></tr></table></div></div><a href=#avg><h3 id=avg><span class=hanchor arialabel=Anchor># </span><code>avg</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where</p><ul><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{T}$.</li></ul><p>Additionally, addition, zero unit, and division must be defined on $\textbf{T}$.</p><p><strong>Behavior</strong>: returns average $A$.
+Results in a run-time error if $A$ is empty.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>avg called with empty list
+</span></span></code></pre></td></tr></table></div></div><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>avg [1, 2, 3, 4]  // 2
+</span></span><span class=line><span class=cl>avg [1, 2, 3]     // 2
+</span></span><span class=line><span class=cl>avg [1, 2]        // 1
+</span></span><span class=line><span class=cl>avg [1]           // 1
+</span></span><span class=line><span class=cl>avg []            // NOT OK :(
+</span></span></code></pre></td></tr></table></div></div><a href=#and><h3 id=and><span class=hanchor arialabel=Anchor># </span><code>and</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{A_{b}}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A_{b}$ is of type $[\textbf{Bool}]$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p><strong>Behavior</strong>: returns true if and only if every element of $A_{b}$ is true.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>and [False, False]  // False
+</span></span><span class=line><span class=cl>and [False, True]   // True
+</span></span><span class=line><span class=cl>and [True, True]    // True
+</span></span><span class=line><span class=cl>and [False]         // False
+</span></span><span class=line><span class=cl>and [True]          // True
+</span></span><span class=line><span class=cl>and []              // True
+</span></span></code></pre></td></tr></table></div></div><a href=#or><h3 id=or><span class=hanchor arialabel=Anchor># </span><code>or</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+{A_{b}}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A_{b}$ and $R$ are of type $[\textbf{Bool}]$, and</li><li>$R$ is of type $\text{Bool}$.</li></ul><p><strong>Behavior</strong>: returns false if and only if every element of $A_{b}$ is false.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>or [False, False]  // False
+</span></span><span class=line><span class=cl>or [False, True]   // True
+</span></span><span class=line><span class=cl>or [True, True]    // True
+</span></span><span class=line><span class=cl>or [False]         // False
+</span></span><span class=line><span class=cl>or [True]          // True
+</span></span><span class=line><span class=cl>or []              // False
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#higher-order-functions><h2 id=higher-order-functions><span class=hanchor arialabel=Anchor># </span>Higher-Order Functions</h2></a><a href=#takewhile><h3 id=takewhile><span class=hanchor arialabel=Anchor># </span><code>takeWhile</code></h3></a><p><strong>Signature</strong>
+$$
+\begin{align*}
+P\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$P$ is of type $(\textbf{T}\rightarrow\textbf{Bool})$, and</li><li>$A$ and $R$ is of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: takes elements from the start of $A$ as long as $P$ is true.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>takeWhile isOdd  [1, 1, 1]  // [1, 1, 1]
+</span></span><span class=line><span class=cl>takeWhile isOdd  [1, 2, 3]  // [1]
+</span></span><span class=line><span class=cl>takeWhile isEven [1, 2, 3]  // []
+</span></span><span class=line><span class=cl>takeWhile isOdd  []         // []
+</span></span></code></pre></td></tr></table></div></div><a href=#dropwhile><h3 id=dropwhile><span class=hanchor arialabel=Anchor># </span><code>dropWhile</code></h3></a><p><strong>Signature</strong>
+$$
+\begin{align*}
+P\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$P$ is of type $(\textbf{T}\rightarrow\textbf{Bool})$, and</li><li>$A$ and $R$ is of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: discards elements from the start of $A$ as long as $P$ is true.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>dropWhile isOdd  [1, 1, 1]  // []
+</span></span><span class=line><span class=cl>dropWhile isOdd  [1, 2, 3]  // [2, 3]
+</span></span><span class=line><span class=cl>dropWhile isEven [1, 2, 3]  // [1, 2, 3]
+</span></span><span class=line><span class=cl>dropWhile isOdd  []         // []
+</span></span></code></pre></td></tr></table></div></div><a href=#filter><h3 id=filter><span class=hanchor arialabel=Anchor># </span><code>filter</code></h3></a><p><strong>Signature</strong>
+$$
+\begin{align*}
+P\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$P$ is of type $(\textbf{T}\rightarrow\textbf{Bool})$, and</li><li>$A$ and $R$ is of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: filters $A$ using $P$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>filter isEven [2, 3, 4]  // [2, 4]
+</span></span><span class=line><span class=cl>filter isEven [1, 2, 3]  // [2, 3]
+</span></span><span class=line><span class=cl>filter isOdd  [1, 2, 3]  // [1]
+</span></span><span class=line><span class=cl>filter isOdd  [2, 3, 4]  // [3]
+</span></span><span class=line><span class=cl>filter isOdd  []         // []
+</span></span></code></pre></td></tr></table></div></div><a href=#foldr><h3 id=foldr><span class=hanchor arialabel=Anchor># </span><code>foldr</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+f\rightarrow{k}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$f$ is of type $(\textbf{T}\rightarrow\textbf{K}\rightarrow\textbf{K})$,</li><li>$k$ and $R$ are of type $\textbf{K}$, and</li><li>$A$ is of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: folds $A$ using a right-associative operation $f$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>foldr (+) 0 [1, 2, 3]
+</span></span><span class=line><span class=cl>// 1 + (2 + (3 + 0))
+</span></span><span class=line><span class=cl>// 6
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>foldr (+) 0 [3, 2, 1]
+</span></span><span class=line><span class=cl>// 3 + (2 + (1 + 0))
+</span></span><span class=line><span class=cl>// 6
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>foldr (^) 1 [1, 2, 3]
+</span></span><span class=line><span class=cl>// 1 ^ (2 ^ (3 ^ 1))
+</span></span><span class=line><span class=cl>// 1
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>foldr (^) 1 [3, 2, 1]
+</span></span><span class=line><span class=cl>// 3 ^ (2 ^ (1 ^ 1))
+</span></span><span class=line><span class=cl>// 9
+</span></span></code></pre></td></tr></table></div></div><a href=#foldl><h3 id=foldl><span class=hanchor arialabel=Anchor># </span><code>foldl</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+f\rightarrow{t}\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$f$ is of type $(\textbf{T}\rightarrow\textbf{K}\rightarrow\textbf{T})$,</li><li>$t$ is of type $\textbf{T}$,</li><li>$A$ is of type $[\textbf{K}]$, and</li><li>$R$ is of type $\textbf{T}$.</li></ul><p><strong>Behavior</strong>: folds $A$ using a left-associative operation $f$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>foldl (+) 0 [1, 2, 3]
+</span></span><span class=line><span class=cl>// ((0 + 1) + 2) + 3
+</span></span><span class=line><span class=cl>// 6
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>foldr (+) 0 [3, 2, 1]
+</span></span><span class=line><span class=cl>// ((0 + 3) + 2) + 1
+</span></span><span class=line><span class=cl>// 6
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>foldl (^) 1 [1, 2, 3]
+</span></span><span class=line><span class=cl>// ((1 ^ 1) ^ 2) ^ 3
+</span></span><span class=line><span class=cl>// 1
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>foldl (^) 1 [3, 2, 1]
+</span></span><span class=line><span class=cl>// ((1 ^ 3) ^ 2)  ^ 1
+</span></span><span class=line><span class=cl>// 1
+</span></span></code></pre></td></tr></table></div></div><a href=#iterate><h3 id=iterate><span class=hanchor arialabel=Anchor># </span><code>iterate</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+f\rightarrow{a}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$f$ is of type $(\textbf{T}\rightarrow\textbf{T})$,</li><li>$a$ is of type $\textbf{T}$, and</li><li>$R$ is of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: generates an infinite list by repeatedly apply $f$ to $a$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>iterate ((+) 1) 0  // [0, 1, 2, ...]
+</span></span><span class=line><span class=cl>iterate ((*) 2) 1  // [1, 2, 4, ...]
+</span></span><span class=line><span class=cl>iterate toInt   1  // [1, 1, 1, ...]
+</span></span></code></pre></td></tr></table></div></div><a href=#map><h3 id=map><span class=hanchor arialabel=Anchor># </span><code>map</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+f\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$f$ is of type $\textbf{T}\rightarrow\textbf{K}$,</li><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $[\textbf{K}]$.</li></ul><p><strong>Behavior</strong>: applies $f$ to every element of $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>map isEven  [1, 2, 3]  // [False, True, False]
+</span></span><span class=line><span class=cl>map toReal  [1, 2, 3]  // [1.0, 2.0, 3.0]
+</span></span><span class=line><span class=cl>map ((+) 2) [1, 2, 3]  // [3, 4, 5]
+</span></span></code></pre></td></tr></table></div></div><a href=#scan><h3 id=scan><span class=hanchor arialabel=Anchor># </span><code>scan</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+f\rightarrow{a}\rightarrow{B}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$f$ is of type $(\textbf{T}\rightarrow\textbf{K}\rightarrow\textbf{T})$,</li><li>$a$ is of type $\textbf{T}$,</li><li>$B$ is of type $[\textbf{K}]$, and</li><li>$R$ is of type $[\textbf{T}]$.</li></ul><p><strong>Behavior</strong>: generates a list of reduced values from apply $f$ to $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>scan (+) 0 [1, 2, 3]
+</span></span><span class=line><span class=cl>// [0, 0 + 1, (0 + 1) + 2, ((0 + 1) + 2) + 3]
+</span></span><span class=line><span class=cl>// [0, 1, 3, 6]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>scan (+) 0 [3, 2, 1]
+</span></span><span class=line><span class=cl>// [0, 0 + 3, (0 + 3) + 2, ((0 + 3) + 2) + 1]
+</span></span><span class=line><span class=cl>// [0, 3, 5, 6]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>scan (^) 1 [1, 2, 3]
+</span></span><span class=line><span class=cl>// [1, 1 ^ 1, (1 ^ 1) ^ 2, ((1 ^ 1) ^ 2) ^ 3]
+</span></span><span class=line><span class=cl>// [1, 1, 1, 1]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>scan (^) 1 [3, 2, 1]
+</span></span><span class=line><span class=cl>// [1, 1 ^ 3, (1 ^ 3) ^ 2, ((1 ^ 3) ^ 2) ^ 1]
+</span></span><span class=line><span class=cl>// [1, 1, 1, 1]
+</span></span></code></pre></td></tr></table></div></div><a href=#any><h3 id=any><span class=hanchor arialabel=Anchor># </span><code>any</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+P\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$P$ is of type $(\textbf{T}\rightarrow\textbf{Bool})$,</li><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p><strong>Behavior</strong>: returns false if and only if $P$ does not hold for any element of $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>any isEven [1, 2, 3]  // True
+</span></span><span class=line><span class=cl>any isOdd  [1, 2, 3]  // True
+</span></span><span class=line><span class=cl>any isEven [1, 3, 5]  // False
+</span></span><span class=line><span class=cl>any isOdd  [2, 4, 6]  // False
+</span></span><span class=line><span class=cl>any isEven []         // False
+</span></span><span class=line><span class=cl>any isOdd  []         // False
+</span></span></code></pre></td></tr></table></div></div><a href=#all><h3 id=all><span class=hanchor arialabel=Anchor># </span><code>all</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+P\rightarrow{A}\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$P$ is of type $(\textbf{T}\rightarrow\textbf{Bool})$,</li><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p><strong>Behavior</strong>: returns true if and only if $P$ holds for every element of $A$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>all isEven [1, 2, 3]  // False
+</span></span><span class=line><span class=cl>all isOdd  [1, 2, 3]  // False
+</span></span><span class=line><span class=cl>all isEven [2, 4, 6]  // True
+</span></span><span class=line><span class=cl>all isOdd  [1, 3, 5]  // True
+</span></span><span class=line><span class=cl>all isEven []         // True
+</span></span><span class=line><span class=cl>all isOdd  []         // True
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#property-functions><h2 id=property-functions><span class=hanchor arialabel=Anchor># </span>Property Functions</h2></a><a href=#isempty><h3 id=isempty><span class=hanchor arialabel=Anchor># </span><code>isEmpty</code></h3></a><p><strong>Signature</strong></p><p>$$
+\begin{align*}
+A\rightarrow{R}
+\end{align*}
+$$</p><p>where:</p><ul><li>$A$ is of type $[\textbf{T}]$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p><strong>Behavior</strong>: checks if $A$ is empty or not.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isEmpty []   // True
+</span></span><span class=line><span class=cl>isEmpty [1]  // False
+</span></span></code></pre></td></tr></table></div></div></article><hr><div class=page-end id=footer><div class=backlinks-container><h3>Backlinks</h3><ul class=backlinks><li><a href=/cleanpedia// data-ctx="Appendix A: StdList" data-src=/ class=internal-link>Cleanpedia</a></li><li><a href=/cleanpedia/appendix-a/ data-ctx=StdList data-src=/appendix-a class=internal-link>Appendix A: Standard Environment</a></li></ul></div><div><script src=https://cdn.jsdelivr.net/npm/d3@6.7.0/dist/d3.min.js integrity="sha256-+7jaYCp29O1JusNWHaYtgUn6EhuP0VaFuswhNV06MyI=" crossorigin=anonymous></script><h3>Interactive Graph</h3><div id=graph-container></div><style>:root{--g-node:var(--secondary);--g-node-active:var(--primary);--g-node-inactive:var(--visited);--g-link:var(--outlinegray);--g-link-active:#5a7282}</style><script src=https://eurydia.github.io/cleanpedia/js/graph.abd4bc2af3869a96524d7d23b76152c7.js></script></div></div><div id=contact_buttons><footer><p>Made by Thanakorn Phuttharaksa using <a href=https://github.com/jackyzha0/quartz>Quartz</a>, © 2023</p><ul><li><a href=https://eurydia.github.io/cleanpedia/>Home</a></li><li><a href=https://www.instagram.com/_kornthana/>Instagram</a></li><li><a href=mailto:b9xp3x@inf.elte.hu>Email</a></li><li><a href=https://t.me/+El6CtwOD8KxhYmU9>Telegram</a></li></ul></footer></div></div></body></html>

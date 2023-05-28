@@ -42,7 +42,7 @@ Multiple parameters are space separated.
 functionB paramA paramB = expression
 ```
 
-In global scope, right arrow (`=>`) may be used to separate parameters from expression.
+In global scope, right double arrow (`=>`) may be used to separate parameters from expression.
 
 ```
 // Langauge: Clean
@@ -87,8 +87,8 @@ Every implementation must have the same signature as the first.
 ```
 // Language: Clean
 
-badSafeDiv m 0 =  False
-badSafeDiv m n =  m / n
+badSafeDiv m 0 = False
+badSafeDiv m n = m / n
 ```
 
 The second implementation of `badSafeDiv` disobeyed the signature of the first implementation by returning an integer, instead of a Boolean value.
@@ -164,8 +164,8 @@ Additionally, guarded bodies can be nested.
 
 functionE parameter
 | guardA
-    | guardAA    = expressionAA
-    | guardAB    = expressionAB
+    | guardAA = expressionAA
+    | guardAB = expressionAB
 ```
 
 **Guarded expression signature**
@@ -203,9 +203,9 @@ However, one of the guarded expression returns a Boolean value, which is not all
 // Language: Clean
 
 badSignumAlt n
-| n == 0    =  0
-| n >  0    =  True
-| n <  0    = -1
+| n == 0 =  0
+| n >  0 =  True
+| n <  0 = -1
 ```
 
 Unfortunately, this new definition is still illegal.
@@ -385,10 +385,10 @@ It can be implemented as if it was an ordinary function.
 ```
 // Language: Clean
 
-(operatorA) paramL paramR =  expression
+(operatorA) paramL paramR = expression
 ```
 
-In global scope, right arrow (`=>`) may be used to separated parameters from expression, much like a function.
+In global scope, right double arrow (`=>`) may be used to separated parameters from expression, much like a function.
 
 ```
 // Language: Clean
@@ -423,7 +423,7 @@ It is not allowed to apply operators with equal precedence in an expression in s
 True --> False <=> False
 ```
 
-`-->` operator is a right-associated.
+The logical implication operator (`-->`)  is a right-associated.
 It implies that the expression should be evaluated as follows.
 
 ```
@@ -432,120 +432,147 @@ It implies that the expression should be evaluated as follows.
 True --> (False <=> False)
 ```
 
-However, `<=>` operator is left associated.
+However, the logical equivalence operator (`<=>` ) is left associated.
 It implies that the expression should be evaluated as follows.
 
 ```
 // language: Clean
 
-(True -> False) <=> False
+(True --> False) <=> False
 ```
 
 Since both operators have the same precedence and the order of evaluation cannot be decided by their fixity, this expression will result in a compile-time error.
 
 ### Lambda Functions
 
-A lambda function is defined "on the spot" as an expression.
-However, it cannot have local definitions or guards.
-
-A lambda function has following syntax.
+A control lambda function may be written as follows:
 
 ```
 // Language: Clean
 
-\[fnParam] =  [fnBody]
-\[fnParam] -> [fnBody]
+\ parameter = expression
 ```
 
-Parameters of a lambda function are separated by spaces.
+Parameters of a lambda function are space separated.
 
 ```
 // Language: Clean
 
-\paramA        = ...
-\paramA paramB = ...
+\ paramA paramB = expression
+```
+
+Alternatively, dot (`.`) and right arrow (`->`) may be used to separate  parameters from expression.
+It should be noted that they carry different semantic meanings.
+
+```
+// Language: Clean
+
+\ parameter     .  expression
+\ paramA paramB -> expression
+```
+
+Guarded expressions can be introduced as well.
+
+```
+// Language: Clean
+
+\ parameter | guardA = expressionA | guardB = expressionB | guardC = expressionC
+```
+
+To increase readability, a lambda definition maybe placed between a pair of parenthesis, which allows it to span multiple lines.
+
+```
+// Language: Clean
+
+(\ parameter 
+| guardA = expressionA 
+| guardB = expressionB 
+| guardC = expressionC)
 ```
 
 ### Case Expressions
 
-In a $\textbf{case..in}$ expression, cases are tried in textual order.
-Each case contains a pattern and a case body.
+A`case..of..` expression matches a given expression with one of its patterns, and a control expression with one pattern may be written as follows.
 
 ```
 // Language: Clean
 
-case [expr] of
-[casePatternA] =  [caseBodyA]
-[casePatternB] =  [caseBodyB]
-[casePatternC] =  [caseBodyC]
-
-case [expr] of
-[casePatternX] -> [caseBodyX]
-[casePatternY] -> [caseBodyY]
-[casePatternZ] -> [caseBodyZ]
+case expression of
+pattern = altExpression
 ```
 
-Guards can be introduce to a case which allows a case to have multiple guarded bodies.
+Multiple patterns and alternative expressions can be introduced in the same way.
 
 ```
 // Language: Clean
 
-case [expr] of
-[patternA]
-| [guardA] = [bodyAA]
-| [guardB] = [bodyAB]
-| [guardC] = [bodyAC]
-[patternB] = [bodyB]
+case expression of
+patternA = altExpressionA
+patternB = altExpressionB
+patternC = altExpressionC
 ```
 
-Internally, a $\textbf{case..in}$ expression is translated to a function definition.
-The cases are transformed into an implementation.
+Alternatively, right double arrow (`=>`) and right arrow (`->`) may be used to separated a pattern from an alternative expression, but they are not allowed to mix.
+
+Guarded expressions can be introduced as well, which allows a case to have multiple guarded bodies.
+
+```
+// Language: Clean
+
+case expression of
+patternA
+| guardA = altExpressionAA
+| guardB = altExpressionAB
+| guardC = altExpressionAC
+patternB = altExpressionB
+```
+
+Internally, a `case..of..` expression is compiled to a function.
+That is, each case is transformed into an implementation of a function.
 
 ```
 // language: Clean
 
-_caseFn [casePatternA] = [caseBodyA]
-_caseFn [casePatternB] = [caseBodyB]
-_caseFn [casePatternC] = [caseBodyC]
+__compiledExpr patternA = altExpressionA
+__compiledExpr patternB = altExpressionB
+__compiledExpr patternC = altExpressionC
 ```
 
-Consequently, this can result in a run-time error when none of pattern matches since the expression is translated into a partial function.
+This explains why guarded expressions can be introduced.
+
+```
+// language: Clean
+
+__compiledExpr patternA
+| guardAA               = altExpressionAA
+| guardAB               = altExpressionAB
+| guardAC               = altExpressionAC
+__compiledExpr patternB = altExpressionB
+```
+
+Consequently, such an expression can result in a run-time error since it is translated into a partial function.
 
 ### Pattern-Match Expressions
 
-A pattern-match expression checks an expression against a pattern or not.
+A pattern-match expression checks an expression against a pattern, and a control expression may be written as follows.
 
 ```
 // Language: Clean
 
-[expr] := [pattern]
+expression =: pattern
 ```
 
-Internally, it compiles down to a $\textbf{case..of}$ expression.
-It yields $\textbf{True}$ or $\textbf{False}$ similar to an equality check.
+If a given expression matches with the pattern, it yields `true`.
 
-```
-// Language: Clean
-
-case [expr] of
-[pattern] = True
-_         = False
-
-```
-
-It is useful when dealing with algebraic types.
+Internally, it is compiled down to a `case..of..` expression.
 
 ```
 // Language: Clean
 
-:: Tree a = Node a (Tree a) (Tree a)
-          | Leaf
+case expression of
+pattern = True
+_       = False
 
-isLeaf :: (Tree a) -> Bool
-isLeaf    t        =  t := (Leaf)
-
-isNode :: (Tree a) -> Bool
-isNode    t        =  t := (Tree x l r)
 ```
 
 ### Local Definitions
@@ -1666,4 +1693,4 @@ where
 
 ## Appendix A: Standard Environment
 
-More information about Standard Environment can be found [here](appendix-a/intro.md)
+More information about Standard Environment can be found [here](appendix-a/_intro.md).

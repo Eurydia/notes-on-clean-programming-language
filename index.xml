@@ -17,7 +17,10 @@ where:
 $a$ and $R$ are of type $\textbf{Int}$. Behavior: inverts the sign of $a$.</description></item><item><title>Appendix A: StdList</title><link>https://eurydia.github.io/cleanpedia/appendix-a/stdlist/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eurydia.github.io/cleanpedia/appendix-a/stdlist/</guid><description>Basic Operations Concatenation Signature
 $$ \begin{align*} A\rightarrow{B}\rightarrow{R} \end{align*} $$
 where
-$A$, $B$, and $R$ are of type $[\textbf{T}]$. Behavior: appends $B$ to the end of $A$.</description></item><item><title>Appendix A: StdOrdList</title><link>https://eurydia.github.io/cleanpedia/appendix-a/stdordlist/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eurydia.github.io/cleanpedia/appendix-a/stdordlist/</guid><description>Basic Functions sort Signature
+$A$, $B$, and $R$ are of type $[\textbf{T}]$. Behavior: appends $B$ to the end of $A$.</description></item><item><title>Appendix A: StdMisc</title><link>https://eurydia.github.io/cleanpedia/appendix-a/stdmisc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eurydia.github.io/cleanpedia/appendix-a/stdmisc/</guid><description>Contents Functions abort Functions abort Signature
+$$ \begin{align*} \text{a}\rightarrow\text{b} \end{align*} $$
+where:
+$a$ is of type $\textbf{String}$, and $b$ is of any type $\textbf{T}$.</description></item><item><title>Appendix A: StdOrdList</title><link>https://eurydia.github.io/cleanpedia/appendix-a/stdordlist/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eurydia.github.io/cleanpedia/appendix-a/stdordlist/</guid><description>Basic Functions sort Signature
 $$ \begin{align*} {A}\rightarrow{R} \end{align*} $$
 where:
 $A$ and $R$ are of type $[\textbf{T}]$. Additionally, equality and relational operations must be defined on $\textbf{T}$.</description></item><item><title>Appendix A: StdOverloaded</title><link>https://eurydia.github.io/cleanpedia/appendix-a/stdoverloaded/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eurydia.github.io/cleanpedia/appendix-a/stdoverloaded/</guid><description>Operations Addition Signature

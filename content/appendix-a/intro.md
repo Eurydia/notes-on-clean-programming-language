@@ -17,6 +17,7 @@ The Standard Environment includes, but not limited to, the following modules:
 - [StdClass](appendix-a/stdclass.md)
 - [StdInt](appendix-a/stdint.md)
 - [StdList](appendix-a/stdlist.md)
+- [StdMisc](appendix-a/stdmisc.md)
 - [StdOrdList](appendix-a/stdordlist.md)
 - [StdOverloaded](appendix-a/stdoverloaded.md)
 - [StdReal](appendix-a/stdreal.md)

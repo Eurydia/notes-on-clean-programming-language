@@ -8,7 +8,7 @@
 <script src=https://eurydia.github.io/cleanpedia/js/code-title.b35124ad8db0ba37162b886afb711cbc.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/clipboard.c20857734e53a3fb733b7443879efa61.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/callouts.7723cac461d613d118ee8bb8216b9838.min.js></script>
-<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.418eb8c14fdb3d52f85177ef93f8cdde.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.d705ee35d182ed74443241bf6bd43091.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!0);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=(e=document)=>{addCopyButtons(),addTitleToCodeBlocks(),renderMathInElement(e.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})}</script><script type=module>
+<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.418eb8c14fdb3d52f85177ef93f8cdde.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.855c95c03e0802bb87063b79412c0488.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!0);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=(e=document)=>{addCopyButtons(),addTitleToCodeBlocks(),renderMathInElement(e.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})}</script><script type=module>
     import { attachSPARouting } from "https:\/\/eurydia.github.io\/cleanpedia\/js\/router.9d4974281069e9ebb189f642ae1e3ca2.min.js"
     attachSPARouting(init, render)
   </script></head><body><div class=singlePage><header><h1 id=page-title><a href=https://eurydia.github.io/cleanpedia/>Cleanpedia</a></h1><div class=spacer></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
@@ -463,19 +463,17 @@ That is, each case is transformed into an implementation of a function.</p><div 
 </span></span><span class=line><span class=cl>case expression of
 </span></span><span class=line><span class=cl>pattern = True
 </span></span><span class=line><span class=cl>_       = False
-</span></span></code></pre></td></tr></table></div></div><a href=#local-definitions><h3 id=local-definitions><span class=hanchor arialabel=Anchor># </span>Local Definitions</h3></a><a href=#let-expressions><h4 id=let-expressions><span class=hanchor arialabel=Anchor># </span>Let Expressions</h4></a><p>A $\textbf{let}..\textbf{in}$ expression introduces a new scope inside an expression.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#local-definitions><h3 id=local-definitions><span class=hanchor arialabel=Anchor># </span>Local Definitions</h3></a><a href=#let-expressions><h4 id=let-expressions><span class=hanchor arialabel=Anchor># </span>Let Expressions</h4></a><p>A <code>let..in..</code> expression introduces a new scope within another expression.</p><p>A control expression with one local definition may be written as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
-</span><span class=lnt>6
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>let
-</span></span><span class=line><span class=cl>    localX  = ...
-</span></span><span class=line><span class=cl>    localY = ...
-</span></span><span class=line><span class=cl>in expr
-</span></span></code></pre></td></tr></table></div></div><p>Anything defined inside a $\textbf{let}..\textbf{in}$ expression only has meaning in $\text{expr}$.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>    localFunction x = x + 1
+</span></span><span class=line><span class=cl>in expression
+</span></span></code></pre></td></tr></table></div></div><p>Definitions are local to <code>expression</code>.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -485,89 +483,51 @@ That is, each case is transformed into an implementation of a function.</p><div 
 </span></span><span class=line><span class=cl>[let 
 </span></span><span class=line><span class=cl>    a = i * i 
 </span></span><span class=line><span class=cl>in (a, a) \\ i &lt;- [0..n]]
-</span></span></code></pre></td></tr></table></div></div><a href=#where-blocks><h4 id=where-blocks><span class=hanchor arialabel=Anchor># </span>Where Blocks</h4></a><p>A $\textbf{where}$ block can be added at the end of a function implementation which introduces a new scope.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#where-blocks><h4 id=where-blocks><span class=hanchor arialabel=Anchor># </span>Where Blocks</h4></a><p>A <code>where</code> block can be introduced to the end of a function implementation.
+It introduces a new scope local to that implementation.</p><p>A control <code>where</code> block with one definition may be written as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>functionF parameter = expression
+</span></span><span class=line><span class=cl>where
+</span></span><span class=line><span class=cl>    localFunc x = x + 1
+</span></span><span class=line><span class=cl>functionF parameter = expression
+</span></span></code></pre></td></tr></table></div></div><p>The second implementation does not have access to <code>localFunc</code> which is local to the first implementation.</p><a href=#with-blocks><h4 id=with-blocks><span class=hanchor arialabel=Anchor># </span>With Blocks</h4></a><p>A <code>with</code> block can be introduced to the end of a guarded.
+It introduces a new scope local to that guarded expression.</p><p>A control <code>with</code> block with one definition may be written as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span><span class=lnt>6
 </span><span class=lnt>7
-</span><span class=lnt>8
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>[fnName] [fnParam]
-</span></span><span class=line><span class=cl>| [guardA] = [bodyA]
-</span></span><span class=line><span class=cl>| [guardB] = [bodyB]
-</span></span><span class=line><span class=cl>| [guardC] = [bodyC]
-</span></span><span class=line><span class=cl>where
-</span></span><span class=line><span class=cl>    localX = [expr]
-</span></span></code></pre></td></tr></table></div></div><p>For example:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
+</span></span><span class=line><span class=cl>functionG parameter
+</span></span><span class=line><span class=cl>| guardA = expressionA
+</span></span><span class=line><span class=cl>with 
+</span></span><span class=line><span class=cl>    localFunc x = x + 1
+</span></span><span class=line><span class=cl>| guardB = expressionB
+</span></span></code></pre></td></tr></table></div></div><p>However, the guard itself does not have access definitions within a its <code>with</code> block.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>absolute :: Int -&gt; Int
-</span></span><span class=line><span class=cl>absolute    0   =  z  // 1st impl
-</span></span><span class=line><span class=cl>where
-</span></span><span class=line><span class=cl>    z :: Int
-</span></span><span class=line><span class=cl>    z =  0
-</span></span><span class=line><span class=cl>absolute    n         // 2nd impl
-</span></span><span class=line><span class=cl>| n &lt;  0        =  negN
-</span></span><span class=line><span class=cl>| otherwise     =  n
-</span></span><span class=line><span class=cl>where
-</span></span><span class=line><span class=cl>    negN :: Int
-</span></span><span class=line><span class=cl>    negN =  n * (-1)
-</span></span></code></pre></td></tr></table></div></div><p>The second implementation does not have access to $\text{z}$ which is defined in the first implementation.</p><a href=#with-blocks><h4 id=with-blocks><span class=hanchor arialabel=Anchor># </span>With Blocks</h4></a><p>A $\textbf{with}$ block can be added at the end of a guarded body which introduces a new scope.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>[fnName] [fnParam]
-</span></span><span class=line><span class=cl>| [guardA] = [bodyA]
-</span></span><span class=line><span class=cl>with
-</span></span><span class=line><span class=cl>    localX = [expr]
-</span></span><span class=line><span class=cl>| [guardB] = [bodyB]
-</span></span><span class=line><span class=cl>with
-</span></span><span class=line><span class=cl>    localY = [expr]
-</span></span><span class=line><span class=cl>| [guardC] = [bodyC]
-</span></span></code></pre></td></tr></table></div></div><p>For example:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>absolute :: Int -&gt; Int
-</span></span><span class=line><span class=cl>absolute    n
-</span></span><span class=line><span class=cl>| n == 0        =  0
-</span></span><span class=line><span class=cl>| n &lt;  0        =  negN
-</span></span><span class=line><span class=cl>with
-</span></span><span class=line><span class=cl>    negN :: Int
-</span></span><span class=line><span class=cl>    negN =  n * (-1)
-</span></span><span class=line><span class=cl>| otherwise     =  n
-</span></span></code></pre></td></tr></table></div></div><p>The third guarded body does not have access to $\text{negN}$, which is local to the second guarded body.</p><hr><a href=#built-in-types><h2 id=built-in-types><span class=hanchor arialabel=Anchor># </span>Built-In Types</h2></a><p>Certain types like integers, Booleans, characters, real numbers, lists, tuples and arrays are frequently used that they have been predefined for reasons of efficiency and convenience.</p><a href=#primitive-types><h3 id=primitive-types><span class=hanchor arialabel=Anchor># </span>Primitive Types</h3></a><a href=#integers><h4 id=integers><span class=hanchor arialabel=Anchor># </span>Integers</h4></a><p><strong>Type annotation</strong>: $\textbf{Int}$</p><p><strong>Constructors</strong></p><p>From decimal notation:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>functionH n
+</span></span><span class=line><span class=cl>| x == 0    = 0
+</span></span><span class=line><span class=cl>with 
+</span></span><span class=line><span class=cl>    x = n mod 2
+</span></span><span class=line><span class=cl>| otherwise = 1
+</span></span></code></pre></td></tr></table></div></div><p>The definition of <code>functionH</code> is not valid.
+The first guard cannot reference <code>x</code>.</p><hr><a href=#built-in-types><h2 id=built-in-types><span class=hanchor arialabel=Anchor># </span>Built-In Types</h2></a><p>Types like integers, Booleans, characters, real numbers, lists, tuples, and arrays are frequently used.
+They have been predefined for reasons of efficiency and convenience.</p><a href=#primitive-types><h3 id=primitive-types><span class=hanchor arialabel=Anchor># </span>Primitive Types</h3></a><a href=#integers><h4 id=integers><span class=hanchor arialabel=Anchor># </span>Integers</h4></a><p><strong>Type annotation</strong>: <code>Int</code></p><p><strong>Constructors</strong></p><p>Decimal constructor:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -579,7 +539,7 @@ That is, each case is transformed into an implementation of a function.</p><div 
 </span></span><span class=line><span class=cl>n = -13
 </span></span><span class=line><span class=cl>n =  0
 </span></span><span class=line><span class=cl>n =  13
-</span></span></code></pre></td></tr></table></div></div><p>From octal notation by prefixing octal digits with $\textbf{0}$:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>Octal constructor by prefixing octal digits with <code>0</code>:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -591,7 +551,7 @@ That is, each case is transformed into an implementation of a function.</p><div 
 </span></span><span class=line><span class=cl>n = -015  // dec -13
 </span></span><span class=line><span class=cl>n =  0
 </span></span><span class=line><span class=cl>n =  015  // dec  13
-</span></span></code></pre></td></tr></table></div></div><p>From hexadecimal notation by prefixing hexadecimal digits with $\textbf{0x}$:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>Hexadecimal constructor by prefixing hexadecimal digits with <code>0x</code>:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -1578,4 +1538,4 @@ They are equality and inequality operators.</p><p>To instantiate a class, all of
 </span></span><span class=line><span class=cl>    minC x y = toInt (min x y)
 </span></span><span class=line><span class=cl>    maxC x y = toInt (max x y)
 </span></span></code></pre></td></tr></table></div></div><hr><a href=#appendix-a-standard-environment><h2 id=appendix-a-standard-environment><span class=hanchor arialabel=Anchor># </span>Appendix A: Standard Environment</h2></a><p>More information about Standard Environment can be found
-<a href=/cleanpedia/appendix-a/_intro/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/_intro/>here</a>.</p></article><hr><div class=page-end id=footer><div class=backlinks-container><h3>Backlinks</h3><ul class=backlinks><li>No backlinks found</li></ul></div><div><script src=https://cdn.jsdelivr.net/npm/d3@6.7.0/dist/d3.min.js integrity="sha256-+7jaYCp29O1JusNWHaYtgUn6EhuP0VaFuswhNV06MyI=" crossorigin=anonymous></script><h3>Interactive Graph</h3><div id=graph-container></div><style>:root{--g-node:var(--secondary);--g-node-active:var(--primary);--g-node-inactive:var(--visited);--g-link:var(--outlinegray);--g-link-active:#5a7282}</style><script src=https://eurydia.github.io/cleanpedia/js/graph.abd4bc2af3869a96524d7d23b76152c7.js></script></div></div><div id=contact_buttons><footer><p>Made by Thanakorn Phuttharaksa using <a href=https://github.com/jackyzha0/quartz>Quartz</a>, © 2023</p><ul><li><a href=https://www.instagram.com/_kornthana/>Instagram</a></li><li><a href=mailto:b9xp3x@inf.elte.hu>Email</a></li><li><a href=https://t.me/+El6CtwOD8KxhYmU9>Telegram</a></li></ul></footer></div></div></body></html>
+<a href=/cleanpedia/appendix-a/_intro/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/_intro/>here</a>.</p></article><hr><div class=page-end id=footer><div class=backlinks-container><h3>Backlinks</h3><ul class=backlinks><li>No backlinks found</li></ul></div><div><script src=https://cdn.jsdelivr.net/npm/d3@6.7.0/dist/d3.min.js integrity="sha256-+7jaYCp29O1JusNWHaYtgUn6EhuP0VaFuswhNV06MyI=" crossorigin=anonymous></script><h3>Interactive Graph</h3><div id=graph-container></div><style>:root{--g-node:var(--secondary);--g-node-active:var(--primary);--g-node-inactive:var(--visited);--g-link:var(--outlinegray);--g-link-active:#5a7282}</style><script src=https://eurydia.github.io/cleanpedia/js/graph.abd4bc2af3869a96524d7d23b76152c7.js></script></div></div><div id=contact_buttons><footer><p>Made by Thanakorn Phuttharaksa using <a href=https://github.com/jackyzha0/quartz>Quartz</a>, © 2023</p><ul><li><a href=https://www.instagram.com/_kornthana/>Instagram</a></li><li><a href=mailto:b9xp3x@inf.elte.hu>Email</a></li><li><a href=https://t.me/+El6CtwOD8KxhYmU9>Telegram</a></li><li><a href>GitHub</a></li><li><a href=https://github.com/Eurydia/cleanpedia></a></li></ul></footer></div></div></body></html>

@@ -579,18 +579,19 @@ _       = False
 
 #### Let Expressions
 
-A $\textbf{let}..\textbf{in}$ expression introduces a new scope inside an expression.
+A `let..in..` expression introduces a new scope within another expression.
+
+A control expression with one local definition may be written as follows.
 
 ```
 // Language: Clean
 
 let
-    localX  = ...
-    localY = ...
-in expr
+    localFunction x = x + 1
+in expression
 ```
 
-Anything defined inside a $\textbf{let}..\textbf{in}$ expression only has meaning in $\text{expr}$.
+Definitions are local to `expression`.
 
 ```
 // Language: Clean
@@ -602,88 +603,70 @@ in (a, a) \\ i <- [0..n]]
 
 #### Where Blocks
 
-A $\textbf{where}$ block can be added at the end of a function implementation which introduces a new scope.
+A `where` block can be introduced to the end of a function implementation.
+It introduces a new scope local to that implementation.
+
+A control `where` block with one definition may be written as follows.
 
 ```
 // Language: Clean
 
-[fnName] [fnParam]
-| [guardA] = [bodyA]
-| [guardB] = [bodyB]
-| [guardC] = [bodyC]
+functionF parameter = expression
 where
-    localX = [expr]
+    localFunc x = x + 1
+functionF parameter = expression
 ```
 
-For example:
-
-```
-// Language: Clean
-
-absolute :: Int -> Int
-absolute    0   =  z  // 1st impl
-where
-    z :: Int
-    z =  0
-absolute    n         // 2nd impl
-| n <  0        =  negN
-| otherwise     =  n
-where
-    negN :: Int
-    negN =  n * (-1)
-```
-
-The second implementation does not have access to $\text{z}$ which is defined in the first implementation.
+The second implementation does not have access to `localFunc` which is local to the first implementation.
 
 #### With Blocks
 
-A $\textbf{with}$ block can be added at the end of a guarded body which introduces a new scope.
+A `with` block can be introduced to the end of a guarded.
+It introduces a new scope local to that guarded expression.
 
-```
-// language: Clean
-
-[fnName] [fnParam]
-| [guardA] = [bodyA]
-with
-    localX = [expr]
-| [guardB] = [bodyB]
-with
-    localY = [expr]
-| [guardC] = [bodyC]
-```
-
-For example:
+A control `with` block with one definition may be written as follows.
 
 ```
 // Language: Clean
 
-absolute :: Int -> Int
-absolute    n
-| n == 0        =  0
-| n <  0        =  negN
-with
-    negN :: Int
-    negN =  n * (-1)
-| otherwise     =  n
+functionG parameter
+| guardA = expressionA
+with 
+    localFunc x = x + 1
+| guardB = expressionB
 ```
 
-The third guarded body does not have access to $\text{negN}$, which is local to the second guarded body.
+However, the guard itself does not have access definitions within a its `with` block.
+
+```
+// Language: Clean
+
+functionH n
+| x == 0    = 0
+with 
+    x = n mod 2
+| otherwise = 1
+```
+
+The definition of `functionH` is not valid.
+The first guard cannot reference `x`.
 
 ---
 
 ## Built-In Types
 
-Certain types like integers, Booleans, characters, real numbers, lists, tuples and arrays are frequently used that they have been predefined for reasons of efficiency and convenience.
+Types like integers, Booleans, characters, real numbers, lists, tuples, and arrays are frequently used.
+They have been predefined for reasons of efficiency and convenience.
 
 ### Primitive Types
 
 #### Integers
 
-**Type annotation**: $\textbf{Int}$
+**Type annotation**: `Int`
 
 **Constructors**
 
-From decimal notation:
+Decimal constructor:
 
 ```
 // Language: Clean
@@ -694,7 +677,7 @@ n =  0
 n =  13
 ```
 
-From octal notation by prefixing octal digits with $\textbf{0}$:
+Octal constructor by prefixing octal digits with `0`:
 
 ```
 // Language: Clean
@@ -705,7 +688,7 @@ n =  0
 n =  015  // dec  13
 ```
 
-From hexadecimal notation by prefixing hexadecimal digits with $\textbf{0x}$:
+Hexadecimal constructor by prefixing hexadecimal digits with `0x`:
 
 ```
 // Language: Clean

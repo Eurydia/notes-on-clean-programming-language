@@ -1,18 +1,16 @@
 <!doctype html><html lang=en><head><meta name=generator content="Hugo 0.96.0"><meta charset=utf-8><meta name=description content="A language reference for CLEAN."><title>Cleanpedia</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" type=image/png href=https://eurydia.github.io/cleanpedia//icon.png><link href=https://eurydia.github.io/cleanpedia/styles.b3e1e36b0403ac565c9392b3e23ef3b6.min.css rel=stylesheet><link href=https://eurydia.github.io/cleanpedia/styles/_light_syntax.86a48a52faebeaaf42158b72922b1c90.min.css rel=stylesheet id=theme-link><script src=https://eurydia.github.io/cleanpedia/js/darkmode.c7bf66e3c7098cf23280f76232e7b9e4.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/util.9825137f5e7825e8553c68ce39ac9e44.min.js></script>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity=sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity=sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity=sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR crossorigin=anonymous></script>
 <script src=https://unpkg.com/@floating-ui/core@0.7.3></script>
 <script src=https://unpkg.com/@floating-ui/dom@0.5.4></script>
 <script src=https://eurydia.github.io/cleanpedia/js/popover.abe6a51cc7138c5dff00f151dd627ad1.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/code-title.b35124ad8db0ba37162b886afb711cbc.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/clipboard.c20857734e53a3fb733b7443879efa61.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/callouts.7723cac461d613d118ee8bb8216b9838.min.js></script>
-<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.418eb8c14fdb3d52f85177ef93f8cdde.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.98ff8fbf0026f56751c3d10360e188e8.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!0);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=(e=document)=>{addCopyButtons(),addTitleToCodeBlocks(),renderMathInElement(e.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})}</script><script type=module>
+<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.816a46288939b674c0c41ea911c4b447.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.1155771eb7807bd9662d8b3ca99aa385.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!1);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=()=>{addCopyButtons(),addTitleToCodeBlocks()}</script><script type=module>
     import { attachSPARouting } from "https:\/\/eurydia.github.io\/cleanpedia\/js\/router.9d4974281069e9ebb189f642ae1e3ca2.min.js"
     attachSPARouting(init, render)
   </script></head><body><div class=singlePage><header><h1 id=page-title><a href=https://eurydia.github.io/cleanpedia/>Cleanpedia</a></h1><div class=spacer></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
-<label id=toggle-label-light for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="dayIcon" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35"><title>Light Mode</title><path d="M6 17.5C6 16.672 5.328 16 4.5 16h-3C.672 16 0 16.672.0 17.5S.672 19 1.5 19h3C5.328 19 6 18.328 6 17.5zM7.5 26c-.414.0-.789.168-1.061.439l-2 2C4.168 28.711 4 29.086 4 29.5 4 30.328 4.671 31 5.5 31c.414.0.789-.168 1.06-.44l2-2C8.832 28.289 9 27.914 9 27.5 9 26.672 8.329 26 7.5 26zm10-20C18.329 6 19 5.328 19 4.5v-3C19 .672 18.329.0 17.5.0S16 .672 16 1.5v3C16 5.328 16.671 6 17.5 6zm10 3c.414.0.789-.168 1.06-.439l2-2C30.832 6.289 31 5.914 31 5.5 31 4.672 30.329 4 29.5 4c-.414.0-.789.168-1.061.44l-2 2C26.168 6.711 26 7.086 26 7.5 26 8.328 26.671 9 27.5 9zM6.439 8.561C6.711 8.832 7.086 9 7.5 9 8.328 9 9 8.328 9 7.5c0-.414-.168-.789-.439-1.061l-2-2C6.289 4.168 5.914 4 5.5 4 4.672 4 4 4.672 4 5.5c0 .414.168.789.439 1.06l2 2.001zM33.5 16h-3c-.828.0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5h3c.828.0 1.5-.672 1.5-1.5S34.328 16 33.5 16zM28.561 26.439C28.289 26.168 27.914 26 27.5 26c-.828.0-1.5.672-1.5 1.5.0.414.168.789.439 1.06l2 2C28.711 30.832 29.086 31 29.5 31c.828.0 1.5-.672 1.5-1.5.0-.414-.168-.789-.439-1.061l-2-2zM17.5 29c-.829.0-1.5.672-1.5 1.5v3c0 .828.671 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3C19 29.672 18.329 29 17.5 29zm0-22C11.71 7 7 11.71 7 17.5S11.71 28 17.5 28 28 23.29 28 17.5 23.29 7 17.5 7zm0 18c-4.136.0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5 7.5 3.364 7.5 7.5S21.636 25 17.5 25z"/></svg></label><label id=toggle-label-dark for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nightIcon" viewBox="0 0 100 100" style="enable-background='new 0 0 100 100'"><title>Dark Mode</title><path d="M96.76 66.458c-.853-.852-2.15-1.064-3.23-.534-6.063 2.991-12.858 4.571-19.655 4.571C62.022 70.495 50.88 65.88 42.5 57.5 29.043 44.043 25.658 23.536 34.076 6.47c.532-1.08.318-2.379-.534-3.23-.851-.852-2.15-1.064-3.23-.534-4.918 2.427-9.375 5.619-13.246 9.491-9.447 9.447-14.65 22.008-14.65 35.369.0 13.36 5.203 25.921 14.65 35.368s22.008 14.65 35.368 14.65c13.361.0 25.921-5.203 35.369-14.65 3.872-3.871 7.064-8.328 9.491-13.246C97.826 68.608 97.611 67.309 96.76 66.458z"/></svg></label></div></header><article><aside class=mainTOC><details open><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#introduction>Introduction</a></li><li><a href=#functions>Functions</a><ol><li><a href=#defining-a-function>Defining A Function</a></li><li><a href=#guarded-expressions>Guarded expressions</a></li><li><a href=#partial-functions>Partial functions</a></li><li><a href=#operators>Operators</a></li><li><a href=#lambda-functions>Lambda Functions</a></li><li><a href=#case-expressions>Case Expressions</a></li><li><a href=#pattern-match-expressions>Pattern-Match Expressions</a></li><li><a href=#local-definitions>Local Definitions</a></li></ol></li><li><a href=#built-in-types>Built-In Types</a><ol><li><a href=#primitive-types>Primitive Types</a></li><li><a href=#lists>Lists</a></li><li><a href=#tuples>Tuples</a></li><li><a href=#arrays>Arrays</a></li></ol></li><li><a href=#defining-new-types>Defining New Types</a><ol><li><a href=#algebraic-data-types>Algebraic Data Types</a></li><li><a href=#record-types>Record Types</a></li><li><a href=#synonym-types>Synonym Types</a></li></ol></li><li><a href=#overloading>Overloading</a><ol><li><a href=#overloaded-functions>Overloaded Functions</a></li><li><a href=#classes>Classes</a></li></ol></li><li><a href=#appendix-a-standard-environment>Appendix A: Standard Environment</a></li></ol></nav></details></aside><a href=#introduction><h2 id=introduction><span class=hanchor arialabel=Anchor># </span>Introduction</h2></a><p>The motivation of this reference is to create an accessible, concise, and clear documentation for those who are seeking to learn CLEAN.</p><p>The same information can be found on:</p><ul><li><a href=https://cloogle.org/ rel=noopener>Cloogle</a> which is the language’s search engine, and</li><li><a href=https://cloogle.org/doc/ rel=noopener>language report</a> which describes the syntax and BNF of Clean.</li></ul><p>However, this documentation is not official.
+<label id=toggle-label-light for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="dayIcon" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35"><title>Light Mode</title><path d="M6 17.5C6 16.672 5.328 16 4.5 16h-3C.672 16 0 16.672.0 17.5S.672 19 1.5 19h3C5.328 19 6 18.328 6 17.5zM7.5 26c-.414.0-.789.168-1.061.439l-2 2C4.168 28.711 4 29.086 4 29.5 4 30.328 4.671 31 5.5 31c.414.0.789-.168 1.06-.44l2-2C8.832 28.289 9 27.914 9 27.5 9 26.672 8.329 26 7.5 26zm10-20C18.329 6 19 5.328 19 4.5v-3C19 .672 18.329.0 17.5.0S16 .672 16 1.5v3C16 5.328 16.671 6 17.5 6zm10 3c.414.0.789-.168 1.06-.439l2-2C30.832 6.289 31 5.914 31 5.5 31 4.672 30.329 4 29.5 4c-.414.0-.789.168-1.061.44l-2 2C26.168 6.711 26 7.086 26 7.5 26 8.328 26.671 9 27.5 9zM6.439 8.561C6.711 8.832 7.086 9 7.5 9 8.328 9 9 8.328 9 7.5c0-.414-.168-.789-.439-1.061l-2-2C6.289 4.168 5.914 4 5.5 4 4.672 4 4 4.672 4 5.5c0 .414.168.789.439 1.06l2 2.001zM33.5 16h-3c-.828.0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5h3c.828.0 1.5-.672 1.5-1.5S34.328 16 33.5 16zM28.561 26.439C28.289 26.168 27.914 26 27.5 26c-.828.0-1.5.672-1.5 1.5.0.414.168.789.439 1.06l2 2C28.711 30.832 29.086 31 29.5 31c.828.0 1.5-.672 1.5-1.5.0-.414-.168-.789-.439-1.061l-2-2zM17.5 29c-.829.0-1.5.672-1.5 1.5v3c0 .828.671 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3C19 29.672 18.329 29 17.5 29zm0-22C11.71 7 7 11.71 7 17.5S11.71 28 17.5 28 28 23.29 28 17.5 23.29 7 17.5 7zm0 18c-4.136.0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5 7.5 3.364 7.5 7.5S21.636 25 17.5 25z"/></svg></label><label id=toggle-label-dark for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nightIcon" viewBox="0 0 100 100" style="enable-background='new 0 0 100 100'"><title>Dark Mode</title><path d="M96.76 66.458c-.853-.852-2.15-1.064-3.23-.534-6.063 2.991-12.858 4.571-19.655 4.571C62.022 70.495 50.88 65.88 42.5 57.5 29.043 44.043 25.658 23.536 34.076 6.47c.532-1.08.318-2.379-.534-3.23-.851-.852-2.15-1.064-3.23-.534-4.918 2.427-9.375 5.619-13.246 9.491-9.447 9.447-14.65 22.008-14.65 35.369.0 13.36 5.203 25.921 14.65 35.368s22.008 14.65 35.368 14.65c13.361.0 25.921-5.203 35.369-14.65 3.872-3.871 7.064-8.328 9.491-13.246C97.826 68.608 97.611 67.309 96.76 66.458z"/></svg></label></div></header><article><aside class=mainTOC><details open><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#introduction>Introduction</a></li><li><a href=#functions>Functions</a><ol><li><a href=#defining-a-function>Defining A Function</a></li><li><a href=#guarded-expressions>Guarded expressions</a></li><li><a href=#partial-functions>Partial functions</a></li><li><a href=#lambda-functions>Lambda Functions</a></li><li><a href=#case-expressions>Case Expressions</a></li><li><a href=#pattern-match-expressions>Pattern-Match Expressions</a></li><li><a href=#local-definitions>Local Definitions</a></li><li><a href=#operators>Operators</a></li><li><a href=#constants>Constants</a></li><li><a href=#typing-functions>Typing Functions</a></li></ol></li><li><a href=#built-in-types>Built-In Types</a><ol><li><a href=#primitive-types>Primitive Types</a></li><li><a href=#lists>Lists</a></li><li><a href=#tuples>Tuples</a></li><li><a href=#arrays>Arrays</a></li></ol></li><li><a href=#defining-new-types>Defining New Types</a><ol><li><a href=#algebraic-data-types>Algebraic Data Types</a></li><li><a href=#record-types>Record Types</a></li><li><a href=#synonym-types>Synonym Types</a></li></ol></li><li><a href=#overloading>Overloading</a><ol><li><a href=#overloaded-functions>Overloaded Functions</a></li><li><a href=#classes>Classes</a></li></ol></li><li><a href=#appendix-a-standard-environment>Appendix A: Standard Environment</a></li></ol></nav></details></aside><a href=#introduction><h2 id=introduction><span class=hanchor arialabel=Anchor># </span>Introduction</h2></a><p>The motivation of this reference is to create an accessible, concise, and clear documentation for those who are seeking to learn CLEAN.</p><p>The same information can be found on:</p><ul><li><a href=https://cloogle.org/ rel=noopener>Cloogle</a> which is the language’s search engine, and</li><li><a href=https://cloogle.org/doc/ rel=noopener>language report</a> which describes the syntax and BNF of Clean.</li></ul><p>However, this documentation is not official.
 Terminologies and explanations may not be entirely true to the references used.</p><p>In addition, the language report, which was the primary source of this documentation, was written for the version 2.0 of CLEAN.</p><p>If you notice any mistake or have suggestions for improvements, please feel free to contact me through the following channels:</p><ul><li>Email:
 <a rel=noopener class="internal-link broken" data-src=mailto:b9xp3x@inf.elte.hu>b9xp3x@inf.elte.hu</a></li><li>Instagram:
 <a href=https://www.instagram.com/_kornthana/ rel=noopener>@_kornthana</a></li><li>Telegram channel:
@@ -64,7 +62,7 @@ Terminologies and explanations may not be entirely true to the references used.<
 </span></span><span class=line><span class=cl>safeDiv m 0 = 0
 </span></span><span class=line><span class=cl>6 + 2 - 1
 </span></span><span class=line><span class=cl>safeDiv m n = m / n
-</span></span></code></pre></td></tr></table></div></div><p><strong>Implementation signature</strong></p><p>Every implementation must have the same signature as the first.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#implementation-signature><h4 id=implementation-signature><span class=hanchor arialabel=Anchor># </span>Implementation Signature</h4></a><p>Every implementation must have the same signature as the first.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -72,14 +70,14 @@ Terminologies and explanations may not be entirely true to the references used.<
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>badSafeDiv m 0 = False
 </span></span><span class=line><span class=cl>badSafeDiv m n = m / n
-</span></span></code></pre></td></tr></table></div></div><p>The second implementation of <code>badSafeDiv</code> disobeyed the signature of the first implementation by returning an integer, instead of a Boolean value.</p><p><strong>Implementation selection order</strong></p><p>Implementations are tried in textual order.
+</span></span></code></pre></td></tr></table></div></div><p>The second implementation of <code>badSafeDiv</code> disobeyed the signature of the first implementation by returning an integer, instead of a Boolean value.</p><a href=#implementation-selection-order><h4 id=implementation-selection-order><span class=hanchor arialabel=Anchor># </span>Implementation Selection Order</h4></a><p>Implementations are tried in textual order.
 An implementation is selected if arguments of a function call matches with its parameters.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>safeDiv 9 6  // False
-</span></span></code></pre></td></tr></table></div></div><p>In the first implementation, parameter $m$ matches with argument $9$, but parameter $0$ does not match with argument $6$.
+</span></span></code></pre></td></tr></table></div></div><p>In the first implementation, parameter <code>m</code> matches with argument <code>9</code>, but parameter <code>0</code> does not match with argument <code>6</code>.
 Thus, the first implementation is not selected.</p><p>In the second implementation, both parameters match with both arguments.
 Thus, the second implementation is selected for evaluation.</p><p>It should be noted that; if implementation order is changed, then the function would have unintended behaviors.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
@@ -90,7 +88,7 @@ Thus, the second implementation is selected for evaluation.</p><p>It should be n
 </span></span><span class=line><span class=cl>safeDivAlt m n = m / n
 </span></span><span class=line><span class=cl>safeDivAlt m 0 = 0
 </span></span></code></pre></td></tr></table></div></div><p>The second implementation is never reached.
-Even if it is invoked with $0$ as the second argument.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+Even if it is invoked with <code>0</code>as the second argument.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
@@ -129,7 +127,7 @@ Guarded expressions allow an implementation to have multiple bodies, instead of 
 </span></span><span class=line><span class=cl>| guardA
 </span></span><span class=line><span class=cl>    | guardAA = expressionAA
 </span></span><span class=line><span class=cl>    | guardAB = expressionAB
-</span></span></code></pre></td></tr></table></div></div><p><strong>Guarded expression signature</strong></p><p>A guard evaluates to a Boolean value.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#guarded-expression-signature><h4 id=guarded-expression-signature><span class=hanchor arialabel=Anchor># </span>Guarded Expression Signature</h4></a><p>A guard evaluates to a Boolean value.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -167,7 +165,7 @@ However, one of the guarded expression returns a Boolean value, which is not all
 </span></span><span class=line><span class=cl>| n &gt;  0 =  True
 </span></span><span class=line><span class=cl>| n &lt;  0 = -1
 </span></span></code></pre></td></tr></table></div></div><p>Unfortunately, this new definition is still illegal.
-The first guarded expression forces others to return an integer, but the second returns a Boolean value.</p><p><strong>Guarded expression selection order</strong></p><p>Guarded expressions are tried in textual order, but only after their implementation is chosen.</p><p>That is, if <code>signum</code> is called with $0$, then parameter $0$ of the first implementation matches with argument $0$.
+The first guarded expression forces others to return an integer, but the second returns a Boolean value.</p><a href=#guarded-expression-selection-order><h4 id=guarded-expression-selection-order><span class=hanchor arialabel=Anchor># </span>Guarded Expression Selection Order</h4></a><p>Guarded expressions are tried in textual order, but only after their implementation is chosen.</p><p>That is, if <code>signum</code> is called with <code>0</code>, then parameter <code>0</code> of the first implementation matches with argument <code>0</code>.
 Thus, the first implementation is selected.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
@@ -181,8 +179,8 @@ The second implementation is then selected.</p><div class=highlight><div class=c
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>signum -9
-</span></span></code></pre></td></tr></table></div></div><p>The first guard ($n \gt 0$) is tried.
-It evaluates to false, and its expression is not selected.</p><p>The second guard is tried ($n \lt 0$).
+</span></span></code></pre></td></tr></table></div></div><p>The first guard (<code>n > 0</code>) is tried.
+It evaluates to false, and its expression is not selected.</p><p>The second guard is tried (<code>n &lt; 0</code>).
 It evaluates to true, and its expression is selected.</p><p>Similarly, the same happens for nested guarded expressions.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
@@ -273,81 +271,8 @@ Alternatively, <code>abort</code> from <code>StdMisc</code> can be used to solve
 </span></span></code></pre></td></tr></table></div></div><p><code>abort</code> terminates the execution of the program with a custom error message.
 <code>fibComplete</code> still works as intended, but it will stops the program and throws an error</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>fibCompleteAlt called outside of domain
-</span></span></code></pre></td></tr></table></div></div><p>when it is called with $n\le{0}$.</p><p>The module <code>StdMisc</code> is discussed in more details
-<a rel=noopener class="internal-link broken" data-src=/cleanpedia/appendix-a/stdmisc>here</a>.</p><a href=#operators><h3 id=operators><span class=hanchor arialabel=Anchor># </span>Operators</h3></a><p>Operators are arity-two functions.
-They can be applied in infix position or invoked like ordinary functions.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>1 + 1  // applied as an operator
-</span></span></code></pre></td></tr></table></div></div><p>To invoke an operator as an ordinary function, the operator name must be placed inside parentheses, and in front of its arguments.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>(+) 1 1  // invoked as an ordinary function
-</span></span></code></pre></td></tr></table></div></div><p>When applied in infix position, both arguments must be given.
-Operators can be curried, but only when they are invoked as ordinary functions.</p><p><strong>Operator precedence</strong></p><p>The precedence determines how tightly an operator binds to its argument.
-Precedence can be between $0$ and $9$ with higher number having higher precedence.</p><p>The precedence of an operator is $9$ by default.</p><p><strong>Operator fixity</strong></p><p>The fixity is important when evaluating two operators of the same precedence.
-There are two relevant fixities:</p><ul><li><code>infixl</code> for left-associated operators, and</li><li><code>infixr</code> for right-associated operators.</li></ul><p>The fixity of an operator is <code>infixl</code> by default.</p><p><strong>Defining an operator</strong></p><p>An operator can be defined by placing its name between parentheses.
-It can be implemented as if it was an ordinary function.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>(operatorA) paramL paramR = expression
-</span></span></code></pre></td></tr></table></div></div><p>In global scope, right double arrow (<code>=></code>) may be used to separated parameters from expression, much like a function.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>// In global scope
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>(operatorB) paramL paramR =&gt; expression
-</span></span></code></pre></td></tr></table></div></div><p><strong>Operator conflict</strong></p><p>Operators can conflict with one another.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>(&lt;=&gt;) infixl 9 :: Bool  Bool  -&gt; Bool
-</span></span><span class=line><span class=cl>(&lt;=&gt;)          :: True  True  =  True
-</span></span><span class=line><span class=cl>(&lt;=&gt;)          :: False False =  True
-</span></span><span class=line><span class=cl>(&lt;=&gt;)          :: _     _     =  False
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>(--&gt;) infixr 9 :: Bool  Bool  -&gt; Bool
-</span></span><span class=line><span class=cl>(--&gt;)          :: False True  =  False
-</span></span><span class=line><span class=cl>(--&gt;)          :: _     _     =  True
-</span></span></code></pre></td></tr></table></div></div><p>It is not allowed to apply operators with equal precedence in an expression in such a way that their fixity conflict.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>True --&gt; False &lt;=&gt; False
-</span></span></code></pre></td></tr></table></div></div><p>The logical implication operator (<code>--></code>) is a right-associated.
-It implies that the expression should be evaluated as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>True --&gt; (False &lt;=&gt; False)
-</span></span></code></pre></td></tr></table></div></div><p>However, the logical equivalence operator (<code>&lt;=></code> ) is left associated.
-It implies that the expression should be evaluated as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>(True --&gt; False) &lt;=&gt; False
-</span></span></code></pre></td></tr></table></div></div><p>Since both operators have the same precedence and the order of evaluation cannot be decided by their fixity, this expression will result in a compile-time error.</p><a href=#lambda-functions><h3 id=lambda-functions><span class=hanchor arialabel=Anchor># </span>Lambda Functions</h3></a><p>A control lambda function may be written as follows:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>when it is called with integers less than one.</p><p>The module <code>StdMisc</code> is discussed in more details
+<a href=/cleanpedia/appendix-a/stdmisc/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdmisc/>here</a>.</p><a href=#lambda-functions><h3 id=lambda-functions><span class=hanchor arialabel=Anchor># </span>Lambda Functions</h3></a><p>A control lambda function may be written as follows:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
@@ -394,6 +319,20 @@ It should be noted that they carry different semantic meanings.</p><div class=hi
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>case expression of
 </span></span><span class=line><span class=cl>pattern = altExpression
+</span></span></code></pre></td></tr></table></div></div><p>Alternatively, right double arrow (<code>=></code>) and right arrow (<code>-></code>) may be used to separated a pattern from an alternative expression, but they are not allowed to mix.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>case expression of
+</span></span><span class=line><span class=cl>pattern =&gt; altExpression
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>case expression of
+</span></span><span class=line><span class=cl>pattern -&gt; altExpression
 </span></span></code></pre></td></tr></table></div></div><p>Multiple patterns and alternative expressions can be introduced in the same way.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
@@ -406,7 +345,7 @@ It should be noted that they carry different semantic meanings.</p><div class=hi
 </span></span><span class=line><span class=cl>patternA = altExpressionA
 </span></span><span class=line><span class=cl>patternB = altExpressionB
 </span></span><span class=line><span class=cl>patternC = altExpressionC
-</span></span></code></pre></td></tr></table></div></div><p>Alternatively, right double arrow (<code>=></code>) and right arrow (<code>-></code>) may be used to separated a pattern from an alternative expression, but they are not allowed to mix.</p><p>Guarded expressions can be introduced as well, which allows a case to have multiple guarded bodies.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>Guarded expressions can be introduced as well, which allows a case to have multiple guarded bodies.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -511,7 +450,7 @@ It introduces a new scope local to that guarded expression.</p><p>A control <cod
 </span></span><span class=line><span class=cl>with 
 </span></span><span class=line><span class=cl>    localFunc x = x + 1
 </span></span><span class=line><span class=cl>| guardB = expressionB
-</span></span></code></pre></td></tr></table></div></div><p>However, the guard itself does not have access definitions within a its <code>with</code> block.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>However, the guard itself does not have access to definitions within its <code>with</code> block.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -525,8 +464,139 @@ It introduces a new scope local to that guarded expression.</p><p>A control <cod
 </span></span><span class=line><span class=cl>with 
 </span></span><span class=line><span class=cl>    x = n mod 2
 </span></span><span class=line><span class=cl>| otherwise = 1
-</span></span></code></pre></td></tr></table></div></div><p>The definition of <code>functionH</code> is not valid.
-The first guard cannot reference <code>x</code>.</p><hr><a href=#built-in-types><h2 id=built-in-types><span class=hanchor arialabel=Anchor># </span>Built-In Types</h2></a><p>Types like integers, Booleans, characters, real numbers, lists, tuples, and arrays are frequently used.
+</span></span></code></pre></td></tr></table></div></div><p>The definition of <code>functionH</code> is not valid since
+The guard cannot reference <code>x</code>.</p><a href=#operators><h3 id=operators><span class=hanchor arialabel=Anchor># </span>Operators</h3></a><p>Operators are arity-two functions.
+They can be applied in infix position or invoked like ordinary functions.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>1 + 1  // applied as an operator
+</span></span></code></pre></td></tr></table></div></div><p>To invoke an operator as an ordinary function, the operator name must be placed inside parentheses, and in front of its arguments.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(+) 1 1  // invoked as an ordinary function
+</span></span></code></pre></td></tr></table></div></div><p>When applied in infix position, both arguments must be given.
+Operators can be curried, but only when they are invoked as ordinary functions.</p><a href=#operator-fixity><h4 id=operator-fixity><span class=hanchor arialabel=Anchor># </span>Operator fixity</h4></a><p>The fixity is important when evaluating two operators of the same precedence.
+There are two relevant fixities:</p><ul><li><code>infixl</code> for left-associated operators, and</li><li><code>infixr</code> for right-associated operators.</li></ul><p>The fixity of an operator is <code>infixl</code> by default.</p><a href=#operator-precedence><h4 id=operator-precedence><span class=hanchor arialabel=Anchor># </span>Operator Precedence</h4></a><p>The precedence determines how tightly an operator binds to its argument.
+Precedence can be between zero and nine with higher number having higher precedence.</p><p>The precedence of an operator is nine by default.</p><a href=#defining-an-operator><h4 id=defining-an-operator><span class=hanchor arialabel=Anchor># </span>Defining An Operator</h4></a><p>An operator can be defined by placing its name between parentheses.
+It can be implemented as if it was an ordinary function.</p><p>A control operator definition may be written as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(operator) paramL paramR = expression
+</span></span></code></pre></td></tr></table></div></div><p>In global scope, right double arrow (<code>=></code>) may be used to separated parameters from expression, much like a function.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>// In global scope
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(operator) paramL paramR =&gt; expression
+</span></span></code></pre></td></tr></table></div></div><a href=#operator-conflict><h4 id=operator-conflict><span class=hanchor arialabel=Anchor># </span>Operator Conflict</h4></a><p>Operators can conflict with one another.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(&lt;=&gt;) infixl 9 :: Bool  Bool  -&gt; Bool
+</span></span><span class=line><span class=cl>(&lt;=&gt;)             True  True  =  True
+</span></span><span class=line><span class=cl>(&lt;=&gt;)             False False =  True
+</span></span><span class=line><span class=cl>(&lt;=&gt;)             _     _     =  False
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(--&gt;) infixr 9 :: Bool  Bool  -&gt; Bool
+</span></span><span class=line><span class=cl>(--&gt;)             False True  =  False
+</span></span><span class=line><span class=cl>(--&gt;)             _     _     =  True
+</span></span></code></pre></td></tr></table></div></div><p>It is not allowed to apply operators with equal precedence in an expression in such a way that their fixity conflict.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>True --&gt; False &lt;=&gt; False
+</span></span></code></pre></td></tr></table></div></div><p>The logical implication operator (<code>--></code>) is a right-associated.
+It implies that the expression should be evaluated as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>True --&gt; (False &lt;=&gt; False)
+</span></span></code></pre></td></tr></table></div></div><p>However, the logical equivalence operator (<code>&lt;=></code> ) is left associated.
+It implies that the expression should be evaluated as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(True --&gt; False) &lt;=&gt; False
+</span></span></code></pre></td></tr></table></div></div><p>Since both operators have the same precedence and the order of evaluation cannot be decided by their fixity, this expression will result in a compile-time error.</p><a href=#constants><h3 id=constants><span class=hanchor arialabel=Anchor># </span>Constants</h3></a><p>There are two distinct types of constants; constant expressions and constant functions.</p><a href=#constant-expressions><h4 id=constant-expressions><span class=hanchor arialabel=Anchor># </span>Constant Expressions</h4></a><p>They are computed only once.
+Multiple reference to the same expression will result in sharing of the expression.</p><p>A control constant expression may be written as follows</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>constExprName = expression
+</span></span></code></pre></td></tr></table></div></div><p>In global scope, a constant expression may be explicitly defined with <code>=:</code> symbol.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>// In global scope
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>constExprName =: expression
+</span></span></code></pre></td></tr></table></div></div><a href=#constant-functions><h4 id=constant-functions><span class=hanchor arialabel=Anchor># </span>Constant Functions</h4></a><p>They are arity-zero functions.
+Unlike constant expressions, they are re-computed every they invoked.</p><p>A control constant function may be written as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>constFnName = expression
+</span></span></code></pre></td></tr></table></div></div><p>In global scope, a constant function may be explicitly defined with right double arrow (<code>=></code>).</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>// In global scope
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>constFnName =&gt; expression
+</span></span></code></pre></td></tr></table></div></div><a href=#typing-functions><h3 id=typing-functions><span class=hanchor arialabel=Anchor># </span>Typing Functions</h3></a><p>Although the compiler is generally capable of inferring function types, explicit specification is highly recommended to increase readability.</p><p>When a function definition is explicitly typed, implementations must obey the type, instead of the first implementation&rsquo;s signature.</p><a href=#typing-ordinary-functions><h4 id=typing-ordinary-functions><span class=hanchor arialabel=Anchor># </span>Typing Ordinary Functions</h4></a><p>A control function definition with one parameter may be explicitly typed as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>functionA :: parameterType -&gt; expressionType
+</span></span><span class=line><span class=cl>functionA    parameter     =  expression
+</span></span></code></pre></td></tr></table></div></div><p>Multiple parameter types are space separated.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>functionB :: paramAType paramBType -&gt; expressionType
+</span></span><span class=line><span class=cl>functionB    paramA     paramB     =  expression
+</span></span></code></pre></td></tr></table></div></div><a href=#typing-operators><h4 id=typing-operators><span class=hanchor arialabel=Anchor># </span>Typing Operators</h4></a><p>A control operator definition may be explicitly typed as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(operator) :: paramLType paramRType -&gt; expressionType
+</span></span><span class=line><span class=cl>(operator)    paramL     paramR     =  expression
+</span></span></code></pre></td></tr></table></div></div><p>In addition, operator fixity (<code>F</code>) and precedence (<code>P</code>) may be specified as well.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(operator) F P :: paramLType paramRType -&gt; expressionType
+</span></span><span class=line><span class=cl>(operator)        paramL     paramR     =  expression
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#built-in-types><h2 id=built-in-types><span class=hanchor arialabel=Anchor># </span>Built-In Types</h2></a><p>Types like integers, Booleans, characters, real numbers, lists, tuples, and arrays are frequently used.
 They have been predefined for reasons of efficiency and convenience.</p><a href=#primitive-types><h3 id=primitive-types><span class=hanchor arialabel=Anchor># </span>Primitive Types</h3></a><a href=#integers><h4 id=integers><span class=hanchor arialabel=Anchor># </span>Integers</h4></a><p><strong>Type annotation</strong>: <code>Int</code></p><p><strong>Constructors</strong></p><p>Decimal constructor:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
@@ -548,9 +618,9 @@ They have been predefined for reasons of efficiency and convenience.</p><a href=
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>n :: Int
-</span></span><span class=line><span class=cl>n = -015  // dec -13
+</span></span><span class=line><span class=cl>n = -015  // decimal -13
 </span></span><span class=line><span class=cl>n =  0
-</span></span><span class=line><span class=cl>n =  015  // dec  13
+</span></span><span class=line><span class=cl>n =  015  // decimal  13
 </span></span></code></pre></td></tr></table></div></div><p>Hexadecimal constructor by prefixing hexadecimal digits with <code>0x</code>:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
@@ -560,11 +630,11 @@ They have been predefined for reasons of efficiency and convenience.</p><a href=
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>n :: Int
-</span></span><span class=line><span class=cl>n = -0xD  // dec -13
+</span></span><span class=line><span class=cl>n = -0xD  // decimal -13
 </span></span><span class=line><span class=cl>n =  0
-</span></span><span class=line><span class=cl>n =  0xd  // dec  13
+</span></span><span class=line><span class=cl>n =  0xd  // decimal  13
 </span></span></code></pre></td></tr></table></div></div><p>More information about built-in operations and functions on integers can be found on
-<a href=/cleanpedia/appendix-a/stdint/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdint/>Appendix A: StdInt</a>.</p><a href=#real-numbers><h4 id=real-numbers><span class=hanchor arialabel=Anchor># </span>Real Numbers</h4></a><p><strong>Type annotation</strong>: $\textbf{Real}$</p><p><strong>Constructors</strong></p><p>From decimal notation:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+<a href=/cleanpedia/appendix-a/stdint/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdint/>Appendix A: StdInt</a>.</p><a href=#real-numbers><h4 id=real-numbers><span class=hanchor arialabel=Anchor># </span>Real Numbers</h4></a><p><strong>Type annotation</strong>: <code>Real</code></p><p><strong>Constructors</strong></p><p>Decimal constructor:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -576,7 +646,7 @@ They have been predefined for reasons of efficiency and convenience.</p><a href=
 </span></span><span class=line><span class=cl>n = -1.3
 </span></span><span class=line><span class=cl>n =  0.0
 </span></span><span class=line><span class=cl>n =  1.3
-</span></span></code></pre></td></tr></table></div></div><p>From scientific notation:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>Scientific constructor:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -589,7 +659,7 @@ They have been predefined for reasons of efficiency and convenience.</p><a href=
 </span></span><span class=line><span class=cl>n =  0E0    //  0
 </span></span><span class=line><span class=cl>n =  13E-2  //  0.13
 </span></span></code></pre></td></tr></table></div></div><p>More information about built-in operations and functions on real numbers can be found on
-<a href=/cleanpedia/appendix-a/stdreal/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdreal/>Appendix A: StdReal</a>.</p><a href=#booleans><h4 id=booleans><span class=hanchor arialabel=Anchor># </span>Booleans</h4></a><p><strong>Type annotation</strong>: $\textbf{Bool}$</p><p><strong>Constructors</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+<a href=/cleanpedia/appendix-a/stdreal/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdreal/>Appendix A: StdReal</a>.</p><a href=#booleans><h4 id=booleans><span class=hanchor arialabel=Anchor># </span>Booleans</h4></a><p><strong>Type annotation</strong>: <code>Bool</code></p><p><strong>Constructors</strong></p><p>There are two constructors for Boolean type.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -600,7 +670,7 @@ They have been predefined for reasons of efficiency and convenience.</p><a href=
 </span></span><span class=line><span class=cl>b =  True
 </span></span><span class=line><span class=cl>b =  False
 </span></span></code></pre></td></tr></table></div></div><p>More information about built-in operations and functions on Booleans can be found on
-<a href=/cleanpedia/appendix-a/stdbool/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdbool/>Appendix A: StdBool</a>.</p><a href=#characters><h4 id=characters><span class=hanchor arialabel=Anchor># </span>Characters</h4></a><p><strong>Type annotation</strong>: $\textbf{Char}$</p><p><strong>Constructors</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+<a href=/cleanpedia/appendix-a/stdbool/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdbool/>Appendix A: StdBool</a>.</p><a href=#characters><h4 id=characters><span class=hanchor arialabel=Anchor># </span>Characters</h4></a><p><strong>Type annotation</strong>: <code>Char</code></p><p><strong>Constructors</strong></p><p>A character may be constructed by placing one character inside a pair of single quotation mark (<code>'..'</code>).</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -610,24 +680,12 @@ They have been predefined for reasons of efficiency and convenience.</p><a href=
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>c :: Char
-</span></span><span class=line><span class=cl>b =  &#39;a&#39;
-</span></span><span class=line><span class=cl>b =  &#39;9&#39;
-</span></span><span class=line><span class=cl>b =  &#39;Z&#39;
-</span></span><span class=line><span class=cl>b =  &#39;+&#39;
+</span></span><span class=line><span class=cl>c =  &#39;a&#39;
+</span></span><span class=line><span class=cl>c =  &#39;9&#39;
+</span></span><span class=line><span class=cl>c =  &#39;Z&#39;
+</span></span><span class=line><span class=cl>c =  &#39;+&#39;
 </span></span></code></pre></td></tr></table></div></div><p>More information about built-in operations and functions on characters can be found on
-<a href=/cleanpedia/appendix-a/stdchar/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdchar/>Appendix A: StdChar</a>.</p><a href=#parameter-matching-primitive-types><h4 id=parameter-matching-primitive-types><span class=hanchor arialabel=Anchor># </span>Parameter-Matching Primitive Types</h4></a><p>Constants of primitive types can be specified as pattern.</p><p>Using integer constants as pattern:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span><span class=lnt>6
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>fib :: Int -&gt; Int
-</span></span><span class=line><span class=cl>fib    1   =  1
-</span></span><span class=line><span class=cl>fib    2   =  1
-</span></span><span class=line><span class=cl>fib    n   =  fib (n - 1) + fib (n - 2)
-</span></span></code></pre></td></tr></table></div></div><p>Using character constants as pattern:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+<a href=/cleanpedia/appendix-a/stdchar/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdchar/>Appendix A: StdChar</a>.</p><a href=#parameter-argument-matching-primitive-types><h4 id=parameter-argument-matching-primitive-types><span class=hanchor arialabel=Anchor># </span>Parameter-Argument Matching Primitive Types</h4></a><p>Constructors of primitive types may be used as patterns.</p><p>Using character constants as pattern:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -640,9 +698,9 @@ They have been predefined for reasons of efficiency and convenience.</p><a href=
 </span></span><span class=line><span class=cl>isLetterA    &#39;A&#39;  =  True
 </span></span><span class=line><span class=cl>isLetterA     _   =  False
 </span></span></code></pre></td></tr></table></div></div><a href=#lists><h3 id=lists><span class=hanchor arialabel=Anchor># </span>Lists</h3></a><a href=#defining-a-list><h4 id=defining-a-list><span class=hanchor arialabel=Anchor># </span>Defining A List</h4></a><p><strong>Type annotation</strong>:
-$[\textbf{Int}]$,
-$[\textbf{Char}]$,
-$[\textbf{T}]$,
+<code>[Int]</code>,
+<code>[Char]</code>,
+<code>[T]</code>,
 et cetera.</p><p>A list can contain an infinite number of elements.
 All elements must be of the same type.</p><p><strong>Constructors</strong></p><p>From explicit enumeration of the elements:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2

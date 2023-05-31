@@ -1,26 +1,14 @@
 ---
-layout: "@layouts/Blog.astro"
 title: "Appendix A: StdMisc"
-
-Last updated: MAY 26th, 2023
-Revisions: 0
-Data of last revision: MAY 26th, 2023
 ---
-
-## Contents
-
-- [Functions](#functions)
-	- [abort](#abort)
-
 
 ## Functions
 
-### abort
+### `abort`
 
 **Signature**
 
-$$
-\begin{align*}
+$$\begin{align*}
 \text{a}\rightarrow\text{b}
 \end{align*}
 $$
@@ -38,7 +26,3 @@ where:
  
 abort "Aborted" // "Aborted"
 ```
-
-[Back to top](#)
-
----

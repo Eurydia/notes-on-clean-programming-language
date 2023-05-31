@@ -80,7 +80,7 @@ safeDiv m 0 = 0
 safeDiv m n = m / n
 ```
 
-**Implementation signature**
+#### Implementation Signature
 
 Every implementation must have the same signature as the first.
 
@@ -93,7 +93,7 @@ badSafeDiv m n = m / n
 
 The second implementation of `badSafeDiv` disobeyed the signature of the first implementation by returning an integer, instead of a Boolean value.
 
-**Implementation selection order**
+#### Implementation Selection Order
 
 Implementations are tried in textual order.
 An implementation is selected if arguments of a function call matches with its parameters.
@@ -104,7 +104,7 @@ An implementation is selected if arguments of a function call matches with its p
 safeDiv 9 6  // False
 ```
 
-In the first implementation, parameter $m$ matches with argument $9$, but parameter $0$ does not match with argument $6$.
+In the first implementation, parameter `m` matches with argument `9`, but parameter `0` does not match with argument `6`.
 Thus, the first implementation is not selected.
 
 In the second implementation, both parameters match with both arguments.
@@ -120,7 +120,7 @@ safeDivAlt m 0 = 0
 ```
 
 The second implementation is never reached.
-Even if it is invoked with $0$ as the second argument.
+Even if it is invoked with `0`as the second argument.
 
 ```
 // Language: Clean
@@ -167,8 +167,7 @@ functionE parameter
     | guardAA = expressionAA
     | guardAB = expressionAB
 ```
-
-**Guarded expression signature**
+#### Guarded Expression Signature
 
 A guard evaluates to a Boolean value.
 
@@ -211,11 +210,11 @@ badSignumAlt n
 Unfortunately, this new definition is still illegal.
 The first guarded expression forces others to return an integer, but the second returns a Boolean value.
 
-**Guarded expression selection order**
+#### Guarded Expression Selection Order
 
 Guarded expressions are tried in textual order, but only after their implementation is chosen.
 
-That is, if `signum` is called with $0$, then parameter $0$ of the first implementation matches with argument $0$.
+That is, if `signum` is called with `0`, then parameter `0` of the first implementation matches with argument `0`.
 Thus, the first implementation is selected.
 
 ```
@@ -235,10 +234,10 @@ The second implementation is then selected.
 signum -9
 ```
 
-The first guard ($n \gt 0$) is tried.
+The first guard (`n > 0`) is tried.
 It evaluates to false, and its expression is not selected.
 
-The second guard is tried ($n \lt 0$).
+The second guard is tried (`n < 0`).
 It evaluates to true, and its expression is selected.
 
 Similarly, the same happens for nested guarded expressions.
@@ -334,114 +333,9 @@ fibCompleteAlt n
 fibCompleteAlt called outside of domain
 ```
 
-when it is called with $n\le{0}$.
+when it is called with integers less than one.
 
-The module `StdMisc` is discussed in more details [here](/cleanpedia/appendix-a/stdmisc).
-
-### Operators
-
-Operators are arity-two functions.
-They can be applied in infix position or invoked like ordinary functions.
-
-```
-// Language: Clean
-
-1 + 1  // applied as an operator
-```
-
-To invoke an operator as an ordinary function, the operator name must be placed inside parentheses, and in front of its arguments.
-
-```
-// Language: Clean
-
-(+) 1 1  // invoked as an ordinary function
-```
-
-When applied in infix position, both arguments must be given.
-Operators can be curried, but only when they are invoked as ordinary functions.
-
-**Operator precedence**
-
-The precedence determines how tightly an operator binds to its argument.
-Precedence can be between $0$ and $9$ with higher number having higher precedence.
-
-The precedence of an operator is $9$ by default.
-
-**Operator fixity**
-
-The fixity is important when evaluating two operators of the same precedence.
-There are two relevant fixities:
-
-- `infixl` for left-associated operators, and
-- `infixr` for right-associated operators.
-
-The fixity of an operator is `infixl` by default.
-
-**Defining an operator**
-
-An operator can be defined by placing its name between parentheses.
-It can be implemented as if it was an ordinary function.
-
-```
-// Language: Clean
-
-(operatorA) paramL paramR = expression
-```
-
-In global scope, right double arrow (`=>`) may be used to separated parameters from expression, much like a function.
-
-```
-// Language: Clean
-
-// In global scope
-
-(operatorB) paramL paramR => expression
-```
-
-**Operator conflict**
-
-Operators can conflict with one another.
-
-```
-// Language: Clean
-
-(<=>) infixl 9 :: Bool  Bool  -> Bool
-(<=>)          :: True  True  =  True
-(<=>)          :: False False =  True
-(<=>)          :: _     _     =  False
-
-(-->) infixr 9 :: Bool  Bool  -> Bool
-(-->)          :: False True  =  False
-(-->)          :: _     _     =  True
-```
-
-It is not allowed to apply operators with equal precedence in an expression in such a way that their fixity conflict.
-
-```
-// Language: Clean
-
-True --> False <=> False
-```
-
-The logical implication operator (`-->`)  is a right-associated.
-It implies that the expression should be evaluated as follows.
-
-```
-// language: Clean
-
-True --> (False <=> False)
-```
-
-However, the logical equivalence operator (`<=>` ) is left associated.
-It implies that the expression should be evaluated as follows.
-
-```
-// language: Clean
-
-(True --> False) <=> False
-```
-
-Since both operators have the same precedence and the order of evaluation cannot be decided by their fixity, this expression will result in a compile-time error.
+The module `StdMisc` is discussed in more details [here](appendix-a/stdmisc).
 
 ### Lambda Functions
 
@@ -501,6 +395,18 @@ case expression of
 pattern = altExpression
 ```
 
+Alternatively, right double arrow (`=>`) and right arrow (`->`) may be used to separated a pattern from an alternative expression, but they are not allowed to mix.
+
+```
+// Language: Clean
+
+case expression of
+pattern => altExpression
+
+case expression of
+pattern -> altExpression
+```
+
 Multiple patterns and alternative expressions can be introduced in the same way.
 
 ```
@@ -511,8 +417,6 @@ patternA = altExpressionA
 patternB = altExpressionB
 patternC = altExpressionC
 ```
-
-Alternatively, right double arrow (`=>`) and right arrow (`->`) may be used to separated a pattern from an alternative expression, but they are not allowed to mix.
 
 Guarded expressions can be introduced as well, which allows a case to have multiple guarded bodies.
 
@@ -572,7 +476,6 @@ Internally, it is compiled down to a `case..of..` expression.
 case expression of
 pattern = True
 _       = False
-
 ```
 
 ### Local Definitions
@@ -636,7 +539,7 @@ with
 | guardB = expressionB
 ```
 
-However, the guard itself does not have access definitions within a its `with` block.
+However, the guard itself does not have access to definitions within its `with` block.
 
 ```
 // Language: Clean
@@ -648,8 +551,208 @@ with
 | otherwise = 1
 ```
 
-The definition of `functionH` is not valid.
-The first guard cannot reference `x`.
+The definition of `functionH` is not valid since
+The guard cannot reference `x`.
+
+### Operators
+
+Operators are arity-two functions.
+They can be applied in infix position or invoked like ordinary functions.
+
+```
+// Language: Clean
+
+1 + 1  // applied as an operator
+```
+
+To invoke an operator as an ordinary function, the operator name must be placed inside parentheses, and in front of its arguments.
+
+```
+// Language: Clean
+
+(+) 1 1  // invoked as an ordinary function
+```
+
+When applied in infix position, both arguments must be given.
+Operators can be curried, but only when they are invoked as ordinary functions.
+
+#### Operator fixity
+
+The fixity is important when evaluating two operators of the same precedence.
+There are two relevant fixities:
+
+- `infixl` for left-associated operators, and
+- `infixr` for right-associated operators.
+
+The fixity of an operator is `infixl` by default.
+
+#### Operator Precedence
+
+The precedence determines how tightly an operator binds to its argument.
+Precedence can be between zero and nine with higher number having higher precedence.
+
+The precedence of an operator is nine by default.
+
+
+#### Defining An Operator
+
+An operator can be defined by placing its name between parentheses.
+It can be implemented as if it was an ordinary function.
+
+A control operator definition may be written as follows.
+
+```
+// Language: Clean
+
+(operator) paramL paramR = expression
+```
+
+In global scope, right double arrow (`=>`) may be used to separated parameters from expression, much like a function.
+
+```
+// Language: Clean
+
+// In global scope
+
+(operator) paramL paramR => expression
+```
+
+#### Operator Conflict
+
+Operators can conflict with one another.
+
+```
+// Language: Clean
+
+(<=>) infixl 9 :: Bool  Bool  -> Bool
+(<=>)             True  True  =  True
+(<=>)             False False =  True
+(<=>)             _     _     =  False
+
+(-->) infixr 9 :: Bool  Bool  -> Bool
+(-->)             False True  =  False
+(-->)             _     _     =  True
+```
+
+It is not allowed to apply operators with equal precedence in an expression in such a way that their fixity conflict.
+
+```
+True --> False <=> False
+```
+
+The logical implication operator (`-->`)  is a right-associated.
+It implies that the expression should be evaluated as follows.
+
+```
+True --> (False <=> False)
+```
+
+However, the logical equivalence operator (`<=>` ) is left associated.
+It implies that the expression should be evaluated as follows.
+
+```
+// language: Clean
+
+(True --> False) <=> False
+```
+
+Since both operators have the same precedence and the order of evaluation cannot be decided by their fixity, this expression will result in a compile-time error.
+
+### Constants
+
+There are two distinct types of constants; constant expressions and constant functions.
+
+#### Constant Expressions
+
+They are computed only once.
+Multiple reference to the same expression will result in sharing of the expression.
+
+A control constant expression may be written as follows
+
+```
+// Language: Clean
+
+constExprName = expression
+```
+
+In global scope, a constant expression may be explicitly defined with `=:` symbol.
+
+```
+// Language: Clean
+
+// In global scope
+
+constExprName =: expression
+```
+
+#### Constant Functions
+
+They are arity-zero functions.
+Unlike constant expressions, they are re-computed every they invoked.
+
+A control constant function may be written as follows.
+
+```
+// Language: Clean
+
+constFnName = expression
+```
+
+In global scope, a constant function may be explicitly defined with right double arrow (`=>`).
+
+```
+// Language: Clean
+
+// In global scope
+
+constFnName => expression
+```
+
+### Typing Functions
+
+Although the compiler is generally capable of inferring function types, explicit specification is highly recommended to increase readability.
+
+When a function definition is explicitly typed, implementations must obey the type, instead of the first implementation's signature.
+
+#### Typing Ordinary Functions
+
+A control function definition with one parameter may be explicitly typed as follows.
+
+```
+// Language: Clean
+
+functionA :: parameterType -> expressionType
+functionA    parameter     =  expression
+```
+
+Multiple parameter types are space separated.
+
+```
+// Language: Clean
+
+functionB :: paramAType paramBType -> expressionType
+functionB    paramA     paramB     =  expression
+```
+
+#### Typing Operators
+
+A control operator definition may be explicitly typed as follows.
+
+```
+// Language: Clean
+
+(operator) :: paramLType paramRType -> expressionType
+(operator)    paramL     paramR     =  expression
+```
+
+In addition, operator fixity (`F`) and precedence (`P`) may be specified as well.
+
+```
+// Language: Clean
+
+(operator) F P :: paramLType paramRType -> expressionType
+(operator)        paramL     paramR     =  expression
+```
 
 ---
 
@@ -683,9 +786,9 @@ Octal constructor by prefixing octal digits with `0`:
 // Language: Clean
 
 n :: Int
-n = -015  // dec -13
+n = -015  // decimal -13
 n =  0
-n =  015  // dec  13
+n =  015  // decimal  13
 ```
 
 Hexadecimal constructor by prefixing hexadecimal digits with `0x`:
@@ -694,20 +797,20 @@ Hexadecimal constructor by prefixing hexadecimal digits with `0x`:
 // Language: Clean
 
 n :: Int
-n = -0xD  // dec -13
+n = -0xD  // decimal -13
 n =  0
-n =  0xd  // dec  13
+n =  0xd  // decimal  13
 ```
 
 More information about built-in operations and functions on integers can be found on [Appendix A: StdInt](appendix-a/stdint).
 
 #### Real Numbers
 
-**Type annotation**: $\textbf{Real}$
+**Type annotation**: `Real`
 
 **Constructors**
 
-From decimal notation:
+Decimal constructor:
 
 ```
 // Language: Clean
@@ -718,7 +821,7 @@ n =  0.0
 n =  1.3
 ```
 
-From scientific notation:
+Scientific constructor:
 
 ```
 // Language: Clean
@@ -733,9 +836,11 @@ More information about built-in operations and functions on real numbers can be 
 
 #### Booleans
 
-**Type annotation**: $\textbf{Bool}$
+**Type annotation**: `Bool`
 
 **Constructors**
+
+There are two constructors for Boolean type.
 
 ```
 // Language: Clean
@@ -749,36 +854,27 @@ More information about built-in operations and functions on Booleans can be foun
 
 #### Characters
 
-**Type annotation**: $\textbf{Char}$
+**Type annotation**: `Char`
 
 **Constructors**
+
+A character may be constructed by placing one character inside a pair of single quotation mark (`'..'`).
 
 ```
 // Language: Clean
 
 c :: Char
-b =  'a'
-b =  '9'
-b =  'Z'
-b =  '+'
+c =  'a'
+c =  '9'
+c =  'Z'
+c =  '+'
 ```
 
 More information about built-in operations and functions on characters can be found on [Appendix A: StdChar](appendix-a/stdchar).
 
-#### Parameter-Matching Primitive Types
+#### Parameter-Argument Matching Primitive Types
 
-Constants of primitive types can be specified as pattern.
-
-Using integer constants as pattern:
-
-```
-// Language: Clean
-
-fib :: Int -> Int
-fib    1   =  1
-fib    2   =  1
-fib    n   =  fib (n - 1) + fib (n - 2)
-```
+Constructors of primitive types may be used as patterns.
 
 Using character constants as pattern:
 
@@ -796,9 +892,9 @@ isLetterA     _   =  False
 #### Defining A List
 
 **Type annotation**:
-$[\textbf{Int}]$,
-$[\textbf{Char}]$,
-$[\textbf{T}]$,
+`[Int]`,
+`[Char]`,
+`[T]`,
 et cetera.
 
 A list can contain an infinite number of elements.

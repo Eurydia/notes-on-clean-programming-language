@@ -321,7 +321,7 @@ A\rightarrow{R}
 $$
 
 where:
-- $A$ is of type $[[\textbf{T}]]$, and
+- $A$ is of type $\[\[\textbf{T}\]\]$, and
 - $R$ is of type $[\textbf{T}]$.
 
 **Behavior**: concatenates elements $A$.

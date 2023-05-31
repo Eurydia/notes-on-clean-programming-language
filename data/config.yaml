@@ -2,7 +2,7 @@ name: Thanakorn Phuttharaksa
 enableToc: true
 openToc: true
 enableLinkPreview: true
-enableLatex: true
+enableLatex: false
 enableCodeBlockTitle: true
 enableCodeBlockCopy: true
 enableCallouts: true

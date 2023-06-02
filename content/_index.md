@@ -24,13 +24,14 @@ If you notice any mistake or have suggestions for improvements, please feel free
 
 ## Functions
 
-### Defining A Function
+### Function Definitions
 
-A function definition consists of, at least, one implementation, and a control implementation may be written as follows:
+A function definition consists of, at least, one implementation, and a control implementation may be written as follows.
+
 
 ```
 // Language: Clean
-
+ 
 functionA parameter = expression
 ```
 
@@ -132,7 +133,7 @@ With the current implementation of `safeDivAlt`, it is clear that the second imp
 
 It is important to recognize that, this parameter-argument matching is not the same as performing equality checks.
 
-### Guarded expressions
+### Guarded Expressions
 
 One or more guarded expressions can be introduced to an implementation.
 Guarded expressions allow an implementation to have multiple bodies, instead of one.
@@ -276,7 +277,7 @@ badSignumAlt n
 | n > 0        =  1
 ```
 
-### Partial functions
+### Partial Functions
 
 Partial functions result in a run-time error when called with values outside of its domain.
 
@@ -594,7 +595,7 @@ Precedence can be between zero and nine with higher number having higher precede
 The precedence of an operator is nine by default.
 
 
-#### Defining An Operator
+#### Operator Definitions
 
 An operator can be defined by placing its name between parentheses.
 It can be implemented as if it was an ordinary function.
@@ -640,7 +641,7 @@ It is not allowed to apply operators with equal precedence in an expression in s
 True --> False <=> False
 ```
 
-The logical implication operator (`-->`)  is a right-associated.
+The logical implication operator (`-->`)  is right-associated.
 It implies that the expression should be evaluated as follows.
 
 ```
@@ -665,7 +666,7 @@ There are two distinct types of constants; constant expressions and constant fun
 #### Constant Expressions
 
 They are computed only once.
-Multiple reference to the same expression will result in sharing of the expression.
+Multiple reference to the same expression will result in sharing of that expression.
 
 A control constant expression may be written as follows
 
@@ -714,6 +715,22 @@ Although the compiler is generally capable of inferring function types, explicit
 
 When a function definition is explicitly typed, implementations must obey the type, instead of the first implementation's signature.
 
+A control function type may be written as follows.
+
+```
+// Language: Clean
+
+parameterType -> returnType
+```
+
+Parameter types are space separated.
+
+```
+// Language: Clean
+
+paramAType paramBType -> returnType
+```
+
 #### Typing Ordinary Functions
 
 A control function definition with one parameter may be explicitly typed as follows.
@@ -761,13 +778,24 @@ In addition, operator fixity (`F`) and precedence (`P`) may be specified as well
 Types like integers, Booleans, characters, real numbers, lists, tuples, and arrays are frequently used.
 They have been predefined for reasons of efficiency and convenience.
 
-### Primitive Types
+There are four built-in primitive types:
+- integers,
+- real numbers,
+- Booleans, and
+- characters.
 
-#### Integers
+There are three built-in structured types:
+- lists,
+- arrays, and
+- tuples.
+
+### Integers
 
 **Type annotation**: `Int`
 
 **Constructors**
+
+There are three integer constructors.
 
 Decimal constructor:
 
@@ -804,7 +832,7 @@ n =  0xd  // decimal  13
 
 More information about built-in operations and functions on integers can be found on [Appendix A: StdInt](appendix-a/stdint).
 
-#### Real Numbers
+### Real Numbers
 
 **Type annotation**: `Real`
 
@@ -834,7 +862,7 @@ n =  13E-2  //  0.13
 
 More information about built-in operations and functions on real numbers can be found on [Appendix A: StdReal](appendix-a/stdreal).
 
-#### Booleans
+### Booleans
 
 **Type annotation**: `Bool`
 
@@ -852,13 +880,13 @@ b =  False
 
 More information about built-in operations and functions on Booleans can be found on [Appendix A: StdBool](appendix-a/stdbool).
 
-#### Characters
+### Characters
 
 **Type annotation**: `Char`
 
 **Constructors**
 
-A character may be constructed by placing one character inside a pair of single quotation mark (`'..'`).
+A character may be constructed by placing one character inside a pair of single quotation marks (`'..'`).
 
 ```
 // Language: Clean
@@ -872,24 +900,11 @@ c =  '+'
 
 More information about built-in operations and functions on characters can be found on [Appendix A: StdChar](appendix-a/stdchar).
 
-#### Parameter-Argument Matching Primitive Types
 
-Constructors of primitive types may be used as patterns.
 
-Using character constants as pattern:
+### Non-primitive Types
 
-```
-// Language: Clean
-
-isLetterA :: Char -> Bool
-isLetterA    'a'  =  True
-isLetterA    'A'  =  True
-isLetterA     _   =  False
-```
-
-### Lists
-
-#### Defining A List
+#### Lists
 
 **Type annotation**:
 `[Int]`,
@@ -897,35 +912,115 @@ isLetterA     _   =  False
 `[T]`,
 et cetera.
 
-A list can contain an infinite number of elements.
-All elements must be of the same type.
-
 **Constructors**
 
-From explicit enumeration of the elements:
+A list can be constructed in many ways, but there are three primary methods.
+The simplest way to construct a list is to explicitly write elements between a pair of square brackets (`[..]`).
 
 ```
 // Language: Clean
 
-[1, 3, 5, 7, 9]
-[1 : [3, 5, 7, 9]]
-[1, 3, 5 : [7, 9]]
-[1 : [3 : [5 : [7 : [9 : []]]]]]
-[1 : 3 : 5 : 7 : 9 : []]
+[1]
 ```
 
-From implicit enumeration with $\textbf{dot-dot}$ expression:
+Elements are comma (`,`) separated.
 
 ```
 // Language: Clean
 
-[1..]       // infitite list [1, 2, 3, ...]
-[1, 3..]    // infinite list [1, 3, 5, ...]
-[1..5]      // [1, 2, 3, 4, 5]
-[1, 3..10]  // [1, 3, 5, 7, 9]
+[1, 2, 3]
 ```
 
-It should be noted that $\textbf{dot-dot}$ expressions requires $\text{StdEnum}$ module.
+A list may be appended to the end of another list using colon (`:`).
+
+```
+// Language: Clean
+
+[1 : [2, 3]]
+```
+
+In the example above, the outer list (`[1 : ..]`) is constructed by appending the inner list (`[2, 3]`) to the end.
+
+As a result, this method of list construction has a wide varieties which can be written.
+
+```
+// Language: Clean
+
+[1 : [2 : [3 : []]]]
+[1, 2 : [3]]
+[1, 2, 3 : []]
+```
+
+A list may be implicitly constructed with `dot-dot` expression, and a control expression may be written as follows.
+
+```
+// Language: Clean
+
+[initial..]
+```
+
+An infinite list is generated from `initial`, which represents the starting value, subsequent elements are incremented by one.
+
+```
+// Language: Clean
+
+[1..]  // [1, 2, 3, 4, ...]
+```
+
+To create a finite list, an `end` value may be specified in the expression.
+
+```
+// Language: Clean
+
+[initial..end]
+```
+
+By adding `end`, elements are generated only up to `end` it self.
+
+```
+// Language: Clean
+
+[1..5]  // [1, 2, 3, 4, 5]
+```
+
+In addition, `next` value may be specified to change how subsequent elements are generated.
+
+```
+// Language: Clean
+
+[initial, next..end]
+```
+
+Each step is computed from `next - initial`.
+Therefore, it is possible to generate a list which is in descending order.
+
+```
+// Language: Clean
+
+[1, 3..9]  // [1, 3, 5, 7, 9]
+[5, 4..1]  // [5, 4, 3, 2, 1]
+```
+
+By omitting `end`, an infinite list with step may be generated.
+
+```
+// Language: Clean
+
+[initial, next..]
+```
+
+The expression results in an infinite list.
+
+```
+// Language: Clean
+
+[1, 3..]  // [1, 3, 5, 7, 9, ...]
+[5, 4..]  // [5, 4, 3, 2, 1, ...]
+```
+
+It should be noted that `dot-dot` expressions requires `StdEnum` module.
+
+
 
 From list comprehension:
 
@@ -961,13 +1056,15 @@ A special notation for constructing a list of characters is also provided:
 ['ab','c']
 ```
 
+A list may contain an infinite number of elements, but elements must have the same type.
+
 More information about built-in operations and functions on lists can be found on:
 
 - [Appendix A: StdCharList](appendix-a/stdcharlist),
 - [Appendix A: StdList](appendix-a/stdlist), and
 - [Appendix A: StdOrdList](appendix-a/stdordlist).
 
-#### List Patterns
+**List patterns**
 
 Lists can be specified as patterns as follow:
 

@@ -116,8 +116,8 @@ It should be noted that; if implementation order is changed, then the function w
 ```
 // Language: Clean
 
-safeDivAlt m n = m / n
-safeDivAlt m 0 = 0
+badSafeDivAlt m n = m / n
+badSafeDivAlt m 0 = 0
 ```
 
 The second implementation is never reached.
@@ -126,10 +126,10 @@ Even if it is invoked with `0`as the second argument.
 ```
 // Language: Clean
 
-safeDivAlt 9 0  // Uh oh
+badSafeDivAlt 9 0  // Uh oh
 ```
 
-With the current implementation of `safeDivAlt`, it is clear that the second implementation is never reached.
+With the current implementation of `badSafeDivAlt`, it is clear that the second implementation is never reached.
 
 It is important to recognize that, this parameter-argument matching is not the same as performing equality checks.
 
@@ -791,46 +791,71 @@ There are three built-in structured types:
 
 ### Integers
 
-**Type annotation**: `Int`
-
 **Constructors**
 
-There are three integer constructors.
+There are three methods to construct integer literals.
 
-Decimal constructor:
-
-```
-// Language: Clean
-
-n :: Int
-n = -13
-n =  0
-n =  13
-```
-
-Octal constructor by prefixing octal digits with `0`:
+Integer literals from decimal notation may be written as follows.
 
 ```
 // Language: Clean
 
-n :: Int
-n = -015  // decimal -13
-n =  0
-n =  015  // decimal  13
+-13
+ 0
+ 13
 ```
 
-Hexadecimal constructor by prefixing hexadecimal digits with `0x`:
+Integer literals from octal notation may be written by prefixing octal digits with `0` as follows:
 
 ```
 // Language: Clean
 
-n :: Int
-n = -0xD  // decimal -13
-n =  0
-n =  0xd  // decimal  13
+-015  // decimal -13
+ 0
+ 015  // decimal  13
 ```
 
-More information about built-in operations and functions on integers can be found on [Appendix A: StdInt](appendix-a/stdint).
+Integers literals from hexadecimal notation may be written by prefixing hexadecimal digits with `0x` as follows.
+
+```
+// Language: Clean
+
+-0xD  // decimal -13
+ 0
+ 0xd  // decimal  13
+```
+
+**Typing integers**
+
+An expression, which evaluates to an integer value, may be explicitly typed using `Int`.
+
+```
+// Language: Clean
+
+expr :: Int
+expr =  1 + 1
+```
+
+**Integer operators and functions**
+
+Integer operations and functions are discussed in more details on [Appendix A: StdInt](appendix-a/stdint).
+
+**Integer literals as parameters**
+
+Integer literals may be used in as parameters in function implementations.
+Doing so will evokes a parameter-argument matching behavior.
+
+A simple function which determines whether an integer is eight or not may be implemented as follows.
+
+```
+// Language: Clean
+
+isIntEight :: Int -> Bool
+isIntEight    8   =  True
+isIntEight    n   =  False
+```
+
+
 
 ### Real Numbers
 
@@ -900,11 +925,7 @@ c =  '+'
 
 More information about built-in operations and functions on characters can be found on [Appendix A: StdChar](appendix-a/stdchar).
 
-
-
-### Non-primitive Types
-
-#### Lists
+### Lists
 
 **Type annotation**:
 `[Int]`,

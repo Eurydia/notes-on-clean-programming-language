@@ -1,7 +1,5 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="Arithmetic Operations Negation Signature
-$$ \begin{align*} a\rightarrow{R} \end{align*} $$
-where:
- $a$ and $R$ are of type $\textbf{Int}$.  Behavior: inverts the sign of $a$."><title>Appendix A: StdInt</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" type=image/png href=https://eurydia.github.io/cleanpedia//icon.png><link href=https://eurydia.github.io/cleanpedia/styles.b3e1e36b0403ac565c9392b3e23ef3b6.min.css rel=stylesheet><link href=https://eurydia.github.io/cleanpedia/styles/_light_syntax.86a48a52faebeaaf42158b72922b1c90.min.css rel=stylesheet id=theme-link><script src=https://eurydia.github.io/cleanpedia/js/darkmode.c7bf66e3c7098cf23280f76232e7b9e4.min.js></script>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="Introduction This section of Appendix A discusses operations and functions defined within StdInt and by extension StdEnv.
+These operations and functions primarily interact Int type."><title>Appendix A: StdInt</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" type=image/png href=https://eurydia.github.io/cleanpedia//icon.png><link href=https://eurydia.github.io/cleanpedia/styles.b3e1e36b0403ac565c9392b3e23ef3b6.min.css rel=stylesheet><link href=https://eurydia.github.io/cleanpedia/styles/_light_syntax.86a48a52faebeaaf42158b72922b1c90.min.css rel=stylesheet id=theme-link><script src=https://eurydia.github.io/cleanpedia/js/darkmode.c7bf66e3c7098cf23280f76232e7b9e4.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/util.9825137f5e7825e8553c68ce39ac9e44.min.js></script>
 <script src=https://unpkg.com/@floating-ui/core@0.7.3></script>
 <script src=https://unpkg.com/@floating-ui/dom@0.5.4></script>
@@ -9,16 +7,20 @@ where:
 <script src=https://eurydia.github.io/cleanpedia/js/code-title.b35124ad8db0ba37162b886afb711cbc.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/clipboard.c20857734e53a3fb733b7443879efa61.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/callouts.7723cac461d613d118ee8bb8216b9838.min.js></script>
-<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.816a46288939b674c0c41ea911c4b447.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.5583bd8e02fc74477eb4a95aef30ef63.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!1);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=()=>{addCopyButtons(),addTitleToCodeBlocks()}</script><script type=module>
+<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.816a46288939b674c0c41ea911c4b447.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.5a33eb91e9ff147eb918cc457b9b64c9.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!1);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=()=>{addCopyButtons(),addTitleToCodeBlocks()}</script><script type=module>
     import { attachSPARouting } from "https:\/\/eurydia.github.io\/cleanpedia\/js\/router.9d4974281069e9ebb189f642ae1e3ca2.min.js"
     attachSPARouting(init, render)
   </script></head><body><div class=singlePage><header><h1 id=page-title><a href=https://eurydia.github.io/cleanpedia/>Cleanpedia</a></h1><div class=spacer></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
 <label id=toggle-label-light for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="dayIcon" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35"><title>Light Mode</title><path d="M6 17.5C6 16.672 5.328 16 4.5 16h-3C.672 16 0 16.672.0 17.5S.672 19 1.5 19h3C5.328 19 6 18.328 6 17.5zM7.5 26c-.414.0-.789.168-1.061.439l-2 2C4.168 28.711 4 29.086 4 29.5 4 30.328 4.671 31 5.5 31c.414.0.789-.168 1.06-.44l2-2C8.832 28.289 9 27.914 9 27.5 9 26.672 8.329 26 7.5 26zm10-20C18.329 6 19 5.328 19 4.5v-3C19 .672 18.329.0 17.5.0S16 .672 16 1.5v3C16 5.328 16.671 6 17.5 6zm10 3c.414.0.789-.168 1.06-.439l2-2C30.832 6.289 31 5.914 31 5.5 31 4.672 30.329 4 29.5 4c-.414.0-.789.168-1.061.44l-2 2C26.168 6.711 26 7.086 26 7.5 26 8.328 26.671 9 27.5 9zM6.439 8.561C6.711 8.832 7.086 9 7.5 9 8.328 9 9 8.328 9 7.5c0-.414-.168-.789-.439-1.061l-2-2C6.289 4.168 5.914 4 5.5 4 4.672 4 4 4.672 4 5.5c0 .414.168.789.439 1.06l2 2.001zM33.5 16h-3c-.828.0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5h3c.828.0 1.5-.672 1.5-1.5S34.328 16 33.5 16zM28.561 26.439C28.289 26.168 27.914 26 27.5 26c-.828.0-1.5.672-1.5 1.5.0.414.168.789.439 1.06l2 2C28.711 30.832 29.086 31 29.5 31c.828.0 1.5-.672 1.5-1.5.0-.414-.168-.789-.439-1.061l-2-2zM17.5 29c-.829.0-1.5.672-1.5 1.5v3c0 .828.671 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3C19 29.672 18.329 29 17.5 29zm0-22C11.71 7 7 11.71 7 17.5S11.71 28 17.5 28 28 23.29 28 17.5 23.29 7 17.5 7zm0 18c-4.136.0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5 7.5 3.364 7.5 7.5S21.636 25 17.5 25z"/></svg></label><label id=toggle-label-dark for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nightIcon" viewBox="0 0 100 100" style="enable-background='new 0 0 100 100'"><title>Dark Mode</title><path d="M96.76 66.458c-.853-.852-2.15-1.064-3.23-.534-6.063 2.991-12.858 4.571-19.655 4.571C62.022 70.495 50.88 65.88 42.5 57.5 29.043 44.043 25.658 23.536 34.076 6.47c.532-1.08.318-2.379-.534-3.23-.851-.852-2.15-1.064-3.23-.534-4.918 2.427-9.375 5.619-13.246 9.491-9.447 9.447-14.65 22.008-14.65 35.369.0 13.36 5.203 25.921 14.65 35.368s22.008 14.65 35.368 14.65c13.361.0 25.921-5.203 35.369-14.65 3.872-3.871 7.064-8.328 9.491-13.246C97.826 68.608 97.611 67.309 96.76 66.458z"/></svg></label></div></header><article><h1>Appendix A: StdInt</h1><p class=meta>Last updated
-May 28, 2023</p><ul class=tags></ul><aside class=mainTOC><details open><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#arithmetic-operations>Arithmetic Operations</a><ol><li><a href=#negation>Negation</a></li><li><a href=#addition>Addition</a></li><li><a href=#subtraction>Subtraction</a></li><li><a href=#multiplication>Multiplication</a></li><li><a href=#floor-division>Floor Division</a></li><li><a href=#reminder-division>Reminder Division</a></li><li><a href=#exponentiation>Exponentiation</a></li></ol></li><li><a href=#relational-operations>Relational Operations</a><ol><li><a href=#equal-to>Equal To</a></li><li><a href=#not-equal-to>Not Equal To</a></li><li><a href=#less-than>Less Than</a></li><li><a href=#less-than-or-equal-to>Less Than Or Equal To</a></li><li><a href=#greater-than>Greater Than</a></li><li><a href=#greater-than-or-equal-to>Greater Than Or Equal To</a></li></ol></li><li><a href=#bitwise-operations>Bitwise Operations</a><ol><li><a href=#bitwise-negate>Bitwise NEGATE</a></li><li><a href=#bitwise-or>Bitwise OR</a></li><li><a href=#bitwise-and>Bitwise AND</a></li><li><a href=#bitwise-xor>Bitwise XOR</a></li><li><a href=#bitwise-left-shift>Bitwise Left Shift</a></li><li><a href=#bitwise-right-shift>Bitwise Right Shift</a></li></ol></li><li><a href=#basic-functions>Basic Functions</a><ol><li><a href=#sign><code>sign</code></a></li><li><a href=#abs><code>abs</code></a></li><li><a href=#gcd><code>gcd</code></a></li><li><a href=#lcm><code>lcm</code></a></li></ol></li><li><a href=#property-functions>Property Functions</a><ol><li><a href=#iseven><code>isEven</code></a></li><li><a href=#isodd><code>isOdd</code></a></li></ol></li><li><a href=#conversions-to-integers>Conversions To Integers</a><ol><li><a href=#real-numbers-to-integers>Real Numbers To Integers</a></li><li><a href=#characters-to-integers>Characters To Integers</a></li><li><a href=#strings-to-integers>Strings To Integers</a></li></ol></li></ol></nav></details></aside><a href=#arithmetic-operations><h2 id=arithmetic-operations><span class=hanchor arialabel=Anchor># </span>Arithmetic Operations</h2></a><a href=#negation><h3 id=negation><span class=hanchor arialabel=Anchor># </span>Negation</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: inverts the sign of $a$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+Jun 6, 2023</p><ul class=tags></ul><aside class=mainTOC><details open><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#introduction>Introduction</a></li><li><a href=#arithmetic-operations>Arithmetic Operations</a><ol><li><a href=#negation>Negation</a></li><li><a href=#addition>Addition</a></li><li><a href=#subtraction>Subtraction</a></li><li><a href=#multiplication>Multiplication</a></li><li><a href=#floor-division>Floor Division</a></li><li><a href=#reminder-division>Reminder Division</a></li><li><a href=#exponentiation>Exponentiation</a></li></ol></li><li><a href=#relational-operations>Relational Operations</a><ol><li><a href=#equal-to>Equal To</a></li><li><a href=#not-equal-to>Not Equal To</a></li><li><a href=#less-than>Less Than</a></li><li><a href=#less-than-or-equal-to>Less Than Or Equal To</a></li><li><a href=#greater-than>Greater Than</a></li><li><a href=#greater-than-or-equal-to>Greater Than Or Equal To</a></li></ol></li><li><a href=#bitwise-operations>Bitwise Operations</a><ol><li><a href=#bitwise-negate>Bitwise NEGATE</a></li><li><a href=#bitwise-or>Bitwise OR</a></li><li><a href=#bitwise-and>Bitwise AND</a></li><li><a href=#bitwise-xor>Bitwise XOR</a></li><li><a href=#bitwise-left-shift>Bitwise Left Shift</a></li><li><a href=#bitwise-right-shift>Bitwise Right Shift</a></li></ol></li><li><a href=#basic-functions>Basic Functions</a><ol><li><a href=#sign><code>sign</code></a></li><li><a href=#abs><code>abs</code></a></li><li><a href=#gcd><code>gcd</code></a></li><li><a href=#lcm><code>lcm</code></a></li></ol></li><li><a href=#property-functions>Property Functions</a><ol><li><a href=#iseven><code>isEven</code></a></li><li><a href=#isodd><code>isOdd</code></a></li></ol></li><li><a href=#conversions-to-integers>Conversions To Integers</a><ol><li><a href=#real-numbers-to-integers>Real Numbers To Integers</a></li><li><a href=#characters-to-integers>Characters To Integers</a></li><li><a href=#strings-to-integers>Strings To Integers</a></li></ol></li><li><a href=#conversions-from-integers>Conversions From Integers</a><ol><li><a href=#integers-to-real-numbers>Integers To Real Numbers</a></li><li><a href=#integers-to-characters>Integers To Characters</a></li><li><a href=#integers-to-strings>Integers To Strings</a></li></ol></li></ol></nav></details></aside><a href=#introduction><h2 id=introduction><span class=hanchor arialabel=Anchor># </span>Introduction</h2></a><p>This section of Appendix A discusses operations and functions defined within <code>StdInt</code> and by extension <code>StdEnv</code>.</p><p>These operations and functions primarily interact <code>Int</code> type.</p><a href=#arithmetic-operations><h2 id=arithmetic-operations><span class=hanchor arialabel=Anchor># </span>Arithmetic Operations</h2></a><a href=#negation><h3 id=negation><span class=hanchor arialabel=Anchor># </span>Negation</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>~ :: Int -&gt; Int
+</span></span><span class=line><span class=cl>~    a   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: inverts the sign of an integer <code>a</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -28,11 +30,15 @@ $$</p><p>where:</p><ul><li>$a$ and $R$ are of type $\textbf{Int}$.</li></ul><p><
 </span></span><span class=line><span class=cl>~  0   //  0
 </span></span><span class=line><span class=cl>~  1   // -1
 </span></span><span class=line><span class=cl>~(-1)  //  1
-</span></span></code></pre></td></tr></table></div></div><a href=#addition><h3 id=addition><span class=hanchor arialabel=Anchor># </span>Addition</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: adds $a$ and $b$ together.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#addition><h3 id=addition><span class=hanchor arialabel=Anchor># </span>Addition</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl>(+) infixl 6 :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>(+)             a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: adds <code>a</code> and <code>b</code> together.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -44,11 +50,15 @@ $$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></u
 </span></span><span class=line><span class=cl>  1  + (-1)  //  0
 </span></span><span class=line><span class=cl>(-1) +   1   //  0
 </span></span><span class=line><span class=cl>(-1) + (-1)  // -2
-</span></span></code></pre></td></tr></table></div></div><a href=#subtraction><h3 id=subtraction><span class=hanchor arialabel=Anchor># </span>Subtraction</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: subtracts $b$ from $a$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#subtraction><h3 id=subtraction><span class=hanchor arialabel=Anchor># </span>Subtraction</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl>(-) infixl 6 :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>(-)             a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: subtracts <code>b</code> from <code>a</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -60,11 +70,15 @@ $$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></u
 </span></span><span class=line><span class=cl>  1  - (-1) //  2
 </span></span><span class=line><span class=cl>(-1) -   1  // -2
 </span></span><span class=line><span class=cl>(-1) - (-1) //  0
-</span></span></code></pre></td></tr></table></div></div><a href=#multiplication><h3 id=multiplication><span class=hanchor arialabel=Anchor># </span>Multiplication</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: multiplies $a$ with $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#multiplication><h3 id=multiplication><span class=hanchor arialabel=Anchor># </span>Multiplication</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl>(*) infixl 7 :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>(*)             a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: multiplies <code>a</code> and <code>b</code> together.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -76,12 +90,16 @@ $$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></u
 </span></span><span class=line><span class=cl>  1  * (-1) // -1
 </span></span><span class=line><span class=cl>(-1) *   1  // -1
 </span></span><span class=line><span class=cl>(-1) * (-1) //  1
-</span></span></code></pre></td></tr></table></div></div><a href=#floor-division><h3 id=floor-division><span class=hanchor arialabel=Anchor># </span>Floor Division</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: floor divides $a$ with $b$.
-Silently crashes if $b$ is $0$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#floor-division><h3 id=floor-division><span class=hanchor arialabel=Anchor># </span>Floor Division</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(/) infixl 7 :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>(/)             a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: divides <code>a</code> by <code>b</code>.
+Silently crashes if <code>b</code> is zero.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -94,12 +112,24 @@ Silently crashes if $b$ is $0$.</p><p><strong>Usage</strong></p><div class=highl
 </span></span><span class=line><span class=cl>  1  / (-1)  // -1
 </span></span><span class=line><span class=cl>(-1) /   1   // -1
 </span></span><span class=line><span class=cl>(-1) / (-1)  //  1
-</span></span><span class=line><span class=cl>  7  /   0   //  NOT OK :(
-</span></span></code></pre></td></tr></table></div></div><a href=#reminder-division><h3 id=reminder-division><span class=hanchor arialabel=Anchor># </span>Reminder Division</h3></a><p>Both $\text{rem}$ and $\text{mod}$ perform the same operation.</p><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: returns reminder of $a$ divides by $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>  7  /   0   //  crashes
+</span></span></code></pre></td></tr></table></div></div><a href=#reminder-division><h3 id=reminder-division><span class=hanchor arialabel=Anchor># </span>Reminder Division</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(rem) infix 7 :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>(rem)            a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p>and</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(mod) infix 7 :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>(mod)            a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p>For integers, both <code>rem</code> and <code>mod</code> perform modulo division.</p><p><strong>Behavior</strong>: divides <code>a</code> by <code>b</code> and returns the reminder.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -107,16 +137,20 @@ $$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></u
 </span><span class=lnt>6
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl> 3 mod -2  //  1
-</span></span><span class=line><span class=cl>-3 mod -2  // -1
-</span></span><span class=line><span class=cl>-3 mod  2  // -1
-</span></span><span class=line><span class=cl> 3 mod  2  //  1
-</span></span></code></pre></td></tr></table></div></div><a href=#exponentiation><h3 id=exponentiation><span class=hanchor arialabel=Anchor># </span>Exponentiation</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: raises $a$ to the $b$-th power.
-Results in a run-time error if $b$ is negative</p><p>The run-time error has the following message:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>  3  mod (-2)  //  1
+</span></span><span class=line><span class=cl>(-3) mod (-2)  // -1
+</span></span><span class=line><span class=cl>(-3) mod   2   // -1
+</span></span><span class=line><span class=cl>  3  mod   2   //  1
+</span></span></code></pre></td></tr></table></div></div><a href=#exponentiation><h3 id=exponentiation><span class=hanchor arialabel=Anchor># </span>Exponentiation</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(^) infixr 8 :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>(^)             a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: raises <code>a</code> to <code>b</code>-th power.
+Results in a run-time error if <code>b</code> is negative.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>^ (Int) called with negative power argument
 </span></span></code></pre></td></tr></table></div></div><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
@@ -130,11 +164,16 @@ Results in a run-time error if $b$ is negative</p><p>The run-time error has the 
 </span></span><span class=line><span class=cl>  1  ^ (-1)  //  NOT OK :(
 </span></span><span class=line><span class=cl>(-1) ^   1   // -1
 </span></span><span class=line><span class=cl>(-1) ^ (-1)  //  NOT OK :(  
-</span></span></code></pre></td></tr></table></div></div><hr><a href=#relational-operations><h2 id=relational-operations><span class=hanchor arialabel=Anchor># </span>Relational Operations</h2></a><a href=#equal-to><h3 id=equal-to><span class=hanchor arialabel=Anchor># </span>Equal To</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ and $b$ are of type $\textbf{Int}$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p><strong>Behavior</strong>: checks if $a$ is equal to $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#relational-operations><h2 id=relational-operations><span class=hanchor arialabel=Anchor># </span>Relational Operations</h2></a><p>There are six relational operations, and they share the same behavior.
+That is, they compare integral values of two integers, then return a Boolean value.</p><a href=#equal-to><h3 id=equal-to><span class=hanchor arialabel=Anchor># </span>Equal To</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(==) infix 4 :: Int Int -&gt; Bool
+</span></span><span class=line><span class=cl>(==)            a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns true if and only if <code>a</code> is equal to <code>b</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -148,11 +187,15 @@ $$</p><p>where:</p><ul><li>$a$ and $b$ are of type $\textbf{Int}$, and</li><li>$
 </span></span><span class=line><span class=cl>  5  == (-2)  // False
 </span></span><span class=line><span class=cl>(-5) == (-2)  // False
 </span></span><span class=line><span class=cl>(-2) == (-2)  // True
-</span></span></code></pre></td></tr></table></div></div><a href=#not-equal-to><h3 id=not-equal-to><span class=hanchor arialabel=Anchor># </span>Not Equal To</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ and $b$ are of type $\textbf{Int}$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p><strong>Behavior</strong>: checks if $a$ is not equal to $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#not-equal-to><h3 id=not-equal-to><span class=hanchor arialabel=Anchor># </span>Not Equal To</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(&lt;&gt;) infix 4 :: Int Int -&gt; Bool
+</span></span><span class=line><span class=cl>(&lt;&gt;)            a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns false if and only if <code>a</code> is equal to <code>b</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -166,11 +209,15 @@ $$</p><p>where:</p><ul><li>$a$ and $b$ are of type $\textbf{Int}$, and</li><li>$
 </span></span><span class=line><span class=cl>  5  &lt;&gt; (-2)  // True
 </span></span><span class=line><span class=cl>(-5) &lt;&gt; (-2)  // True
 </span></span><span class=line><span class=cl>(-2) &lt;&gt; (-2)  // False
-</span></span></code></pre></td></tr></table></div></div><a href=#less-than><h3 id=less-than><span class=hanchor arialabel=Anchor># </span>Less Than</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ and $b$ are of type $\textbf{Int}$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p><strong>Behavior</strong>: checks if $a$ is less than $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#less-than><h3 id=less-than><span class=hanchor arialabel=Anchor># </span>Less Than</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(&lt;) infix 4 :: Int Int -&gt; Bool
+</span></span><span class=line><span class=cl>(&lt;)            a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns true if and only if <code>a</code> is strictly less than <code>b</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -184,11 +231,15 @@ $$</p><p>where:</p><ul><li>$a$ and $b$ are of type $\textbf{Int}$, and</li><li>$
 </span></span><span class=line><span class=cl>  5  &lt; (-2)  // False
 </span></span><span class=line><span class=cl>(-5) &lt; (-2)  // True
 </span></span><span class=line><span class=cl>(-2) &lt; (-2)  // False
-</span></span></code></pre></td></tr></table></div></div><a href=#less-than-or-equal-to><h3 id=less-than-or-equal-to><span class=hanchor arialabel=Anchor># </span>Less Than Or Equal To</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ and $b$ are of type $\textbf{Int}$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p><strong>Behavior</strong>: checks if $a$ is less than or equal to $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#less-than-or-equal-to><h3 id=less-than-or-equal-to><span class=hanchor arialabel=Anchor># </span>Less Than Or Equal To</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(&lt;=) infix 4 :: Int Int -&gt; Bool
+</span></span><span class=line><span class=cl>(&lt;=)            a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns false if and only if <code>a</code> is strictly greater than <code>b</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -202,11 +253,15 @@ $$</p><p>where:</p><ul><li>$a$ and $b$ are of type $\textbf{Int}$, and</li><li>$
 </span></span><span class=line><span class=cl>  5  &lt;= (-2)  // False
 </span></span><span class=line><span class=cl>(-5) &lt;= (-2)  // True
 </span></span><span class=line><span class=cl>(-2) &lt;= (-2)  // True
-</span></span></code></pre></td></tr></table></div></div><a href=#greater-than><h3 id=greater-than><span class=hanchor arialabel=Anchor># </span>Greater Than</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ and $b$ are of type $\textbf{Int}$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p><strong>Behavior</strong>: checks if $a$ is greater than $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#greater-than><h3 id=greater-than><span class=hanchor arialabel=Anchor># </span>Greater Than</h3></a><p><strong>Signature</strong></p><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(&gt;) infix 4 :: Int Int -&gt; Bool
+</span></span><span class=line><span class=cl>(&gt;)            a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns true if and only if <code>a</code> is strictly greater than <code>b</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -220,11 +275,15 @@ $$</p><p>where:</p><ul><li>$a$ and $b$ are of type $\textbf{Int}$, and</li><li>$
 </span></span><span class=line><span class=cl>  5  &gt; (-2)  // True
 </span></span><span class=line><span class=cl>(-5) &gt; (-2)  // False
 </span></span><span class=line><span class=cl>(-2) &gt; (-2)  // False
-</span></span></code></pre></td></tr></table></div></div><a href=#greater-than-or-equal-to><h3 id=greater-than-or-equal-to><span class=hanchor arialabel=Anchor># </span>Greater Than Or Equal To</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ and $b$ are of type $\textbf{Int}$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p><strong>Behavior</strong>: checks if $a$ is greater than or equal to $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#greater-than-or-equal-to><h3 id=greater-than-or-equal-to><span class=hanchor arialabel=Anchor># </span>Greater Than Or Equal To</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(&gt;=) infix 4 :: Int Int -&gt; Bool
+</span></span><span class=line><span class=cl>(&gt;=)            a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns false if and only if <code>a</code> is strictly less than <code>b</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -238,11 +297,15 @@ $$</p><p>where:</p><ul><li>$a$ and $b$ are of type $\textbf{Int}$, and</li><li>$
 </span></span><span class=line><span class=cl>  5  &gt;= (-2)  // True
 </span></span><span class=line><span class=cl>(-5) &gt;= (-2)  // False
 </span></span><span class=line><span class=cl>(-2) &gt;= (-2)  // True
-</span></span></code></pre></td></tr></table></div></div><hr><a href=#bitwise-operations><h2 id=bitwise-operations><span class=hanchor arialabel=Anchor># </span>Bitwise Operations</h2></a><a href=#bitwise-negate><h3 id=bitwise-negate><span class=hanchor arialabel=Anchor># </span>Bitwise NEGATE</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: returns bit-wise two complement of $a$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#bitwise-operations><h2 id=bitwise-operations><span class=hanchor arialabel=Anchor># </span>Bitwise Operations</h2></a><p>This group of functions and operations interacts with integers through their binary representation.</p><a href=#bitwise-negate><h3 id=bitwise-negate><span class=hanchor arialabel=Anchor># </span>Bitwise NEGATE</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>bitnot :: Int -&gt; Int
+</span></span><span class=line><span class=cl>bitnot    a   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns bit-wise two complement of <code>a</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -250,15 +313,19 @@ $$</p><p>where:</p><ul><li>$a$ and $R$ are of type $\textbf{Int}$.</li></ul><p><
 </span><span class=lnt>6
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>bitnot (-5)  // -4
-</span></span><span class=line><span class=cl>bitnot (-2)  //  1
+</span></span><span class=line><span class=cl>bitnot (-5)  //  -4
+</span></span><span class=line><span class=cl>bitnot (-2)  //   1
 </span></span><span class=line><span class=cl>bitnot   2   //  -3
 </span></span><span class=line><span class=cl>bitnot   5   //  -6
-</span></span></code></pre></td></tr></table></div></div><a href=#bitwise-or><h3 id=bitwise-or><span class=hanchor arialabel=Anchor># </span>Bitwise OR</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: returns bit-wise OR of $a$ and $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#bitwise-or><h3 id=bitwise-or><span class=hanchor arialabel=Anchor># </span>Bitwise OR</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(bitor) infixl 6 :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>(bitor)             a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns bit-wise OR of <code>a</code> and <code>b</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -270,11 +337,15 @@ $$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></u
 </span></span><span class=line><span class=cl>(-5) bitor   2   // -5
 </span></span><span class=line><span class=cl>  5  bitor (-2)  // -1
 </span></span><span class=line><span class=cl>(-5) bitor (-2)  // -1
-</span></span></code></pre></td></tr></table></div></div><a href=#bitwise-and><h3 id=bitwise-and><span class=hanchor arialabel=Anchor># </span>Bitwise AND</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: returns bit-wise AND of $a$ and $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#bitwise-and><h3 id=bitwise-and><span class=hanchor arialabel=Anchor># </span>Bitwise AND</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(bitand) infixl 6 :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>(bitand)             a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns bit-wise AND of <code>a</code> and <code>b</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -286,11 +357,15 @@ $$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></u
 </span></span><span class=line><span class=cl>(-5) bitand   2   //  2
 </span></span><span class=line><span class=cl>  5  bitand (-2)  //  4
 </span></span><span class=line><span class=cl>(-5) bitand (-2)  // -6
-</span></span></code></pre></td></tr></table></div></div><a href=#bitwise-xor><h3 id=bitwise-xor><span class=hanchor arialabel=Anchor># </span>Bitwise XOR</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: returns bit-wise XOR of $a$ and $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#bitwise-xor><h3 id=bitwise-xor><span class=hanchor arialabel=Anchor># </span>Bitwise XOR</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(bitxor) infixl 6 :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>(bitxor)             a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns bit-wise XOR of <code>a</code> and <code>b</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -298,15 +373,19 @@ $$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></u
 </span><span class=lnt>6
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>  5  bitand   2   //  7
-</span></span><span class=line><span class=cl>(-5) bitand   2   // -7
-</span></span><span class=line><span class=cl>  5  bitand (-2)  // -5
-</span></span><span class=line><span class=cl>(-5) bitand (-2)  //  5
-</span></span></code></pre></td></tr></table></div></div><a href=#bitwise-left-shift><h3 id=bitwise-left-shift><span class=hanchor arialabel=Anchor># </span>Bitwise Left Shift</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: shifts $a$ to the left by $b$ bits.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>  5  bitxor   2   //  7
+</span></span><span class=line><span class=cl>(-5) bitxor   2   // -7
+</span></span><span class=line><span class=cl>  5  bitxor (-2)  // -5
+</span></span><span class=line><span class=cl>(-5) bitxor (-2)  //  5
+</span></span></code></pre></td></tr></table></div></div><a href=#bitwise-left-shift><h3 id=bitwise-left-shift><span class=hanchor arialabel=Anchor># </span>Bitwise Left Shift</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(&lt;&lt;) infix 7 :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>(&lt;&lt;)            a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: shifts <code>a</code> to the left by <code>b</code> bits.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -318,11 +397,15 @@ $$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></u
 </span></span><span class=line><span class=cl>(-5) &lt;&lt;   2   // -20
 </span></span><span class=line><span class=cl>  5  &lt;&lt; (-2)  //  4611686018427387904
 </span></span><span class=line><span class=cl>(-5) &lt;&lt; (-2)  // -4611686018427387904
-</span></span></code></pre></td></tr></table></div></div><a href=#bitwise-right-shift><h3 id=bitwise-right-shift><span class=hanchor arialabel=Anchor># </span>Bitwise Right Shift</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: shifts $a$ to the right by $b$ bits.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#bitwise-right-shift><h3 id=bitwise-right-shift><span class=hanchor arialabel=Anchor># </span>Bitwise Right Shift</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>(&gt;&gt;) infix 7 :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>(&gt;&gt;)            a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: shifts <code>a</code> to the right by <code>b</code> bits.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -334,11 +417,15 @@ $$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></u
 </span></span><span class=line><span class=cl>(-5) &gt;&gt;   2   // -2
 </span></span><span class=line><span class=cl>  5  &gt;&gt; (-2)  //  0
 </span></span><span class=line><span class=cl>(-5) &gt;&gt; (-2)  // -1
-</span></span></code></pre></td></tr></table></div></div><hr><a href=#basic-functions><h2 id=basic-functions><span class=hanchor arialabel=Anchor># </span>Basic Functions</h2></a><a href=#sign><h3 id=sign><span class=hanchor arialabel=Anchor># </span><code>sign</code></h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ and $R$ are of type $\textbf{Int}$,.</li></ul><p><strong>Behavior</strong>: returns sign of $a$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#basic-functions><h2 id=basic-functions><span class=hanchor arialabel=Anchor># </span>Basic Functions</h2></a><a href=#sign><h3 id=sign><span class=hanchor arialabel=Anchor># </span><code>sign</code></h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>sign :: Int -&gt; Int
+</span></span><span class=line><span class=cl>sign    a   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns the sign of an integer <code>a</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -348,11 +435,15 @@ $$</p><p>where:</p><ul><li>$a$ and $R$ are of type $\textbf{Int}$,.</li></ul><p>
 </span></span><span class=line><span class=cl>sign   1   //  1
 </span></span><span class=line><span class=cl>sign   0   //  0
 </span></span><span class=line><span class=cl>sign (-1)  // -1
-</span></span></code></pre></td></tr></table></div></div><a href=#abs><h3 id=abs><span class=hanchor arialabel=Anchor># </span><code>abs</code></h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: returns absolute value of $a$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#abs><h3 id=abs><span class=hanchor arialabel=Anchor># </span><code>abs</code></h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>abs :: Int -&gt; Int
+</span></span><span class=line><span class=cl>abs    a   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns the absolute value of an integer <code>a</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -362,11 +453,15 @@ $$</p><p>where:</p><ul><li>$a$ and $R$ are of type $\textbf{Int}$.</li></ul><p><
 </span></span><span class=line><span class=cl>abs   1   // 1
 </span></span><span class=line><span class=cl>abs   0   // 0
 </span></span><span class=line><span class=cl>abs (-1)  // 1
-</span></span></code></pre></td></tr></table></div></div><a href=#gcd><h3 id=gcd><span class=hanchor arialabel=Anchor># </span><code>gcd</code></h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: returns greatest common divisor of $a$ and $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#gcd><h3 id=gcd><span class=hanchor arialabel=Anchor># </span><code>gcd</code></h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>gcd :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>gcd    a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns the greatest common divisor of <code>a</code> and <code>b</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -378,11 +473,15 @@ $$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></u
 </span></span><span class=line><span class=cl>gcd (-3)   2   // 1
 </span></span><span class=line><span class=cl>gcd   3  (-2)  // 1
 </span></span><span class=line><span class=cl>gcd (-3) (-2)  // 1
-</span></span></code></pre></td></tr></table></div></div><a href=#lcm><h3 id=lcm><span class=hanchor arialabel=Anchor># </span><code>lcm</code></h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: returns least common multiple of $a$ and $b$.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#lcm><h3 id=lcm><span class=hanchor arialabel=Anchor># </span><code>lcm</code></h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>lcm :: Int Int -&gt; Int
+</span></span><span class=line><span class=cl>lcm    a   b   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns the least common multiple of <code>a</code> and <code>b</code>.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -394,11 +493,15 @@ $$</p><p>where:</p><ul><li>$a$, $b$, and $R$ are of type $\textbf{Int}$.</li></u
 </span></span><span class=line><span class=cl>lcm (-3)   2   // 6
 </span></span><span class=line><span class=cl>lcm   3  (-2)  // 6
 </span></span><span class=line><span class=cl>lcm (-3) (-2)  // 6
-</span></span></code></pre></td></tr></table></div></div><hr><a href=#property-functions><h2 id=property-functions><span class=hanchor arialabel=Anchor># </span>Property Functions</h2></a><a href=#iseven><h3 id=iseven><span class=hanchor arialabel=Anchor># </span><code>isEven</code></h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ is of type $\textbf{Int}$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p><strong>Behavior</strong>: checks if $a$ is an even integer or not.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#property-functions><h2 id=property-functions><span class=hanchor arialabel=Anchor># </span>Property Functions</h2></a><p>This group of functions accepts one integer as an argument and returns a Boolean value based on the property of the integer given.</p><a href=#iseven><h3 id=iseven><span class=hanchor arialabel=Anchor># </span><code>isEven</code></h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isEven :: Int -&gt; Bool
+</span></span><span class=line><span class=cl>isEven    a   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns true if and only if <code>a</code> is an even integer.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -412,11 +515,15 @@ $$</p><p>where:</p><ul><li>$a$ is of type $\textbf{Int}$, and</li><li>$R$ is of 
 </span></span><span class=line><span class=cl>isEven  0  // True
 </span></span><span class=line><span class=cl>isEven -1  // True
 </span></span><span class=line><span class=cl>isEven -2  // False
-</span></span></code></pre></td></tr></table></div></div><a href=#isodd><h3 id=isodd><span class=hanchor arialabel=Anchor># </span><code>isOdd</code></h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ is of type $\textbf{Int}$, and</li><li>$R$ is of type $\textbf{Bool}$.</li></ul><p><strong>Behavior</strong>: checks if $a$ is an odd integer or not.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#isodd><h3 id=isodd><span class=hanchor arialabel=Anchor># </span><code>isOdd</code></h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>isOdd :: Int -&gt; Bool
+</span></span><span class=line><span class=cl>isOdd    a   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: returns true if and only if <code>a</code> is an odd integer.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -430,11 +537,12 @@ $$</p><p>where:</p><ul><li>$a$ is of type $\textbf{Int}$, and</li><li>$R$ is of 
 </span></span><span class=line><span class=cl>isOdd  0  // False
 </span></span><span class=line><span class=cl>isOdd -1  // False
 </span></span><span class=line><span class=cl>isOdd -2  // True
-</span></span></code></pre></td></tr></table></div></div><hr><a href=#conversions-to-integers><h2 id=conversions-to-integers><span class=hanchor arialabel=Anchor># </span>Conversions To Integers</h2></a><a href=#real-numbers-to-integers><h3 id=real-numbers-to-integers><span class=hanchor arialabel=Anchor># </span>Real Numbers To Integers</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ is of type $\textbf{Real}$, and</li><li>$R$ is of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: rounds $a$ to its nearest integer.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#conversions-to-integers><h2 id=conversions-to-integers><span class=hanchor arialabel=Anchor># </span>Conversions To Integers</h2></a><p>This group of functions explicitly converts values of other types to integers.
+The function shares the same name, which is <code>toInt</code>, but they behave differently based on the original type.</p><a href=#real-numbers-to-integers><h3 id=real-numbers-to-integers><span class=hanchor arialabel=Anchor># </span>Real Numbers To Integers</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>toInt :: Real -&gt; Int
+</span></span><span class=line><span class=cl>toInt    a    =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: rounds a real number <code>a</code> up or down to the nearest integer.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -448,11 +556,15 @@ $$</p><p>where:</p><ul><li>$a$ is of type $\textbf{Real}$, and</li><li>$R$ is of
 </span></span><span class=line><span class=cl>toInt   0.0   //  0
 </span></span><span class=line><span class=cl>toInt (-1.4)  // -1
 </span></span><span class=line><span class=cl>toInt (-1.5)  // -2
-</span></span></code></pre></td></tr></table></div></div><a href=#characters-to-integers><h3 id=characters-to-integers><span class=hanchor arialabel=Anchor># </span>Characters To Integers</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ is of type $\textbf{Char}$, and</li><li>$R$ is of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: converts $a$ to its ASCII value.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#characters-to-integers><h3 id=characters-to-integers><span class=hanchor arialabel=Anchor># </span>Characters To Integers</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>toInt :: Char -&gt; Int
+</span></span><span class=line><span class=cl>toInt    a    =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: converts a character <code>a</code> to its ASCII value.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -468,12 +580,16 @@ $$</p><p>where:</p><ul><li>$a$ is of type $\textbf{Char}$, and</li><li>$R$ is of
 </span></span><span class=line><span class=cl>toInt &#39;Z&#39;  //  90
 </span></span><span class=line><span class=cl>toInt &#39;a&#39;  //  97
 </span></span><span class=line><span class=cl>toInt &#39;z&#39;  // 122
-</span></span></code></pre></td></tr></table></div></div><a href=#strings-to-integers><h3 id=strings-to-integers><span class=hanchor arialabel=Anchor># </span>Strings To Integers</h3></a><p><strong>Signature</strong></p><p>$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$</p><p>where:</p><ul><li>$a$ is of type $\textbf{String}$, and</li><li>$R$ is of type $\textbf{Int}$.</li></ul><p><strong>Behavior</strong>: converts a string $a$ to an integer.
-Returns $0$ if a decimal place is present.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><a href=#strings-to-integers><h3 id=strings-to-integers><span class=hanchor arialabel=Anchor># </span>Strings To Integers</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>toInt :: {#Char} -&gt; Int
+</span></span><span class=line><span class=cl>toInt    a       =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: attempts to parse a string <code>a</code> to an integer.
+Returns zero if unsuccessful.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -487,4 +603,64 @@ Returns $0$ if a decimal place is present.</p><p><strong>Usage</strong></p><div 
 </span></span><span class=line><span class=cl>toInt &#34;0&#34;     //  0
 </span></span><span class=line><span class=cl>toInt &#34;-1&#34;    // -1
 </span></span><span class=line><span class=cl>toInt &#34;-1.0&#34;  //  0
+</span></span></code></pre></td></tr></table></div></div><hr><a href=#conversions-from-integers><h2 id=conversions-from-integers><span class=hanchor arialabel=Anchor># </span>Conversions From Integers</h2></a><p>This group of functions explicitly converts integers to other types.
+The function shares the same name, which is <code>fromInt</code>, but the final type must be explicitly stated.</p><a href=#integers-to-real-numbers><h3 id=integers-to-real-numbers><span class=hanchor arialabel=Anchor># </span>Integers To Real Numbers</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>fromInt :: Real -&gt; Int
+</span></span><span class=line><span class=cl>fromInt    a    =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: converts an integer <code>a</code> into a real number.
+The decimal place is zero.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>expr :: Real
+</span></span><span class=line><span class=cl>expr =  fromInt  1  // 1.0
+</span></span><span class=line><span class=cl>expr =  fromInt  0  // 0.0
+</span></span></code></pre></td></tr></table></div></div><a href=#integers-to-characters><h3 id=integers-to-characters><span class=hanchor arialabel=Anchor># </span>Integers To Characters</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fromInt :: Int -&gt; Char
+</span></span><span class=line><span class=cl>fromInt    a    =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: converts an integer <code>a</code> in to a character based on its ASCII value.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>expr :: Char
+</span></span><span class=line><span class=cl>expr =  fromInt 49   // &#39;1&#39;
+</span></span><span class=line><span class=cl>expr =  fromInt 59   // &#39;9&#39;
+</span></span><span class=line><span class=cl>expr =  fromInt 65   // &#39;A&#39;
+</span></span><span class=line><span class=cl>expr =  fromInt 90   // &#39;Z&#39;
+</span></span><span class=line><span class=cl>expr =  fromInt 97   // &#39;a&#39;
+</span></span><span class=line><span class=cl>expr =  fromInt 122  // &#39;z&#39;
+</span></span></code></pre></td></tr></table></div></div><a href=#integers-to-strings><h3 id=integers-to-strings><span class=hanchor arialabel=Anchor># </span>Integers To Strings</h3></a><p><strong>Signature</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fromInt :: Int -&gt; {#Char}
+</span></span><span class=line><span class=cl>fromInt    a   =  ...
+</span></span></code></pre></td></tr></table></div></div><p><strong>Behavior</strong>: converts an integer <code>a</code> in a string.</p><p><strong>Usage</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>expr :: {#Char}
+</span></span><span class=line><span class=cl>expr =  fromInt 1  // &#34;1&#34;
+</span></span><span class=line><span class=cl>expr =  fromInt 0  // &#34;0&#34;
 </span></span></code></pre></td></tr></table></div></div></article><hr><div class=page-end id=footer><div class=backlinks-container><h3>Backlinks</h3><ul class=backlinks><li><a href=/cleanpedia// data-ctx="Appendix A: StdInt" data-src=/ class=internal-link>Cleanpedia</a></li><li><a href=/cleanpedia/appendix-a/_intro/ data-ctx=StdInt data-src=/appendix-a/_intro class=internal-link>Appendix A: Standard Environment</a></li></ul></div><div><script src=https://cdn.jsdelivr.net/npm/d3@6.7.0/dist/d3.min.js integrity="sha256-+7jaYCp29O1JusNWHaYtgUn6EhuP0VaFuswhNV06MyI=" crossorigin=anonymous></script><h3>Interactive Graph</h3><div id=graph-container></div><style>:root{--g-node:var(--secondary);--g-node-active:var(--primary);--g-node-inactive:var(--visited);--g-link:var(--outlinegray);--g-link-active:#5a7282}</style><script src=https://eurydia.github.io/cleanpedia/js/graph.abd4bc2af3869a96524d7d23b76152c7.js></script></div></div><div id=contact_buttons><footer><p>Made by Thanakorn Phuttharaksa using <a href=https://github.com/jackyzha0/quartz>Quartz</a>, © 2023</p><ul><li><a href=https://eurydia.github.io/cleanpedia/>Home</a></li><li><a href=https://www.instagram.com/_kornthana/>Instagram</a></li><li><a href=mailto:b9xp3x@inf.elte.hu>Email</a></li><li><a href=https://t.me/+El6CtwOD8KxhYmU9>Telegram</a></li></ul></footer></div></div></body></html>

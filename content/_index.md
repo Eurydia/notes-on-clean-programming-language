@@ -577,13 +577,13 @@ To invoke an operator as an ordinary function, the operator name must be placed 
 When applied in infix position, both arguments must be given.
 Operators can be curried, but only when they are invoked as ordinary functions.
 
-#### Operator fixity
+#### Operator Associativity
 
-The fixity is important when evaluating two operators of the same precedence.
-There are two relevant fixities:
-
-- `infixl` for left-associated operators, and
-- `infixr` for right-associated operators.
+The associativity is important when evaluating two operators of the same precedence.
+There are three types of associativity:
+- `infix` for non-associative operators,
+- `infixl` for left-associative operators, and
+- `infixr` for right-associative operators.
 
 The fixity of an operator is `infixl` by default.
 
@@ -791,7 +791,7 @@ There are three built-in structured types:
 
 ### Integers
 
-**Constructors**
+#### Integer Constructions
 
 There are three methods to construct integer literals.
 
@@ -825,7 +825,7 @@ Integers literals from hexadecimal notation may be written by prefixing hexadeci
  0xd  // decimal  13
 ```
 
-**Typing integers**
+#### Typing Integers
 
 An expression, which evaluates to an integer value, may be explicitly typed using `Int`.
 
@@ -836,11 +836,11 @@ expr :: Int
 expr =  1 + 1
 ```
 
-**Integer operators and functions**
+#### Integer Operators And Functions
 
 Integer operations and functions are discussed in more details on [Appendix A: StdInt](appendix-a/stdint).
 
-**Integer literals as parameters**
+#### Integer Patterns
 
 Integer literals may be used in as parameters in function implementations.
 Doing so will evokes a parameter-argument matching behavior.
@@ -854,8 +854,6 @@ isIntEight :: Int -> Bool
 isIntEight    8   =  True
 isIntEight    n   =  False
 ```
-
-
 
 ### Real Numbers
 

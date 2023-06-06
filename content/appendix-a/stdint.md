@@ -2,22 +2,26 @@
 title: "Appendix A: StdInt"
 ---
 
-## Arithmetic Operations 
+## Introduction
+
+This section of Appendix A discusses operations and functions defined within `StdInt` and by extension `StdEnv`.
+
+These operations and functions primarily interact `Int` type.
+
+## Arithmetic Operations
 
 ### Negation
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $R$ are of type $\textbf{Int}$.
+~ :: Int -> Int
+~    a   =  ...
+```
 
-**Behavior**: inverts the sign of $a$.
+**Behavior**: inverts the sign of an integer `a`.
 
 **Usage**
 
@@ -33,16 +37,14 @@ where:
 
 **Signature** 
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
+ 
+(+) infixl 6 :: Int Int -> Int
+(+)             a   b   =  ...
+```
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
-
-**Behavior**: adds $a$ and $b$ together.
+**Behavior**: adds `a` and `b` together.
 
 **Usage**
 
@@ -59,16 +61,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
+ 
+(-) infixl 6 :: Int Int -> Int
+(-)             a   b   =  ...
+```
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
-
-**Behavior**: subtracts $b$ from $a$.
+**Behavior**: subtracts `b` from `a`.
 
 **Usage**
 
@@ -85,16 +85,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
+ 
+(*) infixl 7 :: Int Int -> Int
+(*)             a   b   =  ...
+```
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
-
-**Behavior**: multiplies $a$ with $b$.
+**Behavior**: multiplies `a` and `b` together.
 
 **Usage**
 
@@ -111,17 +109,15 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
+(/) infixl 7 :: Int Int -> Int
+(/)             a   b   =  ...
+```
 
-**Behavior**: floor divides $a$ with $b$.
-Silently crashes if $b$ is $0$.
+**Behavior**: divides `a` by `b`.
+Silently crashes if `b` is zero.
 
 **Usage**
 
@@ -132,59 +128,61 @@ Silently crashes if $b$ is $0$.
   1  / (-1)  // -1
 (-1) /   1   // -1
 (-1) / (-1)  //  1
-  7  /   0   //  NOT OK :(
+  7  /   0   //  crashes
 ```
 
 ### Reminder Division
 
-Both $\text{rem}$  and $\text{mod}$ perform the same operation.
-
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
+(rem) infix 7 :: Int Int -> Int
+(rem)            a   b   =  ...
+```
 
-**Behavior**: returns reminder of $a$ divides by $b$.
+and
+
+```
+// Language: Clean
+
+(mod) infix 7 :: Int Int -> Int
+(mod)            a   b   =  ...
+```
+
+For integers, both `rem` and `mod` perform modulo division.
+
+**Behavior**: divides `a` by `b` and returns the reminder.
 
 **Usage**
 
 ```
 // Language: Clean
 
- 3 mod -2  //  1
--3 mod -2  // -1
--3 mod  2  // -1
- 3 mod  2  //  1
+  3  mod (-2)  //  1
+(-3) mod (-2)  // -1
+(-3) mod   2   // -1
+  3  mod   2   //  1
 ```
 
 ### Exponentiation
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
+(^) infixr 8 :: Int Int -> Int
+(^)             a   b   =  ...
+```
 
-**Behavior**: raises $a$ to the $b$-th power.
-Results in a run-time error if $b$ is negative
-
-The run-time error has the following message:
+**Behavior**: raises `a` to `b`-th power.
+Results in a run-time error if `b` is negative.
 
 ```
 ^ (Int) called with negative power argument
 ```
-
 
 **Usage**
 
@@ -201,21 +199,21 @@ The run-time error has the following message:
 
 ## Relational Operations
 
+There are six relational operations, and they share the same behavior.
+That is, they compare integral values of two integers, then return a Boolean value.
+
 ### Equal To
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $b$ are of type $\textbf{Int}$, and
-- $R$ is of type $\textbf{Bool}$.
+(==) infix 4 :: Int Int -> Bool
+(==)            a   b   =  ...
+```
 
-**Behavior**: checks if $a$ is equal to $b$.
+**Behavior**: returns true if and only if `a` is equal to `b`.
 
 **Usage**
 
@@ -233,17 +231,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $b$ are of type $\textbf{Int}$, and
-- $R$ is of type $\textbf{Bool}$.
+(<>) infix 4 :: Int Int -> Bool
+(<>)            a   b   =  ...
+```
 
-**Behavior**: checks if $a$ is not equal to $b$.
+**Behavior**: returns false if and only if `a` is equal to `b`.
 
 **Usage**
 
@@ -261,17 +256,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $b$ are of type $\textbf{Int}$, and
-- $R$ is of type $\textbf{Bool}$.
+(<) infix 4 :: Int Int -> Bool
+(<)            a   b   =  ...
+```
 
-**Behavior**: checks if $a$ is less than $b$.
+**Behavior**: returns true if and only if `a` is strictly less than `b`.
 
 **Usage**
 
@@ -289,17 +281,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $b$ are of type $\textbf{Int}$, and
-- $R$ is of type $\textbf{Bool}$.
+(<=) infix 4 :: Int Int -> Bool
+(<=)            a   b   =  ...
+```
 
-**Behavior**: checks if $a$ is less than or equal to $b$.
+**Behavior**: returns false if and only if `a` is strictly greater than `b`.
 
 **Usage**
 
@@ -317,17 +306,17 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
 
-where:
-- $a$ and $b$ are of type $\textbf{Int}$, and
-- $R$ is of type $\textbf{Bool}$.
+**Signature**
 
-**Behavior**: checks if $a$ is greater than $b$.
+```
+// Language: Clean
+
+(>) infix 4 :: Int Int -> Bool
+(>)            a   b   =  ...
+```
+
+**Behavior**: returns true if and only if `a` is strictly greater than `b`.
 
 **Usage**
 
@@ -345,17 +334,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $b$ are of type $\textbf{Int}$, and
-- $R$ is of type $\textbf{Bool}$.
+(>=) infix 4 :: Int Int -> Bool
+(>=)            a   b   =  ...
+```
 
-**Behavior**: checks if $a$ is greater than or equal to $b$.
+**Behavior**: returns false if and only if `a` is strictly less than `b`.
 
 **Usage**
 
@@ -373,28 +359,28 @@ where:
 
 ## Bitwise Operations
 
+This group of functions and operations interacts with integers through their binary representation.
+
 ### Bitwise NEGATE
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $R$ are of type $\textbf{Int}$.
+bitnot :: Int -> Int
+bitnot    a   =  ...
+```
 
-**Behavior**: returns bit-wise two complement of $a$.
+**Behavior**: returns bit-wise two complement of `a`.
 
 **Usage**
 
 ```
 // Language: Clean
 
-bitnot (-5)  // -4
-bitnot (-2)  //  1
+bitnot (-5)  //  -4
+bitnot (-2)  //   1
 bitnot   2   //  -3
 bitnot   5   //  -6
 ```
@@ -403,16 +389,14 @@ bitnot   5   //  -6
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
+(bitor) infixl 6 :: Int Int -> Int
+(bitor)             a   b   =  ...
+```
 
-**Behavior**: returns bit-wise OR of $a$ and $b$.
+**Behavior**: returns bit-wise OR of `a` and `b`.
 
 **Usage**
 
@@ -429,16 +413,15 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
+```
+// Language: Clean
 
-**Behavior**: returns bit-wise AND of $a$ and $b$.
+(bitand) infixl 6 :: Int Int -> Int
+(bitand)             a   b   =  ...
+```
+
+**Behavior**: returns bit-wise AND of `a` and `b`.
 
 **Usage**
 
@@ -455,42 +438,38 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
+(bitxor) infixl 6 :: Int Int -> Int
+(bitxor)             a   b   =  ...
+```
 
-**Behavior**: returns bit-wise XOR of $a$ and $b$.
+**Behavior**: returns bit-wise XOR of `a` and `b`.
 
 **Usage**
 
 ```
 // Language: Clean
 
-  5  bitand   2   //  7
-(-5) bitand   2   // -7
-  5  bitand (-2)  // -5
-(-5) bitand (-2)  //  5
+  5  bitxor   2   //  7
+(-5) bitxor   2   // -7
+  5  bitxor (-2)  // -5
+(-5) bitxor (-2)  //  5
 ```
 
 ### Bitwise Left Shift
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
+(<<) infix 7 :: Int Int -> Int
+(<<)            a   b   =  ...
+```
 
-**Behavior**: shifts $a$ to the left by $b$ bits.
+**Behavior**: shifts `a` to the left by `b` bits.
 
 **Usage**
 
@@ -507,16 +486,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
+(>>) infix 7 :: Int Int -> Int
+(>>)            a   b   =  ...
+```
 
-**Behavior**: shifts $a$ to the right by $b$ bits.
+**Behavior**: shifts `a` to the right by `b` bits.
 
 **Usage**
 
@@ -537,16 +514,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $R$ are of type $\textbf{Int}$,.
+sign :: Int -> Int
+sign    a   =  ...
+```
 
-**Behavior**: returns sign of $a$.
+**Behavior**: returns the sign of an integer `a`.
 
 **Usage**
 
@@ -562,16 +537,14 @@ sign (-1)  // -1
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $R$ are of type $\textbf{Int}$.
+abs :: Int -> Int
+abs    a   =  ...
+```
 
-**Behavior**: returns absolute value of $a$.
+**Behavior**: returns the absolute value of an integer `a`.
 
 **Usage**
 
@@ -587,16 +560,14 @@ abs (-1)  // 1
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
+gcd :: Int Int -> Int
+gcd    a   b   =  ...
+```
 
-**Behavior**: returns greatest common divisor of $a$ and $b$.
+**Behavior**: returns the greatest common divisor of `a` and `b`.
 
 **Usage**
 
@@ -613,16 +584,14 @@ gcd (-3) (-2)  // 1
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Int}$.
+lcm :: Int Int -> Int
+lcm    a   b   =  ...
+```
 
-**Behavior**: returns least common multiple of $a$ and $b$.
+**Behavior**: returns the least common multiple of `a` and `b`.
 
 **Usage**
 
@@ -639,21 +608,20 @@ lcm (-3) (-2)  // 6
 
 ## Property Functions
 
+This group of functions accepts one integer as an argument and returns a Boolean value based on the property of the integer given.
+
 ### `isEven`
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Int}$, and
-- $R$ is of type $\textbf{Bool}$.
+isEven :: Int -> Bool
+isEven    a   =  ...
+```
 
-**Behavior**: checks if $a$ is an even integer or not.
+**Behavior**: returns true if and only if `a` is an even integer.
 
 **Usage**
 
@@ -671,17 +639,14 @@ isEven -2  // False
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Int}$, and
-- $R$ is of type $\textbf{Bool}$.
+isOdd :: Int -> Bool
+isOdd    a   =  ...
+```
 
-**Behavior**: checks if $a$ is an odd integer or not.
+**Behavior**: returns true if and only if `a` is an odd integer.
 
 **Usage**
 
@@ -699,21 +664,19 @@ isOdd -2  // True
 
 ## Conversions To Integers
 
+This group of functions explicitly converts values of other types to integers.
+The function shares the same name, which is `toInt`, but they behave differently based on the original type.
+
 ### Real Numbers To Integers
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+toInt :: Real -> Int
+toInt    a    =  ...
+```
 
-where:
-- $a$ is of type $\textbf{Real}$, and
-- $R$ is of type $\textbf{Int}$.
-
-**Behavior**: rounds $a$ to its nearest integer.
+**Behavior**: rounds a real number `a` up or down to the nearest integer.
 
 **Usage**
 
@@ -731,17 +694,14 @@ toInt (-1.5)  // -2
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Int}$.
+toInt :: Char -> Int
+toInt    a    =  ...
+```
 
-**Behavior**: converts $a$ to its ASCII value.
+**Behavior**: converts a character `a` to its ASCII value.
 
 **Usage**
 
@@ -760,18 +720,15 @@ toInt 'z'  // 122
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{String}$, and
-- $R$ is of type $\textbf{Int}$.
+toInt :: {#Char} -> Int
+toInt    a       =  ...
+```
 
-**Behavior**: converts a string $a$ to an integer. 
-Returns $0$ if a decimal place is present.
+**Behavior**: attempts to parse a string `a` to an integer.
+Returns zero if unsuccessful.
 
 **Usage**
 
@@ -784,3 +741,84 @@ toInt "0"     //  0
 toInt "-1"    // -1
 toInt "-1.0"  //  0
 ```
+
+---
+
+## Conversions From Integers
+
+This group of functions explicitly converts integers to other types.
+The function shares the same name, which is `fromInt`, but the final type must be explicitly stated.
+
+
+### Integers To Real Numbers
+
+**Signature**
+
+```
+fromInt :: Real -> Int
+fromInt    a    =  ...
+```
+
+**Behavior**: converts an integer `a` into a real number.
+The decimal place is zero.
+
+**Usage**
+
+```
+// Language: Clean
+
+expr :: Real
+expr =  fromInt  1  // 1.0
+expr =  fromInt  0  // 0.0
+```
+
+### Integers To Characters
+
+**Signature**
+
+```
+// Language: Clean
+
+fromInt :: Int -> Char
+fromInt    a    =  ...
+```
+
+**Behavior**: converts an integer `a` in to a character based on its ASCII value.
+
+**Usage**
+
+```
+// Language: Clean
+
+expr :: Char
+expr =  fromInt 49   // '1'
+expr =  fromInt 59   // '9'
+expr =  fromInt 65   // 'A'
+expr =  fromInt 90   // 'Z'
+expr =  fromInt 97   // 'a'
+expr =  fromInt 122  // 'z'
+```
+
+### Integers To Strings
+
+**Signature**
+
+```
+// Language: Clean
+
+fromInt :: Int -> {#Char}
+fromInt    a   =  ...
+```
+
+**Behavior**: converts an integer `a` in a string.
+
+**Usage**
+
+```
+// Language: Clean
+
+expr :: {#Char}
+expr =  fromInt 1  // "1"
+expr =  fromInt 0  // "0"
+```
+

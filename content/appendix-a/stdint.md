@@ -4,9 +4,7 @@ title: "Appendix A: StdInt"
 
 ## Introduction
 
-This section of Appendix A discusses operations and functions defined within `StdInt` and by extension `StdEnv`.
-
-These operations and functions primarily interact `Int` type.
+This section of **Appendix A** discusses operations and functions defined within Standard Integer and, by extension, the Standard Environment.
 
 ## Arithmetic Operations
 

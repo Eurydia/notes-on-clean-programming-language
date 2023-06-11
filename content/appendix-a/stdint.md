@@ -689,12 +689,12 @@ isOdd -2  // True
 
 ---
 
-## Conversions To Integers
+## Conversions To Integer Type
 
-This group of functions explicitly converts values of other types to integers.
+This group of functions explicitly converts values of other types to integer type.
 The function shares the same name, which is `toInt`, but they behave differently based on the original type.
 
-### Real Numbers To Integers
+### From Real Number Type
 
 **Signature**
 
@@ -717,7 +717,7 @@ toInt (-1.4)  // -1
 toInt (-1.5)  // -2
 ```
 
-### Characters To Integers
+### From Character Type
 
 **Signature**
 
@@ -743,7 +743,7 @@ toInt 'a'  //  97
 toInt 'z'  // 122
 ```
 
-### Strings To Integers
+### From String Type
 
 **Signature**
 
@@ -771,13 +771,12 @@ toInt "-1.0"  //  0
 
 ---
 
-## Conversions From Integers
+## Conversions From Integer Type
 
-This group of functions explicitly converts integers to other types.
-The function shares the same name, which is `fromInt`, but the final type must be explicitly stated.
+This group of functions explicitly converts integer type to other types.
+The function shares the same name, which is `fromInt`, but the desired type must be unambiguous.
 
-
-### Integers To Real Numbers
+### To Real Number Type
 
 **Signature**
 
@@ -787,7 +786,7 @@ fromInt    a    =  ...
 ```
 
 **Behavior**: converts an integer `a` into a real number.
-The decimal place is zero.
+The decimal place is set to zero.
 
 **Usage**
 
@@ -799,7 +798,7 @@ expr =  fromInt  1  // 1.0
 expr =  fromInt  0  // 0.0
 ```
 
-### Integers To Characters
+### To Character Type
 
 **Signature**
 
@@ -826,7 +825,7 @@ expr =  fromInt 97   // 'a'
 expr =  fromInt 122  // 'z'
 ```
 
-### Integers To Strings
+### To String Type
 
 **Signature**
 
@@ -837,7 +836,7 @@ fromInt :: Int -> {#Char}
 fromInt    a   =  ...
 ```
 
-**Behavior**: converts an integer `a` in a string.
+**Behavior**: converts an integer `a` into a string.
 
 **Usage**
 
@@ -848,4 +847,3 @@ expr :: {#Char}
 expr =  fromInt 1  // "1"
 expr =  fromInt 0  // "0"
 ```
-

@@ -60,7 +60,7 @@ NaN ::  Real
 NaN :== 1E9999+(-1E9999)
 ```
 
-**Definition**: represents the un-representable floating point values for real numbers.
+**Definition**: represents floating point values which are not undefined.
 
 See also [NaN](https://en.wikipedia.org/wiki/NaN).
 
@@ -385,14 +385,12 @@ A rather impressive feature of the language is that equality comparison between 
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+sign :: Real -> Int
+sign    a    =  ...
+```
 
 **Behavior**: returns sign of `a`.
 
@@ -410,14 +408,12 @@ sign (-1.0)  // -1
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+abs :: Real -> Real
+abs    a    =  ...
+```
 
 **Behavior**: returns absolute value of `a`.
 
@@ -426,8 +422,8 @@ where:
 ```
 // Language: Clean
 
-abs   1.0   //  1.0
-abs   0.0   //  0.0
+abs   1.0   // 1.0
+abs   0.0   // 0.0
 abs (-1.0)  // 1.0
 ```
 
@@ -435,17 +431,15 @@ abs (-1.0)  // 1.0
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` is of type $\textbf{Real}$, and
-- $R$ is of type $\textbf{Int}$.
+entier :: Real -> Int
+entier    a    =  ...
+```
 
 **Behavior**: returns floor of `a`.
+This function is technically a type conversion function.
 
 **Usage**
 
@@ -461,14 +455,12 @@ entier (-1.5)  // -2
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+ln :: Real -> Real
+ln    a    =  ...
+```
 
 **Behavior**: returns natural logarithm of `a`.
 
@@ -483,20 +475,19 @@ ln   0.0   // -#INF
 ln (-1.5)  //  #NAN
 ln (-2.5)  //  #NAN
 ```
+
 ### `log10`
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+log10 :: Real -> Real
+log10    a    =  ...
+```
 
-**Behavior**: returns logarithm base $10$ of `a`.
+**Behavior**: returns logarithm base ten of `a`.
 
 **Usage**
 
@@ -514,16 +505,14 @@ log10 (-2.5)  //  #NAN
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+exp :: Real -> Real
+exp    a    =  ...
+```
 
-**Behavior**: raises $e$ to `a`-th power.
+**Behavior**: raises [Euler's number](https://en.wikipedia.org/wiki/E_\(mathematical_constant\)) to the power of `a`.
 
 **Usage**
 
@@ -541,14 +530,12 @@ exp (-2.5)  //  0.0820849986238988
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+sqrt :: Real -> Real
+sqrt    a    =  ...
+```
 
 **Behavior**: returns square root of `a`.
 
@@ -572,16 +559,14 @@ sqrt (-2.5)  // #NAN
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+sin :: Real -> Real
+sin    a    =  ...
+```
 
-**Behavior**: returns $\sin(a)$ .
+**Behavior**: returns sine of `a`.
 
 **Usage**
 
@@ -599,16 +584,14 @@ sin (-2.5)  // -0.598472144103956
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+cos :: Real -> Real
+cos    a    =  ...
+```
 
-**Behavior**: returns $\cos(a)$.
+**Behavior**: returns cosine of `a`.
 
 **Usage**
 
@@ -626,16 +609,14 @@ cos (-2.5)  // -0.801143615546934
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+tan :: Real -> Real
+tan    a    =  ...
+```
 
-**Behavior**: returns $\tan(a)$.
+**Behavior**: returns tangent of `a`.
 
 **Usage**
 
@@ -653,17 +634,14 @@ tan (-2.5)  //   0.74702229723866
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+asin :: Real -> Real
+asin    a    =  ...
+```
 
-**Behavior**: returns ${\sin}^{-1}(a)$.
-The domain is in interval $[-1,1]$.
+**Behavior**: returns inverse sine of `a`.
 
 **Usage**
 
@@ -683,17 +661,14 @@ asin (-2.5)  //  #NAN
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+acos :: Real -> Real
+acos    a    =  ...
+```
 
-**Behavior**: returns ${\cos}^{-1}(a)$.
-The domain is in interval $[-1,1]$.
+**Behavior**: returns inverse cosine of `a`.
 
 **Usage**
 
@@ -713,45 +688,41 @@ acos (-2.5)  // #NAN
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+atan :: Real -> Real
+atan    a    =  ...
+```
 
-**Behavior**: returns ${\tan}^{-1}(a)$.
+**Behavior**: returns inverse tangent of `a`.
 
 **Usage**
 
 ```
 // Language: Clean
 
-acos   2.5   //  1.19028994968253
-acos   1.5   //  0.982793723247329
-acos   0.5   //  0.463647609000806
-acos   0.0   //  0.0
-acos (-0.5)  // -0.463647609000806
-acos (-1.5)  // -0.982793723247329
-acos (-2.5)  // -1.19028994968253
+atan   2.5   //  1.19028994968253
+atan   1.5   //  0.982793723247329
+atan   0.5   //  0.463647609000806
+atan   0.0   //  0.0
+atan (-0.5)  // -0.463647609000806
+atan (-1.5)  // -0.982793723247329
+atan (-2.5)  // -1.19028994968253
 ```
 
 ### `sinh`
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+sinh :: Real -> Real
+sinh    a    =  ...
+```
 
-**Behavior**: returns $\sinh(a)$.
+**Behavior**: returns hyperbolic sine of `a`.
 
 **Usage**
 
@@ -771,16 +742,14 @@ sinh (-2.5)  // -6.05020448103979
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+cosh :: Real -> Real
+cosh    a    =  ...
+```
 
-**Behavior**: returns $\cosh(a)$.
+**Behavior**: returns hyperbolic cosine of `a`.
 
 **Usage**
 
@@ -800,16 +769,14 @@ cosh (-2.5)  // -6.13228947966369
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+tanh :: Real -> Real
+tanh    a    =  ...
+```
 
-**Behavior**: returns $\tanh(a)$.
+**Behavior**: returns hyperbolic tangent of `a`.
 
 **Usage**
 
@@ -829,16 +796,14 @@ tanh (-2.5)  // -0.98661429815143
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+asinh :: Real -> Real
+asinh    a    =  ...
+```
 
-**Behavior**: returns ${\sinh}^{-1}(a)$.
+**Behavior**: returns inverse hyperbolic sine of `a`.
 
 **Usage**
 
@@ -858,45 +823,41 @@ asinh (-2.5)  // -1.6472311463711
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+acosh :: Real -> Real
+acosh    a    =  ...
+```
 
-**Behavior**: returns ${\cosh}^{-1}(a)$.
+**Behavior**: returns inverse hyperbolic cosine of `a`.
 
 **Usage**
 
 ```
 // Language: Clean
 
-cosh   2.5   // 1.56679923697241
-cosh   1.5   // 0.962423650119207
-cosh   0.5   // #NAN
-cosh   0.0   // #NAN
-cosh (-0.5)  // #NAN
-cosh (-1.5)  // #NAN
-cosh (-2.5)  // #NAN
+acosh   2.5   // 1.56679923697241
+acosh   1.5   // 0.962423650119207
+acosh   0.5   // #NAN
+acosh   0.0   // #NAN
+acosh (-0.5)  // #NAN
+acosh (-1.5)  // #NAN
+acosh (-2.5)  // #NAN
 ```
 
 ### `atanh`
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` and $R$ are of type $\textbf{Real}$.
+atanh :: Real -> Real
+atanh    a    =  ...
+```
 
-**Behavior**: returns ${\tanh}^{-1}(a)$.
+**Behavior**: returns inverse hyperbolic tangent of `a`.
 
 **Usage**
 
@@ -920,17 +881,14 @@ atanh (-2.5)  //  #NAN
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` is of type $\textbf{Real}$, and
-- $R$ is of type $\textbf{Bool}$.
+isNaN :: Real -> Bool
+isNaN    a    =  ...
+```
 
-**Behavior**: checks if `a` is $\text{NaN}$ or not.
+**Behavior**: returns true if and only if `a` is not representable.
 
 **Usage**
 
@@ -949,17 +907,14 @@ isNaN (  0.0  ^ (-1.0))  // False
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` is of type $\textbf{Real}$, and
-- $R$ is of type $\textbf{Bool}$.
+isInfinity :: Real -> Bool
+isInfinity    a    =  ...
+```
 
-**Behavior**: checks if `a` is an infinite representation or not.
+**Behavior**: returns true if and only if `a` is too large to represent.
 
 **Usage**
 
@@ -978,17 +933,14 @@ isInfinity (  0.0  ^ (-1.0))  // True
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` is of type $\textbf{Real}$, and
-- $R$ is of type $\textbf{Bool}$.
+isFinite :: Real -> Bool
+isFinite    a    =  ...
+```
 
-**Behavior**: checks if `a` is finite or not.
+**Behavior**: returns false if and only if `a` is too large to represent.
 
 **Usage**
 
@@ -1006,21 +958,21 @@ isFinite (  0.0  ^ (-1.0))  // False
 ---
 
 
-## Conversions To Real Numbers
+## Conversions To Real Number Type
 
-### Integers To Real Numbers
+This group of functions explicitly converts other types to real number type 
+The function shares the same name, which is `toReal`, but they behave differently based on the original type.
+
+### From Integer Type
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` is of type $\text{Int}$, and
-- $R$ is of type $\textbf{Real}$.
+toReal :: Int -> Real
+toReal    a   =  ...
+```
 
 **Behavior**: converts `a` to a real number.
 
@@ -1036,21 +988,18 @@ toReal (-1)  // -1.0
 toReal (-2)  // -2.0
 ```
 
-### Strings To Real Numbers
+### From String Type
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- `a` is of type $\text{String}$, and
-- $R$ is of type $\textbf{Real}$.
+toReal :: String -> Real
+toReal    a      =  ...
+```
 
-**Behavior**: converts `a` to an real number.
+**Behavior**: parses a string `a` to an real number.
 
 **Usage**
 
@@ -1062,4 +1011,59 @@ toReal "1"     //  1.0
 toReal "0"     //  0.0
 toReal "-1"    // -1.0
 toReal "-1.0"  //  1.0
+```
+
+---
+
+## Conversions From Real Number Type
+
+This group of functions explicitly converts real number type to other types.
+The function shares the same name, which is `fromReal`, but the desired type must be unambiguous.
+
+### To Integer Type
+
+**Signature**
+
+```
+fromReal :: Real -> Int
+fromReal    a    =  ...
+```
+
+**Behavior**: rounds `a` to its nearest integer.
+
+**Usage**
+
+```
+// Language: Clean
+
+expr :: Int
+expr =  fromReal   1.9   //  2
+expr =  fromReal   1.4   //  1
+expr =  fromReal (-1.4)  // -1
+expr =  fromReal (-1.9)  // -2
+```
+
+### To String Type
+
+**Signature**
+
+```
+// Language: Clean
+
+fromReal :: Real -> {#Char}
+fromReal    a    =  ...
+```
+
+**Behavior**: converts a real number `a` into a string.
+
+**Usage**
+
+```
+// Language: Clean
+
+expr :: {#Char}
+expr =  fromReal   1.9   // "1.9"
+expr =  fromReal   1.4   // "1.4"
+expr =  fromReal (-1.4)  // "-1.4"
+expr =  fromReal (-1.9)  // "-1.9"
 ```

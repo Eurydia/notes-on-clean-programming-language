@@ -8,16 +8,14 @@ title: "Appendix A: StdBool"
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $R$ are of type $\textbf{Bool}$.
+not :: Bool -> Bool
+not    a    =  ...
+```
 
-**Behavior**: negates the logical value of $a$.
+**Behavior**: negates the logical value of `a`.
 
 **Usage**
 
@@ -29,46 +27,42 @@ not False       // True
 not (not True)  // True
 ```
 
-### Logical AND
+### Logical EQUIVALENCE
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Bool}$.
+(==) infix 4 :: Bool Bool -> Bool
+(==)            a    b    =  ...
+```
 
-**Behavior**: returns true if and only if both $a$ and $b$ are true.
+**Behavior**: returns true if and only if both `a` and `b` share the same logical value.
 
 **Usage**
 
 ```
 // Language: Clean
 
-True  && True   // True
-True  && False  // False
-False && True   // False
-False && False  // False
+True  == True   // True
+True  == False  // False
+False == True   // False
+False == False  // True
 ```
 
 ### Logical OR
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Bool}$.
+(||) infixr 2 :: Bool Bool -> Bool
+(||)             a    b    =  ...
+```
 
-**Behavior**: returns false if and only if both $a$ and $b$ are false.
+**Behavior**: returns false if and only if both `a` and `b` are false.
 
 **Usage**
 
@@ -81,28 +75,26 @@ False || True   // True
 False || False  // False
 ```
 
-### Logical EQUIVALENCE
+### Logical AND
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Bool}$.
+(&&) infixr 3 :: Bool Bool -> Bool
+(&&)             a    b    =  ...
+```
 
-**Behavior**: returns true if and only if both $a$ and $b$ share the same truth value.
+**Behavior**: returns true if and only if both `a`and `b` are true.
 
 **Usage**
 
 ```
 // Language: Clean
 
-True  == True   // True
-True  == False  // False
-False == True   // False
-False == False  // True
+True  && True   // True
+True  && False  // False
+False && True   // False
+False && False  // False
 ```

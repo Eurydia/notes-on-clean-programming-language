@@ -8,19 +8,21 @@ This section is referred to by other parts of the reference to increase readabil
 It is a summary of the Standard Environment provided by creators of CLEAN.
 Some functions which can be easily synthesized from other functions are omitted.
 
-The Standard Environment includes, but not limited to, the following modules:
+The Standard Environment includes, but not limited to, the following modules.
 
-- [StdArray](appendix-a/stdarray.md)
-- [StdBool](appendix-a/stdbool.md)
-- [StdChar](appendix-a/stdchar.md)
-- [StdCharList](appendix-a/stdcharlist.md)
-- [StdClass](appendix-a/stdclass.md)
-- [StdInt](appendix-a/stdint.md)
-- [StdList](appendix-a/stdlist.md)
-- [StdMisc](appendix-a/stdmisc.md)
-- [StdOrdList](appendix-a/stdordlist.md)
-- [StdOverloaded](appendix-a/stdoverloaded.md)
-- [StdReal](appendix-a/stdreal.md)
-- [StdString](appendix-a/stdstring.md)
-- [StdTuple](appendix-a/stdtuple.md)
+| Module                                       | Description                                                       |
+| -------------------------------------------- | ----------------------------------------------------------------- |
+| [StdArray](appendix-a/stdarray.md)           | Operations and functions on arrays                                |
+| [StdBool](appendix-a/stdbool.md)             | Logical operations                                                |
+| [StdChar](appendix-a/stdchar.md)             | Operations and functions on characters                            |
+| [StdCharList](appendix-a/stdcharlist.md)     | Operations and functions on lists, whose elements are characters  |
+| [StdClass](appendix-a/stdclass.md)           | Predefined classes                                                |
+| [StdInt](appendix-a/stdint.md)               | Operations and functions on integers                              |
+| [StdList](appendix-a/stdlist.md)             | Operations and functions on lists                                 |
+| [StdMisc](appendix-a/stdmisc.md)             | Miscellaneous functions                                           |
+| [StdOrdList](appendix-a/stdordlist.md)       | Operations and functions on lists, whose element can be ordered   |
+| [StdOverloaded](appendix-a/stdoverloaded.md) | Predefined overloaded operations and functions                    |
+| [StdReal](appendix-a/stdreal.md)             | Operations and functions on real numbers                          |
+| [StdString](appendix-a/stdstring.md)         | Operations and functions on arrays, whose elements are characters |
+| [StdTuple](appendix-a/stdtuple.md)           | Operations and functions on tuples                                |
 

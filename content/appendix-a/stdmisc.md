@@ -2,27 +2,41 @@
 title: "Appendix A: StdMisc"
 ---
 
+## Constants
+
+### Undefined Entity
+
+**Implementation**
+
+```
+// Language: Clean
+
+undef :: anyType
+undef = abort "Run-time error! Program evaluated undefined value?!"
+```
+
+**Definition**: represents an undefined value.
+Forces a program to terminate if it is evaluated.
+
+---
+
 ## Functions
 
 ### `abort`
 
 **Signature**
 
-$$\begin{align*}
-\text{a}\rightarrow\text{b}
-\end{align*}
-$$
+```
+abort :: {#Char} -> anyType
+abort    a
+```
 
-where:
-- $a$ is of type $\textbf{String}$, and
-- $b$ is of any type $\textbf{T}$.
-
-**Behavior**: terminates the program and return a custom error message $a$.
+**Behavior**: terminates the program and return an error message `a`.
 
 **Usage**
 
 ```
 // Language: Clean
  
-abort "Aborted" // "Aborted"
+abort "Terminated"  // "Terminated"
 ```

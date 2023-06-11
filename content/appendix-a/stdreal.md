@@ -2,22 +2,84 @@
 title: "Appendix A: StdReal"
 ---
 
+## Introduction
+
+This section of **Appendix A** discusses operations and functions defined within Standard Real and, by extension, the Standard Environment.
+
+The operations and functions of this module primarily interacts with real numbers.
+
+## Constants
+
+### Zero Unit
+
+**Implementation**
+
+```
+// Language: Clean
+
+zero ::  Real
+zero :== 0.0
+```
+
+**Definition**: represents the value zero for real numbers.
+
+### One Unit
+
+**Implementation**
+
+```
+// Language: Clean
+
+one ::  Real
+one :== 1.0
+```
+
+**Definition**: represents the value one for real numbers.
+
+### Infinity Representation
+
+**Implementation**
+
+```
+// Language: Clean
+
+Infinity ::  Real
+Infinity :== 1E9999
+```
+
+**Definition**: represents the largest value for real numbers.
+
+### Not-A-Number Representation
+
+**Implementation**
+
+```
+// Language: Clean
+
+NaN ::  Real
+NaN :== 1E9999+(-1E9999)
+```
+
+**Definition**: represents the un-representable floating point values for real numbers.
+
+See also [NaN](https://en.wikipedia.org/wiki/NaN).
+
+---
+
 ## Arithmetic Operations
 
 ### Negation
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+~ :: Real -> Real
+~    a    =  ...
+```
 
-**Behavior**: inverts the sign of $a$.
+**Behavior**: inverts the sign of `a`.
 
 **Usage**
 
@@ -33,16 +95,15 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
 
-where:
-- $a$, $b$, $R$ are of type $\textbf{Real}$.
+```
+// Language: Clean
+ 
+(+) infixl 6 :: Real Real -> Real
+(+)             a    b    =  ...
+```
 
-**Behavior**: adds $a$ and $b$ together.
+**Behavior**: adds `a` and `b` together.
 
 **Usage**
 
@@ -59,16 +120,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
+ 
+(-) infixl 6 :: Real Real -> Real
+(-)             a    b    =  ...
+```
 
-where:
-- $a$, $b$, $R$ are of type $\textbf{Real}$.
-
-**Behavior**: subtracts $b$ from $a$.
+**Behavior**: subtracts `b` from `a`.
 
 **Usage**
 
@@ -85,16 +144,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
+ 
+(*) infixl 7 :: Real Real -> Real
+(*)             a    b    =  ...
+```
 
-where:
-- $a$, $b$, $R$ are of type $\textbf{Real}$.
-
-**Behavior**: multiplies $a$ with $b$.
+**Behavior**: multiplies `a` with `b`.
 
 **Usage**
 
@@ -111,16 +168,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, $R$ are of type $\textbf{Real}$.
+(/) infixl 7 :: Real Real -> Real
+(/)             a    b    =  ...
+```
 
-**Behavior**: divides $a$ with $b$. 
+**Behavior**: divides `a` with `b`. 
 
 **Usage**
 
@@ -133,22 +188,21 @@ where:
 (-2.5) / (-1.5)  //  1.66666666666667
   1.0  /   0.0   //  #INF
 (-1.0) /   0.0   // -#INF
+  0.0  /   0.0   //  #NaN
 ```
 
 ### Exponentiation
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, $R$ are of type $\textbf{Real}$.
+(^) infixr 8 :: Real Real -> Real
+(^)             a    b    =  ...
+```
 
-**Behavior**: raises $a$ to the $b$-th power.
+**Behavior**: raises `a` to the `b`-th power.
 
 **Usage**
 
@@ -168,21 +222,23 @@ where:
 
 ## Relational Operations
 
+There are six relational operations, and they share the same behavior.
+That is, they compare floating point values of two real numbers, then return a Boolean value.
+
+A rather impressive feature of the language is that equality comparison between two floating point values is allowed.
+
 ### Equal To
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $b$ are of type $\textbf{Real}$, and
-- $R$ is of type $\textbf{Bool}$.
+(==) infix 4 :: Real Real -> Bool
+(==)            a    b    =  ...
+```
 
-**Behavior**: checks if $a$ is equal to $b$.
+**Behavior**: returns true if and only if `a` is equal to `b`.
 
 **Usage**
 
@@ -200,17 +256,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $b$ are of type $\textbf{Real}$, and
-- $R$ is of type $\textbf{Bool}$.
+(<>) infix 4 :: Real Real -> Bool
+(<>)            a    b    =  ...
+```
 
-**Behavior**: checks if $a$ is not equal to $b$.
+**Behavior**: returns false if and only if `a` is equal to `b`.
 
 **Usage**
 
@@ -228,17 +281,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $b$ are of type $\textbf{Real}$, and
-- $R$ is of type $\textbf{Bool}$.
+(<) infix 4 :: Real Real -> Bool
+(<)            a    b    =  ...
+```
 
-**Behavior**: checks if $a$ is less than $b$.
+**Behavior**: returns true if and only if `a` is strictly less than `b`.
 
 **Usage**
 
@@ -256,17 +306,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $b$ are of type $\textbf{Real}$, and
-- $R$ is of type $\textbf{Bool}$.
+(<=) infix 4 :: Real Real -> Bool
+(<=)            a    b    =  ...
+```
 
-**Behavior**: checks if $a$ is less than or equal to $b$.
+**Behavior**: returns false if and only if `a` is strictly greater than `b`.
 
 **Usage**
 
@@ -284,17 +331,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $b$ are of type $\textbf{Real}$, and
-- $R$ is of type $\textbf{Bool}$.
+(>) infix 4 :: Real Real -> Bool
+(>)            a    b    =  ...
+```
 
-**Behavior**: checks if $a$ is greater than $b$.
+**Behavior**: returns true if and only if `a` is strictly greater than `b`.
 
 **Usage**
 
@@ -312,17 +356,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ and $b$ are of type $\textbf{Real}$, and
-- $R$ is of type $\textbf{Bool}$.
+(>=) infix 4 :: Real Real -> Bool
+(>=)            a    b    =  ...
+```
 
-**Behavior**: checks if $a$ is greater than or equal to $b$.
+**Behavior**: returns false if and only if `a` is strictly less than `b`.
 
 **Usage**
 
@@ -351,9 +392,9 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
-**Behavior**: returns sign of $a$.
+**Behavior**: returns sign of `a`.
 
 **Usage**
 
@@ -376,9 +417,9 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
-**Behavior**: returns absolute value of $a$.
+**Behavior**: returns absolute value of `a`.
 
 **Usage**
 
@@ -401,10 +442,10 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\textbf{Real}$, and
+- `a` is of type $\textbf{Real}$, and
 - $R$ is of type $\textbf{Int}$.
 
-**Behavior**: returns floor of $a$.
+**Behavior**: returns floor of `a`.
 
 **Usage**
 
@@ -427,9 +468,9 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
-**Behavior**: returns natural logarithm of $a$.
+**Behavior**: returns natural logarithm of `a`.
 
 **Usage**
 
@@ -453,9 +494,9 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
-**Behavior**: returns logarithm base $10$ of $a$.
+**Behavior**: returns logarithm base $10$ of `a`.
 
 **Usage**
 
@@ -480,9 +521,9 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
-**Behavior**: raises $e$ to $a$-th power.
+**Behavior**: raises $e$ to `a`-th power.
 
 **Usage**
 
@@ -507,9 +548,9 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
-**Behavior**: returns square root of $a$.
+**Behavior**: returns square root of `a`.
 
 **Usage**
 
@@ -538,7 +579,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
 **Behavior**: returns $\sin(a)$ .
 
@@ -565,7 +606,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
 **Behavior**: returns $\cos(a)$.
 
@@ -592,7 +633,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
 **Behavior**: returns $\tan(a)$.
 
@@ -619,7 +660,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
 **Behavior**: returns ${\sin}^{-1}(a)$.
 The domain is in interval $[-1,1]$.
@@ -649,7 +690,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
 **Behavior**: returns ${\cos}^{-1}(a)$.
 The domain is in interval $[-1,1]$.
@@ -679,7 +720,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
 **Behavior**: returns ${\tan}^{-1}(a)$.
 
@@ -708,7 +749,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
 **Behavior**: returns $\sinh(a)$.
 
@@ -737,7 +778,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
 **Behavior**: returns $\cosh(a)$.
 
@@ -766,7 +807,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
 **Behavior**: returns $\tanh(a)$.
 
@@ -795,7 +836,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
 **Behavior**: returns ${\sinh}^{-1}(a)$.
 
@@ -824,7 +865,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
 **Behavior**: returns ${\cosh}^{-1}(a)$.
 
@@ -853,7 +894,7 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ and $R$ are of type $\textbf{Real}$.
+- `a` and $R$ are of type $\textbf{Real}$.
 
 **Behavior**: returns ${\tanh}^{-1}(a)$.
 
@@ -886,10 +927,10 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\textbf{Real}$, and
+- `a` is of type $\textbf{Real}$, and
 - $R$ is of type $\textbf{Bool}$.
 
-**Behavior**: checks if $a$ is $\text{NaN}$ or not.
+**Behavior**: checks if `a` is $\text{NaN}$ or not.
 
 **Usage**
 
@@ -915,10 +956,10 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\textbf{Real}$, and
+- `a` is of type $\textbf{Real}$, and
 - $R$ is of type $\textbf{Bool}$.
 
-**Behavior**: checks if $a$ is an infinite representation or not.
+**Behavior**: checks if `a` is an infinite representation or not.
 
 **Usage**
 
@@ -944,10 +985,10 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\textbf{Real}$, and
+- `a` is of type $\textbf{Real}$, and
 - $R$ is of type $\textbf{Bool}$.
 
-**Behavior**: checks if $a$ is finite or not.
+**Behavior**: checks if `a` is finite or not.
 
 **Usage**
 
@@ -978,10 +1019,10 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{Int}$, and
+- `a` is of type $\text{Int}$, and
 - $R$ is of type $\textbf{Real}$.
 
-**Behavior**: converts $a$ to a real number.
+**Behavior**: converts `a` to a real number.
 
 **Usage**
 
@@ -1006,10 +1047,10 @@ a\rightarrow{R}
 $$
 
 where:
-- $a$ is of type $\text{String}$, and
+- `a` is of type $\text{String}$, and
 - $R$ is of type $\textbf{Real}$.
 
-**Behavior**: converts $a$ to an real number.
+**Behavior**: converts `a` to an real number.
 
 **Usage**
 

@@ -6,6 +6,38 @@ title: "Appendix A: StdInt"
 
 This section of **Appendix A** discusses operations and functions defined within Standard Integer and, by extension, the Standard Environment.
 
+The operations and functions of this module primarily interacts with integers.
+
+## Constants
+
+### Zero Unit
+
+**Implementation**
+
+```
+// Language: Clean
+
+zero ::  Int
+zero :== 0
+```
+
+**Definition**: represents the value zero for integers.
+
+### One Unit
+
+**Implementation**
+
+```
+// Language: Clean
+
+one ::  Int
+one :== 1
+```
+
+**Definition**: represents the value one for integers.
+
+---
+
 ## Arithmetic Operations
 
 ### Negation
@@ -19,7 +51,7 @@ This section of **Appendix A** discusses operations and functions defined within
 ~    a   =  ...
 ```
 
-**Behavior**: inverts the sign of an integer `a`.
+**Behavior**: inverts the sign `a`.
 
 **Usage**
 
@@ -301,9 +333,6 @@ That is, they compare integral values of two integers, then return a Boolean val
 ```
 
 ### Greater Than
-
-**Signature**
-
 
 **Signature**
 

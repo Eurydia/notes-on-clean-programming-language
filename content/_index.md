@@ -585,7 +585,7 @@ There are three types of associativity:
 - `infixl` for left-associative operators, and
 - `infixr` for right-associative operators.
 
-The fixity of an operator is `infixl` by default.
+The associativity of an operator is `infixl` by default.
 
 #### Operator Precedence
 
@@ -593,7 +593,6 @@ The precedence determines how tightly an operator binds to its argument.
 Precedence can be between zero and nine with higher number having higher precedence.
 
 The precedence of an operator is nine by default.
-
 
 #### Operator Definitions
 
@@ -630,34 +629,38 @@ Operators can conflict with one another.
 (<=>)             False False =  True
 (<=>)             _     _     =  False
 
-(-->) infixr 9 :: Bool  Bool  -> Bool
-(-->)             False True  =  False
-(-->)             _     _     =  True
+(-->) infixr 9 :: Bool Bool  -> Bool
+(-->)             True False =  False
+(-->)             _     _    =  True
 ```
 
-It is not allowed to apply operators with equal precedence in an expression in such a way that their fixity conflict.
+It is not allowed to apply operators with equal precedence in an expression in such a way that their associativity conflict.
 
 ```
+// Language: Clean
+
 True --> False <=> False
 ```
 
-The logical implication operator (`-->`)  is right-associated.
+The [logical implication](https://en.wikipedia.org/wiki/Material_conditional) operator (`-->`)  is right-associated.
 It implies that the expression should be evaluated as follows.
 
 ```
+// Language: Clean
+
 True --> (False <=> False)
 ```
 
-However, the logical equivalence operator (`<=>` ) is left associated.
+However, the [logical equivalence](https://en.wikipedia.org/wiki/Logical_equivalence) operator (`<=>`) is left associated.
 It implies that the expression should be evaluated as follows.
 
 ```
-// language: Clean
+// Language: Clean
 
 (True --> False) <=> False
 ```
 
-Since both operators have the same precedence and the order of evaluation cannot be decided by their fixity, this expression will result in a compile-time error.
+Since both operators have the same precedence and the order of evaluation cannot be decided by their associativity, this expression will result in a compile-time error.
 
 ### Constants
 
@@ -791,11 +794,11 @@ There are three built-in structured types:
 
 ### Integers
 
-#### Integer Constructions
+#### Constructing Integers
 
 There are three methods to construct integer literals.
 
-Integer literals from decimal notation may be written as follows.
+Integer literals constructed with decimal notation may be written as follows.
 
 ```
 // Language: Clean
@@ -805,7 +808,7 @@ Integer literals from decimal notation may be written as follows.
  13
 ```
 
-Integer literals from octal notation may be written by prefixing octal digits with `0` as follows:
+Integer literals constructed with octal notation may be written by prefixing octal digits with `0` as follows:
 
 ```
 // Language: Clean
@@ -815,7 +818,7 @@ Integer literals from octal notation may be written by prefixing octal digits wi
  015  // decimal  13
 ```
 
-Integers literals from hexadecimal notation may be written by prefixing hexadecimal digits with `0x` as follows.
+Integers literals constructed with hexadecimal notation may be written by prefixing hexadecimal digits with `0x` as follows.
 
 ```
 // Language: Clean
@@ -827,7 +830,7 @@ Integers literals from hexadecimal notation may be written by prefixing hexadeci
 
 #### Typing Integers
 
-An expression, which evaluates to an integer value, may be explicitly typed using `Int`.
+An expression, which evaluates to an integer, may be explicitly typed using `Int`.
 
 ```
 // Language: Clean
@@ -840,7 +843,7 @@ expr =  1 + 1
 
 Integer operations and functions are discussed in more details on [Appendix A: StdInt](appendix-a/stdint).
 
-#### Integer Patterns
+#### Parameter Matching Integers
 
 Integer literals may be used in as parameters in function implementations.
 Doing so will evokes a parameter-argument matching behavior.
@@ -855,73 +858,184 @@ isIntEight    8   =  True
 isIntEight    n   =  False
 ```
 
+Alternative, octal and hexadecimal representation of eight may be used as well.
+
+`isIntEight` written with octal representation.
+
+```
+// Language: Clean
+
+isIntEight :: Int -> Bool
+isIntEight    010 =  True
+isIntEight    n   =  False
+```
+
+And `isIntEight` written with hexadecimal representation.
+
+```
+// Language: Clean
+
+isIntEight :: Int -> Bool
+isIntEight    0x8 =  True
+isIntEight    n   =  False
+```
+
 ### Real Numbers
 
-**Type annotation**: `Real`
+#### Constructing Real Number
 
-**Constructors**
+There are two methods to construct real number literals.
 
-Decimal constructor:
+Real number literals constructed with decimal notation may be written as follows.
 
-```
-// Language: Clean
-
-n :: Real
-n = -1.3
-n =  0.0
-n =  1.3
-```
-
-Scientific constructor:
 
 ```
 // Language: Clean
 
-n :: Real
-n = -13E-2  // -0.13
-n =  0E0    //  0
-n =  13E-2  //  0.13
+-1.3
+ 0.0
+ 1.3
 ```
 
-More information about built-in operations and functions on real numbers can be found on [Appendix A: StdReal](appendix-a/stdreal).
+Real number literals constructed with scientific notation may be written as follows.
+
+```
+// Language: Clean
+
+-13E-2  // -0.13
+ 0E0    //  0
+ 13E-2  //  0.13
+```
+
+When constructing a real number literal with scientific notation, the expression may result in an integer instead of a real number.
+
+```
+// Language: Clean
+
+13E2  // 1300
+```
+
+#### Typing Real Numbers
+
+An expression, which evaluates to a real number, may be explicitly typed using `Real`.
+
+```
+// Language: Clean
+
+expr :: Real
+expr =  1.0 + 1.0
+```
+
+#### Real Number Operators And Functions
+
+Real number operations and functions are discussed in more details on [Appendix A: StdReal](appendix-a/stdreal).
+
+#### Parameter Matching Real Numbers
+
+Real number literals may be used in as parameters in function implementations.
+Doing so will evokes a parameter-argument matching behavior.
+
+A simple function which determines whether a real number is a unit or not may be implemented as follows.
+
+```
+// Language: Clean
+
+isUnit :: Real -> Bool
+isUnit    1.0  =  True
+isUnit    n    =  False
+```
 
 ### Booleans
 
-**Type annotation**: `Bool`
+#### Constructing Booleans
 
-**Constructors**
+There are two methods to construct Boolean literals.
 
-There are two constructors for Boolean type.
+Each constructor represent a Boolean value true and false.
 
 ```
 // Language: Clean
 
-b :: Bool
-b =  True
-b =  False
+True
+False
 ```
 
-More information about built-in operations and functions on Booleans can be found on [Appendix A: StdBool](appendix-a/stdbool).
+#### Typing Booleans
+
+An expression, which evaluates to a Boolean value, may be explicitly typed using `Bool`.
+
+```
+// Language: Clean
+
+expr :: Bool
+expr =  1 == 1
+```
+
+#### Boolean Operations and Functions
+
+Boolean operations and functions are discussed in more details on [Appendix A: StdBool](appendix-a/stdbool).
+
+#### Parameter Matching Booleans
+
+Boolean literals may be used in as parameters in function implementations.
+Doing so will evokes a parameter-argument matching behavior.
+
+The [logical implication](https://en.wikipedia.org/wiki/Material_conditional) operation may be implemented as follows.
+
+```
+// Language: Clean
+
+(-->) infixr 9 :: Bool Bool  -> Bool
+(-->)             True False =  False
+(-->)             _     _    =  True
+```
 
 ### Characters
 
-**Type annotation**: `Char`
-
-**Constructors**
+#### Constructing Characters
 
 A character may be constructed by placing one character inside a pair of single quotation marks (`'..'`).
+
+Characters constructed in the same way.
 
 ```
 // Language: Clean
 
-c :: Char
-c =  'a'
-c =  '9'
-c =  'Z'
-c =  '+'
+'a'
+'9'
+'Z'
+'+'
 ```
 
-More information about built-in operations and functions on characters can be found on [Appendix A: StdChar](appendix-a/stdchar).
+#### Typing Characters
+
+An expression, which evaluates to a character, may be explicitly typed using `Char`.
+
+```
+// Language: Clean
+
+expr :: Char
+expr =  'a'
+```
+
+#### Character Operations And Functions
+
+Character operations and functions are discussed in more details on [Appendix A: StdChar](appendix-a/stdchar).
+
+#### Parameter Matching Characters
+
+Character literals may be used in as parameters in function implementations.
+Doing so will evokes a parameter-argument matching behavior.
+
+A simple function which determines whether a real number is a unit or not may be implemented as follows.
+
+```
+// Language: Clean
+
+(-->) infixr 9 :: Bool  Bool  -> Bool
+(-->)             False True  =  False
+(-->)             _     _     =  True
+```
 
 ### Lists
 
@@ -931,7 +1045,7 @@ More information about built-in operations and functions on characters can be fo
 `[T]`,
 et cetera.
 
-**Constructors**
+#### Constructing Lists
 
 A list can be constructed in many ways, but there are three primary methods.
 The simplest way to construct a list is to explicitly write elements between a pair of square brackets (`[..]`).
@@ -958,7 +1072,7 @@ A list may be appended to the end of another list using colon (`:`).
 [1 : [2, 3]]
 ```
 
-In the example above, the outer list (`[1 : ..]`) is constructed by appending the inner list (`[2, 3]`) to the end.
+The outer list (`[1 : ..]`) is constructed by appending the inner list (`[2, 3]`) to the end.
 
 As a result, this method of list construction has a wide varieties which can be written.
 
@@ -970,7 +1084,7 @@ As a result, this method of list construction has a wide varieties which can be 
 [1, 2, 3 : []]
 ```
 
-A list may be implicitly constructed with `dot-dot` expression, and a control expression may be written as follows.
+Secondly, a list may be implicitly constructed with `dot-dot` expression, and a control expression may be written as follows.
 
 ```
 // Language: Clean
@@ -986,7 +1100,7 @@ An infinite list is generated from `initial`, which represents the starting valu
 [1..]  // [1, 2, 3, 4, ...]
 ```
 
-To create a finite list, an `end` value may be specified in the expression.
+To create a finite list, an `end` value may be specified.
 
 ```
 // Language: Clean
@@ -1011,7 +1125,8 @@ In addition, `next` value may be specified to change how subsequent elements are
 ```
 
 Each step is computed from `next - initial`.
-Therefore, it is possible to generate a list which is in descending order.
+If the next element is strictly greater than `end`, it will not be included.
+It is possible to generate a list which is in descending order.
 
 ```
 // Language: Clean
@@ -1039,9 +1154,7 @@ The expression results in an infinite list.
 
 It should be noted that `dot-dot` expressions requires `StdEnum` module.
 
-
-
-From list comprehension:
+And lastly, a list may be constructed with comprehension.
 
 ```
 // Language: Clean

@@ -70,4 +70,3 @@
 	- instances
 Appendix a: StdEnv
 Appendix b: Lexical rules
-Appendix c: Code templates?

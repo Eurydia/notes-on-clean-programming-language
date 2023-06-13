@@ -2001,4 +2001,4 @@ where
 
 ## Appendix A: Standard Environment
 
-More information about Standard Environment can be found [here](appendix-a/_intro.md).
+The Standard Environment is discussed in detail [here](appendix-a/_intro.md).

@@ -6,7 +6,7 @@
 <script src=https://eurydia.github.io/cleanpedia/js/code-title.b35124ad8db0ba37162b886afb711cbc.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/clipboard.c20857734e53a3fb733b7443879efa61.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/callouts.7723cac461d613d118ee8bb8216b9838.min.js></script>
-<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.816a46288939b674c0c41ea911c4b447.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.17e719dad2bd4250623f72012b4840bb.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!1);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=()=>{addCopyButtons(),addTitleToCodeBlocks()}</script><script type=module>
+<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.816a46288939b674c0c41ea911c4b447.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.1b64ebbe7920e79212bd306c41835ef9.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!1);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=()=>{addCopyButtons(),addTitleToCodeBlocks()}</script><script type=module>
     import { attachSPARouting } from "https:\/\/eurydia.github.io\/cleanpedia\/js\/router.9d4974281069e9ebb189f642ae1e3ca2.min.js"
     attachSPARouting(init, render)
   </script></head><body><div class=singlePage><header><h1 id=page-title><a href=https://eurydia.github.io/cleanpedia/>Cleanpedia</a></h1><div class=spacer></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
@@ -658,38 +658,7 @@ They have been predefined for reasons of efficiency and convenience.</p><p>There
 </span></span><span class=line><span class=cl>expr :: Int
 </span></span><span class=line><span class=cl>expr =  1 + 1
 </span></span></code></pre></td></tr></table></div></div><a href=#integer-operators-and-functions><h4 id=integer-operators-and-functions><span class=hanchor arialabel=Anchor># </span>Integer Operators And Functions</h4></a><p>Integer operations and functions are discussed in more details on
-<a href=/cleanpedia/appendix-a/stdint/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdint/>Appendix A: StdInt</a>.</p><a href=#parameter-matching-integers><h4 id=parameter-matching-integers><span class=hanchor arialabel=Anchor># </span>Parameter Matching Integers</h4></a><p>Integer literals may be used in as parameters in function implementations.
-Doing so will evokes a parameter-argument matching behavior.</p><p>A simple function which determines whether an integer is eight or not may be implemented as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>isIntEight :: Int -&gt; Bool
-</span></span><span class=line><span class=cl>isIntEight    8   =  True
-</span></span><span class=line><span class=cl>isIntEight    n   =  False
-</span></span></code></pre></td></tr></table></div></div><p>Alternative, octal and hexadecimal representation of eight may be used as well.</p><p><code>isIntEight</code> written with octal representation.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>isIntEight :: Int -&gt; Bool
-</span></span><span class=line><span class=cl>isIntEight    010 =  True
-</span></span><span class=line><span class=cl>isIntEight    n   =  False
-</span></span></code></pre></td></tr></table></div></div><p>And <code>isIntEight</code> written with hexadecimal representation.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>isIntEight :: Int -&gt; Bool
-</span></span><span class=line><span class=cl>isIntEight    0x8 =  True
-</span></span><span class=line><span class=cl>isIntEight    n   =  False
-</span></span></code></pre></td></tr></table></div></div><a href=#real-numbers><h3 id=real-numbers><span class=hanchor arialabel=Anchor># </span>Real Numbers</h3></a><a href=#constructing-real-number><h4 id=constructing-real-number><span class=hanchor arialabel=Anchor># </span>Constructing Real Number</h4></a><p>There are two methods to construct real number literals.</p><p>Real number literals constructed with decimal notation may be written as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+<a href=/cleanpedia/appendix-a/stdint/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdint/>Appendix A: StdInt</a>.</p><a href=#real-numbers><h3 id=real-numbers><span class=hanchor arialabel=Anchor># </span>Real Numbers</h3></a><a href=#constructing-real-number><h4 id=constructing-real-number><span class=hanchor arialabel=Anchor># </span>Constructing Real Number</h4></a><p>There are two methods to construct real number literals.</p><p>Real number literals constructed with decimal notation may be written as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -724,18 +693,7 @@ Doing so will evokes a parameter-argument matching behavior.</p><p>A simple func
 </span></span><span class=line><span class=cl>expr :: Real
 </span></span><span class=line><span class=cl>expr =  1.0 + 1.0
 </span></span></code></pre></td></tr></table></div></div><a href=#real-number-operators-and-functions><h4 id=real-number-operators-and-functions><span class=hanchor arialabel=Anchor># </span>Real Number Operators And Functions</h4></a><p>Real number operations and functions are discussed in more details on
-<a href=/cleanpedia/appendix-a/stdreal/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdreal/>Appendix A: StdReal</a>.</p><a href=#parameter-matching-real-numbers><h4 id=parameter-matching-real-numbers><span class=hanchor arialabel=Anchor># </span>Parameter Matching Real Numbers</h4></a><p>Real number literals may be used in as parameters in function implementations.
-Doing so will evokes a parameter-argument matching behavior.</p><p>A simple function which determines whether a real number is a unit or not may be implemented as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>isUnit :: Real -&gt; Bool
-</span></span><span class=line><span class=cl>isUnit    1.0  =  True
-</span></span><span class=line><span class=cl>isUnit    n    =  False
-</span></span></code></pre></td></tr></table></div></div><a href=#booleans><h3 id=booleans><span class=hanchor arialabel=Anchor># </span>Booleans</h3></a><a href=#constructing-booleans><h4 id=constructing-booleans><span class=hanchor arialabel=Anchor># </span>Constructing Booleans</h4></a><p>There are two methods to construct Boolean literals.</p><p>Each constructor represent a Boolean value true and false.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+<a href=/cleanpedia/appendix-a/stdreal/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdreal/>Appendix A: StdReal</a>.</p><a href=#booleans><h3 id=booleans><span class=hanchor arialabel=Anchor># </span>Booleans</h3></a><a href=#constructing-booleans><h4 id=constructing-booleans><span class=hanchor arialabel=Anchor># </span>Constructing Booleans</h4></a><p>There are two methods to construct Boolean literals.</p><p>Each constructor represent a Boolean value true and false.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -752,19 +710,7 @@ Doing so will evokes a parameter-argument matching behavior.</p><p>A simple func
 </span></span><span class=line><span class=cl>expr :: Bool
 </span></span><span class=line><span class=cl>expr =  1 == 1
 </span></span></code></pre></td></tr></table></div></div><a href=#boolean-operations-and-functions><h4 id=boolean-operations-and-functions><span class=hanchor arialabel=Anchor># </span>Boolean Operations and Functions</h4></a><p>Boolean operations and functions are discussed in more details on
-<a href=/cleanpedia/appendix-a/stdbool/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdbool/>Appendix A: StdBool</a>.</p><a href=#parameter-matching-booleans><h4 id=parameter-matching-booleans><span class=hanchor arialabel=Anchor># </span>Parameter Matching Booleans</h4></a><p>Boolean literals may be used in as parameters in function implementations.
-Doing so will evokes a parameter-argument matching behavior.</p><p>The
-<a href=https://en.wikipedia.org/wiki/Material_conditional rel=noopener>logical implication</a> operation may be implemented as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>(--&gt;) infixr 9 :: Bool Bool  -&gt; Bool
-</span></span><span class=line><span class=cl>(--&gt;)             True False =  False
-</span></span><span class=line><span class=cl>(--&gt;)             _     _    =  True
-</span></span></code></pre></td></tr></table></div></div><a href=#characters><h3 id=characters><span class=hanchor arialabel=Anchor># </span>Characters</h3></a><a href=#constructing-characters><h4 id=constructing-characters><span class=hanchor arialabel=Anchor># </span>Constructing Characters</h4></a><p>A character may be constructed by placing one character inside a pair of single quotation marks (<code>'..'</code>).</p><p>Characters constructed in the same way.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+<a href=/cleanpedia/appendix-a/stdbool/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdbool/>Appendix A: StdBool</a>.</p><a href=#characters><h3 id=characters><span class=hanchor arialabel=Anchor># </span>Characters</h3></a><a href=#constructing-characters><h4 id=constructing-characters><span class=hanchor arialabel=Anchor># </span>Constructing Characters</h4></a><p>A character may be constructed by placing one character inside a pair of single quotation marks (<code>'..'</code>).</p><p>Characters constructed in the same way.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -785,18 +731,7 @@ Doing so will evokes a parameter-argument matching behavior.</p><p>The
 </span></span><span class=line><span class=cl>expr :: Char
 </span></span><span class=line><span class=cl>expr =  &#39;a&#39;
 </span></span></code></pre></td></tr></table></div></div><a href=#character-operations-and-functions><h4 id=character-operations-and-functions><span class=hanchor arialabel=Anchor># </span>Character Operations And Functions</h4></a><p>Character operations and functions are discussed in more details on
-<a href=/cleanpedia/appendix-a/stdchar/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdchar/>Appendix A: StdChar</a>.</p><a href=#parameter-matching-characters><h4 id=parameter-matching-characters><span class=hanchor arialabel=Anchor># </span>Parameter Matching Characters</h4></a><p>Character literals may be used in as parameters in function implementations.
-Doing so will evokes a parameter-argument matching behavior.</p><p>A simple function which determines whether a real number is a unit or not may be implemented as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>(--&gt;) infixr 9 :: Bool  Bool  -&gt; Bool
-</span></span><span class=line><span class=cl>(--&gt;)             False True  =  False
-</span></span><span class=line><span class=cl>(--&gt;)             _     _     =  True
-</span></span></code></pre></td></tr></table></div></div><a href=#lists><h3 id=lists><span class=hanchor arialabel=Anchor># </span>Lists</h3></a><p><strong>Type annotation</strong>:
+<a href=/cleanpedia/appendix-a/stdchar/ rel=noopener class=internal-link data-src=/cleanpedia/appendix-a/stdchar/>Appendix A: StdChar</a>.</p><a href=#lists><h3 id=lists><span class=hanchor arialabel=Anchor># </span>Lists</h3></a><p><strong>Type annotation</strong>:
 <code>[Int]</code>,
 <code>[Char]</code>,
 <code>[T]</code>,

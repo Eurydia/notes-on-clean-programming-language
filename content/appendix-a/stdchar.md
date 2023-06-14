@@ -2,22 +2,65 @@
 title: "Appendix A: StdChar"
 ---
 
-## Arithmetic Operations 
+## Introduction
+
+The [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) module contains implementation for operations and functions relating to  characters.
+
+When imported, this module allows for:
+- addition and subtraction between two characters,
+- comparison between two characters,
+- character manipulation,
+- property testing, and
+- conversion to and from character type.
+
+## Constants
+
+### Zero Unit
+
+**Implementation**
+
+```
+// Language: Clean
+
+zero ::  Char
+zero :== (toChar 0)
+```
+
+**Definition**: represents a character with ASCII value of zero.
+
+### One Unit
+
+**Implementation**
+
+```
+// Language: Clean
+
+one ::  Char
+one :== (toChar 1)
+```
+
+**Definition**: represents a character with ASCII value of one.
+
+---
+
+## Arithmetic Operations
+
+Two arithmetic operations are available on character type.
+They are rarely used due to their implementations.
 
 ### Addition
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Char}$.
+(+) infixl 6 :: Char Char -> Char
+(+)             a    b    => ...
+```
 
-**Behavior**: $a$ and $b$ are converted to their ASCII values, then their sum is converted back to a character.
+**Behavior**: converts `a` and `b` to integers based on their ASCII values.
+The result of their addition is converted back to a character.
 
 **Usage**
 
@@ -33,16 +76,15 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$, and $R$ are of type $\textbf{Char}$.
+(-) infixl 6 :: Char Char -> Char
+(-)             a    b    => ...
+```
 
-**Behavior**: $a$ and $b$ are converted to their ASCII values, then result of their subtraction is converted back to a character.
+**Behavior**: converts `a` and `b` to integers based on their ASCII values. 
+The result of their subtraction is converted back to a character.
 
 **Usage**
 
@@ -58,21 +100,22 @@ where:
 
 ## Relational Operations
 
+All six relation operations are available on character type.
+They are implemented with the same behavior.
+That is, they compare two characters based on their ASCII values.
+
 ### Equal To
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$ are of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+(==) infix 4 :: Char Char -> Bool
+(==)            a    b    => ...
+```
 
-**Behavior**: checks if $a$ is lexicography equal to $b$.
+**Behavior**: returns true if ASCII value of `a` is equal to ASCII value of `b`.
 
 **Usage**
 
@@ -89,17 +132,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$ are of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+(<>) infix 4 :: Char Char -> Bool
+(<>)            a    b    => ...
+```
 
-**Behavior**: checks if $a$ is lexicography not equal to $b$.
+**Behavior**: returns true if ASCII value of `a` is not equal to ASCII value of `b`.
 
 **Usage**
 
@@ -116,17 +156,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$ are of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+(<) infix 4 :: Char Char -> Bool
+(<)            a    b    => ...
+```
 
-**Behavior**: checks if $a$ is lexicography less than $b$.
+**Behavior**: returns true if ASCII value of `a` is strictly less than ASCII value of `b`.
 
 **Usage**
 
@@ -143,17 +180,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$ are of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+(<=) infix 4 :: Char Char -> Bool
+(<=)            a    b    => ...
+```
 
-**Behavior**: checks if $a$ is lexicography less than or equal to $b$.
+**Behavior**: returns true if ASCII value of `a` is less than or equal to ASCII value of `b`.
 
 **Usage**
 
@@ -170,17 +204,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$ are of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+(>) infix 4 :: Char Char -> Bool
+(>)            a    b    => ...
+```
 
-**Behavior**: checks if $a$ is lexicography greater than $b$.
+**Behavior**: returns true if ASCII value of `a` is strictly greater than ASCII value of `b`.
 
 **Usage**
 
@@ -197,17 +228,14 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$, $b$ are of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+(>=) infix 4 :: Char Char -> Bool
+(>=)            a    b    => ...
+```
 
-**Behavior**: checks if $a$ is lexicography greater than or equal to $b$.
+**Behavior**: returns true if ASCII value of `a` is greater than or equal to ASCII value of `b`.
 
 **Usage**
 
@@ -222,23 +250,26 @@ where:
 
 ---
 
-## Basic Functions
+## Manipulation Functions
+
+This group of functions, as its name suggests, manipulate a character.
+
+One function is left out which is `digitToInt`.
+Its implementation can be found [here](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=115).
 
 ### `toUpper`
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+toUpper :: Char -> Char
+toUpper    a    => ...
+```
 
-**Behavior**: returns upper case of $a$ if possible.
+**Behavior**: returns upper case of `a`.
+If it is not possible, `a` itself is returned instead.
 
 **Usage**
 
@@ -255,17 +286,15 @@ toUpper '-'  // '-'
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+toLower :: Char -> Char
+toLower    a    => ...
+```
 
-**Behavior**: returns lower case of $a$ if possible.
+**Behavior**: returns lower case of `a`.
+If it is not possible, `a` itself is returned instead.
 
 **Usage**
 
@@ -282,48 +311,18 @@ toLower '-'  // '-'
 
 ## Property Functions
 
-### `isLower`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
-
-**Behavior**: checks if $a$ is an lower case character or not.
-
-**Usage**
-
-```
-// Language: Clean
-
-isLower '1'  // False
-isLower 'a'  // True
-isLower 'A'  // False
-isLower '-'  // False
-```
-
 ### `isUpper`
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+isUpper :: Char -> Bool
+isUpper    a    => ...
+```
 
-**Behavior**: checks if $a$ is an upper case character or not.
+**Behavior**: returns true if `a` is an upper case character.
 
 **Usage**
 
@@ -336,21 +335,42 @@ isUpepr 'A'  // True
 isUpper '-'  // False
 ```
 
+### `isLower`
+
+**Signature**
+
+```
+// Language: Clean
+
+isLower :: Char -> Bool
+isLower    a    => ...
+```
+
+**Behavior**: returns true if `a` is a lower case character.
+
+**Usage**
+
+```
+// Language: Clean
+
+isLower '1'  // False
+isLower 'a'  // True
+isLower 'A'  // False
+isLower '-'  // False
+```
+
 ### `isAlphanum`
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+isAlphanum :: Char -> Bool
+isAlphanum    a    => ...
+```
 
-**Behavior**: checks if $a$ is alphanumeric or not.
+**Behavior**: returns true if `a` is an alphanumeric character.
 
 **Usage**
 
@@ -367,17 +387,14 @@ isAlphanum '-'  // False
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+isAlpha :: Char -> Bool
+isAlpha    a    => ...
+```
 
-**Behavior**: checks if $a$ is an alphabet or not.
+**Behavior**: returns true if `a` is an alphabetic character.
 
 **Usage**
 
@@ -394,17 +411,14 @@ isAlpha '-'  // False
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+isDigit :: Char -> Bool
+isDigit    a    => ...
+```
 
-**Behavior**: checks if $a$ is a digit or not.
+**Behavior**: returns true if `a` is a decimal digit.
 
 **Usage**
 
@@ -421,17 +435,14 @@ isDigit '-'  // False
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+isOctDigit :: Char -> Bool
+isOctDigit    a    => ...
+```
 
-**Behavior**: checks if $a$ is an octal digit or not.
+**Behavior**: returns true if `a` is an octal digit.
 
 **Usage**
 
@@ -449,17 +460,14 @@ isOctDigit '-'  // False
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+isHexDigit :: Char -> Bool
+isHexDigit    a    => ...
+```
 
-**Behavior**: checks if $a$ is a hexadecimal digit or not.
+**Behavior**: returns true if `a` is a hexadecimal digit.
 
 **Usage**
 
@@ -477,18 +485,14 @@ isHexDigit '-'  // False
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+isAscii :: Char -> Bool
+isAscii    a    => ...
+```
 
-**Behavior**: checks if $a$ is an ASCII character or not.
-Internally, it checks whether the ASCII value of $a$ is less than $128$ or not.
+**Behavior**: returns true if `a` is an [7-bit ASCII character](https://en.wikipedia.org/wiki/ASCII).
 
 **Usage**
 
@@ -506,18 +510,14 @@ isAscii 'Ç'  // False
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+isControl :: Char -> Bool
+isControl    a    => ...
+```
 
-**Behavior**: checks if $a$ is a control character or not.
-Internally, it checks whether ASCII value of $a$ is between $[0,\ 31]\cup\{127\}$ or not.
+**Behavior**: returns true if `a` is a [control character](https://en.wikipedia.org/wiki/ASCII#Control_characters).
 
 **Usage**
 
@@ -535,18 +535,14 @@ isControl '\t'  // True
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+// Language: Clean
 
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
+isControl :: Char -> Bool
+isControl    a    => ...
+```
 
-**Behavior**: checks if $a$ is printable or not.
-Internally, it checks whether ASCII value of $a$ is between $[32,\ 126]$ or not.
+**Behavior**: returns true if `a` is a [printable character](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
 
 **Usage**
 
@@ -564,27 +560,24 @@ isPrint '\t' // False
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where:
-- $a$ is of type $\textbf{Char}$, and
-- $R$ is of type $\textbf{Bool}$.
-
-**Behavior**: checks if $a$ is a space character or not.
-Internally, it checks whether $a$ is one of the follow character of not:
-
 ```
-' '  
-'\t'
-'\n'
-'\r' 
-'\f'
-'\v'
+// Language: Clean
+
+isSpace :: Char -> Bool
+isSpace    a    => ...
 ```
+
+**Behavior**: returns true if `a` is a space character.
+Space characters are defined as follows:
+
+| Glyph  | Name            |
+| ------ | --------------- |
+| `' '`  | Space           |
+| `'\t'` | Horizontal tab  |
+| `'\v'` | Vertical tab    |
+| `'\n'` | Line feed       |
+| `'\r'` | Carriage return |
+| `'\f'` | Form feed       |
 
 **Usage**
 
@@ -600,30 +593,80 @@ isSpace '\t'  // True
 
 ---
 
-## Conversions To Characters
+## Conversions To Character Type
 
-### Integers To Characters
+Explicitly converts other types to character type.
+
+### From Integer Type
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
+```
+toChar :: Int -> Char
+toChar    a   => ...
+```
 
-where:
-- $a$ is of type $\textbf{Int}$, and
-- $R$ is of type $\textbf{Char}$.
-
-**Behavior**: converts $a$ to its ASCII character.
+**Behavior**: returns an ASCII character whose value is `a`.
 
 **Usage**
 
 ```
 // Language: Clean
 
-toChar 49 // '1'
-toChar 65 // 'A'
-toChar 97 // 'a'
+toChar 49  // '1'
+toChar 65  // 'A'
+toChar 97  // 'a'
+```
+
+---
+
+## Conversions From Character Type
+
+Explicitly converts character type to other types.
+The desired type must be unambiguous.
+
+### To Integer Type
+
+**Signature**
+
+```
+fromChar :: Char -> Int
+fromChar    a    =>  ...
+```
+
+**Behavior**: returns ASCII value of `a`.
+
+**Usage**
+
+```
+// Language: Clean
+
+expr :: Int
+expr =  fromChar '1'  // 49
+expr =  fromChar 'A'  // 65
+expr =  fromChar 'a'  // 97
+```
+
+### To String Type
+
+**Signature**
+
+```
+// Language: Clean
+
+fromChar :: Char -> {#Char}
+fromChar    a    => ...
+```
+
+**Behavior**: returns a one-character string containing `a`.
+
+**Usage**
+
+```
+// Language: Clean
+
+expr :: {#Char}
+expr =  fromChar '1'  // "1"
+expr =  fromChar 'A'  // "A"
+expr =  fromChar 'a'  // "a"
 ```

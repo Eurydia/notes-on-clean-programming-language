@@ -843,43 +843,6 @@ expr =  1 + 1
 
 Integer operations and functions are discussed in more details on [Appendix A: StdInt](appendix-a/stdint).
 
-#### Parameter Matching Integers
-
-Integer literals may be used in as parameters in function implementations.
-Doing so will evokes a parameter-argument matching behavior.
-
-A simple function which determines whether an integer is eight or not may be implemented as follows.
-
-```
-// Language: Clean
-
-isIntEight :: Int -> Bool
-isIntEight    8   =  True
-isIntEight    n   =  False
-```
-
-Alternative, octal and hexadecimal representation of eight may be used as well.
-
-`isIntEight` written with octal representation.
-
-```
-// Language: Clean
-
-isIntEight :: Int -> Bool
-isIntEight    010 =  True
-isIntEight    n   =  False
-```
-
-And `isIntEight` written with hexadecimal representation.
-
-```
-// Language: Clean
-
-isIntEight :: Int -> Bool
-isIntEight    0x8 =  True
-isIntEight    n   =  False
-```
-
 ### Real Numbers
 
 #### Constructing Real Number
@@ -930,21 +893,6 @@ expr =  1.0 + 1.0
 
 Real number operations and functions are discussed in more details on [Appendix A: StdReal](appendix-a/stdreal).
 
-#### Parameter Matching Real Numbers
-
-Real number literals may be used in as parameters in function implementations.
-Doing so will evokes a parameter-argument matching behavior.
-
-A simple function which determines whether a real number is a unit or not may be implemented as follows.
-
-```
-// Language: Clean
-
-isUnit :: Real -> Bool
-isUnit    1.0  =  True
-isUnit    n    =  False
-```
-
 ### Booleans
 
 #### Constructing Booleans
@@ -974,21 +922,6 @@ expr =  1 == 1
 #### Boolean Operations and Functions
 
 Boolean operations and functions are discussed in more details on [Appendix A: StdBool](appendix-a/stdbool).
-
-#### Parameter Matching Booleans
-
-Boolean literals may be used in as parameters in function implementations.
-Doing so will evokes a parameter-argument matching behavior.
-
-The [logical implication](https://en.wikipedia.org/wiki/Material_conditional) operation may be implemented as follows.
-
-```
-// Language: Clean
-
-(-->) infixr 9 :: Bool Bool  -> Bool
-(-->)             True False =  False
-(-->)             _     _    =  True
-```
 
 ### Characters
 
@@ -1021,21 +954,6 @@ expr =  'a'
 #### Character Operations And Functions
 
 Character operations and functions are discussed in more details on [Appendix A: StdChar](appendix-a/stdchar).
-
-#### Parameter Matching Characters
-
-Character literals may be used in as parameters in function implementations.
-Doing so will evokes a parameter-argument matching behavior.
-
-A simple function which determines whether a real number is a unit or not may be implemented as follows.
-
-```
-// Language: Clean
-
-(-->) infixr 9 :: Bool  Bool  -> Bool
-(-->)             False True  =  False
-(-->)             _     _     =  True
-```
 
 ### Lists
 

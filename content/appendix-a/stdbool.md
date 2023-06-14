@@ -2,6 +2,14 @@
 title: "Appendix A: StdBool"
 ---
 
+## Introduction
+
+The [StdBool](https://cloogle.org/src/#base-stdenv/StdBool;icl;line=1) module contains implementation for logical operations.
+
+When imported, this module allows for:
+- evaluation of Boolean expressions, and
+- conversion from Boolean type.
+
 ## Logical Operations 
 
 ### Logical NEGATE
@@ -12,7 +20,7 @@ title: "Appendix A: StdBool"
 // Language: Clean
 
 not :: Bool -> Bool
-not    a    =  ...
+not    a    => ...
 ```
 
 **Behavior**: negates the logical value of `a`.
@@ -35,10 +43,10 @@ not (not True)  // True
 // Language: Clean
 
 (==) infix 4 :: Bool Bool -> Bool
-(==)            a    b    =  ...
+(==)            a    b    => ...
 ```
 
-**Behavior**: returns true if and only if both `a` and `b` share the same logical value.
+**Behavior**: returns true if both `a` and `b` have the same logical value.
 
 **Usage**
 
@@ -59,10 +67,10 @@ False == False  // True
 // Language: Clean
 
 (||) infixr 2 :: Bool Bool -> Bool
-(||)             a    b    =  ...
+(||)             a    b    => ...
 ```
 
-**Behavior**: returns false if and only if both `a` and `b` are false.
+**Behavior**: returns true if  `a` or `b` is true.
 
 **Usage**
 
@@ -83,10 +91,10 @@ False || False  // False
 // Language: Clean
 
 (&&) infixr 3 :: Bool Bool -> Bool
-(&&)             a    b    =  ...
+(&&)             a    b    => ...
 ```
 
-**Behavior**: returns true if and only if both `a`and `b` are true.
+**Behavior**: returns true if `a`and `b` are true.
 
 **Usage**
 
@@ -97,4 +105,32 @@ True  && True   // True
 True  && False  // False
 False && True   // False
 False && False  // False
+```
+
+---
+
+## Conversions From Boolean Type
+
+Explicitly converts Boolean type to other types.
+The desired type must be unambiguous.
+
+### To String type
+
+**Signature**
+
+```
+fromBool :: Bool -> {#Char}
+fromBool    a    => ...
+```
+
+**Behavior**: returns a string representation of `a`.
+
+**Usage**
+
+```
+// Language: Clean
+
+expr :: {#Char}
+expr =  fromBool True   // "True"
+expr =  fromBool False  // "False"
 ```

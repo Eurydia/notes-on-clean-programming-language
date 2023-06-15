@@ -4,7 +4,7 @@ title: "Appendix A: StdChar"
 
 ## Introduction
 
-The [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) module contains implementation for operations and functions relating to  characters.
+The [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) module contains implementation for operations and functions relating to integer type.
 
 When imported, this module allows for:
 - addition and subtraction between two characters,

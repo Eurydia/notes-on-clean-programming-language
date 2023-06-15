@@ -22,12 +22,20 @@ If you notice any mistake or have suggestions for improvements, please feel free
 - Instagram: [@\_kornthana](https://www.instagram.com/_kornthana/)
 - Telegram channel: [https://t.me/+El6CtwOD8KxhYmU9](https://t.me/+El6CtwOD8KxhYmU9)
 
+---
+
 ## Functions
 
-### Function Definitions
+Functions are crucial in CLEAN.
+That is, an operator is an arity-two function which can be called between its arguments and a constant value is a arity-zero function.
 
-A function definition consists of, at least, one implementation, and a control implementation may be written as follows.
+Everything is a function in one way or another.
 
+In this Section, concepts regarding functions are discussed in details.
+
+### Defining a Function
+
+A function definition consists of at least one implementation, and a control implementation may be written as follows.
 
 ```
 // Language: Clean
@@ -35,7 +43,13 @@ A function definition consists of, at least, one implementation, and a control i
 functionA parameter = expression
 ```
 
-Multiple parameters are space separated.
+A function implementation has three components; 
+- name (`functionA`),
+- parameters (`parameter`), and
+- expression or body (`expression`).
+
+A function may have multiple parameters. 
+Parameters are space separated.
 
 ```
 // Language: Clean
@@ -43,16 +57,7 @@ Multiple parameters are space separated.
 functionB paramA paramB = expression
 ```
 
-In global scope, right double arrow (`=>`) may be used to separate parameters from expression.
-
-```
-// Langauge: Clean
-
-// In global scope
-
-functionA parameter     => expression
-functionB paramA paramB => expression
-```
+#### Example Implementation
 
 The simplest functions consist of one implementation.
 
@@ -67,8 +72,8 @@ If a function has multiple implementations, they must be grouped together.
 ```
 // Language: Clean
 
-safeDiv m 0 = 0
-safeDiv m n = m / n
+safeDivision m 0 = 0
+safeDivision m n = m / n
 ```
 
 Therefore, the following snippet is illegal.
@@ -76,52 +81,91 @@ Therefore, the following snippet is illegal.
 ```
 // Language: Clean
 
-safeDiv m 0 = 0
+safeDivision m 0 = 0
 6 + 2 - 1
-safeDiv m n = m / n
+safeDivision m n = m / n
 ```
 
-#### Implementation Signature
+Notice the expression separating the implementations of `safeDivision`.
+Implementations are not grouped together anymore.
+
+#### Implementation Signature Rule
 
 Every implementation must have the same signature as the first.
 
+Implementations of `safeDivision` obeyed this rule.
+They accepts two integers (inferred) and returns an integer as a result.
+
+To demonstrate the effect, implementations `badSafeDivision` are written in such a way that they break this rule.
+
 ```
 // Language: Clean
 
-badSafeDiv m 0 = False
-badSafeDiv m n = m / n
+badSafeDivision m 0 = False
+badSafeDivision m n = m / n
 ```
 
-The second implementation of `badSafeDiv` disobeyed the signature of the first implementation by returning an integer, instead of a Boolean value.
+The first implementation accepts two integers as its argument and returns a Boolean value as a result.
+Now, subsequent implementations of `badSafeDivision` must have the same signature.
 
-#### Implementation Selection Order
+However, the second implementation does not have mentioned signature.
+Instead, it accepts two integers, but returns an integer instead of a Boolean value.
 
-Implementations are tried in textual order.
+#### Implementation Selection Order Rule
+
+When a function has multiple implementation, a rule exists to determine which implementation will be evaluated.
+
+The rule states that implementations are tried in textual order.
 An implementation is selected if arguments of a function call matches with its parameters.
 
+To demonstrate, `safeDivsion` is called with nine and six respectively.
+
 ```
 // Language: Clean
 
-safeDiv 9 6  // False
+safeDivision 9 6
 ```
 
-In the first implementation, parameter `m` matches with argument `9`, but parameter `0` does not match with argument `6`.
-Thus, the first implementation is not selected.
+The first implementation is tried, parameter `m` acts as a wildcard.
+It matches with everything including nine.
 
-In the second implementation, both parameters match with both arguments.
-Thus, the second implementation is selected for evaluation.
+| Parameter | Argument | Result   |
+| --------- | -------- | -------- |
+| `m`       | `9`      | Matching |
+
+The second parameter (`0`) does not match with the second argument of the function call (`6`).
+
+| Parameter | Argument | Status       |
+| --------- | -------- | ------------ |
+| `m`       | `9`      | Matching     |
+| `0`       | `6`      | Not matching |
+
+The trial for the first implementation has completed.
+It will not be chosen for evaluation.
+
+Next, the second implementation is tried.
+Since both parameters of the second implementation are wildcards, they will surely match with both arguments.
+
+| Parameter | Argument | Result   |
+| --------- | -------- | -------- |
+| `m`       | `9`      | Matching |
+| `n`       | `6`      | Matching |
+
+Thus, the second implementation is chosen for evaluation.
 
 It should be noted that; if implementation order is changed, then the function would have unintended behaviors.
 
+To demonstrate, implementations of `badSafeDivision` are written in such an order that they will produce unintended effects.
+
 ```
 // Language: Clean
 
-badSafeDivAlt m n = m / n
-badSafeDivAlt m 0 = 0
+badSafeDivision m n = m / n
+badSafeDivision m 0 = 0
 ```
 
-The second implementation is never reached.
-Even if it is invoked with `0`as the second argument.
+It is clear from the example; the second is never reached.
+Even if `badSafeDivision`  is called with `0`as the second argument.
 
 ```
 // Language: Clean
@@ -129,30 +173,37 @@ Even if it is invoked with `0`as the second argument.
 badSafeDivAlt 9 0  // Uh oh
 ```
 
-With the current implementation of `badSafeDivAlt`, it is clear that the second implementation is never reached.
+It is important to clarify that, parameter-argument rule is not the same as performing equality checks.
 
-It is important to recognize that, this parameter-argument matching is not the same as performing equality checks.
+If the equality operation is not implemented on a type, this parameter-argument matching would still work.
+This concept of user-defined types is discussed in later Sections.
 
 ### Guarded Expressions
 
+So far, implementations has one body or expression.
 One or more guarded expressions can be introduced to an implementation.
-Guarded expressions allow an implementation to have multiple bodies, instead of one.
 
-A control implementation with one guarded body may be written as follows:
+Guarded expressions allow an implementation to have multiple expression, instead of one.
+
+A control implementation with one guarded expression may be written as follows.
 
 ```
 // Language: Clean
 
-functionC parameter
+functionA parameter
 | guard = expresssion
 ```
 
-An implementation with multiple guarded bodies may be written as follows:
+A guarded expression, as the name suggests, has two components:
+- guard (`guard`) which evaluates to a Boolean value, and
+- expression (`expression`).
+
+An implementation with multiple guarded bodies may be written as follows.
 
 ```
 // Language: Clean
 
-functionD parameter
+functionA parameter
 | guardA = expressionA
 | guardB = expressionB
 | guardC = expressionC
@@ -163,14 +214,15 @@ Additionally, guarded bodies can be nested.
 ```
 // Language: Clean
 
-functionE parameter
+functionA parameter
 | guardA
     | guardAA = expressionAA
     | guardAB = expressionAB
 ```
-#### Guarded Expression Signature
 
-A guard evaluates to a Boolean value.
+#### Guarded Expression Signature Rule
+
+Similar to the implementation signature rule discussed earlier.
 
 ```
 // Language: Clean
@@ -1919,4 +1971,4 @@ where
 
 ## Appendix A: Standard Environment
 
-The Standard Environment is discussed in detail [here](appendix-a/_intro.md).
+The Standard Environment is discussed in detail [here](appendix-a/introduction.md).

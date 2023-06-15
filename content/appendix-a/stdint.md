@@ -4,9 +4,14 @@ title: "Appendix A: StdInt"
 
 ## Introduction
 
-This section of **Appendix A** discusses operations and functions defined within Standard Integer and, by extension, the Standard Environment.
+The [StdInt](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1) module contains source code for operations and functions relating to integer type.
 
-The operations and functions of this module primarily interacts with integers.
+ For integer type, this module implements:
+- arithmetic operations,
+- comparisons,
+- bitwise operations,
+- property testing, and
+- conversions.
 
 ## Constants
 

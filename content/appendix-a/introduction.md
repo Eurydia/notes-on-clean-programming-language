@@ -25,4 +25,3 @@ The Standard Environment includes, but not limited to, the following modules.
 | [StdReal](appendix-a/stdreal.md)             | Operations and functions on real numbers                          |
 | [StdString](appendix-a/stdstring.md)         | Operations and functions on arrays, whose elements are characters |
 | [StdTuple](appendix-a/stdtuple.md)           | Operations and functions on tuples                                |
-

@@ -10,30 +10,9 @@ When imported, this module allows for:
 - evaluation of Boolean expressions, and
 - conversion from Boolean type.
 
-## Logical Operations 
+---
 
-### Logical NEGATE
-
-**Signature**
-
-```
-// Language: Clean
-
-not :: Bool -> Bool
-not    a    => ...
-```
-
-**Behavior**: negates the logical value of `a`.
-
-**Usage**
-
-```
-// Language: Clean
-
-not True        // False
-not False       // True
-not (not True)  // True
-```
+## Logical Operations
 
 ### Logical EQUIVALENCE
 
@@ -105,6 +84,33 @@ True  && True   // True
 True  && False  // False
 False && True   // False
 False && False  // False
+```
+
+---
+
+## Logical Functions
+
+### Logical NEGATE
+
+**Signature**
+
+```
+// Language: Clean
+
+not :: Bool -> Bool
+not    a    => ...
+```
+
+**Behavior**: negates the logical value of `a`.
+
+**Usage**
+
+```
+// Language: Clean
+
+not True        // False
+not False       // True
+not (not True)  // True
 ```
 
 ---

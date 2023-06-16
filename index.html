@@ -6,7 +6,7 @@
 <script src=https://eurydia.github.io/cleanpedia/js/code-title.b35124ad8db0ba37162b886afb711cbc.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/clipboard.c20857734e53a3fb733b7443879efa61.min.js></script>
 <script src=https://eurydia.github.io/cleanpedia/js/callouts.7723cac461d613d118ee8bb8216b9838.min.js></script>
-<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.cac75ecdf993bcfd9876c0f4e5ddade8.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.3f51da54dbea1e933e626cd4581f1a0c.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!1);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=()=>{addCopyButtons(),addTitleToCodeBlocks()}</script><script type=module>
+<script>const BASE_URL="https://eurydia.github.io/cleanpedia/",fetchData=Promise.all([fetch("https://eurydia.github.io/cleanpedia/indices/linkIndex.cac75ecdf993bcfd9876c0f4e5ddade8.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://eurydia.github.io/cleanpedia/indices/contentIndex.119f33f9fc2377b2207eb95af7fb77cb.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://eurydia.github.io/cleanpedia",!0,!1);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://eurydia.github.io/cleanpedia",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:5,opacityScale:3,repelForce:2,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:5,opacityScale:3,repelForce:2,scale:1.2})}},init=()=>{addCopyButtons(),addTitleToCodeBlocks()}</script><script type=module>
     import { attachSPARouting } from "https:\/\/eurydia.github.io\/cleanpedia\/js\/router.9d4974281069e9ebb189f642ae1e3ca2.min.js"
     attachSPARouting(init, render)
   </script></head><body><div class=singlePage><header><h1 id=page-title><a href=https://eurydia.github.io/cleanpedia/>Cleanpedia</a></h1><div class=spacer></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
@@ -14,80 +14,79 @@
 Terminologies and explanations may not be entirely true to the references used.</p><p>In addition, the language report, which was the primary source of this documentation, was written for the version 2.0 of CLEAN.</p><p>If you notice any mistake or have suggestions for improvements, please feel free to contact me through the following channels:</p><ul><li>Email:
 <a rel=noopener class="internal-link broken" data-src=mailto:b9xp3x@inf.elte.hu>b9xp3x@inf.elte.hu</a></li><li>Instagram:
 <a href=https://www.instagram.com/_kornthana/ rel=noopener>@_kornthana</a></li><li>Telegram channel:
-<a href=https://t.me/+El6CtwOD8KxhYmU9 rel=noopener>https://t.me/+El6CtwOD8KxhYmU9</a></li></ul><hr><a href=#functions><h2 id=functions><span class=hanchor arialabel=Anchor># </span>Functions</h2></a><p>Functions are crucial in CLEAN.
-That is, an operator is an arity-two function which can be called between its arguments and a constant value is a arity-zero function.</p><p>Everything is a function in one way or another.</p><p>In this Section, concepts regarding functions are discussed in details.</p><a href=#defining-a-function><h3 id=defining-a-function><span class=hanchor arialabel=Anchor># </span>Defining a Function</h3></a><p>In its purest form, a function definition consists of at least one implementation.
-A control implementation may be written as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+<a href=https://t.me/+El6CtwOD8KxhYmU9 rel=noopener>https://t.me/+El6CtwOD8KxhYmU9</a></li></ul><hr><a href=#functions><h2 id=functions><span class=hanchor arialabel=Anchor># </span>Functions</h2></a><p>As a functional language, functions make up everything in CLEAN.
+Operators are a special kind of arity-two functions which can be placed between its arguments.
+In the same sense, constants are simply arity-zero functions.</p><p>In this Section, concepts regarding functions are discussed in details.</p><a href=#defining-a-function><h3 id=defining-a-function><span class=hanchor arialabel=Anchor># </span>Defining a Function</h3></a><p>In its purest form, a function definition consists one implementation.</p><a href=#control-form-of-function-implementation><h4 id=control-form-of-function-implementation><span class=hanchor arialabel=Anchor># </span>Control Form of Function Implementation</h4></a><p>The form of a control function implementation is as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl> 
-</span></span><span class=line><span class=cl>functionA parameter = expression
-</span></span></code></pre></td></tr></table></div></div><p>A function implementation has three components;</p><ul><li>name (<code>functionA</code>),</li><li>parameters (<code>parameter</code>), and</li><li>expression or body (<code>expression</code>).</li></ul><p>Parameters are space separated.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>name param = expression
+</span></span></code></pre></td></tr></table></div></div><p>Multiple parameters are space separated.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>functionB paramA paramB = expression
-</span></span></code></pre></td></tr></table></div></div><a href=#example-implementation><h4 id=example-implementation><span class=hanchor arialabel=Anchor># </span>Example Implementation</h4></a><p>The simplest functions consist of one implementation.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>name paramA paramB = expression
+</span></span></code></pre></td></tr></table></div></div><p>This control form is enough for a valid function definition.</p><a href=#example-function-definition><h4 id=example-function-definition><span class=hanchor arialabel=Anchor># </span>Example Function Definition</h4></a><p>The simplest functions consist of one implementation.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>negate x = x * (-1)
-</span></span></code></pre></td></tr></table></div></div><p>If a function has multiple implementations, they must be grouped together.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>The function <code>negate</code> accepts one argument <code>x</code>, whose type is inferred, then negates negates its sign.</p><p>The definition for <code>negates</code> follows the control form of function implementation.</p><table><thead><tr><th>Control form</th><th>Proper form</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td><code>negate</code></td><td>Name of function</td></tr><tr><td><code>param</code></td><td><code>x</code></td><td>Parameter</td></tr><tr><td><code>expression</code></td><td><code>x * (-1)</code></td><td>Function expression</td></tr></tbody></table><a href=#implementation-rules><h4 id=implementation-rules><span class=hanchor arialabel=Anchor># </span>Implementation Rules</h4></a><p>A function definition can consist of just one implementation.</p><p>The following rules come into effect when a function definition consists of multiple function implementations.</p><a href=#implementation-grouping-rule><h5 id=implementation-grouping-rule><span class=hanchor arialabel=Anchor># </span>Implementation Grouping Rule</h5></a><blockquote><p>Implementations of a function must be together.</p></blockquote><p>To demonstrate, a function <code>safeDivide</code> is described as:</p><ul><li>accepts two integer arguments, and divides the integers, but</li><li>returns zero when given denominator is zero.</li></ul><p>A function definition which satisfy the description can be written with two implementations.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>safeDivision m 0 = 0
-</span></span><span class=line><span class=cl>safeDivision m n = m / n
-</span></span></code></pre></td></tr></table></div></div><p>Therefore, the following snippet is illegal.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>safeDivide m 0 = 0
+</span></span><span class=line><span class=cl>safeDivide m n = m / n
+</span></span></code></pre></td></tr></table></div></div><p>The definition shown is valid since implementations of <code>safeDivide</code> are grouped together.
+On the other hand, a definition is no longer valid if it does not follow this rule.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>safeDivision m 0 = 0
-</span></span><span class=line><span class=cl>6 + 2 - 1
-</span></span><span class=line><span class=cl>safeDivision m n = m / n
-</span></span></code></pre></td></tr></table></div></div><p>Notice the expression separating the implementations of <code>safeDivision</code>.</p><a href=#implementation-signature-rule><h4 id=implementation-signature-rule><span class=hanchor arialabel=Anchor># </span>Implementation Signature Rule</h4></a><p>Every implementation must have the same signature as the first.</p><p>Implementations of <code>safeDivision</code> followed this rule.
-They accepts two integers (inferred) and returns an integer as a result.</p><p>To demonstrate the effect, implementations of <code>badSafeDivision</code> are written in such a way that they break this rule.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>safeDivide m 0 = 0
+</span></span><span class=line><span class=cl>6 + 2
+</span></span><span class=line><span class=cl>safeDivide m n = m / n
+</span></span></code></pre></td></tr></table></div></div><p>The expression (<code>6 + 2</code>) invalidates the definition since the implementations are no longer grouped together.</p><a href=#implementation-signature-rule><h4 id=implementation-signature-rule><span class=hanchor arialabel=Anchor># </span>Implementation Signature Rule</h4></a><blockquote><p>Implementations of a function must share a single signature.</p></blockquote><p>To demonstrate, a function <code>badSafeDivide</code> is defined in such a way that it breaks this rule.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>badSafeDivision m 0 = False
-</span></span><span class=line><span class=cl>badSafeDivision m n = m / n
-</span></span></code></pre></td></tr></table></div></div><p>The first implementation accepts two integers as its argument and returns a Boolean value.
-It dictates that subsequent implementations of <code>badSafeDivision</code> must have the same signature.</p><p>However, the second implementation does not.
-Instead, it accepts two integers, but returns an integer instead of a Boolean value.</p><a href=#implementation-selection-rule><h4 id=implementation-selection-rule><span class=hanchor arialabel=Anchor># </span>Implementation Selection Rule</h4></a><p>When a function has multiple implementation, a rule exists to determine which implementation will be evaluated.</p><p>The rule states that implementations are tried in textual order, from top to bottom.
-An implementation is selected if arguments of a function call matches with its parameters.</p><p>To demonstrate, <code>safeDivsion</code> is called with nine and six respectively.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>badSafeDivide m 0 = False
+</span></span><span class=line><span class=cl>badSafeDivide m n = m / n
+</span></span></code></pre></td></tr></table></div></div><p>The first implementation returns a Boolean value, but the second returns an integer.
+This conflict of signatures invalidates the definition of <code>badSafeDivide</code>.</p><a href=#implementation-selection-rule><h4 id=implementation-selection-rule><span class=hanchor arialabel=Anchor># </span>Implementation Selection Rule</h4></a><blockquote><p>Implementations of a function are tried from top to bottom.
+An implementation is selected if arguments match with parameters.</p></blockquote><p>To demonstrate, <code>safeDivide</code> is called with nine and six respectively.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>safeDivision 9 6
-</span></span></code></pre></td></tr></table></div></div><p>The first implementation is tried, the first parameter (<code>m</code>) matches with everything including nine since it is a wildcard.</p><table><thead><tr><th>Implementation #</th><th>Parameter</th><th>Argument</th><th>Result</th></tr></thead><tbody><tr><td>1</td><td><code>m</code></td><td><code>9</code></td><td>Matching</td></tr></tbody></table><p>The second parameter (<code>0</code>) does not match with the second argument (<code>6</code>).</p><table><thead><tr><th>Implementation #</th><th>Parameter</th><th>Argument</th><th>Result</th></tr></thead><tbody><tr><td>1</td><td><code>m</code></td><td><code>9</code></td><td>Matching</td></tr><tr><td>1</td><td><code>0</code></td><td><code>6</code></td><td>Not matching</td></tr></tbody></table><p>The trial for the first implementation has completed.
-It will not be chosen for evaluation.</p><p>Next, the second implementation is tried.
-Since both parameters wildcards, they will match with both arguments.</p><table><thead><tr><th>Implementation #</th><th>Parameter</th><th>Argument</th><th>Result</th></tr></thead><tbody><tr><td>1</td><td><code>m</code></td><td><code>9</code></td><td>Matching</td></tr><tr><td>1</td><td><code>0</code></td><td><code>6</code></td><td>Not matching</td></tr><tr><td>2</td><td><code>m</code></td><td><code>9</code></td><td>Matching</td></tr><tr><td>2</td><td><code>n</code></td><td><code>6</code></td><td>Matching</td></tr></tbody></table><p>Thus, the second implementation is chosen for evaluation.</p><p>It should be noted that; if implementation order is changed, then the function would have unintended behaviors.</p><p>To demonstrate, implementations of <code>badSafeDivision</code> are written in such an order that they will produce unintended effects.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>safeDivide 9 6
+</span></span></code></pre></td></tr></table></div></div><p>The first implementation is tried, the first parameter (<code>m</code>) matches with everything including nine since it is a wildcard.</p><table><thead><tr><th>Pair #</th><th>Parameter</th><th>Argument</th><th>Result</th></tr></thead><tbody><tr><td>1</td><td><code>m</code></td><td><code>9</code></td><td>Matching</td></tr></tbody></table><p>The second parameter (<code>0</code>) does not match with the second argument (<code>6</code>).</p><table><thead><tr><th>Pair #</th><th>Parameter</th><th>Argument</th><th>Result</th></tr></thead><tbody><tr><td>1</td><td><code>m</code></td><td><code>9</code></td><td>Matching</td></tr><tr><td>2</td><td><code>0</code></td><td><code>6</code></td><td>Not matching</td></tr></tbody></table><p>The first implementation is not chosen.</p><p>Next, the second implementation is tried.
+Since both parameters wildcards, they will match with both arguments.</p><table><thead><tr><th>Pair #</th><th>Parameter</th><th>Argument</th><th>Result</th></tr></thead><tbody><tr><td>1</td><td><code>m</code></td><td><code>9</code></td><td>Matching</td></tr><tr><td>2</td><td><code>n</code></td><td><code>6</code></td><td>Matching</td></tr></tbody></table><p>Thus, the second implementation is chosen for evaluation.</p><p>It should be noted that; if implementation order is changed, then the function would have unintended behaviors.</p><p>To demonstrate, <code>badSafeDivide</code> is defined in such an way that they will produce unintended effects.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>badSafeDivision m n = m / n
-</span></span><span class=line><span class=cl>badSafeDivision m 0 = 0
-</span></span></code></pre></td></tr></table></div></div><p>It is clear from the example; the second implementation is never reached.
-Even if <code>badSafeDivision</code> is called with <code>0</code>.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span><span class=line><span class=cl>badSafeDivide m n = m / n
+</span></span><span class=line><span class=cl>badSafeDivide m 0 = 0
+</span></span></code></pre></td></tr></table></div></div><p>It is clear from the example that the second implementation is never reached.
+Even if <code>badSafeDivide</code> is called with <code>0</code>.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// Language: Clean
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>badSafeDivAlt 9 0  // Uh oh
-</span></span></code></pre></td></tr></table></div></div><p>Note that, this rule is not the same as performing equality checks.</p><p>If the equality operation is not implemented on a type, this rule would still work.
+</span></span></code></pre></td></tr></table></div></div><p>This rule is not performing equality checks.
+If the equality operation is not implemented on a type, this rule would still work.
 This concept of user-defined types is discussed in later Sections.</p><a href=#guarded-expressions><h3 id=guarded-expressions><span class=hanchor arialabel=Anchor># </span>Guarded Expressions</h3></a><p>So far, implementations has one body or expression.</p><p>Guarded expressions may be introduced to an implementation, which allow it to have multiple expression.</p><p>A control implementation with one guarded expression may be written as follows.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3

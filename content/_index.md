@@ -35,7 +35,8 @@ In this Section, concepts regarding functions are discussed in details.
 
 ### Defining a Function
 
-A function definition consists of at least one implementation, and a control implementation may be written as follows.
+In its purest form, a function definition consists of at least one implementation.
+A control implementation may be written as follows.
 
 ```
 // Language: Clean
@@ -48,7 +49,6 @@ A function implementation has three components;
 - parameters (`parameter`), and
 - expression or body (`expression`).
 
-A function may have multiple parameters. 
 Parameters are space separated.
 
 ```
@@ -87,16 +87,15 @@ safeDivision m n = m / n
 ```
 
 Notice the expression separating the implementations of `safeDivision`.
-Implementations are not grouped together anymore.
 
 #### Implementation Signature Rule
 
 Every implementation must have the same signature as the first.
 
-Implementations of `safeDivision` obeyed this rule.
+Implementations of `safeDivision` followed this rule.
 They accepts two integers (inferred) and returns an integer as a result.
 
-To demonstrate the effect, implementations `badSafeDivision` are written in such a way that they break this rule.
+To demonstrate the effect, implementations of `badSafeDivision` are written in such a way that they break this rule.
 
 ```
 // Language: Clean
@@ -105,17 +104,17 @@ badSafeDivision m 0 = False
 badSafeDivision m n = m / n
 ```
 
-The first implementation accepts two integers as its argument and returns a Boolean value as a result.
-Now, subsequent implementations of `badSafeDivision` must have the same signature.
+The first implementation accepts two integers as its argument and returns a Boolean value.
+It dictates that subsequent implementations of `badSafeDivision` must have the same signature.
 
-However, the second implementation does not have mentioned signature.
+However, the second implementation does not.
 Instead, it accepts two integers, but returns an integer instead of a Boolean value.
 
-#### Implementation Selection Order Rule
+#### Implementation Selection Rule
 
 When a function has multiple implementation, a rule exists to determine which implementation will be evaluated.
 
-The rule states that implementations are tried in textual order.
+The rule states that implementations are tried in textual order, from top to bottom.
 An implementation is selected if arguments of a function call matches with its parameters.
 
 To demonstrate, `safeDivsion` is called with nine and six respectively.
@@ -126,14 +125,13 @@ To demonstrate, `safeDivsion` is called with nine and six respectively.
 safeDivision 9 6
 ```
 
-The first implementation is tried, parameter `m` acts as a wildcard.
-It matches with everything including nine.
+The first implementation is tried, the first parameter (`m`) matches with everything including nine since it is a wildcard.
 
 | Parameter | Argument | Result   |
 | --------- | -------- | -------- |
 | `m`       | `9`      | Matching |
 
-The second parameter (`0`) does not match with the second argument of the function call (`6`).
+The second parameter (`0`) does not match with the second argument (`6`).
 
 | Parameter | Argument | Status       |
 | --------- | -------- | ------------ |
@@ -144,7 +142,7 @@ The trial for the first implementation has completed.
 It will not be chosen for evaluation.
 
 Next, the second implementation is tried.
-Since both parameters of the second implementation are wildcards, they will surely match with both arguments.
+Since both parameters wildcards, they will match with both arguments.
 
 | Parameter | Argument | Result   |
 | --------- | -------- | -------- |
@@ -164,8 +162,8 @@ badSafeDivision m n = m / n
 badSafeDivision m 0 = 0
 ```
 
-It is clear from the example; the second is never reached.
-Even if `badSafeDivision`  is called with `0`as the second argument.
+It is clear from the example; the second implementation is never reached.
+Even if `badSafeDivision`  is called with `0`.
 
 ```
 // Language: Clean
@@ -173,17 +171,16 @@ Even if `badSafeDivision`  is called with `0`as the second argument.
 badSafeDivAlt 9 0  // Uh oh
 ```
 
-It is important to clarify that, parameter-argument rule is not the same as performing equality checks.
+Note that, this rule is not the same as performing equality checks.
 
-If the equality operation is not implemented on a type, this parameter-argument matching would still work.
+If the equality operation is not implemented on a type, this rule would still work.
 This concept of user-defined types is discussed in later Sections.
 
 ### Guarded Expressions
 
 So far, implementations has one body or expression.
-One or more guarded expressions can be introduced to an implementation.
 
-Guarded expressions allow an implementation to have multiple expression, instead of one.
+Guarded expressions may be introduced to an implementation, which allow it to have multiple expression.
 
 A control implementation with one guarded expression may be written as follows.
 
@@ -222,7 +219,9 @@ functionA parameter
 
 #### Guarded Expression Signature Rule
 
-Similar to the implementation signature rule discussed earlier.
+Similar to the implementation signature rule discussed earlier, expressions must follow the type of the first implementation.
+
+To demonstrate, a good definition of a `signum` function may be written as follows.
 
 ```
 // Language: Clean
@@ -233,9 +232,9 @@ signum n
 | n < 0  = -1
 ```
 
-The definition of `signum` has two implementations, and its second implementation has two guarded expressions.
+The current definition is valid since implementations accepts one integer as argument and returns an integer.
 
-The guarded expressions must obey the same signature rule as its implementation.
+The following definition, however, disobeys the rule of signature.
 
 ```
 // Language: Clean
@@ -246,10 +245,9 @@ badSignum n
 | n < 0     = -1
 ```
 
-According to first implementation of `badSignum`, every implementation must return an integer.
-However, one of the guarded expression returns a Boolean value, which is not allowed.
+The first implementation of `badSignum` dictates that every implementation must return an integer, but a guarded expression returns a Boolean value.
 
-`badSignum` can be rewritten to have only one implementation.
+Furthermore, `badSignum` can be rewritten to have only one implementation.
 
 ```
 // Language: Clean
@@ -261,14 +259,13 @@ badSignumAlt n
 ```
 
 Unfortunately, this new definition is still illegal.
-The first guarded expression forces others to return an integer, but the second returns a Boolean value.
+The first guarded expression dictates subsequent guarded expressions  to return an integer, but the second returns a Boolean value.
 
-#### Guarded Expression Selection Order
+#### Guarded Expression Selection Rule
 
-Guarded expressions are tried in textual order, but only after their implementation is chosen.
+Similar to implementation selection rule discussed earlier, guarded expressions are tried in textual order, but only after their implementation is chosen.
 
-That is, if `signum` is called with `0`, then parameter `0` of the first implementation matches with argument `0`.
-Thus, the first implementation is selected.
+To demonstrate, `signum` is called with zero.
 
 ```
 // Language: Clean
@@ -276,10 +273,17 @@ Thus, the first implementation is selected.
 signum 0
 ```
 
-In this call, none of the guards were tried because the implementation that they belong to is not selected.
+The first implementation is tried, the first parameter matches with the argument.
 
-Instead, if `signum` is called with a non-zero integer, the first implementation fails to match.
-The second implementation is then selected.
+| Parameter | Argument | Result   |
+| --------- | -------- | -------- |
+| `0`       | `0`      | Matching |
+
+The first implementation is chosen.
+
+In this call, none of the guards was tried because the implementation that they belong to is not reached.
+
+Instead, to demonstrate, `signum` is called with non-zero integer.
 
 ```
 // Language: Clean
@@ -287,24 +291,49 @@ The second implementation is then selected.
 signum -9
 ```
 
+The first implementation fails to match.
+
+| Parameter | Argument | Result       |
+| --------- | -------- | ------------ |
+| `0`       | `-9`     | Not matching |
+
+But the second implementation will match.
+
+| Parameter | Argument | Result   |
+| --------- | -------- | -------- |
+| `n`       | `-9`     | Matching |
+
+Each guard of the second implementation is tried in order.
+The first guard to yield true will be chosen.
+
 The first guard (`n > 0`) is tried.
 It evaluates to false, and its expression is not selected.
 
+| Guard   | Result |
+| ------- | ------ |
+| `n > 0` | False  |
+
 The second guard is tried (`n < 0`).
-It evaluates to true, and its expression is selected.
+
+| Guard   | Result |
+| ------- | ------ |
+| `n > 0` | False  |
+| `n < 0` | True  |
+
+It evaluates to true, and its expression is chosen.
 
 Similarly, the same happens for nested guarded expressions.
 
 ```
 // Language: Clean
 
-someFuncA parameter = expression
-someFuncA parameter
+functionA parameter = expression
+functionA parameter
 | guardA
     | guardAA       = expressionAA
 ```
 
-In `someFuncA` defined above, for `expresssionAA` to be selected, the second implementation must be selected, as well as, `guardA` and `guardAA` must evaluate to true.
+In `functionA`, for `expresssionAA` to be selected, the second implementation must be selected, as well as, `guardA` and `guardAA` must evaluate to true.
 
 In addition, `otherwise` keyword may used in place of a guard.
 It always evaluates to true.
@@ -318,7 +347,7 @@ signumAlt n
 | otherwise = -1
 ```
 
-The order of the guarded bodies also matters.
+The order of the guarded bodieexpressions also matters.
 
 ```
 // Language: Clean
@@ -349,10 +378,10 @@ Implementations with guarded expressions can be partial as well.
 ```
 // Language: Clean
 
-fibPartialAlt n
+fibPartial n
 | n == 1    = 1
 | n == 2    = 1
-| otherwise = fibPartialAlt (n - 1) + fibPartialAlt (n - 2)
+| otherwise = fibPartial (n - 1) + fibPartial (n - 2)
 ```
 
 By extending its domain, a partial function can be transformed into a complete function.
@@ -361,34 +390,26 @@ By extending its domain, a partial function can be transformed into a complete f
 // Language: Clean
 
 fibComplete n
-| n <  0    = 0
+| n <= 0    = 0
 | n == 1    = 1
 | n == 2    = 1
 | otherwise = fibComplete (n - 1) + fibComplete (n - 2)
 ```
 
-However, this solution might not make semantic sense to do so.
+However, this fix might not make semantic sense to do so.
 Alternatively, `abort` from `StdMisc` can be used to solve the semantic issue.
 
 ```
 // Language: Clean
-fibCompleteAlt n
+
+fibComplete n
 | n <= 0    = abort "fibCompleteAlt called outside of domain"
 | n == 1    = 1
 | n == 2    = 1
-| otherwise = fibCompleteAlt (n - 1) + fibCompleteAlt (n - 2)
+| otherwise = fibComplete (n - 1) + fibComplete (n - 2)
 ```
 
-`abort` terminates the execution of the program with a custom error message.
-`fibComplete` still works as intended, but it will stops the program and throws an error
-
-```
-fibCompleteAlt called outside of domain
-```
-
-when it is called with integers less than one.
-
-The module `StdMisc` is discussed in more details [here](appendix-a/stdmisc).
+The module `StdMisc` is discussed in more details in [StdMisc](appendix-a/stdmisc).
 
 ### Lambda Functions
 

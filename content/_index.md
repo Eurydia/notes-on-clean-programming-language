@@ -26,38 +26,37 @@ If you notice any mistake or have suggestions for improvements, please feel free
 
 ## Functions
 
-Functions are crucial in CLEAN.
-That is, an operator is an arity-two function which can be called between its arguments and a constant value is a arity-zero function.
-
-Everything is a function in one way or another.
+As a functional language, functions make up everything in CLEAN.
+Operators are a special kind of arity-two functions which can be placed between its arguments.
+In the same sense, constants are simply arity-zero functions.
 
 In this Section, concepts regarding functions are discussed in details.
 
 ### Defining a Function
 
-In its purest form, a function definition consists of at least one implementation.
-A control implementation may be written as follows.
+In its purest form, a function definition consists one implementation.
+
+#### Control Form of Function Implementation
+
+The form of a control function implementation is as follows.
 
 ```
 // Language: Clean
  
-functionA parameter = expression
+name param = expression
 ```
 
-A function implementation has three components; 
-- name (`functionA`),
-- parameters (`parameter`), and
-- expression or body (`expression`).
-
-Parameters are space separated.
+Multiple parameters are space separated.
 
 ```
 // Language: Clean
 
-functionB paramA paramB = expression
+name paramA paramB = expression
 ```
 
-#### Example Implementation
+This control form is enough for a valid function definition.
+
+#### Example Function Definition
 
 The simplest functions consist of one implementation.
 
@@ -67,105 +66,119 @@ The simplest functions consist of one implementation.
 negate x = x * (-1)
 ```
 
-If a function has multiple implementations, they must be grouped together.
+The function `negate` accepts one argument `x`, whose type is inferred, then negates negates its sign.
+
+The definition for `negates` follows the control form of function implementation.
+
+| Control form | Proper form | Description         |
+| ------------ | ----------- | ------------------- |
+| `name`       | `negate`    | Name of function    |
+| `param`      | `x`         | Parameter           |
+| `expression` | `x * (-1)`  | Function expression |
+
+#### Implementation Rules
+
+A function definition can consist of just one implementation.
+
+The following rules come into effect when a function definition consists of multiple function implementations.
+
+##### Implementation Grouping Rule
+
+> Implementations of a function must be together.
+
+To demonstrate, a function `safeDivide` is described as:
+- accepts two integer arguments, and divides the integers, but
+- returns zero when given denominator is zero.
+
+A function definition which satisfy the description can be written with two implementations.
 
 ```
 // Language: Clean
 
-safeDivision m 0 = 0
-safeDivision m n = m / n
+safeDivide m 0 = 0
+safeDivide m n = m / n
 ```
 
-Therefore, the following snippet is illegal.
+The definition shown is valid since implementations of `safeDivide` are grouped together.
+On the other hand, a definition is no longer valid if it does not follow this rule.
 
 ```
 // Language: Clean
 
-safeDivision m 0 = 0
-6 + 2 - 1
-safeDivision m n = m / n
+safeDivide m 0 = 0
+6 + 2
+safeDivide m n = m / n
 ```
 
-Notice the expression separating the implementations of `safeDivision`.
+The expression (`6 + 2`) invalidates the definition since the implementations are no longer grouped together.
 
 #### Implementation Signature Rule
 
-Every implementation must have the same signature as the first.
+> Implementations of a function must share a single signature.
 
-Implementations of `safeDivision` followed this rule.
-They accepts two integers (inferred) and returns an integer as a result.
-
-To demonstrate the effect, implementations of `badSafeDivision` are written in such a way that they break this rule.
+To demonstrate, a function `badSafeDivide` is defined in such a way that it breaks this rule.
 
 ```
 // Language: Clean
 
-badSafeDivision m 0 = False
-badSafeDivision m n = m / n
+badSafeDivide m 0 = False
+badSafeDivide m n = m / n
 ```
 
-The first implementation accepts two integers as its argument and returns a Boolean value.
-It dictates that subsequent implementations of `badSafeDivision` must have the same signature.
-
-However, the second implementation does not.
-Instead, it accepts two integers, but returns an integer instead of a Boolean value.
+The first implementation returns a Boolean value, but the second returns an integer.
+This conflict of signatures invalidates the definition of `badSafeDivide`.
 
 #### Implementation Selection Rule
 
-When a function has multiple implementation, a rule exists to determine which implementation will be evaluated.
+> Implementations of a function are tried from top to bottom.
+> An implementation is selected if arguments match with parameters.
 
-The rule states that implementations are tried in textual order, from top to bottom.
-An implementation is selected if arguments of a function call matches with its parameters.
-
-To demonstrate, `safeDivsion` is called with nine and six respectively.
+To demonstrate, `safeDivide` is called with nine and six respectively.
 
 ```
 // Language: Clean
 
-safeDivision 9 6
+safeDivide 9 6
 ```
 
 The first implementation is tried, the first parameter (`m`) matches with everything including nine since it is a wildcard.
 
-| Implementation # | Parameter | Argument | Result   |
-| ---------------- | --------- | -------- | -------- |
-| 1                | `m`       | `9`      | Matching |
+| Pair # | Parameter | Argument | Result   |
+| ------ | --------- | -------- | -------- |
+| 1      | `m`       | `9`      | Matching |
 
 The second parameter (`0`) does not match with the second argument (`6`).
 
-| Implementation # | Parameter | Argument | Result       |
-| ---------------- | --------- | -------- | ------------ |
-| 1                | `m`       | `9`      | Matching     |
-| 1                | `0`       | `6`      | Not matching |
+| Pair # | Parameter | Argument | Result       |
+| ------ | --------- | -------- | ------------ |
+| 1      | `m`       | `9`      | Matching     |
+| 2      | `0`       | `6`      | Not matching |
 
-The trial for the first implementation has completed.
-It will not be chosen for evaluation.
+The first implementation is not chosen.
 
 Next, the second implementation is tried.
 Since both parameters wildcards, they will match with both arguments.
 
-| Implementation # | Parameter | Argument | Result       |
-| ---------------- | --------- | -------- | ------------ |
-| 1                | `m`       | `9`      | Matching     |
-| 1                | `0`       | `6`      | Not matching |
-| 2                | `m`       | `9`      | Matching     |
-| 2                | `n`       | `6`      | Matching     |
+| Pair # | Parameter | Argument | Result   |
+| ------ | --------- | -------- | -------- |
+| 1      | `m`       | `9`      | Matching |
+| 2      | `n`       | `6`      | Matching |
 
 Thus, the second implementation is chosen for evaluation.
 
 It should be noted that; if implementation order is changed, then the function would have unintended behaviors.
 
-To demonstrate, implementations of `badSafeDivision` are written in such an order that they will produce unintended effects.
+To demonstrate, `badSafeDivide` is defined in such an way that they will produce unintended effects.
 
 ```
 // Language: Clean
 
-badSafeDivision m n = m / n
-badSafeDivision m 0 = 0
+badSafeDivide m n = m / n
+badSafeDivide m 0 = 0
 ```
 
-It is clear from the example; the second implementation is never reached.
-Even if `badSafeDivision`  is called with `0`.
+It is clear from the example that the second implementation is never reached.
+Even if `badSafeDivide`  is called with `0`.
 
 ```
 // Language: Clean
@@ -173,8 +186,7 @@ Even if `badSafeDivision`  is called with `0`.
 badSafeDivAlt 9 0  // Uh oh
 ```
 
-Note that, this rule is not the same as performing equality checks.
-
+This rule is not performing equality checks.
 If the equality operation is not implemented on a type, this rule would still work.
 This concept of user-defined types is discussed in later Sections.
 

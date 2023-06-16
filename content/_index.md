@@ -127,16 +127,16 @@ safeDivision 9 6
 
 The first implementation is tried, the first parameter (`m`) matches with everything including nine since it is a wildcard.
 
-| Parameter | Argument | Result   |
-| --------- | -------- | -------- |
-| `m`       | `9`      | Matching |
+| Implementation # | Parameter | Argument | Result   |
+| ---------------- | --------- | -------- | -------- |
+| 1                | `m`       | `9`      | Matching |
 
 The second parameter (`0`) does not match with the second argument (`6`).
 
-| Parameter | Argument | Status       |
-| --------- | -------- | ------------ |
-| `m`       | `9`      | Matching     |
-| `0`       | `6`      | Not matching |
+| Implementation # | Parameter | Argument | Result       |
+| ---------------- | --------- | -------- | ------------ |
+| 1                | `m`       | `9`      | Matching     |
+| 1                | `0`       | `6`      | Not matching |
 
 The trial for the first implementation has completed.
 It will not be chosen for evaluation.
@@ -144,10 +144,12 @@ It will not be chosen for evaluation.
 Next, the second implementation is tried.
 Since both parameters wildcards, they will match with both arguments.
 
-| Parameter | Argument | Result   |
-| --------- | -------- | -------- |
-| `m`       | `9`      | Matching |
-| `n`       | `6`      | Matching |
+| Implementation # | Parameter | Argument | Result       |
+| ---------------- | --------- | -------- | ------------ |
+| 1                | `m`       | `9`      | Matching     |
+| 1                | `0`       | `6`      | Not matching |
+| 2                | `m`       | `9`      | Matching     |
+| 2                | `n`       | `6`      | Matching     |
 
 Thus, the second implementation is chosen for evaluation.
 
@@ -275,9 +277,9 @@ signum 0
 
 The first implementation is tried, the first parameter matches with the argument.
 
-| Parameter | Argument | Result   |
-| --------- | -------- | -------- |
-| `0`       | `0`      | Matching |
+| Implementation # | Parameter | Argument | Result       |
+| ---------------- | --------- | -------- | ------------ |
+| 1                | `0`       | `0`      | Not matching |
 
 The first implementation is chosen.
 
@@ -293,15 +295,16 @@ signum -9
 
 The first implementation fails to match.
 
-| Parameter | Argument | Result       |
-| --------- | -------- | ------------ |
-| `0`       | `-9`     | Not matching |
+| Implementation # | Parameter | Argument | Result       |
+| ---------------- | --------- | -------- | ------------ |
+| 1                | `0`       | `-9`     | Not matching |
 
 But the second implementation will match.
 
-| Parameter | Argument | Result   |
-| --------- | -------- | -------- |
-| `n`       | `-9`     | Matching |
+| Implementation # | Parameter | Argument | Result       |
+| ---------------- | --------- | -------- | ------------ |
+| 1               | `0`       | `-9`     | Not matching |
+| 2               | `n`       | `-9`     | Matching     |
 
 Each guard of the second implementation is tried in order.
 The first guard to yield true will be chosen.
@@ -309,16 +312,16 @@ The first guard to yield true will be chosen.
 The first guard (`n > 0`) is tried.
 It evaluates to false, and its expression is not selected.
 
-| Guard   | Result |
-| ------- | ------ |
-| `n > 0` | False  |
+| Guard # | Guard   | Result |
+| ------- | ------- | ------ |
+| 1       | `n > 0` | False  |
 
 The second guard is tried (`n < 0`).
 
-| Guard   | Result |
-| ------- | ------ |
-| `n > 0` | False  |
-| `n < 0` | True  |
+| Guard # | Guard   | Result |
+| ------- | ------- | ------ |
+| 1       | `n > 0` | False  |
+| 2       | `n < 0` | True   |
 
 It evaluates to true, and its expression is chosen.
 
@@ -413,12 +416,22 @@ The module `StdMisc` is discussed in more details in [StdMisc](appendix-a/stdmis
 
 ### Lambda Functions
 
-A control lambda function may be written as follows:
+A control lambda function may be written as follows.
 
 ```
 // Language: Clean
 
 \ parameter = expression
+```
+
+Alternatively, dot (`.`) and right arrow (`->`) may be used to separate  parameters from expression.
+It should be noted that they have different semantic meanings.
+
+```
+// Language: Clean
+
+\ parameter .  expression
+\ parameter -> expression
 ```
 
 Parameters of a lambda function are space separated.
@@ -429,16 +442,6 @@ Parameters of a lambda function are space separated.
 \ paramA paramB = expression
 ```
 
-Alternatively, dot (`.`) and right arrow (`->`) may be used to separate  parameters from expression.
-It should be noted that they carry different semantic meanings.
-
-```
-// Language: Clean
-
-\ parameter     .  expression
-\ paramA paramB -> expression
-```
-
 Guarded expressions can be introduced as well.
 
 ```
@@ -447,7 +450,7 @@ Guarded expressions can be introduced as well.
 \ parameter | guardA = expressionA | guardB = expressionB | guardC = expressionC
 ```
 
-To increase readability, a lambda definition maybe placed between a pair of parenthesis, which allows it to span multiple lines.
+To increase readability, a lambda definition maybe placed between a pair of parentheses, which allows it to span multiple lines.
 
 ```
 // Language: Clean
@@ -460,7 +463,7 @@ To increase readability, a lambda definition maybe placed between a pair of pare
 
 ### Case Expressions
 
-A`case..of..` expression matches a given expression with one of its patterns, and a control expression with one pattern may be written as follows.
+A `case..of..` expression matches a given expression with one of its patterns, and a control expression with one pattern may be written as follows.
 
 ```
 // Language: Clean
@@ -502,7 +505,6 @@ patternA
 | guardA = altExpressionAA
 | guardB = altExpressionAB
 | guardC = altExpressionAC
-patternB = altExpressionB
 ```
 
 Internally, a `case..of..` expression is compiled to a function.
@@ -525,7 +527,6 @@ __compiledExpr patternA
 | guardAA               = altExpressionAA
 | guardAB               = altExpressionAB
 | guardAC               = altExpressionAC
-__compiledExpr patternB = altExpressionB
 ```
 
 Consequently, such an expression can result in a run-time error since it is translated into a partial function.
@@ -564,7 +565,7 @@ A control expression with one local definition may be written as follows.
 // Language: Clean
 
 let
-    localFunction x = x + 1
+    localFunction x = ...
 in expression
 ```
 
@@ -588,10 +589,10 @@ A control `where` block with one definition may be written as follows.
 ```
 // Language: Clean
 
-functionF parameter = expression
+functionA parameter = expression
 where
-    localFunc x = x + 1
-functionF parameter = expression
+    localFunc x = ...
+functionA parameter = expression
 ```
 
 The second implementation does not have access to `localFunc` which is local to the first implementation.
@@ -606,10 +607,10 @@ A control `with` block with one definition may be written as follows.
 ```
 // Language: Clean
 
-functionG parameter
+functionA parameter
 | guardA = expressionA
 with 
-    localFunc x = x + 1
+    localFunc x = ...
 | guardB = expressionB
 ```
 
@@ -618,15 +619,14 @@ However, the guard itself does not have access to definitions within its `with` 
 ```
 // Language: Clean
 
-functionH n
+functionA n
 | x == 0    = 0
 with 
     x = n mod 2
 | otherwise = 1
 ```
 
-The definition of `functionH` is not valid since
-The guard cannot reference `x`.
+The definition of `functionA` is not valid since the guard cannot reference `x`.
 
 ### Operators
 
@@ -650,6 +650,13 @@ To invoke an operator as an ordinary function, the operator name must be placed 
 When applied in infix position, both arguments must be given.
 Operators can be curried, but only when they are invoked as ordinary functions.
 
+#### Operator Precedence
+
+The precedence determines how tightly an operator binds to its argument.
+Precedence can be between zero and nine with higher number having higher precedence.
+
+The precedence of an operator is nine by default.
+
 #### Operator Associativity
 
 The associativity is important when evaluating two operators of the same precedence.
@@ -659,13 +666,6 @@ There are three types of associativity:
 - `infixr` for right-associative operators.
 
 The associativity of an operator is `infixl` by default.
-
-#### Operator Precedence
-
-The precedence determines how tightly an operator binds to its argument.
-Precedence can be between zero and nine with higher number having higher precedence.
-
-The precedence of an operator is nine by default.
 
 #### Operator Definitions
 
@@ -678,16 +678,6 @@ A control operator definition may be written as follows.
 // Language: Clean
 
 (operator) paramL paramR = expression
-```
-
-In global scope, right double arrow (`=>`) may be used to separated parameters from expression, much like a function.
-
-```
-// Language: Clean
-
-// In global scope
-
-(operator) paramL paramR => expression
 ```
 
 #### Operator Conflict
@@ -818,7 +808,7 @@ functionA :: parameterType -> expressionType
 functionA    parameter     =  expression
 ```
 
-Multiple parameter types are space separated.
+Parameter types are space separated.
 
 ```
 // Language: Clean
@@ -838,12 +828,12 @@ A control operator definition may be explicitly typed as follows.
 (operator)    paramL     paramR     =  expression
 ```
 
-In addition, operator fixity (`F`) and precedence (`P`) may be specified as well.
+In addition, operator associativity (`A`) and precedence (`P`) may be specified as well.
 
 ```
 // Language: Clean
 
-(operator) F P :: paramLType paramRType -> expressionType
+(operator) A P :: paramLType paramRType -> expressionType
 (operator)        paramL     paramR     =  expression
 ```
 
@@ -855,21 +845,24 @@ Types like integers, Booleans, characters, real numbers, lists, tuples, and arra
 They have been predefined for reasons of efficiency and convenience.
 
 There are four built-in primitive types:
-- integers,
-- real numbers,
-- Booleans, and
-- characters.
+- integer type,
+- real number type,
+- Boolean type, and
+- character type.
 
 There are three built-in structured types:
-- lists,
-- arrays, and
-- tuples.
+- list type,
+- array type, and
+- tuple type.
 
 ### Integers
 
 #### Constructing Integers
 
-There are three methods to construct integer literals.
+There are three methods to construct integer literals;
+- from decimal notation,
+- from octal notation, and
+- from hexadecimal notation.
 
 Integer literals constructed with decimal notation may be written as follows.
 
@@ -881,7 +874,7 @@ Integer literals constructed with decimal notation may be written as follows.
  13
 ```
 
-Integer literals constructed with octal notation may be written by prefixing octal digits with `0` as follows:
+Integer literals constructed with octal notation may be written by prefixing octal digits with `0`.
 
 ```
 // Language: Clean
@@ -891,7 +884,7 @@ Integer literals constructed with octal notation may be written by prefixing oct
  015  // decimal  13
 ```
 
-Integers literals constructed with hexadecimal notation may be written by prefixing hexadecimal digits with `0x` as follows.
+Integers literals constructed with hexadecimal notation may be written by prefixing hexadecimal digits with `0x`.
 
 ```
 // Language: Clean
@@ -903,7 +896,7 @@ Integers literals constructed with hexadecimal notation may be written by prefix
 
 #### Typing Integers
 
-An expression, which evaluates to an integer, may be explicitly typed using `Int`.
+An expression of integer type may be explicitly typed using `Int`.
 
 ```
 // Language: Clean
@@ -920,7 +913,9 @@ Integer operations and functions are discussed in more details on [Appendix A: S
 
 #### Constructing Real Number
 
-There are two methods to construct real number literals.
+There are two methods to construct real number literals;
+- from decimal notation, and
+- from scientific notation.
 
 Real number literals constructed with decimal notation may be written as follows.
 
@@ -933,7 +928,7 @@ Real number literals constructed with decimal notation may be written as follows
  1.3
 ```
 
-Real number literals constructed with scientific notation may be written as follows.
+Real number literals constructed with scientific notation may be written using `..E..` form.
 
 ```
 // Language: Clean
@@ -953,7 +948,7 @@ When constructing a real number literal with scientific notation, the expression
 
 #### Typing Real Numbers
 
-An expression, which evaluates to a real number, may be explicitly typed using `Real`.
+An expression of real number type may be explicitly typed using `Real`.
 
 ```
 // Language: Clean
@@ -971,8 +966,7 @@ Real number operations and functions are discussed in more details on [Appendix 
 #### Constructing Booleans
 
 There are two methods to construct Boolean literals.
-
-Each constructor represent a Boolean value true and false.
+Each constructor represent a Boolean value.
 
 ```
 // Language: Clean
@@ -983,7 +977,7 @@ False
 
 #### Typing Booleans
 
-An expression, which evaluates to a Boolean value, may be explicitly typed using `Bool`.
+An expression of Boolean type may be explicitly typed using `Bool`.
 
 ```
 // Language: Clean
@@ -1015,7 +1009,7 @@ Characters constructed in the same way.
 
 #### Typing Characters
 
-An expression, which evaluates to a character, may be explicitly typed using `Char`.
+An expression of character type may be explicitly typed using `Char`.
 
 ```
 // Language: Clean

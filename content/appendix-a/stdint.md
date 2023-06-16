@@ -43,7 +43,8 @@ one :== 1
 
 ---
 
-## Arithmetic Operations
+## Arithmetic Operations and Functions
+
 
 ### Negation
 
@@ -53,7 +54,7 @@ one :== 1
 // Language: Clean
 
 ~ :: Int -> Int
-~    a   =  ...
+~    a   => ...
 ```
 
 **Behavior**: inverts the sign `a`.
@@ -76,10 +77,10 @@ one :== 1
 // Language: Clean
  
 (+) infixl 6 :: Int Int -> Int
-(+)             a   b   =  ...
+(+)             a   b   => ...
 ```
 
-**Behavior**: adds `a` and `b` together.
+**Behavior**: adds `a` and `b`.
 
 **Usage**
 
@@ -100,7 +101,7 @@ one :== 1
 // Language: Clean
  
 (-) infixl 6 :: Int Int -> Int
-(-)             a   b   =  ...
+(-)             a   b   => ...
 ```
 
 **Behavior**: subtracts `b` from `a`.
@@ -124,10 +125,10 @@ one :== 1
 // Language: Clean
  
 (*) infixl 7 :: Int Int -> Int
-(*)             a   b   =  ...
+(*)             a   b   => ...
 ```
 
-**Behavior**: multiplies `a` and `b` together.
+**Behavior**: multiplies `a` and `b`.
 
 **Usage**
 
@@ -148,7 +149,7 @@ one :== 1
 // Language: Clean
 
 (/) infixl 7 :: Int Int -> Int
-(/)             a   b   =  ...
+(/)             a   b   => ...
 ```
 
 **Behavior**: divides `a` by `b`.
@@ -174,7 +175,7 @@ Silently crashes if `b` is zero.
 // Language: Clean
 
 (rem) infix 7 :: Int Int -> Int
-(rem)            a   b   =  ...
+(rem)            a   b   => ...
 ```
 
 and
@@ -183,12 +184,12 @@ and
 // Language: Clean
 
 (mod) infix 7 :: Int Int -> Int
-(mod)            a   b   =  ...
+(mod)            a   b   => ...
 ```
 
 For integers, both `rem` and `mod` perform modulo division.
 
-**Behavior**: divides `a` by `b` and returns the reminder.
+**Behavior**: divides `a` by `b`, and returns the reminder.
 
 **Usage**
 
@@ -209,7 +210,7 @@ For integers, both `rem` and `mod` perform modulo division.
 // Language: Clean
 
 (^) infixr 8 :: Int Int -> Int
-(^)             a   b   =  ...
+(^)             a   b   => ...
 ```
 
 **Behavior**: raises `a` to `b`-th power.
@@ -234,9 +235,6 @@ Results in a run-time error if `b` is negative.
 
 ## Relational Operations
 
-There are six relational operations, and they share the same behavior.
-That is, they compare integral values of two integers, then return a Boolean value.
-
 ### Equal To
 
 **Signature**
@@ -245,10 +243,10 @@ That is, they compare integral values of two integers, then return a Boolean val
 // Language: Clean
 
 (==) infix 4 :: Int Int -> Bool
-(==)            a   b   =  ...
+(==)            a   b   => ...
 ```
 
-**Behavior**: returns true if and only if `a` is equal to `b`.
+**Behavior**: returns true if `a` is equal to `b`.
 
 **Usage**
 
@@ -270,10 +268,10 @@ That is, they compare integral values of two integers, then return a Boolean val
 // Language: Clean
 
 (<>) infix 4 :: Int Int -> Bool
-(<>)            a   b   =  ...
+(<>)            a   b   => ...
 ```
 
-**Behavior**: returns false if and only if `a` is equal to `b`.
+**Behavior**: returns true if `a` is not equal to `b`.
 
 **Usage**
 
@@ -295,10 +293,10 @@ That is, they compare integral values of two integers, then return a Boolean val
 // Language: Clean
 
 (<) infix 4 :: Int Int -> Bool
-(<)            a   b   =  ...
+(<)            a   b   => ...
 ```
 
-**Behavior**: returns true if and only if `a` is strictly less than `b`.
+**Behavior**: returns true if `a` is strictly less than `b`.
 
 **Usage**
 
@@ -320,10 +318,10 @@ That is, they compare integral values of two integers, then return a Boolean val
 // Language: Clean
 
 (<=) infix 4 :: Int Int -> Bool
-(<=)            a   b   =  ...
+(<=)            a   b   => ...
 ```
 
-**Behavior**: returns false if and only if `a` is strictly greater than `b`.
+**Behavior**: returns true if `a` is less than or equal to `b`.
 
 **Usage**
 
@@ -345,10 +343,10 @@ That is, they compare integral values of two integers, then return a Boolean val
 // Language: Clean
 
 (>) infix 4 :: Int Int -> Bool
-(>)            a   b   =  ...
+(>)            a   b   => ...
 ```
 
-**Behavior**: returns true if and only if `a` is strictly greater than `b`.
+**Behavior**: returns true if `a` is strictly greater than `b`.
 
 **Usage**
 
@@ -370,10 +368,10 @@ That is, they compare integral values of two integers, then return a Boolean val
 // Language: Clean
 
 (>=) infix 4 :: Int Int -> Bool
-(>=)            a   b   =  ...
+(>=)            a   b   => ...
 ```
 
-**Behavior**: returns false if and only if `a` is strictly less than `b`.
+**Behavior**: returns true if `a` is greater than or equal to `b`.
 
 **Usage**
 
@@ -389,9 +387,9 @@ That is, they compare integral values of two integers, then return a Boolean val
 
 ---
 
-## Bitwise Operations
+## Bitwise Operations and Functions
 
-This group of functions and operations interacts with integers through their binary representation.
+Interacts with integers through their binary representation.
 
 ### Bitwise NEGATE
 
@@ -401,7 +399,7 @@ This group of functions and operations interacts with integers through their bin
 // Language: Clean
 
 bitnot :: Int -> Int
-bitnot    a   =  ...
+bitnot    a   => ...
 ```
 
 **Behavior**: returns bit-wise two complement of `a`.
@@ -425,7 +423,7 @@ bitnot   5   //  -6
 // Language: Clean
 
 (bitor) infixl 6 :: Int Int -> Int
-(bitor)             a   b   =  ...
+(bitor)             a   b   => ...
 ```
 
 **Behavior**: returns bit-wise OR of `a` and `b`.
@@ -450,7 +448,7 @@ bitnot   5   //  -6
 // Language: Clean
 
 (bitand) infixl 6 :: Int Int -> Int
-(bitand)             a   b   =  ...
+(bitand)             a   b   => ...
 ```
 
 **Behavior**: returns bit-wise AND of `a` and `b`.
@@ -474,7 +472,7 @@ bitnot   5   //  -6
 // Language: Clean
 
 (bitxor) infixl 6 :: Int Int -> Int
-(bitxor)             a   b   =  ...
+(bitxor)             a   b   => ...
 ```
 
 **Behavior**: returns bit-wise XOR of `a` and `b`.
@@ -498,7 +496,7 @@ bitnot   5   //  -6
 // Language: Clean
 
 (<<) infix 7 :: Int Int -> Int
-(<<)            a   b   =  ...
+(<<)            a   b   => ...
 ```
 
 **Behavior**: shifts `a` to the left by `b` bits.
@@ -522,7 +520,7 @@ bitnot   5   //  -6
 // Language: Clean
 
 (>>) infix 7 :: Int Int -> Int
-(>>)            a   b   =  ...
+(>>)            a   b   => ...
 ```
 
 **Behavior**: shifts `a` to the right by `b` bits.
@@ -550,10 +548,10 @@ bitnot   5   //  -6
 // Language: Clean
 
 sign :: Int -> Int
-sign    a   =  ...
+sign    a   => ...
 ```
 
-**Behavior**: returns the sign of an integer `a`.
+**Behavior**: returns the sign of `a`.
 
 **Usage**
 
@@ -573,10 +571,10 @@ sign (-1)  // -1
 // Language: Clean
 
 abs :: Int -> Int
-abs    a   =  ...
+abs    a   => ...
 ```
 
-**Behavior**: returns the absolute value of an integer `a`.
+**Behavior**: returns the absolute value of `a`.
 
 **Usage**
 
@@ -596,7 +594,7 @@ abs (-1)  // 1
 // Language: Clean
 
 gcd :: Int Int -> Int
-gcd    a   b   =  ...
+gcd    a   b   => ...
 ```
 
 **Behavior**: returns the greatest common divisor of `a` and `b`.
@@ -620,7 +618,7 @@ gcd (-3) (-2)  // 1
 // Language: Clean
 
 lcm :: Int Int -> Int
-lcm    a   b   =  ...
+lcm    a   b   => ...
 ```
 
 **Behavior**: returns the least common multiple of `a` and `b`.
@@ -640,7 +638,7 @@ lcm (-3) (-2)  // 6
 
 ## Property Functions
 
-This group of functions accepts one integer as an argument and returns a Boolean value based on the property of the integer given.
+Tests properties of an integer.
 
 ### `isEven`
 
@@ -650,10 +648,10 @@ This group of functions accepts one integer as an argument and returns a Boolean
 // Language: Clean
 
 isEven :: Int -> Bool
-isEven    a   =  ...
+isEven    a   => ...
 ```
 
-**Behavior**: returns true if and only if `a` is an even integer.
+**Behavior**: returns true if `a` is an even integer.
 
 **Usage**
 
@@ -675,10 +673,10 @@ isEven -2  // False
 // Language: Clean
 
 isOdd :: Int -> Bool
-isOdd    a   =  ...
+isOdd    a   => ...
 ```
 
-**Behavior**: returns true if and only if `a` is an odd integer.
+**Behavior**: returns true if `a` is an odd integer.
 
 **Usage**
 
@@ -696,8 +694,7 @@ isOdd -2  // True
 
 ## Conversions To Integer Type
 
-This group of functions explicitly converts values of other types to integer type.
-The function shares the same name, which is `toInt`, but they behave differently based on the original type.
+Explicitly converts values of other types to integer type.
 
 ### From Real Number Type
 
@@ -705,10 +702,10 @@ The function shares the same name, which is `toInt`, but they behave differently
 
 ```
 toInt :: Real -> Int
-toInt    a    =  ...
+toInt    a    => ...
 ```
 
-**Behavior**: rounds a real number `a` up or down to the nearest integer.
+**Behavior**: rounds `a` to its nearest integer.
 
 **Usage**
 
@@ -730,10 +727,10 @@ toInt (-1.5)  // -2
 // Language: Clean
 
 toInt :: Char -> Int
-toInt    a    =  ...
+toInt    a    => ...
 ```
 
-**Behavior**: converts a character `a` to its ASCII value.
+**Behavior**: returns ASCII value of `a`.
 
 **Usage**
 
@@ -756,10 +753,10 @@ toInt 'z'  // 122
 // Language: Clean
 
 toInt :: {#Char} -> Int
-toInt    a       =  ...
+toInt    a       => ...
 ```
 
-**Behavior**: attempts to parse a string `a` to an integer.
+**Behavior**: attempts to parse `a` to an integer.
 Returns zero if unsuccessful.
 
 **Usage**
@@ -778,16 +775,18 @@ toInt "-1.0"  //  0
 
 ## Conversions From Integer Type
 
-This group of functions explicitly converts integer type to other types.
-The function shares the same name, which is `fromInt`, but the desired type must be unambiguous.
+Explicitly converts integer type to other types.
+The desired type must be unambiguous.
 
 ### To Real Number Type
 
 **Signature**
 
 ```
+// Language: Clean
+
 fromInt :: Real -> Int
-fromInt    a    =  ...
+fromInt    a    => ...
 ```
 
 **Behavior**: converts an integer `a` into a real number.
@@ -811,7 +810,7 @@ expr =  fromInt  0  // 0.0
 // Language: Clean
 
 fromInt :: Int -> Char
-fromInt    a    =  ...
+fromInt    a   => ...
 ```
 
 **Behavior**: converts an integer `a` in to a character based on its ASCII value.
@@ -838,7 +837,7 @@ expr =  fromInt 122  // 'z'
 // Language: Clean
 
 fromInt :: Int -> {#Char}
-fromInt    a   =  ...
+fromInt    a   => ...
 ```
 
 **Behavior**: converts an integer `a` into a string.

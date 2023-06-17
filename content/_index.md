@@ -34,17 +34,30 @@ In this Section, concepts regarding functions are discussed in details.
 
 ### Defining a Function
 
-In its purest form, a function definition consists one implementation.
+A function definition consists of at least one function implementation.
+
+Optionally, a function definition can have multiple implementations.
+It can be explicitly typed as well.
 
 #### Control Form of Function Implementation
 
-The form of a control function implementation is as follows.
+Since a function definition consists of one or more function implementations, let's discuss what a function implementation looks like.
+
+The control form of a function implementation is as follows.
 
 ```
 // Language: Clean
  
-name param = expression
+name param = expr
 ```
+
+A function implementation has three components.
+
+| Component | Description   |
+| --------- | ------------- |
+| `name`    | Function name |
+| `param`   | Parameters    |
+| `expr`    | Return value  |
 
 Multiple parameters are space separated.
 
@@ -54,11 +67,13 @@ Multiple parameters are space separated.
 name paramA paramB = expression
 ```
 
-This control form is enough for a valid function definition.
+A single control form is enough for a valid function definition.
 
 #### Example Function Definition
 
-The simplest functions consist of one implementation.
+To demonstrate a practical function definition, a function called `negate` is describe as the following:
+- it accepts one integer as argument, and
+- it returns the negated value of the given integer.
 
 ```
 // Language: Clean
@@ -66,31 +81,28 @@ The simplest functions consist of one implementation.
 negate x = x * (-1)
 ```
 
-The function `negate` accepts one argument `x`, whose type is inferred, then negates negates its sign.
+The definition of `negates` follows the control form of function implementation.
 
-The definition for `negates` follows the control form of function implementation.
-
-| Control form | Proper form | Description         |
-| ------------ | ----------- | ------------------- |
-| `name`       | `negate`    | Name of function    |
-| `param`      | `x`         | Parameter           |
-| `expression` | `x * (-1)`  | Function expression |
+| Control form | Proper form |
+| ------------ | ----------- |
+| `name`       | `negate`    |
+| `param`      | `x`         |
+| `expr`       | `x * (-1)`  |
 
 #### Implementation Rules
 
-A function definition can consist of just one implementation.
-
-The following rules come into effect when a function definition consists of multiple function implementations.
+The following rules come into effect when a function definition has multiple function implementations.
 
 ##### Implementation Grouping Rule
 
 > Implementations of a function must be together.
 
-To demonstrate, a function `safeDivide` is described as:
-- accepts two integer arguments, and divides the integers, but
-- returns zero when given denominator is zero.
+To demonstrate, a function called `safeDivide` is described as follows:
+- it accepts two integer arguments, 
+- it returns the result of division, but
+- it returns zero when given denominator is zero.
 
-A function definition which satisfy the description can be written with two implementations.
+The function can be defined with two implementations.
 
 ```
 // Language: Clean
@@ -99,7 +111,6 @@ safeDivide m 0 = 0
 safeDivide m n = m / n
 ```
 
-The definition shown is valid since implementations of `safeDivide` are grouped together.
 On the other hand, a definition is no longer valid if it does not follow this rule.
 
 ```
@@ -110,7 +121,7 @@ safeDivide m 0 = 0
 safeDivide m n = m / n
 ```
 
-The expression (`6 + 2`) invalidates the definition since the implementations are no longer grouped together.
+The expression (`6 + 2`) invalidates the function definition since the implementations of `safeDivide` are no longer grouped together.
 
 #### Implementation Signature Rule
 
@@ -125,8 +136,8 @@ badSafeDivide m 0 = False
 badSafeDivide m n = m / n
 ```
 
-The first implementation returns a Boolean value, but the second returns an integer.
-This conflict of signatures invalidates the definition of `badSafeDivide`.
+The first implementation of `badSafeDivide` returns a Boolean value, but the second returns an integer.
+This conflict of signatures invalidates the function definition.
 
 #### Implementation Selection Rule
 
@@ -141,101 +152,118 @@ To demonstrate, `safeDivide` is called with nine and six respectively.
 safeDivide 9 6
 ```
 
-The first implementation is tried, the first parameter (`m`) matches with everything including nine since it is a wildcard.
+The first implementation is tried.
 
-| Pair # | Parameter | Argument | Result   |
-| ------ | --------- | -------- | -------- |
-| 1      | `m`       | `9`      | Matching |
+The first parameter (`m`) matches with nine.
+
+| Pair # | Parameter | Argument | Result |
+| ------ | --------- | -------- | ------ |
+| 1      | `m`       | `9`      | Pass   |
 
 The second parameter (`0`) does not match with the second argument (`6`).
 
-| Pair # | Parameter | Argument | Result       |
-| ------ | --------- | -------- | ------------ |
-| 1      | `m`       | `9`      | Matching     |
-| 2      | `0`       | `6`      | Not matching |
+| Pair # | Parameter | Argument | Result |
+| ------ | --------- | -------- | ------ |
+| 1      | `m`       | `9`      | Pass   |
+| 2      | `0`       | `6`      | Fail   |
 
 The first implementation is not chosen.
 
 Next, the second implementation is tried.
 Since both parameters wildcards, they will match with both arguments.
 
-| Pair # | Parameter | Argument | Result   |
-| ------ | --------- | -------- | -------- |
-| 1      | `m`       | `9`      | Matching |
-| 2      | `n`       | `6`      | Matching |
+| Pair # | Parameter | Argument | Result |
+| ------ | --------- | -------- | ------ |
+| 1      | `m`       | `9`      | Pass   |
+| 2      | `n`       | `6`      | Pass   |
 
 Thus, the second implementation is chosen for evaluation.
 
-It should be noted that; if implementation order is changed, then the function would have unintended behaviors.
+It should be noted that if implementation order is changed, then the function would have unintended behaviors.
 
-To demonstrate, `badSafeDivide` is defined in such an way that they will produce unintended effects.
-
-```
-// Language: Clean
-
-badSafeDivide m n = m / n
-badSafeDivide m 0 = 0
-```
-
-It is clear from the example that the second implementation is never reached.
-Even if `badSafeDivide`  is called with `0`.
+To demonstrate, the order of implementations of `safeDivide` is changed in such an way that they will produce unintended effects.
 
 ```
 // Language: Clean
 
-badSafeDivAlt 9 0  // Uh oh
+safeDivide m n = m / n
+safeDivide m 0 = 0
 ```
 
-This rule is not performing equality checks.
+It is clear that the second implementation is never reached.
+Even if `safeDivide`  is called with `0`.
+
+```
+// Language: Clean
+
+safeDivAlt 9 0  // Uh oh
+```
+
+More importantly, this rule is not performing equality checks.
+
 If the equality operation is not implemented on a type, this rule would still work.
 This concept of user-defined types is discussed in later Sections.
 
 ### Guarded Expressions
 
-So far, implementations has one body or expression.
+So far, each function implementation has one expression associated with it .
 
-Guarded expressions may be introduced to an implementation, which allow it to have multiple expression.
+Guarded expressions can be introduced to an implementation, which allow it to have multiple expressions.
 
-A control implementation with one guarded expression may be written as follows.
+#### Control Form of a Guarded Expression
 
-```
-// Language: Clean
-
-functionA parameter
-| guard = expresssion
-```
-
-A guarded expression, as the name suggests, has two components:
-- guard (`guard`) which evaluates to a Boolean value, and
-- expression (`expression`).
-
-An implementation with multiple guarded bodies may be written as follows.
+A control implementation with one guarded expression is written as follows.
 
 ```
 // Language: Clean
 
-functionA parameter
-| guardA = expressionA
-| guardB = expressionB
-| guardC = expressionC
+name param
+| guard = expr
 ```
 
-Additionally, guarded bodies can be nested.
+Each guarded expression must start with a vertical bar (`|`).
+
+A guarded expression has two components:
+
+| Component | Description          |
+| --------- | -------------------- |
+| `guard`   | A Boolean expression |
+| `expr`    | Return value         |
+
+An implementation with multiple guarded expression may be written as follows.
 
 ```
 // Language: Clean
 
-functionA parameter
+name param
+| guardA = exprA
+| guardB = exprB
+| guardC = exprC
+```
+
+Moreover, guarded expressions can be nested.
+
+```
+// Language: Clean
+
+name param
 | guardA
-    | guardAA = expressionAA
-    | guardAB = expressionAB
+    | guardAA = exprAA
 ```
+
+#### Guarded Expression Rules
+
+Similar to function implementation rules discussed earlier, guarded expressions has rules which they must follow.
 
 #### Guarded Expression Signature Rule
 
-Similar to the implementation signature rule discussed earlier, expressions must follow the type of the first implementation.
+> Expressions of guarded expressions must have a single type.
 
-To demonstrate, a good definition of a `signum` function may be written as follows.
+To demonstrate, a function called `signum` is described as follows:
+- it accepts one integer argument, and
+- it returns the sign of that integer.
+
+It can be defined with two implementation and two guarded expressions.
 
 ```
 // Language: Clean
@@ -246,38 +274,24 @@ signum n
 | n < 0  = -1
 ```
 
-The current definition is valid since implementations accepts one integer as argument and returns an integer.
+The definition above is valid since every expression returns an integer.
 
-The following definition, however, disobeys the rule of signature.
+On the other hand, an invalid definition may look as follows.
 
 ```
 // Language: Clean
 
-badSignum 0 =  0
+badSignum 0 = 0
 badSignum n
 | n > 0     =  True
 | n < 0     = -1
 ```
 
-The first implementation of `badSignum` dictates that every implementation must return an integer, but a guarded expression returns a Boolean value.
 
-Furthermore, `badSignum` can be rewritten to have only one implementation.
 
-```
-// Language: Clean
+##### Guarded Expression Selection Rule
 
-badSignumAlt n
-| n == 0 =  0
-| n >  0 =  True
-| n <  0 = -1
-```
-
-Unfortunately, this new definition is still illegal.
-The first guarded expression dictates subsequent guarded expressions  to return an integer, but the second returns a Boolean value.
-
-#### Guarded Expression Selection Rule
-
-Similar to implementation selection rule discussed earlier, guarded expressions are tried in textual order, but only after their implementation is chosen.
+>  Guarded expressions are tried from top to bottom, but only after their implementation is chosen.
 
 To demonstrate, `signum` is called with zero.
 

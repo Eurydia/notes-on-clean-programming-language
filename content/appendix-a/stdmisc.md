@@ -28,7 +28,7 @@ Forces a program to terminate if it is evaluated.
 
 ```
 abort :: {#Char} -> anyType
-abort    a
+abort    a       => ...
 ```
 
 **Behavior**: terminates the program and return an error message `a`.

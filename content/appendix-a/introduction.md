@@ -19,7 +19,7 @@ The Standard Environment includes, but not limited to, the following modules.
 | [StdClass](appendix-a/stdclass.md)           | Predefined classes                                                |
 | [StdInt](appendix-a/stdint.md)               | Operations and functions on integers                              |
 | [StdList](appendix-a/stdlist.md)             | Operations and functions on lists                                 |
-| [StdMisc](appendix-a/stdmisc.md)             | Miscellaneous functions                                           |
+| [StdMisc](appendix-a/StdMisc.md)             | Miscellaneous functions                                           |
 | [StdOrdList](appendix-a/stdordlist.md)       | Operations and functions on lists, whose element can be ordered   |
 | [StdOverloaded](appendix-a/stdoverloaded.md) | Predefined overloaded operations and functions                    |
 | [StdReal](appendix-a/stdreal.md)             | Operations and functions on real numbers                          |

@@ -1,20 +1,38 @@
 ---
 title: "Defining a Function"
-last revision: 18 JUNE 2023
+last revision: 19 JUNE 2023
 ---
 
-A simple function definition consists of one function implementation.
-A function can be defined with multiple function implementations as well.
+## Implementing a Function
 
-Implementations of a function have to follow specific rules.
-If not, the definition of function is invalid, and results in a compile-time error.
+A simple function definition consists of one or more function implementations.
 
-Optionally, a function definition can be explicitly typed.
+See [Implementing a Function](function/Implementing%20a%20Function.md).
 
 ---
 
-## Related Pages
+## Indirectly Defining a Function
 
-- [Implementing a Function](function/Implementing%20a%20Function.md)
-- [Implementation Rules](function/Implementation%20Rules.md)
-- [Typing a Function](function/Typing%20a%20Function.md)
+A group of special expressions exists as syntactic sugar.
+They are compiled down to a function definition.
+By invoking such an expression, a function is indirectly defined.
+
+See [Special Expressions](Expressions/Special%20Expressions.md).
+
+---
+
+## Infix Operators
+
+Operators are arity-two functions.
+They behave and follow similar rules to that of ordinary arity-two functions.
+The main difference is that operators can be called between its arguments.
+
+See [Defining an Operator](operator/Defining%20an%20Operator.md).
+
+---
+
+## Typing a Function
+
+A function definition can be explicitly typed to increase readability.
+
+See [Typing a Function](function/Typing%20a%20Function.md)

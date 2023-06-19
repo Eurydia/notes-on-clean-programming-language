@@ -1,5 +1,5 @@
 ---
-title: "operator-definition"
+title: "Defining an Operator"
 ---
 
 An operator can be defined by placing its name between parentheses.

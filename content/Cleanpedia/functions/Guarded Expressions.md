@@ -44,7 +44,7 @@ name param
 Guarded expressions of a function implementation must follow certain rules.
 Violation of such rules results in a compile-time error.
 
-See [Guarded Expression Rules](function/Guarded%20Expression%20Rules.md).
+See [Guarded Expression Rules](functions/Guarded%20Expression%20Rules.md).
 
 ---
 

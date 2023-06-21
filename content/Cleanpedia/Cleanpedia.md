@@ -27,11 +27,9 @@ If you notice any mistake or have suggestions for improvements, please feel free
 
 ## Functions
 
-In this section, we discuss how functions, operators, and constants are defined.
+In this section, we discuss functions, operators, and constants.
 
-Start reading: [Defining a Function](function/Defining%20a%20Function.md)
-
-[Local Scopes](Local%20Scopes.md)
+See [[Functions]].
 
 ---
 

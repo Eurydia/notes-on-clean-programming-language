@@ -20,7 +20,7 @@ isOne (-1) = True
 isOne   1  = True
 ```
 
-Let's try calling it with one and follow the [Implementation Rule of Selection](function/Implementation%20Rules.md#Implementation%20Rule%20of%20Selection) to make sure that works.
+Let's try calling it with one and follow the [Implementation Rule of Selection](functions/Implementation%20Rules.md#Implementation%20Rule%20of%20Selection) to make sure that works.
 
 ```
 // Language: Clean
@@ -108,7 +108,7 @@ isOne n
 | n ==   1  = True
 ```
 
-Let's try calling it with negative one and follow the [Guarded Expression Signature Rule](function/Guarded%20Expression%20Rules.md#Guarded%20Expression%20Signature%20Rule) to make sure that works.
+Let's try calling it with negative one and follow the [Guarded Expression Signature Rule](functions/Guarded%20Expression%20Rules.md#Guarded%20Expression%20Signature%20Rule) to make sure that works.
 
 ```
 // Language: Clean

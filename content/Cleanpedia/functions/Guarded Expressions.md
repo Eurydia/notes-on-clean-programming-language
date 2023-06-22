@@ -1,15 +1,14 @@
 ---
-title: "Guarded Expressions"
-last revision: 18 JUNE 2023
+dg-publish: true
 ---
 
-A function implementation can have multiple expressions.
+# Guarded Expressions
 
-## Control Forms of a Guarded Expression
+Guarded expressions allows a function implementation to have multiple bodies.
 
 A control function implementation with one guarded expression is written as follows.
 
-```
+```Clean
 // Language: Clean
 
 name param
@@ -20,7 +19,7 @@ Each guarded expression starts with a vertical bar (`|`).
 
 A control function implementation with three guarded expression is written as follows.
 
-```
+```Clean
 // Language: Clean
 
 name param
@@ -41,10 +40,8 @@ name param
 
 ### Guarded Expression Rules
 
-Guarded expressions of a function implementation must follow certain rules.
+Guarded expressions of a function implementation must follow [[Functions/Guarded Expression Rules|certain rules]].
 Violation of such rules results in a compile-time error.
-
-See [Guarded Expression Rules](functions/Guarded%20Expression%20Rules.md).
 
 ---
 

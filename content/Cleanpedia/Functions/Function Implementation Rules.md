@@ -1,12 +1,13 @@
 ---
-title: "Implementation Rules"
-last revision: 19 JUNE 2023
+dg-publish: true
 ---
 
-When defining a function, its implementations must follow a set of rules.
+# Function Implementation Rules
+
+When a function is defined, its function implementations must follow a set of rules.
 Violation of these rules results in a compile-time error.
 
-Let's discuss what they are.
+Let's discuss what these rules are.
 
 ## Implementation Rule of Naming
 
@@ -23,7 +24,7 @@ More importantly, the name of a function must be unique from other names in the 
 
 Non-comment entities cannot be placed between implementations of a function.
 
-```
+```Clean
 // Language: Clean
 
 badFunction paramA = ...
@@ -31,21 +32,23 @@ badFunction paramA = ...
 badFunction paramB = ...
 ```
 
-The function definition is invalid because implementations of `badFunction` are separated by an expression (`6 + 2`).
+The function definition is invalid because functions implementations are separated by an expression (`6 + 2`).
 
 ---
 
 ## Implementation Rule of Signature
 
-> Implementations of a function must share a single signature.
+*Implementations of a function must share a single signature.*
 
-```
+```Clean
 // Language: Clean
 
 badFunction m 0 = False
 badFunction m n = m / n
 ```
 
-The first implementation returns a Boolean value, but the second returns an integer.
+The first function implementation accepts two integers and returns a Boolean, but the second accepts two integers and return an integer.
 
-The function definition is invalid because implementations of `badFunction` have conflicting signatures.
+The function definition is invalid because function implementations have conflicting signatures.
+
+---

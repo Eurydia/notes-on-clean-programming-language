@@ -6,43 +6,38 @@ dg-publish: true
 
 To implement  a function, we need to know what a function implementation looks like first.
 
-## Control Forms of a Function Implementation
-
 A control form of a function implementation is written as follows.
 
-```
-// Language: Clean
- 
+```markdown
 identifier paramSeq = body
 ```
 
-More specifically, a function implementation consists of three components.
+More precisely, a function implementation consists of three components.
 
-| Component    | Description                                                                             |
-| ------------ | --------------------------------------------------------------------------------------- |
-| `identifier` | The function name.                                                                      |
-| `paramSeq`   | A fixed sequence of space-separated parameters. They can be referenced by `body`. |
-| `body`       | An expression. It is evaluated when the function call is made.                          |
+| Component    | Description                                                               |
+| ------------ | ------------------------------------------------------------------------- |
+| `identifier` | A function name.                                                          |
+| `paramSeq`   | A fixed-length parameter sequence needed for a function to evaluate. |
+| `body`       | An expression to be evaluated when a function is called.                 |
 
 ### Extending Parameters 
 
-A parameter of a function can be a simple variable name, a literal.
-When a literal is used as a parameter, it invokes a special behavior which is discussed later part of this page.
+A parameter of a function can be a simple variable name, but it can be replaced by a literal as well.
+When a literal is used as a parameter, it invokes a special behavior, which is later discussed in this page.
 
-If a parameter represents a structured datatype, it can be replaced by a destructuring pattern.
-See [[functions/Destructuring Patterns|Destructuring Patterns]].
+If a parameter represents a [[Built-in Data Types/Structured Data Types|structured data type]], it can be replaced by a [[Functions/Destructuring Patterns|destructuring pattern]].
 
 ### Extending Expression
 
-A function implementation has ownership over one expression.
+On its own, a function implementation has ownership over one body.
 
-By introducing [[functions/Guarded Expressions|guarded expressions]], a function implementation can have ownership over multiple guarded expressions, instead of one ordinary expression.
+By introducing [[Functions/Guarded Expressions|guarded expressions]], a function implementation can have ownership over multiple guarded expressions, instead of one ordinary expression.
 
 ---
 
 ## Function Implementation Rules
 
-Function implementations must follow [[functions/Implementation Rules|specific rules]].
+Function implementations must follow [[Functions/Function Implementation Rules|specific rules]].
 Violation of these rules results in a compile-time error.
 
 ---
@@ -50,22 +45,18 @@ Violation of these rules results in a compile-time error.
 ## Selecting a Function Implementation To Be Evaluated
 
 A function definition often contains multiple function implementations.
-This is important since of all function implementation, only one can be selected.
+This is important because from many function implementations, only one can be selected.
 
-> [!question]
-> How do we determine which function implementation should be selected when there more than one?
+To determine which function implementation should be selected for evaluation, a procedure is written as follows.
 
-The answer to the posted question is as follows.
-
-> [!success]
-> Implementations are tried in descending order, and the first implementation, whose parameters match with every argument, is selected.
+*Implementations are tried in descending order, and the first implementation, whose parameters match with every argument, is selected.*
 
 To demonstrate, a function called `safeDivide` is described as follows:
 - accepts two integers as arguments, 
 - returns the result of division, and
 - returns zero when the given denominator is 0.
 
-```
+```Clean
 // Langauge: Clean
 
 safeDivide 6 2  // 3
@@ -75,17 +66,21 @@ safeDivide 2 0  // 0
 It can be defined using two function implementations.
 
 ```Clean
+// Langauge: Clean
+
 safeDivide m 0 = 0
 safeDivide m n = m / n
 ```
 
-Let's call `safeDivide` with 9 and 6 and investigate.
+Let's call `safeDivide` with 9 and 6 to investigate.
 
 ```Clean
+// Langauge: Clean
+
 safeDivide 9 6  // ?
 ```
 
-Apply the rule to see which function implementation is selected.
+Apply the procedure to determine which function implementation is selected.
 
 The first function implementation is tried, and the first parameter matches the first argument.
 
@@ -102,7 +97,7 @@ The second parameter does not match the second argument.
 
 The first function implementation is not selected.
 
-Next, second is tried, and both parameters match both arguments.
+Next, the second function implementation is tried, and both parameters match both arguments.
 
 | Pair # | Parameter | Argument | Result |
 | ------ | --------- | -------- | ------ |
@@ -157,9 +152,9 @@ safeDivide 9 0  // 0
 ### Importance of Implementation Order
 
 If implementation order is changed, `safeDivide` would have unintended behaviors.
-To demonstrate, the implementation order of `safeDivide` is changed.
+To demonstrate, let's swap the implementation order of `safeDivide`.
 
-```
+```Clean
 // Language: Clean
 
 safeDivide m n = m / n
@@ -168,7 +163,7 @@ safeDivide m 0 = 0
 
 The second function implementation is never reached even if `safeDivide`  is called with 0.
 
-```
+```Clean
 // Language: Clean
 
 safeDivide 9 0  // Uh oh
@@ -176,6 +171,6 @@ safeDivide 9 0  // Uh oh
 
 ### No Valid Candidate for Selection
 
-If no function implementation is a valid candidate for selection, the function definition is [[functions/Partial Functions|partial]] and the function call results in a run-time error.
+If every function implementation is unable to be selected, the function definition is [[Functions/Partial Functions|partial]] and the function call results in a run-time error.
 
 ---

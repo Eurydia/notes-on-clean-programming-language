@@ -1,8 +1,11 @@
 ---
-title: "Guarded Expression Rules"
-last revision: 19 JUNE 2023
+dg-publish: true
 ---
 
-When extending a function implementation with guarded expressions, the guarded expressions follow certain rules.
+Guarded expressions of a function implementation must follow certain rules.
 Violation of such rules results in a compile-time error.
+
+Let's discuss what these rules are.
+
+## 
 

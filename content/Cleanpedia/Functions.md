@@ -8,18 +8,25 @@ dg-publish: true
 
 A simple function consists of one function implementation.
 
-See [[functions/Implementing a Function|Implementing a Function]].
+See [[Functions/Implementing a Function|Implementing a Function]].
 
 Optionally, a function definition can be explicitly typed to increase readability.
 
-See [[functions/Typing a Function|Typing a Function]].
+See [[Functions/Typing a Function|Typing a Function]].
 
 ---
 
 ## Calling a Function
 
-A function call can be made by placing a function name in front of a sequence of space-separated arguments.
-A function call does not require parentheses.
+A function call can be made by placing a function identifier in front of a sequence of space-separated arguments without parentheses.
+
+A control form a function call is written as follows.
+
+```Clean
+// Language: Clean
+
+identifier argSeq
+```
 
 To better demonstrate, let's define an arity-one function called `exampleA` and an arity-two function called `exampleB`.
 The body of each function does not matter.
@@ -48,12 +55,20 @@ To call `exampleB`, place its name in front of a sequence of space-separated arg
 exampleB argA argB
 ```
 
+### Partially Calling a Function
 
-### Currying a Function
+When a function with multiple parameters is called with fewer arguments than required, it is "partially called".
 
-Functions with multiple parameters can be curried.
+```Clean
+// Language: Clean
+
+exampleB argA  // ?
+```
+
+More precisely, this concept is called "currying".
 
 Currying transforms a function, which takes multiple arguments, into an a series of intermediate functions.
+
 Each intermediate function takes a single argument and returns another intermediate function, which takes further arguments.
 Eventually, the original function receives the rest of its arguments and evaluates.
 
@@ -74,7 +89,7 @@ Normally, it requires three arguments to call `exampleC`.
 exampleC argA argB argC
 ```
 
-With currying `exampleC` can be called with fewer arguments than required.
+Since `exampleC` takes multiple arguments, it can be partially called.
 
 ```Clean
 // Language: Clean
@@ -95,12 +110,6 @@ where
 ```
 
 The function call is equivalent to the second step.
-
-```Clean
-// Language: Clean
-
-exampleC argA  // __intermediateB
-```
 
 In other word, `exampleC` is composed of three indirect function calls, instead of one direct call.
 

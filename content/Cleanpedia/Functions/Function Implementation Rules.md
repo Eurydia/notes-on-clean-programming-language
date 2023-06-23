@@ -2,8 +2,6 @@
 dg-publish: true
 ---
 
-# Function Implementation Rules
-
 When a function is defined, its function implementations must follow a set of rules.
 Violation of these rules results in a compile-time error.
 

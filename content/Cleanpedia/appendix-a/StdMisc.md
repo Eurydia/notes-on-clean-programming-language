@@ -8,7 +8,7 @@ title: "Appendix A: StdMisc"
 
 **Implementation**
 
-```
+```Clean
 // Language: Clean
 
 undef :: anyType
@@ -16,7 +16,7 @@ undef = abort "Run-time error! Program evaluated undefined value?!"
 ```
 
 **Definition**: represents an undefined value.
-Forces a program to terminate if it is evaluated.
+Forces a program to terminate if it is ever evaluated.
 
 ---
 
@@ -26,7 +26,7 @@ Forces a program to terminate if it is evaluated.
 
 **Signature**
 
-```
+```Clean
 abort :: {#Char} -> anyType
 abort    a       => ...
 ```
@@ -40,3 +40,5 @@ abort    a       => ...
  
 abort "Terminated"  // "Terminated"
 ```
+
+---

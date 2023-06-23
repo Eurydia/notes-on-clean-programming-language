@@ -2,17 +2,11 @@
 dg-publish: true
 ---
 
-# Functions
-
 ## Defining a Function
 
-A simple function consists of one function implementation.
+A simple function consists of one [[Functions/Function Implementation|function implementation]].
 
-See [[Functions/Implementing a Function|Implementing a Function]].
-
-Optionally, a function definition can be explicitly typed to increase readability.
-
-See [[Functions/Typing a Function|Typing a Function]].
+Optionally, a function definition can be [[Functions/Typing a Function|explicitly typed]] to increase readability.
 
 ---
 
@@ -55,21 +49,23 @@ To call `exampleB`, place its name in front of a sequence of space-separated arg
 exampleB argA argB
 ```
 
-### Partially Calling a Function
+---
 
-When a function with multiple parameters is called with fewer arguments than required, it is "partially called".
+## Partially Calling a Function
+
+A function, which takes multiple arguments, can be called with fewer arguments than required.
 
 ```Clean
 // Language: Clean
 
-exampleB argA  // ?
+exampleB argA  // huh?
 ```
 
-More precisely, this concept is called "currying".
+More precisely, this type of function call is known as [currying](https://en.wikipedia.org/wiki/Currying).
 
-Currying transforms a function, which takes multiple arguments, into an a series of intermediate functions.
+Currying transforms a function, which takes multiple arguments, into a series of intermediate functions.
 
-Each intermediate function takes a single argument and returns another intermediate function, which takes further arguments.
+Each intermediate function accepts a single argument and returns another intermediate function, which accepts further arguments.
 Eventually, the original function receives the rest of its arguments and evaluates.
 
 To demonstrate, let's define an arity-three function called `exampleC`.
@@ -89,7 +85,7 @@ Normally, it requires three arguments to call `exampleC`.
 exampleC argA argB argC
 ```
 
-Since `exampleC` takes multiple arguments, it can be partially called.
+Since `exampleC` takes multiple arguments, it can be curried.
 
 ```Clean
 // Language: Clean
@@ -120,7 +116,7 @@ In other word, `exampleC` is composed of three indirect function calls, instead 
 ```
 
 > [!note]
-> The arguments are always given from left to right.
+> Arguments cannot be skipped and always given from left to right.
 
 ---
 

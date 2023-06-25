@@ -2,51 +2,64 @@
 dg-publish: true
 ---
 
-When a function is defined, its function implementations must follow a set of rules.
-Violation of these rules results in a compile-time error.
+# Function Implementation Rules
 
-Let's discuss what these rules are.
+Implementations of a function must follow these rules.
+Violation results in a compile-time error.
 
-## Implementation Rule of Naming
+Implementations of a function must:
+- be grouped together,
+- share a single signature, and
+- share a single identifier.
 
-*Implementation of a function must share a single name.*
+In addition, the identifier must be unique from other identifiers in the namespace.
 
-Implementations of a function should have the same name.
-More importantly, the name of a function must be unique from other names in the same scope.
+> [!info]
+> The following section is intended to provide examples and insight on each rules.
 
----
+Let's investigate the rules further starting with the first.
 
-## Implementation Rule of Grouping
+> [!quote]
+> Implementations of a function must be grouped together.
 
-*Implementations of a function must be together.*
-
-Non-comment entities cannot be placed between implementations of a function.
-
-```Clean
-// Language: Clean
-
-badFunction paramA = ...
-6 + 2
-badFunction paramB = ...
-```
-
-The function definition is invalid because functions implementations are separated by an expression (`6 + 2`).
-
----
-
-## Implementation Rule of Signature
-
-*Implementations of a function must share a single signature.*
+When a function is defined with multiple function implementations, nothing can be placed between them, except comments.
 
 ```Clean
 // Language: Clean
 
-badFunction m 0 = False
-badFunction m n = m / n
+double 0 = 0
+double x = x * 2
 ```
 
-The first function implementation accepts two integers and returns a Boolean, but the second accepts two integers and return an integer.
+Function implementations of `double` are grouped together.
 
-The function definition is invalid because function implementations have conflicting signatures.
+```Clean
+// Language: Clean
+
+triple 0 = 0
+// So there's this one book
+triple x = x * 4
+```
+
+Function implementations of `triple` are separated by a comment, which is an exception.
+
+```Clean
+// Language: Clean
+
+quadruple 0 = 0
+1 + 2
+quadruple x = x * 3
+```
+
+Function implementations of `quadruple` are separated by an expression.
+This function definition is invalid.
+
+This rule is rather straightforward.
+
+> [!quote]
+> Functions implementation must share a single signature.
+
+
+
 
 ---

@@ -3,7 +3,6 @@ dg-publish: true
 ---
 
 Guarded bodies allows a function implementation to have multiple bodies.
-Let's discuss what they look like.
 
 A control function implementation with one guarded body is written as follows.
 
@@ -12,14 +11,14 @@ identifier paramSeq
 | guard = body
 ```
 
-More precisely, a guarded body consists of two components.
+A guarded body consists of two components.
 
-| Component    | Description                        |
-| ------------ | ---------------------------------- |
-| `identifier` | A function name.                   |
-| `paramSeq`   | A fixed-length parameter sequence. |
-| `guard`      | A Boolean expressions.             |
-| `body`       | An expression to be evaluated.     |
+| Component    | Description                                        |
+| ------------ | -------------------------------------------------- |
+| `identifier` | A function name.                                   |
+| `paramSeq`   | A fixed-length space-separated parameter sequence. |
+| `guard`      | A Boolean expressions.                             |
+| `body`       | An expression to be evaluated.                     |
 
 A control function implementation with three guarded body is written as follows.
 
@@ -91,7 +90,7 @@ Let's call signum with 0 to investigate this procedure.
 signum 0  // ?
 ```
 
-The function is defined with two function implementations, so need to  [[Functions/Function Implementation#Selecting a Function Implementation To Be Evaluated|determine which one is selected]].
+The function is defined with two function implementations, so need to  [[Functions/Control Form of Function Implementation#Selecting a Function Implementation To Be Evaluated|determine which one is selected]].
 
 The first function implementation is tried.
 The parameter matches the argument.

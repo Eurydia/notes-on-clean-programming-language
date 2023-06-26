@@ -6,9 +6,12 @@ dg-publish: true
 
 Every function has a signature.
 
-A function signature represents the number of arguments, the type of each argument, and the return type of the function.
+A function signature represents the following:
+- number of arguments, 
+- the type of each argument, and 
+- the return type.
 
-The behavior of a function is ignored when speaking in terms of function signatures.
+When speaking in terms of function signatures, the behavior of a function is ignored .
 Therefore, functions, which have completely different behaviors, can share a function signature.
 
 ## Example
@@ -31,6 +34,6 @@ triple x = x * 3
 
 The function signature of `triple` is a function which accepts one integer as argument and returns an integer.
 
-Although, `double` and `triple` does two different things, they share a single function signature.
+Although, `double` and `triple` do two different things, they share a single function signature.
 
 ---

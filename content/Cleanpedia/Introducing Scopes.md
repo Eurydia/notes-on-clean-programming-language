@@ -2,7 +2,9 @@
 dg-publish: true
 ---
 
-#### Let Expressions
+# Introducing Scopes
+
+## Let Expressions
 
 A `let..in..` expression introduces a new scope within another expression.
 

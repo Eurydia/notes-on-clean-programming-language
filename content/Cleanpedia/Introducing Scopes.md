@@ -28,7 +28,7 @@ Definitions are local to `expression`.
 in (a, a) \\ i <- [0..n]]
 ```
 
-#### Where Blocks
+## Where Blocks
 
 A `where` block can be introduced to the end of a function implementation.
 It introduces a new scope local to that implementation.
@@ -46,7 +46,7 @@ functionA parameter = expression
 
 The second implementation does not have access to `localFunc` which is local to the first implementation.
 
-#### With Blocks
+## With Blocks
 
 A `with` block can be introduced to the end of a guarded.
 It introduces a new scope local to that guarded expression.

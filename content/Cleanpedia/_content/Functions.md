@@ -1,13 +1,21 @@
+
+
 # Functions
 
 As a purely functional programming language, everything is a function in CLEAN.
 
+For clarity, functions can be placed into one of three categories as follows:
+- [[_content/Functions/Ordinary Functions|ordinary functions]] for 
+
+**Ordinary functions** are 
 
 
 
 
 
-[[_content/Functions/Ordinary Functions|Ordinary Functions]]
+
+
+
 [[_content/Functions/Operators|Operators]]
 [[_content/Functions/Constants|Constants]]
 

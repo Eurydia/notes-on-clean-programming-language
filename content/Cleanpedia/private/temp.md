@@ -1,5 +1,3 @@
----
-
 ## Built-In Types
 
 Types like integers, Booleans, characters, real numbers, lists, tuples, and arrays are frequently used.

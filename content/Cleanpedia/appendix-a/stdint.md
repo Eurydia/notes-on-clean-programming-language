@@ -2,11 +2,14 @@
 title: "Appendix A: StdInt"
 ---
 
+# StdInt
+
 ## Introduction
 
-The [StdInt](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1) module contains source code for operations and functions relating to integer type.
+The StdInt module contains source code for operations and functions relating to integer type. 
+(view [source code](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1))
 
- For integer type, this module implements:
+ This module implements:
 - arithmetic operations,
 - comparisons,
 - bitwise operations,
@@ -19,7 +22,7 @@ The [StdInt](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1) module cont
 
 **Implementation**
 
-```
+```Clean
 // Language: Clean
 
 zero ::  Int
@@ -32,7 +35,7 @@ zero :== 0
 
 **Implementation**
 
-```
+```Clean
 // Language: Clean
 
 one ::  Int
@@ -50,7 +53,7 @@ one :== 1
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 ~ :: Int -> Int
@@ -61,7 +64,7 @@ one :== 1
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
  
 ~  0   //  0
@@ -84,7 +87,7 @@ one :== 1
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   1  +   1   //  2
@@ -97,7 +100,7 @@ one :== 1
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
  
 (-) infixl 6 :: Int Int -> Int
@@ -108,7 +111,7 @@ one :== 1
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   1  -   1  //  0
@@ -121,7 +124,7 @@ one :== 1
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
  
 (*) infixl 7 :: Int Int -> Int
@@ -132,7 +135,7 @@ one :== 1
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   1  *   1  //  1
@@ -145,7 +148,7 @@ one :== 1
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (/) infixl 7 :: Int Int -> Int
@@ -157,7 +160,7 @@ Silently crashes if `b` is zero.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   1  /   1   //  1
@@ -171,7 +174,7 @@ Silently crashes if `b` is zero.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (rem) infix 7 :: Int Int -> Int
@@ -180,20 +183,20 @@ Silently crashes if `b` is zero.
 
 and
 
-```
+```Clean
 // Language: Clean
 
 (mod) infix 7 :: Int Int -> Int
 (mod)            a   b   => ...
 ```
 
-For integers, both `rem` and `mod` perform modulo division.
+For integer type, both `rem` and `mod` perform modulo division.
 
 **Behavior**: divides `a` by `b`, and returns the reminder.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   3  mod (-2)  //  1
@@ -206,7 +209,7 @@ For integers, both `rem` and `mod` perform modulo division.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (^) infixr 8 :: Int Int -> Int
@@ -216,13 +219,13 @@ For integers, both `rem` and `mod` perform modulo division.
 **Behavior**: raises `a` to `b`-th power.
 Results in a run-time error if `b` is negative.
 
-```
+```markdown
 ^ (Int) called with negative power argument
 ```
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   1  ^   1   //  1
@@ -239,7 +242,7 @@ Results in a run-time error if `b` is negative.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (==) infix 4 :: Int Int -> Bool
@@ -250,7 +253,7 @@ Results in a run-time error if `b` is negative.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5  ==   2   // False
@@ -264,7 +267,7 @@ Results in a run-time error if `b` is negative.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (<>) infix 4 :: Int Int -> Bool
@@ -275,7 +278,7 @@ Results in a run-time error if `b` is negative.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5  <>   2   // True
@@ -289,7 +292,7 @@ Results in a run-time error if `b` is negative.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (<) infix 4 :: Int Int -> Bool
@@ -300,7 +303,7 @@ Results in a run-time error if `b` is negative.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5  <   2   // False
@@ -314,7 +317,7 @@ Results in a run-time error if `b` is negative.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (<=) infix 4 :: Int Int -> Bool
@@ -325,7 +328,7 @@ Results in a run-time error if `b` is negative.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5  <=   2   // False
@@ -339,7 +342,7 @@ Results in a run-time error if `b` is negative.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (>) infix 4 :: Int Int -> Bool
@@ -350,7 +353,7 @@ Results in a run-time error if `b` is negative.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5  >   2   // True
@@ -364,7 +367,7 @@ Results in a run-time error if `b` is negative.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (>=) infix 4 :: Int Int -> Bool
@@ -375,7 +378,7 @@ Results in a run-time error if `b` is negative.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5  >=   2   // True
@@ -395,7 +398,7 @@ Interacts with integers through their binary representation.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 bitnot :: Int -> Int
@@ -406,7 +409,7 @@ bitnot    a   => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 bitnot (-5)  //  -4
@@ -419,7 +422,7 @@ bitnot   5   //  -6
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (bitor) infixl 6 :: Int Int -> Int
@@ -430,7 +433,7 @@ bitnot   5   //  -6
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5  bitor   2   //  7
@@ -444,7 +447,7 @@ bitnot   5   //  -6
 **Signature**
 
 
-```
+```Clean
 // Language: Clean
 
 (bitand) infixl 6 :: Int Int -> Int
@@ -455,7 +458,7 @@ bitnot   5   //  -6
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5  bitand   2   //  0
@@ -468,7 +471,7 @@ bitnot   5   //  -6
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (bitxor) infixl 6 :: Int Int -> Int
@@ -479,7 +482,7 @@ bitnot   5   //  -6
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5  bitxor   2   //  7
@@ -492,7 +495,7 @@ bitnot   5   //  -6
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (<<) infix 7 :: Int Int -> Int
@@ -503,7 +506,7 @@ bitnot   5   //  -6
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5  <<   2   //  20
@@ -516,7 +519,7 @@ bitnot   5   //  -6
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (>>) infix 7 :: Int Int -> Int
@@ -527,7 +530,7 @@ bitnot   5   //  -6
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5  >>   2   //  1
@@ -544,7 +547,7 @@ bitnot   5   //  -6
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 sign :: Int -> Int
@@ -555,7 +558,7 @@ sign    a   => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 sign   1   //  1
@@ -567,7 +570,7 @@ sign (-1)  // -1
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 abs :: Int -> Int
@@ -578,7 +581,7 @@ abs    a   => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 abs   1   // 1
@@ -590,7 +593,7 @@ abs (-1)  // 1
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 gcd :: Int Int -> Int
@@ -601,7 +604,7 @@ gcd    a   b   => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 gcd   3    2   // 1
@@ -614,7 +617,7 @@ gcd (-3) (-2)  // 1
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 lcm :: Int Int -> Int
@@ -625,7 +628,7 @@ lcm    a   b   => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 lcm   3    2   // 6
@@ -644,7 +647,7 @@ Tests properties of an integer.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isEven :: Int -> Bool
@@ -655,7 +658,7 @@ isEven    a   => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isEven  2  // False
@@ -669,7 +672,7 @@ isEven -2  // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isOdd :: Int -> Bool
@@ -680,7 +683,7 @@ isOdd    a   => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isOdd  2  // True
@@ -700,7 +703,7 @@ Explicitly converts values of other types to integer type.
 
 **Signature**
 
-```
+```Clean
 toInt :: Real -> Int
 toInt    a    => ...
 ```
@@ -709,7 +712,7 @@ toInt    a    => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 toInt   1.5   //  2
@@ -723,7 +726,7 @@ toInt (-1.5)  // -2
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 toInt :: Char -> Int
@@ -734,7 +737,7 @@ toInt    a    => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 toInt '1'  //  49
@@ -749,7 +752,7 @@ toInt 'z'  // 122
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 toInt :: {#Char} -> Int
@@ -761,7 +764,7 @@ Returns zero if unsuccessful.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 toInt "1.0"   //  0	
@@ -782,7 +785,7 @@ The desired type must be unambiguous.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 fromInt :: Real -> Int
@@ -794,7 +797,7 @@ The decimal place is set to zero.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 expr :: Real
@@ -806,7 +809,7 @@ expr =  fromInt  0  // 0.0
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 fromInt :: Int -> Char
@@ -817,7 +820,7 @@ fromInt    a   => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 expr :: Char
@@ -833,7 +836,7 @@ expr =  fromInt 122  // 'z'
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 fromInt :: Int -> {#Char}
@@ -844,7 +847,7 @@ fromInt    a   => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 expr :: {#Char}

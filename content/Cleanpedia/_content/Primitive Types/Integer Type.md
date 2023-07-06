@@ -19,7 +19,7 @@ Integer literals constructed with decimal notation may be written as follows.
  13
 ```
 
-Integer literals constructed with octal notation may be written by prefixing octal digits with `0`.
+Integer literals constructed with octal notation may be written by prefixing octal digits with "`0`".
 
 ```Clean
 // Language: Clean
@@ -29,7 +29,7 @@ Integer literals constructed with octal notation may be written by prefixing oct
  015  // decimal  13
 ```
 
-Integers literals constructed with hexadecimal notation may be written by prefixing hexadecimal digits with `0x`.
+Integers literals constructed with hexadecimal notation may be written by prefixing hexadecimal digits with "`0x`".
 
 ```Clean
 // Language: Clean
@@ -38,6 +38,10 @@ Integers literals constructed with hexadecimal notation may be written by prefix
  0
  0xd  // decimal  13
 ```
+
+All three constructors can be used as a **pattern**.
+See [[_content/Functions/Pattern Matching/Pattern Matching Integers|Pattern Matching Integers]] for examples.
+
 
 ## Typing Integer Expressions
 
@@ -49,32 +53,6 @@ An expression, which resolves to integer type, may be explicitly typed using `In
 expr :: Int
 expr =  1 + 1
 ```
-
-## Pattern Matching Integers
-
-Constructors mentioned above can be used as a pattern.
-
-```Clean
-// Language: Clean
-
-quickMul :: Int Int -> Int
-quickMul    1   rhs =  rhs
-quickMul    lhs 1   =  lhs
-qucikMul    lhs rhs =  lhs * rhs
-```
-
-Alternatively, octal notation and hexadecimal notation can be used instead of decimal notation.
-
-```Clean
-// Language: Clean
-
-quickMul :: Int Int -> Int
-quickMul    01  rhs =  rhs
-quickMul    lhs 0x1 =  lhs
-qucikMul    lhs rhs =  lhs * rhs
-```
-
-Constructors can mix since they represent the same numerical value.
 
 ## Built-In Functions on Integer Type
 

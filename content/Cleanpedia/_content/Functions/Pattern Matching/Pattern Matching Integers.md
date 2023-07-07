@@ -1,26 +1,54 @@
+---
+dg-publish: true
+---
+
 # Pattern Matching Integers
 
-There are three constructors for integer literals.
-
-
-```Clean
-// Language: Clean
-
-qMul :: Int Int -> Int
-qMul    1   rhs =  rhs
-qMul    lhs 1   =  lhs
-qMul    lhs rhs =  lhs * rhs
-```
-
-Alternatively, octal notation and hexadecimal notation can be used instead of decimal notation.
+## Using Decimal Notation as Pattern
 
 ```Clean
 // Language: Clean
 
-qMul :: Int Int -> Int
-qMul    01  rhs =  rhs
-qMul    lhs 01  =  lhs
-qMul    lhs rhs =  lhs * rhs
+isUnit :: Int -> Bool
+isUnit    1   =  True
+isUnit    _   =  False
 ```
 
-Integer literal constructors can freely mix since they represent the same numerical value.
+---
+
+## Using Octal Notation as Pattern
+
+```Clean
+// Language: Clean
+
+isUnit :: Int -> Bool
+isUnit    01  =  True
+isUnit    _   =  False
+```
+
+---
+
+## Using Hexadecimal Notation as Pattern
+
+```Clean
+// Language: Clean
+
+isUnit :: Int -> Bool
+isUnit    0x1 =  True
+isUnit    _   =  False
+```
+
+---
+
+## Mixing Multiple Notations
+
+Different notations can mix freely, as they represent the same numerical value.
+
+```Clean
+// Language: Clean
+
+fastMul :: Int Int -> Int
+fastMul    01  rhs =  rhs
+fastMul    lhs 0x1 =  lhs
+fastMul    lhs rhs =  lhs * rhs
+```

@@ -1,20 +1,19 @@
 ---
-title: "Appendix A: StdInt"
+dg-publish: true
 ---
 
 # StdInt
 
-## Introduction
+The `StdInt` module contains definitions for operations and functions relating to integer type. 
 
-The StdInt module contains source code for operations and functions relating to integer type. 
-(view [source code](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1))
-
- This module implements:
-- arithmetic operations,
-- comparisons,
-- bitwise operations,
+When imported, this allows for:
+- integer arithmetic,
+- comparison between integers,
+- usage of bitwise operations,
 - property testing, and
-- conversions.
+- conversion to and from integer type.
+
+Visit [StdInt](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1) on Cloogle for source code of this module.
 
 ## Constants
 
@@ -29,7 +28,7 @@ zero ::  Int
 zero :== 0
 ```
 
-**Definition**: represents the value zero for integers.
+**Definition**: represents identity element of integer addition.
 
 ### One Unit
 
@@ -42,12 +41,11 @@ one ::  Int
 one :== 1
 ```
 
-**Definition**: represents the value one for integers.
+**Definition**: represents identity element of integer multiplication.
 
 ---
 
 ## Arithmetic Operations and Functions
-
 
 ### Negation
 
@@ -60,7 +58,7 @@ one :== 1
 ~    a   => ...
 ```
 
-**Behavior**: inverts the sign `a`.
+**Behavior**: inverts sign `a`.
 
 **Usage**
 
@@ -156,7 +154,8 @@ one :== 1
 ```
 
 **Behavior**: divides `a` by `b`.
-Silently crashes if `b` is zero.
+
+An expression results in a silent crash if `b` is zero.
 
 **Usage**
 
@@ -167,7 +166,7 @@ Silently crashes if `b` is zero.
   1  / (-1)  // -1
 (-1) /   1   // -1
 (-1) / (-1)  //  1
-  7  /   0   //  crashes
+  7  /   0   //  silently crashes
 ```
 
 ### Reminder Division
@@ -216,8 +215,9 @@ For integer type, both `rem` and `mod` perform modulo division.
 (^)             a   b   => ...
 ```
 
-**Behavior**: raises `a` to `b`-th power.
-Results in a run-time error if `b` is negative.
+**Behavior**: raises `a` to the power of `b`.
+
+An expression results in a run-time error if `b` is negative.
 
 ```markdown
 ^ (Int) called with negative power argument
@@ -229,9 +229,9 @@ Results in a run-time error if `b` is negative.
 // Language: Clean
 
   1  ^   1   //  1
-  1  ^ (-1)  //  NOT OK :(
+  1  ^ (-1)  //  run-time error
 (-1) ^   1   // -1
-(-1) ^ (-1)  //  NOT OK :(  
+(-1) ^ (-1)  //  run-time error
 ```
 
 ---
@@ -392,7 +392,7 @@ Results in a run-time error if `b` is negative.
 
 ## Bitwise Operations and Functions
 
-Interacts with integers through their binary representation.
+Interacts with integer type through binary representation.
 
 ### Bitwise NEGATE
 
@@ -405,7 +405,7 @@ bitnot :: Int -> Int
 bitnot    a   => ...
 ```
 
-**Behavior**: returns bit-wise two complement of `a`.
+**Behavior**: returns bitwise-two complement of `a`.
 
 **Usage**
 
@@ -429,7 +429,7 @@ bitnot   5   //  -6
 (bitor)             a   b   => ...
 ```
 
-**Behavior**: returns bit-wise OR of `a` and `b`.
+**Behavior**: returns bitwise OR of `a` and `b`.
 
 **Usage**
 
@@ -454,7 +454,7 @@ bitnot   5   //  -6
 (bitand)             a   b   => ...
 ```
 
-**Behavior**: returns bit-wise AND of `a` and `b`.
+**Behavior**: returns bitwise AND of `a` and `b`.
 
 **Usage**
 
@@ -478,7 +478,7 @@ bitnot   5   //  -6
 (bitxor)             a   b   => ...
 ```
 
-**Behavior**: returns bit-wise XOR of `a` and `b`.
+**Behavior**: returns bitwise XOR of `a` and `b`.
 
 **Usage**
 
@@ -554,7 +554,7 @@ sign :: Int -> Int
 sign    a   => ...
 ```
 
-**Behavior**: returns the sign of `a`.
+**Behavior**: returns sign of `a`.
 
 **Usage**
 
@@ -577,7 +577,7 @@ abs :: Int -> Int
 abs    a   => ...
 ```
 
-**Behavior**: returns the absolute value of `a`.
+**Behavior**: returns absolute value of `a`.
 
 **Usage**
 
@@ -600,7 +600,7 @@ gcd :: Int Int -> Int
 gcd    a   b   => ...
 ```
 
-**Behavior**: returns the greatest common divisor of `a` and `b`.
+**Behavior**: returns greatest common divisor of `a` and `b`.
 
 **Usage**
 
@@ -624,7 +624,7 @@ lcm :: Int Int -> Int
 lcm    a   b   => ...
 ```
 
-**Behavior**: returns the least common multiple of `a` and `b`.
+**Behavior**: returns least common multiple of `a` and `b`.
 
 **Usage**
 
@@ -760,7 +760,8 @@ toInt    a       => ...
 ```
 
 **Behavior**: attempts to parse `a` to an integer.
-Returns zero if unsuccessful.
+
+It returns zero if unsuccessful.
 
 **Usage**
 
@@ -792,8 +793,7 @@ fromInt :: Real -> Int
 fromInt    a    => ...
 ```
 
-**Behavior**: converts an integer `a` into a real number.
-The decimal place is set to zero.
+**Behavior**: converts `a` to a real number by setting its decimal place to zero.
 
 **Usage**
 
@@ -816,7 +816,7 @@ fromInt :: Int -> Char
 fromInt    a   => ...
 ```
 
-**Behavior**: converts an integer `a` in to a character based on its ASCII value.
+**Behavior**: converts `a` to a character of the same ASCII value.
 
 **Usage**
 
@@ -843,7 +843,7 @@ fromInt :: Int -> {#Char}
 fromInt    a   => ...
 ```
 
-**Behavior**: converts an integer `a` into a string.
+**Behavior**: converts `a` to a string.
 
 **Usage**
 

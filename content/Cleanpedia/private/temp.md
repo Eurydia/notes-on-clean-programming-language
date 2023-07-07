@@ -66,7 +66,7 @@ expr =  1 + 1
 
 #### Integer Operators And Functions
 
-Integer operations and functions are discussed in more details on [Appendix A: StdInt](appendix-a/stdint).
+Integer operations and functions are discussed in more details on [Appendix A: StdInt](_content/Appendix%20A/StdInt.md).
 
 ### Real Numbers
 
@@ -118,7 +118,7 @@ expr =  1.0 + 1.0
 
 #### Real Number Operators And Functions
 
-Real number operations and functions are discussed in more details on [Appendix A: StdReal](appendix-a/stdreal).
+Real number operations and functions are discussed in more details on [Appendix A: StdReal](_content/Appendix%20A/StdReal.md).
 
 ### Booleans
 
@@ -147,7 +147,7 @@ expr =  1 == 1
 
 #### Boolean Operations and Functions
 
-Boolean operations and functions are discussed in more details on [Appendix A: StdBool](appendix-a/stdbool).
+Boolean operations and functions are discussed in more details on [Appendix A: StdBool](_content/Appendix%20A/stdbool.md).
 
 ### Characters
 
@@ -179,7 +179,7 @@ expr =  'a'
 
 #### Character Operations And Functions
 
-Character operations and functions are discussed in more details on [Appendix A: StdChar](appendix-a/stdchar).
+Character operations and functions are discussed in more details on [Appendix A: StdChar](_content/Appendix%20A/StdChar.md).
 
 ### Lists
 
@@ -336,9 +336,9 @@ A list may contain an infinite number of elements, but elements must have the sa
 
 More information about built-in operations and functions on lists can be found on:
 
-- [Appendix A: StdCharList](appendix-a/stdcharlist),
-- [Appendix A: StdList](appendix-a/stdlist), and
-- [Appendix A: StdOrdList](appendix-a/stdordlist).
+- [Appendix A: StdCharList](_content/Appendix%20A/stdcharlist.md),
+- [Appendix A: StdList](_content/Appendix%20A/stdlist.md), and
+- [Appendix A: StdOrdList](_content/Appendix%20A/stdordlist.md).
 
 **List patterns**
 
@@ -473,7 +473,7 @@ D =  (2)     // NOT OK
 
 More information about built-in operations and functions on lists can be found on:
 
-- [Appendix A: StdTuple](appendix-a/stdtuple).
+- [Appendix A: StdTuple](_content/Appendix%20A/stdtuple.md).
 
 #### Tuple Patterns
 
@@ -533,8 +533,8 @@ An array can be constructed from comprehension by surrounding a comprehension wi
 
 More information about built-in operations and functions on lists can be found on:
 
-- [Appendix A: StdArray](appendix-a/stdarray), and
-- [Appendix A: StdString](appendix-a/stdstring).
+- [Appendix A: StdArray](_content/Appendix%20A/stdarray.md), and
+- [Appendix A: StdString](_content/Appendix%20A/stdstring.md).
 
 ---
 
@@ -1031,7 +1031,7 @@ a + b  // (Complex 0.0 2.0)
 Only after overloading the addition operation on $\textbf{Complex}$ that the addition is allowed.
 In other word, the complier now knows the meaning of complex number addition.
 
-A list of functions and operations which can be overloaded can be found on [Appendix A: StdOverloaded](appendix-a/stdoverloaded).
+A list of functions and operations which can be overloaded can be found on [Appendix A: StdOverloaded](_content/Appendix%20A/stdoverloaded.md).
 
 #### Defining An Overloaded Function Or Operator
 
@@ -1108,7 +1108,7 @@ where
     (<>) x y = (x.re <> y.re) || (x.im <> y.im))
 ```
 
-A list of classes can be found on [Appendix A: StdClass](appendix-a/stdclass).
+A list of classes can be found on [Appendix A: StdClass](_content/Appendix%20A/stdclass.md).
 
 #### Defining A Class
 

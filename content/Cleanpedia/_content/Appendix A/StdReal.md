@@ -1,12 +1,19 @@
 ---
-title: "Appendix A: StdReal"
+dg-publish: true
 ---
 
-## Introduction
+# StdReal
 
-This section of **Appendix A** discusses operations and functions defined within Standard Real and, by extension, the Standard Environment.
+The `StdReal` module contains definitions for operations and functions relating to real number type. 
 
-The operations and functions of this module primarily interacts with real numbers.
+When imported, this module allows for:
+- real number arithmetic,
+- comparison between real numbers,
+- usage of trigonometric function,
+- property testing, and
+- conversion to and from real number type.
+
+Visit [StdReal](https://cloogle.org/src/#base-stdenv/StdReal;icl;line=1) on Cloogle for source code of this module.
 
 ## Constants
 
@@ -14,76 +21,76 @@ The operations and functions of this module primarily interacts with real number
 
 **Implementation**
 
-```
+```Clean
 // Language: Clean
 
 zero ::  Real
 zero :== 0.0
 ```
 
-**Definition**: represents the value zero for real numbers.
+**Definition**: represents identity element of real number addition.
 
 ### One Unit
 
 **Implementation**
 
-```
+```Clean
 // Language: Clean
 
 one ::  Real
 one :== 1.0
 ```
 
-**Definition**: represents the value one for real numbers.
+**Definition**: represents identity element of real number multiplication.
 
 ### Infinity Representation
 
 **Implementation**
 
-```
+```Clean
 // Language: Clean
 
 Infinity ::  Real
 Infinity :== 1E9999
 ```
 
-**Definition**: represents the largest value for real numbers.
+**Definition**: represents real numbers too large to represents.
 
 ### Not-A-Number Representation
 
 **Implementation**
 
-```
+```Clean
 // Language: Clean
 
 NaN ::  Real
-NaN :== 1E9999+(-1E9999)
+NaN :== 1E9999 + (-1E9999)
 ```
 
-**Definition**: represents floating point values which are not undefined.
+**Definition**: represents real numbers which cannot be represented.
 
-See also [NaN](https://en.wikipedia.org/wiki/NaN).
+See [NaN](https://en.wikipedia.org/wiki/NaN).
 
 ---
 
-## Arithmetic Operations
+## Arithmetic Operations and Functions
 
 ### Negation
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 ~ :: Real -> Real
 ~    a    =  ...
 ```
 
-**Behavior**: inverts the sign of `a`.
+**Behavior**: inverts sign of `a`.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 ~  1.0   // -1.0
@@ -96,18 +103,18 @@ See also [NaN](https://en.wikipedia.org/wiki/NaN).
 **Signature**
 
 
-```
+```Clean
 // Language: Clean
  
 (+) infixl 6 :: Real Real -> Real
 (+)             a    b    =  ...
 ```
 
-**Behavior**: adds `a` and `b` together.
+**Behavior**: adds `a` and `b`.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   2.5  +   1.5   //  4.0
@@ -120,7 +127,7 @@ See also [NaN](https://en.wikipedia.org/wiki/NaN).
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
  
 (-) infixl 6 :: Real Real -> Real
@@ -131,7 +138,7 @@ See also [NaN](https://en.wikipedia.org/wiki/NaN).
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   2.5  -   1.5   //  1.0
@@ -144,7 +151,7 @@ See also [NaN](https://en.wikipedia.org/wiki/NaN).
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
  
 (*) infixl 7 :: Real Real -> Real
@@ -155,7 +162,7 @@ See also [NaN](https://en.wikipedia.org/wiki/NaN).
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   2.5  *   1.5   //  3.75
@@ -168,7 +175,7 @@ See also [NaN](https://en.wikipedia.org/wiki/NaN).
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (/) infixl 7 :: Real Real -> Real
@@ -179,7 +186,7 @@ See also [NaN](https://en.wikipedia.org/wiki/NaN).
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   2.5  /   1.5   //  1.66666666666667
@@ -195,18 +202,18 @@ See also [NaN](https://en.wikipedia.org/wiki/NaN).
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (^) infixr 8 :: Real Real -> Real
 (^)             a    b    =  ...
 ```
 
-**Behavior**: raises `a` to the `b`-th power.
+**Behavior**: raises `a` to the power of `b`.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   2.5  ^   1.5   //  3.95284707521047
@@ -222,27 +229,24 @@ See also [NaN](https://en.wikipedia.org/wiki/NaN).
 
 ## Relational Operations
 
-There are six relational operations, and they share the same behavior.
-That is, they compare floating point values of two real numbers, then return a Boolean value.
-
-A rather impressive feature of the language is that equality comparison between two floating point values is allowed.
+Equality comparison between two real numbers is unaffected by rounding errors.
 
 ### Equal To
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (==) infix 4 :: Real Real -> Bool
 (==)            a    b    =  ...
 ```
 
-**Behavior**: returns true if and only if `a` is equal to `b`.
+**Behavior**: returns true if `a` is equal to `b`.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5.0  ==   2.0   // False
@@ -256,18 +260,18 @@ A rather impressive feature of the language is that equality comparison between 
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (<>) infix 4 :: Real Real -> Bool
 (<>)            a    b    =  ...
 ```
 
-**Behavior**: returns false if and only if `a` is equal to `b`.
+**Behavior**: returns true if `a` is not equal to `b`.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5.0  <>   2.0   // True
@@ -281,18 +285,18 @@ A rather impressive feature of the language is that equality comparison between 
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (<) infix 4 :: Real Real -> Bool
 (<)            a    b    =  ...
 ```
 
-**Behavior**: returns true if and only if `a` is strictly less than `b`.
+**Behavior**: returns true if `a` is strictly less than `b`.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5.0  <   2.0   // False
@@ -306,18 +310,18 @@ A rather impressive feature of the language is that equality comparison between 
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (<=) infix 4 :: Real Real -> Bool
 (<=)            a    b    =  ...
 ```
 
-**Behavior**: returns false if and only if `a` is strictly greater than `b`.
+**Behavior**: returns true if `a` is less than or equal to `b`.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5.0  <=   2.0   // False
@@ -331,18 +335,18 @@ A rather impressive feature of the language is that equality comparison between 
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (>) infix 4 :: Real Real -> Bool
 (>)            a    b    =  ...
 ```
 
-**Behavior**: returns true if and only if `a` is strictly greater than `b`.
+**Behavior**: returns true if `a` is strictly greater than `b`.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5.0  >   2.0   // True
@@ -356,18 +360,18 @@ A rather impressive feature of the language is that equality comparison between 
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (>=) infix 4 :: Real Real -> Bool
 (>=)            a    b    =  ...
 ```
 
-**Behavior**: returns false if and only if `a` is strictly less than `b`.
+**Behavior**: returns true if `a` is greater than or equal to `b`.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
   5.0  >=   2.0   // True
@@ -385,7 +389,7 @@ A rather impressive feature of the language is that equality comparison between 
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 sign :: Real -> Int
@@ -396,7 +400,7 @@ sign    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 sign   1.0   //  1
@@ -408,7 +412,7 @@ sign (-1.0)  // -1
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 abs :: Real -> Real
@@ -419,7 +423,7 @@ abs    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 abs   1.0   // 1.0
@@ -431,19 +435,18 @@ abs (-1.0)  // 1.0
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 entier :: Real -> Int
 entier    a    =  ...
 ```
 
-**Behavior**: returns floor of `a`.
-This function is technically a type conversion function.
+**Behavior**: returns largest integer which is less than `a`.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 entier   1.5   //  1
@@ -455,7 +458,7 @@ entier (-1.5)  // -2
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 ln :: Real -> Real
@@ -466,7 +469,7 @@ ln    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 ln   2.5   //  0.916290731874155
@@ -480,7 +483,7 @@ ln (-2.5)  //  #NAN
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 log10 :: Real -> Real
@@ -491,7 +494,7 @@ log10    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 log10   2.5   //  0.397940008672038
@@ -505,18 +508,20 @@ log10 (-2.5)  //  #NAN
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 exp :: Real -> Real
 exp    a    =  ...
 ```
 
-**Behavior**: raises [Euler's number](https://en.wikipedia.org/wiki/E_\(mathematical_constant\)) to the power of `a`.
+**Behavior**: raises $e$ to the power of `a`.
+
+See [Euler's number](https://en.wikipedia.org/wiki/E_\(mathematical_constant\)).
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 exp   2.5   // 12.1824939607035
@@ -530,7 +535,7 @@ exp (-2.5)  //  0.0820849986238988
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 sqrt :: Real -> Real
@@ -541,7 +546,7 @@ sqrt    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 sqrt   2.5   // 1.58113883008419
@@ -559,7 +564,7 @@ sqrt (-2.5)  // #NAN
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 sin :: Real -> Real
@@ -570,7 +575,7 @@ sin    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 sin   2.5   //  0.598472144103956
@@ -584,7 +589,7 @@ sin (-2.5)  // -0.598472144103956
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 cos :: Real -> Real
@@ -595,7 +600,7 @@ cos    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 cos   2.5   // -0.801143615546934
@@ -609,7 +614,7 @@ cos (-2.5)  // -0.801143615546934
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 tan :: Real -> Real
@@ -620,7 +625,7 @@ tan    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 tan   2.5   // - 0.74702229723866
@@ -634,7 +639,7 @@ tan (-2.5)  //   0.74702229723866
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 asin :: Real -> Real
@@ -645,7 +650,7 @@ asin    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 asin   2.5   //  #NAN
@@ -661,7 +666,7 @@ asin (-2.5)  //  #NAN
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 acos :: Real -> Real
@@ -672,7 +677,7 @@ acos    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 acos   2.5   // #NAN
@@ -688,7 +693,7 @@ acos (-2.5)  // #NAN
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 atan :: Real -> Real
@@ -699,7 +704,7 @@ atan    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 atan   2.5   //  1.19028994968253
@@ -715,7 +720,7 @@ atan (-2.5)  // -1.19028994968253
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 sinh :: Real -> Real
@@ -726,7 +731,7 @@ sinh    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 sinh   2.5   //  6.05020448103979
@@ -742,7 +747,7 @@ sinh (-2.5)  // -6.05020448103979
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 cosh :: Real -> Real
@@ -753,7 +758,7 @@ cosh    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 cosh   2.5   //  6.13228947966369
@@ -769,7 +774,7 @@ cosh (-2.5)  // -6.13228947966369
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 tanh :: Real -> Real
@@ -780,7 +785,7 @@ tanh    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 tanh   2.5   //  0.98661429815143
@@ -796,7 +801,7 @@ tanh (-2.5)  // -0.98661429815143
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 asinh :: Real -> Real
@@ -807,7 +812,7 @@ asinh    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 asinh   2.5   //  1.6472311463711
@@ -823,7 +828,7 @@ asinh (-2.5)  // -1.6472311463711
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 acosh :: Real -> Real
@@ -834,7 +839,7 @@ acosh    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 acosh   2.5   // 1.56679923697241
@@ -850,7 +855,7 @@ acosh (-2.5)  // #NAN
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 atanh :: Real -> Real
@@ -861,7 +866,7 @@ atanh    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 atanh   2.5   //  #NAN
@@ -881,18 +886,18 @@ atanh (-2.5)  //  #NAN
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isNaN :: Real -> Bool
 isNaN    a    =  ...
 ```
 
-**Behavior**: returns true if and only if `a` is not representable.
+**Behavior**: returns true if `a` is not representable.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isNaN  2.0               // False
@@ -907,18 +912,18 @@ isNaN (  0.0  ^ (-1.0))  // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isInfinity :: Real -> Bool
 isInfinity    a    =  ...
 ```
 
-**Behavior**: returns true if and only if `a` is too large to represent.
+**Behavior**: returns true if `a` is too large to represent.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isInfinity 2.0                // False
@@ -933,18 +938,18 @@ isInfinity (  0.0  ^ (-1.0))  // True
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isFinite :: Real -> Bool
 isFinite    a    =  ...
 ```
 
-**Behavior**: returns false if and only if `a` is too large to represent.
+**Behavior**: returns true if `a` is representable.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isFinite 2.0                // True
@@ -957,17 +962,15 @@ isFinite (  0.0  ^ (-1.0))  // False
 
 ---
 
-
 ## Conversions To Real Number Type
 
-This group of functions explicitly converts other types to real number type 
-The function shares the same name, which is `toReal`, but they behave differently based on the original type.
+Explicitly converts other types to real number type.
 
 ### From Integer Type
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 toReal :: Int -> Real
@@ -978,7 +981,7 @@ toReal    a   =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 toReal   2   //  2.0
@@ -992,18 +995,18 @@ toReal (-2)  // -2.0
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 toReal :: String -> Real
 toReal    a      =  ...
 ```
 
-**Behavior**: parses a string `a` to an real number.
+**Behavior**: parses a string `a` to a real number.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 toReal "1.0"   //  1.0
@@ -1017,8 +1020,8 @@ toReal "-1.0"  //  1.0
 
 ## Conversions From Real Number Type
 
-This group of functions explicitly converts real number type to other types.
-The function shares the same name, which is `fromReal`, but the desired type must be unambiguous.
+Explicitly converts real number type to other types.
+The desired type must be unambiguous.
 
 ### To Integer Type
 
@@ -1033,7 +1036,7 @@ fromReal    a    =  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 expr :: Int
@@ -1047,18 +1050,18 @@ expr =  fromReal (-1.9)  // -2
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 fromReal :: Real -> {#Char}
 fromReal    a    =  ...
 ```
 
-**Behavior**: converts a real number `a` into a string.
+**Behavior**: converts `a` to a string.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 expr :: {#Char}

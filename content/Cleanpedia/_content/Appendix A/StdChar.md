@@ -1,17 +1,19 @@
 ---
-title: "Appendix A: StdChar"
+dg-publish: true
 ---
 
-## Introduction
+# StdChar
 
-The [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) module contains implementation for operations and functions relating to integer type.
+The `StdChar` module contains definitions for operations and functions relating to real number type. 
 
 When imported, this module allows for:
-- addition and subtraction between two characters,
-- comparison between two characters,
+- addition and subtraction between characters,
+- comparison between characters,
 - character manipulation,
 - property testing, and
 - conversion to and from character type.
+
+Visit [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) on Cloogle for source code of this module.
 
 ## Constants
 

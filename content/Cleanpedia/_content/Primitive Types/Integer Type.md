@@ -6,8 +6,7 @@ dg-publish: true
 
 ## Integer Literals
 
-There are three constructors for integer literals. 
-Namely, an integer literal can be constructed from decimal notation, octal notation, and hexadecimal notation.
+An integer literal can be constructed with decimal notation, octal notation, and hexadecimal notation.
 
 Integer literals constructed with decimal notation may be written as follows.
 
@@ -25,7 +24,7 @@ Integer literals constructed with octal notation may be written by prefixing oct
 // Language: Clean
 
 -015  // decimal -13
- 0
+ 00   // decimal  0
  015  // decimal  13
 ```
 
@@ -35,13 +34,13 @@ Integers literals constructed with hexadecimal notation may be written by prefix
 // Language: Clean
 
 -0xD  // decimal -13
- 0
+ 0x0  // decimal  0
  0xd  // decimal  13
 ```
 
-All three constructors can be used as a **pattern**.
-See [[_content/Functions/Pattern Matching/Pattern Matching Integers|Pattern Matching Integers]] for examples.
+Integer literals can be used as a **pattern**.
 
+See [[_content/Functions/Pattern Matching/Pattern Matching Integers|Pattern Matching Integers]] for examples.
 
 ## Typing Integer Expressions
 
@@ -56,4 +55,6 @@ expr =  1 + 1
 
 ## Built-In Functions on Integer Type
 
-Integer operations and functions are discussed in more details on [Appendix A: StdInt](appendix-a/stdint).
+Functions, which operate on integer type, are defined in `StdInt` module, which is a part of the Standard Environment.
+
+See [[_content/Appendix A/StdInt|StdInt]] for additional details.

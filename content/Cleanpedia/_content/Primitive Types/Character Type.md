@@ -6,9 +6,7 @@ dg-publish: true
 
 ## Character Literal
 
-A character may be constructed by placing one character inside a pair of single quotation marks (`'..'`).
-
-All Character can be constructed in the same way.
+A character literal is constructed by placing a character inside a pair of single quotation marks (`'..'`).
 
 ```Clean
 // Language: Clean
@@ -21,11 +19,11 @@ All Character can be constructed in the same way.
 
 Character literal can be used as a **pattern**.
 
-See [[_content/Functions/Pattern Matching/Pattern Matching Integers|Pattern Matching Integers]] for examples.
+See [[_content/Functions/Pattern Matching/Pattern Matching Characters|Pattern Matching Characters]] for additional examples.
 
 ## Typing Character Expressions
 
-An expression, which resolves to character type, may be explicitly typed using `Char`.
+An expression, which evaluates to character type, can be explicitly typed using `Char`.
 
 ```Clean
 // Language: Clean

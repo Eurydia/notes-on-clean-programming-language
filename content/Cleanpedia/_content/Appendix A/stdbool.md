@@ -1,16 +1,16 @@
 ---
-title: "Appendix A: StdBool"
+dg-publish: true
 ---
 
-## Introduction
+# StdBool
 
-The [StdBool](https://cloogle.org/src/#base-stdenv/StdBool;icl;line=1) module contains implementation for logical operations.
+The `StdBool` module contains implementation for logical operations.
 
 When imported, this module allows for:
-- evaluation of Boolean expressions, and
+- usage of logical operations, and
 - conversion from Boolean type.
 
----
+Visit [StdBool](https://cloogle.org/src/#base-stdenv/StdBool;icl;line=1) on Cloogle for source code of this module.
 
 ## Logical Operations
 
@@ -18,18 +18,18 @@ When imported, this module allows for:
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (==) infix 4 :: Bool Bool -> Bool
 (==)            a    b    => ...
 ```
 
-**Behavior**: returns true if both `a` and `b` have the same logical value.
+**Behavior**: returns true if `a` and `b` have the same logical value.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 True  == True   // True
@@ -42,7 +42,7 @@ False == False  // True
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (||) infixr 2 :: Bool Bool -> Bool
@@ -53,7 +53,7 @@ False == False  // True
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 True  || True   // True
@@ -66,7 +66,7 @@ False || False  // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (&&) infixr 3 :: Bool Bool -> Bool
@@ -77,7 +77,7 @@ False || False  // False
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 True  && True   // True
@@ -94,7 +94,7 @@ False && False  // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 not :: Bool -> Bool
@@ -124,7 +124,9 @@ The desired type must be unambiguous.
 
 **Signature**
 
-```
+```Clean
+// Language: Clean
+
 fromBool :: Bool -> {#Char}
 fromBool    a    => ...
 ```
@@ -133,7 +135,7 @@ fromBool    a    => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 expr :: {#Char}

@@ -147,7 +147,7 @@ expr =  1 == 1
 
 #### Boolean Operations and Functions
 
-Boolean operations and functions are discussed in more details on [Appendix A: StdBool](_content/Appendix%20A/stdbool.md).
+Boolean operations and functions are discussed in more details on [Appendix A: StdBool](_content/Appendix%20A/StdBool.md).
 
 ### Characters
 

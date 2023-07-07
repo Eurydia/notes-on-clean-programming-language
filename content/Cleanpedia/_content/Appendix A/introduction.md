@@ -13,7 +13,7 @@ The Standard Environment includes, but not limited to, the following modules.
 | Module                                       | Description                                                       |
 | -------------------------------------------- | ----------------------------------------------------------------- |
 | [StdArray](_content/Appendix%20A/stdarray.md)           | Operations and functions on arrays                                |
-| [StdBool](_content/Appendix%20A/stdbool.md)             | Logical operations                                                |
+| [StdBool](_content/Appendix%20A/StdBool.md)             | Logical operations                                                |
 | [StdChar](_content/Appendix%20A/StdChar.md)             | Operations and functions on characters                            |
 | [StdCharList](_content/Appendix%20A/stdcharlist.md)     | Operations and functions on lists, whose elements are characters  |
 | [StdClass](_content/Appendix%20A/stdclass.md)           | Predefined classes                                                |

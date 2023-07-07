@@ -8,7 +8,7 @@ dg-publish: true
 
 An integer literal can be constructed with decimal notation, octal notation, and hexadecimal notation.
 
-Integer literals constructed with decimal notation may be written as follows.
+Integer literals constructed with decimal notation can be written as follows.
 
 ```Clean
 // Language: Clean
@@ -18,7 +18,7 @@ Integer literals constructed with decimal notation may be written as follows.
  13
 ```
 
-Integer literals constructed with octal notation may be written by prefixing octal digits with "`0`".
+Integer literals constructed with octal notation can be written by prefixing octal digits with "`0`".
 
 ```Clean
 // Language: Clean
@@ -28,7 +28,7 @@ Integer literals constructed with octal notation may be written by prefixing oct
  015  // decimal  13
 ```
 
-Integers literals constructed with hexadecimal notation may be written by prefixing hexadecimal digits with "`0x`".
+Integers literals constructed with hexadecimal notation can be written by prefixing hexadecimal digits with "`0x`".
 
 ```Clean
 // Language: Clean
@@ -40,11 +40,11 @@ Integers literals constructed with hexadecimal notation may be written by prefix
 
 Integer literals can be used as a **pattern**.
 
-See [[_content/Functions/Pattern Matching/Pattern Matching Integers|Pattern Matching Integers]] for examples.
+See [[_content/Functions/Pattern Matching/Pattern Matching Integers|Pattern Matching Integers]] for additional examples.
 
 ## Typing Integer Expressions
 
-An expression, which resolves to integer type, may be explicitly typed using `Int`.
+An expression, which resolves to integer type, can be explicitly typed using `Int`.
 
 ```Clean
 // Language: Clean

@@ -31,3 +31,4 @@ In this section, we discuss functions, operators, and constants.
 
 See [[Functions]].
 
+[[_content/Appendix A/StdInt|StdInt]]

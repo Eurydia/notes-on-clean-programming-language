@@ -2,9 +2,9 @@
 
 ## Real Number Literals
 
-A real number literal can be constructed with decimal notation and scientific notation.
+A real number literal can be constructed with decimal notation or scientific notation.
 
-Real number literals constructed with decimal notation may be written as follows.
+Real number literals constructed with decimal notation can be written as follows.
 
 ```
 // Language: Clean
@@ -14,7 +14,7 @@ Real number literals constructed with decimal notation may be written as follows
  1.3
 ```
 
-Real number literals constructed with scientific notation may be written as follows.
+Real number literals constructed with scientific notation can be written as follows.
 
 ```
 // Language: Clean
@@ -35,13 +35,13 @@ The expression results in a compile-time error if a lowercase "e" is used.
 
 Real number literals can be used as a **pattern**.
 
-See [[_content/Functions/Pattern Matching/Pattern Matching Integers|Pattern Matching Integers]] for examples.
+See [[_content/Functions/Pattern Matching/Pattern Matching Integers|Pattern Matching Integers]] for additional examples.
 
 ## Typing Real Number Expressions
 
-An expression, which resolves to real number type, may be explicitly typed using `Real`.
+An expression, which resolves to real number type, can be explicitly typed using `Real`.
 
-```
+```Clean
 // Language: Clean
 
 expr :: Real

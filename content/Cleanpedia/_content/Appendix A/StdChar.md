@@ -21,7 +21,7 @@ Visit [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) on Cloo
 
 **Implementation**
 
-```
+```Clean
 // Language: Clean
 
 zero ::  Char
@@ -34,7 +34,7 @@ zero :== (toChar 0)
 
 **Implementation**
 
-```
+```Clean
 // Language: Clean
 
 one ::  Char
@@ -54,19 +54,18 @@ They are rarely used due to their implementations.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (+) infixl 6 :: Char Char -> Char
 (+)             a    b    => ...
 ```
 
-**Behavior**: converts `a` and `b` to integers based on their ASCII values.
-The result of their addition is converted back to a character.
+**Behavior**: converts `a` and `b` to integers, then the result of their addition is converted back to a character.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 '1' + '1'  // 49 + 49 ->  98 ('b')
@@ -78,19 +77,18 @@ The result of their addition is converted back to a character.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (-) infixl 6 :: Char Char -> Char
 (-)             a    b    => ...
 ```
 
-**Behavior**: converts `a` and `b` to integers based on their ASCII values. 
-The result of their subtraction is converted back to a character.
+**Behavior**: converts `a` and `b` to integers, then the result of their subtraction is converted back to a character.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 'z' - '0'  // 122 - 48 -> 74 ('J')
@@ -102,15 +100,13 @@ The result of their subtraction is converted back to a character.
 
 ## Relational Operations
 
-All six relation operations are available on character type.
-They are implemented with the same behavior.
-That is, they compare two characters based on their ASCII values.
+Characters are compared based on their ASCII value.
 
 ### Equal To
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (==) infix 4 :: Char Char -> Bool
@@ -121,7 +117,7 @@ That is, they compare two characters based on their ASCII values.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 '1' == 'A'  // False
@@ -134,7 +130,7 @@ That is, they compare two characters based on their ASCII values.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (<>) infix 4 :: Char Char -> Bool
@@ -145,7 +141,7 @@ That is, they compare two characters based on their ASCII values.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 '1' <> 'A'  // True
@@ -158,7 +154,7 @@ That is, they compare two characters based on their ASCII values.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (<) infix 4 :: Char Char -> Bool
@@ -169,7 +165,7 @@ That is, they compare two characters based on their ASCII values.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 '1' < 'A'  // True
@@ -182,7 +178,7 @@ That is, they compare two characters based on their ASCII values.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (<=) infix 4 :: Char Char -> Bool
@@ -193,7 +189,7 @@ That is, they compare two characters based on their ASCII values.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 '1' <= 'A'  // True
@@ -206,7 +202,7 @@ That is, they compare two characters based on their ASCII values.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (>) infix 4 :: Char Char -> Bool
@@ -217,7 +213,7 @@ That is, they compare two characters based on their ASCII values.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 '1' > 'A'  // False
@@ -230,7 +226,7 @@ That is, they compare two characters based on their ASCII values.
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 (>=) infix 4 :: Char Char -> Bool
@@ -241,7 +237,7 @@ That is, they compare two characters based on their ASCII values.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 '1' >= 'A'  // False
@@ -254,28 +250,49 @@ That is, they compare two characters based on their ASCII values.
 
 ## Manipulation Functions
 
-This group of functions, as its name suggests, manipulate a character.
+Manipulates a character.
 
-One function is left out which is `digitToInt`.
-Its implementation can be found [here](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=115).
+### `digitToInt`
+
+**Signature**
+
+```Clean
+// Language: Clean
+
+digitToInt :: Char -> Int
+digitToInt    a    => ...
+```
+
+**Behavior**: returns ASCII value of `a` offset by  `-48`.
+
+**Usage**
+
+```Clean
+// Language: Clean
+
+toUpper '1'  //  1  (49 - 48)
+toUpper 'a'  //  49 (97 - 48)
+toUpper 'A'  //  17 (65 - 48)
+toUpper '-'  // -3  (45 - 48)
+```
 
 ### `toUpper`
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 toUpper :: Char -> Char
 toUpper    a    => ...
 ```
 
-**Behavior**: returns upper case of `a`.
+**Behavior**: returns uppercase of `a`.
 If it is not possible, `a` itself is returned instead.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 toUpper '1'  // '1'
@@ -288,19 +305,19 @@ toUpper '-'  // '-'
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 toLower :: Char -> Char
 toLower    a    => ...
 ```
 
-**Behavior**: returns lower case of `a`.
+**Behavior**: returns lowercase of `a`.
 If it is not possible, `a` itself is returned instead.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 toLower '1'  // '1'
@@ -317,18 +334,18 @@ toLower '-'  // '-'
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isUpper :: Char -> Bool
 isUpper    a    => ...
 ```
 
-**Behavior**: returns true if `a` is an upper case character.
+**Behavior**: returns true if `a` is an uppercase character.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isUpper '1'  // False
@@ -341,18 +358,18 @@ isUpper '-'  // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isLower :: Char -> Bool
 isLower    a    => ...
 ```
 
-**Behavior**: returns true if `a` is a lower case character.
+**Behavior**: returns true if `a` is a lowercase character.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isLower '1'  // False
@@ -365,7 +382,7 @@ isLower '-'  // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isAlphanum :: Char -> Bool
@@ -376,7 +393,7 @@ isAlphanum    a    => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isAlphanum '1'  // True
@@ -389,7 +406,7 @@ isAlphanum '-'  // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isAlpha :: Char -> Bool
@@ -400,7 +417,7 @@ isAlpha    a    => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isAlpha '1'  // False
@@ -413,7 +430,7 @@ isAlpha '-'  // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isDigit :: Char -> Bool
@@ -424,7 +441,7 @@ isDigit    a    => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isDigit '1'  // True
@@ -437,7 +454,7 @@ isDigit '-'  // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isOctDigit :: Char -> Bool
@@ -448,7 +465,7 @@ isOctDigit    a    => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isOctDigit '1'  // True
@@ -462,7 +479,7 @@ isOctDigit '-'  // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isHexDigit :: Char -> Bool
@@ -473,7 +490,7 @@ isHexDigit    a    => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isHexDigit '1'  // True
@@ -487,18 +504,20 @@ isHexDigit '-'  // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isAscii :: Char -> Bool
 isAscii    a    => ...
 ```
 
-**Behavior**: returns true if `a` is an [7-bit ASCII character](https://en.wikipedia.org/wiki/ASCII).
+**Behavior**: returns true if `a` is a 7-bit ASCII character.
+
+See [7-bit ASCII characters](https://en.wikipedia.org/wiki/ASCII) for more information.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isAscii '1'  // True
@@ -512,18 +531,20 @@ isAscii 'Ç'  // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isControl :: Char -> Bool
 isControl    a    => ...
 ```
 
-**Behavior**: returns true if `a` is a [control character](https://en.wikipedia.org/wiki/ASCII#Control_characters).
+**Behavior**: returns true if `a` is a control character.
+
+See [ASCII control characters](https://en.wikipedia.org/wiki/ASCII#Control_characters) for more information.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isControl '1'   // False
@@ -537,18 +558,20 @@ isControl '\t'  // True
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isControl :: Char -> Bool
 isControl    a    => ...
 ```
 
-**Behavior**: returns true if `a` is a [printable character](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+**Behavior**: returns true if `a` is a printable character.
+
+See [ASCII printable character](https://en.wikipedia.org/wiki/ASCII#Printable_characters) for more information.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isPrint '1'  // True
@@ -562,7 +585,7 @@ isPrint '\t' // False
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 isSpace :: Char -> Bool
@@ -570,7 +593,8 @@ isSpace    a    => ...
 ```
 
 **Behavior**: returns true if `a` is a space character.
-Space characters are defined as follows:
+
+Space characters includes:
 
 | Glyph  | Name            |
 | ------ | --------------- |
@@ -583,7 +607,7 @@ Space characters are defined as follows:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isSpace '1'   // False
@@ -603,7 +627,9 @@ Explicitly converts other types to character type.
 
 **Signature**
 
-```
+```Clean
+// Language: Clean
+
 toChar :: Int -> Char
 toChar    a   => ...
 ```
@@ -612,7 +638,7 @@ toChar    a   => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 toChar 49  // '1'
@@ -631,7 +657,9 @@ The desired type must be unambiguous.
 
 **Signature**
 
-```
+```Clean
+// Language: Clean
+
 fromChar :: Char -> Int
 fromChar    a    =>  ...
 ```
@@ -640,7 +668,7 @@ fromChar    a    =>  ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 expr :: Int
@@ -653,7 +681,7 @@ expr =  fromChar 'a'  // 97
 
 **Signature**
 
-```
+```Clean
 // Language: Clean
 
 fromChar :: Char -> {#Char}
@@ -664,7 +692,7 @@ fromChar    a    => ...
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 expr :: {#Char}

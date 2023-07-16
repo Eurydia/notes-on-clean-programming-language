@@ -1,6 +1,8 @@
 ---
-title: "Appendix A: StdCharList"
+dg-publish: true
 ---
+
+# StdCharList
  
 ## Basic Functions
 

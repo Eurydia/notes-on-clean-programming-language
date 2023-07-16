@@ -122,6 +122,8 @@ In other word, `exampleC` is composed of three indirect function calls, instead 
 
 ## Constants
 
+[[Appendix A/StdInt|StdInt]]
+
 ---
 
 ## Operators

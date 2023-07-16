@@ -12,6 +12,6 @@ In a practical environment, however, it is easier to accidentally defined a part
 
 ## Resolving Partial Functions
 
-A built-in function called `abort` from [[_content/Appendix A/StdMisc|StdMisc]] completes a function by terminating the program early.
+A built-in function called `abort` from [[Appendix A/StdMisc|StdMisc]] completes a function by terminating the program early.
 
 ---

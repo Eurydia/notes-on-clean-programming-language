@@ -4,13 +4,14 @@ dg-publish: true
 
 # StdReal
 
-The `StdReal` module contains definitions for operations and functions relating to real number type. 
+The `StdReal` module contains implementations for real number functions.
 
-When imported, this module allows for:
+When imported, it allows for:
+
 - real number arithmetic,
 - comparison between real numbers,
 - usage of trigonometric function,
-- property testing, and
+- usage of predicate functions, and
 - conversion to and from real number type.
 
 Visit [StdReal](https://cloogle.org/src/#base-stdenv/StdReal;icl;line=1) on Cloogle for source code of this module.
@@ -28,7 +29,9 @@ zero ::  Real
 zero :== 0.0
 ```
 
-**Definition**: represents identity element of real number addition.
+**Definition**
+
+It represents the identity element of real number addition.
 
 ### One Unit
 
@@ -41,7 +44,9 @@ one ::  Real
 one :== 1.0
 ```
 
-**Definition**: represents identity element of real number multiplication.
+**Definition**
+
+It represents the identity element of real number multiplication.
 
 ### Infinity Representation
 
@@ -54,7 +59,9 @@ Infinity ::  Real
 Infinity :== 1E9999
 ```
 
-**Definition**: represents real numbers too large to represents.
+**Definition**
+
+It represents numerical values which are too large to represent.
 
 ### Not-A-Number Representation
 
@@ -67,7 +74,9 @@ NaN ::  Real
 NaN :== 1E9999 + (-1E9999)
 ```
 
-**Definition**: represents real numbers which cannot be represented.
+**Definition**
+
+It represents numerical values which cannot be represented.
 
 See [NaN](https://en.wikipedia.org/wiki/NaN).
 
@@ -86,7 +95,9 @@ See [NaN](https://en.wikipedia.org/wiki/NaN).
 ~    a    =  ...
 ```
 
-**Behavior**: inverts sign of `a`.
+**Behavior**
+
+It inverts the sign of `a`.
 
 **Usage**
 
@@ -102,15 +113,16 @@ See [NaN](https://en.wikipedia.org/wiki/NaN).
 
 **Signature**
 
-
 ```Clean
 // Language: Clean
- 
+
 (+) infixl 6 :: Real Real -> Real
 (+)             a    b    =  ...
 ```
 
-**Behavior**: adds `a` and `b`.
+**Behavior**
+
+It adds `a` and `b`.
 
 **Usage**
 
@@ -129,12 +141,14 @@ See [NaN](https://en.wikipedia.org/wiki/NaN).
 
 ```Clean
 // Language: Clean
- 
+
 (-) infixl 6 :: Real Real -> Real
 (-)             a    b    =  ...
 ```
 
-**Behavior**: subtracts `b` from `a`.
+**Behavior**
+
+It subtracts `b` from `a`.
 
 **Usage**
 
@@ -153,12 +167,14 @@ See [NaN](https://en.wikipedia.org/wiki/NaN).
 
 ```Clean
 // Language: Clean
- 
+
 (*) infixl 7 :: Real Real -> Real
 (*)             a    b    =  ...
 ```
 
-**Behavior**: multiplies `a` with `b`.
+**Behavior**
+
+It multiplies `a` with `b`.
 
 **Usage**
 
@@ -182,7 +198,9 @@ See [NaN](https://en.wikipedia.org/wiki/NaN).
 (/)             a    b    =  ...
 ```
 
-**Behavior**: divides `a` with `b`. 
+**Behavior**
+
+It divides `a` with `b`.
 
 **Usage**
 
@@ -209,7 +227,9 @@ See [NaN](https://en.wikipedia.org/wiki/NaN).
 (^)             a    b    =  ...
 ```
 
-**Behavior**: raises `a` to the power of `b`.
+**Behavior**
+
+It raises `a` to the power of `b`.
 
 **Usage**
 
@@ -229,7 +249,7 @@ See [NaN](https://en.wikipedia.org/wiki/NaN).
 
 ## Relational Operations
 
-Equality comparison between two real numbers is unaffected by rounding errors.
+Equality comparison between two real numbers seems to be unaffected by rounding errors.
 
 ### Equal To
 
@@ -242,7 +262,9 @@ Equality comparison between two real numbers is unaffected by rounding errors.
 (==)            a    b    =  ...
 ```
 
-**Behavior**: returns true if `a` is equal to `b`.
+**Behavior**
+
+It returns true if `a` is equal to `b`.
 
 **Usage**
 
@@ -267,7 +289,9 @@ Equality comparison between two real numbers is unaffected by rounding errors.
 (<>)            a    b    =  ...
 ```
 
-**Behavior**: returns true if `a` is not equal to `b`.
+**Behavior**
+
+It returns true if `a` is not equal to `b`.
 
 **Usage**
 
@@ -292,7 +316,9 @@ Equality comparison between two real numbers is unaffected by rounding errors.
 (<)            a    b    =  ...
 ```
 
-**Behavior**: returns true if `a` is strictly less than `b`.
+**Behavior**
+
+It returns true if `a` is strictly less than `b`.
 
 **Usage**
 
@@ -317,7 +343,9 @@ Equality comparison between two real numbers is unaffected by rounding errors.
 (<=)            a    b    =  ...
 ```
 
-**Behavior**: returns true if `a` is less than or equal to `b`.
+**Behavior**
+
+It returns true if `a` is less than or equal to `b`.
 
 **Usage**
 
@@ -342,7 +370,9 @@ Equality comparison between two real numbers is unaffected by rounding errors.
 (>)            a    b    =  ...
 ```
 
-**Behavior**: returns true if `a` is strictly greater than `b`.
+**Behavior**
+
+It returns true if `a` is strictly greater than `b`.
 
 **Usage**
 
@@ -367,7 +397,9 @@ Equality comparison between two real numbers is unaffected by rounding errors.
 (>=)            a    b    =  ...
 ```
 
-**Behavior**: returns true if `a` is greater than or equal to `b`.
+**Behavior**
+
+It returns true if `a` is greater than or equal to `b`.
 
 **Usage**
 
@@ -396,7 +428,9 @@ sign :: Real -> Int
 sign    a    =  ...
 ```
 
-**Behavior**: returns sign of `a`.
+**Behavior**
+
+It returns the sign of `a`.
 
 **Usage**
 
@@ -419,7 +453,9 @@ abs :: Real -> Real
 abs    a    =  ...
 ```
 
-**Behavior**: returns absolute value of `a`.
+**Behavior**
+
+It returns the absolute value of `a`.
 
 **Usage**
 
@@ -442,7 +478,9 @@ entier :: Real -> Int
 entier    a    =  ...
 ```
 
-**Behavior**: returns largest integer which is less than `a`.
+**Behavior**
+
+It returns the largest integer which is less than `a`.
 
 **Usage**
 
@@ -465,7 +503,9 @@ ln :: Real -> Real
 ln    a    =  ...
 ```
 
-**Behavior**: returns natural logarithm of `a`.
+**Behavior**
+
+It returns the natural logarithm of `a`.
 
 **Usage**
 
@@ -490,7 +530,9 @@ log10 :: Real -> Real
 log10    a    =  ...
 ```
 
-**Behavior**: returns logarithm base ten of `a`.
+**Behavior**
+
+It returns the logarithm base 10 of `a`.
 
 **Usage**
 
@@ -515,9 +557,11 @@ exp :: Real -> Real
 exp    a    =  ...
 ```
 
-**Behavior**: raises $e$ to the power of `a`.
+**Behavior**
 
-See [Euler's number](https://en.wikipedia.org/wiki/E_\(mathematical_constant\)).
+It raises $e$ to the power of `a`.
+
+See [Euler's number](<https://en.wikipedia.org/wiki/E_(mathematical_constant)>).
 
 **Usage**
 
@@ -542,7 +586,9 @@ sqrt :: Real -> Real
 sqrt    a    =  ...
 ```
 
-**Behavior**: returns square root of `a`.
+**Behavior**
+
+It returns the square root of `a`.
 
 **Usage**
 
@@ -571,7 +617,9 @@ sin :: Real -> Real
 sin    a    =  ...
 ```
 
-**Behavior**: returns sine of `a`.
+**Behavior**
+
+It returns the sine of `a`.
 
 **Usage**
 
@@ -596,7 +644,9 @@ cos :: Real -> Real
 cos    a    =  ...
 ```
 
-**Behavior**: returns cosine of `a`.
+**Behavior**
+
+It returns the cosine of `a`.
 
 **Usage**
 
@@ -621,7 +671,9 @@ tan :: Real -> Real
 tan    a    =  ...
 ```
 
-**Behavior**: returns tangent of `a`.
+**Behavior**
+
+It returns the tangent of `a`.
 
 **Usage**
 
@@ -646,7 +698,9 @@ asin :: Real -> Real
 asin    a    =  ...
 ```
 
-**Behavior**: returns inverse sine of `a`.
+**Behavior**
+
+It returns the inverse sine of `a`.
 
 **Usage**
 
@@ -673,7 +727,9 @@ acos :: Real -> Real
 acos    a    =  ...
 ```
 
-**Behavior**: returns inverse cosine of `a`.
+**Behavior**
+
+It returns the inverse cosine of `a`.
 
 **Usage**
 
@@ -700,7 +756,9 @@ atan :: Real -> Real
 atan    a    =  ...
 ```
 
-**Behavior**: returns inverse tangent of `a`.
+**Behavior**
+
+It returns the inverse tangent of `a`.
 
 **Usage**
 
@@ -727,7 +785,9 @@ sinh :: Real -> Real
 sinh    a    =  ...
 ```
 
-**Behavior**: returns hyperbolic sine of `a`.
+**Behavior**
+
+It returns the hyperbolic sine of `a`.
 
 **Usage**
 
@@ -754,7 +814,9 @@ cosh :: Real -> Real
 cosh    a    =  ...
 ```
 
-**Behavior**: returns hyperbolic cosine of `a`.
+**Behavior**
+
+It returns the hyperbolic cosine of `a`.
 
 **Usage**
 
@@ -781,7 +843,9 @@ tanh :: Real -> Real
 tanh    a    =  ...
 ```
 
-**Behavior**: returns hyperbolic tangent of `a`.
+**Behavior**
+
+It returns the hyperbolic tangent of `a`.
 
 **Usage**
 
@@ -808,7 +872,9 @@ asinh :: Real -> Real
 asinh    a    =  ...
 ```
 
-**Behavior**: returns inverse hyperbolic sine of `a`.
+**Behavior**
+
+It returns the inverse hyperbolic sine of `a`.
 
 **Usage**
 
@@ -835,7 +901,9 @@ acosh :: Real -> Real
 acosh    a    =  ...
 ```
 
-**Behavior**: returns inverse hyperbolic cosine of `a`.
+**Behavior**
+
+It returns the inverse hyperbolic cosine of `a`.
 
 **Usage**
 
@@ -862,7 +930,9 @@ atanh :: Real -> Real
 atanh    a    =  ...
 ```
 
-**Behavior**: returns inverse hyperbolic tangent of `a`.
+**Behavior**
+
+It returns the inverse hyperbolic tangent of `a`.
 
 **Usage**
 
@@ -880,7 +950,7 @@ atanh (-2.5)  //  #NAN
 
 ---
 
-## Property Functions
+## Predicate Functions
 
 ### `isNaN`
 
@@ -893,7 +963,9 @@ isNaN :: Real -> Bool
 isNaN    a    =  ...
 ```
 
-**Behavior**: returns true if `a` is not representable.
+**Behavior**
+
+It returns true if `a` is not representable.
 
 **Usage**
 
@@ -919,7 +991,9 @@ isInfinity :: Real -> Bool
 isInfinity    a    =  ...
 ```
 
-**Behavior**: returns true if `a` is too large to represent.
+**Behavior**
+
+It returns true if `a` is too large to represent.
 
 **Usage**
 
@@ -945,7 +1019,9 @@ isFinite :: Real -> Bool
 isFinite    a    =  ...
 ```
 
-**Behavior**: returns true if `a` is representable.
+**Behavior**
+
+It returns true if `a` is representable.
 
 **Usage**
 
@@ -964,7 +1040,7 @@ isFinite (  0.0  ^ (-1.0))  // False
 
 ## Conversions To Real Number Type
 
-Explicitly converts other types to real number type.
+They explicitly convert other types to real number type.
 
 ### From Integer Type
 
@@ -977,7 +1053,9 @@ toReal :: Int -> Real
 toReal    a   =  ...
 ```
 
-**Behavior**: converts `a` to a real number.
+**Behavior**
+
+It sets the decimal places of `a` to 0.
 
 **Usage**
 
@@ -1002,7 +1080,9 @@ toReal :: String -> Real
 toReal    a      =  ...
 ```
 
-**Behavior**: parses a string `a` to a real number.
+**Behavior**
+
+It parses `a` as a real number.
 
 **Usage**
 
@@ -1020,19 +1100,23 @@ toReal "-1.0"  //  1.0
 
 ## Conversions From Real Number Type
 
-Explicitly converts real number type to other types.
+They explicitly convert real number type to other types.
 The desired type must be unambiguous.
 
 ### To Integer Type
 
 **Signature**
 
-```
+```Clean
+// Language: Clean
+
 fromReal :: Real -> Int
 fromReal    a    =  ...
 ```
 
-**Behavior**: rounds `a` to its nearest integer.
+**Behavior**
+
+It rounds `a` to its nearest integer.
 
 **Usage**
 
@@ -1053,18 +1137,20 @@ expr =  fromReal (-1.9)  // -2
 ```Clean
 // Language: Clean
 
-fromReal :: Real -> {#Char}
+fromReal :: Real -> { #Char }
 fromReal    a    =  ...
 ```
 
-**Behavior**: converts `a` to a string.
+**Behavior**
+
+It returns a string representation of `a`.
 
 **Usage**
 
 ```Clean
 // Language: Clean
 
-expr :: {#Char}
+expr :: { #Char }
 expr =  fromReal   1.9   // "1.9"
 expr =  fromReal   1.4   // "1.4"
 expr =  fromReal (-1.4)  // "-1.4"

@@ -4,13 +4,13 @@ dg-publish: true
 
 # StdChar
 
-The `StdChar` module contains definitions for operations and functions relating to real number type. 
+The `StdChar` module contains implementations for character functions. 
 
-When imported, this module allows for:
+When imported, it allows for:
 - addition and subtraction between characters,
 - comparison between characters,
 - character manipulation,
-- property testing, and
+- usage of predicate functions, and
 - conversion to and from character type.
 
 Visit [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) on Cloogle for source code of this module.
@@ -28,7 +28,9 @@ zero ::  Char
 zero :== (toChar 0)
 ```
 
-**Definition**: represents a character with ASCII value of zero.
+**Definition**
+
+It represents a character whose ASCII code is 0.
 
 ### One Unit
 
@@ -41,14 +43,13 @@ one ::  Char
 one :== (toChar 1)
 ```
 
-**Definition**: represents a character with ASCII value of one.
+**Definition**
+
+It represents a character whose ASCII code is one.
 
 ---
 
 ## Arithmetic Operations
-
-Two arithmetic operations are available on character type.
-They are rarely used due to their implementations.
 
 ### Addition
 
@@ -61,7 +62,9 @@ They are rarely used due to their implementations.
 (+)             a    b    => ...
 ```
 
-**Behavior**: converts `a` and `b` to integers, then the result of their addition is converted back to a character.
+**Behavior**
+
+It returns a character whose ASCII code is equal to the sum of ASCII codes of `a` and `b`.
 
 **Usage**
 
@@ -84,7 +87,9 @@ They are rarely used due to their implementations.
 (-)             a    b    => ...
 ```
 
-**Behavior**: converts `a` and `b` to integers, then the result of their subtraction is converted back to a character.
+**Behavior**
+
+It returns a character whose ASCII code is equal to the difference of ASCII codes of `a` and `b`.
 
 **Usage**
 
@@ -100,7 +105,7 @@ They are rarely used due to their implementations.
 
 ## Relational Operations
 
-Characters are compared based on their ASCII value.
+Characters are compared based on their ASCII codes.
 
 ### Equal To
 
@@ -113,7 +118,9 @@ Characters are compared based on their ASCII value.
 (==)            a    b    => ...
 ```
 
-**Behavior**: returns true if ASCII value of `a` is equal to ASCII value of `b`.
+**Behavior**
+
+It returns true if ASCII code of `a` is equal to ASCII code of `b`.
 
 **Usage**
 
@@ -137,7 +144,9 @@ Characters are compared based on their ASCII value.
 (<>)            a    b    => ...
 ```
 
-**Behavior**: returns true if ASCII value of `a` is not equal to ASCII value of `b`.
+**Behavior**
+
+It returns true if ASCII code of `a` is not equal to ASCII code of `b`.
 
 **Usage**
 
@@ -161,7 +170,9 @@ Characters are compared based on their ASCII value.
 (<)            a    b    => ...
 ```
 
-**Behavior**: returns true if ASCII value of `a` is strictly less than ASCII value of `b`.
+**Behavior**
+
+It returns true if ASCII code of `a` is strictly less than ASCII code of `b`.
 
 **Usage**
 
@@ -185,7 +196,9 @@ Characters are compared based on their ASCII value.
 (<=)            a    b    => ...
 ```
 
-**Behavior**: returns true if ASCII value of `a` is less than or equal to ASCII value of `b`.
+**Behavior**
+
+It returns true if ASCII code of `a` is less than or equal to ASCII code of `b`.
 
 **Usage**
 
@@ -209,7 +222,9 @@ Characters are compared based on their ASCII value.
 (>)            a    b    => ...
 ```
 
-**Behavior**: returns true if ASCII value of `a` is strictly greater than ASCII value of `b`.
+**Behavior**
+
+It returns true if ASCII code of `a` is strictly greater than ASCII code of `b`.
 
 **Usage**
 
@@ -233,7 +248,9 @@ Characters are compared based on their ASCII value.
 (>=)            a    b    => ...
 ```
 
-**Behavior**: returns true if ASCII value of `a` is greater than or equal to ASCII value of `b`.
+**Behavior**
+
+It returns true if ASCII code of `a` is greater than or equal to ASCII code of `b`.
 
 **Usage**
 
@@ -250,7 +267,7 @@ Characters are compared based on their ASCII value.
 
 ## Manipulation Functions
 
-Manipulates a character.
+They manipulate a character.
 
 ### `digitToInt`
 
@@ -263,17 +280,19 @@ digitToInt :: Char -> Int
 digitToInt    a    => ...
 ```
 
-**Behavior**: returns ASCII value of `a` offset by  `-48`.
+**Behavior**
+
+It returns ASCII code of `a` offset by  `-48`.
 
 **Usage**
 
 ```Clean
 // Language: Clean
 
-toUpper '1'  //  1  (49 - 48)
-toUpper 'a'  //  49 (97 - 48)
-toUpper 'A'  //  17 (65 - 48)
-toUpper '-'  // -3  (45 - 48)
+toUpper '1'  // 49 - 48 ->  1
+toUpper 'a'  // 97 - 48 ->  49
+toUpper 'A'  // 65 - 48 ->  17
+toUpper '-'  // 45 - 48 -> -3
 ```
 
 ### `toUpper`
@@ -287,8 +306,10 @@ toUpper :: Char -> Char
 toUpper    a    => ...
 ```
 
-**Behavior**: returns uppercase of `a`.
-If it is not possible, `a` itself is returned instead.
+**Behavior**
+
+It returns upper case of `a`.
+If it is not possible to return an upper case of `a`, it returns `a` back as is.
 
 **Usage**
 
@@ -312,8 +333,10 @@ toLower :: Char -> Char
 toLower    a    => ...
 ```
 
-**Behavior**: returns lowercase of `a`.
-If it is not possible, `a` itself is returned instead.
+**Behavior**
+
+It returns lowercase of `a`.
+If it is not possible to return a lower case of `a`, it returns `a` back as is.
 
 **Usage**
 
@@ -328,7 +351,7 @@ toLower '-'  // '-'
 
 ---
 
-## Property Functions
+## Predicate Functions
 
 ### `isUpper`
 
@@ -341,7 +364,9 @@ isUpper :: Char -> Bool
 isUpper    a    => ...
 ```
 
-**Behavior**: returns true if `a` is an uppercase character.
+**Behavior**
+
+It returns true if `a` is an upper case character.
 
 **Usage**
 
@@ -365,7 +390,9 @@ isLower :: Char -> Bool
 isLower    a    => ...
 ```
 
-**Behavior**: returns true if `a` is a lowercase character.
+**Behavior**
+
+It returns true if `a` is a lowercase character.
 
 **Usage**
 
@@ -389,7 +416,9 @@ isAlphanum :: Char -> Bool
 isAlphanum    a    => ...
 ```
 
-**Behavior**: returns true if `a` is an alphanumeric character.
+**Behavior**
+
+It returns true if `a` is an alphanumeric character.
 
 **Usage**
 
@@ -413,7 +442,9 @@ isAlpha :: Char -> Bool
 isAlpha    a    => ...
 ```
 
-**Behavior**: returns true if `a` is an alphabetic character.
+**Behavior**
+
+It returns true if `a` is an alphabetic character.
 
 **Usage**
 
@@ -437,7 +468,9 @@ isDigit :: Char -> Bool
 isDigit    a    => ...
 ```
 
-**Behavior**: returns true if `a` is a decimal digit.
+**Behavior**
+
+It returns true if `a` is a decimal digit.
 
 **Usage**
 
@@ -461,7 +494,9 @@ isOctDigit :: Char -> Bool
 isOctDigit    a    => ...
 ```
 
-**Behavior**: returns true if `a` is an octal digit.
+**Behavior**
+
+It returns true if `a` is an octal digit.
 
 **Usage**
 
@@ -486,7 +521,9 @@ isHexDigit :: Char -> Bool
 isHexDigit    a    => ...
 ```
 
-**Behavior**: returns true if `a` is a hexadecimal digit.
+**Behavior**
+
+It returns true if `a` is a hexadecimal digit.
 
 **Usage**
 
@@ -511,7 +548,10 @@ isAscii :: Char -> Bool
 isAscii    a    => ...
 ```
 
-**Behavior**: returns true if `a` is a 7-bit ASCII character.
+**Behavior**
+
+It returns true if `a` is a 7-bit ASCII character.
+ASCII code of `a` has to be between 0 and 127 inclusive to return true.
 
 See [7-bit ASCII characters](https://en.wikipedia.org/wiki/ASCII) for more information.
 
@@ -538,7 +578,9 @@ isControl :: Char -> Bool
 isControl    a    => ...
 ```
 
-**Behavior**: returns true if `a` is a control character.
+**Behavior**
+
+It returns true if `a` is a control character.
 
 See [ASCII control characters](https://en.wikipedia.org/wiki/ASCII#Control_characters) for more information.
 
@@ -565,7 +607,9 @@ isControl :: Char -> Bool
 isControl    a    => ...
 ```
 
-**Behavior**: returns true if `a` is a printable character.
+**Behavior**
+
+It returns true if `a` is a printable character.
 
 See [ASCII printable character](https://en.wikipedia.org/wiki/ASCII#Printable_characters) for more information.
 
@@ -592,9 +636,11 @@ isSpace :: Char -> Bool
 isSpace    a    => ...
 ```
 
-**Behavior**: returns true if `a` is a space character.
+**Behavior**
 
-Space characters includes:
+It returns true if `a` is a space character.
+
+Space characters include:
 
 | Glyph  | Name            |
 | ------ | --------------- |
@@ -621,7 +667,7 @@ isSpace '\t'  // True
 
 ## Conversions To Character Type
 
-Explicitly converts other types to character type.
+They explicitly convert other types to character type.
 
 ### From Integer Type
 
@@ -634,7 +680,9 @@ toChar :: Int -> Char
 toChar    a   => ...
 ```
 
-**Behavior**: returns an ASCII character whose value is `a`.
+**Behavior**
+
+It returns a character whose ASCII code is `a`.
 
 **Usage**
 
@@ -650,7 +698,7 @@ toChar 97  // 'a'
 
 ## Conversions From Character Type
 
-Explicitly converts character type to other types.
+They explicitly convert character type to other types.
 The desired type must be unambiguous.
 
 ### To Integer Type
@@ -664,7 +712,9 @@ fromChar :: Char -> Int
 fromChar    a    =>  ...
 ```
 
-**Behavior**: returns ASCII value of `a`.
+**Behavior**
+
+It returns ASCII code of `a`.
 
 **Usage**
 
@@ -684,18 +734,20 @@ expr =  fromChar 'a'  // 97
 ```Clean
 // Language: Clean
 
-fromChar :: Char -> {#Char}
+fromChar :: Char -> { #Char }
 fromChar    a    => ...
 ```
 
-**Behavior**: returns a one-character string containing `a`.
+**Behavior**
+
+It returns a one-character string containing `a`.
 
 **Usage**
 
 ```Clean
 // Language: Clean
 
-expr :: {#Char}
+expr :: { #Char }
 expr =  fromChar '1'  // "1"
 expr =  fromChar 'A'  // "A"
 expr =  fromChar 'a'  // "a"

@@ -1,3 +1,0 @@
-| Pair # | Parameter | Argument | Result |
-| ------ | --------- | -------- | ------ |
-|        |           |          |        |

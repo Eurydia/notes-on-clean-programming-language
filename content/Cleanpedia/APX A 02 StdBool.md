@@ -4,15 +4,40 @@ dg-publish: true
 
 # StdBool
 
-The `StdBool` module contains implementation for logical operations.
+The `StdBool` module contains implementations for logical operations.
 
-When imported, this module allows for:
+When imported, it allows for:
 - usage of logical operations, and
 - conversion from Boolean type.
 
 Visit [StdBool](https://cloogle.org/src/#base-stdenv/StdBool;icl;line=1) on Cloogle for source code of this module.
 
-## Logical Operations
+## Logical Operations and Functions
+
+### Logical NEGATE
+
+**Signature**
+
+```Clean
+// Language: Clean
+
+not :: Bool -> Bool
+not    a    => ...
+```
+
+**Behavior**
+
+It negates the logical value of `a`.
+
+**Usage**
+
+```Clean
+// Language: Clean
+
+not True        // False
+not False       // True
+not (not True)  // True
+```
 
 ### Logical EQUIVALENCE
 
@@ -25,7 +50,9 @@ Visit [StdBool](https://cloogle.org/src/#base-stdenv/StdBool;icl;line=1) on Cloo
 (==)            a    b    => ...
 ```
 
-**Behavior**: returns true if `a` and `b` have the same logical value.
+**Behavior**
+
+It returns true if `a` and `b` have the same logical value.
 
 **Usage**
 
@@ -49,7 +76,9 @@ False == False  // True
 (||)             a    b    => ...
 ```
 
-**Behavior**: returns true if  `a` or `b` is true.
+**Behavior**
+
+It returns true if  `a` or `b` is true.
 
 **Usage**
 
@@ -73,7 +102,9 @@ False || False  // False
 (&&)             a    b    => ...
 ```
 
-**Behavior**: returns true if `a`and `b` are true.
+**Behavior**
+
+It returns true if `a`and `b` are true.
 
 **Usage**
 
@@ -88,36 +119,9 @@ False && False  // False
 
 ---
 
-## Logical Functions
-
-### Logical NEGATE
-
-**Signature**
-
-```Clean
-// Language: Clean
-
-not :: Bool -> Bool
-not    a    => ...
-```
-
-**Behavior**: negates the logical value of `a`.
-
-**Usage**
-
-```
-// Language: Clean
-
-not True        // False
-not False       // True
-not (not True)  // True
-```
-
----
-
 ## Conversions From Boolean Type
 
-Explicitly converts Boolean type to other types.
+They explicitly convert Boolean type to other types.
 The desired type must be unambiguous.
 
 ### To String type
@@ -127,18 +131,20 @@ The desired type must be unambiguous.
 ```Clean
 // Language: Clean
 
-fromBool :: Bool -> {#Char}
+fromBool :: Bool -> { # Char }
 fromBool    a    => ...
 ```
 
-**Behavior**: returns a string representation of `a`.
+**Behavior**
+
+It returns a string representation of `a`.
 
 **Usage**
 
 ```Clean
 // Language: Clean
 
-expr :: {#Char}
+expr :: { # Char }
 expr =  fromBool True   // "True"
 expr =  fromBool False  // "False"
 ```

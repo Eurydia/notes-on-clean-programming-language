@@ -2,4 +2,6 @@
 dg-publish: true
 ---
 
-# Array 
+# Array Type
+
+	

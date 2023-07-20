@@ -15,33 +15,26 @@ Lists are lazy by default, but other types are:
 - head strict, 
 - tail strict, 
 - strict, 
-- unboxed head strict, and
-- unboxed strict. 
+- unboxed head strict,
+- unboxed strict, and
+- overloaded.
 
 They are considered different type with unique time and space properties.
-Functions defined on one type of list cannot be applied to another. 
-However, overloaded functions can be introduced, which can be used on any type of list.
+Functions defined on one type of list cannot be applied to another.
+With overloaded lists being an exception, function defined on overloaded lists will work any type of lists.
 
 List type is a generic type with an arity of one.
 The argument represents the element type, which is given by placing it inside or after the list type.
 
 ### Example A: Lazy Lists
 
-They are explicitly declared with square brackets (`[ ... ]`).
-
-#### Example Aa
+They are explicitly declared with a pair of square brackets (`[ ... ]`).
 
 ```Clean
 // Language: Clean
 
 listAa :: [ Int ]
 listAa =  [ 1, 2, 3 ]
-```
-
-#### Example Ab
-
-```Clean
-// Language: Clean
 
 listAb :: [ ] Int
 listAb =  [ 1, 2, 3 ]
@@ -49,21 +42,13 @@ listAb =  [ 1, 2, 3 ]
 
 ### Example B: Head Strict Lists
 
-They are explicitly declared by placing an exclamation mark after the opening square bracket (`[! ... ]`).
-
-#### Example Ba
+They are explicitly declared by placing an exclamation mark (`!`) after the opening square bracket (`[! ... ]`).
 
 ```Clean
 // Language: Clean
 
 listBa :: [! Int ]
 listBa =  [! 1, 2, 3 ]
-```
-
-#### Example Bb
-
-```Clean
-// Language: Clean
 
 listBb :: [! ] Int 
 listBb =  [! 1, 2, 3 ]
@@ -71,21 +56,13 @@ listBb =  [! 1, 2, 3 ]
 
 ### Example C: Tail Strict Lists
 
-They are explicitly declared by placing an exclamation mark before the closing square bracket (`[ ... !]`).
-
-#### Example Ca
+They are explicitly declared by placing an exclamation mark (`!`) before the closing square bracket (`[ ... !]`).
 
 ```Clean
 // Language: Clean
 
 listCa :: [ Int !] 
 listCa =  [ 1, 2, 3 !]
-```
-
-#### Example Cb
-
-```Clean
-// Language: Clean
 
 listCb :: [ !] Int
 listCb =  [ 1, 2, 3 !]
@@ -93,21 +70,13 @@ listCb =  [ 1, 2, 3 !]
 
 ### Example D: Strict Lists
 
-They are explicitly declared by placing an exclamation mark after and before the square bracket (`[! ... !]`).
-
-#### Example Da
+They are explicitly declared by placing an exclamation mark (`!`) after and before the square bracket (`[! ... !]`).
 
 ```Clean
 // Language: Clean
 
 listDa :: [! Int !]
 listDa =  [! 1, 2, 3 !]
-```
-
-#### Example Db
-
-```Clean
-// Language: Clean
 
 listDb :: [! !] Int
 listDb =  [! 1, 2, 3 !]
@@ -115,7 +84,7 @@ listDb =  [! 1, 2, 3 !]
 
 ### Example E: Unboxed Head Strict Lists
 
-They are explicitly declared by placing a hash symbol after the opening square bracket (`[ # ... ]`).
+They are explicitly declared by placing a hash symbol (`#`) after the opening square bracket (`[ # ... ]`).
 
 ```Clean
 // Language: Clean
@@ -129,24 +98,31 @@ listEb =  [ # 1, 2, 3 ]
 
 ### Example F: Unboxed Strict Lists
 
-They are explicitly declared by placing a hash symbol and an exclamation mark after the opening square bracket (`[ #! ... ]`).
-
-#### Example Fa
+They are explicitly declared by placing a hash symbol (`#`) and an exclamation mark (`!`) after the opening square bracket (`[ #! ... ]`).
 
 ```Clean
 // Language: Clean
 
 listFa :: [ #! Int ]
 listFa =  [ #! 1, 2, 3 ]
+
+listFb :: [ #! ] Int 
+listFb =  [ #! 1, 2, 3 ]
 ```
 
-#### Example Fb
+
+### Example G: Overloaded Lists
+
+They are explicitly declared by placing a vertical (`|`) bar after the opening square bracket (`[ | ... ]`).
 
 ```Clean
 // Language: Clean
 
-listFb :: [ #! ] Int 
-listFb =  [ #! 1, 2, 3 ]
+listGa :: [ | Int ]
+listGa =  [ | 1, 2, 3 ]
+
+listGb :: [ | ] Int 
+listGb =  [ | 1, 2, 3 ]
 ```
 
 ## List Literals
@@ -185,23 +161,9 @@ The left side of a colon is an element, and the right side is a list.
 
 listC :: [ Int ]
 listC =  [ 1, 2, 3 ]
-```
-
-Examples given are equivalent to the `listC` list.
-
-#### Example Ca
-
-```Clean
-// Language: Clean
 
 listCa :: [ Int ]
 listCa =  [ 1 : [ 2 : [ 3 : [] ] ] ]
-```
-
-#### Example Cb
-
-```Clean
-// Language: Clean
 
 listCb :: [ Int ]
 listCb =  [ 1 : 2 : 3 : [] ]
@@ -214,32 +176,12 @@ listCb =  [ 1 : 2 : 3 : [] ]
 
 listD :: [ Int ]
 listD =  [ 1, 2, 3 ]
-```
-
-Examples given are equivalent to the `listD` list.
-
-#### Example Da
-
-```Clean
-// Language: Clean
 
 listDa :: [ Int ] 
 listDa =  [ 1, 2 : [ 3 ] ]
-```
-
-#### Example Db
-
-```Clean
-// Language: Clean
 
 listDb :: [ Int ]
 listDb =  [ 1, 2, 3 : [] ]
-```
-
-#### Example Dc
-
-```Clean
-// Language: Clean
 
 listDc :: [ Int ]
 listDc =  [ 1 : [ 2, 3 ] ]
@@ -252,141 +194,19 @@ listDc =  [ 1 : [ 2, 3 ] ]
 
 listE :: [ Char ]
 listE =  ['a', 'b', 'c']
-```
-
-Examples given are equivalent to the `listE` list.
-
-#### Example Ea
-
-```Clean
-// Language: Clean
 
 listEa :: [ Char ] 
 listEa =  [ 'abc' ]
-```
-
-#### Example Eb
-
-```Clean
-// Language: Clean
 
 listEb :: [ Char ]
 listEb =  [ 'ab', 'c' ]
 ```
 
-## List Comprehensions
+## Implicit List Construction
 
-All type of lists can be implicitly constructed using comprehension.
-See [[PDT S 05 Comprehensions|PDT S 05 Comprehensions]] for additional information.
-
-## Dot-Dot Expressions
-
-All type of lists can be implicitly constructed using Dot-Dot expressions. 
-They require `StdEnum` module from the Standard Environment.
-
-### Example A: Infinite Lists with Step of One
-
-```Clean
-// Language: Clean
-
-listA :: [ ] T
-listA =  [ initial .. ]
-```
-
-By giving the `initial` value, an infinite list is constructed.
-Consecutive elements differ by one.
-
-#### Example Aa
-
-```Clean
-// Language: Clean
-
-listAa :: [ Int ]
-listAa =  [ 1 .. ]  // [ 1, 2, 3, ... ]
-```
-
-### Example B: Infinite Lists with Custom Step
-
-```Clean
-// Language: Clean
-
-listB :: [ T ]
-listB =  [ initial, next .. ]
-```
-
-By given the `initial` value and `next` value, an infinite list is constructed.
-Consecutive elements differ by `next - initial`.
-
-#### Example Ba
-
-```Clean
-// Language: Clean
-
-listBa :: [ Int ]
-listBa =  [ 1, 3 .. ]  // [ 1, 3, 5, ... ]
-```
-
-#### Example Bb
-
-```Clean
-// Language: Clean
-
-listBb :: [ Int ]
-listBb =  [ 5, 3 .. ]  // [ 5, 3, 1, ... ]
-```
-
-### Example C: Finite Lists with Step of One
-
-```Clean
-// Language: Clean
-
-listC :: [ T ]
-listC =  [ initial .. last]
-```
-
-By giving the `initial` value and `last` value, a finite list is constructed.
-Consecutive elements differ by one.
-
-#### Example Ca
-
-```Clean
-// Language: Clean
-
-listCa :: [ Int ]
-listCa =  [ 1 .. 4 ]  // [ 1, 2, 3, 4 ]
-```
-
-### Example D: Finite Lists with Custom Step
-
-```Clean
-// Language: Clean
-
-listD :: [ T ]
-listD =  [ initial, next .. last]
-```
-
-By giving the `initial` value, `next` value, and `last` value, a finite list is constructed.
-Consecutive elements differ by `next - initial`.
-
-If the step is positive, elements strictly greater than `last` will not be included, and if the step is negative, elements strictly less than `last` will not be included.
-
-#### Example Da
-
-```Clean
-// Language: Clean
-
-listDa :: [ Int ]
-listDa =  [ 1, 3 .. 5 ]  // [ 1, 3, 5 ]
-```
-
-#### Example Db
-
-```Clean
-// Language: Clean
-
-listDb :: [ Int ]
-listDb =  [ 1, 3, 6 ]  // [ 1, 3, 5 ]
-```
+Comprehensions and DotDot expressions provide a way to implicitly construct lists.
+Neither of which can be used as a pattern.
+See [[PDT S 05 Comprehensions]] and [[PDT S 03 List Type 01 DotDot Expressions#DotDot Expressions]] for additional information.
 
 %%
 ## Using List Literal as Pattern

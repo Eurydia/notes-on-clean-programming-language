@@ -8,12 +8,12 @@ They provide an alternative way to implicitly construct lists and arrays, but th
 
 ## General Syntax
 
-In this note, comprehensions are used to construct lazy lists, while it is possible to construct other list or array types.
+While it is possible to construct every types of list or array with comprehension, for simplicity, they are used to construct lazy lists.
 
 ### Example A: Simple Generators
 
 Comprehensions iterate over a *generator*, which is an existing list or array.
-In each iteration, an element is extracted from the generator.
+In each iteration, an element is extracted from the generator, and its value is stored in a *selector*.
 
 A left arrow (`<-`) is used to extract elements from a list generator.
 
@@ -24,7 +24,7 @@ listA :: [ T ]
 listA =  [ e \\ e <- lsGen ]
 ```
 
-To extract elements from an array generator, a colon (`:`) must be added to the end.
+An array generator uses an arrow which has a colon (`:`) at the end.
 
 ```Clean
 // Language: Clean
@@ -32,6 +32,16 @@ To extract elements from an array generator, a colon (`:`) must be added to the 
 listA :: [ T ]
 listA =  [ e \\ e <-: arrGen ]
 ```
+
+An overloaded list generator uses an arrow which has a vertical bar (`|`) between the arrow head and the shaft.
+
+```Clean
+// Language: Clean
+
+listA :: [ T ]
+listA =  [ e \\ e <|- overloadedLsGen ]
+```
+
 
 Python equivalent:
 
@@ -308,3 +318,9 @@ for eW, eX in zip(lsGenW, lsGenX):
 			continue
 		listGc.append((eX, eY))
 ```
+
+## Interesting Uses of Comprehensions
+
+### Explicit List To Array Conversion
+
+Lists are arrays are interage

@@ -6,7 +6,7 @@ dg-publish: true
 
 Integers are represented using 32 bits or 64 bits values.
 
-For built-in functions on integer type, see [[Appendix A/StdInt|StdInt]] module for additional information.
+For built-in functions and operations on integer type, see [[Appendix A/StdInt|StdInt]] module for additional information.
 
 ## Integer Type Declaration
 
@@ -38,9 +38,9 @@ They can be constructed from octal notation by prefixing octal digits with `0`.
 // Language: Clean
 
 x :: Int
-x = -015 // decimal -13
-x =  00  // decimal  0
-x =  015 // decimal  13
+x = -015  // decimal -13
+x =  00   // decimal  0
+x =  015  // decimal  13
 ```
 
 And they can be constructed from hexadecimal notation by prefixing hexadecimal digits with `0x`.
@@ -54,8 +54,7 @@ x =  0x0  // decimal  0
 x =  0xd  // decimal  13
 ```
 
-%%
-## Using Integer Literal as Pattern
+%%## Integer Pattern in Functions
 
 ### Example A
 
@@ -94,8 +93,8 @@ Python equivalent:
 ```Python
 # Python
 
-def exampleA(arg: int) -> bool
-	match arg:
+def exampleA(n: int) -> bool
+	match n:
 		case 1:
 			return True
 		case _:
@@ -154,15 +153,52 @@ Python equivalent:
 # Python
 
 def exampleB(
-	argA: int,
-	argB: int
+	n: int,
+	m: int
 ) -> int:
-	match (argA, argB):
-		case (x, 0):
-			return x
-		case (0, y):
-			return y
+	match (n, m):
+	case (_, 0):
+			return n
+		case (0, _):
+			return m
 		case _:
-			return x + y
+			return n + m
 ```
-%%
+
+## Integer Pattern in Comprehensions
+
+When an integer literal is used on the left side of a generator, it evokes a pattern matching behavior.
+
+```Clean
+// Language: Clean
+
+example :: [ Int ]
+example =  [ 9 \\ 1 <- [ 1, 2, 3 ] ]
+```
+
+The extracted elements must match the integer literal.
+Otherwise, the iteration is skipped.
+
+Python equivalent: 
+
+```Python
+# Python
+
+example: list[int] = []
+for e in [1, 2, 3]:
+	match e:
+		case 1:
+			pass
+		case _:
+			continue
+	example.append(9)
+```
+
+The same effect is achieved with [[PDT S 05 Comprehensions#Example E Conditional Iteration]], but logical operations must be defined on the type, which is the benefit of this method.
+
+```Clean
+// Language: Clean
+
+example :: [ Int ]
+example =  [ 9 \\ x <- [ 1, 2, 3 ] | x == 1 ]
+```%%

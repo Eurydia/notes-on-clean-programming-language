@@ -26,7 +26,7 @@ With overloaded lists being an exception, function defined on overloaded lists w
 List type is a generic type with an arity of one.
 The argument represents the element type, which is given by placing it inside or after the list type.
 
-### Example A: Lazy Lists
+### Lazy Lists
 
 They are explicitly declared with a pair of square brackets (`[ ... ]`).
 
@@ -40,7 +40,7 @@ listAb :: [ ] Int
 listAb =  [ 1, 2, 3 ]
 ```
 
-### Example B: Head Strict Lists
+### Head Strict Lists
 
 They are explicitly declared by placing an exclamation mark (`!`) after the opening square bracket (`[! ... ]`).
 
@@ -54,7 +54,7 @@ listBb :: [! ] Int
 listBb =  [! 1, 2, 3 ]
 ```
 
-### Example C: Tail Strict Lists
+### Tail Strict Lists
 
 They are explicitly declared by placing an exclamation mark (`!`) before the closing square bracket (`[ ... !]`).
 
@@ -68,7 +68,7 @@ listCb :: [ !] Int
 listCb =  [ 1, 2, 3 !]
 ```
 
-### Example D: Strict Lists
+### Strict Lists
 
 They are explicitly declared by placing an exclamation mark (`!`) after and before the square bracket (`[! ... !]`).
 
@@ -82,7 +82,7 @@ listDb :: [! !] Int
 listDb =  [! 1, 2, 3 !]
 ```
 
-### Example E: Unboxed Head Strict Lists
+### Unboxed Head Strict Lists
 
 They are explicitly declared by placing a hash symbol (`#`) after the opening square bracket (`[ # ... ]`).
 
@@ -96,7 +96,7 @@ listEb :: [ # ] Int
 listEb =  [ # 1, 2, 3 ]
 ```
 
-### Example F: Unboxed Strict Lists
+### Unboxed Strict Lists
 
 They are explicitly declared by placing a hash symbol (`#`) and an exclamation mark (`!`) after the opening square bracket (`[ #! ... ]`).
 
@@ -110,8 +110,7 @@ listFb :: [ #! ] Int
 listFb =  [ #! 1, 2, 3 ]
 ```
 
-
-### Example G: Overloaded Lists
+### Overloaded Lists
 
 They are explicitly declared by placing a vertical (`|`) bar after the opening square bracket (`[ | ... ]`).
 
@@ -129,16 +128,27 @@ listGb =  [ | 1, 2, 3 ]
 
 List literals refer to the explicit enumeration of their elements, since structured data types do not have a "literal" form.
 
-### Example A: Singleton Lists
+### Simple Lists Literals
+
+A simple list is constructed by placing an element inside a pair of square brackets (`[ ... ]`)
 
 ```Clean
 // Language: Clean
 
-listA :: [ Int ]
-listA =  [ 1 ]
+x :: [ Int ]
+x =  [ 1 ]
 ```
 
-### Example B: Simple Lists
+Elements are comma (`,`) separated.
+
+```Clean
+// Language: Clean
+
+x :: [ Int ]
+x =  [ 1, 1, 1 ]
+```
+
+### Colons in List Literals
 
 Commas (`,`) are used to separate each element
 
@@ -149,12 +159,11 @@ listB :: [ Int ]
 listB =  [ 1, 2, 3 ]
 ```
 
-### Example C: Colons in List Enumeration
+### Colons in Explicit List Enumeration
 
 Colons (`:`) are used to list construction.
 
-They can be seen as a pseudo right-associated "operator".
-The left side of a colon is an element, and the right side is a list.
+Multiple colons may be used in a list construction, however, doing so can lead to confusion.
 
 ```Clean
 // Language: Clean
@@ -169,7 +178,9 @@ listCb :: [ Int ]
 listCb =  [ 1 : 2 : 3 : [] ]
 ```
 
-### Example D: Using Commas and Colons
+### Using Commas and Colons
+
+To improve 
 
 ```Clean
 // Language: Clean
@@ -187,7 +198,7 @@ listDc :: [ Int ]
 listDc =  [ 1 : [ 2, 3 ] ]
 ```
 
-### Example E: Notation for Character List
+### Character List
 
 ```Clean
 // Language: Clean
@@ -204,7 +215,7 @@ listEb =  [ 'ab', 'c' ]
 
 ## Implicit List Construction
 
-Comprehensions and DotDot expressions provide a way to implicitly construct lists.
+Comprehensions and DotDot expressions provide ways to implicitly construct lists.
 Neither of which can be used as a pattern.
 See [[PDT S 05 Comprehensions]] and [[PDT S 03 List Type 01 DotDot Expressions#DotDot Expressions]] for additional information.
 

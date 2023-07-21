@@ -1,6 +1,20 @@
 ---
-title: "Appendix A: StdList"
+dg-publish: True
 ---
+
+# StdList
+
+The `StdList` module contains implementations for lazy list functions.
+
+When imported, it allows for:
+
+- integer arithmetic,
+- comparison between integers,
+- usage of bitwise operations,
+- usage of predicate functions, and
+- conversion to and from integer type.
+
+Visit [StdInt](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1) on Cloogle for source code of this module.
 
 ## Basic Operations 
 
@@ -8,20 +22,20 @@ title: "Appendix A: StdList"
 
 **Signature**
 
-$$
-\begin{align*}
-A\rightarrow{B}\rightarrow{R}
-\end{align*}
-$$
+```Clean
+// Language: Clean
 
-where 
-- $A$, $B$, and $R$ are of type $[\textbf{T}]$.
+(++) infixr 5 :: [ T ] [ T ] -> [ T ]
+(++)             A     B     => ...
+```
 
-**Behavior**: appends $B$ to the end of $A$.
+**Behavior**
+
+It concatenates `B` to the end of `A`.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
  
 [1, 2, 3] ++ [4, 5]  // [1, 2, 3, 4, 5]
@@ -33,54 +47,52 @@ where
 
 **Signature**
 
-$$
-\begin{align*}
-A\rightarrow{i}\rightarrow{R}
-\end{align*}
-$$
+```Clean
+// Language: Clean
 
-where :
-- $A$ is of type $[\textbf{T}]$,
-- $i$ is of type $\textbf{Int}$, and
-- $R$ is of type $\textbf{T}$.
-
-**Behavior**: returns element at $i$-th index of $A$.
-Results in a run-time error if $i$ is not a valid index.
-
+(!!) infixl 9 :: [ T ] Int -> T
+(!!)             A     i   => ...
 ```
+**Behavior**
+
+It returns the element of list `A` whose index is `i`.
+
+The index starts from zero.
+It results in a run-time error if `i` is not a valid index.
+
+```markdown
 Subscript error in !!,index too large
 ```
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
  
-[1, 2, 3] !!   5   // NOT OK :(
+[1, 2, 3] !!   5   // run-time error
 [1, 2, 3] !!   2   // 3
 [1, 2, 3] !!   0   // 1
-[1, 2, 3] !! (-1)  // NOT OK :(
+[1, 2, 3] !! (-1)  // run-time error
 ```
 
 ### Slicing
 
 **Signature**
 
-$$
-\begin{align*}
-A\rightarrow(i, j)\rightarrow{R}
-\end{align*}
-$$
+```Clean
+// Language: Clean
 
-where:
-- $A, R$ are of type $[\textbf{T}]$, and
-- $i, j$ are of type $\textbf{Int}$.
+(%) infixl 9 :: [ T ] ( Int, Int ) -> [ T ]
+(%)             A     ( i  , j   ) => ...
+```
 
-**Behavior**: returns elements of $A$ which are inside $[i, j]$ interval.
+**Behavior**
+
+It returns a new list containing elements of `A` whose index are between `i` and `j` inclusive.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
  
 [1, 2, 3] % (  2,  4)  // [3]
@@ -97,23 +109,22 @@ where:
 
 **Signature**
 
-$$
-\begin{align*}
-A\rightarrow{B}\rightarrow{R}
-\end{align*}
-$$
+```Clean
+// Language: Clean
 
-where:
-- $A$ and $B$ are of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{Bool}$.
+(==) infix 4 :: [ T ] [ T ] -> Bool | == T
+(==)            A     B     => ...
+```
 
-Additionally, equality operation must be defined on $\textbf{T}$.
+**Behavior**
 
-**Behavior**: checks if $A$ is equal to $B$.
+It returns true if list `A` and list `B`:
+- contain the same number of elements, and
+- elements are in the same order.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 []     == []      // True
@@ -144,7 +155,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 []     <> []        // False
@@ -175,7 +186,7 @@ Additionally, relational operations must be defined on $\text{T}$.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 []     < []      // False
@@ -206,7 +217,7 @@ Additionally, relational operations must be defined on $\text{T}$.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 []     <= []     // True
@@ -237,7 +248,7 @@ Additionally, relational operations must be defined on $\textbf{T}$.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 []     > []      // False
@@ -268,7 +279,7 @@ Additionally, relational operations must be defined on $\textbf{T}$.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 []     >= []      // True
@@ -301,7 +312,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 length [1, 2, 3]  // 3
@@ -328,7 +339,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 flatten [[1], [2], [3]]  // [1, 2, 3]
@@ -360,7 +371,7 @@ hd of []
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 hd [1, 2, 3]  // 1
@@ -391,7 +402,7 @@ tl of []
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 tl [1, 2, 3]  // [2, 3]
@@ -423,7 +434,7 @@ last of []
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 last [1, 2, 3]  // 3
@@ -454,7 +465,7 @@ init of []
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 init [1, 2, 3]  // [1, 2]
@@ -481,7 +492,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 take 2 [1, 2, 3]  // [1, 2]
@@ -508,7 +519,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 drop 2 [1, 2, 3]  // [3]
@@ -534,7 +545,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 reverse [1, 2, 3]  // [3, 2, 1]
@@ -563,7 +574,7 @@ The previous element is shifted to the right to make room.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 insertAt   2  9 [1, 2]  // [1, 2, 9]
@@ -590,7 +601,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 removeAt   2  [1, 2]  // [1, 2]
@@ -618,7 +629,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 updateAt   2  9 [1, 2]  // [1, 2]
@@ -647,7 +658,7 @@ The element at $i$-th index goes to the second half.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 splitAt   2  [1, 2]  // ([1, 2], [])
@@ -674,7 +685,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 indexList [3, 2, 1]  // [0, 1, 2]
@@ -701,7 +712,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 repeat 0     // [0, 0, 0, ...]
@@ -729,7 +740,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 repeatn 0 0     // []
@@ -759,7 +770,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isMember 4 [1, 2, 3]  // False
@@ -787,7 +798,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isAnyMember [1, 2] [1, 2]  // True
@@ -815,7 +826,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 removeDup [1, 2, 2, 3]  // [1, 2, 3]
@@ -843,7 +854,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 removeMember 4 [1, 2, 2, 3]  // [1, 2, 2, 3]
@@ -871,7 +882,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 removeMembers [1, 2, 3] []  // [1, 2, 3]
@@ -906,7 +917,7 @@ Error in removeIndex: element not found
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 removeIndex 2 [1, 2, 2, 3]  // (1, [1, 2, 3])
@@ -934,7 +945,7 @@ Additionally, addition and zero unit must be defined on $\textbf{T}$.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 sum [1, 2, 3, 4]  // 10
@@ -963,7 +974,7 @@ Additionally, multiplication and one unit must be defined on $\textbf{T}$.
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 prod [1, 2, 3, 4]  // 24
@@ -997,7 +1008,7 @@ avg called with empty list
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 avg [1, 2, 3, 4]  // 2
@@ -1025,7 +1036,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 and [False, False]  // False
@@ -1054,7 +1065,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 or [False, False]  // False
@@ -1086,7 +1097,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 takeWhile isOdd  [1, 1, 1]  // [1, 1, 1]
@@ -1112,7 +1123,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 dropWhile isOdd  [1, 1, 1]  // []
@@ -1138,7 +1149,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 filter isEven [2, 3, 4]  // [2, 4]
@@ -1167,7 +1178,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 foldr (+) 0 [1, 2, 3]
@@ -1207,7 +1218,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 foldl (+) 0 [1, 2, 3]
@@ -1246,7 +1257,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 iterate ((+) 1) 0  // [0, 1, 2, ...]
@@ -1273,7 +1284,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 map isEven  [1, 2, 3]  // [False, True, False]
@@ -1301,7 +1312,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 scan (+) 0 [1, 2, 3]
@@ -1340,7 +1351,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 any isEven [1, 2, 3]  // True
@@ -1370,7 +1381,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 all isEven [1, 2, 3]  // False
@@ -1403,7 +1414,7 @@ where:
 
 **Usage**
 
-```
+```Clean
 // Language: Clean
 
 isEmpty []   // True

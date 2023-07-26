@@ -6,7 +6,7 @@ dg-publish: true
 
 Real numbers are represented by 64 bits values.
 
-For built-in functions on real number type, see [[Appendix A/StdReal|StdReal]] module for additional information.
+For built-in functions and operations on real number type, see [[APX A StdReal]] module.
 
 ## Real Number Type Declaration
 
@@ -26,9 +26,10 @@ They can be constructed from decimal notation.
 ```Clean
 // Language: Clean
 
--1.3
- 0.0
- 1.3
+x :: Real
+x = -1.3
+x =  0.0
+x =  1.3
 ```
 
 And they can be constructed from scientific notation.
@@ -36,18 +37,20 @@ And they can be constructed from scientific notation.
 ```Clean
 // Language: Clean
 
--1.3E-2  // -0.13
- 0E1     //  0
- 1.3E-2  //  0.13
+x :: Real
+x = -1.3E-2  // -0.13
+x =  0E1     //  0
+x =  1.3E-2  //  0.13
 ```
 
-Only uppercase "E" is allowed in scientific notations.
+Only upper case "E" can be used in scientific notations.
 The expression results in a compile-time error if lower case "e" is used.
 
 ```Clean
 // Language: Clean
 
-13e-2  // compile-time error
+y :: Real
+y =  13e-2  // compile-time error
 ```
 
 %%

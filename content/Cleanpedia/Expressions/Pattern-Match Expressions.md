@@ -1,3 +1,4 @@
+# Pattern-Match Expressions
 A pattern-match expression checks an expression against a pattern, and a control expression may be written as follows.
 
 ```

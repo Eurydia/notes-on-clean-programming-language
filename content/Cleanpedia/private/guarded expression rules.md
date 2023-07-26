@@ -1,5 +1,6 @@
+# Guarded expression rules
 
-## guard rule of selection
+## Guard rule of selection
 
 Guards are tried in descending order from top to bottom.
 
@@ -10,7 +11,7 @@ If a function implementation is not selected, guarded expressions, which belong 
 
 Once a function implementation is selected, subsequent implementations are not tried, even if no guarded expression can be selected.
 
-## guard rule of signature
+## Guard rule of signature
 
 The expression associated with a guarded expression must have the same type.
 

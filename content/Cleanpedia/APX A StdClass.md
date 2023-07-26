@@ -1,6 +1,7 @@
 ---
 title: "Appendix A: StdClass"
 ---
+# Stdclass
 
 ## Arithmetic Classes
 

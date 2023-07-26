@@ -6,7 +6,7 @@ dg-publish: true
 
 Integers are represented using 32 bits or 64 bits values.
 
-For built-in functions and operations on integer type, see [[Appendix A/StdInt|StdInt]] module for additional information.
+For built-in functions and operations on integer type, see [[APX A StdInt]].
 
 ## Integer Type Declaration
 
@@ -194,7 +194,7 @@ for e in [1, 2, 3]:
 	example.append(9)
 ```
 
-The same effect is achieved with [[PDT S 05 Comprehensions#Example E Conditional Iteration]], but logical operations must be defined on the type, which is the benefit of this method.
+The same effect is achieved with [[PDT S Comprehensions#Example E Conditional Iteration]], but logical operations must be defined on the type, which is the benefit of this method.
 
 ```Clean
 // Language: Clean

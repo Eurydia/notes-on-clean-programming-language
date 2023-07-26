@@ -1,6 +1,4 @@
----
-title: "Appendix A: StdTuple"
----
+# StdTuple
 
 ## Relational Operations
 

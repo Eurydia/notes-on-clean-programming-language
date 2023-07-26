@@ -2,6 +2,7 @@
 layout: "@layouts/Blog.astro"
 title: "Appendix B: Code recipes"
 ---
+# _intro
 
 ## Table of contents
 
@@ -75,7 +76,7 @@ toDigits :: Int -> [Int]
 toDigits    n   =  [(toInt d) - 48 \\ d <-: (toString n)]
 ```
 
-**Conversion  pathway**
+**Conversion pathway**
 
 $$
 \begin{align*}

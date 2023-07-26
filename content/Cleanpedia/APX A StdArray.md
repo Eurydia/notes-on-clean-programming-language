@@ -1,10 +1,13 @@
----
-title: "Appendix A: StdArray"
----
+# StdArray
 
-## Basic Operations
+## Array Operations
 
 ### Indexing
+
+```Clean
+// Language: Clean
+
+```
 
 **Signature**
 

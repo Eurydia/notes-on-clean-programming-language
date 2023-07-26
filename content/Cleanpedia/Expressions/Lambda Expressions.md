@@ -1,4 +1,5 @@
-### Lambda Functions
+# Lambda Expressions
+## Lambda Functions
 
 A control lambda function may be written as follows.
 
@@ -8,7 +9,7 @@ A control lambda function may be written as follows.
 \ parameter = expression
 ```
 
-Alternatively, dot (`.`) and right arrow (`->`) may be used to separate  parameters from expression.
+Alternatively, dot (`.`) and right arrow (`->`) may be used to separate parameters from expression.
 It should be noted that they have different semantic meanings.
 
 ```

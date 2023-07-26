@@ -1,6 +1,7 @@
+# Constants
 There are two distinct types of constants; constant expressions and constant functions.
 
-#### Constant Expressions
+## Constant Expressions
 
 They are computed only once.
 Multiple reference to the same expression will result in sharing of that expression.
@@ -23,7 +24,7 @@ In global scope, a constant expression may be explicitly defined with `=:` symbo
 constExprName =: expression
 ```
 
-#### Constant Functions
+## Constant Functions
 
 They are arity-zero functions.
 Unlike constant expressions, they are re-computed every they invoked.

@@ -1,3 +1,4 @@
+# Typing a Function
 A control function type may be written as follows.
 
 ```
@@ -14,7 +15,7 @@ Parameter types are space separated.
 paramAType paramBType -> returnType
 ```
 
-#### Typing Ordinary Functions
+## Typing Ordinary Functions
 
 A control function definition with one parameter may be explicitly typed as follows.
 

@@ -1,8 +1,6 @@
----
-title: "Appendix A: StdString"
----
+# StdString
 
-## Basic Operations 
+## Basic Operations
 
 ### Concatenation
 

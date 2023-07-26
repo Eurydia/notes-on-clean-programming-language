@@ -1,6 +1,7 @@
 ---
 dg-publish: true
 ---
+# Function Implementation Selection Steps In Action
 
 To demonstrate, a function called `safeDivide` is described as follows:
 - accepts two integers as arguments, 
@@ -112,7 +113,7 @@ safeDivide m n = m / n
 safeDivide m 0 = 0
 ```
 
-The second function implementation is never reached even if `safeDivide`  is called with 0.
+The second function implementation is never reached even if `safeDivide` is called with 0.
 
 ```Clean
 // Language: Clean

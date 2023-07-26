@@ -1,3 +1,4 @@
+# Contents
 - functions
 	- definition
 		- patterns

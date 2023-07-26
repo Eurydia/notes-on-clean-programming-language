@@ -1,4 +1,5 @@
-#### Parameter Matching Integers
+# Fragment pattern matching
+## Parameter Matching Integers
 
 Integer literals may be used in as parameters in function implementations.
 Doing so will evokes a parameter-argument matching behavior.
@@ -36,7 +37,7 @@ isIntEight    n   =  False
 ```
 
 
-#### Parameter Matching Real Numbers
+## Parameter Matching Real Numbers
 
 Real number literals may be used in as parameters in function implementations.
 Doing so will evokes a parameter-argument matching behavior.
@@ -51,7 +52,7 @@ isUnit    1.0  =  True
 isUnit    n    =  False
 ```
 
-#### Parameter Matching Booleans
+## Parameter Matching Booleans
 
 Boolean literals may be used in as parameters in function implementations.
 Doing so will evokes a parameter-argument matching behavior.

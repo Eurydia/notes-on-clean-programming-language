@@ -1,6 +1,7 @@
 ---
 dg-publish: true
 ---
+# Guarded Bodies
 
 Guarded bodies allows a function implementation to have multiple bodies.
 
@@ -90,7 +91,7 @@ Let's call signum with 0 to investigate this procedure.
 signum 0  // ?
 ```
 
-The function is defined with two function implementations, so need to  [[Functions/Control Form of Function Implementation#Selecting a Function Implementation To Be Evaluated|determine which one is selected]].
+The function is defined with two function implementations, so need to [[Functions/Control Form of Function Implementation#Selecting a Function Implementation To Be Evaluated|determine which one is selected]].
 
 The first function implementation is tried.
 The parameter matches the argument.

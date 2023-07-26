@@ -78,7 +78,7 @@ False == False  // True
 
 **Behavior**
 
-It returns true if  `a` or `b` is true.
+It returns true if `a` or `b` is true.
 
 **Usage**
 

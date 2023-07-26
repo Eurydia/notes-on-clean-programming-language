@@ -16,7 +16,7 @@ When imported, it allows for:
 
 Visit [StdInt](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1) on Cloogle for source code of this module.
 
-## Basic Operations 
+## Basic Operations
 
 ### Concatenation
 
@@ -166,7 +166,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 [1, 3] <> [1, 2]    // True
 ```
 
-###  Less Than
+### Less Than
 
 **Signature**
 

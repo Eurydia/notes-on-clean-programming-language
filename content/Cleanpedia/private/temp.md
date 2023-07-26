@@ -1,7 +1,8 @@
+# Temp
 
-### Tuples
+## Tuples
 
-#### Defining A Tuple
+### Defining A Tuple
 
 **Type annotation**:
 $(\textbf{T},\ \textbf{K})$,
@@ -33,9 +34,9 @@ D =  (2)     // NOT OK
 
 More information about built-in operations and functions on lists can be found on:
 
-- [Appendix A: StdTuple](Appendix%20A/stdtuple.md).
+- [Appendix A: StdTuple](APX%20A%20StdTuple.md).
 
-#### Tuple Patterns
+### Tuple Patterns
 
 Tuples can be used as patterns in a similar way to lists.
 However, colon ($:$) is not allowed in tuple patterns.
@@ -63,9 +64,9 @@ getSnd (1, 'a', 1.0)  // 'a'
 getThd (1, 'a', 1.0)  // 1.0
 ```
 
-### Arrays
+## Arrays
 
-#### Defining An Array
+### Defining An Array
 
 **Type annotation**:
 $\{\textbf{Int}\}$,
@@ -93,21 +94,21 @@ An array can be constructed from comprehension by surrounding a comprehension wi
 
 More information about built-in operations and functions on lists can be found on:
 
-- [Appendix A: StdArray](APX%20A%2001%20StdArray.md), and
-- [Appendix A: StdString](Appendix%20A/stdstring.md).
+- [Appendix A: StdArray](APX%20A%20StdArray.md), and
+- [Appendix A: StdString](APX%20A%20StdString.md).
 
 ---
 
-## Defining New Types
+# Defining New Types
 
 As a strongly typed language, every object and function in CLEAN has a type.
 The basic can be extended with algebraic types, record types, abstract types and synonym types.
 
 New types can only be defined on the global level.
 
-### Algebraic Data Types
+## Algebraic Data Types
 
-#### Defining An Algebraic Data Type
+### Defining An Algebraic Data Type
 
 An algebraic data type introduces a new data structure and a constructor.
 
@@ -202,7 +203,7 @@ The default precedence is $9$, and the default fixity is $\textbf{infixl}$.
              | Leaf
 ```
 
-#### Creating Objects Of Algebraic Data Types
+### Creating Objects Of Algebraic Data Types
 
 Objects of simple algebraic data types are created by invoking one of its constructors.
 
@@ -257,7 +258,7 @@ D :: TreeInfix
 D =  Leaf /\ (Leaf /\ Leaf)
 ```
 
-#### Algebraic Data Type Patterns
+### Algebraic Data Type Patterns
 
 To use a algebraic data type as a pattern, use its constructors.
 
@@ -291,12 +292,12 @@ isBranchInfix   (l/\r)     =  True
 isBranchInfix   _          =  False
 ```
 
-### Record Types
+## Record Types
 
 A record type is an algebraic data type in which exactly one constructor is defined.
 A field name is attached to each of the arguments of the constructor.
 
-#### Defining A Record Type
+### Defining A Record Type
 
 A record type is a tuple-like algebraic data structure that has the advantage that its elements can be selected by field name rather than by position.
 
@@ -337,7 +338,7 @@ For example, a record type for representing complex numbers can be defined as fo
              }
 ```
 
-#### Creating Objects Of Record Types
+### Creating Objects Of Record Types
 
 The field names are case-sensitive, but the field order does not matter.
 Every field of a record type must be given.
@@ -414,7 +415,7 @@ B :: PosThree
 B =  { A & x = 1 , y = 1 }      // (PosThree 1 1 0)
 ```
 
-#### Record Type Patterns
+### Record Type Patterns
 
 An object of type record can be specified as pattern.
 Not every field must be used.
@@ -506,11 +507,11 @@ A =  { x = 1 , y = 0 }
 getX a  // 1
 ```
 
-### Synonym Types
+## Synonym Types
 
 Synonym types allow for an introduction of a new type name for an existing type.
 
-#### Defining A Synonym Type
+### Defining A Synonym Type
 
 A simple synonym type has the follow syntax:
 
@@ -549,9 +550,9 @@ add :: (Op Int)
 
 ---
 
-## Overloading
+# Overloading
 
-### Overloaded Functions
+## Overloaded Functions
 
 Functions and operators are defined on built-in types.
 However, when interacting with custom data types, they do not have any defined function or operator.
@@ -591,9 +592,9 @@ a + b  // (Complex 0.0 2.0)
 Only after overloading the addition operation on $\textbf{Complex}$ that the addition is allowed.
 In other word, the complier now knows the meaning of complex number addition.
 
-A list of functions and operations which can be overloaded can be found on [Appendix A: StdOverloaded](Appendix%20A/stdoverloaded.md).
+A list of functions and operations which can be overloaded can be found on [Appendix A: StdOverloaded](APX%20A%20StdOverloaded.md).
 
-#### Defining An Overloaded Function Or Operator
+### Defining An Overloaded Function Or Operator
 
 To overload the built-in functions and operations, the general syntax is as follows.
 
@@ -640,7 +641,7 @@ Such declaration has the following syntax.
 
 Class constraints are separated by ampersands ($\&$).
 
-### Classes
+## Classes
 
 A class gives name to a group of overloaded functions and operators.
 These functions and operators are members of the class.
@@ -668,9 +669,9 @@ where
     (<>) x y = (x.re <> y.re) || (x.im <> y.im))
 ```
 
-A list of classes can be found on [Appendix A: StdClass](Appendix%20A/stdclass.md).
+A list of classes can be found on [Appendix A: StdClass](APX%20A%20StdClass.md).
 
-#### Defining A Class
+### Defining A Class
 
 As shown above, a class simple provides a name to collection of logically-linked functions and operations.
 

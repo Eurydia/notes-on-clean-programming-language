@@ -1,6 +1,7 @@
 ---
 title: "Typing Operators"
 ---
+# Typing-operators
 
 A control operator definition may be explicitly typed as follows.
 

@@ -282,7 +282,7 @@ digitToInt    a    => ...
 
 **Behavior**
 
-It returns ASCII code of `a` offset by  `-48`.
+It returns ASCII code of `a` offset by `-48`.
 
 **Usage**
 

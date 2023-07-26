@@ -4,6 +4,8 @@
 
 The first line of fenced code blocks must be a comment stating the programming language.
 
+Examples:
+
 ```Clean
 // Langage: Clean
 
@@ -21,6 +23,10 @@ The first line of fenced code blocks must be a comment stating the programming l
 "Lower case" is preferred to "lowercase".
 The same applies to "upper case".
 
-## Standard Environment Modules 
+## Standard Environment Modules
 
 When referring to a module in Standard Environment, the module name must be placed in an inline code block.
+
+Examples:
+
+> "[...] more information in `StdInt` module"

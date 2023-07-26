@@ -1,3 +1,4 @@
+# Case Expressions
 A `case..of..` expression matches a given expression with one of its patterns, and a control expression with one pattern may be written as follows.
 
 ```

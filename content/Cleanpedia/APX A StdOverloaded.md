@@ -1,6 +1,7 @@
 ---
 title: "Appendix A: StdOverloaded"
 ---
+# Stdoverloaded
 
 ## Operations
 
@@ -985,7 +986,7 @@ a\rightarrow{R}
 $$
 
 where:
--  $a$ is of a generic type, and 
+- $a$ is of a generic type, and 
 - $R$ is of type $\textbf{Int}$.
 
 **Behavior**: converts $a$ to $\textbf{Int}$.
@@ -1011,7 +1012,7 @@ a\rightarrow{R}
 $$
 
 where:
--  $a$ is of a generic type, and 
+- $a$ is of a generic type, and 
 - $R$ is of type $\textbf{Real}$.
 
 **Behavior**: converts $a$ to $\textbf{Real}$.
@@ -1037,7 +1038,7 @@ a\rightarrow{R}
 $$
 
 where:
--  $a$ is of a generic type, and 
+- $a$ is of a generic type, and 
 - $R$ is of type $\textbf{Char}$.
 
 **Behavior**: converts $a$ to $\textbf{Char}$.
@@ -1063,7 +1064,7 @@ a\rightarrow{R}
 $$
 
 where:
--  $a$ is of a generic type, and 
+- $a$ is of a generic type, and 
 - $R$ is of type $\textbf{Bool}$.
 
 **Behavior**: converts $a$ to $\textbf{Bool}$.
@@ -1194,7 +1195,7 @@ $$
 
 where:
 - $a$ is of type $\textbf{Bool}$, and
--  $R$ is of a generic type.
+- $R$ is of a generic type.
 
 **Behavior**: converts a Boolean $a$ to a generic type.
 

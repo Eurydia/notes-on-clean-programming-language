@@ -1,5 +1,6 @@
+# Fragments
 
-##  CHAPTER I: Identifiers
+## CHAPTER I: Identifiers
 
 ### 1.1 Valid Characters
 
@@ -17,7 +18,7 @@ All upper case English alphabet.
 **Digits**
 
 All Arabic numerals.
-Additionly,  there are two symbols which are considered to be digits.
+Additionly, there are two symbols which are considered to be digits.
 They are _ (underscore) and \` (backtick).
 
 **Symbols**

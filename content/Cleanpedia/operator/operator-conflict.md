@@ -1,6 +1,7 @@
 ---
 title: "Operator Conflict"
 ---
+# Operator-conflict
 
 Operators can conflict with one another.
 
@@ -25,7 +26,7 @@ It is not allowed to apply operators with equal precedence in an expression in s
 True --> False <=> False
 ```
 
-The [logical implication](https://en.wikipedia.org/wiki/Material_conditional) operator (`-->`)  is right-associated.
+The [logical implication](https://en.wikipedia.org/wiki/Material_conditional) operator (`-->`) is right-associated.
 It implies that the expression should be evaluated as follows.
 
 ```

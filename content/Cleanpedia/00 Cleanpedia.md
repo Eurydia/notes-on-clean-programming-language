@@ -8,8 +8,8 @@ dg-home: true
 Cleanpedia is a collection of personal notes on a lesser-known functional language, CLEAN.
 
 Major notes:
-- [[PDT 00 Glossary\|Predefined Data Types]]
+- [[PDT _ Glossary|Predefined Data Types]]
 
 
 
-## About 
+## About

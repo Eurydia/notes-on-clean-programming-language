@@ -14,9 +14,9 @@ Its value is stored in a **selector**.
 
 ## Usage Examples
 
-### Extracting Elements From Different Kinds of Generators
+### Extracting Elements From Generators
 
-A left arrow (`<-`) is used to extract elements from a list generator.
+A left arrow (`<-`) is used to extract elements from *list generators*.
 
 ```Clean
 // Language: Clean
@@ -25,7 +25,7 @@ x ::  [ T ]
 x = [ e \\ e <- lsGen ]
 ```
 
-An array generator uses a different arrow which has a colon (`:`) at the end.
+A left arrow with colon at the end (`<-:`) is used to extract elements from *array generators*.
 
 ```Clean
 // Language: Clean
@@ -34,7 +34,7 @@ x :: [ T ]
 x =  [ e \\ e <-: arrGen ]
 ```
 
-An overloaded list generator uses an arrow which has a vertical bar (`|`) between the arrow head and the shaft.
+A left arrow with vertical bar between the arrowhead and the shaft (`<|-`) is used to extract elements from *overloaded list generators*.
 
 ```Clean
 // Language: Clean

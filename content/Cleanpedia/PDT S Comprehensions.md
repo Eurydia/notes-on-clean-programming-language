@@ -8,9 +8,9 @@ They provide an alternative way to implicitly construct lists and arrays, but th
 
 While it is possible to construct every types of list or array with comprehension, for simplicity, they are used to construct lazy lists.
 
-Comprehensions iterate over a **generator**, which is an existing list or array.
+Comprehensions iterate over a *generator*, which is an existing list or array.
 In each iteration, the left-most element is extracted from the generator.
-Its value is stored in a **selector**.
+Its value is stored in a *selector*.
 
 ## Usage Examples
 
@@ -21,7 +21,7 @@ A left arrow (`<-`) is used to extract elements from *list generators*.
 ```Clean
 // Language: Clean
 
-x ::  [ T ]
+ ::  [ T ]
 x = [ e \\ e <- lsGen ]
 ```
 

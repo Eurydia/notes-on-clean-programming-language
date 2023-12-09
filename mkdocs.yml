@@ -1,4 +1,4 @@
-site_name: Notes on Clean (programming language)
+site_name: obsidian-mkdocs template
 
 theme:
     name: 'material'

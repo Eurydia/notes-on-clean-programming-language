@@ -1,11 +1,4 @@
----
-dg-publish: true
----
-
-# Predefined Data Types Glossary
-
-Predefined data types are introduced for reasons of efficiency and convenience.
-They are syntactic sugar to algebraic types.
+# Predefined data types
 
 Notes on primitive data types:
 - [[PDT P Boolean Type]]

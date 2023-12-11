@@ -4,7 +4,7 @@ Visit [StdBool](https://cloogle.org/src/#base-stdenv/StdBool;icl;line=1) on Cloo
 
 ## Operations and functions
 
-### Logical NEGATE
+### Logical negation
 
 **Signature**
 
@@ -29,7 +29,7 @@ not False       // True
 not (not True)  // True
 ```
 
-### Logical EQUIVALENCE
+### Logical equivalence
 
 **Signature**
 

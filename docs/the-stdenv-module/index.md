@@ -1,6 +1,6 @@
-# The `StdEnv` module
+# The StdEnv module
 
-- [`StdArray`](stdarray.md)
+- [[stdarray|StdArray]]
 - [[stdbool|StdBool]]
 - [[stdchar|StdChar]]
 - [[stdcharlist|StdCharList]]       

@@ -1,16 +1,15 @@
-# `StdArray`
+# StdArray
 
-Visit [`_SystemArray`](https://cloogle.org/src/#base-stdenv/StdArray;icl;line=1) on Cloogle for source code of this module.
+Visit [SystemArray](https://cloogle.org/src/#base-stdenv/StdArray;icl;line=1) on Cloogle for source code of this module.
 
 ## Operations
 
-### Indexing
+### Element at
 
 **Signature**
 
-```Clean
-// Language: Clean
-
+```
+// CLEAN
 
 
 ```
@@ -46,7 +45,7 @@ Run Time Error: index out of range
 "abcde".[(-1)]  // NOT OK :(
 ```
 
-### Update At
+### Update at
 
 **Signature**
 

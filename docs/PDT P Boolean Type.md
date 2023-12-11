@@ -6,7 +6,7 @@ dg-publish: true
 
 Booleans are represented using 8 bits values.
 
-For built-in functions and operations on Boolean type, see [[APX A StdBool]].
+For built-in functions and operations on Boolean type, see [[StdBool]].
 
 ## Boolean Type Declaration
 

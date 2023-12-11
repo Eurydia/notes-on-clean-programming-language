@@ -1,7 +1,3 @@
----
-dg-publish: true
----
-
 # StdReal
 
 The `StdReal` module contains implementations for real number functions.

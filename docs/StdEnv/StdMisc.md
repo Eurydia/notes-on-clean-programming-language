@@ -1,6 +1,3 @@
----
-title: "Appendix A: StdMisc"
----
 # StdMisc
 
 ## Constants

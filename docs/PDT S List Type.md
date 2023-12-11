@@ -7,7 +7,7 @@ dg-publish: true
 Lists can contain an infinite number of elements. 
 Elements of a list must be of the same type. 
 
-For built-in functions and operations on list, see [[APX A StdList|APX A StdList]], [[APX A StdCharList|APX A StdCharList]], and [[APX A StdOrdList|APX A StdOrdList]] module for additional information.
+For built-in functions and operations on list, see [[StdList|StdList]], [[StdCharList|StdCharList]], and [[StdOrdList|StdOrdList]] module for additional information.
 
 ## List Type Declaration
 

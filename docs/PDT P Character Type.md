@@ -6,7 +6,7 @@ dg-publish: true
 
 Characters are represented using 8 bits values.
 
-For built-In functions and operations on character type, see [[APX A StdChar|APX A StdChar]].
+For built-In functions and operations on character type, see [[StdChar|StdChar]].
 
 ## Character Type Declaration
 

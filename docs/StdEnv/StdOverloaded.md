@@ -1,6 +1,3 @@
----
-title: "Appendix A: StdOverloaded"
----
 # Stdoverloaded
 
 ## Operations

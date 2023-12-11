@@ -6,7 +6,7 @@ dg-publish: true
 
 Real numbers are represented by 64 bits values.
 
-For built-in functions and operations on real number type, see [[APX A StdReal]] module.
+For built-in functions and operations on real number type, see [[StdReal]] module.
 
 ## Real Number Type Declaration
 

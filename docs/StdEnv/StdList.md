@@ -1,7 +1,3 @@
----
-dg-publish: True
----
-
 # StdList
 
 The `StdList` module contains implementations for lazy list functions.

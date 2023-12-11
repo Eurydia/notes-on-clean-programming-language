@@ -1,7 +1,3 @@
----
-dg-publish: true
----
-
 # StdChar
 
 The `StdChar` module contains implementations for character functions. 

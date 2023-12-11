@@ -1,7 +1,3 @@
----
-dg-publish: true
----
-
 # StdInt
 
 The `StdInt` module contains implementations for integer functions.

@@ -34,7 +34,7 @@ D =  (2)     // NOT OK
 
 More information about built-in operations and functions on lists can be found on:
 
-- [Appendix A: StdTuple](APX%20A%20StdTuple.md).
+- [Appendix A: StdTuple](StdTuple.md).
 
 ### Tuple Patterns
 
@@ -94,8 +94,8 @@ An array can be constructed from comprehension by surrounding a comprehension wi
 
 More information about built-in operations and functions on lists can be found on:
 
-- [Appendix A: StdArray](APX%20A%20StdArray.md), and
-- [Appendix A: StdString](APX%20A%20StdString.md).
+- [Appendix A: StdArray](StdArray.md), and
+- [Appendix A: StdString](StdString.md).
 
 ---
 
@@ -592,7 +592,7 @@ a + b  // (Complex 0.0 2.0)
 Only after overloading the addition operation on $\textbf{Complex}$ that the addition is allowed.
 In other word, the complier now knows the meaning of complex number addition.
 
-A list of functions and operations which can be overloaded can be found on [Appendix A: StdOverloaded](APX%20A%20StdOverloaded.md).
+A list of functions and operations which can be overloaded can be found on [Appendix A: StdOverloaded](StdOverloaded.md).
 
 ### Defining An Overloaded Function Or Operator
 
@@ -669,7 +669,7 @@ where
     (<>) x y = (x.re <> y.re) || (x.im <> y.im))
 ```
 
-A list of classes can be found on [Appendix A: StdClass](APX%20A%20StdClass.md).
+A list of classes can be found on [Appendix A: StdClass](StdClass.md).
 
 ### Defining A Class
 

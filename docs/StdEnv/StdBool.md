@@ -1,7 +1,3 @@
----
-dg-publish: true
----
-
 # StdBool
 
 The `StdBool` module contains implementations for logical operations.

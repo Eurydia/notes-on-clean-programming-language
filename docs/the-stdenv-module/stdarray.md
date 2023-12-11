@@ -1,13 +1,17 @@
-# StdArray
+# `StdArray`
 
-Visit [StdArray](https://cloogle.org/src/#base-stdenv/StdArray;icl;line=1) on Cloogle for source code of this module.
+Visit [`_SystemArray`](https://cloogle.org/src/#base-stdenv/StdArray;icl;line=1) on Cloogle for source code of this module.
 
-## Array Operations
+## Operations
 
 ### Indexing
 
+**Signature**
+
 ```Clean
 // Language: Clean
+
+
 
 ```
 

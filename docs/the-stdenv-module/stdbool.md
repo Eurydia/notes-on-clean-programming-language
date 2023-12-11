@@ -1,8 +1,8 @@
-# StdBool
+# `StdBool`
 
 Visit [StdBool](https://cloogle.org/src/#base-stdenv/StdBool;icl;line=1) on Cloogle for source code of this module.
 
-## Logical Operations and Functions
+## Operations and functions
 
 ### Logical NEGATE
 

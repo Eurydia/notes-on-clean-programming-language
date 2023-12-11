@@ -4,4 +4,4 @@ Cleanpedia is a collection of personal notes on a lesser-known functional langua
 
 Major notes:
 
-- [[Predefined data types/index|Predefined data types]]
+- [[predefined-data-types/index|Predefined data types]]

@@ -1,16 +1,11 @@
----
-dg-publish: true
----
 
-# Character Type
+# Character type
 
-Characters are represented using 8 bits values.
+For built-In functions and operations on characters, see [[stdchar]].
 
-For built-In functions and operations on character type, see [[StdChar|StdChar]].
+## Type annotation
 
-## Character Type Declaration
-
-Character type is explicitly declared with `Char`.
+Characters are annotated with `Char`.
 
 ```Clean
 // Language: Clean
@@ -21,7 +16,7 @@ expr =  'a'
 
 ## Character Literals
 
-They are constructed by placing a character inside a pair of single quotation marks (`'...'`).
+Character literals are created by enclosing a character within single quotation marks (`'...'`).
 
 ```Clean
 // Language: Clean

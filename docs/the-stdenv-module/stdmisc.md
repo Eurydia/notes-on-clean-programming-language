@@ -1,5 +1,7 @@
 # StdMisc
 
+Visit [StdMisc](https://cloogle.org/src/#base-stdenv/StdMisc;icl;line=1) on Cloogle for source code of this module.
+
 ## Constants
 
 ### Undefined Entity

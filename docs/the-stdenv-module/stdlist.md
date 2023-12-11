@@ -1,15 +1,5 @@
 # StdList
 
-The `StdList` module contains implementations for lazy list functions.
-
-When imported, it allows for:
-
-- integer arithmetic,
-- comparison between integers,
-- usage of bitwise operations,
-- usage of predicate functions, and
-- conversion to and from integer type.
-
 Visit [StdInt](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1) on Cloogle for source code of this module.
 
 ## Basic Operations

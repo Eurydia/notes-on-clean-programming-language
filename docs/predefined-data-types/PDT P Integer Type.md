@@ -6,7 +6,7 @@ dg-publish: true
 
 Integers are represented using 32 bits or 64 bits values.
 
-For built-in functions and operations on integer type, see [[StdInt]].
+For built-in functions and operations on integer type, see [[stdint]].
 
 ## Integer Type Declaration
 

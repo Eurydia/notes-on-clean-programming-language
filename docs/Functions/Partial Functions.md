@@ -13,6 +13,6 @@ In a practical environment, however, it is easier to accidentally defined a part
 
 ## Resolving Partial Functions
 
-A built-in function called `abort` from [[StdMisc|StdMisc]] completes a function by terminating the program early.
+A built-in function called `abort` from [[stdmisc|stdmisc]] completes a function by terminating the program early.
 
 ---

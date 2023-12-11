@@ -1,15 +1,5 @@
 # StdReal
 
-The `StdReal` module contains implementations for real number functions.
-
-When imported, it allows for:
-
-- real number arithmetic,
-- comparison between real numbers,
-- usage of trigonometric function,
-- usage of predicate functions, and
-- conversion to and from real number type.
-
 Visit [StdReal](https://cloogle.org/src/#base-stdenv/StdReal;icl;line=1) on Cloogle for source code of this module.
 
 ## Constants

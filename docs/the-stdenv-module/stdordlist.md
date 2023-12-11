@@ -1,5 +1,8 @@
 # StdOrdList
 
+
+Visit [StdOrdList](https://cloogle.org/src/#base-stdenv/StdOrdList;icl;line=1) on Cloogle for source code of this module.
+
 ## Basic Functions
 
 ### `sort`

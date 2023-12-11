@@ -1,5 +1,7 @@
 # StdTuple
 
+Visit [StdTuple](https://cloogle.org/src/#base-stdenv/StdTuple;icl;line=1) on Cloogle for source code of this module.
+
 ## Relational Operations
 
 ### Equal To

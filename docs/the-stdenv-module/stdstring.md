@@ -1,5 +1,7 @@
 # StdString
 
+Visit [StdString](https://cloogle.org/src/#base-stdenv/StdString;icl;line=1) on Cloogle for source code of this module.
+
 ## Basic Operations
 
 ### Concatenation

@@ -1,14 +1,5 @@
 # StdChar
 
-The `StdChar` module contains implementations for character functions. 
-
-When imported, it allows for:
-- addition and subtraction between characters,
-- comparison between characters,
-- character manipulation,
-- usage of predicate functions, and
-- conversion to and from character type.
-
 Visit [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) on Cloogle for source code of this module.
 
 ## Constants

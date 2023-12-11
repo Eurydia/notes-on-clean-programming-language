@@ -7,7 +7,7 @@ dg-publish: true
 Lists can contain an infinite number of elements. 
 Elements of a list must be of the same type. 
 
-For built-in functions and operations on list, see [[StdList|StdList]], [[StdCharList|StdCharList]], and [[StdOrdList|StdOrdList]] module for additional information.
+For built-in functions and operations on list, see [[stdlist|stdlist]], [[stdcharlist|stdcharlist]], and [[stdordlist|stdordlist]] module for additional information.
 
 ## List Type Declaration
 

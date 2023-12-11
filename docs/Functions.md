@@ -123,7 +123,7 @@ In other word, `exampleC` is composed of three indirect function calls, instead 
 
 ## Constants
 
-[[StdInt|StdInt]]
+[[stdint|stdint]]
 
 ---
 

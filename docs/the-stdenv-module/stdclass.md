@@ -1,5 +1,7 @@
 # StdClass
 
+Visit [StdClass](https://cloogle.org/src/#base-stdenv/StdClass;icl;line=1) on Cloogle for source code of this module.
+
 ## Arithmetic Classes
 
 ### `PlusMin`

@@ -1,11 +1,5 @@
 # StdBool
 
-The `StdBool` module contains implementations for logical operations.
-
-When imported, it allows for:
-- usage of logical operations, and
-- conversion from Boolean type.
-
 Visit [StdBool](https://cloogle.org/src/#base-stdenv/StdBool;icl;line=1) on Cloogle for source code of this module.
 
 ## Logical Operations and Functions

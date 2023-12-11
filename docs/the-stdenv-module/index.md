@@ -1,0 +1,15 @@
+# The StdEnv module
+
+- [[stdarray|StdArray]]
+- [[stdbool|stdbool]]
+- [[stdchar|stdchar]]
+- [[stdcharlist|stdcharlist]]       
+- [[stdclass|stdclass]]
+- [[stdint|stdint]]             
+- [[stdlist|stdlist]]            
+- [[stdmisc|stdmisc]]           
+- [[stdordlist|stdordlist]]        
+- [[stdoverloaded|stdoverloaded]]    
+- [[stdreal|stdreal]]
+- [[stdstring|stdstring]]
+- [[stdtuple|stdtuple]]           

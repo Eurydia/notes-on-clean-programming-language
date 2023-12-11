@@ -1,15 +1,5 @@
 # StdInt
 
-The `StdInt` module contains implementations for integer functions.
-
-When imported, it allows for:
-
-- integer arithmetic,
-- comparison between integers,
-- usage of bitwise operations,
-- usage of predicate functions, and
-- conversion to and from integer type.
-
 Visit [StdInt](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1) on Cloogle for source code of this module.
 
 ## Constants

@@ -626,14 +626,14 @@ Returns true if `a` is a whitespace character.
 
 Space characters include:
 
-| Glyph  | Name            |
-| ------ | --------------- |
-| `' '`  | Space           |
-| `'\t'` | Horizontal tab  |
-| `'\v'` | Vertical tab    |
-| `'\n'` | Line feed       |
-| `'\r'` | Carriage return |
-| `'\f'` | Form feed       |
+| Glyph | Name            |
+| ----- | --------------- |
+| ` `   | Space           |
+| `\t`  | Horizontal tab  |
+| `\v`  | Vertical tab    |
+| `\n`  | Line feed       |
+| `\r`  | Carriage return |
+| `\f`  | Form feed       |
 
 **Usage**
 
@@ -691,7 +691,7 @@ The desired type must be unambiguous.
 // CLEAN
 
 fromChar :: Char -> Int
-fromChar    a    =>  ...
+fromChar    a    => ...
 ```
 
 **Behavior**

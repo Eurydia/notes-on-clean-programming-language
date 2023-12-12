@@ -68,8 +68,8 @@ False == False  // True
 
 **Behavior**
 
-Returns `True` if the logical value of `a` is t
-It returns true if `a` or `b` is true.
+Returns `true` if at least one of `a` and `b` has a logical value of `true`. 
+Otherwise, returns `false`.
 
 **Usage**
 
@@ -96,6 +96,7 @@ False || False  // False
 **Behavior**
 
 Returns true if the truth value of `a` and `b` are true.
+Otherwise, returns false.
 
 **Usage**
 
@@ -110,12 +111,9 @@ False && False  // False
 
 ---
 
-## Conversions From Boolean Type
+## Conversions from Boolean
 
-They explicitly convert Boolean type to other types.
-The desired type must be unambiguous.
-
-### To String type
+### To string
 
 **Signature**
 
@@ -128,7 +126,7 @@ fromBool    a    => ...
 
 **Behavior**
 
-It returns a string representation of `a`.
+Returns the string representation of the logical value of `a`.
 
 **Usage**
 

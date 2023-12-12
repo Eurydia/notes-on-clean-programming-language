@@ -8,7 +8,7 @@ Visit [SystemArray](https://cloogle.org/src/#base-stdenv/StdArray;icl;line=1) on
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 select :: { T } Int -> T
@@ -20,13 +20,13 @@ select    A     i   => ...
 Returns the `i`-th element of `A`.
 Results in a run-time error when over-indexing or under-indexing.
 
-```
-Run Time Error: index out of range
+```console
+$ Run Time Error: index out of range
 ```
 
 **Usage**
 
-```
+```clean
 // CLEAN
  
 select "abcde" 5     // Run-time error
@@ -39,7 +39,7 @@ select "abcde" (-1)  // Run-time error
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 size :: { T } -> Int
@@ -52,7 +52,7 @@ Returns the number of elements that `A` can hold.
 
 **Usage**
 
-```
+```clean
 // CLEAN
  
 size "abcde"  // 5
@@ -65,7 +65,7 @@ size "ab"     // 2
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 update :: { T } Int T -> { T } 
@@ -77,13 +77,13 @@ update    A     i   a => ...
 Replaces the `i`-th element of `A` with `a`.
 Results in a run-time error when over-indexing or under-indexing.
 
-```
-Run Time Error: index out of range
+```console
+$ Run Time Error: index out of range
 ```
 
 **Usage**
 
-```
+```clean
 // CLEAN
  
 update "abcde"   5  'X'  // Run-time error

@@ -6,18 +6,6 @@ theme:
       text: Fira Code
       code: IBM Plex Mono 
     palette:
-
-    # Light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: indigo
-      accent: pink
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-
-    # Dark mode
-    - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: indigo
       accent: pink

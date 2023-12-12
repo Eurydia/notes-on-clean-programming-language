@@ -4,12 +4,12 @@ Visit [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) on Cloo
 
 ## Constants
 
-### Zero Unit
+### Zero unit
 
 **Implementation**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 zero ::  Char
 zero :== (toChar 0)
@@ -17,14 +17,14 @@ zero :== (toChar 0)
 
 **Definition**
 
-It represents a character whose ASCII code is 0.
+Represents a character whose ASCII encoding is zero.
 
-### One Unit
+### One unit
 
 **Implementation**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 one ::  Char
 one :== (toChar 1)
@@ -32,18 +32,18 @@ one :== (toChar 1)
 
 **Definition**
 
-It represents a character whose ASCII code is one.
+Represents a character whose ASCII encoding is one.
 
 ---
 
-## Arithmetic Operations
+## Arithmetic operations
 
 ### Addition
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 (+) infixl 6 :: Char Char -> Char
 (+)             a    b    => ...
@@ -51,12 +51,12 @@ It represents a character whose ASCII code is one.
 
 **Behavior**
 
-It returns a character whose ASCII code is equal to the sum of ASCII codes of `a` and `b`.
+Returns a character whose ASCII encoding is equal to the sum of ASCII encodings of `a` and `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 '1' + '1'  // 49 + 49 ->  98 ('b')
 'A' + 'A'  // 65 + 65 -> 130 ('é')
@@ -67,8 +67,8 @@ It returns a character whose ASCII code is equal to the sum of ASCII codes of `a
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 (-) infixl 6 :: Char Char -> Char
 (-)             a    b    => ...
@@ -76,12 +76,12 @@ It returns a character whose ASCII code is equal to the sum of ASCII codes of `a
 
 **Behavior**
 
-It returns a character whose ASCII code is equal to the difference of ASCII codes of `a` and `b`.
+Returns a character whose ASCII encoding is equal to the difference of ASCII encodings of `a` and `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 'z' - '0'  // 122 - 48 -> 74 ('J')
 'z' - '1'  // 122 - 49 -> 73 ('I')
@@ -90,16 +90,14 @@ It returns a character whose ASCII code is equal to the difference of ASCII code
 
 ---
 
-## Relational Operations
+## Relational operations
 
-Characters are compared based on their ASCII codes.
-
-### Equal To
+### Equal to
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 (==) infix 4 :: Char Char -> Bool
 (==)            a    b    => ...
@@ -107,12 +105,12 @@ Characters are compared based on their ASCII codes.
 
 **Behavior**
 
-It returns true if ASCII code of `a` is equal to ASCII code of `b`.
+Returns true if the ASCII encoding of `a` is equal to the ASCII encoding of `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 '1' == 'A'  // False
 'a' == '1'  // False
@@ -120,12 +118,12 @@ It returns true if ASCII code of `a` is equal to ASCII code of `b`.
 '1' == '1'  // True
 ```
 
-### Not Equal To
+### Not equal to
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 (<>) infix 4 :: Char Char -> Bool
 (<>)            a    b    => ...
@@ -133,12 +131,12 @@ It returns true if ASCII code of `a` is equal to ASCII code of `b`.
 
 **Behavior**
 
-It returns true if ASCII code of `a` is not equal to ASCII code of `b`.
+Returns true if the ASCII encoding of `a` is not equal to the ASCII encoding of `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 '1' <> 'A'  // True
 'a' <> '1'  // True
@@ -146,12 +144,12 @@ It returns true if ASCII code of `a` is not equal to ASCII code of `b`.
 '1' <> '1'  // False
 ```
 
-### Less Than
+### Less than
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 (<) infix 4 :: Char Char -> Bool
 (<)            a    b    => ...
@@ -159,12 +157,12 @@ It returns true if ASCII code of `a` is not equal to ASCII code of `b`.
 
 **Behavior**
 
-It returns true if ASCII code of `a` is strictly less than ASCII code of `b`.
+Returns true if the ASCII encoding of `a` is strictly less than the ASCII encoding of `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 '1' < 'A'  // True
 'a' < '1'  // False
@@ -172,12 +170,12 @@ It returns true if ASCII code of `a` is strictly less than ASCII code of `b`.
 '1' < '1'  // False
 ```
 
-### Less Than Or Equal To
+### Less than or equal to
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 (<=) infix 4 :: Char Char -> Bool
 (<=)            a    b    => ...
@@ -185,12 +183,12 @@ It returns true if ASCII code of `a` is strictly less than ASCII code of `b`.
 
 **Behavior**
 
-It returns true if ASCII code of `a` is less than or equal to ASCII code of `b`.
+It returns true if the ASCII encoding of `a` is less than or equal to the ASCII encoding of `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 '1' <= 'A'  // True
 'a' <= '1'  // False
@@ -198,12 +196,12 @@ It returns true if ASCII code of `a` is less than or equal to ASCII code of `b`.
 '1' <= '1'  // True
 ```
 
-### Greater Than
+### Greater than
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 (>) infix 4 :: Char Char -> Bool
 (>)            a    b    => ...
@@ -211,12 +209,12 @@ It returns true if ASCII code of `a` is less than or equal to ASCII code of `b`.
 
 **Behavior**
 
-It returns true if ASCII code of `a` is strictly greater than ASCII code of `b`.
+Returns true if the ASCII encoding of `a` is strictly greater than the ASCII encoding of `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 '1' > 'A'  // False
 'a' > '1'  // True
@@ -224,12 +222,12 @@ It returns true if ASCII code of `a` is strictly greater than ASCII code of `b`.
 '1' > '1'  // False
 ```
 
-### Greater Than Or Equal To
+### Greater than or equal to
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 (>=) infix 4 :: Char Char -> Bool
 (>=)            a    b    => ...
@@ -237,12 +235,12 @@ It returns true if ASCII code of `a` is strictly greater than ASCII code of `b`.
 
 **Behavior**
 
-It returns true if ASCII code of `a` is greater than or equal to ASCII code of `b`.
+Returns true if the ASCII encoding of `a` is greater than or equal to the ASCII encoding of `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 '1' >= 'A'  // False
 'a' >= '1'  // True
@@ -252,16 +250,14 @@ It returns true if ASCII code of `a` is greater than or equal to ASCII code of `
 
 ---
 
-## Manipulation Functions
-
-They manipulate a character.
+## Character manipulation functions
 
 ### `digitToInt`
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 digitToInt :: Char -> Int
 digitToInt    a    => ...
@@ -269,12 +265,12 @@ digitToInt    a    => ...
 
 **Behavior**
 
-It returns ASCII code of `a` offset by `-48`.
+Returns the ASCII encoding of `a` offset by `-48`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 toUpper '1'  // 49 - 48 ->  1
 toUpper 'a'  // 97 - 48 ->  49
@@ -286,8 +282,8 @@ toUpper '-'  // 45 - 48 -> -3
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 toUpper :: Char -> Char
 toUpper    a    => ...
@@ -295,13 +291,14 @@ toUpper    a    => ...
 
 **Behavior**
 
-It returns upper case of `a`.
-If it is not possible to return an upper case of `a`, it returns `a` back as is.
+Returns the upper case of `a`.
+
+If it is not possible to return an upper case of `a`, returns `a` as is.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 toUpper '1'  // '1'
 toUpper 'a'  // 'A'
@@ -313,8 +310,8 @@ toUpper '-'  // '-'
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 toLower :: Char -> Char
 toLower    a    => ...
@@ -322,13 +319,13 @@ toLower    a    => ...
 
 **Behavior**
 
-It returns lowercase of `a`.
-If it is not possible to return a lower case of `a`, it returns `a` back as is.
+Returns lower case of `a`.
+If it is not possible to return a lower case of `a`, returns `a` as is.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 toLower '1'  // '1'
 toLower 'a'  // 'a'
@@ -344,8 +341,8 @@ toLower '-'  // '-'
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isUpper :: Char -> Bool
 isUpper    a    => ...
@@ -353,12 +350,12 @@ isUpper    a    => ...
 
 **Behavior**
 
-It returns true if `a` is an upper case character.
+Returns true if `a` is an upper case character.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isUpper '1'  // False
 isUpper 'a'  // False
@@ -370,8 +367,8 @@ isUpper '-'  // False
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isLower :: Char -> Bool
 isLower    a    => ...
@@ -379,12 +376,12 @@ isLower    a    => ...
 
 **Behavior**
 
-It returns true if `a` is a lowercase character.
+Returns true if `a` is a lower case character.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isLower '1'  // False
 isLower 'a'  // True
@@ -396,8 +393,8 @@ isLower '-'  // False
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isAlphanum :: Char -> Bool
 isAlphanum    a    => ...
@@ -405,12 +402,12 @@ isAlphanum    a    => ...
 
 **Behavior**
 
-It returns true if `a` is an alphanumeric character.
+Returns true if `a` is an alphanumeric character.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isAlphanum '1'  // True
 isAlphanum 'a'  // True
@@ -422,8 +419,8 @@ isAlphanum '-'  // False
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isAlpha :: Char -> Bool
 isAlpha    a    => ...
@@ -431,12 +428,12 @@ isAlpha    a    => ...
 
 **Behavior**
 
-It returns true if `a` is an alphabetic character.
+Returns true if `a` is an alphabetic character.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isAlpha '1'  // False
 isAlpha 'a'  // True
@@ -448,8 +445,8 @@ isAlpha '-'  // False
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isDigit :: Char -> Bool
 isDigit    a    => ...
@@ -457,12 +454,12 @@ isDigit    a    => ...
 
 **Behavior**
 
-It returns true if `a` is a decimal digit.
+Returns true if `a` is a decimal digit.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isDigit '1'  // True
 isDigit 'a'  // False
@@ -474,8 +471,8 @@ isDigit '-'  // False
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isOctDigit :: Char -> Bool
 isOctDigit    a    => ...
@@ -483,12 +480,12 @@ isOctDigit    a    => ...
 
 **Behavior**
 
-It returns true if `a` is an octal digit.
+Returns true if `a` is an octal digit.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isOctDigit '1'  // True
 isOctDigit '8'  // False
@@ -501,8 +498,8 @@ isOctDigit '-'  // False
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isHexDigit :: Char -> Bool
 isHexDigit    a    => ...
@@ -510,12 +507,12 @@ isHexDigit    a    => ...
 
 **Behavior**
 
-It returns true if `a` is a hexadecimal digit.
+Returns true if `a` is a hexadecimal digit.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isHexDigit '1'  // True
 isHexDigit 'G'  // False
@@ -528,8 +525,8 @@ isHexDigit '-'  // False
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isAscii :: Char -> Bool
 isAscii    a    => ...
@@ -537,15 +534,15 @@ isAscii    a    => ...
 
 **Behavior**
 
-It returns true if `a` is a 7-bit ASCII character.
-ASCII code of `a` has to be between 0 and 127 inclusive to return true.
+Returns true if `a` is a 7-bit ASCII character.
 
+The ASCII encoding of `a` has to be between 0 and 127 inclusive.
 See [7-bit ASCII characters](https://en.wikipedia.org/wiki/ASCII) for more information.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isAscii '1'  // True
 isAscii 'a'  // True
@@ -558,8 +555,8 @@ isAscii 'Ç'  // False
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isControl :: Char -> Bool
 isControl    a    => ...
@@ -567,14 +564,14 @@ isControl    a    => ...
 
 **Behavior**
 
-It returns true if `a` is a control character.
+Returns true if `a` is an ASCII control character.
 
-See [ASCII control characters](https://en.wikipedia.org/wiki/ASCII#Control_characters) for more information.
+See [ASCII control characters](https://en.wikipedia.org/wiki/ASCII#Control_characters) for more information on ASCII control characters.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isControl '1'   // False
 isControl 'a'   // False
@@ -587,8 +584,8 @@ isControl '\t'  // True
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isControl :: Char -> Bool
 isControl    a    => ...
@@ -596,14 +593,14 @@ isControl    a    => ...
 
 **Behavior**
 
-It returns true if `a` is a printable character.
+Returns true if `a` is an ASCII printable character.
 
-See [ASCII printable character](https://en.wikipedia.org/wiki/ASCII#Printable_characters) for more information.
+See [ASCII printable character](https://en.wikipedia.org/wiki/ASCII#Printable_characters) for more information on ASCII printable characters.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isPrint '1'  // True
 isPrint 'a'  // True
@@ -616,8 +613,8 @@ isPrint '\t' // False
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isSpace :: Char -> Bool
 isSpace    a    => ...
@@ -625,7 +622,7 @@ isSpace    a    => ...
 
 **Behavior**
 
-It returns true if `a` is a space character.
+Returns true if `a` is a whitespace character.
 
 Space characters include:
 
@@ -640,8 +637,8 @@ Space characters include:
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 isSpace '1'   // False
 isSpace 'a'   // False
@@ -652,16 +649,14 @@ isSpace '\t'  // True
 
 ---
 
-## Conversions To Character Type
+## Conversions to character
 
-They explicitly convert other types to character type.
-
-### From Integer Type
+### From integer
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 toChar :: Int -> Char
 toChar    a   => ...
@@ -669,12 +664,12 @@ toChar    a   => ...
 
 **Behavior**
 
-It returns a character whose ASCII code is `a`.
+Returns a character whose ASCII encoding is `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 toChar 49  // '1'
 toChar 65  // 'A'
@@ -683,17 +678,17 @@ toChar 97  // 'a'
 
 ---
 
-## Conversions From Character Type
+## Conversions from character
 
-They explicitly convert character type to other types.
+Explicitly convert characters to other types.
 The desired type must be unambiguous.
 
-### To Integer Type
+### To integer
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 fromChar :: Char -> Int
 fromChar    a    =>  ...
@@ -701,12 +696,12 @@ fromChar    a    =>  ...
 
 **Behavior**
 
-It returns ASCII code of `a`.
+Returns the ASCII encoding of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 expr :: Int
 expr =  fromChar '1'  // 49
@@ -714,12 +709,12 @@ expr =  fromChar 'A'  // 65
 expr =  fromChar 'a'  // 97
 ```
 
-### To String Type
+### To string
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 fromChar :: Char -> { #Char }
 fromChar    a    => ...
@@ -727,12 +722,12 @@ fromChar    a    => ...
 
 **Behavior**
 
-It returns a one-character string containing `a`.
+Returns a one-character string containing only `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 expr :: { #Char }
 expr =  fromChar '1'  // "1"

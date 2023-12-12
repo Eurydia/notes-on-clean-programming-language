@@ -1,4 +1,4 @@
-# notes-on-CLEAN-programming-language
+# notes-on-clean-programming-language
 
 ## Resources
 

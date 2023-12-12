@@ -2,31 +2,7 @@
 
 Visit [StdBool](https://cloogle.org/src/#base-stdenv/StdBool;icl;line=1) on Cloogle for source code of this module.
 
-## Operations and functions
-
-### Negation
-
-**Signature**
-
-```
-// CLEAN
-
-not :: Bool -> Bool
-not    a    => ...
-```
-
-**Behavior**
-
-Negates the logical value of `a`.
-
-**Usage**
-
-```
-// CLEAN
-
-not True   // False
-not False  // True
-```
+## Operations
 
 ### Logical equivalence
 
@@ -68,8 +44,8 @@ False == False  // True
 
 **Behavior**
 
-Returns `true` if at least one of `a` and `b` has a logical value of `true`. 
-Otherwise, returns `false`.
+Returns true if at least one of `a` and `b` has a logical value of true. 
+Otherwise, returns false.
 
 **Usage**
 
@@ -107,6 +83,34 @@ True  && True   // True
 True  && False  // False
 False && True   // False
 False && False  // False
+```
+
+---
+
+## Function
+
+### Negation
+
+**Signature**
+
+```
+// CLEAN
+
+not :: Bool -> Bool
+not    a    => ...
+```
+
+**Behavior**
+
+Negates the logical value of `a`.
+
+**Usage**
+
+```
+// CLEAN
+
+not True   // False
+not False  // True
 ```
 
 ---

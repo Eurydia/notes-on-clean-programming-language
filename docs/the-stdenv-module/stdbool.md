@@ -1,15 +1,15 @@
-# `StdBool`
+# StdBool
 
 Visit [StdBool](https://cloogle.org/src/#base-stdenv/StdBool;icl;line=1) on Cloogle for source code of this module.
 
 ## Operations and functions
 
-### Logical negation
+### Negation
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 not :: Bool -> Bool
 not    a    => ...
@@ -17,24 +17,23 @@ not    a    => ...
 
 **Behavior**
 
-It negates the logical value of `a`.
+Negates the logical value of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
-not True        // False
-not False       // True
-not (not True)  // True
+not True   // False
+not False  // True
 ```
 
 ### Logical equivalence
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 (==) infix 4 :: Bool Bool -> Bool
 (==)            a    b    => ...
@@ -42,12 +41,13 @@ not (not True)  // True
 
 **Behavior**
 
-It returns true if `a` and `b` have the same logical value.
+Returns true if `a` and `b` have the same logical value.
+Otherwise, returns false.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 True  == True   // True
 True  == False  // False
@@ -55,12 +55,12 @@ False == True   // False
 False == False  // True
 ```
 
-### Logical OR
+### Logical inclusive disjunction
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 (||) infixr 2 :: Bool Bool -> Bool
 (||)             a    b    => ...
@@ -68,12 +68,13 @@ False == False  // True
 
 **Behavior**
 
+Returns `True` if the logical value of `a` is t
 It returns true if `a` or `b` is true.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 True  || True   // True
 True  || False  // True
@@ -81,12 +82,12 @@ False || True   // True
 False || False  // False
 ```
 
-### Logical AND
+### Logical conjunction
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 (&&) infixr 3 :: Bool Bool -> Bool
 (&&)             a    b    => ...
@@ -94,12 +95,12 @@ False || False  // False
 
 **Behavior**
 
-It returns true if `a`and `b` are true.
+Returns true if the truth value of `a` and `b` are true.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 True  && True   // True
 True  && False  // False
@@ -118,8 +119,8 @@ The desired type must be unambiguous.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 fromBool :: Bool -> { # Char }
 fromBool    a    => ...
@@ -131,8 +132,8 @@ It returns a string representation of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```
+// CLEAN
 
 expr :: { # Char }
 expr =  fromBool True   // "True"

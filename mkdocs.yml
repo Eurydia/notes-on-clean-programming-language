@@ -2,6 +2,8 @@ site_name: Notes on CLEAN (programming language)
 
 theme:
     name: 'material'
+    font:
+      text: Roboto Mono
     palette:
 
     # Light mode

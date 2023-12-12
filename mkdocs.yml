@@ -4,7 +4,7 @@ theme:
     name: 'material'
     font:
       text: Fira Code
-      monospace: IBM Plex Mono 
+      code: IBM Plex Mono 
     palette:
 
     # Light mode

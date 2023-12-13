@@ -87,7 +87,7 @@ False && False  // False
 
 ---
 
-## Function
+## Functions
 
 ### Negation
 

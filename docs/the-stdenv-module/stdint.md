@@ -4,12 +4,12 @@ Visit [StdInt](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1) on Cloogl
 
 ## Constants
 
-### Zero Unit
+### Zero unit
 
 **Implementation**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 zero ::  Int
 zero :== 0
@@ -17,14 +17,14 @@ zero :== 0
 
 **Definition**
 
-It represents the identity element of integer addition.
+Represents the additive identity of integers.
 
-### One Unit
+### One unit
 
 **Implementation**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 one ::  Int
 one :== 1
@@ -32,43 +32,18 @@ one :== 1
 
 **Definition**
 
-It represents the identity element of integer multiplication.
+Represents the multiplicative identity of integers.
 
 ---
 
-## Arithmetic Operations and Functions
-
-### Negation
-
-**Signature**
-
-```Clean
-// Language: Clean
-
-~ :: Int -> Int
-~    a   => ...
-```
-
-**Behavior**
-
-It inverts the sign `a`.
-
-**Usage**
-
-```Clean
-// Language: Clean
-
-~  0   //  0
-~  1   // -1
-~(-1)  //  1
-```
+## Arithmetic operations
 
 ### Addition
 
 **Signature**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 (+) infixl 6 :: Int Int -> Int
 (+)             a   b   => ...
@@ -76,12 +51,12 @@ It inverts the sign `a`.
 
 **Behavior**
 
-It adds `a` and `b`.
+Adds `a` and `b`.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   1  +   1   //  2
   1  + (-1)  //  0
@@ -94,7 +69,7 @@ It adds `a` and `b`.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (-) infixl 6 :: Int Int -> Int
 (-)             a   b   => ...
@@ -102,12 +77,12 @@ It adds `a` and `b`.
 
 **Behavior**
 
-It subtracts `b` from `a`.
+Subtracts `b` from `a`.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   1  -   1  //  0
   1  - (-1) //  2
@@ -120,7 +95,7 @@ It subtracts `b` from `a`.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (*) infixl 7 :: Int Int -> Int
 (*)             a   b   => ...
@@ -128,12 +103,12 @@ It subtracts `b` from `a`.
 
 **Behavior**
 
-It multiplies `a` and `b`.
+Multiplies `a` and `b`.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   1  *   1  //  1
   1  * (-1) // -1
@@ -146,7 +121,7 @@ It multiplies `a` and `b`.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (/) infixl 7 :: Int Int -> Int
 (/)             a   b   => ...
@@ -154,13 +129,13 @@ It multiplies `a` and `b`.
 
 **Behavior**
 
-It divides `a` by `b`.
-An expression results in a silent crash if `b` is zero.
+Divides `a` by `b`.
+Results in a silent run-time crash if `b` is zero.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   1  /   1   //  1
   1  / (-1)  // -1
@@ -174,7 +149,7 @@ An expression results in a silent crash if `b` is zero.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (rem) infix 7 :: Int Int -> Int
 (rem)            a   b   => ...
@@ -183,22 +158,24 @@ An expression results in a silent crash if `b` is zero.
 and
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (mod) infix 7 :: Int Int -> Int
 (mod)            a   b   => ...
 ```
 
-For integer type, both `rem` and `mod` perform modulo division.
+**Note**
+
+For integers, `rem` and `mod` are aliases.
 
 **Behavior**
 
-It divides `a` by `b`, and returns the reminder.
+Returns the reminded after dividing `a` by `b`.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   3  mod (-2)  //  1
 (-3) mod (-2)  // -1
@@ -211,7 +188,7 @@ It divides `a` by `b`, and returns the reminder.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (^) infixr 8 :: Int Int -> Int
 (^)             a   b   => ...
@@ -219,34 +196,63 @@ It divides `a` by `b`, and returns the reminder.
 
 **Behavior**
 
-It raises `a` to the power of `b`.
-An expression results in a run-time error if `b` is negative.
+Raises `a` to the power of `b`.
+Results in a run-time error if `b` is negative.
 
-```markdown
-^ (Int) called with negative power argument
+```console
+$ ^ (Int) called with negative power argument
 ```
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   1  ^   1   //  1
-  1  ^ (-1)  //  run-time error
+  1  ^ (-1)  //  Run-time error
 (-1) ^   1   // -1
-(-1) ^ (-1)  //  run-time error
+(-1) ^ (-1)  //  Run-time error
 ```
 
 ---
 
-## Relational Operations
+## Arithmetic functions
 
-### Equal To
+### Negation
 
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
+
+~ :: Int -> Int
+~    a   => ...
+```
+
+**Behavior**
+
+Inverts the sign `a`.
+
+**Usage**
+
+```Clean
+// CLEAN
+
+~  0   //  0
+~  1   // -1
+~(-1)  //  1
+```
+
+---
+
+## Relational operations
+
+### Equal to
+
+**Signature**
+
+```Clean
+// CLEAN
 
 (==) infix 4 :: Int Int -> Bool
 (==)            a   b   => ...
@@ -254,12 +260,13 @@ An expression results in a run-time error if `b` is negative.
 
 **Behavior**
 
-It returns true if `a` is equal to `b`.
+Returns true if `a` is equal to `b`.
+Otherwise, returns false.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   5  ==   2   // False
 (-5) ==   2   // False
@@ -268,12 +275,12 @@ It returns true if `a` is equal to `b`.
 (-2) == (-2)  // True
 ```
 
-### Not Equal To
+### Not equal to
 
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (<>) infix 4 :: Int Int -> Bool
 (<>)            a   b   => ...
@@ -281,12 +288,13 @@ It returns true if `a` is equal to `b`.
 
 **Behavior**
 
-It returns true if `a` is not equal to `b`.
+Returns true if `a` is not equal to `b`.
+Otherwise, returns false.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   5  <>   2   // True
 (-5) <>   2   // True
@@ -300,7 +308,7 @@ It returns true if `a` is not equal to `b`.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (<) infix 4 :: Int Int -> Bool
 (<)            a   b   => ...
@@ -308,12 +316,13 @@ It returns true if `a` is not equal to `b`.
 
 **Behavior**
 
-It returns true if `a` is strictly less than `b`.
+Returns true if `a` is strictly less than `b`.
+Otherwise, returns false.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   5  <   2   // False
 (-5) <   2   // True
@@ -322,12 +331,12 @@ It returns true if `a` is strictly less than `b`.
 (-2) < (-2)  // False
 ```
 
-### Less Than Or Equal To
+### Less than or equal to
 
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (<=) infix 4 :: Int Int -> Bool
 (<=)            a   b   => ...
@@ -335,12 +344,13 @@ It returns true if `a` is strictly less than `b`.
 
 **Behavior**
 
-It returns true if `a` is less than or equal to `b`.
+Returns true if `a` is less than or equal to `b`.
+Otherwise, returns false.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   5  <=   2   // False
 (-5) <=   2   // True
@@ -349,12 +359,12 @@ It returns true if `a` is less than or equal to `b`.
 (-2) <= (-2)  // True
 ```
 
-### Greater Than
+### Greater than
 
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (>) infix 4 :: Int Int -> Bool
 (>)            a   b   => ...
@@ -362,12 +372,13 @@ It returns true if `a` is less than or equal to `b`.
 
 **Behavior**
 
-It returns true if `a` is strictly greater than `b`.
+Returns true if `a` is strictly greater than `b`.
+Otherwise, returns false.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   5  >   2   // True
 (-5) >   2   // False
@@ -376,12 +387,12 @@ It returns true if `a` is strictly greater than `b`.
 (-2) > (-2)  // False
 ```
 
-### Greater Than Or Equal To
+### Greater than or equal to
 
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (>=) infix 4 :: Int Int -> Bool
 (>=)            a   b   => ...
@@ -389,12 +400,13 @@ It returns true if `a` is strictly greater than `b`.
 
 **Behavior**
 
-It returns true if `a` is greater than or equal to `b`.
+Returns true if `a` is greater than or equal to `b`.
+Otherwise, returns false.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   5  >=   2   // True
 (-5) >=   2   // False
@@ -405,42 +417,14 @@ It returns true if `a` is greater than or equal to `b`.
 
 ---
 
-## Bitwise Operations and Functions
-
-They interact with integer type through binary representation.
-
-### Bitwise NEGATE
-
-**Signature**
-
-```Clean
-// Language: Clean
-
-bitnot :: Int -> Int
-bitnot    a   => ...
-```
-
-**Behavior**
-
-It returns bitwise-two complement of `a`.
-
-**Usage**
-
-```Clean
-// Language: Clean
-
-bitnot (-5)  //  -4
-bitnot (-2)  //   1
-bitnot   2   //  -3
-bitnot   5   //  -6
-```
+## Bitwise operations
 
 ### Bitwise OR
 
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (bitor) infixl 6 :: Int Int -> Int
 (bitor)             a   b   => ...
@@ -453,7 +437,7 @@ It returns bitwise OR of `a` and `b`.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   5  bitor   2   //  7
 (-5) bitor   2   // -5
@@ -466,7 +450,7 @@ It returns bitwise OR of `a` and `b`.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (bitand) infixl 6 :: Int Int -> Int
 (bitand)             a   b   => ...
@@ -479,7 +463,7 @@ It returns bitwise AND of `a` and `b`.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   5  bitand   2   //  0
 (-5) bitand   2   //  2
@@ -492,7 +476,7 @@ It returns bitwise AND of `a` and `b`.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (bitxor) infixl 6 :: Int Int -> Int
 (bitxor)             a   b   => ...
@@ -505,7 +489,7 @@ It returns bitwise XOR of `a` and `b`.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   5  bitxor   2   //  7
 (-5) bitxor   2   // -7
@@ -518,7 +502,7 @@ It returns bitwise XOR of `a` and `b`.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (<<) infix 7 :: Int Int -> Int
 (<<)            a   b   => ...
@@ -531,7 +515,7 @@ It shifts `a` to the left by `b` bits.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   5  <<   2   //  20
 (-5) <<   2   // -20
@@ -544,7 +528,7 @@ It shifts `a` to the left by `b` bits.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 (>>) infix 7 :: Int Int -> Int
 (>>)            a   b   => ...
@@ -557,12 +541,42 @@ It shifts `a` to the right by `b` bits.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
   5  >>   2   //  1
 (-5) >>   2   // -2
   5  >> (-2)  //  0
 (-5) >> (-2)  // -1
+```
+
+---
+
+## Bitwise functions
+
+### Bitwise NEGATE
+
+**Signature**
+
+```Clean
+// CLEAN
+
+bitnot :: Int -> Int
+bitnot    a   => ...
+```
+
+**Behavior**
+
+It returns bitwise-two complement of `a`.
+
+**Usage**
+
+```Clean
+// CLEAN
+
+bitnot (-5)  //  -4
+bitnot (-2)  //   1
+bitnot   2   //  -3
+bitnot   5   //  -6
 ```
 
 ---
@@ -574,7 +588,7 @@ It shifts `a` to the right by `b` bits.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 sign :: Int -> Int
 sign    a   => ...
@@ -587,7 +601,7 @@ It returns the sign of `a`.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 sign   1   //  1
 sign   0   //  0
@@ -599,7 +613,7 @@ sign (-1)  // -1
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 abs :: Int -> Int
 abs    a   => ...
@@ -612,7 +626,7 @@ It returns the absolute value of `a`.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 abs   1   // 1
 abs   0   // 0
@@ -624,7 +638,7 @@ abs (-1)  // 1
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 gcd :: Int Int -> Int
 gcd    a   b   => ...
@@ -637,7 +651,7 @@ It returns the greatest common divisor of `a` and `b`.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 gcd   3    2   // 1
 gcd (-3)   2   // 1
@@ -650,7 +664,7 @@ gcd (-3) (-2)  // 1
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 lcm :: Int Int -> Int
 lcm    a   b   => ...
@@ -663,7 +677,7 @@ It returns the least common multiple of `a` and `b`.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 lcm   3    2   // 6
 lcm (-3)   2   // 6
@@ -680,7 +694,7 @@ lcm (-3) (-2)  // 6
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 isEven :: Int -> Bool
 isEven    a   => ...
@@ -693,7 +707,7 @@ It returns true if `a` is an even integer.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 isEven  2  // False
 isEven  1  // True
@@ -707,7 +721,7 @@ isEven -2  // False
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 isOdd :: Int -> Bool
 isOdd    a   => ...
@@ -720,7 +734,7 @@ It returns true if `a` is an odd integer.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 isOdd  2  // True
 isOdd  1  // False
@@ -740,7 +754,7 @@ They explicitly convert other types to integer type.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 toInt :: Real -> Int
 toInt    a    => ...
@@ -753,7 +767,7 @@ It rounds `a` to its nearest integer.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 toInt   1.5   //  2
 toInt   1.4   //  1
@@ -767,7 +781,7 @@ toInt (-1.5)  // -2
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 toInt :: Char -> Int
 toInt    a    => ...
@@ -780,7 +794,7 @@ It returns ASCII code of `a`.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 toInt '1'  //  49
 toInt '9'  //  59
@@ -795,7 +809,7 @@ toInt 'z'  // 122
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 toInt :: { #Char } -> Int
 toInt    a         => ...
@@ -809,7 +823,7 @@ If it is unsuccessful, it returns zero.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 toInt "1.0"   //  0
 toInt "1"     //  1
@@ -830,7 +844,7 @@ The desired type must be unambiguous.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 fromInt :: Real -> Int
 fromInt    a    => ...
@@ -843,7 +857,7 @@ It sets the decimal places of `a` to 0.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 expr :: Real
 expr =  fromInt  1  // 1.0
@@ -855,7 +869,7 @@ expr =  fromInt  0  // 0.0
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 fromInt :: Int -> Char
 fromInt    a   => ...
@@ -868,7 +882,7 @@ It returns a character whose ASCII code is `a`.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 expr :: Char
 expr =  fromInt 49   // '1'
@@ -884,7 +898,7 @@ expr =  fromInt 122  // 'z'
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 fromInt :: Int -> { #Char }
 fromInt    a   => ...
@@ -897,7 +911,7 @@ It returns a string representation of `a`.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 expr :: { #Char }
 expr =  fromInt 1  // "1"

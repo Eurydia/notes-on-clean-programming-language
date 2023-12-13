@@ -8,7 +8,7 @@ Visit [StdBool](https://cloogle.org/src/#base-stdenv/StdBool;icl;line=1) on Cloo
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 (==) infix 4 :: Bool Bool -> Bool
@@ -22,7 +22,7 @@ Otherwise, returns false.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 True  == True   // True
@@ -35,7 +35,7 @@ False == False  // True
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 (||) infixr 2 :: Bool Bool -> Bool
@@ -49,7 +49,7 @@ Otherwise, returns false.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 True  || True   // True
@@ -62,7 +62,7 @@ False || False  // False
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 (&&) infixr 3 :: Bool Bool -> Bool
@@ -76,7 +76,7 @@ Otherwise, returns false.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 True  && True   // True
@@ -93,7 +93,7 @@ False && False  // False
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 not :: Bool -> Bool
@@ -106,7 +106,7 @@ Negates the logical value of `a`.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 not True   // False
@@ -121,7 +121,7 @@ not False  // True
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 fromBool :: Bool -> { # Char }
@@ -134,7 +134,7 @@ Returns the string representation of the logical value of `a`.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 expr :: { # Char }

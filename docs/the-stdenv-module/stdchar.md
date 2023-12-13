@@ -8,7 +8,7 @@ Visit [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) on Cloo
 
 **Implementation**
 
-```
+```clean
 // CLEAN
 
 zero ::  Char
@@ -23,7 +23,7 @@ Represents a character whose ASCII encoding is zero.
 
 **Implementation**
 
-```
+```clean
 // CLEAN
 
 one ::  Char
@@ -42,7 +42,7 @@ Represents a character whose ASCII encoding is one.
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 (+) infixl 6 :: Char Char -> Char
@@ -55,7 +55,7 @@ Returns a character whose ASCII encoding is equal to the sum of ASCII encodings 
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 '1' + '1'  // 49 + 49 ->  98 ('b')
@@ -67,7 +67,7 @@ Returns a character whose ASCII encoding is equal to the sum of ASCII encodings 
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 (-) infixl 6 :: Char Char -> Char
@@ -80,7 +80,7 @@ Returns a character whose ASCII encoding is equal to the difference of ASCII enc
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 'z' - '0'  // 122 - 48 -> 74 ('J')
@@ -96,7 +96,7 @@ Returns a character whose ASCII encoding is equal to the difference of ASCII enc
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 (==) infix 4 :: Char Char -> Bool
@@ -109,7 +109,7 @@ Returns true if the ASCII encoding of `a` is equal to the ASCII encoding of `b`.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 '1' == 'A'  // False
@@ -122,7 +122,7 @@ Returns true if the ASCII encoding of `a` is equal to the ASCII encoding of `b`.
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 (<>) infix 4 :: Char Char -> Bool
@@ -135,7 +135,7 @@ Returns true if the ASCII encoding of `a` is not equal to the ASCII encoding of 
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 '1' <> 'A'  // True
@@ -148,7 +148,7 @@ Returns true if the ASCII encoding of `a` is not equal to the ASCII encoding of 
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 (<) infix 4 :: Char Char -> Bool
@@ -161,7 +161,7 @@ Returns true if the ASCII encoding of `a` is strictly less than the ASCII encodi
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 '1' < 'A'  // True
@@ -174,7 +174,7 @@ Returns true if the ASCII encoding of `a` is strictly less than the ASCII encodi
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 (<=) infix 4 :: Char Char -> Bool
@@ -187,7 +187,7 @@ It returns true if the ASCII encoding of `a` is less than or equal to the ASCII 
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 '1' <= 'A'  // True
@@ -200,7 +200,7 @@ It returns true if the ASCII encoding of `a` is less than or equal to the ASCII 
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 (>) infix 4 :: Char Char -> Bool
@@ -213,7 +213,7 @@ Returns true if the ASCII encoding of `a` is strictly greater than the ASCII enc
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 '1' > 'A'  // False
@@ -226,7 +226,7 @@ Returns true if the ASCII encoding of `a` is strictly greater than the ASCII enc
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 (>=) infix 4 :: Char Char -> Bool
@@ -239,7 +239,7 @@ Returns true if the ASCII encoding of `a` is greater than or equal to the ASCII 
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 '1' >= 'A'  // False
@@ -250,39 +250,13 @@ Returns true if the ASCII encoding of `a` is greater than or equal to the ASCII 
 
 ---
 
-## Character manipulation functions
-
-### `digitToInt`
-
-**Signature**
-
-```
-// CLEAN
-
-digitToInt :: Char -> Int
-digitToInt    a    => ...
-```
-
-**Behavior**
-
-Returns the ASCII encoding of `a` offset by `-48`.
-
-**Usage**
-
-```
-// CLEAN
-
-toUpper '1'  // 49 - 48 ->  1
-toUpper 'a'  // 97 - 48 ->  49
-toUpper 'A'  // 65 - 48 ->  17
-toUpper '-'  // 45 - 48 -> -3
-```
+## Case conversion functions
 
 ### `toUpper`
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 toUpper :: Char -> Char
@@ -297,7 +271,7 @@ If it is not possible to return an upper case of `a`, returns `a` as is.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 toUpper '1'  // '1'
@@ -310,7 +284,7 @@ toUpper '-'  // '-'
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 toLower :: Char -> Char
@@ -324,7 +298,7 @@ If it is not possible to return a lower case of `a`, returns `a` as is.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 toLower '1'  // '1'
@@ -335,13 +309,13 @@ toLower '-'  // '-'
 
 ---
 
-## Predicate Functions
+## Validator functions
 
 ### `isUpper`
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 isUpper :: Char -> Bool
@@ -354,7 +328,7 @@ Returns true if `a` is an upper case character.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 isUpper '1'  // False
@@ -367,7 +341,7 @@ isUpper '-'  // False
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 isLower :: Char -> Bool
@@ -380,7 +354,7 @@ Returns true if `a` is a lower case character.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 isLower '1'  // False
@@ -393,7 +367,7 @@ isLower '-'  // False
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 isAlphanum :: Char -> Bool
@@ -406,7 +380,7 @@ Returns true if `a` is an alphanumeric character.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 isAlphanum '1'  // True
@@ -419,7 +393,7 @@ isAlphanum '-'  // False
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 isAlpha :: Char -> Bool
@@ -432,7 +406,7 @@ Returns true if `a` is an alphabetic character.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 isAlpha '1'  // False
@@ -445,7 +419,7 @@ isAlpha '-'  // False
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 isDigit :: Char -> Bool
@@ -458,7 +432,7 @@ Returns true if `a` is a decimal digit.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 isDigit '1'  // True
@@ -471,7 +445,7 @@ isDigit '-'  // False
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 isOctDigit :: Char -> Bool
@@ -484,7 +458,7 @@ Returns true if `a` is an octal digit.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 isOctDigit '1'  // True
@@ -498,7 +472,7 @@ isOctDigit '-'  // False
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 isHexDigit :: Char -> Bool
@@ -511,7 +485,7 @@ Returns true if `a` is a hexadecimal digit.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 isHexDigit '1'  // True
@@ -525,7 +499,7 @@ isHexDigit '-'  // False
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 isAscii :: Char -> Bool
@@ -541,7 +515,7 @@ See [7-bit ASCII characters](https://en.wikipedia.org/wiki/ASCII) for more infor
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 isAscii '1'  // True
@@ -555,7 +529,7 @@ isAscii 'Ç'  // False
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 isControl :: Char -> Bool
@@ -570,7 +544,7 @@ See [ASCII control characters](https://en.wikipedia.org/wiki/ASCII#Control_chara
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 isControl '1'   // False
@@ -584,7 +558,7 @@ isControl '\t'  // True
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 isControl :: Char -> Bool
@@ -599,7 +573,7 @@ See [ASCII printable character](https://en.wikipedia.org/wiki/ASCII#Printable_ch
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 isPrint '1'  // True
@@ -613,7 +587,7 @@ isPrint '\t' // False
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 isSpace :: Char -> Bool
@@ -623,21 +597,18 @@ isSpace    a    => ...
 **Behavior**
 
 Returns true if `a` is a whitespace character.
+Whitespace characters include:
 
-Space characters include:
-
-| Glyph | Name            |
-| ----- | --------------- |
-| ` `   | Space           |
-| `\t`  | Horizontal tab  |
-| `\v`  | Vertical tab    |
-| `\n`  | Line feed       |
-| `\r`  | Carriage return |
-| `\f`  | Form feed       |
+- space character
+- horizontal tab `\t`
+- form feed `\f`
+- line feed `\n`
+- carriage return `\r`
+- vertical tab `\v`
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 isSpace '1'   // False
@@ -655,7 +626,7 @@ isSpace '\t'  // True
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 toChar :: Int -> Char
@@ -668,7 +639,7 @@ Returns a character whose ASCII encoding is `a`.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 toChar 49  // '1'
@@ -687,7 +658,7 @@ The desired type must be unambiguous.
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 fromChar :: Char -> Int
@@ -700,7 +671,7 @@ Returns the ASCII encoding of `a`.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 expr :: Int
@@ -713,7 +684,7 @@ expr =  fromChar 'a'  // 97
 
 **Signature**
 
-```
+```clean
 // CLEAN
 
 fromChar :: Char -> { #Char }
@@ -726,11 +697,37 @@ Returns a one-character string containing only `a`.
 
 **Usage**
 
-```
+```clean
 // CLEAN
 
 expr :: { #Char }
 expr =  fromChar '1'  // "1"
 expr =  fromChar 'A'  // "A"
 expr =  fromChar 'a'  // "a"
+```
+
+### To integer with offset
+
+**Signature**
+
+```clean
+// CLEAN
+
+digitToInt :: Char -> Int
+digitToInt    a    => ...
+```
+
+**Behavior**
+
+Returns the ASCII encoding of `a` offset by `-48`.
+
+**Usage**
+
+```clean
+// CLEAN
+
+digitToInt '1'  // 49 - 48 ->  1
+digitToInt 'a'  // 97 - 48 ->  49
+digitToInt 'A'  // 65 - 48 ->  17
+digitToInt '-'  // 45 - 48 -> -3
 ```

@@ -1,108 +1,106 @@
 # StdCharList
 
 Visit [StdCharList](https://cloogle.org/src/#base-stdenv/StdCharList;icl;line=1) on Cloogle for source code of this module.
- 
-## Basic Functions
+
+## Text alignment functions
 
 ### `cjustify`
 
 **Signature**
 
-$$
-\begin{align*}
-n\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $n$ is of type $\textbf{Int}$, and
-- $A$ and $R$ are of type $[\textbf{Char}]$.
+cjustify :: Int [Char] -> [Char]
+cjustify    n   str    => ...
+```
 
-**Behavior**: center-aligns $A$ with left and right spaces.
+**Behavior**
+
+Pads the start and end of `str` with spaces until the width is equal to `n`.
 
 **Usage**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
-cjustify 5 ['a', 'b', 'c']  // [' ', 'a', 'b', 'c', ' ']
-cjustify 5 ['a', 'b']       // [' ', 'a', 'b', ' ', ' ']
-cjustify 3 ['a', 'b']       // ['a', 'b', ' ']
-cjustify 3 ['a']            // [' ', 'a', ' ']
-cjustify 1 ['a', 'b']       // ['a', 'b']
+cjustify 5 ['abc']  // [' ', 'a', 'b', 'c', ' ']
+cjustify 5 ['ab']   // [' ', 'a', 'b', ' ', ' ']
+cjustify 3 ['ab']   // ['a', 'b', ' ']
+cjustify 3 ['a']    // [' ', 'a', ' ']
+cjustify 1 ['ab']   // ['a', 'b']
 ```
 
 ### `ljustify`
 
 **Signature**
 
-$$
-\begin{align*}
-n\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $n$ is of type $\textbf{Int}$, and
-- $A$ and $R$ are of type $[\textbf{Char}]$.
+ljustify :: Int [Char] -> [Char]
+ljustify    n   str    => ...
+```
 
-**Behavior**: left-aligns $A$ with spaces.
+**Behavior**
+
+Pads the end of `str` with spaces until the width is equal to `n`.
 
 **Usage**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
-ljustify 5 ['a', 'b', 'c']  // ['a', 'b', 'c', ' ', ' ']
-ljustify 5 ['a', 'b']       // ['a', 'b', ' ', ' ', ' ']
-ljustify 3 ['a', 'b']       // ['a', 'b', ' ']
-ljustify 3 ['a']            // ['a', ' ', ' ']
-ljustify 1 ['a', 'b']       // ['a', 'b']
+ljustify 5 ['abc']  // ['a', 'b', 'c', ' ', ' ']
+ljustify 5 ['ab']   // ['a', 'b', ' ', ' ', ' ']
+ljustify 3 ['ab']   // ['a', 'b', ' ']
+ljustify 3 ['a']    // ['a', ' ', ' ']
+ljustify 1 ['ab']   // ['a', 'b']
 ```
 
 ### `rjustify`
 
 **Signature**
 
-$$
-\begin{align*}
-n\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $n$ is of type $\textbf{Int}$, and
-- $A$ and $R$ are of type $[\textbf{Char}]$.
+rjustify :: Int [Char] -> [Char]
+rjustify    n   str    => ...
+```
 
-**Behavior**: right-aligns $A$ with spaces.
+**Behavior**
+
+Pads the start of `str` with spaces until the width is equal to `n`.
 
 **Usage**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
-rjustify 5 ['a', 'b', 'c']  // [' ', ' ', 'a', 'b', 'c']
-rjustify 5 ['a', 'b']       // [' ', ' ', 'a', 'b']
-rjustify 3 ['a', 'b']       // [' ', 'a', 'b']
-rjustify 3 ['a']            // [' ', ' ', 'a']
-rjustify 1 ['a', 'b']       // ['a', 'b']
+rjustify 5 ['abc']  // [' ', ' ', 'a', 'b', 'c']
+rjustify 5 ['ab']   // [' ', ' ', 'a', 'b']
+rjustify 3 ['ab']   // [' ', 'a', 'b']
+rjustify 3 ['a']    // [' ', ' ', 'a']
+rjustify 1 ['ab']   // ['a', 'b']
 ```
+
+## Line manipulation functions
 
 ### `flatlines`
 
 **Signature**
 
-$$
-\begin{align*}
-{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $n$ is of type $\textbf{Int}$, and
-- $A$ and $R$ are of type $[\textbf{Char}]$.
+flatlines :: [[Char]] -> [Char]
+flatlines    lstr     => ...
+```
 
-**Behavior**: joins elements of $A$ with newline characters.
+**Behavior**
+
+Flattens `lstr` and join them with newline characters.
 
 **Usage**
 
@@ -118,23 +116,21 @@ flatlines []              // []
 
 **Signature**
 
-$$
-\begin{align*}
-A\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $n$ is of type $\textbf{Int}$,
-- $A$ is of type $[\textbf{Char}]$, and
-- $R$ is of type $[[\textbf{Char}]]$.
+mklines :: [Char] -> [[Char]]
+mklines    str    => ...
+```
 
-**Behavior**: splits $A$ at newline characters.
+**Behavior**
+
+Splits `str` at newline characters.
 
 **Usage**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 mklines ['a', '\n', 'b', '\n']  // [['a'], ['b']]
 mklines ['a', '\n']             // [['a']]

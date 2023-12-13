@@ -8,8 +8,8 @@ Visit [StdClass](https://cloogle.org/src/#base-stdenv/StdClass;icl;line=1) on Cl
 
 **Declaration**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 class PlusMin T | (+ T) & (- T) & (zero T)
 ```
@@ -18,8 +18,8 @@ class PlusMin T | (+ T) & (- T) & (zero T)
 
 **Declaration**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 class MultDiv T | (* T) & (/ T) & (one T)
 ```
@@ -28,8 +28,8 @@ class MultDiv T | (* T) & (/ T) & (one T)
 
 **Declaration**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 class Arith T | (PlusMin T) & (MultDiv T) & (abs T) & (sign T) & (~ T)
 ```
@@ -38,8 +38,8 @@ class Arith T | (PlusMin T) & (MultDiv T) & (abs T) & (sign T) & (~ T)
 
 **Declaration**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 class IncDec T | (+ T) & (- T) & (one T) & (zero T)
 where
@@ -54,8 +54,8 @@ where
 
 **Declaration**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 class Enum T | (< T) & (IncDec T)
 where
@@ -69,8 +69,8 @@ where
 
 **Declaration**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 class Eq T | == T
 where
@@ -82,8 +82,8 @@ where
 
 **Declaration**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 class Ord T | < T
 where

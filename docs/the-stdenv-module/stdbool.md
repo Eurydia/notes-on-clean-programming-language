@@ -2,7 +2,7 @@
 
 Visit [StdBool](https://cloogle.org/src/#base-stdenv/StdBool;icl;line=1) on Cloogle for source code of this module.
 
-## Operations
+## Logical operations
 
 ### Logical equivalence
 
@@ -87,9 +87,9 @@ False && False  // False
 
 ---
 
-## Functions
+## Logical functions
 
-### Negation
+### Logical negation
 
 **Signature**
 

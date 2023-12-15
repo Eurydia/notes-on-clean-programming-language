@@ -693,7 +693,7 @@ fromChar    a    => ...
 
 **Behavior**
 
-Returns a one-character string containing only `a`.
+Returns a one-character string containing `a`.
 
 **Usage**
 

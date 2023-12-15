@@ -218,7 +218,7 @@ $ ^ (Int) called with negative power argument
 
 ## Arithmetic functions
 
-### Negation
+### `~`
 
 **Signature**
 
@@ -419,33 +419,7 @@ Otherwise, returns false.
 
 ## Bitwise operations
 
-### Bitwise OR
-
-**Signature**
-
-```Clean
-// CLEAN
-
-(bitor) infixl 6 :: Int Int -> Int
-(bitor)             a   b   => ...
-```
-
-**Behavior**
-
-It returns bitwise OR of `a` and `b`.
-
-**Usage**
-
-```Clean
-// CLEAN
-
-  5  bitor   2   //  7
-(-5) bitor   2   // -5
-  5  bitor (-2)  // -1
-(-5) bitor (-2)  // -1
-```
-
-### Bitwise AND
+### Bitwise and
 
 **Signature**
 
@@ -458,7 +432,7 @@ It returns bitwise OR of `a` and `b`.
 
 **Behavior**
 
-It returns bitwise AND of `a` and `b`.
+Returns bitwise AND of `a` and `b`.
 
 **Usage**
 
@@ -471,7 +445,33 @@ It returns bitwise AND of `a` and `b`.
 (-5) bitand (-2)  // -6
 ```
 
-### Bitwise XOR
+### Bitwise or
+
+**Signature**
+
+```Clean
+// CLEAN
+
+(bitor) infixl 6 :: Int Int -> Int
+(bitor)             a   b   => ...
+```
+
+**Behavior**
+
+Returns bitwise OR of `a` and `b`.
+
+**Usage**
+
+```Clean
+// CLEAN
+
+  5  bitor   2   //  7
+(-5) bitor   2   // -5
+  5  bitor (-2)  // -1
+(-5) bitor (-2)  // -1
+```
+
+### Bitwise exclusive or
 
 **Signature**
 
@@ -484,7 +484,7 @@ It returns bitwise AND of `a` and `b`.
 
 **Behavior**
 
-It returns bitwise XOR of `a` and `b`.
+Returns bitwise XOR of `a` and `b`.
 
 **Usage**
 
@@ -497,7 +497,7 @@ It returns bitwise XOR of `a` and `b`.
 (-5) bitxor (-2)  //  5
 ```
 
-### Bitwise Left Shift
+### Bitwise left shift
 
 **Signature**
 
@@ -510,7 +510,7 @@ It returns bitwise XOR of `a` and `b`.
 
 **Behavior**
 
-It shifts `a` to the left by `b` bits.
+Shifts `a` to the left by `b` bits.
 
 **Usage**
 
@@ -523,7 +523,7 @@ It shifts `a` to the left by `b` bits.
 (-5) << (-2)  // -4611686018427387904
 ```
 
-### Bitwise Right Shift
+### Bitwise right shift
 
 **Signature**
 
@@ -536,7 +536,7 @@ It shifts `a` to the left by `b` bits.
 
 **Behavior**
 
-It shifts `a` to the right by `b` bits.
+Shifts `a` to the right by `b` bits.
 
 **Usage**
 
@@ -553,7 +553,7 @@ It shifts `a` to the right by `b` bits.
 
 ## Bitwise functions
 
-### Bitwise NEGATE
+### `bitnot`
 
 **Signature**
 
@@ -566,7 +566,7 @@ bitnot    a   => ...
 
 **Behavior**
 
-It returns bitwise-two complement of `a`.
+Returns bitwise two-complement of `a`.
 
 **Usage**
 
@@ -581,7 +581,7 @@ bitnot   5   //  -6
 
 ---
 
-## Basic Functions
+## Basic functions
 
 ### `sign`
 
@@ -596,7 +596,7 @@ sign    a   => ...
 
 **Behavior**
 
-It returns the sign of `a`.
+Returns the sign of `a`.
 
 **Usage**
 
@@ -621,7 +621,7 @@ abs    a   => ...
 
 **Behavior**
 
-It returns the absolute value of `a`.
+Returns the absolute value of `a`.
 
 **Usage**
 
@@ -646,7 +646,7 @@ gcd    a   b   => ...
 
 **Behavior**
 
-It returns the greatest common divisor of `a` and `b`.
+Returns the greatest common divisor of `a` and `b`.
 
 **Usage**
 
@@ -672,7 +672,7 @@ lcm    a   b   => ...
 
 **Behavior**
 
-It returns the least common multiple of `a` and `b`.
+Returns the least common multiple of `a` and `b`.
 
 **Usage**
 
@@ -687,7 +687,7 @@ lcm (-3) (-2)  // 6
 
 ---
 
-## Predicate Functions
+## Validator functions
 
 ### `isEven`
 
@@ -702,7 +702,8 @@ isEven    a   => ...
 
 **Behavior**
 
-It returns true if `a` is an even integer.
+Returns true if `a` is an even integer.
+Otherwise, returns false.
 
 **Usage**
 
@@ -729,7 +730,8 @@ isOdd    a   => ...
 
 **Behavior**
 
-It returns true if `a` is an odd integer.
+Returns true if `a` is an odd integer.
+Otherwise, returns false.
 
 **Usage**
 
@@ -745,11 +747,9 @@ isOdd -2  // True
 
 ---
 
-## Conversions To Integer Type
+## Conversions to integer
 
-They explicitly convert other types to integer type.
-
-### From Real Number Type
+### From real number
 
 **Signature**
 
@@ -762,7 +762,7 @@ toInt    a    => ...
 
 **Behavior**
 
-It rounds `a` to its nearest integer.
+Rounds up or down `a` to its nearest integer.
 
 **Usage**
 
@@ -776,7 +776,7 @@ toInt (-1.4)  // -1
 toInt (-1.5)  // -2
 ```
 
-### From Character Type
+### From character
 
 **Signature**
 
@@ -789,7 +789,7 @@ toInt    a    => ...
 
 **Behavior**
 
-It returns ASCII code of `a`.
+Returns the ASCII encoding of `a`.
 
 **Usage**
 
@@ -804,15 +804,15 @@ toInt 'a'  //  97
 toInt 'z'  // 122
 ```
 
-### From String Type
+### From string
 
 **Signature**
 
 ```Clean
 // CLEAN
 
-toInt :: { #Char } -> Int
-toInt    a         => ...
+toInt :: {#Char} -> Int
+toInt    a       => ...
 ```
 
 **Behavior**
@@ -834,12 +834,11 @@ toInt "-1.0"  //  0
 
 ---
 
-## Conversions From Integer Type
+## Conversions from integer
 
-They explicitly convert integer type to other types.
 The desired type must be unambiguous.
 
-### To Real Number Type
+### To real number
 
 **Signature**
 
@@ -852,7 +851,7 @@ fromInt    a    => ...
 
 **Behavior**
 
-It sets the decimal places of `a` to 0.
+Sets the decimal places of `a` to zeroes.
 
 **Usage**
 
@@ -864,7 +863,7 @@ expr =  fromInt  1  // 1.0
 expr =  fromInt  0  // 0.0
 ```
 
-### To Character Type
+### To character
 
 **Signature**
 
@@ -877,7 +876,7 @@ fromInt    a   => ...
 
 **Behavior**
 
-It returns a character whose ASCII code is `a`.
+Returns the character whose ASCII encoding is `a`.
 
 **Usage**
 
@@ -893,27 +892,27 @@ expr =  fromInt 97   // 'a'
 expr =  fromInt 122  // 'z'
 ```
 
-### To String Type
+### To string
 
 **Signature**
 
 ```Clean
 // CLEAN
 
-fromInt :: Int -> { #Char }
+fromInt :: Int -> {#Char}
 fromInt    a   => ...
 ```
 
 **Behavior**
 
-It returns a string representation of `a`.
+Returns the string representation of `a`.
 
 **Usage**
 
 ```Clean
 // CLEAN
 
-expr :: { #Char }
+expr :: {#Char}
 expr =  fromInt 1  // "1"
 expr =  fromInt 0  // "0"
 ```

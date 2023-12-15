@@ -130,7 +130,7 @@ fromBool    a    => ...
 
 **Behavior**
 
-Returns the string representation of the logical value of `a`.
+Returns the string representation of `a`.
 
 **Usage**
 

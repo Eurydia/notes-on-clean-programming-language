@@ -124,7 +124,7 @@ not False  // True
 ```clean
 // CLEAN
 
-fromBool :: Bool -> { # Char }
+fromBool :: Bool -> {#Char}
 fromBool    a    => ...
 ```
 
@@ -137,7 +137,7 @@ Returns the string representation of the logical value of `a`.
 ```clean
 // CLEAN
 
-expr :: { # Char }
+expr :: {#Char}
 expr =  fromBool True   // "True"
 expr =  fromBool False  // "False"
 ```

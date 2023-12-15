@@ -11,13 +11,13 @@ Visit [SystemArray](https://cloogle.org/src/#base-stdenv/StdArray;icl;line=1) on
 ```clean
 // CLEAN
 
-select :: { T } Int -> T
-select    A     i   => ...
+select :: {T} Int -> T
+select    A   i   => ...
 ```
 
 **Behavior**
 
-Returns the `i`-th element of `A`.
+Returns the element at position `i` of array `A`.
 Results in a run-time error when over-indexing or under-indexing.
 
 ```console
@@ -42,13 +42,13 @@ select "abcde" (-1)  // Run-time error
 ```clean
 // CLEAN
 
-size :: { T } -> Int
-size    A     => ...
+size :: {T} -> Int
+size    A   => ...
 ```
 
 **Behavior**
 
-Returns the number of elements that `A` can hold.
+Returns the size of the array `A`.
 
 **Usage**
 
@@ -68,13 +68,13 @@ size "ab"     // 2
 ```clean
 // CLEAN
 
-update :: { T } Int T -> { T } 
-update    A     i   a => ...
+update :: {T} Int T -> {T} 
+update    A   i   a => ...
 ```
 
 **Behavior**
 
-Replaces the `i`-th element of `A` with `a`.
+Replaces the element at position `i` of array `A` with a new element `a`.
 Results in a run-time error when over-indexing or under-indexing.
 
 ```console

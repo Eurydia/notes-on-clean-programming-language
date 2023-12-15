@@ -1,28 +1,28 @@
 # StdList
 
-Visit [StdInt](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1) on Cloogle for source code of this module.
+Visit [StdInt](https://cloogle.org/src/#base-stdenv/StdList;icl;icl;line=1) on Cloogle for source code of this module.
 
-## Basic Operations
+## List manipulation operations
 
 ### Concatenation
 
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
-(++) infixr 5 :: [ T ] [ T ] -> [ T ]
-(++)             A     B     => ...
+(++) infixr 5 :: [T] [T] -> [T]
+(++)             A   B   => ...
 ```
 
 **Behavior**
 
-It concatenates `B` to the end of `A`.
+Concatenates list `B` to the end of list `A`.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
  
 [1, 2, 3] ++ [4, 5]  // [1, 2, 3, 4, 5]
 [1, 2, 3] ++ [4]     // [1, 2, 3, 4]
@@ -34,31 +34,29 @@ It concatenates `B` to the end of `A`.
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
-(!!) infixl 9 :: [ T ] Int -> T
-(!!)             A     i   => ...
+(!!) infixl 9 :: [T] Int -> T
+(!!)             A   i   => ...
 ```
 **Behavior**
 
-It returns the element of list `A` whose index is `i`.
+Returns the element at position `i` of list `A`.
+Results in a run-time error when over-indexing or under-indexing.
 
-The index starts from zero.
-It results in a run-time error if `i` is not a valid index.
-
-```markdown
-Subscript error in !!,index too large
+```console
+$ Subscript error in !!,index too large
 ```
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
  
-[1, 2, 3] !!   5   // run-time error
+[1, 2, 3] !!   5   // Run-time error
 [1, 2, 3] !!   2   // 3
 [1, 2, 3] !!   0   // 1
-[1, 2, 3] !! (-1)  // run-time error
+[1, 2, 3] !! (-1)  // Run-time error
 ```
 
 ### Slicing
@@ -66,20 +64,20 @@ Subscript error in !!,index too large
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
-(%) infixl 9 :: [ T ] ( Int, Int ) -> [ T ]
-(%)             A     ( i  , j   ) => ...
+(%) infixl 9 :: [T] (Int, Int) -> [T]
+(%)             A   (i, j)     => ...
 ```
 
 **Behavior**
 
-It returns a new list containing elements of `A` whose index are between `i` and `j` inclusive.
+Returns elements between position `i` and position `j` inclusive of list  `A`.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
  
 [1, 2, 3] % (  2,  4)  // [3]
 [1, 2, 3] % (  0,  2)  // [1, 2, 3]
@@ -89,29 +87,30 @@ It returns a new list containing elements of `A` whose index are between `i` and
 
 ---
 
-## Relational Operations
+## Relational operations
 
-### Equal To
+### Equal to
 
 **Signature**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
-(==) infix 4 :: [ T ] [ T ] -> Bool | == T
-(==)            A     B     => ...
+(==) infix 4 :: [T] [T] -> Bool | == T
+(==)            A   B   => ...
 ```
+
+"Equality" operation must be defined on type `T`.
 
 **Behavior**
 
-It returns true if list `A` and list `B`:
-- contain the same number of elements, and
-- elements are in the same order.
+Returns true if list `A` and list `B` are pairwise equal.
+Otherwise, returns false.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 []     == []      // True
 [1, 2] == [1, 2]  // True
@@ -121,59 +120,75 @@ It returns true if list `A` and list `B`:
 [1, 3] == [1, 2]  // False
 ```
 
-### Not Equal To
+### Not equal to
 
 **Signature**
 
-$$
-\begin{align*}
-A\rightarrow{B}\rightarrow{R}
-\end{align*}
-$$
-
-where:
-- $A$ and $B$ are of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{Bool}$.
-
-Additionally, equality operation must be defined on $\textbf{T}$.
-
-**Behavior**: checks if $A$ is not equal to $B$.
-
-**Usage**
-
 ```Clean
-// Language: Clean
+// CLEAN
 
-[]     <> []        // False
-[1, 2] <> [1, 2]    // False
-[1, 2] <> [1]       // True
-[1]    <> [1, 2]    // True
-[1, 2] <> [1, 3]    // True
-[1, 3] <> [1, 2]    // True
+(<>) infix 4 :: [T] [T] -> Bool | == T
+(<>)            A   B   => ...
 ```
 
-### Less Than
+Type `T` must be an instance of [[stdclass#`Eq`]]
 
-**Signature**
+**Behavior**
 
-$$
-\begin{align*}
-A\rightarrow{B}\rightarrow{R}
-\end{align*}
-$$
+Returns true if list `A` and list `B` are not pairwise equal.
+Otherwise, returns false.
 
-where:
-- $A$ and $B$ are of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{Bool}$.
+This operator considers the first element from list `A` and the first element of `B`, then the second, and so on.
+For each pair, it performs the equality operation.
 
-Additionally, relational operations must be defined on $\text{T}$.
+It returns true if at least one pair is not equal.
+Otherwise, it returns false.
 
-**Behavior**: checks if $A$ is less than $B$.
+If the lengths of list `A` and list `B` are different, it returns true, even if every pair is equal.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
+
+[]     <> []      // False
+[1, 2] <> [1, 2]  // False
+[1, 2] <> [1]     // True
+[1]    <> [1, 2]  // True
+[1, 2] <> [1, 3]  // True
+[1, 3] <> [1, 2]  // True
+```
+
+### Less than
+
+**Signature**
+
+```Clean
+// CLEAN
+
+(<) infix 4 :: [T] [T] -> Bool | Ord T
+(<)            A   B   => ...
+```
+
+"Less than" operation must be defined on type `T`.
+
+**Behavior**
+
+Returns true if list `A` and list `B` are not pairwise equal.
+Otherwise, returns false.
+
+This operator considers the first element from list `A` and the first element of `B`, then the second, and so on.
+For each pair, it performs the equality operation.
+
+It returns true if at least one pair is not equal.
+Otherwise, it returns false.
+
+If the lengths of list `A` and list `B` are different, it returns true, even if every pair is equal.
+
+**Usage**
+
+```Clean
+// CLEAN
 
 []     < []      // False
 [1, 2] < [1, 2]  // False
@@ -204,7 +219,7 @@ Additionally, relational operations must be defined on $\text{T}$.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 []     <= []     // True
 [1, 2] <= [1, 2] // True
@@ -235,7 +250,7 @@ Additionally, relational operations must be defined on $\textbf{T}$.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 []     > []      // False
 [1, 2] > [1, 2]  // False
@@ -266,7 +281,7 @@ Additionally, relational operations must be defined on $\textbf{T}$.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 []     >= []      // True
 [1, 2] >= [1, 2]  // True
@@ -278,7 +293,7 @@ Additionally, relational operations must be defined on $\textbf{T}$.
 
 ---
 
-## Basic functions
+## Functions
 
 ### `length`
 
@@ -299,7 +314,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 length [1, 2, 3]  // 3
 length [1, 2]     // 2
@@ -326,7 +341,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 flatten [[1], [2], [3]]  // [1, 2, 3]
 flatten [[1], [2, 3]]    // [1, 2, 3]
@@ -349,7 +364,7 @@ where:
 - $R$ is of type $\textbf{T}$.
 
 **Behavior**: returns the first element of $A$.
-Results in a run-time error if $A$ is empty.
+Results in a Run-time error if $A$ is empty.
 
 ```
 hd of []
@@ -358,7 +373,7 @@ hd of []
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 hd [1, 2, 3]  // 1
 hd [1, 2]     // 1
@@ -380,7 +395,7 @@ where:
 - $A$ and $R$ are of type $[\textbf{T}]$.
 
 **Behavior**: returns all except the first element of $A$.
-A run-time error will be thrown if $A$ is empty.
+A Run-time error will be thrown if $A$ is empty.
 
 ```
 tl of []
@@ -389,7 +404,7 @@ tl of []
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 tl [1, 2, 3]  // [2, 3]
 tl [1, 2]     // [2]
@@ -412,7 +427,7 @@ where:
 - $R$ is of type $\textbf{T}$.
 
 **Behavior**: returns the last element of $A$.
-Results in a run-time error if $A$ is empty.
+Results in a Run-time error if $A$ is empty.
 
 ```
 last of []
@@ -421,7 +436,7 @@ last of []
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 last [1, 2, 3]  // 3
 last [1, 2]     // 2
@@ -443,7 +458,7 @@ where:
 - $A$ and $R$ are of type $[\textbf{T}]$.
 
 **Behavior**: returns all except the last element of $A$.
-Results in a run-time error if $A$ is empty.
+Results in a Run-time error if $A$ is empty.
 
 ```
 init of []
@@ -452,7 +467,7 @@ init of []
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 init [1, 2, 3]  // [1, 2]
 init [1, 2]     // [1]
@@ -479,7 +494,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 take 2 [1, 2, 3]  // [1, 2]
 take 1 [1, 2]     // [1]
@@ -506,7 +521,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 drop 2 [1, 2, 3]  // [3]
 drop 1 [1, 2]     // [2]
@@ -532,7 +547,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 reverse [1, 2, 3]  // [3, 2, 1]
 reverse [1, 2]     // [2, 1]
@@ -561,7 +576,7 @@ The previous element is shifted to the right to make room.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 insertAt   2  9 [1, 2]  // [1, 2, 9]
 insertAt   1  9 [1, 2]  // [1, 9, 2]
@@ -588,7 +603,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 removeAt   2  [1, 2]  // [1, 2]
 removeAt   1  [1, 2]  // [1]
@@ -616,7 +631,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 updateAt   2  9 [1, 2]  // [1, 2]
 updateAt   1  9 [1, 2]  // [1, 9]
@@ -645,7 +660,7 @@ The element at $i$-th index goes to the second half.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 splitAt   2  [1, 2]  // ([1, 2], [])
 splitAt   1  [1, 2]  // ([1], [2])
@@ -672,7 +687,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 indexList [3, 2, 1]  // [0, 1, 2]
 indexList [1, 2]     // [0, 1]
@@ -699,7 +714,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 repeat 0     // [0, 0, 0, ...]
 repeat 1.0   // [1.0, 1.0, 1.0, ...]
@@ -727,7 +742,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 repeatn 0 0     // []
 repeatn 1 1.0   // [1.0]
@@ -757,7 +772,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 isMember 4 [1, 2, 3]  // False
 isMember 2 [1, 2, 3]  // True
@@ -785,7 +800,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 isAnyMember [1, 2] [1, 2]  // True
 isAnyMember [1, 2] [3, 4]  // False
@@ -813,7 +828,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 removeDup [1, 2, 2, 3]  // [1, 2, 3]
 removeDup [1, 2, 3, 4]  // [1, 2, 3, 4]
@@ -841,7 +856,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 removeMember 4 [1, 2, 2, 3]  // [1, 2, 2, 3]
 removeMember 2 [1, 2, 2, 3]  // [1, 2, 3]
@@ -869,7 +884,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 removeMembers [1, 2, 3] []  // [1, 2, 3]
 removeMembers [2, 3] [1]    // [2, 3]
@@ -895,7 +910,7 @@ where
 Additionally, equality operation must be defined on $\textbf{T}$.
 
 **Behavior**: removes the first occurrence of $a$ from $A$ and returns the its index, as well as, the new list.
-Results in a run-time error if $a$ is not a member of $A$.
+Results in a Run-time error if $a$ is not a member of $A$.
 
 ```
 Error in removeIndex: element not found
@@ -904,7 +919,7 @@ Error in removeIndex: element not found
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 removeIndex 2 [1, 2, 2, 3]  // (1, [1, 2, 3])
 removeIndex 1 [1, 2, 2, 3]  // (0, [2, 2, 3])
@@ -932,7 +947,7 @@ Additionally, addition and zero unit must be defined on $\textbf{T}$.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 sum [1, 2, 3, 4]  // 10
 sum [1, 2, 3]     // 6
@@ -961,7 +976,7 @@ Additionally, multiplication and one unit must be defined on $\textbf{T}$.
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 prod [1, 2, 3, 4]  // 24
 prod [1, 2, 3]     // 6
@@ -986,7 +1001,7 @@ where
 Additionally, addition, zero unit, and division must be defined on $\textbf{T}$.
 
 **Behavior**: returns average $A$.
-Results in a run-time error if $A$ is empty.
+Results in a Run-time error if $A$ is empty.
 
 ```
 avg called with empty list
@@ -995,7 +1010,7 @@ avg called with empty list
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 avg [1, 2, 3, 4]  // 2
 avg [1, 2, 3]     // 2
@@ -1023,7 +1038,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 and [False, False]  // False
 and [False, True]   // True
@@ -1052,7 +1067,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 or [False, False]  // False
 or [False, True]   // True
@@ -1084,7 +1099,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 takeWhile isOdd  [1, 1, 1]  // [1, 1, 1]
 takeWhile isOdd  [1, 2, 3]  // [1]
@@ -1110,7 +1125,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 dropWhile isOdd  [1, 1, 1]  // []
 dropWhile isOdd  [1, 2, 3]  // [2, 3]
@@ -1136,7 +1151,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 filter isEven [2, 3, 4]  // [2, 4]
 filter isEven [1, 2, 3]  // [2, 3]
@@ -1165,7 +1180,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 foldr (+) 0 [1, 2, 3]
 // 1 + (2 + (3 + 0))
@@ -1205,7 +1220,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 foldl (+) 0 [1, 2, 3]
 // ((0 + 1) + 2) + 3
@@ -1244,7 +1259,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 iterate ((+) 1) 0  // [0, 1, 2, ...]
 iterate ((*) 2) 1  // [1, 2, 4, ...]
@@ -1271,7 +1286,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 map isEven  [1, 2, 3]  // [False, True, False]
 map toReal  [1, 2, 3]  // [1.0, 2.0, 3.0]
@@ -1299,7 +1314,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 scan (+) 0 [1, 2, 3]
 // [0, 0 + 1, (0 + 1) + 2, ((0 + 1) + 2) + 3]
@@ -1338,7 +1353,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 any isEven [1, 2, 3]  // True
 any isOdd  [1, 2, 3]  // True
@@ -1368,7 +1383,7 @@ where:
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 all isEven [1, 2, 3]  // False
 all isOdd  [1, 2, 3]  // False
@@ -1380,28 +1395,28 @@ all isOdd  []         // True
 
 ---
 
-## Property Functions
+## Validator functions
 
 ### `isEmpty`
 
 **Signature**
 
-$$
-\begin{align*}
-A\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{Bool}$.
+isEmpty :: [T] -> Bool
+isEmpty	   A   => ...
+```
 
-**Behavior**: checks if $A$ is empty or not.
+**Behavior**
+
+Returns true if list `A` is empty.
+Otherwise, returns false.
 
 **Usage**
 
 ```Clean
-// Language: Clean
+// CLEAN
 
 isEmpty []   // True
 isEmpty [1]  // False

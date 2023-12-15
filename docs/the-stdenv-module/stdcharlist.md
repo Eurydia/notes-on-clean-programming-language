@@ -12,12 +12,13 @@ Visit [StdCharList](https://cloogle.org/src/#base-stdenv/StdCharList;icl;line=1)
 // CLEAN
 
 cjustify :: Int [Char] -> [Char]
-cjustify    n   str    => ...
+cjustify    n   s      => ...
 ```
 
 **Behavior**
 
-Pads the start and end of `str` with spaces until the width is equal to `n`.
+Pads the start and end of string `s` with spaces until its width is equal to `n`.
+The padding at the end of the string is prioritized.
 
 **Usage**
 
@@ -39,12 +40,12 @@ cjustify 1 ['ab']   // ['a', 'b']
 // CLEAN
 
 ljustify :: Int [Char] -> [Char]
-ljustify    n   str    => ...
+ljustify    n   s      => ...
 ```
 
 **Behavior**
 
-Pads the end of `str` with spaces until the width is equal to `n`.
+Pads the end of string `s` with spaces until its width is equal to `n`.
 
 **Usage**
 
@@ -66,12 +67,12 @@ ljustify 1 ['ab']   // ['a', 'b']
 // CLEAN
 
 rjustify :: Int [Char] -> [Char]
-rjustify    n   str    => ...
+rjustify    n   s      => ...
 ```
 
 **Behavior**
 
-Pads the start of `str` with spaces until the width is equal to `n`.
+Pads the start of string `s` with spaces until the width is equal to `n`.
 
 **Usage**
 
@@ -95,12 +96,12 @@ rjustify 1 ['ab']   // ['a', 'b']
 // CLEAN
 
 flatlines :: [[Char]] -> [Char]
-flatlines    lstr     => ...
+flatlines    ls       => ...
 ```
 
 **Behavior**
 
-Flattens `lstr` and join them with newline characters.
+Flattens two-dimensional character array `ls` and join them with newline characters.
 
 **Usage**
 
@@ -120,12 +121,13 @@ flatlines []              // []
 // CLEAN
 
 mklines :: [Char] -> [[Char]]
-mklines    str    => ...
+mklines    ls     => ...
 ```
 
 **Behavior**
 
-Splits `str` at newline characters.
+Splits character array `ls` at newline characters and transform it into two-dimensional character array.
+The newline characters are removed.
 
 **Usage**
 

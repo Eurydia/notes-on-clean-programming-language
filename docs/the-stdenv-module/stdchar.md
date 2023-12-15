@@ -687,7 +687,7 @@ expr =  fromChar 'a'  // 97
 ```clean
 // CLEAN
 
-fromChar :: Char -> { #Char }
+fromChar :: Char -> {#Char}
 fromChar    a    => ...
 ```
 
@@ -700,7 +700,7 @@ Returns a one-character string containing only `a`.
 ```clean
 // CLEAN
 
-expr :: { #Char }
+expr :: {#Char}
 expr =  fromChar '1'  // "1"
 expr =  fromChar 'A'  // "A"
 expr =  fromChar 'a'  // "a"

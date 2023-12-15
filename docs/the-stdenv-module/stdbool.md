@@ -71,7 +71,7 @@ False || False  // False
 
 **Behavior**
 
-Returns true if the truth value of `a` and `b` are true.
+Returns true if the the logical values of `a` and `b` are true.
 Otherwise, returns false.
 
 **Usage**

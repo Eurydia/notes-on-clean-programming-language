@@ -18,7 +18,7 @@ where
 
 **Definition**
 
-Defines the additive identity.
+Defines the additive identity on type `T`.
 
 ### `one`
 
@@ -34,7 +34,7 @@ where
 
 **Definition**
 
-Defines the multiplicative identity.
+Defines the multiplicative identity on type `T`.
 
 ---
 
@@ -50,12 +50,11 @@ Defines the multiplicative identity.
 class + T
 where
     (+) infixl 6 :: T T -> T
-    (+)             a b => ...
 ```
 
 **Definition**
 
-Defines the addition operation.
+Defines the addition operation on type `T`.
 
 ### `-`
 
@@ -67,12 +66,11 @@ Defines the addition operation.
 class + T
 where
     (-) infixl 6 :: T T -> T
-	(-)             a b => ...
 ```
 
 **Definition**
 
-Defines the subtraction operation.
+Defines the subtraction operation on type `T`.
 
 ### `*`
 
@@ -88,7 +86,7 @@ where
 
 **Definition**
 
-Defines the multiplication operation.
+Defines the multiplication operation on type `T`.
 
 ### `/`
 
@@ -104,7 +102,7 @@ where
 
 **Definition**
 
-Defines the division operation.
+Defines the division operation on type `T`.
 
 ### `rem`
 
@@ -120,7 +118,7 @@ where
 
 **Definition**
 
-Defines the reminder division operation.
+Defines the reminder division operation on type `T`.
 
 ### `mod`
 
@@ -136,7 +134,7 @@ where
 
 **Definition**
 
-Defines the modulo operation.
+Defines the modulo operation on type `T`.
 
 ---
 
@@ -156,7 +154,9 @@ where
 
 **Definition**
 
-Defines the exponentiation operation.
+Defines the exponentiation operation on type `T`.
+
+---
 
 ## Relational operations
 
@@ -174,7 +174,7 @@ where
 
 **Definition**
 
-Defines the equality operation.
+Defines the equality operation on type `T`.
 
 ### `<`
 
@@ -190,7 +190,7 @@ where
 
 **Definition**
 
-Defines the less than operation.
+Defines the less than operation on type `T`.
 
 ---
 
@@ -210,13 +210,13 @@ where
 
 **Definition**
 
-Defines the slicing operation.
+Defines the slicing operation on type `T`.
 
 ### `+++`
 
 **Declaration**
 
-```
+```clean
 // CLEAN
 
 class +++ T
@@ -226,13 +226,13 @@ where
 
 **Definition**
 
-Defines the concatenation operation.
+Defines the concatenation operation on type `T`.
 
 ### `~`
 
 **Declaration**
 
-```
+```clean
 // CLEAN
 
 class ~ T
@@ -242,7 +242,7 @@ where
 
 **Definition**
 
-Defines the negation operation.
+Defines the negation operation on type `T`.
 
 ---
 
@@ -262,13 +262,13 @@ where
 
 **Definition**
 
-Defines unit incrementation.
+Defines unit increment on type `T`.
 
 ### `dec`
 
 **Declaration**
 
-```
+```clean
 // CLEAN
 
 class dec T
@@ -278,7 +278,43 @@ where
 
 **Definition**
 
-Defines unit decrementation.
+Defines unit decrement on type `T`.
+
+### `gcd`
+
+**Declaration**
+
+```
+// CLEAN
+
+class gcd T
+where
+    gcd :: T T -> T
+```
+
+**Definition**
+
+Defines the greatest common divisor operation on type `T`.
+
+### `lcm`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class lcm T
+where
+    lcm :: T T -> T
+```
+
+**Definition**
+
+Defines the least common multiple operation on type `T`.
+
+---
+
+## Algebraic functions
 
 ### `abs`
 
@@ -294,13 +330,13 @@ where
 
 **Definition**
 
-Defines the absolute value function.
+Defines the absolute value function on type `T`.
 
 ### `sign`
 
 **Declaration**
 
-```
+```clean
 // CLEAN
 
 class sign T
@@ -310,7 +346,267 @@ where
 
 **Definition**
 
-Defines the sign function.
+Defines the sign function on type `T`.
+
+### `ln`
+
+**Declaration**
+
+```
+// CLEAN
+
+class ln T
+where
+    ln :: T -> T
+```
+
+**Definition**
+
+Defines the natural logarithm function on type `T`.
+
+### `exp`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class exp T
+where
+    exp :: T -> T
+```
+
+**Definition**
+
+Defines the exponential function on type `T`.
+
+### `sqrt`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class sqrt T
+where
+    sqrt :: T -> T
+```
+
+**Definition**
+
+Defines the square root function on type `T`.
+
+### `log10`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class log10 T
+where
+    log10 :: T -> T
+```
+
+**Definition**
+
+Defines the base-ten logarithm function on type `T`.
+
+---
+
+## Trigonometric functions
+
+### `sin`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class sin T
+where
+    sin :: T -> T
+```
+
+**Definition**
+
+Defines the sine function on type `T`.
+
+### `cos`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class cos T
+where
+    cos :: T -> T
+```
+
+**Definition**
+
+Defines the cosine function on type `T`.
+
+### `tan`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class tan T
+where
+    tan :: T -> T
+```
+
+**Definition**
+
+Defines the tangent function on type `T`.
+
+### `asin`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class asin T
+where
+    asin :: T -> T
+```
+
+**Definition**
+
+Defines the inverse of sine function on type `T`.
+
+### `acos`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class acos T
+where
+    acos :: T -> T
+```
+
+**Definition**
+
+Defines the inverse of cosine function on type `T`.
+
+### `atan`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class atan T
+where
+    atan :: T -> T
+```
+
+**Definition**
+
+Defines the inverse of tangent function on type `T`.
+
+### `sinh`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class sinh T
+where
+    sinh :: T -> T
+```
+
+**Definition**
+
+Defines the hyperbolic sine function on type `T`.
+
+### `cosh`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class cosh T
+where
+    cosh :: T -> T
+```
+
+**Definition**
+
+Defines the hyperbolic cosine function on type `T`.
+
+### `tanh`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class tanh T
+where
+    tanh :: T -> T
+```
+
+**Definition**
+
+Defines the hyperbolic tangent function on type `T`.
+
+### `asinh`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class asinh T
+where
+    asinh :: T -> T
+```
+
+**Definition**
+
+Defines the inverse of hyperbolic sine function on type `T`.
+
+### `acosh`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class acosh T
+where
+    acosh :: T -> T
+```
+
+**Definition**
+
+Defines the inverse of hyperbolic cosine function on type `T`.
+
+### `atanh`
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class atanh T
+where
+    atanh :: T -> T
+```
+
+**Definition**
+
+Defines the inverse of hyperbolic tangent function on type `T`.
 
 ---
 
@@ -330,7 +626,7 @@ where
 
 **Definition**
 
-Defines the `isEven` function.
+Defines the `isEven` function on type `T`.
 
 ### `isOdd`
 
@@ -346,489 +642,27 @@ where
 
 **Definition**
 
-Defines the `isOdd` function.
+Defines the `isOdd` function on type `T`.
+
+---
+
+## Property functions
 
 ### `length`
 
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ is of a generic type, and
-- $R$ is of type $\textbf{Int}$.
-
-**Behavior**: returns length of $a$.
-
 **Declaration**
 
-```
+```clean
 // CLEAN
 
 class length T
 where
-    length :: (T a) -> Bool
+    length :: (T a) -> Int
 ```
 
-### `gcd`
+**Definition**
 
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$, $b$, and $R$ are of a generic type. 
-
-**Behavior**: returns greatest common divisor of $a$ and $b$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class gcd T
-where
-    gcd :: T T -> T
-```
-
-### `lcm`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{b}\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$, $b$, and $R$ are of a generic type. 
-
-**Behavior**: returns least common multiple of $a$ and $b$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class lcm T
-where
-    lcm :: T T -> T
-```
-
-### `ln`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns natural log of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class ln T
-where
-    ln :: T -> T
-```
-
-### `log10`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns logarithm base $10$ of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class log10 T
-where
-    log10 :: T -> T
-```
-
-### `exp`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns $e$ raise to the power of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class exp T
-where
-    exp :: T -> T
-```
-
-### `sqrt`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns square root of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class sqrt T
-where
-    sqrt :: T -> T
-```
-
----
-
-## Trigonometric functions
-
-### `sin`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns sine of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class sin T
-where
-    sin :: T -> T
-```
-
-### `cos`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns cosine of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class cos T
-where
-    cos :: T -> T
-```
-
-### `tan`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns tangent of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class tan T
-where
-    tan :: T -> T
-```
-
-### `asin`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns inverse of sine of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class asin T
-where
-    asin :: T -> T
-```
-
-### `acos`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns inverse of cosine of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class acos T
-where
-    acos :: T -> T
-```
-
-### `atan`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns inverse of tangent of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class sin T
-where
-    sin :: T -> T
-```
-
-### `sinh`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns hyperbolic sine of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class sinh T
-where
-    sinh :: T -> T
-```
-
-### `cosh`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns hyperbolic cosine of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class cosh T
-where
-    cosh :: T -> T
-```
-
-### `tanh`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns hyperbolic tangent of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class tanh T
-where
-    tanh :: T -> T
-```
-
-### `asinh`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns inverse of hyperbolic sine of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class asinh T
-where
-    asinh :: T -> T
-```
-
-### `acosh`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns inverse of hyperbolic cosine of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class acosh T
-where
-    acosh :: T -> T
-```
-
-### `atanh`
-
-**Signature**
-
-$$
-\begin{align*}
-a\rightarrow{R}
-\end{align*}
-$$
-
-where
-- $a$ and $R$ are of a generic type. 
-
-**Behavior**: returns inverse of hyperbolic tangent of $a$.
-
-**Declaration**
-
-```
-// CLEAN
-
-class atanh T
-where
-    atanh :: T -> T
-```
-
----
+Defines the `length` function on type `T`.
 
 ## Type conversion functions
 
@@ -846,7 +680,7 @@ where
 
 **Definition**
 
-Defines conversion from another type to integer.
+Defines conversion from type `T` to integer.
 
 ### `toReal`
 
@@ -862,7 +696,7 @@ where
 
 **Definition**
 
-Defines conversion from another type to real numbers.
+Defines conversion from type `T` to real numbers.
 
 ### `toChar`
 
@@ -878,7 +712,7 @@ where
 
 **Definition**
 
-Defines conversion from another type to character.
+Defines conversion from type `T` to character.
 
 ### `toBool`
 
@@ -894,7 +728,7 @@ where
 
 **Definition**
 
-Defines conversion from another type to Boolean.
+Defines conversion from type `T` to Boolean.
 
 ### `toString`
 
@@ -910,7 +744,7 @@ where
 
 **Definition**
 
-Defines conversion from another type to string.
+Defines conversion from type `T` to string.
 
 ### `fromInt`
 
@@ -926,7 +760,7 @@ where
 
 **Definition**
 
-Defines conversion from integer to another type.
+Defines conversion from integer to type `T`.
 
 ### `fromReal`
 
@@ -942,7 +776,7 @@ where
 
 **Definition**
 
-Defines conversion from real number to another type.
+Defines conversion from real number to type `T`.
 
 ### `fromChar`
 
@@ -958,7 +792,7 @@ where
 
 **Definition**
 
-Defines conversion from character to another type.
+Defines conversion from character to type `T`.
 
 ### `fromBool`
 
@@ -974,7 +808,7 @@ where
 
 **Definition**
 
-Defines conversion from Boolean to another type.
+Defines conversion from Boolean to type `T`.
 
 ### `fromString`
 
@@ -990,4 +824,4 @@ where
 
 **Definition**
 
-Defines conversion from string to another type.
+Defines conversion from string to type `T`.

@@ -86,10 +86,10 @@ where
 
 Defines the `inc` and `dec` functions for type `T` if it is an instance of the following classes:
 
-- [[stdoverloaded#``~``|+]],
-- [[stdoverloaded#``-``|-]],
-- [[stdoverloaded#`zero`|zero]], and
-- [[stdoverloaded#one|one]].
+- [+](stdoverloaded.md#`+`),
+- [-](stdoverloaded#`-`),
+- [zero](stdoverloaded.md#`zero`), and
+- [one](stdoverloaded.md#`one`).
 
 ### `Enum`
 
@@ -105,11 +105,11 @@ class Enum T | (< T) & (IncDec T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [[stdoverloaded#``~``|+]],
-- [[stdoverloaded#``-``|-]],
-- [[stdoverloaded#`zero`|zero]],
-- [[stdoverloaded#one|one]], and
-- [[stdoverloaded#``~``|<]].
+- [+](stdoverloaded.md#`+`),
+- [-](stdoverloaded#`-`),
+- [zero](stdoverloaded.md#`zero`),
+- [one](stdoverloaded.md#`one`), and
+- [<](stdoverloaded#`<`).
 
 ---
 
@@ -130,7 +130,7 @@ where
 
 **Definition**
 
-Defines the `<>` operation for type `T` if it is an instance of the [[stdoverloaded#``~``]] class.
+Defines the `<>` operation for type `T` if it is an instance of the [\=\=](stdoverloaded.md#`==`) class.
 
 ### `Ord`
 
@@ -163,4 +163,4 @@ where
 
 **Definition**
 
-Defines the `<=`, `>`, and `>=` operations, as well as, the `min`, and `max` functions for type `T` if it is an instance of the [[stdoverloaded#``~``|<]] class.
+Defines the `<=`, `>`, and `>=` operations, as well as, the `min`, and `max` functions for type `T` if it is an instance of the [<](stdoverloaded#`<`) class.

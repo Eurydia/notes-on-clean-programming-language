@@ -22,9 +22,9 @@ class PlusMin T | (+ T) & (- T) & (zero T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [+](stdoverloaded.md#`+`)
-- [[stdoverloaded#`-`|\-]], and
-- [[stdoverloaded#`zero`|zero]].
+- [+](stdoverloaded.md#`+`),
+- [-](stdoverloaded#`-`), and
+- [zero](stdoverloaded.md#`zero`).
 
 ### `MultDiv`
 
@@ -40,9 +40,9 @@ class MultDiv T | (* T) & (/ T) & (one T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [[stdoverloaded#``~``|*]],
-- [[stdoverloaded#``~``|/]], and
-- [[stdoverloaded#one|one]].
+- [\*](stdoverloaded.md#`*`),
+- [/](stdoverloaded#`/`), and
+- [one](stdoverloaded.md#`one`).
 
 ### `Arith`
 

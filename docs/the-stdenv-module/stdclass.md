@@ -22,9 +22,9 @@ class PlusMin T | (+ T) & (- T) & (zero T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [[stdoverloaded#Arithmetic operations#``+``|+]],
-- [[stdoverloaded#Arithmetic operations#`-`|-]], and
-- [[stdoverloaded#Units#`zero`|zero]].
+- [[stdoverloaded#`+`|+]],
+- [[stdoverloaded#`-`|-]], and
+- [[stdoverloaded#`zero`|zero]].
 
 ### `MultDiv`
 

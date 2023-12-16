@@ -44,7 +44,7 @@ Defines the multiplicative identity on type `T`.
 
 ## Arithmetic operation classes
 
-### `+` class
+### class `+`
 
 **Declaration**
 
@@ -60,7 +60,7 @@ where
 
 Defines the addition operation on type `T`.
 
-### `-` class
+### class `-`
 
 **Declaration**
 

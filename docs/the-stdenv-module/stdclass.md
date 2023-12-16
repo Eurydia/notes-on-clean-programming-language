@@ -22,8 +22,8 @@ class PlusMin T | (+ T) & (- T) & (zero T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [[stdoverloaded#`+` class|+ class]],
-- [[stdoverloaded#`-` class|- class]], and
+- [[stdoverloaded#class `+`|+ class]],
+- [[stdoverloaded#class `-`|- class]], and
 - [[stdoverloaded#`zero` class|zero class]].
 
 ### `MultDiv`

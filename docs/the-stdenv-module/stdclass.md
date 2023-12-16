@@ -22,7 +22,7 @@ class PlusMin T | (+ T) & (- T) & (zero T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [[stdoverloaded#`+`|\+]],
+- [+](stdoverloaded#`+`),
 - [[stdoverloaded#`-`|\-]], and
 - [[stdoverloaded#`zero`|zero]].
 

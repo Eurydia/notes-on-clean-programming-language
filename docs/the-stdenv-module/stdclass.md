@@ -22,9 +22,9 @@ class PlusMin T | (+ T) & (- T) & (zero T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [[stdoverloaded#`+`|+]],
-- [[stdoverloaded#`-`|-]], and
-- [[stdoverloaded#`zero`|zero]].
+- [[stdoverloaded#Arithmetic operations#``+``|+]],
+- [[stdoverloaded#Arithmetic operations#`-`|-]], and
+- [[stdoverloaded#Units#`zero`|zero]].
 
 ### `MultDiv`
 
@@ -40,9 +40,9 @@ class MultDiv T | (* T) & (/ T) & (one T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [[stdoverloaded#`*`|*]],
-- [[stdoverloaded#`/`|/]], and
-- [[stdoverloaded#`one`|one]].
+- [[stdoverloaded#``~``|*]],
+- [[stdoverloaded#``~``|/]], and
+- [[stdoverloaded#one|one]].
 
 ### `Arith`
 
@@ -58,15 +58,15 @@ class Arith T | (PlusMin T) & (MultDiv T) & (abs T) & (sign T) & (~ T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [[stdoverloaded#`+`|+]],
-- [[stdoverloaded#`-`|-]],
-- [[stdoverloaded#`*`|*]],
-- [[stdoverloaded#`/`|/]],
+- [[stdoverloaded#``~``|+]],
+- [[stdoverloaded#``-``|-]],
+- [[stdoverloaded#``~``|*]],
+- [[stdoverloaded#``~``|/]],
 - [[stdoverloaded#`zero`|zero]],
-- [[stdoverloaded#`one`|one]],
+- [[stdoverloaded#one|one]],
 - [[stdoverloaded#`abs`|abs]],
 - [[stdoverloaded#`sign`|sign]], and
-- [[stdoverloaded#`~`|~]].
+- [[stdoverloaded#``~``|~]].
 
 ### `IncDec`
 
@@ -86,10 +86,10 @@ where
 
 Defines the `inc` and `dec` functions for type `T` if it is an instance of the following classes:
 
-- [[stdoverloaded#`+`|+]],
-- [[stdoverloaded#`-`|-]],
+- [[stdoverloaded#``~``|+]],
+- [[stdoverloaded#``-``|-]],
 - [[stdoverloaded#`zero`|zero]], and
-- [[stdoverloaded#`one`|one]].
+- [[stdoverloaded#one|one]].
 
 ### `Enum`
 
@@ -105,8 +105,11 @@ class Enum T | (< T) & (IncDec T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [[stdoverloaded#`<`|<]], and
-- [[stdoverloaded#`IncDec`|IncDec]].
+- [[stdoverloaded#``~``|+]],
+- [[stdoverloaded#``-``|-]],
+- [[stdoverloaded#`zero`|zero]],
+- [[stdoverloaded#one|one]], and
+- [[stdoverloaded#``~``|<]].
 
 ---
 
@@ -127,7 +130,7 @@ where
 
 **Definition**
 
-Defines the `<>` operation for type `T` if it is an instance of the [[stdoverloaded#`==`|==]] class.
+Defines the `<>` operation for type `T` if it is an instance of the [[stdoverloaded#``~``]] class.
 
 ### `Ord`
 
@@ -160,4 +163,4 @@ where
 
 **Definition**
 
-Defines the `<=`, `>`, `>=`, `min`, and `max` operations for type `T` if it is an instance of the [[stdoverloaded#`<`|<]] class.
+Defines the `<=`, `>`, and `>=` operations, as well as, the `min`, and `max` functions for type `T` if it is an instance of the [[stdoverloaded#``~``|<]] class.

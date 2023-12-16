@@ -125,7 +125,6 @@ Ensures that type `T` is an instance of the following classes:
 class Eq T | == T
 where
     (<>) infixl 4 :: T T -> Bool
-    (<>)             x y =  not (x == y)
 ```
 
 **Definition**
@@ -142,23 +141,14 @@ Defines the `<>` operation for type `T` if it is an instance of the `==` class.
 class Ord T | < T
 where
     (<=) infixl 4 :: T T -> Bool
-    (<=)             x y =  not (y < x)
 
     (>) infixl 4 :: T T -> Bool
-    (>)             x y =  y < x
 
     (>=) infixl 4 :: T T -> Bool
-    (>=)             x y =  not (x < y)
 
     min :: T T -> T
-    min    x y =  case (x < y) of
-                  True = x
-                  _    = y
 
     max :: T T -> T
-    max    x y =  case (x < y) of
-                  True = y
-                  _    = x
 ```
 
 **Definition**

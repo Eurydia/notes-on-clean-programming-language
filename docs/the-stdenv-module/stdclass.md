@@ -22,9 +22,9 @@ class PlusMin T | (+ T) & (- T) & (zero T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [[stdoverloaded#class `+`|+ class]],
-- [[stdoverloaded#class `-`|- class]], and
-- [[stdoverloaded#`zero` class|zero class]].
+- `+` class,
+- `-` class, and
+- `zero` class.
 
 ### `MultDiv`
 
@@ -40,9 +40,9 @@ class MultDiv T | (* T) & (/ T) & (one T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [\*](stdoverloaded.md#`*`),
-- [/](stdoverloaded#`/`), and
-- [one](stdoverloaded.md#`one`).
+- `*` class,
+- `/` class, and
+- `one` class.
 
 ### `Arith`
 
@@ -58,15 +58,15 @@ class Arith T | (PlusMin T) & (MultDiv T) & (abs T) & (sign T) & (~ T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [+](stdoverloaded.md#`+`),
-- [-](stdoverloaded#`-`),
-- [zero](stdoverloaded.md#`zero`),
-- [\*](stdoverloaded.md#`*`),
-- [/](stdoverloaded#`/`),
-- [one](stdoverloaded.md#`one`),
-- [abs](stdoverloaded.md#`abs`),
-- [sign](stdoverloaded.md#`sign`), and
-- [~](stdoverloaded.md#`~`).
+- `+` class,
+- `-` class,
+- `zero` class,
+- `*` class,
+- `/` class,
+- `one` class,
+- `abs` class,
+- `sign` class, and
+- `~` class.
 
 ### `IncDec`
 
@@ -86,10 +86,10 @@ where
 
 Defines the `inc` and `dec` functions for type `T` if it is an instance of the following classes:
 
-- [+](stdoverloaded.md#`+`),
-- [-](stdoverloaded#`-`),
-- [zero](stdoverloaded.md#`zero`), and
-- [one](stdoverloaded.md#`one`).
+- `+` class,
+- `-` class,
+- `zero` class, and
+- `one` class.
 
 ### `Enum`
 
@@ -105,11 +105,11 @@ class Enum T | (< T) & (IncDec T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [+](stdoverloaded.md#`+`),
-- [-](stdoverloaded#`-`),
-- [zero](stdoverloaded.md#`zero`),
-- [one](stdoverloaded.md#`one`), and
-- [<](stdoverloaded#`<`).
+- `+` class,
+- `-` class,
+- `zero` class,
+- `one` class, and
+- `<` class.
 
 ---
 
@@ -130,7 +130,7 @@ where
 
 **Definition**
 
-Defines the `<>` operation for type `T` if it is an instance of the [\=\=](stdoverloaded.md#`==`) class.
+Defines the `<>` operation for type `T` if it is an instance of the `==` class.
 
 ### `Ord`
 
@@ -163,4 +163,4 @@ where
 
 **Definition**
 
-Defines the `<=`, `>`, and `>=` operations, as well as, the `min`, and `max` functions for type `T` if it is an instance of the [<](stdoverloaded#`<`) class.
+Defines the `<=`, `>`, and `>=` operations, as well as, the `min`, and `max` functions for type `T` if it is an instance of the `<` class.

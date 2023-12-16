@@ -58,15 +58,15 @@ class Arith T | (PlusMin T) & (MultDiv T) & (abs T) & (sign T) & (~ T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- [[stdoverloaded#``~``|+]],
-- [[stdoverloaded#``-``|-]],
-- [[stdoverloaded#``~``|*]],
-- [[stdoverloaded#``~``|/]],
-- [[stdoverloaded#`zero`|zero]],
-- [[stdoverloaded#one|one]],
-- [[stdoverloaded#`abs`|abs]],
-- [[stdoverloaded#`sign`|sign]], and
-- [[stdoverloaded#``~``|~]].
+- [+](stdoverloaded.md#`+`),
+- [-](stdoverloaded#`-`),
+- [zero](stdoverloaded.md#`zero`),
+- [\*](stdoverloaded.md#`*`),
+- [/](stdoverloaded#`/`),
+- [one](stdoverloaded.md#`one`),
+- [abs](stdoverloaded.md#`abs`),
+- [sign](stdoverloaded.md#`sign`), and
+- [~](stdoverloaded.md#`~`).
 
 ### `IncDec`
 

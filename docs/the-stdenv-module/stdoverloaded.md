@@ -6,9 +6,9 @@ Date of last full revision: 16 December 2023
 
 Visit [StdOverloaded](https://cloogle.org/src/#base-stdenv/StdOverloaded;icl;line=1) on Cloogle for source code of this module.
 
-## Units
+## Unit classes
 
-### `zero`
+### `zero` class
 
 **Declaration**
 
@@ -24,7 +24,7 @@ where
 
 Defines the additive identity on type `T`.
 
-### `one`
+### `one` class
 
 **Declaration**
 
@@ -42,9 +42,9 @@ Defines the multiplicative identity on type `T`.
 
 ---
 
-## Arithmetic operations
+## Arithmetic operation classes
 
-### `+`
+### `+` class
 
 **Declaration**
 
@@ -60,7 +60,7 @@ where
 
 Defines the addition operation on type `T`.
 
-### `-`
+### `-` class
 
 **Declaration**
 
@@ -76,7 +76,7 @@ where
 
 Defines the subtraction operation on type `T`.
 
-### `*`
+### `*` class
 
 **Declaration**
 
@@ -92,7 +92,7 @@ where
 
 Defines the multiplication operation on type `T`.
 
-### `/`
+### `/` class
 
 **Declaration**
 
@@ -108,7 +108,7 @@ where
 
 Defines the division operation on type `T`.
 
-### `rem`
+### `rem` class
 
 **Declaration**
 
@@ -124,7 +124,7 @@ where
 
 Defines the reminder division operation on type `T`.
 
-### `mod`
+### `mod` class
 
 **Declaration**
 
@@ -142,9 +142,9 @@ Defines the modulo operation on type `T`.
 
 ---
 
-## Algebraic operations
+## Algebraic operation classes
 
-### `^`
+### `^` class
 
 **Declaration**
 
@@ -162,9 +162,9 @@ Defines the exponentiation operation on type `T`.
 
 ---
 
-## Relational operations
+## Relational operation classes
 
-### `==`
+### `==` class
 
 **Declaration**
 
@@ -180,7 +180,7 @@ where
 
 Defines the equality operation on type `T`.
 
-### `<`
+### `<` class
 
 **Declaration**
 
@@ -198,9 +198,9 @@ Defines the less than operation on type `T`.
 
 ---
 
-## Manipulation operations
+## Manipulation operation classes
 
-### `%`
+### `%` class
 
 **Declaration**
 
@@ -216,7 +216,7 @@ where
 
 Defines the slicing operation on type `T`.
 
-### `+++`
+### `+++` class
 
 **Declaration**
 
@@ -232,7 +232,7 @@ where
 
 Defines the concatenation operation on type `T`.
 
-### `~`
+### `~` class
 
 **Declaration**
 
@@ -250,9 +250,9 @@ Defines the negation operation on type `T`.
 
 ---
 
-## Arithmetic functions
+## Arithmetic function classes
 
-### `inc`
+### `inc` class
 
 **Declaration**
 
@@ -268,7 +268,7 @@ where
 
 Defines unit increment on type `T`.
 
-### `dec`
+### `dec` class
 
 **Declaration**
 
@@ -284,7 +284,7 @@ where
 
 Defines unit decrement on type `T`.
 
-### `gcd`
+### `gcd` class
 
 **Declaration**
 
@@ -300,7 +300,7 @@ where
 
 Defines the greatest common divisor operation on type `T`.
 
-### `lcm`
+### `lcm` class
 
 **Declaration**
 
@@ -318,9 +318,9 @@ Defines the least common multiple operation on type `T`.
 
 ---
 
-## Algebraic functions
+## Algebraic function classes
 
-### `abs`
+### `abs` class
 
 **Declaration**
 
@@ -336,7 +336,7 @@ where
 
 Defines the absolute value function on type `T`.
 
-### `sign`
+### `sign` class
 
 **Declaration**
 
@@ -352,7 +352,7 @@ where
 
 Defines the sign function on type `T`.
 
-### `ln`
+### `ln` class
 
 **Declaration**
 
@@ -368,7 +368,7 @@ where
 
 Defines the natural logarithm function on type `T`.
 
-### `exp`
+### `exp` class
 
 **Declaration**
 
@@ -384,7 +384,7 @@ where
 
 Defines the exponential function on type `T`.
 
-### `sqrt`
+### `sqrt` class
 
 **Declaration**
 
@@ -400,7 +400,7 @@ where
 
 Defines the square root function on type `T`.
 
-### `log10`
+### `log10` class
 
 **Declaration**
 
@@ -418,9 +418,9 @@ Defines the base-ten logarithm function on type `T`.
 
 ---
 
-## Trigonometric functions
+## Trigonometric function classes
 
-### `sin`
+### `sin` class
 
 **Declaration**
 
@@ -436,7 +436,7 @@ where
 
 Defines the sine function on type `T`.
 
-### `cos`
+### `cos` class
 
 **Declaration**
 
@@ -452,7 +452,7 @@ where
 
 Defines the cosine function on type `T`.
 
-### `tan`
+### `tan` class
 
 **Declaration**
 
@@ -468,7 +468,7 @@ where
 
 Defines the tangent function on type `T`.
 
-### `asin`
+### `asin` class
 
 **Declaration**
 
@@ -484,7 +484,7 @@ where
 
 Defines the inverse of sine function on type `T`.
 
-### `acos`
+### `acos` class
 
 **Declaration**
 
@@ -500,7 +500,7 @@ where
 
 Defines the inverse of cosine function on type `T`.
 
-### `atan`
+### `atan` class
 
 **Declaration**
 
@@ -516,7 +516,7 @@ where
 
 Defines the inverse of tangent function on type `T`.
 
-### `sinh`
+### `sinh` class
 
 **Declaration**
 
@@ -532,7 +532,7 @@ where
 
 Defines the hyperbolic sine function on type `T`.
 
-### `cosh`
+### `cosh` class
 
 **Declaration**
 
@@ -544,11 +544,11 @@ where
     cosh :: T -> T
 ```
 
-**Definition**
+**Definition** 
 
 Defines the hyperbolic cosine function on type `T`.
 
-### `tanh`
+### `tanh` class
 
 **Declaration**
 
@@ -560,11 +560,11 @@ where
     tanh :: T -> T
 ```
 
-**Definition**
+**Definition** 
 
 Defines the hyperbolic tangent function on type `T`.
 
-### `asinh`
+### `asinh` class
 
 **Declaration**
 
@@ -580,7 +580,7 @@ where
 
 Defines the inverse of hyperbolic sine function on type `T`.
 
-### `acosh`
+### `acosh` class
 
 **Declaration**
 
@@ -596,7 +596,7 @@ where
 
 Defines the inverse of hyperbolic cosine function on type `T`.
 
-### `atanh`
+### `atanh` class
 
 **Declaration**
 
@@ -614,9 +614,9 @@ Defines the inverse of hyperbolic tangent function on type `T`.
 
 ---
 
-## Validator functions
+## Validator function classes
 
-### `isEven`
+### `isEven` class
 
 **Declaration**
 
@@ -632,7 +632,7 @@ where
 
 Defines the `isEven` function on type `T`.
 
-### `isOdd`
+### `isOdd` class
 
 **Declaration**
 
@@ -650,7 +650,7 @@ Defines the `isOdd` function on type `T`.
 
 ---
 
-## Property functions
+## Property function classes
 
 ### `length`
 
@@ -668,9 +668,9 @@ where
 
 Defines the `length` function on type `T`.
 
-## Type conversion functions
+## Type conversion function classes
 
-### `toInt`
+### `toInt` class
 
 **Declaration**
 
@@ -686,7 +686,7 @@ where
 
 Defines conversion from type `T` to integer.
 
-### `toReal`
+### `toReal` class
 
 **Declaration**
 
@@ -702,7 +702,7 @@ where
 
 Defines conversion from type `T` to real numbers.
 
-### `toChar`
+### `toChar` class
 
 **Declaration**
 
@@ -718,7 +718,7 @@ where
 
 Defines conversion from type `T` to character.
 
-### `toBool`
+### `toBool` class
 
 **Declaration**
 
@@ -734,7 +734,7 @@ where
 
 Defines conversion from type `T` to Boolean.
 
-### `toString`
+### `toString` class
 
 **Declaration**
 
@@ -750,7 +750,7 @@ where
 
 Defines conversion from type `T` to string.
 
-### `fromInt`
+### `fromInt` class
 
 **Declaration**
 
@@ -766,7 +766,7 @@ where
 
 Defines conversion from integer to type `T`.
 
-### `fromReal`
+### `fromReal` class
 
 **Declaration**
 
@@ -782,7 +782,7 @@ where
 
 Defines conversion from real number to type `T`.
 
-### `fromChar`
+### `fromChar` class
 
 **Declaration**
 
@@ -798,7 +798,7 @@ where
 
 Defines conversion from character to type `T`.
 
-### `fromBool`
+### `fromBool` class
 
 **Declaration**
 
@@ -814,7 +814,7 @@ where
 
 Defines conversion from Boolean to type `T`.
 
-### `fromString`
+### `fromString` class
 
 **Declaration**
 

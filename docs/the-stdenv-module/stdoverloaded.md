@@ -1,3 +1,7 @@
+---
+Date of last full revision: 16 December 2023
+---
+
 # StdOverloaded
 
 Visit [StdOverloaded](https://cloogle.org/src/#base-stdenv/StdOverloaded;icl;line=1) on Cloogle for source code of this module.

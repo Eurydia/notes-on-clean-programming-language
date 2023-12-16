@@ -1,3 +1,7 @@
+---
+Date of last full revision: 16/DEC/2023
+---
+
 # StdCharList
 
 Visit [StdCharList](https://cloogle.org/src/#base-stdenv/StdCharList;icl;line=1) on Cloogle for source code of this module.

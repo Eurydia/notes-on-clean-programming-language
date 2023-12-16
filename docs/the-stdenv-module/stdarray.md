@@ -1,3 +1,7 @@
+---
+Date of last full revision: 16/DEC/2023
+---
+
 # StdArray
 
 Visit [SystemArray](https://cloogle.org/src/#base-stdenv/StdArray;icl;line=1) on Cloogle for source code of this module.

@@ -1,3 +1,7 @@
+---
+Date of last full revision: 16/DEC/2023
+---
+
 # The StdEnv module
 
 - [[stdarray|StdArray]]

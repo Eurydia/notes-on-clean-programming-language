@@ -48,7 +48,7 @@ False == False  // True
 
 **Behavior**
 
-Returns true if at least one of `a` and `b` has a logical value of true. 
+Returns true if at least one operand is true. 
 Otherwise, returns false.
 
 **Usage**
@@ -75,7 +75,7 @@ False || False  // False
 
 **Behavior**
 
-Returns true if the the logical values of `a` and `b` are true.
+Returns true if both operands are true.
 Otherwise, returns false.
 
 **Usage**

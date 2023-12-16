@@ -44,7 +44,7 @@ Defines the multiplicative identity on type `T`.
 
 ## Arithmetic operation classes
 
-### `+`
+### Addition
 
 **Declaration**
 
@@ -60,7 +60,7 @@ where
 
 Defines the addition operation on type `T`.
 
-### `-`
+### Subtraction
 
 **Declaration**
 
@@ -76,7 +76,7 @@ where
 
 Defines the subtraction operation on type `T`.
 
-### `*`
+### Multiplication
 
 **Declaration**
 
@@ -92,7 +92,7 @@ where
 
 Defines the multiplication operation on type `T`.
 
-### `/`
+### Division
 
 **Declaration**
 
@@ -108,7 +108,7 @@ where
 
 Defines the division operation on type `T`.
 
-### `rem`
+### Reminder division
 
 **Declaration**
 
@@ -124,7 +124,7 @@ where
 
 Defines the reminder division operation on type `T`.
 
-### `mod`
+### Modulo 
 
 **Declaration**
 
@@ -144,7 +144,7 @@ Defines the modulo operation on type `T`.
 
 ## Algebraic operation classes
 
-### `^`
+### Exponentiation
 
 **Declaration**
 
@@ -164,7 +164,7 @@ Defines the exponentiation operation on type `T`.
 
 ## Relational operation classes
 
-### `==`
+### Equality
 
 **Declaration**
 
@@ -180,7 +180,7 @@ where
 
 Defines the equality operation on type `T`.
 
-### `<`
+### Less than
 
 **Declaration**
 
@@ -200,7 +200,23 @@ Defines the less than operation on type `T`.
 
 ## Manipulation operation classes
 
-### `%`
+### Negation
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class ~ T
+where
+    ~ :: T -> T
+```
+
+**Definition**
+
+Defines the negation operation on type `T`.
+
+### Slicing
 
 **Declaration**
 
@@ -216,7 +232,7 @@ where
 
 Defines the slicing operation on type `T`.
 
-### `+++`
+### Concatenation
 
 **Declaration**
 
@@ -231,22 +247,6 @@ where
 **Definition**
 
 Defines the concatenation operation on type `T`.
-
-### `~`
-
-**Declaration**
-
-```clean
-// CLEAN
-
-class ~ T
-where
-    ~ :: T -> T
-```
-
-**Definition**
-
-Defines the negation operation on type `T`.
 
 ---
 

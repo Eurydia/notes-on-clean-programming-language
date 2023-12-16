@@ -22,9 +22,9 @@ class PlusMin T | (+ T) & (- T) & (zero T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- `+` class,
-- `-` class, and
-- `zero` class.
+- [[stdoverloaded#Addition|addition]],
+- [[stdoverloaded#Subtraction|subtraction]], and
+- [[stdoverloaded#`zero`|zero]].
 
 ### `MultDiv`
 
@@ -40,9 +40,9 @@ class MultDiv T | (* T) & (/ T) & (one T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- `*` class,
-- `/` class, and
-- `one` class.
+- [[stdoverloaded#Multiplication|multiplication]],
+- [[stdoverloaded#Division|division]], and
+- [[stdoverloaded#`one`|one]].
 
 ### `Arith`
 
@@ -58,15 +58,14 @@ class Arith T | (PlusMin T) & (MultDiv T) & (abs T) & (sign T) & (~ T)
 
 Ensures that type `T` is an instance of the following classes:
 
-- `+` class,
-- `-` class,
-- `zero` class,
-- `*` class,
-- `/` class,
-- `one` class,
-- `abs` class,
-- `sign` class, and
-- `~` class.
+- [[stdoverloaded#Addition|addition]],
+- [[stdoverloaded#Subtraction|subtraction]],
+- [[stdoverloaded#`zero`|zero]],
+- [[stdoverloaded#Multiplication|multiplication]],
+- [[stdoverloaded#Division|division]],
+- [[stdoverloaded#`abs`|abs]],
+- [[stdoverloaded#`sign`|sign]], and
+- [[stdoverloaded#Negation|negation]].
 
 ### `IncDec`
 
@@ -77,9 +76,8 @@ Ensures that type `T` is an instance of the following classes:
 
 class IncDec T | (+ T) & (- T) & (one T) & (zero T)
 where
-    inc :: T -> T | + , one a
-
-    dec :: T -> T | - , one a
+    inc :: T -> T | (+ T) & (one T)
+    dec :: T -> T | (- T) & (one T)
 ```
 
 **Definition**
@@ -122,7 +120,7 @@ Ensures that type `T` is an instance of the following classes:
 ```clean
 // CLEAN
 
-class Eq T | == T
+class Eq T | (== T)
 where
     (<>) infixl 4 :: T T -> Bool
 ```
@@ -138,16 +136,13 @@ Defines the `<>` operation for type `T` if it is an instance of the `==` class.
 ```clean
 // CLEAN
 
-class Ord T | < T
+class Ord T | (< T)
 where
-    (<=) infixl 4 :: T T -> Bool
-
     (>) infixl 4 :: T T -> Bool
-
+	(<=) infixl 4 :: T T -> Bool
     (>=) infixl 4 :: T T -> Bool
-
+    
     min :: T T -> T
-
     max :: T T -> T
 ```
 

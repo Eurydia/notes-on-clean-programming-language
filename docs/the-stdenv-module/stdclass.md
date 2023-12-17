@@ -63,6 +63,7 @@ Ensures that type `T` is an instance of the following classes:
 - [[stdoverloaded#`zero`|zero]],
 - [[stdoverloaded#Multiplication|multiplication]],
 - [[stdoverloaded#Division|division]],
+- [[stdoverloaded#`one`|one]],
 - [[stdoverloaded#`abs`|abs]],
 - [[stdoverloaded#`sign`|sign]], and
 - [[stdoverloaded#Negation|negation]].

@@ -6,9 +6,9 @@ Date of last full revision: 16/DEC/2023
 
 Visit [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) on Cloogle for source code of this module.
 
-## Constants
+## Units
 
-### Zero unit
+### Zero character
 
 **Implementation**
 
@@ -23,7 +23,7 @@ zero :== (toChar 0)
 
 Represents a character whose ASCII encoding is zero.
 
-### One unit
+### One character
 
 **Implementation**
 

@@ -1,48 +1,30 @@
----
-layout: "@layouts/Blog.astro"
-title: "Appendix B: Code recipes"
----
-# _intro
+# CLEAN cookbook
 
-## Table of contents
+A collection of CLEAN code snippets for common questions and problems.
 
-- [Introduction](#introduction)
-- [Breaking an integer into its digits](#breaking-an-integer-into-its-digits)
-- [Computing divisors of an integer](#computing-divisors-of-an-integer)
-- [Checking if an integer is prime or not](#checking-if-an-integer-is-prime-or-not)
+## Break an integer into its digits
 
-## Introduction
+**Problem**
 
-This section contains a collection of common and useful functions.
-Each method includes the implementation as well as the explanation.
-
-## Breaking an integer into digits
-
-**Signature** 
-
-$$
-\begin{align*}
-\text{Int}\rightarrow[\text{Int}]
-\end{align*}
-$$
+Given an integer $n$, how can we obtain each individual digit of it?
 
 **Expected result**
 
+```clean
+// CLEAN
+
+toDigits 123   // [1, 2, 3]
+toDigits 456   // [4, 5, 6]
+toDigits 1234  // [1, 2, 3, 4]
+toDigits 4567  // [4, 5, 6, 7]
 ```
-// Language: Clean
 
-toDigits 123  // [1, 2, 3]
-toDigits 456  // [4, 5, 6]
-toDigits 1234 // [1, 2, 3, 4]
-toDigits 4567 // [4, 5, 6, 7]
-```
+### Using recursion
 
-### Recursion
+**Solution**
 
-**Implementation**:
-
-```
-// Language: Clean
+```clean
+// CLEAN
 
 toDigits :: Int -> [Int]
 toDigits    n 
@@ -50,41 +32,23 @@ toDigits    n
 | otherwise     =  (toDigits (n / 10)) ++ [n rem 10]
 ```
 
-**Conversion pathway**
-
-$$
-\begin{align*}
-\text{Int}\rightarrow\text{[Int]}
-\end{align*}
-$$
-
 **Explanation**:
 
-Given an integer $n$, the last digit is placed on the end of a list.
-To get the last digit of $n$, we take advantage of the $\text{mod}$ operation. 
-
+This approach takes advantage of the reminder division operation.
 Before the next iteration, $n$ is divided by $10$, this step removes the last digit of $n$ since it has already been placed in the list.
 
-$\text{abs}$ expands domain from $[0,\ \infty)$ to $(-\infty,\ \infty)$.
+The [[stdint#`abs`|abs]] expands domain of our function from $[0,\ \infty)$ to $(-\infty,\ \infty)$.
 
 ### List comprehension
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 toDigits :: Int -> [Int]
 toDigits    n   =  [(toInt d) - 48 \\ d <-: (toString n)]
 ```
 
-**Conversion pathway**
-
-$$
-\begin{align*}
-\text{Int}\rightarrow\text{String}\rightarrow\text{Char}\rightarrow\text{Int}\rightarrow[\text{Int}]
-\end{align*}
-$$
-
-**Explanation**:
+**Explanation**
 
 Since arrays can be freely converted to lists and vice versa, we can convert $n$ to an array.
 
@@ -98,19 +62,14 @@ That is
 
 In the final step, an offset value of $48$ is subtracted from the result.
 
-
-[Back to top](#)
-
 ---
 
 ## Computing divisors of an integer
 
-**Signature**: $\text{Int}\rightarrow\text{[Int]}$
+**Expected result**
 
-**Expected result**:
-
-```
-// Language: Clean
+```CLEAN
+// CLEAN
 
 divisorsOf 9  // [1, 3, 9]
 divisorsOf 16 // [1, 2, 4, 8, 16]
@@ -120,8 +79,8 @@ divisorsOf 0  // [0]
 
 ### List comprehension
 
-```
-// Language: Clean
+```CLEAN
+// CLEAN
 
 isDivisible :: Int Int -> Bool
 isDivisible    x   y   =  (x rem y) == 0
@@ -130,12 +89,6 @@ divisorsOf :: Int -> [Int]
 divisorsOf    0   =  [0]
 divisorsOf    n   =  [d \\ d <- [1..(abs n)] | isDivisible n d]
 ```
-
-**Conversions**
-
-$$
-\text{Int}\rightarrow[\text{Int}]
-$$
 
 **Explanation**:
 
@@ -147,18 +100,14 @@ The helper function $\text{isDivisible}$ determines which integer will be placed
 If an integer $d$ is a divisor of $n$, it is included in the list.
 If it does not full divide $n$, it is discarded.
 
-[Back to top](#)
-
 ---
 
 ## Checking if an integer is prime
 
-**Signature**: $\text{Int} \rightarrow\text{Bool}$
-
 **Expected result**:
 
-```
-// Language: Clean
+```CLEAN
+// CLEAN
 
 isPrime 9 // False
 isPrime 3 // True
@@ -168,8 +117,8 @@ isPrime 0 // False
 
 ### Counting divisors list (comprehension)
 
-```
-// Language: Clean
+```CLEAN
+// CLEAN
 
 isPrime :: Int -> Bool
 isPrime 0 = False
@@ -183,8 +132,6 @@ where
 	isDivisorOfN k = (n rem k) == 0
 ```
 
-**Conversions**: $\text{Int}\rightarrow\text{[Int]}\rightarrow\text{Int}\rightarrow\text{Bool}$
-
 **Explanation**:
 
 For $n \gt 1$, a list of integers from $2$ to $n - 1$ is constructed.
@@ -194,15 +141,11 @@ If the divisor list is empty, $n$ is a prime number.
 
 ### Using list of booleans
 
-```
+```CLEAN
+// CLEAN
+
 isPrime :: Int -> Bool
 isPrime 0 = False
 isPrime 1 = False
 isPrime n = not (or [n rem d == 0 \\ d <- [2..(n - 1)]]) 
 ```
-
-**Conversions**: $\text{Int}\rightarrow\text{[Int]}\rightarrow\text{[Bool]}\rightarrow\text{Bool}$
-
-[Back to top](#)
-
----

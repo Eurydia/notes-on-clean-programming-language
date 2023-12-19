@@ -1,4 +1,0 @@
-```Clean
-// Language: Clean
-
-```

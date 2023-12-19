@@ -2,28 +2,29 @@
 
 Visit [StdTuple](https://cloogle.org/src/#base-stdenv/StdTuple;icl;line=1) on Cloogle for source code of this module.
 
-## Relational Operations
+## Relational operations
 
-### Equal To
+### Equal to
 
 **Signature**
 
-$$
-\begin{align*}
-(\textbf{T}, \textbf{K})\rightarrow(\textbf{T}, \textbf{K})\rightarrow{R}
-\end{align*}
-$$
+For ordered pairs 
 
-or
+```clean
+// CLEAN
 
-$$
-\begin{align*}
-(\textbf{T},\textbf{K},\textbf{V})\rightarrow(\textbf{T},\textbf{K},\textbf{V})\rightarrow{R}
-\end{align*}
-$$
+(==) infix 4 :: (T, K)   (T, K)   -> Bool | (Eq T) & (Eq K)
+(==)    (x1, y1) (x2, y2)         => ...
+```
 
-where:
-- $R$ is of type $\textbf{Bool}$.
+For ordered triples
+
+```clean
+// CLEAN
+
+(==) infix 4 :: (T, K, V)    (T, K, V)    -> Bool | (Eq T) & (Eq K)
+(==)    (x1, y1, z1) (x2, y2, z2)         => ...
+```
 
 Additionally, equality operation must be defined on $\textbf{T}$, $\textbf{K}$, and $\textbf{V}$.
 
@@ -273,3 +274,4 @@ Internally, this is equivalent to the following.
 (1, 'a') >= (1, 'b')  // False
 (2, 'a') >= (1, 'a')  // True
 ```
+

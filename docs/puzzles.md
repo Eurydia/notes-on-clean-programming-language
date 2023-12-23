@@ -1,4 +1,4 @@
-# CLEAN cookbook
+# Puzzles
 
 A collection of CLEAN code snippets for common questions and problems.
 

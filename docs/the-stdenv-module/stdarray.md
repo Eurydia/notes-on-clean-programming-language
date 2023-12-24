@@ -4,9 +4,23 @@ Date of last full revision: 16/DEC/2023
 
 # StdArray
 
-Visit [SystemArray](https://cloogle.org/src/#base-stdenv/StdArray;icl;line=1) on Cloogle for source code of this module.
+This module can be imported directly or as a part of the *Standard Environment*.
+It provides basic functions which can be used to interact with arrays.
 
-## Functions
+When compared to other modules in the Standard Environment, this module is much smaller due to the implementations of arrays in CLEAN.
+
+Visit [\_SystemArray](https://cloogle.org/src/#base-stdenv/_SystemArray;icl;line=1) on Cloogle for source code of this module.
+
+A few functions were omitted due to their lack of documentation.
+Namely:
+
+- *createArray*
+- *_createArray*
+- *usize*
+- *uselect*
+- *replace*
+
+## Array functions
 
 ### `select`
 
@@ -27,6 +41,8 @@ Results in a run-time error when over-indexing or under-indexing.
 ```console
 $ Run Time Error: index out of range
 ```
+
+Note that CLEAN provides a syntax for indexing an element from an array.
 
 **Usage**
 
@@ -85,6 +101,8 @@ Results in a run-time error when over-indexing or under-indexing.
 $ Run Time Error: index out of range
 ```
 
+Note that CLEAN provides a syntax for updating an element of an array at a specific index with a new element.
+
 **Usage**
 
 ```clean
@@ -95,4 +113,5 @@ update "abcde"   2  'C'  // "abCde"
 update "abcde"   0  'A'  // "Abcde"
 update "abcde" (-1) 'X'  // Run-time error
 ```
+
 

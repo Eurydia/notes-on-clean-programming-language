@@ -40,7 +40,7 @@ Represents a character whose ASCII encoding is one.
 
 ---
 
-## Arithmetic operations
+## Character arithmetic operations
 
 ### Addition
 

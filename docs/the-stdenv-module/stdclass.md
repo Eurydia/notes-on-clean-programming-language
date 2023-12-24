@@ -6,7 +6,7 @@ Date of last full revision: 16/DEC/2023
 
 Visit [StdClass](https://cloogle.org/src/#base-stdenv/StdClass;icl;line=1) on Cloogle for source code of this module.
 
-## Arithmetic Classes
+## Arithmetic classes
 
 ### `PlusMin`
 
@@ -112,7 +112,7 @@ Ensures that type `T` is an instance of the following classes:
 
 ---
 
-## Relational Classes
+## Relational classes
 
 ### `Eq`
 

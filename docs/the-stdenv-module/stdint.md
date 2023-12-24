@@ -4,7 +4,7 @@ Visit [StdInt](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1) on Cloogl
 
 ## Constants
 
-### Zero unit
+### Zero
 
 **Implementation**
 
@@ -19,7 +19,7 @@ zero :== 0
 
 Represents the additive identity of integers.
 
-### One unit
+### One
 
 **Implementation**
 
@@ -218,7 +218,7 @@ $ ^ (Int) called with negative power argument
 
 ## Arithmetic functions
 
-### `~`
+### Negation
 
 **Signature**
 
@@ -581,7 +581,7 @@ bitnot   5   //  -6
 
 ---
 
-## Basic functions
+## Math functions
 
 ### `sign`
 

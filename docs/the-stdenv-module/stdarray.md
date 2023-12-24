@@ -30,12 +30,12 @@ Namely:
 // CLEAN
 
 select :: {T} Int -> T
-select    A   i   => ...
+select    Arr i   => ...
 ```
 
 **Behavior**
 
-Returns the element at position `i` of array `A`.
+Returns the element at position `i` from array `Arr`.
 Results in a run-time error when over-indexing or under-indexing.
 
 ```console
@@ -63,12 +63,12 @@ select "abcde" (-1)  // Run-time error
 // CLEAN
 
 size :: {T} -> Int
-size    A   => ...
+size    Arr => ...
 ```
 
 **Behavior**
 
-Returns the size of the array `A`.
+Returns the size of the array `Arr`.
 
 **Usage**
 
@@ -89,12 +89,12 @@ size "ab"     // 2
 // CLEAN
 
 update :: {T} Int T -> {T} 
-update    A   i   a => ...
+update    Arr i   e => ...
 ```
 
 **Behavior**
 
-Replaces the element at position `i` of array `A` with a new element `a`.
+Updates the element at position `i` of array `Arr` with a new element `e`.
 Results in a run-time error when over-indexing or under-indexing.
 
 ```console

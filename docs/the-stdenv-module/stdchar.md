@@ -11,7 +11,7 @@ Visit [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) on Cloo
 
 ## Units
 
-Neither of these unit characters are printable but they facilitate character addition and character subtractionz.
+Neither of these unit characters are printable but they facilitate character addition and character subtraction.
 
 ### Zero character
 

@@ -4,7 +4,7 @@ Date of last full revision: 16/DEC/2023
 
 # StdCharList
 
-This module can be imported individually or as a part of the *Standard Environment*.
+This module can be imported directly or as a part of the `StdEnv` module.
 If CLEAN ever has a proper IO and formatting functionalities, I think this module would be just that.
 
 Visit [StdCharList](https://cloogle.org/src/#base-stdenv/StdCharList;icl;line=1) on Cloogle for source code of this module.
@@ -20,14 +20,17 @@ These functions pad the start and end of a character list until it has a specifi
 ```clean
 // CLEAN
 
-cjustify :: Int [Char] -> [Char]
-cjustify    n   s      => ...
+cjustify :: Int     [Char] -> [Char]
+cjustify    wLength cList  => ...
 ```
 
 **Behavior**
 
-Pads the start and end of string `s` with spaces until its width is equal to `n`.
+Pads the start and end of character list `cList` with spaces until its width is equal to `wLength`.
+
 The padding at the end of the string is prioritized.
+
+This function does nothing if the length of the list is already equal to or greater than the desired length.
 
 **Usage**
 
@@ -48,13 +51,15 @@ cjustify 1 ['ab']   // ['a', 'b']
 ```clean
 // CLEAN
 
-ljustify :: Int [Char] -> [Char]
-ljustify    n   s      => ...
+ljustify :: Int     [Char] -> [Char]
+ljustify    wLength cList  => ...
 ```
 
 **Behavior**
 
-Pads the end of string `s` with spaces until its width is equal to `n`.
+Pads the end of character list `cList` with spaces until its width is equal to `wLength`.
+
+This function does nothing if the length of the list is already equal to or greater than the desired length.
 
 **Usage**
 
@@ -75,13 +80,15 @@ ljustify 1 ['ab']   // ['a', 'b']
 ```clean
 // CLEAN
 
-rjustify :: Int [Char] -> [Char]
-rjustify    n   s      => ...
+rjustify :: Int     [Char] -> [Char]
+rjustify    wLength cList  => ...
 ```
 
 **Behavior**
 
-Pads the start of string `s` with spaces until the width is equal to `n`.
+Pads the start of character list `cList` with spaces until the width is equal to `wLength`.
+
+This function does nothing if the length of the list is already equal to or greater than the desired length.
 
 **Usage**
 
@@ -120,7 +127,7 @@ Flattens two-dimensional character list `cMat` and join them with newline charac
 // CLEAN
 
 flatlines [['a'], ['b']]  // ['a', '\n', 'b', '\n']
-flatlines ['a']           // ['a', '\n']
+flatlines [['a']]         // ['a', '\n']
 flatlines []              // []
 ```
 

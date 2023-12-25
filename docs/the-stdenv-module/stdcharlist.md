@@ -1,5 +1,5 @@
 ---
-Date of last full revision: 16/DEC/2023
+Date of last full revision: 25/DEC/2023
 ---
 
 # StdCharList

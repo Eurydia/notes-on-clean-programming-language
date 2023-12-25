@@ -1,3 +1,8 @@
+---
+Date of last revision: 25 DEC 2023
+---
+
+
 # StdInt
 
 This module can be imported directly or as a part of the `StdEnv` module.

@@ -19,8 +19,8 @@ Visit [StdMisc](https://cloogle.org/src/#base-stdenv/StdMisc;icl;line=1) on Cloo
 ```cleanm
 // CLEAN
 
-undef :: anyType
-undef =  ...
+undef ::  anyType
+undef :== ...
 ```
 
 **Definition**

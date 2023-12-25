@@ -1,3 +1,7 @@
+---
+Date of last full revision: 25 DEC 2023
+---
+
 # StdReal
 
 This module can be imported directly or as a part of the `StdEnv` module.

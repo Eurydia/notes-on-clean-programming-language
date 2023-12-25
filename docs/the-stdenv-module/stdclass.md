@@ -138,4 +138,4 @@ where
 
 Defines the rest of the relational operations, as well as, the `min`, and `max` functions for the type `T` if it is an instance of the `Less than` class.
 
-The operators and functions are defined in terms of less than relation and `not` function (unary operator).
+The operators and functions are defined in terms of `Less than` function and `not` function (unary operator).

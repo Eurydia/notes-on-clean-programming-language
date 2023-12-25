@@ -181,7 +181,7 @@ For ordered triples
 (2, 'a') < (1, 'a')  // False
 ```
 
-### Less Than Or Equal To
+### Less than or equal to
 
 **Signature**
 

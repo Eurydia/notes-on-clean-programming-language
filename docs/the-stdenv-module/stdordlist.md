@@ -1,31 +1,40 @@
+---
+Date of last full revision: 25 DEC 2023
+---
+
 # StdOrdList
 
+This module can be imported directly or as a part of the `StdEnv` module.
+It provides definitions for list-ordering functions.
 
 Visit [StdOrdList](https://cloogle.org/src/#base-stdenv/StdOrdList;icl;line=1) on Cloogle for source code of this module.
 
-## Basic Functions
+## Basic functions
+
+These functions are not too difficult to define, but they are convenient to use.
 
 ### `sort`
 
 **Signature** 
 
-$$
-\begin{align*}
-{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $A$ and $R$ are of type $[\textbf{T}]$.
+sort :: [T] -> [T] | Ord T
+sort    ls  => ...
+```
 
-Additionally, equality and relational operations must be defined on $\textbf{T}$.
+The type `T` must be an instance of the `Ord` class from the `StdClass` module.
 
-**Behavior**: sorts $A$ in ascending order using Merge Sort.
+**Behavior**
+
+Sorts the list in ascending order.
+Under the hood, this function uses merge sort.
 
 **Usage**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 sort [1, 1, 1]  // [1, 1, 1]
 sort [1, 2, 3]  // [1, 2, 3]
@@ -37,92 +46,95 @@ sort []         // []
 
 **Signature** 
 
-$$
-\begin{align*}
-{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{T}$.
-
-Additionally, equality and relational operations must be defined on $\textbf{T}$.
-
-**Behavior**: returns the biggest element of $A$.
-Results in a run-time error if $A$ is empty.
-
+maxList :: [T] -> T | Ord T
+maxList    ls  => ...
 ```
-maxList of []
+
+The type `T` must be an instance of the `Ord` class from the `StdClass` module.
+
+**Behavior**
+
+Returns the largest element of the list.
+Under the hood, this function uses the equality and less than operations to determine which element to return.
+
+Results in a run-time error if the given list is empty.
+
+```console
+$ maxList of []
 ```
 
 **Usage**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 maxList [1, 1, 1]  // 1
 maxList [1, 2, 3]  // 3
-maxList []         // NOT OK :(
+maxList []         // run-time error
 ```
 
 ### `minList`
 
-**Signature**
+**Signature** 
 
-$$
-\begin{align*}
-{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{T}$.
-
-Additionally, equality and relational operations must be defined on $\textbf{T}$.
-
-**Behavior**: returns the smallest element of $A$.
-Results in a run-time error if $A$ is empty.
-
+minList :: [T] -> T | Ord T
+minList    ls  => ...
 ```
-minList of []
+
+The type `T` must be an instance of the `Ord` class from the `StdClass` module.
+
+**Behavior**
+
+Returns the smallest element of the list.
+Under the hood, this function uses the equality and less than operations to determine which element to return.
+
+Results in a run-time error if the given list is empty.
+
+```console
+$ minList of []
 ```
 
 **Usage**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 minList [1, 1, 1]  // 1
 minList [1, 2, 3]  // 1
-minList []         // NOT OK :(
+minList []         // run-time error
 ```
 
 ---
 
-## Higher-Order Functions
+## Higher-order functions
 
 ### `sortBy`
 
 **Signature** 
 
-$$
-\begin{align*}
-{P}\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $P$ is of type $(\textbf{T}\rightarrow\textbf{T}\rightarrow\textbf{Bool})$, and
-- $A$ and $R$ are of type $[\textbf{T}]$.
+sortBy :: (T -> T -> Bool) [T] -> [T]
+sortBy    sortRule         ls  => ...
+```
 
-**Behavior**: sorts $A$ using an ordering function $P$.
+The type `T` must be an instance of the `Ord` class from the `StdClass` module.
+
+**Behavior**
+
+Sorts the list based on the given `sortRule` function.
 
 **Usage**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 sortBy (>) [1, 1, 1]  // [1, 1, 1]
 sortBy (>) [1, 2, 3]  // [3, 2, 1]
@@ -132,66 +144,70 @@ sortby (>) []         // []
 
 ### `maxListBy`
 
-**Signature**
+**Signature** 
 
-$$
-\begin{align*}
-{P}\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $P$ is of type $(\textbf{T}\rightarrow\textbf{T}\rightarrow\textbf{Bool})$, 
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{T}$.
-
-**Behavior**: returns the biggest element of $A$ using an ordering function $P$.
-Results in a run-time error if $A$ is empty.
-
+maxListBy :: (T -> T -> Bool) [T] -> [T]
+maxListBy    maxRule          ls  => ...
 ```
-maxListBy of []
+
+The type `T` must be an instance of the `Ord` class from the `StdClass` module.
+
+**Behavior**
+
+Returns the largest element from the given list.
+The largest element is determined by the given `maxRule` function.
+
+Results in a run-time error if the given list is empty.
+
+```console
+$ maxListBy of []
 ```
 
 **Usage**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 maxListBy (<) [1, 2, 3]  // 3
 maxListBy (>) [1, 1, 1]  // 1
 maxListBy (>) [1, 2, 3]  // 1
-maxListBy (>) []         // NOT OK :(
+maxListBy (>) []         // run-time error
 ```
 
 ### `minListBy`
 
 **Signature** 
 
-$$
-\begin{align*}
-{P}\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $P$ is of type $(\textbf{T}\rightarrow\textbf{T}\rightarrow\textbf{Bool})$, 
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{T}$.
-
-**Behavior**: returns the smallest element of $A$ using an ordering function $P$.
-A run-time error will be thrown if $A$ is empty.
-
+maxListBy :: (T -> T -> Bool) [T] -> [T]
+maxListBy    minRule          ls  => ...
 ```
-minListBy of []
+
+The type `T` must be an instance of the `Ord` class from the `StdClass` module.
+
+**Behavior**
+
+Returns the smallest element from the given list.
+The smallest element is determined by the given `minRule` function.
+
+Results in a run-time error if the given list is empty.
+
+```console
+$ minListBy of []
 ```
 
 **Usage**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 minListBy (<) [1, 2, 3]  // 1
 minListBy (>) [1, 1, 1]  // 1
 minListBy (>) [1, 2, 3]  // 3
-minListBy (>) []         // NOT OK :(
+minListBy (>) []         // run-time error
 ```

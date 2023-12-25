@@ -4,9 +4,14 @@ Date of last full revision: 16/DEC/2023
 
 # StdCharList
 
+This module can be imported individually or as a part of the *Standard Environment*.
+If CLEAN ever has a proper IO and formatting functionalities, I think this module would be just that.
+
 Visit [StdCharList](https://cloogle.org/src/#base-stdenv/StdCharList;icl;line=1) on Cloogle for source code of this module.
 
 ## Text alignment functions
+
+These functions pad the start and end of a character list until it has a specified length.
 
 ### `cjustify`
 
@@ -92,6 +97,8 @@ rjustify 1 ['ab']   // ['a', 'b']
 
 ## Line manipulation functions
 
+These functions transform and interact with the newline characters in a character list by either removing or adding them.
+
 ### `flatlines`
 
 **Signature**
@@ -100,17 +107,17 @@ rjustify 1 ['ab']   // ['a', 'b']
 // CLEAN
 
 flatlines :: [[Char]] -> [Char]
-flatlines    ls       => ...
+flatlines    cMat     => ...
 ```
 
 **Behavior**
 
-Flattens two-dimensional character array `ls` and join them with newline characters.
+Flattens two-dimensional character list `cMat` and join them with newline characters.
 
 **Usage**
 
-```
-// Language: Clean
+```clean
+// CLEAN
 
 flatlines [['a'], ['b']]  // ['a', '\n', 'b', '\n']
 flatlines ['a']           // ['a', '\n']
@@ -125,13 +132,13 @@ flatlines []              // []
 // CLEAN
 
 mklines :: [Char] -> [[Char]]
-mklines    ls     => ...
+mklines    cList  => ...
 ```
 
 **Behavior**
 
-Splits character array `ls` at newline characters and transform it into two-dimensional character array.
-The newline characters are removed.
+Splits a character list `cList` at newline characters and transform it into two-dimensional character list.
+The newline characters are removed from the result.
 
 **Usage**
 

@@ -1,12 +1,17 @@
 ---
-Date of last full revision: 16/DEC/2023
+Date of last full revision: 25/DEC/2023
 ---
 
 # StdChar
 
+This module can be imported individually or as a part of the *Standard Environment*.
+It defines many critical operations and functions on the character type.
+
 Visit [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) on Cloogle for source code of this module.
 
 ## Units
+
+Neither of these unit characters are printable but they facilitate *character addition* and *character subtraction* operators.
 
 ### Zero character
 
@@ -41,6 +46,8 @@ Represents a character whose ASCII encoding is one.
 ---
 
 ## Character arithmetic operations
+
+The intuition is the same for both addition and subtract, difficult to formally define but much easier to informally explain.
 
 ### Addition
 
@@ -95,6 +102,9 @@ Returns a character whose ASCII encoding is equal to the difference of ASCII enc
 ---
 
 ## Relational operations
+
+Characters are compared based on their lexical order.
+Under the hood, CLEAN compares their ASCII encodings.
 
 ### Equal to
 
@@ -256,6 +266,8 @@ Returns true if the ASCII encoding of `a` is greater than or equal to the ASCII 
 
 ## Case conversion functions
 
+These two functions convert the case of a character they have been given.
+
 ### `toUpper`
 
 **Signature**
@@ -270,7 +282,6 @@ toUpper    a    => ...
 **Behavior**
 
 Returns the upper case of `a`.
-
 If it is not possible to return an upper case of `a`, returns `a` as is.
 
 **Usage**
@@ -314,6 +325,10 @@ toLower '-'  // '-'
 ---
 
 ## Validator functions
+
+I hope that the term *validator function* is not too absurd to anyone reading these notes, but I just could not find a better name.
+
+Note that these functions are closely related to the ASCII character encoding standard.
 
 ### `isUpper`
 
@@ -626,6 +641,8 @@ isSpace '\t'  // True
 
 ## Conversions to character
 
+Natively, only integers may be converted to character, but the programmer can define additional type conversions by creating new instances of *toChar* class from *StdOverloaded* module.
+
 ### From integer
 
 **Signature**
@@ -655,8 +672,11 @@ toChar 97  // 'a'
 
 ## Conversions from character
 
-Explicitly convert characters to other types.
-The desired type must be unambiguous.
+The function responsible for converting character to other types is overloaded, which means it is a function with multiple signatures, so the desired type must be unambiguous.
+
+Natively, a character may convert to a string or an integer, but additional behavior may be added by creating new instances of *fromChar* class from *StdOverloaded* module.
+
+Additionally, CLEAN provides an additional function for converting a character to an integer called `digitToInt`.
 
 ### To integer
 
@@ -725,12 +745,16 @@ digitToInt    a    => ...
 
 Returns the ASCII encoding of `a` offset by `-48`.
 
+The function itself is not too difficult to define, but the general use case lies in its convenience.
+
 **Usage**
 
 ```clean
 // CLEAN
 
 digitToInt '1'  // 49 - 48 ->  1
+digitToInt '2'  // 50 - 48 ->  2
+digitToInt '3'  // 51 - 48 ->  3
 digitToInt 'a'  // 97 - 48 ->  49
 digitToInt 'A'  // 65 - 48 ->  17
 digitToInt '-'  // 45 - 48 -> -3

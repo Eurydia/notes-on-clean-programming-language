@@ -1,8 +1,13 @@
 # StdInt
 
+This module can be imported directly or as a part of the `StdEnv` module.
+It provides definition for many critical operations and functions on integers.
+
 Visit [StdInt](https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1) on Cloogle for source code of this module.
 
-## Constants
+## Units
+
+The integer units follow their definitions in mathematics.
 
 ### Zero
 
@@ -36,7 +41,10 @@ Represents the multiplicative identity of integers.
 
 ---
 
-## Arithmetic operations
+## Math operations
+
+The definition and behavior of these operators follow their mathematic counterpart.
+It is worth noting that, natively, these operations only work with integer operands, but the programmer can define additional behaviors and functionalities.
 
 ### Addition
 
@@ -129,7 +137,8 @@ Multiplies `a` and `b`.
 
 **Behavior**
 
-Divides `a` by `b`.
+Divides `a` by `b` rounds the result down to the nearest integer..
+
 Results in a silent run-time crash if `b` is zero.
 
 **Usage**
@@ -164,13 +173,9 @@ and
 (mod)            a   b   => ...
 ```
 
-**Note**
-
-For integers, `rem` and `mod` are aliases.
-
 **Behavior**
 
-Returns the reminded after dividing `a` by `b`.
+Returns the reminder after dividing `a` by `b`.
 
 **Usage**
 
@@ -197,6 +202,7 @@ Returns the reminded after dividing `a` by `b`.
 **Behavior**
 
 Raises `a` to the power of `b`.
+
 Results in a run-time error if `b` is negative.
 
 ```console
@@ -216,7 +222,9 @@ $ ^ (Int) called with negative power argument
 
 ---
 
-## Arithmetic functions
+## Math functions
+
+Some of these "functions" are unary operators, but there is no such thing as a unary operator in CLEAN, so to keep things tidy, I have decided to place them here.
 
 ### Negation
 
@@ -243,9 +251,113 @@ Inverts the sign `a`.
 ~(-1)  //  1
 ```
 
+### `sign`
+
+**Signature**
+
+```Clean
+// CLEAN
+
+sign :: Int -> Int
+sign    a   => ...
+```
+
+**Behavior**
+
+Returns the sign of `a`.
+
+**Usage**
+
+```Clean
+// CLEAN
+
+sign   1   //  1
+sign   0   //  0
+sign (-1)  // -1
+```
+
+### `abs`
+
+**Signature**
+
+```Clean
+// CLEAN
+
+abs :: Int -> Int
+abs    a   => ...
+```
+
+**Behavior**
+
+Returns the absolute value of `a`.
+
+**Usage**
+
+```Clean
+// CLEAN
+
+abs   1   // 1
+abs   0   // 0
+abs (-1)  // 1
+```
+
+### `gcd`
+
+**Signature**
+
+```Clean
+// CLEAN
+
+gcd :: Int Int -> Int
+gcd    a   b   => ...
+```
+
+**Behavior**
+
+Returns the greatest common divisor of `a` and `b`.
+
+**Usage**
+
+```Clean
+// CLEAN
+
+gcd   3    2   // 1
+gcd (-3)   2   // 1
+gcd   3  (-2)  // 1
+gcd (-3) (-2)  // 1
+```
+
+### `lcm`
+
+**Signature**
+
+```Clean
+// CLEAN
+
+lcm :: Int Int -> Int
+lcm    a   b   => ...
+```
+
+**Behavior**
+
+Returns the least common multiple of `a` and `b`.
+
+**Usage**
+
+```Clean
+// CLEAN
+
+lcm   3    2   // 6
+lcm (-3)   2   // 6
+lcm   3  (-2)  // 6
+lcm (-3) (-2)  // 6
+```
+
 ---
 
 ## Relational operations
+
+These relations behave in the exact same way as their math counterpart.
 
 ### Equal to
 
@@ -419,6 +531,10 @@ Otherwise, returns false.
 
 ## Bitwise operations
 
+These operators and functions provide a method to interact with the bits of integers.
+
+A quick web search should provide more details about the formal definition of each bitwise operator.
+
 ### Bitwise and
 
 **Signature**
@@ -553,6 +669,8 @@ Shifts `a` to the right by `b` bits.
 
 ## Bitwise functions
 
+There is only one function which classifies under this section, its behavior is not well-documented.
+
 ### `bitnot`
 
 **Signature**
@@ -566,7 +684,7 @@ bitnot    a   => ...
 
 **Behavior**
 
-Returns bitwise two-complement of `a`.
+Returns bitwise one-complement of `a`.
 
 **Usage**
 
@@ -581,113 +699,9 @@ bitnot   5   //  -6
 
 ---
 
-## Math functions
-
-### `sign`
-
-**Signature**
-
-```Clean
-// CLEAN
-
-sign :: Int -> Int
-sign    a   => ...
-```
-
-**Behavior**
-
-Returns the sign of `a`.
-
-**Usage**
-
-```Clean
-// CLEAN
-
-sign   1   //  1
-sign   0   //  0
-sign (-1)  // -1
-```
-
-### `abs`
-
-**Signature**
-
-```Clean
-// CLEAN
-
-abs :: Int -> Int
-abs    a   => ...
-```
-
-**Behavior**
-
-Returns the absolute value of `a`.
-
-**Usage**
-
-```Clean
-// CLEAN
-
-abs   1   // 1
-abs   0   // 0
-abs (-1)  // 1
-```
-
-### `gcd`
-
-**Signature**
-
-```Clean
-// CLEAN
-
-gcd :: Int Int -> Int
-gcd    a   b   => ...
-```
-
-**Behavior**
-
-Returns the greatest common divisor of `a` and `b`.
-
-**Usage**
-
-```Clean
-// CLEAN
-
-gcd   3    2   // 1
-gcd (-3)   2   // 1
-gcd   3  (-2)  // 1
-gcd (-3) (-2)  // 1
-```
-
-### `lcm`
-
-**Signature**
-
-```Clean
-// CLEAN
-
-lcm :: Int Int -> Int
-lcm    a   b   => ...
-```
-
-**Behavior**
-
-Returns the least common multiple of `a` and `b`.
-
-**Usage**
-
-```Clean
-// CLEAN
-
-lcm   3    2   // 6
-lcm (-3)   2   // 6
-lcm   3  (-2)  // 6
-lcm (-3) (-2)  // 6
-```
-
----
-
 ## Validator functions
+
+These function takes an integer as an argument and check whether it has a certain property or not.
 
 ### `isEven`
 
@@ -749,6 +763,8 @@ isOdd -2  // True
 
 ## Conversions to integer
 
+Natively, three types can convert to integer, namely, real numbers, characters, and strings.
+
 ### From real number
 
 **Signature**
@@ -762,7 +778,7 @@ toInt    a    => ...
 
 **Behavior**
 
-Rounds up or down `a` to its nearest integer.
+Rounds `a` up or down to its nearest integer.
 
 **Usage**
 
@@ -817,8 +833,11 @@ toInt    a       => ...
 
 **Behavior**
 
-It attempts to parse `a` as an integer.
-If it is unsuccessful, it returns zero.
+Parses `a` as an integer.
+Returns zero if when the parsing is unsuccessful.
+
+The string should only contain decimal digits and the minus sign.
+The parsing step will be unsuccessful if it contains any other character.
 
 **Usage**
 
@@ -836,7 +855,7 @@ toInt "-1.0"  //  0
 
 ## Conversions from integer
 
-The desired type must be unambiguous.
+The function responsible for type conversion is overloaded, it has the same parameter but different return type, so to use it, the desired type must be unambiguous.
 
 ### To real number
 
@@ -845,8 +864,8 @@ The desired type must be unambiguous.
 ```Clean
 // CLEAN
 
-fromInt :: Real -> Int
-fromInt    a    => ...
+fromInt :: Int -> Real
+fromInt    a   => ...
 ```
 
 **Behavior**
@@ -859,8 +878,9 @@ Sets the decimal places of `a` to zeroes.
 // CLEAN
 
 expr :: Real
-expr =  fromInt  1  // 1.0
-expr =  fromInt  0  // 0.0
+expr =  fromInt  1   //  1.0
+expr =  fromInt  19  // 19.0
+expr =  fromInt  0   //  0.0
 ```
 
 ### To character
@@ -913,6 +933,7 @@ Returns the string representation of `a`.
 // CLEAN
 
 expr :: {#Char}
-expr =  fromInt 1  // "1"
-expr =  fromInt 0  // "0"
+expr =  fromInt 1   // "1"
+expr =  fromInt 19  // "19"
+expr =  fromInt 0   // "0"
 ```

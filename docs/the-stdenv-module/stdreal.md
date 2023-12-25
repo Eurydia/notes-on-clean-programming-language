@@ -7,6 +7,8 @@ Visit [StdReal](https://cloogle.org/src/#base-stdenv/StdReal;icl;line=1) on Cloo
 
 ## Units
 
+The real number units follow their definitions in mathematics.
+
 ### Zero
 
 **Implementation**
@@ -20,9 +22,9 @@ zero :== 0.0
 
 **Definition**
 
-Represents the identity element of real number addition.
+Represents the additive identity of real numbers.
 
-### One Unit
+### One
 
 **Implementation**
 
@@ -35,9 +37,9 @@ one :== 1.0
 
 **Definition**
 
-It represents the identity element of real number multiplication.
+Represents the multiplicative identity of real numbers.
 
-### Infinity Representation
+### Infinity
 
 **Implementation**
 
@@ -50,9 +52,9 @@ Infinity :== 1E9999
 
 **Definition**
 
-It represents numerical values which are too large to represent.
+Represents numerical values which are too large for CLEAN represent.
 
-### Not-A-Number Representation
+### Not-a-number
 
 **Implementation**
 
@@ -65,38 +67,17 @@ NaN :== 1E9999 + (-1E9999)
 
 **Definition**
 
-It represents numerical values which cannot be represented.
+Represents numerical values which cannot be represented by CLEAN.
 
-See [NaN](https://en.wikipedia.org/wiki/NaN).
+See [NaN](https://en.wikipedia.org/wiki/NaN) for additional information.
 
 ---
 
-## Arithmetic Operations and Functions
+## Math operations
 
-### Negation
+The definition and behavior of these operators follow their mathematic counterpart.
 
-**Signature**
-
-```clean
-// CLEAN
-
-~ :: Real -> Real
-~    a    =  ...
-```
-
-**Behavior**
-
-It inverts the sign of `a`.
-
-**Usage**
-
-```clean
-// CLEAN
-
-~  1.0   // -1.0
-~  0.0   //  0.0
-~(-1.0)  //  1.0
-```
+It is worth noting that, natively, these operations only work with real number operands, but the programmer can define additional behaviors and functionalities.
 
 ### Addition
 
@@ -111,7 +92,7 @@ It inverts the sign of `a`.
 
 **Behavior**
 
-It adds `a` and `b`.
+Adds `a` and `b`.
 
 **Usage**
 
@@ -137,7 +118,7 @@ It adds `a` and `b`.
 
 **Behavior**
 
-It subtracts `b` from `a`.
+Subtracts `b` from `a`.
 
 **Usage**
 
@@ -163,7 +144,7 @@ It subtracts `b` from `a`.
 
 **Behavior**
 
-It multiplies `a` with `b`.
+Multiplies `a` with `b`.
 
 **Usage**
 
@@ -189,7 +170,7 @@ It multiplies `a` with `b`.
 
 **Behavior**
 
-It divides `a` with `b`.
+Divides `a` with `b`.
 
 **Usage**
 
@@ -218,7 +199,7 @@ It divides `a` with `b`.
 
 **Behavior**
 
-It raises `a` to the power of `b`.
+Raises `a` to the power of `b`.
 
 **Usage**
 
@@ -236,175 +217,34 @@ It raises `a` to the power of `b`.
 
 ---
 
-## Relational Operations
+## Math functions
 
-Equality comparison between two real numbers seems to be unaffected by rounding errors.
+This function is a unary operator, but there is no such thing as a unary operator in CLEAN, so to keep things tidy, I have decided to place it here.
 
-### Equal To
-
-**Signature**
-
-```clean
-// CLEAN
-
-(==) infix 4 :: Real Real -> Bool
-(==)            a    b    =  ...
-```
-
-**Behavior**
-
-It returns true if `a` is equal to `b`.
-
-**Usage**
-
-```clean
-// CLEAN
-
-  5.0  ==   2.0   // False
-(-5.0) ==   2.0   // False
-  5.0  == (-2.0)  // False
-(-5.0) == (-2.0)  // False
-(-2.0) == (-2.0)  // True
-```
-
-### Not Equal To
+### Negation
 
 **Signature**
 
 ```clean
 // CLEAN
 
-(<>) infix 4 :: Real Real -> Bool
-(<>)            a    b    =  ...
+~ :: Real -> Real
+~    a    =  ...
 ```
 
 **Behavior**
 
-It returns true if `a` is not equal to `b`.
+Inverts the sign of `a`.
 
 **Usage**
 
 ```clean
 // CLEAN
 
-  5.0  <>   2.0   // True
-(-5.0) <>   2.0   // True
-  5.0  <> (-2.0)  // True
-(-5.0) <> (-2.0)  // True
-(-2.0) <> (-2.0)  // False
+~  1.0   // -1.0
+~  0.0   //  0.0
+~(-1.0)  //  1.0
 ```
-
-### Less Than
-
-**Signature**
-
-```clean
-// CLEAN
-
-(<) infix 4 :: Real Real -> Bool
-(<)            a    b    =  ...
-```
-
-**Behavior**
-
-It returns true if `a` is strictly less than `b`.
-
-**Usage**
-
-```clean
-// CLEAN
-
-  5.0  <   2.0   // False
-(-5.0) <   2.0   // True
-  5.0  < (-2.0)  // False
-(-5.0) < (-2.0)  // True
-(-2.0) < (-2.0)  // False
-```
-
-### Less Than Or Equal To
-
-**Signature**
-
-```clean
-// CLEAN
-
-(<=) infix 4 :: Real Real -> Bool
-(<=)            a    b    =  ...
-```
-
-**Behavior**
-
-It returns true if `a` is less than or equal to `b`.
-
-**Usage**
-
-```clean
-// CLEAN
-
-  5.0  <=   2.0   // False
-(-5.0) <=   2.0   // True
-  5.0  <= (-2.0)  // False
-(-5.0) <= (-2.0)  // True
-(-2.0) <= (-2.0)  // True
-```
-
-### Greater Than
-
-**Signature**
-
-```clean
-// CLEAN
-
-(>) infix 4 :: Real Real -> Bool
-(>)            a    b    =  ...
-```
-
-**Behavior**
-
-It returns true if `a` is strictly greater than `b`.
-
-**Usage**
-
-```clean
-// CLEAN
-
-  5.0  >   2.0   // True
-(-5.0) >   2.0   // False
-  5.0  > (-2.0)  // True
-(-5.0) > (-2.0)  // False
-(-2.0) > (-2.0)  // False
-```
-
-### Greater Than Or Equal To
-
-**Signature**
-
-```clean
-// CLEAN
-
-(>=) infix 4 :: Real Real -> Bool
-(>=)            a    b    =  ...
-```
-
-**Behavior**
-
-It returns true if `a` is greater than or equal to `b`.
-
-**Usage**
-
-```clean
-// CLEAN
-
-  5.0  >=   2.0   // True
-(-5.0) >=   2.0   // False
-  5.0  >= (-2.0)  // True
-(-5.0) >= (-2.0)  // False
-(-2.0) >= (-2.0)  // True
-```
-
----
-
-## Basic Functions
 
 ### `sign`
 
@@ -419,7 +259,7 @@ sign    a    =  ...
 
 **Behavior**
 
-It returns the sign of `a`.
+Returns the sign of `a`.
 
 **Usage**
 
@@ -444,7 +284,7 @@ abs    a    =  ...
 
 **Behavior**
 
-It returns the absolute value of `a`.
+Returns the absolute value of `a`.
 
 **Usage**
 
@@ -454,31 +294,6 @@ It returns the absolute value of `a`.
 abs   1.0   // 1.0
 abs   0.0   // 0.0
 abs (-1.0)  // 1.0
-```
-
-### `entier`
-
-**Signature**
-
-```clean
-// CLEAN
-
-entier :: Real -> Int
-entier    a    =  ...
-```
-
-**Behavior**
-
-It returns the largest integer which is less than `a`.
-
-**Usage**
-
-```clean
-// CLEAN
-
-entier   1.5   //  1
-entier   0.0   //  0
-entier (-1.5)  // -2
 ```
 
 ### `ln`
@@ -494,7 +309,7 @@ ln    a    =  ...
 
 **Behavior**
 
-It returns the natural logarithm of `a`.
+Returns the natural logarithm of `a`.
 
 **Usage**
 
@@ -521,7 +336,7 @@ log10    a    =  ...
 
 **Behavior**
 
-It returns the logarithm base 10 of `a`.
+Returns the logarithm base ten of `a`.
 
 **Usage**
 
@@ -548,7 +363,7 @@ exp    a    =  ...
 
 **Behavior**
 
-It raises $e$ to the power of `a`.
+Raises $e$ to the power of `a`.
 
 See [Euler's number](<https://en.wikipedia.org/wiki/E_(mathematical_constant)>).
 
@@ -577,7 +392,7 @@ sqrt    a    =  ...
 
 **Behavior**
 
-It returns the square root of `a`.
+Returns the square root of `a`.
 
 **Usage**
 
@@ -589,6 +404,180 @@ sqrt   1.5   // 1.22474487139159
 sqrt   0.0   // 0.0
 sqrt (-1.5)  // #NAN
 sqrt (-2.5)  // #NAN
+```
+
+---
+
+## Relational operations
+
+Equality comparison between two real numbers seems to be unaffected by rounding errors.
+
+### Equal to
+
+**Signature**
+
+```clean
+// CLEAN
+
+(==) infix 4 :: Real Real -> Bool
+(==)            a    b    =  ...
+```
+
+**Behavior**
+
+Returns true if `a` is equal to `b`.
+Otherwise, returns false.
+
+**Usage**
+
+```clean
+// CLEAN
+
+  5.0  ==   2.0   // False
+(-5.0) ==   2.0   // False
+  5.0  == (-2.0)  // False
+(-5.0) == (-2.0)  // False
+(-2.0) == (-2.0)  // True
+```
+
+### Not equal to
+
+**Signature**
+
+```clean
+// CLEAN
+
+(<>) infix 4 :: Real Real -> Bool
+(<>)            a    b    =  ...
+```
+
+**Behavior**
+
+Returns true if `a` is not equal to `b`.
+Otherwise, returns false.
+
+**Usage**
+
+```clean
+// CLEAN
+
+  5.0  <>   2.0   // True
+(-5.0) <>   2.0   // True
+  5.0  <> (-2.0)  // True
+(-5.0) <> (-2.0)  // True
+(-2.0) <> (-2.0)  // False
+```
+
+### Less than
+
+**Signature**
+
+```clean
+// CLEAN
+
+(<) infix 4 :: Real Real -> Bool
+(<)            a    b    =  ...
+```
+
+**Behavior**
+
+Returns true if `a` is strictly less than `b`.
+Otherwise, returns false.
+
+**Usage**
+
+```clean
+// CLEAN
+
+  5.0  <   2.0   // False
+(-5.0) <   2.0   // True
+  5.0  < (-2.0)  // False
+(-5.0) < (-2.0)  // True
+(-2.0) < (-2.0)  // False
+```
+
+### Less than or equal to
+
+**Signature**
+
+```clean
+// CLEAN
+
+(<=) infix 4 :: Real Real -> Bool
+(<=)            a    b    =  ...
+```
+
+**Behavior**
+
+Returns true if `a` is less than or equal to `b`.
+Otherwise, returns false.
+
+**Usage**
+
+```clean
+// CLEAN
+
+  5.0  <=   2.0   // False
+(-5.0) <=   2.0   // True
+  5.0  <= (-2.0)  // False
+(-5.0) <= (-2.0)  // True
+(-2.0) <= (-2.0)  // True
+```
+
+### Greater than
+
+**Signature**
+
+```clean
+// CLEAN
+
+(>) infix 4 :: Real Real -> Bool
+(>)            a    b    =  ...
+```
+
+**Behavior**
+
+Returns true if `a` is strictly greater than `b`.
+Otherwise, returns false.
+
+**Usage**
+
+```clean
+// CLEAN
+
+  5.0  >   2.0   // True
+(-5.0) >   2.0   // False
+  5.0  > (-2.0)  // True
+(-5.0) > (-2.0)  // False
+(-2.0) > (-2.0)  // False
+```
+
+### Greater than or equal to
+
+**Signature**
+
+```clean
+// CLEAN
+
+(>=) infix 4 :: Real Real -> Bool
+(>=)            a    b    =  ...
+```
+
+**Behavior**
+
+Returns true if `a` is greater than or equal to `b`.
+Otherwise, returns false.
+
+**Usage**
+
+```clean
+// CLEAN
+
+  5.0  >=   2.0   // True
+(-5.0) >=   2.0   // False
+  5.0  >= (-2.0)  // True
+(-5.0) >= (-2.0)  // False
+(-2.0) >= (-2.0)  // True
 ```
 
 ---
@@ -608,7 +597,7 @@ sin    a    =  ...
 
 **Behavior**
 
-It returns the sine of `a`.
+Returns the sine of `a`.
 
 **Usage**
 
@@ -635,7 +624,7 @@ cos    a    =  ...
 
 **Behavior**
 
-It returns the cosine of `a`.
+Returns the cosine of `a`.
 
 **Usage**
 
@@ -662,7 +651,7 @@ tan    a    =  ...
 
 **Behavior**
 
-It returns the tangent of `a`.
+Returns the tangent of `a`.
 
 **Usage**
 
@@ -689,7 +678,7 @@ asin    a    =  ...
 
 **Behavior**
 
-It returns the inverse sine of `a`.
+Returns the inverse sine of `a`.
 
 **Usage**
 
@@ -718,7 +707,7 @@ acos    a    =  ...
 
 **Behavior**
 
-It returns the inverse cosine of `a`.
+Returns the inverse cosine of `a`.
 
 **Usage**
 
@@ -747,7 +736,7 @@ atan    a    =  ...
 
 **Behavior**
 
-It returns the inverse tangent of `a`.
+Returns the inverse tangent of `a`.
 
 **Usage**
 
@@ -776,7 +765,7 @@ sinh    a    =  ...
 
 **Behavior**
 
-It returns the hyperbolic sine of `a`.
+Returns the hyperbolic sine of `a`.
 
 **Usage**
 
@@ -805,7 +794,7 @@ cosh    a    =  ...
 
 **Behavior**
 
-It returns the hyperbolic cosine of `a`.
+Returns the hyperbolic cosine of `a`.
 
 **Usage**
 
@@ -834,7 +823,7 @@ tanh    a    =  ...
 
 **Behavior**
 
-It returns the hyperbolic tangent of `a`.
+Returns the hyperbolic tangent of `a`.
 
 **Usage**
 
@@ -863,7 +852,7 @@ asinh    a    =  ...
 
 **Behavior**
 
-It returns the inverse hyperbolic sine of `a`.
+Returns the inverse hyperbolic sine of `a`.
 
 **Usage**
 
@@ -892,7 +881,7 @@ acosh    a    =  ...
 
 **Behavior**
 
-It returns the inverse hyperbolic cosine of `a`.
+Returns the inverse hyperbolic cosine of `a`.
 
 **Usage**
 
@@ -921,7 +910,7 @@ atanh    a    =  ...
 
 **Behavior**
 
-It returns the inverse hyperbolic tangent of `a`.
+Returns the inverse hyperbolic tangent of `a`.
 
 **Usage**
 
@@ -939,7 +928,7 @@ atanh (-2.5)  //  #NAN
 
 ---
 
-## Predicate Functions
+## Validator functions
 
 ### `isNaN`
 
@@ -954,7 +943,8 @@ isNaN    a    =  ...
 
 **Behavior**
 
-It returns true if `a` is not representable.
+Returns true if `a` is a `NaN` value.
+Otherwise, returns false.
 
 **Usage**
 
@@ -982,7 +972,8 @@ isInfinity    a    =  ...
 
 **Behavior**
 
-It returns true if `a` is too large to represent.
+Returns true if `a` is an `Infinity` value.
+Otherwise, returns false.
 
 **Usage**
 
@@ -1010,7 +1001,8 @@ isFinite    a    =  ...
 
 **Behavior**
 
-It returns true if `a` is representable.
+Returns true if `a` is representable.
+Otherwise, returns false.
 
 **Usage**
 
@@ -1027,11 +1019,11 @@ isFinite (  0.0  ^ (-1.0))  // False
 
 ---
 
-## Conversions To Real Number Type
+## Conversions to real number
 
-They explicitly convert other types to real number type.
+Natively, two types can convert to real numbers, namely, integers and strings.
 
-### From Integer Type
+### From integer
 
 **Signature**
 
@@ -1044,7 +1036,7 @@ toReal    a   =  ...
 
 **Behavior**
 
-It sets the decimal places of `a` to 0.
+Sets the decimal places of `a` to 0.
 
 **Usage**
 
@@ -1058,15 +1050,15 @@ toReal (-1)  // -1.0
 toReal (-2)  // -2.0
 ```
 
-### From String Type
+### From string
 
 **Signature**
 
 ```clean
 // CLEAN
 
-toReal :: String -> Real
-toReal    a      =  ...
+toReal :: {#Char} -> Real
+toReal    a       =  ...
 ```
 
 **Behavior**
@@ -1087,12 +1079,11 @@ toReal "-1.0"  //  1.0
 
 ---
 
-## Conversions From Real Number Type
+## Conversions from real number
 
-They explicitly convert real number type to other types.
-The desired type must be unambiguous.
+The function responsible for type conversion is overloaded, it has the same parameter but different return type, so to use it, the desired type must be unambiguous.
 
-### To Integer Type
+### To integer
 
 **Signature**
 
@@ -1105,7 +1096,7 @@ fromReal    a    =  ...
 
 **Behavior**
 
-It rounds `a` to its nearest integer.
+Rounds `a` to its nearest integer.
 
 **Usage**
 
@@ -1119,29 +1110,54 @@ expr =  fromReal (-1.4)  // -1
 expr =  fromReal (-1.9)  // -2
 ```
 
-### To String Type
+### To string
 
 **Signature**
 
 ```clean
 // CLEAN
 
-fromReal :: Real -> { #Char }
+fromReal :: Real -> {#Char}
 fromReal    a    =  ...
 ```
 
 **Behavior**
 
-It returns a string representation of `a`.
+Returns a string representation of `a`.
 
 **Usage**
 
 ```clean
 // CLEAN
 
-expr :: { #Char }
+expr :: {#Char}
 expr =  fromReal   1.9   // "1.9"
 expr =  fromReal   1.4   // "1.4"
 expr =  fromReal (-1.4)  // "-1.4"
 expr =  fromReal (-1.9)  // "-1.9"
+```
+
+### `entier`
+
+**Signature**
+
+```clean
+// CLEAN
+
+entier :: Real -> Int
+entier    a    =  ...
+```
+
+**Behavior**
+
+Rounds `a` down to its nearest integer.
+
+**Usage**
+
+```clean
+// CLEAN
+
+entier   1.5   //  1
+entier   0.0   //  0
+entier (-1.5)  // -2
 ```

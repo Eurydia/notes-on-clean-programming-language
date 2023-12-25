@@ -1,8 +1,12 @@
 ---
-Date of last full revision: 16/DEC/2023
+Date of last full revision: 25/DEC/2023
 ---
 
 # StdClass
+
+This module can be imported individually or as a part of the *Standard Environment*.
+
+The distinction between this module and the *StdOverloaded* module is that this module builds on top of the *StdOverloaded* module.
 
 Visit [StdClass](https://cloogle.org/src/#base-stdenv/StdClass;icl;line=1) on Cloogle for source code of this module.
 
@@ -18,14 +22,6 @@ Visit [StdClass](https://cloogle.org/src/#base-stdenv/StdClass;icl;line=1) on Cl
 class PlusMin T | (+ T) & (- T) & (zero T)
 ```
 
-**Definition**
-
-Ensures that type `T` is an instance of the following classes:
-
-- [[stdoverloaded#Addition|addition]],
-- [[stdoverloaded#Subtraction|subtraction]], and
-- [[stdoverloaded#`zero`|zero]].
-
 ### `MultDiv`
 
 **Declaration**
@@ -36,14 +32,6 @@ Ensures that type `T` is an instance of the following classes:
 class MultDiv T | (* T) & (/ T) & (one T)
 ```
 
-**Definition**
-
-Ensures that type `T` is an instance of the following classes:
-
-- [[stdoverloaded#Multiplication|multiplication]],
-- [[stdoverloaded#Division|division]], and
-- [[stdoverloaded#`one`|one]].
-
 ### `Arith`
 
 **Declaration**
@@ -53,20 +41,6 @@ Ensures that type `T` is an instance of the following classes:
 
 class Arith T | (PlusMin T) & (MultDiv T) & (abs T) & (sign T) & (~ T)
 ```
-
-**Definition**
-
-Ensures that type `T` is an instance of the following classes:
-
-- [[stdoverloaded#Addition|addition]],
-- [[stdoverloaded#Subtraction|subtraction]],
-- [[stdoverloaded#`zero`|zero]],
-- [[stdoverloaded#Multiplication|multiplication]],
-- [[stdoverloaded#Division|division]],
-- [[stdoverloaded#`one`|one]],
-- [[stdoverloaded#`abs`|abs]],
-- [[stdoverloaded#`sign`|sign]], and
-- [[stdoverloaded#Negation|negation]].
 
 ### `IncDec`
 
@@ -81,15 +55,6 @@ where
     dec :: T -> T | (- T) & (one T)
 ```
 
-**Definition**
-
-Defines the `inc` and `dec` functions for type `T` if it is an instance of the following classes:
-
-- `+` class,
-- `-` class,
-- `zero` class, and
-- `one` class.
-
 ### `Enum`
 
 **Declaration**
@@ -99,16 +64,6 @@ Defines the `inc` and `dec` functions for type `T` if it is an instance of the f
 
 class Enum T | (< T) & (IncDec T)
 ```
-
-**Definition**
-
-Ensures that type `T` is an instance of the following classes:
-
-- `+` class,
-- `-` class,
-- `zero` class,
-- `one` class, and
-- `<` class.
 
 ---
 
@@ -128,7 +83,7 @@ where
 
 **Definition**
 
-Defines the `<>` operation for type `T` if it is an instance of the `==` class.
+Defines the *not equal* operation for the type `T` if it is an instance of the *Equal* class.
 
 ### `Ord`
 
@@ -149,4 +104,4 @@ where
 
 **Definition**
 
-Defines the `<=`, `>`, and `>=` operations, as well as, the `min`, and `max` functions for type `T` if it is an instance of the `<` class.
+Defines the *less than or equal to*, *greater than*, and *greater than or equal to* operations, as well as, the *min*, and *max* functions for the type `T` if it is an instance of the *less than* class.

@@ -103,6 +103,9 @@ CLEAN performs pairwise to compare two lists, so by extension, two lists are onl
 
 Additionally, if the relational operation is not defined on the element type, it is not meaningful to compare two lists containing such type.
 
+I suggest that if the behavior is unclear, check the usage example.
+I try to include a comprehensive use case for each operators.
+
 ### Equal to
 
 **Signature**
@@ -120,20 +123,6 @@ The type `T` must be an instance of the `Equality` class from the `StdOverloaded
 
 Returns true if the list `lsA` and the list `lsB` are pairwise equal.
 Otherwise, returns false.
-
-I think an imperative style code provides a better illustration for this operator.
-
-```python
-# Python
-
-def eq(lsA: list[T], lsB: list[T]) -> bool:
-	if not (len(lsA) == len(lsB)):
-		return False
-	for a, b in zip(lsA, lsB):
-		if not (a == b):
-			return False
-	return True
-```
 
 **Usage**
 
@@ -166,18 +155,6 @@ The type `T` must be an instance of the `Equality` class from the `StdOverloaded
 Returns true if list `A` and list `B` are not pairwise equal.
 Otherwise, returns false.
 
-```text
-lsA := [a1, a2, a3, ..., an]
-lsB := [b1, b2, b3, ..., bm]
-```
-
-It performs equality operation on `a1` and `b1`, then `a2` and `b2`, and so on.
-
-If every pair is not equal, returns true.
-But if at least one pair is equal returns false.
-
-
-
 **Usage**
 
 ```Clean
@@ -209,12 +186,6 @@ The type `T` must be and instance of the `Ord` class from the `StdClass` module.
 Returns true if list `lsA` and list `lsB` are pairwise less than.
 Otherwise, returns false.
 
-If the length of list `lsA` is greater than or equal to the length of list `lsB`, returns false.
-
-If the first element of `lsA` and `lsB` are equal, and the second element of `lsA` and `lsB` are equal, and the third element of `lsA` and `lsB` are equal, and so on, returns true.
-
-If at least one pair is not equal, returns false.
-
 **Usage**
 
 ```Clean
@@ -228,23 +199,23 @@ If at least one pair is not equal, returns false.
 [1, 3] < [1, 2]  // False
 ```
 
-### Less Than Or Equal To
+### Less than or equal to
 
 **Signature**
 
-$$
-\begin{align*}
-A\rightarrow{B}\rightarrow{R}
-\end{align*}
-$$
+```Clean
+// CLEAN
 
-where:
-- $A$ and $B$ are of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{Bool}$.
+(<=) infix 4 :: [T] [T] -> Bool | Ord T
+(<=)            lsA lsB => ...
+```
 
-Additionally, relational operations must be defined on $\text{T}$.
+The type `T` must be and instance of the `Ord` class from the `StdClass` module.
 
-**Behavior**: checks if $A$ is less than or equal to $B$.
+**Behavior**
+
+Returns true if list `lsA` and list `lsB` are pairwise less than or equal.
+Otherwise, returns false.
 
 **Usage**
 
@@ -259,23 +230,23 @@ Additionally, relational operations must be defined on $\text{T}$.
 [1, 3] <= [1, 2] // False
 ```
 
-### Greater Than
+### Greater than
 
 **Signature**
 
-$$
-\begin{align*}
-A\rightarrow{B}\rightarrow{R}
-\end{align*}
-$$
+```Clean
+// CLEAN
 
-where:
-- $A$ and $B$ are of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{Bool}$.
+(<=) infix 4 :: [T] [T] -> Bool | Ord T
+(<=)            lsA lsB => ...
+```
 
-Additionally, relational operations must be defined on $\textbf{T}$.
+The type `T` must be and instance of the `Ord` class from the `StdClass` module.
 
-**Behavior**: checks if $A$ is greater than $B$.
+**Behavior**
+
+Returns true if list `lsA` and list `lsB` are pairwise greater than.
+Otherwise, returns false.
 
 **Usage**
 
@@ -290,23 +261,23 @@ Additionally, relational operations must be defined on $\textbf{T}$.
 [1, 3] > [1, 2]  // True
 ```
 
-### Greater Than Or Equal To
+### Greater than or equal to
 
 **Signature**
 
-$$
-\begin{align*}
-A\rightarrow{B}\rightarrow{R}
-\end{align*}
-$$
+```Clean
+// CLEAN
 
-where:
-- $A$ and $B$ are of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{Bool}$.
+(>=) infix 4 :: [T] [T] -> Bool | Ord T
+(>=)            lsA lsB => ...
+```
 
-Additionally, relational operations must be defined on $\textbf{T}$.
+The type `T` must be and instance of the `Ord` class from the `StdClass` module.
 
-**Behavior**: checks if $A$ is greater than or equal to $B$.
+**Behavior**
+
+Returns true if list `lsA` and list `lsB` are pairwise greater than or equal.
+Otherwise, returns false.
 
 **Usage**
 
@@ -323,23 +294,25 @@ Additionally, relational operations must be defined on $\textbf{T}$.
 
 ---
 
-## Functions
+## Basic functions
+
+These functions provide methods to interacting with lists.
+Unlike some operations, the behaviors of these functions can be achieved using regular CLEAN syntax, but they are provided mostly for convenience purposes.
 
 ### `length`
 
 **Signature**
 
-$$
-\begin{align*}
-A\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{Int}$.
+length :: [T] -> Int
+length    ls  => ...
+```
 
-**Behavior**: returns number of elements in $A$.
+**Behavior**
+
+Returns the number of elements in the list.
 
 **Usage**
 
@@ -356,17 +329,16 @@ length []         // 0
 
 **Signature** 
 
-$$
-\begin{align*}
-A\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $A$ is of type $\[\[\textbf{T}\]\]$, and
-- $R$ is of type $[\textbf{T}]$.
+flatten :: [[T]] -> [T]
+flatten    mat   => ...
+```
 
-**Behavior**: concatenates elements $A$.
+**Behavior**
+
+Transforms a two-dimensional list into a one-dimensional list.
 
 **Usage**
 
@@ -381,23 +353,23 @@ flatten []               // []
 
 ### `hd`
 
-**Signature**
+**Signature** 
 
-$$
-\begin{align*}
-A\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{T}$.
-
-**Behavior**: returns the first element of $A$.
-Results in a Run-time error if $A$ is empty.
-
+hd :: [T] -> T
+hd    ls  => ...
 ```
-hd of []
+
+**Behavior**
+
+Returns the first element of the list.
+
+Results in a run-time error if the given list is empty.
+
+```console
+$ hd of []
 ```
 
 **Usage**
@@ -408,27 +380,28 @@ hd of []
 hd [1, 2, 3]  // 1
 hd [1, 2]     // 1
 hd [1]        // 1
-hd []         // NOT OK
+hd []         // run-time error
 ```
 
 ### `tl`
 
-**Signature**
+**Signature** 
 
-$$
-\begin{align*}
-A\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $A$ and $R$ are of type $[\textbf{T}]$.
-
-**Behavior**: returns all except the first element of $A$.
-A Run-time error will be thrown if $A$ is empty.
-
+tl :: [T] -> [T]
+tl    ls  => ...
 ```
-tl of []
+
+**Behavior**
+
+Returns the list with the first element excluded.
+
+Results in a run-time error if the list is empty.
+
+```console
+$ tl of []
 ```
 
 **Usage**
@@ -439,28 +412,28 @@ tl of []
 tl [1, 2, 3]  // [2, 3]
 tl [1, 2]     // [2]
 tl [1]        // []
-tl []         // NOT OK
+tl []         // run-time error
 ```
 
 ### `last`
 
-**Signature**
+**Signature** 
 
-$$
-\begin{align*}
-A\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{T}$.
-
-**Behavior**: returns the last element of $A$.
-Results in a Run-time error if $A$ is empty.
-
+last :: [T] -> T
+last    ls  => ...
 ```
-last of []
+
+**Behavior**
+
+Returns the last element of the list.
+
+Results in a run-time error if the given list is empty.
+
+```console
+$ last of []
 ```
 
 **Usage**
@@ -471,27 +444,28 @@ last of []
 last [1, 2, 3]  // 3
 last [1, 2]     // 2
 last [1]        // 1
-last []         // NOT OK
+last []         // run-time error
 ```
 
 ### `init`
 
-**Signature**
+**Signature** 
 
-$$
-\begin{align*}
-A\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $A$ and $R$ are of type $[\textbf{T}]$.
-
-**Behavior**: returns all except the last element of $A$.
-Results in a Run-time error if $A$ is empty.
-
+init :: [T] -> [T]
+init    ls  => ...
 ```
-init of []
+
+**Behavior**
+
+Returns the list with the last element excluded.
+
+Results in a run-time error if the given list is empty.
+
+```console
+$ init of []
 ```
 
 **Usage**
@@ -509,17 +483,18 @@ init []         // NOT OK
 
 **Signature**
 
-$$
-\begin{align*}
-n\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $n$ is of type $\textbf{Int}$, and
-- $A$ and $R$ are of type $[\textbf{T}]$.
+take :: Int [T] -> [T]
+take    cnt ls  => ...
+```
 
-**Behavior**: returns the first $n$ elements of $A$.
+**Behavior**
+
+Returns the first `cnt` elements of of the list.
+
+If `cnt` is greater than or equal to the length of the list, returns the entire list.
 
 **Usage**
 
@@ -536,17 +511,18 @@ take 0 []         // []
 
 **Signature**
 
-$$
-\begin{align*}
-n\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $n$ is of type $\textbf{Int}$, and
-- $A$ and $R$ are of type $[\textbf{T}]$.
+drop :: Int [T] -> [T]
+drop    cnt ls  => ...
+```
 
-**Behavior**: returns all but the first $n$ elements of $A$.
+**Behavior**
+
+Returns the list with the first `cnt` elements excluded.
+
+If `cnt` is greater than or equal to the length of the list, returns an empty list.
 
 **Usage**
 
@@ -563,16 +539,16 @@ drop 0 []         // []
 
 **Signature**
 
-$$
-\begin{align*}
-A\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $A$ and $R$ are of type $[\textbf{T}]$.
+reverse :: [T] -> [T]
+reverse    ls  => ...
+```
 
-**Behavior**: returns a reversed copy of $A$.
+**Behavior**
+
+Returns the list in reversed order.
 
 **Usage**
 
@@ -589,19 +565,19 @@ reverse []         // []
 
 **Signature**
 
-$$
-\begin{align*}
-i\rightarrow{a}\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $i$ is of type $\textbf{Int}$,
-- $a$ is of type $\textbf{T}$, and
-- $A$ and $R$ are of type $[\textbf{T}]$.
+insertAt :: Int T [T] -> [T]
+insertAt    idx e ls  => ...
+```
 
-**Behavior**: inserts $a$ into the $i$-th index of $A$.
-The previous element is shifted to the right to make room.
+**Behavior**
+
+Inserts an element `e` into the position `idx` of the list.
+The previous element at the position `idx` is moved to the right if there is such an element.
+
+The position starts from zero.
 
 **Usage**
 
@@ -618,17 +594,17 @@ insertAt (-1) 9 [1, 2]  // [1, 2, 9]
 
 **Signature**
 
-$$
-\begin{align*}
-i\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $i$ is of type $\textbf{Int}$, and
-- $A$ and $R$ are of type $[\textbf{T}]$.
+removeAt :: Int [T] -> [T]
+removeAt    idx ls  => ...
+```
 
-**Behavior**: removes the element at $i$-th index of $A$.
+**Behavior**
+
+Removes the element at position `idx` from the list.
+The position starts from zero.
 
 **Usage**
 
@@ -645,18 +621,18 @@ removeAt (-1) [1, 2]  // [1,2]
 
 **Signature**
 
-$$
-\begin{align*}
-i\rightarrow{a}\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $i$ is of type $\textbf{Int}$,
-- $a$ is of type $\textbf{T}$, and
-- $A$ and $R$ are of type $[\textbf{T}]$.
+updateAt :: Int T [T] -> [T]
+updateAt    idx e ls  => ...
+```
 
-**Behavior**: replaces the element at $i$-th index of $A$ with $a$.
+**Behavior**
+
+Overrides the element at position `idx` with a new element `e`.
+
+If the `idx` is not a valid index of the list, does nothing.
 
 **Usage**
 
@@ -673,19 +649,19 @@ updateAt (-1) 9 [1, 2]  // [1, 2]
 
 **Signature**
 
-$$
-\begin{align*}
-i\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $i$ is of type $\textbf{Int}$,
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $([\textbf{T}], [\textbf{T}])$.
+splitAt :: Int [T] => ([T], [T])
+splitAt    idx ls  => ...
+```
 
-**Behavior**: splits $A$ into two at $i$-th index.
-The element at $i$-th index goes to the second half.
+**Behavior**
+
+Splits the list into two smaller lists at position `idx`.
+The element at position `idx` moves to the second list.
+
+The position starts from zero.
 
 **Usage**
 
@@ -702,17 +678,17 @@ splitAt (-1) [1, 2]  // ([1, 2], [])
 
 **Signature**
 
-$$
-\begin{align*}
-{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// Clean
 
-where:
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $[\textbf{Int}]$.
+indexList :: [T] -> [Int]
+indexList    ls  => ...
+```
 
-**Behavior**: generates a list of indexes from $A$.
+**Behavior**
+
+Returns a list of indexes equal to the length of the list.
+If the given list is empty, returns an empty list.
 
 **Usage**
 
@@ -729,17 +705,16 @@ indexList []         // []
 
 **Signature**
 
-$$
-\begin{align*}
-{a}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $a$ is of type $\textbf{T}$, and
-- $R$ is of type $[\textbf{T}]$.
+repeat T -> [T]
+repeat e => ...
+```
 
-**Behavior**: generates an infinite list of the same element $a$.
+**Behavior**
+
+Returns a list of containing infinitely many of the given element `e`.
 
 **Usage**
 
@@ -756,18 +731,16 @@ repeat True  // [True, True, True, ...]
 
 **Signature** 
 
-$$
-\begin{align*}
-{n}\rightarrow{a}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $n$ is of type $\textbf{Int}$,
-- $a$ is of type $\textbf{T}$, and
-- $R$ is of type $[\textbf{T}]$.
+repeatn :: Int T -> [T]
+repeat     cnt e => ...
+```
 
-**Behavior**: generates a list of the same element $a$ with length of $n$.
+**Behavior**
+
+Generates a list of length `cnt` contain a single element `e`.
 
 **Usage**
 
@@ -784,20 +757,19 @@ repeatn 3 True  // [True, True, True]
 
 **Signature**
 
-$$
-\begin{align*}
-a\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where 
-- $a$ is of type $\textbf{T}$,
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{Bool}$.
+isMember :: T [T] -> Bool | == T
+isMember    e ls  => ...
+```
 
-Additionally, equality operation must be defined on $\textbf{T}$.
+The type `T` must be an instance of the `Equality` class from `StdOverloaded` module.
 
-**Behavior**: checks $a$ is a member of $A$ or not.
+**Behavior**
+
+Returns true if the list contains the given element.
+Otherwise, returns false.
 
 **Usage**
 
@@ -813,19 +785,19 @@ isMember 1 []         // False
 
 **Signature**
 
-$$
-\begin{align*}
-{A}\rightarrow{B}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where 
-- $A$ and $B$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{Bool}$.
+isAnyMember :: [T] [T] -> Bool | == T
+isAnyMember    lsA lsB => ...
+```
 
-Additionally, equality operation must be defined on $\textbf{T}$.
+The type `T` must be an instance of the `Equality` class from `StdOverloaded` module.
 
-**Behavior**: returns true if any element of $B$ is also a element of $A$.
+**Behavior**
+
+Returns true if at least one element of the list `lsB` is an element of the list `lsA`.
+Otherwise, returns false.
 
 **Usage**
 
@@ -833,6 +805,7 @@ Additionally, equality operation must be defined on $\textbf{T}$.
 // CLEAN
 
 isAnyMember [1, 2] [1, 2]  // True
+isAnyMember [1, 2] [1]     // True
 isAnyMember [1, 2] [3, 4]  // False
 isAnyMember [1, 2] []      // False
 isAnyMember [] [1, 2]      // False
@@ -842,18 +815,19 @@ isAnyMember [] [1, 2]      // False
 
 **Signature**
 
-$$
-\begin{align*}
-{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where 
-- $A$ and $R$ are of type $[\textbf{T}]$.
+removeDup :: [T] -> [T] | == T
+removeDup    ls  => ...
+```
 
-Additionally, equality operation must be defined on $\textbf{T}$.
+The type `T` must be an instance of the class `Equality` from the `StdOverloaded` module.
 
-**Behavior**: removes duplicate elements from $A$.
+**Behavior**
+
+Removes duplicate elements from the given list.
+Only the first occurrence of each element and discard other occurrences.
 
 **Usage**
 
@@ -869,19 +843,18 @@ removeDup []            // []
 
 **Signature**
 
-$$
-\begin{align*}
-{a}\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where 
-- $a$ is of type $\textbf{T}$, and
-- $A$ and $R$ are of type $[\textbf{T}]$.
+removeMember :: T [T] -> [T] | == T
+removeMember    e ls  => ...
+```
 
-Additionally, equality operation must be defined on $\textbf{T}$.
+The type `T` must be an instance of the `Equality` class from `StdOverloaded` module.
 
-**Behavior**: removes the first occurrence of $a$ from $A$.
+**Behavior**
+
+Removes the first occurrence of the given element from the list.
 
 **Usage**
 
@@ -898,18 +871,18 @@ removeMember 0 []            // []
 
 **Signature**
 
-$$
-\begin{align*}
-{A}\rightarrow{B}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where 
-- $A$, $B$, and $R$ are of type $[\textbf{T}]$.
+removeMember :: [T] [T] -> [T] | == T
+removeMember    oLs rLs  => ...
+```
 
-Additionally, equality operation must be defined on $\textbf{T}$.
+The type `T` must be an instance of the `Equality` class from `StdOverloaded` module.
 
-**Behavior**: removes the first occurrences of the elements of $B$ from $A$.
+**Behavior**
+
+Removes the first occurrence of each element in the list `rLs` from the list `oLs`.
 
 **Usage**
 
@@ -926,24 +899,23 @@ removeMembers [] [1, 2]     // []
 
 **Signature**
 
-$$
-\begin{align*}
-{a}\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where 
-- $a$ is of type $\textbf{T}$,
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $(\textbf{Int}, [\textbf{T}])$.
-
-Additionally, equality operation must be defined on $\textbf{T}$.
-
-**Behavior**: removes the first occurrence of $a$ from $A$ and returns the its index, as well as, the new list.
-Results in a Run-time error if $a$ is not a member of $A$.
-
+removeIndex :: T [T] -> (Int, [T]) | == T
+removeIndex    e ls  => ...
 ```
-Error in removeIndex: element not found
+
+The type `T` must be an instance of the `Equality` class from the `StdOverloaded` module.
+
+**Behavior**
+
+Removes the first occurrence of the given element `e` from the list `ls`, then returns its index and the modified list.
+
+Results in a run-time error the list does not contain the given element.
+
+```console
+$ Error in removeIndex: element not found
 ```
 
 **Usage**
@@ -953,26 +925,28 @@ Error in removeIndex: element not found
 
 removeIndex 2 [1, 2, 2, 3]  // (1, [1, 2, 3])
 removeIndex 1 [1, 2, 2, 3]  // (0, [2, 2, 3])
-removeIndex 4 [1, 2, 2, 3]  // NOT OK :(
+removeIndex 3 [1, 2, 2, 3]  // (2, [1, 2, 2])
+removeIndex 4 [1, 2, 2, 3]  // run-time error
 ```
 
 ### `sum`
 
 **Signature**
 
-$$
-\begin{align*}
-{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where 
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{T}$.
+sum :: [T] -> T | (+ T) & (zero T)
+sum    ls  => ... 
+```
 
-Additionally, addition and zero unit must be defined on $\textbf{T}$.
+The type `T` must be an instance of the `zero` and `Addition` class from `StdOverloaded`.
 
-**Behavior**: returns sum of $A$.
+**Behavior**
+
+Returns the sum of the list.
+
+Under the hood, the function adds every element together using the defined addition operation and zero unit on the type `T`.
 
 **Usage**
 
@@ -989,19 +963,20 @@ sum [1]           // 1
 
 **Signature**
 
-$$
-\begin{align*}
-{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where 
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{T}$.
+prod :: [T] -> T | (+ T) & (zero T)
+prod    ls  => ... 
+```
 
-Additionally, multiplication and one unit must be defined on $\textbf{T}$.
+The type `T` must be an instance of the `one` and `Multiplication` class from `StdOverloaded`.
 
-**Behavior**: returns product of $A$.
+**Behavior**
+
+Returns the product of the list.
+
+Under the hood, the function multiplies every element together using the defined multiplication operation and one unit on the type `T`.
 
 **Usage**
 
@@ -1018,23 +993,25 @@ prod [1]           // 1
 
 **Signature**
 
-$$
-\begin{align*}
-{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where 
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{T}$.
-
-Additionally, addition, zero unit, and division must be defined on $\textbf{T}$.
-
-**Behavior**: returns average $A$.
-Results in a Run-time error if $A$ is empty.
-
+avg :: [T] -> T | (IncDec T) & (/ T)
+avg    ls  => ... 
 ```
-avg called with empty list
+
+The type `T` must be an instance of the `IncDec` class from `StdClass` module and the `Division` class from `StdOverloaded`.
+
+**Behavior**
+
+Returns the average of the list.
+
+Under the hood, the function adds every element together using the defined addition operation and zero unit on the type `T`, then it divides the sum by the length of the list.
+
+Results in a run-time error if the given list is empty.
+
+```console
+$ avg called with empty list
 ```
 
 **Usage**
@@ -1046,24 +1023,24 @@ avg [1, 2, 3, 4]  // 2
 avg [1, 2, 3]     // 2
 avg [1, 2]        // 1
 avg [1]           // 1
-avg []            // NOT OK :(
+avg []            // run-time error
 ```
 
 ### `and`
 
 **Signature**
 
-$$
-\begin{align*}
-{A_{b}}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAn
 
-where:
-- $A_{b}$ is of type $[\textbf{Bool}]$, and
-- $R$ is of type $\textbf{Bool}$.
+and :: [Bool] -> Bool
+and    bLs    => ...
+```
 
-**Behavior**: returns true if and only if every element of $A_{b}$ is true.
+**Behavior**
+
+Returns true if every element in the given list is true.
+Otherwise, returns false.
 
 **Usage**
 
@@ -1082,17 +1059,17 @@ and []              // True
 
 **Signature**
 
-$$
-\begin{align*}
-{A_{b}}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAn
 
-where:
-- $A_{b}$ and $R$ are of type $[\textbf{Bool}]$, and
-- $R$ is of type $\text{Bool}$.
+or :: [Bool] -> Bool
+or    bLs    => ...
+```
 
-**Behavior**: returns false if and only if every element of $A_{b}$ is false.
+**Behavior**
+
+Returns true if at least one element in the given list is true.
+Otherwise, returns false.
 
 **Usage**
 
@@ -1109,22 +1086,29 @@ or []              // False
 
 ---
 
-## Higher-Order Functions
+## Higher-order functions
+
+These are functions which accepts a list and another functions as arguments.
+They provided a similar functionality to their basic counterpart but with additional flexibility.
 
 ### `takeWhile`
 
 **Signature** 
-$$
-\begin{align*}
-P\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
 
-where:
-- $P$ is of type $(\textbf{T}\rightarrow\textbf{Bool})$, and
-- $A$ and $R$ is of type $[\textbf{T}]$.
+```clean
+// CLEAN
 
-**Behavior**: takes elements from the start of $A$ as long as $P$ is true.
+takeWhile :: (T -> Bool) [T] -> [T]
+takeWhile    predicate   ls  => ...
+```
+
+**Behavior**
+
+It performs the `predicate` on each element of the given list starting from the left.
+
+If the predicate returns true for an element, it will be collected into the result.
+
+If the predicate returns false for an element, the function stops and returns the element it has collected so far.
 
 **Usage**
 
@@ -1140,17 +1124,21 @@ takeWhile isOdd  []         // []
 ### `dropWhile`
 
 **Signature** 
-$$
-\begin{align*}
-P\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
 
-where:
-- $P$ is of type $(\textbf{T}\rightarrow\textbf{Bool})$, and
-- $A$ and $R$ is of type $[\textbf{T}]$.
+```clean
+// CLEAN
 
-**Behavior**: discards elements from the start of $A$ as long as $P$ is true.
+dropWhile :: (T -> Bool) [T] -> [T]
+dropWhile    predicate   ls  => ...
+```
+
+**Behavior**
+
+It performs the `predicate` on each element of the given list starting from the left.
+
+If the predicate returns true for an element, it will be discarded.
+
+If the predicate returns false for an element, the function stops and the rest of the list.
 
 **Usage**
 
@@ -1166,17 +1154,17 @@ dropWhile isOdd  []         // []
 ### `filter`
 
 **Signature** 
-$$
-\begin{align*}
-P\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
 
-where:
-- $P$ is of type $(\textbf{T}\rightarrow\textbf{Bool})$, and
-- $A$ and $R$ is of type $[\textbf{T}]$.
+```clean
+// CLEAN
 
-**Behavior**: filters $A$ using $P$.
+filter :: (T -> Bool) [T] -> [T]
+filter    predicate   ls  => ...
+```
+
+**Behavior**
+
+Filters the list using the given predicate, keeping only the element which yields true.
 
 **Usage**
 
@@ -1192,99 +1180,72 @@ filter isOdd  []         // []
 
 ### `foldr`
 
-**Signature** 
+**Signature**
 
-$$
-\begin{align*}
-f\rightarrow{k}\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $f$ is of type $(\textbf{T}\rightarrow\textbf{K}\rightarrow\textbf{K})$, 
-- $k$ and $R$ are of type $\textbf{K}$, and
-- $A$ is of type $[\textbf{T}]$.
+foldr :: (T -> K -> K) K [T] -> K
+foldr    func          s ls  => ...
+```
 
-**Behavior**: folds $A$ using a right-associative operation $f$.
+**Behavior**
+
+Folds the list from left to right using the given `func`.
+The starting value is determined by the argument `s`.
 
 **Usage**
 
 ```Clean
 // CLEAN
 
-foldr (+) 0 [1, 2, 3]
-// 1 + (2 + (3 + 0))
-// 6
-
-foldr (+) 0 [3, 2, 1]
-// 3 + (2 + (1 + 0))
-// 6
-
-foldr (^) 1 [1, 2, 3]
-// 1 ^ (2 ^ (3 ^ 1))
-// 1
-
-foldr (^) 1 [3, 2, 1]
-// 3 ^ (2 ^ (1 ^ 1))
-// 9
+foldr (+) 0 [1, 2, 3]  // 1 + (2 + (3 + 0))
+foldr (+) 0 [3, 2, 1]  // 3 + (2 + (1 + 0))
+foldr (^) 1 [1, 2, 3]  // 1 ^ (2 ^ (3 ^ 1))
+foldr (^) 1 [3, 2, 1]  // 3 ^ (2 ^ (1 ^ 1))
 ```
 
 ### `foldl`
 
-**Signature** 
+**Signature**
 
-$$
-\begin{align*}
-f\rightarrow{t}\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $f$ is of type $(\textbf{T}\rightarrow\textbf{K}\rightarrow\textbf{T})$, 
-- $t$ is of type $\textbf{T}$,
-- $A$ is of type $[\textbf{K}]$, and
-- $R$ is of type $\textbf{T}$.
+foldl :: (K -> T -> K) K [T] -> T
+foldl    func          s ls  => ...
+```
 
-**Behavior**: folds $A$ using a left-associative operation $f$.
+**Behavior**
+
+Folds the list from right to left using the given `func`.
+The starting value is determined by the argument `s`.
 
 **Usage**
 
 ```Clean
 // CLEAN
 
-foldl (+) 0 [1, 2, 3]
-// ((0 + 1) + 2) + 3
-// 6
-
-foldr (+) 0 [3, 2, 1]
-// ((0 + 3) + 2) + 1
-// 6
-
-foldl (^) 1 [1, 2, 3]
-// ((1 ^ 1) ^ 2) ^ 3
-// 1
-
-foldl (^) 1 [3, 2, 1]
-// ((1 ^ 3) ^ 2)  ^ 1
-// 1
+foldl (+) 0 [1, 2, 3]  // ((0 + 1) + 2) + 3
+foldr (+) 0 [3, 2, 1]  // ((0 + 3) + 2) + 1
+foldl (^) 1 [1, 2, 3]  // ((1 ^ 1) ^ 2) ^ 3
+foldl (^) 1 [3, 2, 1]  // ((1 ^ 3) ^ 2) ^ 1
 ```
 
 ### `iterate`
 
-**Signature** 
+**Signature**
 
-$$
-\begin{align*}
-f\rightarrow{a}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $f$ is of type $(\textbf{T}\rightarrow\textbf{T})$,
-- $a$ is of type $\textbf{T}$, and
-- $R$ is of type $[\textbf{T}]$.
+iterate :: (T -> T) T -> [T]
+iterate    func     e => ...
+```
 
-**Behavior**: generates an infinite list by repeatedly apply $f$ to $a$.
+**Behavior**
+
+Returns an infinite list by repeatedly apply the `func` to `e`.
 
 **Usage**
 
@@ -1427,6 +1388,8 @@ all isOdd  []         // True
 
 ## Validator functions
 
+The function is not so difficult to defined, but they are convenient to use.
+
 ### `isEmpty`
 
 **Signature**
@@ -1440,7 +1403,7 @@ isEmpty	   A   => ...
 
 **Behavior**
 
-Returns true if list `A` is empty.
+Returns true if the list is empty.
 Otherwise, returns false.
 
 **Usage**

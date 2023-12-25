@@ -1,22 +1,30 @@
 # StdMisc
 
+This module can be imported directly or as a part of the `StdEnv` module.
+As the name suggests, it provides definitions for miscellaneous functions you might need in your program.
+Though, they mostly concern with program termination.
+
 Visit [StdMisc](https://cloogle.org/src/#base-stdenv/StdMisc;icl;line=1) on Cloogle for source code of this module.
 
-## Constants
+## Units
 
 ### Undefined Entity
 
 **Implementation**
 
-```Clean
-// Language: Clean
+```cleanm
+// CLEAN
 
 undef :: anyType
-undef = abort "Run-time error! Program evaluated undefined value?!"
+undef =  ...
 ```
 
-**Definition**: represents an undefined value.
+**Definition**
+
+Represents an undefined value.
+
 Forces a program to terminate if it is ever evaluated.
+Under the hood, it invokes the `abort` function with a specific error message.
 
 ---
 
@@ -28,15 +36,17 @@ Forces a program to terminate if it is ever evaluated.
 
 ```Clean
 abort :: {#Char} -> anyType
-abort    a       => ...
+abort    errMsg  => ...
 ```
 
-**Behavior**: terminates the program and return an error message `a`.
+**Behavior**
+
+Terminates the program and return an error message `errMsh`.
 
 **Usage**
 
-```
-// Language: Clean
+```clean
+// CLEAN
  
 abort "Terminated"  // "Terminated"
 ```

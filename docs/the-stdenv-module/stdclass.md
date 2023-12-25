@@ -4,9 +4,9 @@ Date of last full revision: 25/DEC/2023
 
 # StdClass
 
-This module can be imported individually or as a part of the *Standard Environment*.
+This module can be imported directly or as a part of the `StdEnv` module.
 
-The distinction between this module and the *StdOverloaded* module is that this module builds on top of the *StdOverloaded* module.
+The distinction between this module and the `StdOverloaded` module is that this module builds on top of the `StdOverloaded` module.
 
 Visit [StdClass](https://cloogle.org/src/#base-stdenv/StdClass;icl;line=1) on Cloogle for source code of this module.
 
@@ -64,11 +64,17 @@ Instead of writing all classes, you can simply use this class instead, given tha
 class IncDec T | (+ T) & (- T) & (one T) & (zero T)
 where
     inc :: T -> T | (+ T) & (one T)
+    inc    x => ...
     dec :: T -> T | (- T) & (one T)
+    inc    x => ...
 ```
 
 This class defines two additional functions on the type `T`.
-The function *Inc*
+
+The behavior of both functions are determined by the definition of the `addition`, `subtraction`. and `one` unit.
+
+Under the hood, the function `inc` performs `addition` operation using the argument `x` and `one` as operands.
+Similarly, the function `dec` performs `subtraction` operation using the argument `x` and `one` as operands.
 
 ### `Enum`
 
@@ -79,6 +85,8 @@ The function *Inc*
 
 class Enum T | (< T) & (IncDec T)
 ```
+
+This class does not define additional operators or functions on the type `T`, however, dot-dot syntax requires this class to operate.
 
 ---
 
@@ -94,11 +102,12 @@ class Enum T | (< T) & (IncDec T)
 class Eq T | (== T)
 where
     (<>) infixl 4 :: T T -> Bool
+    (<>)          :: x y => ...
 ```
 
-**Definition**
+This class defines the `not equal` operation for the type `T` if it is an instance of the `Equalilty` class.
 
-Defines the *not equal* operation for the type `T` if it is an instance of the *Equal* class.
+Under the hood, the function performs equality operation using `x` and `y` as operands and returns the negated logical value.
 
 ### `Ord`
 
@@ -109,14 +118,24 @@ Defines the *not equal* operation for the type `T` if it is an instance of the *
 
 class Ord T | (< T)
 where
-    (>) infixl 4 :: T T -> Bool
+    (>)  infixl 4 :: T T  -> Bool
+    (>)           :: x y  => ...
+    
 	(<=) infixl 4 :: T T -> Bool
+	(<=)          :: x y => ...
+	
     (>=) infixl 4 :: T T -> Bool
+	(>=)          :: x y => ...
     
     min :: T T -> T
+    min :: x y => ...
+    
     max :: T T -> T
+    max :: x y => ...
 ```
 
 **Definition**
 
-Defines the *less than or equal to*, *greater than*, and *greater than or equal to* operations, as well as, the *min*, and *max* functions for the type `T` if it is an instance of the *less than* class.
+Defines the rest of the relational operations, as well as, the `min`, and `max` functions for the type `T` if it is an instance of the `Less than` class.
+
+The operators and functions are defined in terms of less than relation and `not` function (unary operator).

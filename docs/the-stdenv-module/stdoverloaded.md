@@ -4,6 +4,9 @@ Date of last full revision: 16 December 2023
 
 # StdOverloaded
 
+This module can be imported directly or as a part of the `StdEnv` module.
+It provides definitions for important classes in CLEAN.
+
 Visit [StdOverloaded](https://cloogle.org/src/#base-stdenv/StdOverloaded;icl;line=1) on Cloogle for source code of this module.
 
 ## Unit classes
@@ -42,7 +45,59 @@ Defines the multiplicative identity on type `T`.
 
 ---
 
-## Arithmetic operation classes
+## Manipulation operation classes
+
+### Negation
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class ~ T
+where
+    ~ :: T -> T
+```
+
+**Definition**
+
+Defines the negation operation on type `T`.
+
+### Slicing
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class % T
+where
+    (%) infixl 9 :: T (Int, Int) -> T
+```
+
+**Definition**
+
+Defines the slicing operation on type `T`.
+
+### Concatenation
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class +++ T
+where
+    (+++) infixl 5 :: T T -> T
+```
+
+**Definition**
+
+Defines the concatenation operation on type `T`.
+
+---
+
+## Math operation classes
 
 ### Addition
 
@@ -140,10 +195,6 @@ where
 
 Defines the modulo operation on type `T`.
 
----
-
-## Algebraic operation classes
-
 ### Exponentiation
 
 **Declaration**
@@ -162,95 +213,7 @@ Defines the exponentiation operation on type `T`.
 
 ---
 
-## Relational operation classes
-
-### Equality
-
-**Declaration**
-
-```clean
-// CLEAN
-
-class == T
-where
-    (==) infixl 4 :: T T -> T
-```
-
-**Definition**
-
-Defines the equality operation on type `T`.
-
-### Less than
-
-**Declaration**
-
-```clean
-// CLEAN
-
-class < T
-where
-    (<) infixl 4 :: T T -> T
-```
-
-**Definition**
-
-Defines the less than operation on type `T`.
-
----
-
-## Manipulation operation classes
-
-### Negation
-
-**Declaration**
-
-```clean
-// CLEAN
-
-class ~ T
-where
-    ~ :: T -> T
-```
-
-**Definition**
-
-Defines the negation operation on type `T`.
-
-### Slicing
-
-**Declaration**
-
-```clean
-// CLEAN
-
-class % T
-where
-    (%) infixl 9 :: T (Int, Int) -> T
-```
-
-**Definition**
-
-Defines the slicing operation on type `T`.
-
-### Concatenation
-
-**Declaration**
-
-```clean
-// CLEAN
-
-class +++ T
-where
-    (+++) infixl 5 :: T T -> T
-```
-
-**Definition**
-
-Defines the concatenation operation on type `T`.
-
----
-
-## Arithmetic function classes
+## Math function classes
 
 ### `inc`
 
@@ -315,10 +278,6 @@ where
 **Definition**
 
 Defines the least common multiple operation on type `T`.
-
----
-
-## Algebraic function classes
 
 ### `abs`
 
@@ -829,3 +788,40 @@ where
 **Definition**
 
 Defines conversion from string to type `T`.
+
+## Relational operation classes
+
+### Equality
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class == T
+where
+    (==) infixl 4 :: T T -> T
+```
+
+**Definition**
+
+Defines the equality operation on type `T`.
+
+### Less than
+
+**Declaration**
+
+```clean
+// CLEAN
+
+class < T
+where
+    (<) infixl 4 :: T T -> T
+```
+
+**Definition**
+
+Defines the less than operation on type `T`.
+
+---
+

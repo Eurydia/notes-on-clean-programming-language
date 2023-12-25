@@ -1,15 +1,18 @@
 # StdReal
 
+This module can be imported directly or as a part of the `StdEnv` module.
+It provides definition for many critical operations and functions on real numbers.
+
 Visit [StdReal](https://cloogle.org/src/#base-stdenv/StdReal;icl;line=1) on Cloogle for source code of this module.
 
-## Constants
+## Units
 
-### Zero Unit
+### Zero
 
 **Implementation**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 zero ::  Real
 zero :== 0.0
@@ -17,14 +20,14 @@ zero :== 0.0
 
 **Definition**
 
-It represents the identity element of real number addition.
+Represents the identity element of real number addition.
 
 ### One Unit
 
 **Implementation**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 one ::  Real
 one :== 1.0
@@ -38,8 +41,8 @@ It represents the identity element of real number multiplication.
 
 **Implementation**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 Infinity ::  Real
 Infinity :== 1E9999
@@ -53,8 +56,8 @@ It represents numerical values which are too large to represent.
 
 **Implementation**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 NaN ::  Real
 NaN :== 1E9999 + (-1E9999)
@@ -74,8 +77,8 @@ See [NaN](https://en.wikipedia.org/wiki/NaN).
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 ~ :: Real -> Real
 ~    a    =  ...
@@ -87,8 +90,8 @@ It inverts the sign of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 ~  1.0   // -1.0
 ~  0.0   //  0.0
@@ -99,8 +102,8 @@ It inverts the sign of `a`.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 (+) infixl 6 :: Real Real -> Real
 (+)             a    b    =  ...
@@ -112,8 +115,8 @@ It adds `a` and `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
   2.5  +   1.5   //  4.0
   2.5  + (-1.5)  //  1.5
@@ -125,8 +128,8 @@ It adds `a` and `b`.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 (-) infixl 6 :: Real Real -> Real
 (-)             a    b    =  ...
@@ -138,8 +141,8 @@ It subtracts `b` from `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
   2.5  -   1.5   //  1.0
   2.5  - (-1.5)  //  4.0
@@ -151,8 +154,8 @@ It subtracts `b` from `a`.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 (*) infixl 7 :: Real Real -> Real
 (*)             a    b    =  ...
@@ -164,8 +167,8 @@ It multiplies `a` with `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
   2.5  *   1.5   //  3.75
   2.5  * (-1.5)  // -3.75
@@ -177,8 +180,8 @@ It multiplies `a` with `b`.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 (/) infixl 7 :: Real Real -> Real
 (/)             a    b    =  ...
@@ -190,8 +193,8 @@ It divides `a` with `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
   2.5  /   1.5   //  1.66666666666667
   2.5  / (-1.5)  // -1.66666666666667
@@ -206,8 +209,8 @@ It divides `a` with `b`.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 (^) infixr 8 :: Real Real -> Real
 (^)             a    b    =  ...
@@ -219,8 +222,8 @@ It raises `a` to the power of `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
   2.5  ^   1.5   //  3.95284707521047
   2.5  ^ (-1.5)  //  0.25298221281347
@@ -241,8 +244,8 @@ Equality comparison between two real numbers seems to be unaffected by rounding 
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 (==) infix 4 :: Real Real -> Bool
 (==)            a    b    =  ...
@@ -254,8 +257,8 @@ It returns true if `a` is equal to `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
   5.0  ==   2.0   // False
 (-5.0) ==   2.0   // False
@@ -268,8 +271,8 @@ It returns true if `a` is equal to `b`.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 (<>) infix 4 :: Real Real -> Bool
 (<>)            a    b    =  ...
@@ -281,8 +284,8 @@ It returns true if `a` is not equal to `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
   5.0  <>   2.0   // True
 (-5.0) <>   2.0   // True
@@ -295,8 +298,8 @@ It returns true if `a` is not equal to `b`.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 (<) infix 4 :: Real Real -> Bool
 (<)            a    b    =  ...
@@ -308,8 +311,8 @@ It returns true if `a` is strictly less than `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
   5.0  <   2.0   // False
 (-5.0) <   2.0   // True
@@ -322,8 +325,8 @@ It returns true if `a` is strictly less than `b`.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 (<=) infix 4 :: Real Real -> Bool
 (<=)            a    b    =  ...
@@ -335,8 +338,8 @@ It returns true if `a` is less than or equal to `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
   5.0  <=   2.0   // False
 (-5.0) <=   2.0   // True
@@ -349,8 +352,8 @@ It returns true if `a` is less than or equal to `b`.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 (>) infix 4 :: Real Real -> Bool
 (>)            a    b    =  ...
@@ -362,8 +365,8 @@ It returns true if `a` is strictly greater than `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
   5.0  >   2.0   // True
 (-5.0) >   2.0   // False
@@ -376,8 +379,8 @@ It returns true if `a` is strictly greater than `b`.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 (>=) infix 4 :: Real Real -> Bool
 (>=)            a    b    =  ...
@@ -389,8 +392,8 @@ It returns true if `a` is greater than or equal to `b`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
   5.0  >=   2.0   // True
 (-5.0) >=   2.0   // False
@@ -407,8 +410,8 @@ It returns true if `a` is greater than or equal to `b`.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 sign :: Real -> Int
 sign    a    =  ...
@@ -420,8 +423,8 @@ It returns the sign of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 sign   1.0   //  1
 sign   0.0   //  0
@@ -432,8 +435,8 @@ sign (-1.0)  // -1
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 abs :: Real -> Real
 abs    a    =  ...
@@ -445,8 +448,8 @@ It returns the absolute value of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 abs   1.0   // 1.0
 abs   0.0   // 0.0
@@ -457,8 +460,8 @@ abs (-1.0)  // 1.0
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 entier :: Real -> Int
 entier    a    =  ...
@@ -470,8 +473,8 @@ It returns the largest integer which is less than `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 entier   1.5   //  1
 entier   0.0   //  0
@@ -482,8 +485,8 @@ entier (-1.5)  // -2
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 ln :: Real -> Real
 ln    a    =  ...
@@ -495,8 +498,8 @@ It returns the natural logarithm of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 ln   2.5   //  0.916290731874155
 ln   1.5   // -1.405465108108164
@@ -509,8 +512,8 @@ ln (-2.5)  //  #NAN
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 log10 :: Real -> Real
 log10    a    =  ...
@@ -522,8 +525,8 @@ It returns the logarithm base 10 of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 log10   2.5   //  0.397940008672038
 log10   1.5   // -0.176091259055681
@@ -536,8 +539,8 @@ log10 (-2.5)  //  #NAN
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 exp :: Real -> Real
 exp    a    =  ...
@@ -551,8 +554,8 @@ See [Euler's number](<https://en.wikipedia.org/wiki/E_(mathematical_constant)>).
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 exp   2.5   // 12.1824939607035
 exp   1.5   //  4.48168907033806
@@ -565,8 +568,8 @@ exp (-2.5)  //  0.0820849986238988
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 sqrt :: Real -> Real
 sqrt    a    =  ...
@@ -578,8 +581,8 @@ It returns the square root of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 sqrt   2.5   // 1.58113883008419
 sqrt   1.5   // 1.22474487139159
@@ -596,8 +599,8 @@ sqrt (-2.5)  // #NAN
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 sin :: Real -> Real
 sin    a    =  ...
@@ -609,8 +612,8 @@ It returns the sine of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 sin   2.5   //  0.598472144103956
 sin   1.5   //  0.997494986604054
@@ -623,8 +626,8 @@ sin (-2.5)  // -0.598472144103956
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 cos :: Real -> Real
 cos    a    =  ...
@@ -636,8 +639,8 @@ It returns the cosine of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 cos   2.5   // -0.801143615546934
 cos   1.5   //  0.0707372016677029
@@ -650,8 +653,8 @@ cos (-2.5)  // -0.801143615546934
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 tan :: Real -> Real
 tan    a    =  ...
@@ -663,8 +666,8 @@ It returns the tangent of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 tan   2.5   // - 0.74702229723866
 tan   1.5   //  14.1014199471717
@@ -677,8 +680,8 @@ tan (-2.5)  //   0.74702229723866
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 asin :: Real -> Real
 asin    a    =  ...
@@ -690,8 +693,8 @@ It returns the inverse sine of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 asin   2.5   //  #NAN
 asin   1.5   //  #NAN
@@ -706,8 +709,8 @@ asin (-2.5)  //  #NAN
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 acos :: Real -> Real
 acos    a    =  ...
@@ -719,8 +722,8 @@ It returns the inverse cosine of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 acos   2.5   // #NAN
 acos   1.5   // #NAN
@@ -735,8 +738,8 @@ acos (-2.5)  // #NAN
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 atan :: Real -> Real
 atan    a    =  ...
@@ -748,8 +751,8 @@ It returns the inverse tangent of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 atan   2.5   //  1.19028994968253
 atan   1.5   //  0.982793723247329
@@ -764,8 +767,8 @@ atan (-2.5)  // -1.19028994968253
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 sinh :: Real -> Real
 sinh    a    =  ...
@@ -777,8 +780,8 @@ It returns the hyperbolic sine of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 sinh   2.5   //  6.05020448103979
 sinh   1.5   //  2.12927945509482
@@ -793,8 +796,8 @@ sinh (-2.5)  // -6.05020448103979
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 cosh :: Real -> Real
 cosh    a    =  ...
@@ -806,8 +809,8 @@ It returns the hyperbolic cosine of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 cosh   2.5   //  6.13228947966369
 cosh   1.5   //  2.35240961524325
@@ -822,8 +825,8 @@ cosh (-2.5)  // -6.13228947966369
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 tanh :: Real -> Real
 tanh    a    =  ...
@@ -835,8 +838,8 @@ It returns the hyperbolic tangent of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 tanh   2.5   //  0.98661429815143
 tanh   1.5   //  0.905148253644866
@@ -851,8 +854,8 @@ tanh (-2.5)  // -0.98661429815143
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 asinh :: Real -> Real
 asinh    a    =  ...
@@ -864,8 +867,8 @@ It returns the inverse hyperbolic sine of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 asinh   2.5   //  1.6472311463711
 asinh   1.5   //  1.19476321728711
@@ -880,8 +883,8 @@ asinh (-2.5)  // -1.6472311463711
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 acosh :: Real -> Real
 acosh    a    =  ...
@@ -893,8 +896,8 @@ It returns the inverse hyperbolic cosine of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 acosh   2.5   // 1.56679923697241
 acosh   1.5   // 0.962423650119207
@@ -909,8 +912,8 @@ acosh (-2.5)  // #NAN
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 atanh :: Real -> Real
 atanh    a    =  ...
@@ -922,8 +925,8 @@ It returns the inverse hyperbolic tangent of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 atanh   2.5   //  #NAN
 atanh   1.5   //  #NAN
@@ -942,8 +945,8 @@ atanh (-2.5)  //  #NAN
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 isNaN :: Real -> Bool
 isNaN    a    =  ...
@@ -955,8 +958,8 @@ It returns true if `a` is not representable.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 isNaN  2.0               // False
 isNaN  0.0               // False
@@ -970,8 +973,8 @@ isNaN (  0.0  ^ (-1.0))  // False
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 isInfinity :: Real -> Bool
 isInfinity    a    =  ...
@@ -983,8 +986,8 @@ It returns true if `a` is too large to represent.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 isInfinity 2.0                // False
 isInfinity 0.0                // False
@@ -998,8 +1001,8 @@ isInfinity (  0.0  ^ (-1.0))  // True
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 isFinite :: Real -> Bool
 isFinite    a    =  ...
@@ -1011,8 +1014,8 @@ It returns true if `a` is representable.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 isFinite 2.0                // True
 isFinite 0.0                // True
@@ -1032,8 +1035,8 @@ They explicitly convert other types to real number type.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 toReal :: Int -> Real
 toReal    a   =  ...
@@ -1045,8 +1048,8 @@ It sets the decimal places of `a` to 0.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 toReal   2   //  2.0
 toReal   1   //  1.0
@@ -1059,8 +1062,8 @@ toReal (-2)  // -2.0
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 toReal :: String -> Real
 toReal    a      =  ...
@@ -1072,8 +1075,8 @@ It parses `a` as a real number.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 toReal "1.0"   //  1.0
 toReal "1"     //  1.0
@@ -1093,8 +1096,8 @@ The desired type must be unambiguous.
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 fromReal :: Real -> Int
 fromReal    a    =  ...
@@ -1106,8 +1109,8 @@ It rounds `a` to its nearest integer.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 expr :: Int
 expr =  fromReal   1.9   //  2
@@ -1120,8 +1123,8 @@ expr =  fromReal (-1.9)  // -2
 
 **Signature**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 fromReal :: Real -> { #Char }
 fromReal    a    =  ...
@@ -1133,8 +1136,8 @@ It returns a string representation of `a`.
 
 **Usage**
 
-```Clean
-// Language: Clean
+```clean
+// CLEAN
 
 expr :: { #Char }
 expr =  fromReal   1.9   // "1.9"

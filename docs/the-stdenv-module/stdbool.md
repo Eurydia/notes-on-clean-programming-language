@@ -4,10 +4,10 @@ Date of last full revision: 16/DEC/2023
 
 # StdBool
 
-This module can be imported individually or as a part of the *Standard Environment*.
+This module can be imported individually or as a part of the _Standard Environment_.
 It provides definitions for logical operations.
 
-Although the size of the module is small compare to other primitive data types provided by CLEAN, this module is still quite important, on the account that it defines *logical equivalence*.
+Although the size of the module is small compare to other primitive data types provided by CLEAN, this module is still quite important, on the account that it defines _logical equivalence_.
 
 That is correct, without this module, CLEAN has no idea how to perform one of the most fundamental operation is Boolean algebra.
 
@@ -57,7 +57,7 @@ False == False  // True
 
 **Behavior**
 
-Returns true if at least one operand is true. 
+Returns true if at least one operand is true.
 Otherwise, returns false.
 
 **Usage**
@@ -102,7 +102,7 @@ False && False  // False
 
 ## Logical functions
 
-Although, technically speaking, *logical negation* is a unary operator, there is no such thing as a unary operator in CLEAN, as much as it pains me, I have decided to place it here.
+Although, technically speaking, _logical negation_ is a unary operator, there is no such thing as a unary operator in CLEAN, as much as it pains me, I have decided to place it here.
 
 ### Logical negation
 
@@ -117,7 +117,7 @@ not    a    => ...
 
 **Behavior**
 
-Negates the logical value of *a*.
+Negates the logical value of _a_.
 
 **Usage**
 
@@ -134,7 +134,7 @@ not False  // True
 
 The function which is responsible for converting Boolean to other types is overloaded, which means the desired type must be unambiguous.
 
-Natively, Boolean may convert to string, but additional behavior may be added by creating new instances of *fromBool* class from *StdOverloaded* module.
+Natively, Boolean may convert to string, but additional behavior may be added by creating new instances of _fromBool_ class from _StdOverloaded_ module.
 
 ### To string
 

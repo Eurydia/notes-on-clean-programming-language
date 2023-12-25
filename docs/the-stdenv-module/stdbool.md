@@ -134,7 +134,7 @@ not False  // True
 
 The function which is responsible for converting Boolean to other types is overloaded, which means the desired type must be unambiguous.
 
-Natively, Boolean may convert to string, but additional behavior may be creating new instances of *formBool* class in *StdOverloaded*.
+Natively, Boolean may convert to string, but additional behavior may be added by creating new instances of *fromBool* class from *StdOverloaded* module.
 
 ### To string
 

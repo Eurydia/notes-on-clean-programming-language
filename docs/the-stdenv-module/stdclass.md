@@ -22,6 +22,10 @@ Visit [StdClass](https://cloogle.org/src/#base-stdenv/StdClass;icl;line=1) on Cl
 class PlusMin T | (+ T) & (- T) & (zero T)
 ```
 
+This class does not define additional operators or functions on the type `T`, so it serves the purpose of a shorthand to the three classes.
+
+Instead of writing all three classes, you can simply use this class instead, given that the type that you are working with is an instance of the classes mentioned.
+
 ### `MultDiv`
 
 **Declaration**
@@ -32,6 +36,10 @@ class PlusMin T | (+ T) & (- T) & (zero T)
 class MultDiv T | (* T) & (/ T) & (one T)
 ```
 
+This class does not define additional operators or functions on the type `T`, so it serves the purpose of a shorthand to the three classes.
+
+Instead of writing all three classes, you can simply use this class instead, given that the type that you are working with is an instance of the classes mentioned.
+
 ### `Arith`
 
 **Declaration**
@@ -41,6 +49,10 @@ class MultDiv T | (* T) & (/ T) & (one T)
 
 class Arith T | (PlusMin T) & (MultDiv T) & (abs T) & (sign T) & (~ T)
 ```
+
+This class does not define additional operators or functions on the type `T`, so it serves the purpose of a shorthand to the classes mentioned.
+
+Instead of writing all classes, you can simply use this class instead, given that the type that you are working with is an instance of the classes mentioned.
 
 ### `IncDec`
 
@@ -54,6 +66,9 @@ where
     inc :: T -> T | (+ T) & (one T)
     dec :: T -> T | (- T) & (one T)
 ```
+
+This class defines two additional functions on the type `T`.
+The function *Inc*
 
 ### `Enum`
 

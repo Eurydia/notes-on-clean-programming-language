@@ -42,8 +42,8 @@ plugins:
   - search
   - roamlinks 
   - exclude:
-    glob:
-      - _meta/*
+      glob:
+        - _meta/*
 
 
 extra_javascript:

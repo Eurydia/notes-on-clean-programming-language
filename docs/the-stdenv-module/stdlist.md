@@ -1261,18 +1261,16 @@ iterate toInt   1  // [1, 1, 1, ...]
 
 **Signature** 
 
-$$
-\begin{align*}
-f\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $f$ is of type $\textbf{T}\rightarrow\textbf{K}$,
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $[\textbf{K}]$.
+map :: (T -> K) [T] -> [K]
+map    func     ls  => ...
+```
 
-**Behavior**: applies $f$ to every element of $A$.
+**Behavior**
+
+Applies the function `func` to every element of the given list.
 
 **Usage**
 
@@ -1288,19 +1286,17 @@ map ((+) 2) [1, 2, 3]  // [3, 4, 5]
 
 **Signature** 
 
-$$
-\begin{align*}
-f\rightarrow{a}\rightarrow{B}\rightarrow{R}
-\end{align*}
-$$
 
-where:
-- $f$ is of type $(\textbf{T}\rightarrow\textbf{K}\rightarrow\textbf{T})$, 
-- $a$ is of type $\textbf{T}$,
-- $B$ is of type $[\textbf{K}]$, and
-- $R$ is of type $[\textbf{T}]$.
+```clean
+// CLEAN
 
-**Behavior**: generates a list of reduced values from apply $f$ to $A$.
+scan :: (T -> K -> T) T [K] -> [T]
+scan    func          e ls  => ...
+```
+
+**Behavior**
+
+Generates a list of reduced values from apply the function `func` to elements in the given list.
 
 **Usage**
 
@@ -1324,52 +1320,21 @@ scan (^) 1 [3, 2, 1]
 // [1, 1, 1, 1]
 ```
 
-### `any`
-
-**Signature** 
-
-$$
-\begin{align*}
-P\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
-
-where:
-- $P$ is of type $(\textbf{T}\rightarrow\textbf{Bool})$, 
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{Bool}$.
-
-**Behavior**: returns false if and only if $P$ does not hold for any element of $A$.
-
-**Usage**
-
-```Clean
-// CLEAN
-
-any isEven [1, 2, 3]  // True
-any isOdd  [1, 2, 3]  // True
-any isEven [1, 3, 5]  // False
-any isOdd  [2, 4, 6]  // False
-any isEven []         // False
-any isOdd  []         // False
-```
-
 ### `all`
 
 **Signature** 
 
-$$
-\begin{align*}
-P\rightarrow{A}\rightarrow{R}
-\end{align*}
-$$
+```clean
+// CLEAN
 
-where:
-- $P$ is of type $(\textbf{T}\rightarrow\textbf{Bool})$, 
-- $A$ is of type $[\textbf{T}]$, and
-- $R$ is of type $\textbf{Bool}$.
+all :: (T -> Bool) [T] -> Bool
+all    predicate   ls  => ...
+```
 
-**Behavior**: returns true if and only if $P$ holds for every element of $A$.
+**Behavior**
+
+Applies the function `predicate` to every element in the given list and returns true if at every element yields true.
+Otherwise, returns false.
 
 **Usage**
 
@@ -1382,6 +1347,35 @@ all isEven [2, 4, 6]  // True
 all isOdd  [1, 3, 5]  // True
 all isEven []         // True
 all isOdd  []         // True
+```
+
+### `any`
+
+**Signature** 
+
+```clean
+// CLEAN
+
+any :: (T -> Bool) [T] -> Bool
+any    predicate   ls  => ...
+```
+
+**Behavior**
+
+Applies the function `predicate` to every element in the given list and returns true if at least one element yields true.
+Otherwise, returns false.
+
+**Usage**
+
+```Clean
+// CLEAN
+
+any isEven [1, 2, 3]  // True
+any isOdd  [1, 2, 3]  // True
+any isEven [1, 3, 5]  // False
+any isOdd  [2, 4, 6]  // False
+any isEven []         // False
+any isOdd  []         // False
 ```
 
 ---

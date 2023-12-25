@@ -4,14 +4,14 @@ Date of last full revision: 25/DEC/2023
 
 # StdChar
 
-This module can be imported individually or as a part of the *Standard Environment*.
+This module can be imported directly or as a part of the `Standard Environment`.
 It defines many critical operations and functions on the character type.
 
 Visit [StdChar](https://cloogle.org/src/#base-stdenv/StdChar;icl;line=1) on Cloogle for source code of this module.
 
 ## Units
 
-Neither of these unit characters are printable but they facilitate *character addition* and *character subtraction* operators.
+Neither of these unit characters are printable but they facilitate `character addition` and `character subtraction` operators.
 
 ### Zero character
 
@@ -26,7 +26,7 @@ zero :== (toChar 0)
 
 **Definition**
 
-Represents a character whose ASCII encoding is zero.
+Represents the character whose ASCII encoding is zero.
 
 ### One character
 
@@ -41,7 +41,7 @@ one :== (toChar 1)
 
 **Definition**
 
-Represents a character whose ASCII encoding is one.
+Represents the character whose ASCII encoding is one.
 
 ---
 
@@ -282,6 +282,7 @@ toUpper    a    => ...
 **Behavior**
 
 Returns the upper case of `a`.
+
 If it is not possible to return an upper case of `a`, returns `a` as is.
 
 **Usage**
@@ -309,6 +310,7 @@ toLower    a    => ...
 **Behavior**
 
 Returns lower case of `a`.
+
 If it is not possible to return a lower case of `a`, returns `a` as is.
 
 **Usage**
@@ -344,6 +346,7 @@ isUpper    a    => ...
 **Behavior**
 
 Returns true if `a` is an upper case character.
+Otherwise, returns false.
 
 **Usage**
 
@@ -370,6 +373,7 @@ isLower    a    => ...
 **Behavior**
 
 Returns true if `a` is a lower case character.
+Otherwise, returns false.
 
 **Usage**
 
@@ -396,6 +400,7 @@ isAlphanum    a    => ...
 **Behavior**
 
 Returns true if `a` is an alphanumeric character.
+Otherwise, returns false.
 
 **Usage**
 
@@ -422,6 +427,7 @@ isAlpha    a    => ...
 **Behavior**
 
 Returns true if `a` is an alphabetic character.
+Otherwise, returns false.
 
 **Usage**
 
@@ -448,6 +454,7 @@ isDigit    a    => ...
 **Behavior**
 
 Returns true if `a` is a decimal digit.
+Otherwise, returns false.
 
 **Usage**
 
@@ -474,6 +481,7 @@ isOctDigit    a    => ...
 **Behavior**
 
 Returns true if `a` is an octal digit.
+Otherwise, returns false.
 
 **Usage**
 
@@ -501,6 +509,7 @@ isHexDigit    a    => ...
 **Behavior**
 
 Returns true if `a` is a hexadecimal digit.
+Otherwise, returns false.
 
 **Usage**
 
@@ -528,6 +537,8 @@ isAscii    a    => ...
 **Behavior**
 
 Returns true if `a` is a 7-bit ASCII character.
+Otherwise, returns false.
+
 
 The ASCII encoding of `a` has to be between 0 and 127 inclusive.
 See [7-bit ASCII characters](https://en.wikipedia.org/wiki/ASCII) for more information.
@@ -558,6 +569,7 @@ isControl    a    => ...
 **Behavior**
 
 Returns true if `a` is an ASCII control character.
+Otherwise, returns false.
 
 See [ASCII control characters](https://en.wikipedia.org/wiki/ASCII#Control_characters) for more information on ASCII control characters.
 
@@ -587,6 +599,7 @@ isControl    a    => ...
 **Behavior**
 
 Returns true if `a` is an ASCII printable character.
+Otherwise, returns false.
 
 See [ASCII printable character](https://en.wikipedia.org/wiki/ASCII#Printable_characters) for more information on ASCII printable characters.
 
@@ -616,6 +629,8 @@ isSpace    a    => ...
 **Behavior**
 
 Returns true if `a` is a whitespace character.
+Otherwise, returns false.
+
 Whitespace characters include:
 
 - space character
@@ -641,7 +656,7 @@ isSpace '\t'  // True
 
 ## Conversions to character
 
-Natively, only integers may be converted to character, but the programmer can define additional type conversions by creating new instances of *toChar* class from *StdOverloaded* module.
+Natively, only integers may be converted to character, but the programmer can define additional type conversions by creating new instances of `toChar` class from the `StdOverloaded` module.
 
 ### From integer
 
@@ -674,7 +689,7 @@ toChar 97  // 'a'
 
 The function responsible for converting character to other types is overloaded, which means it is a function with multiple signatures, so the desired type must be unambiguous.
 
-Natively, a character may convert to a string or an integer, but additional behavior may be added by creating new instances of *fromChar* class from *StdOverloaded* module.
+Natively, a character may convert to a string or an integer, but additional behavior may be added by creating new instances of `fromChar` class from the `StdOverloaded` module.
 
 Additionally, CLEAN provides an additional function for converting a character to an integer called `digitToInt`.
 

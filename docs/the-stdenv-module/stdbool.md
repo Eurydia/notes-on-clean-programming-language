@@ -4,10 +4,10 @@ Date of last full revision: 16/DEC/2023
 
 # StdBool
 
-This module can be imported individually or as a part of the _Standard Environment_.
+This module can be imported directly or as a part of the `StdEnv` module.
 It provides definitions for logical operations.
 
-Although the size of the module is small compare to other primitive data types provided by CLEAN, this module is still quite important, on the account that it defines _logical equivalence_.
+Although the size of the module is small compare to other primitive data types provided by CLEAN, this module is still quite important, on the account that it defines `logical equivalence`.
 
 That is correct, without this module, CLEAN has no idea how to perform one of the most fundamental operation is Boolean algebra.
 
@@ -102,7 +102,7 @@ False && False  // False
 
 ## Logical functions
 
-Although, technically speaking, _logical negation_ is a unary operator, there is no such thing as a unary operator in CLEAN, as much as it pains me, I have decided to place it here.
+Technically speaking, `logical negation` is a unary operator, there is no such thing as a unary operator in CLEAN, as much as it pains me, I have decided to place it here.
 
 ### Logical negation
 
@@ -117,7 +117,7 @@ not    a    => ...
 
 **Behavior**
 
-Negates the logical value of _a_.
+Negates the logical value of `a`.
 
 **Usage**
 
@@ -134,7 +134,7 @@ not False  // True
 
 The function which is responsible for converting Boolean to other types is overloaded, which means the desired type must be unambiguous.
 
-Natively, Boolean may convert to string, but additional behavior may be added by creating new instances of _fromBool_ class from _StdOverloaded_ module.
+Natively, Boolean may convert to string, but additional behavior may be added by creating new instances of `fromBool` class from the `StdOverloaded` module.
 
 ### To string
 

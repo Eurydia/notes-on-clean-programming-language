@@ -1,8 +1,14 @@
 # StdList
 
-Visit [StdInt](https://cloogle.org/src/#base-stdenv/StdList;icl;icl;line=1) on Cloogle for source code of this module.
+This module can be imported directly or as a part of the `StdEnv` module.
+It provides definitions for operators and functions critical for interaction of lists.
 
-## List manipulation operations
+Visit [StdList](https://cloogle.org/src/#base-stdenv/StdList;icl;icl;line=1) on Cloogle for source code of this module.
+
+## Basic operations
+
+These operators provide ways to manipulate lists.
+Some of these operators have great importance since they are the only way of interacting with lists.
 
 ### Concatenation
 
@@ -12,12 +18,12 @@ Visit [StdInt](https://cloogle.org/src/#base-stdenv/StdList;icl;icl;line=1) on C
 // CLEAN
 
 (++) infixr 5 :: [T] [T] -> [T]
-(++)             A   B   => ...
+(++)             lsA lsB => ...
 ```
 
 **Behavior**
 
-Concatenates list `B` to the end of list `A`.
+Concatenates the list `lsB` to the end of list `lsA`.
 
 **Usage**
 
@@ -37,11 +43,15 @@ Concatenates list `B` to the end of list `A`.
 // CLEAN
 
 (!!) infixl 9 :: [T] Int -> T
-(!!)             A   i   => ...
+(!!)             ls  idx => ...
 ```
+
+
 **Behavior**
 
-Returns the element at position `i` of list `A`.
+Returns the element at position `idx` of the list `ls`.
+CLEAN starts counting index from zero.
+
 Results in a run-time error when over-indexing or under-indexing.
 
 ```console
@@ -67,12 +77,12 @@ $ Subscript error in !!,index too large
 // CLEAN
 
 (%) infixl 9 :: [T] (Int, Int) -> [T]
-(%)             A   (i, j)     => ...
+(%)             ls  (l, r)     => ...
 ```
 
 **Behavior**
 
-Returns elements between position `i` and position `j` inclusive of list  `A`.
+Returns elements inclusively between position `l` and position `r` of the list  `A`.
 
 **Usage**
 
@@ -89,6 +99,10 @@ Returns elements between position `i` and position `j` inclusive of list  `A`.
 
 ## Relational operations
 
+CLEAN performs pairwise to compare two lists, so by extension, two lists are only comparable if they contain the same element type.
+
+Additionally, if the relational operation is not defined on the element type, it is not meaningful to compare two lists containing such type.
+
 ### Equal to
 
 **Signature**
@@ -97,15 +111,29 @@ Returns elements between position `i` and position `j` inclusive of list  `A`.
 // CLEAN
 
 (==) infix 4 :: [T] [T] -> Bool | == T
-(==)            A   B   => ...
+(==)            lsA lsB => ...
 ```
 
-"Equality" operation must be defined on type `T`.
+The type `T` must be an instance of the `Equality` class from the `StdOverloaded` module.
 
 **Behavior**
 
-Returns true if list `A` and list `B` are pairwise equal.
+Returns true if the list `lsA` and the list `lsB` are pairwise equal.
 Otherwise, returns false.
+
+I think an imperative style code provides a better illustration for this operator.
+
+```python
+# Python
+
+def eq(lsA: list[T], lsB: list[T]) -> bool:
+	if not (len(lsA) == len(lsB)):
+		return False
+	for a, b in zip(lsA, lsB):
+		if not (a == b):
+			return False
+	return True
+```
 
 **Usage**
 
@@ -131,20 +159,24 @@ Otherwise, returns false.
 (<>)            A   B   => ...
 ```
 
-Type `T` must be an instance of [[stdclass#`Eq`]]
+The type `T` must be an instance of the `Equality` class from the `StdOverloaded` module.
 
 **Behavior**
 
 Returns true if list `A` and list `B` are not pairwise equal.
 Otherwise, returns false.
 
-This operator considers the first element from list `A` and the first element of `B`, then the second, and so on.
-For each pair, it performs the equality operation.
+```text
+lsA := [a1, a2, a3, ..., an]
+lsB := [b1, b2, b3, ..., bm]
+```
 
-It returns true if at least one pair is not equal.
-Otherwise, it returns false.
+It performs equality operation on `a1` and `b1`, then `a2` and `b2`, and so on.
 
-If the lengths of list `A` and list `B` are different, it returns true, even if every pair is equal.
+If every pair is not equal, returns true.
+But if at least one pair is equal returns false.
+
+
 
 **Usage**
 
@@ -167,23 +199,21 @@ If the lengths of list `A` and list `B` are different, it returns true, even if 
 // CLEAN
 
 (<) infix 4 :: [T] [T] -> Bool | Ord T
-(<)            A   B   => ...
+(<)            lsA lsB => ...
 ```
 
-"Less than" operation must be defined on type `T`.
+The type `T` must be and instance of the `Ord` class from the `StdClass` module.
 
 **Behavior**
 
-Returns true if list `A` and list `B` are not pairwise equal.
+Returns true if list `lsA` and list `lsB` are pairwise less than.
 Otherwise, returns false.
 
-This operator considers the first element from list `A` and the first element of `B`, then the second, and so on.
-For each pair, it performs the equality operation.
+If the length of list `lsA` is greater than or equal to the length of list `lsB`, returns false.
 
-It returns true if at least one pair is not equal.
-Otherwise, it returns false.
+If the first element of `lsA` and `lsB` are equal, and the second element of `lsA` and `lsB` are equal, and the third element of `lsA` and `lsB` are equal, and so on, returns true.
 
-If the lengths of list `A` and list `B` are different, it returns true, even if every pair is equal.
+If at least one pair is not equal, returns false.
 
 **Usage**
 

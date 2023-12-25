@@ -34,7 +34,9 @@ select    Arr i   => ...
 
 **Behavior**
 
-Returns the element at position `i` of the array starting at zero.
+Returns the element at position `i` of the array.
+The index starts from zero.
+
 Results in a run-time error when over-indexing or under-indexing.
 
 ```console
@@ -94,7 +96,8 @@ update    Arr i   e => ...
 **Behavior**
 
 Updates the element at position `i` of the array with a new element `e`.
-The position starts at zero.
+The index starts from zero.
+
 Results in a run-time error when over-indexing or under-indexing.
 
 ```console

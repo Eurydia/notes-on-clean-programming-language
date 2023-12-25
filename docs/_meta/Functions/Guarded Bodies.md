@@ -43,7 +43,7 @@ identifier paramSeq
 ## Guarded Body Rules
 
 Guarded bodies extend a function implementation.
-As a result, they must follow [[Functions/guarded body Rules|certain rules]].
+As a result, they must follow [[Guarded Body Rules|certain rules]].
 
 Violation of such rules results in a compile-time error.
 
@@ -91,7 +91,7 @@ Let's call signum with 0 to investigate this procedure.
 signum 0  // ?
 ```
 
-The function is defined with two function implementations, so need to [[Functions/Control Form of Function Implementation#Selecting a Function Implementation To Be Evaluated|determine which one is selected]].
+The function is defined with two function implementations, so need to [[Control Form of Function Implementation#Selecting a Function Implementation To Be Evaluated|determine which one is selected]].
 
 The first function implementation is tried.
 The parameter matches the argument.

@@ -19,6 +19,6 @@ The `body` represents an expressions which will be evaluated when the function i
 Function implementations must follow a set of rules.
 Violation of these rules results in a compile-time error.
 
-See [[Functions/Function Implementation Rules|Function Implementation Rules]] for more information.
+See [[Function Implementation Rules|Function Implementation Rules]] for more information.
 
 ---

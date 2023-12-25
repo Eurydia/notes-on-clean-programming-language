@@ -2,9 +2,9 @@
 
 ## Defining a Function
 
-A simple function consists of one [[Functions/Function Implementation|function implementation]].
+A simple function consists of one [[Function Implementation|function implementation]].
 
-Optionally, a function definition can be [[Functions/Typing a Function|explicitly typed]] to increase readability.
+Optionally, a function definition can be [[Typing a Function|explicitly typed]] to increase readability.
 
 ---
 

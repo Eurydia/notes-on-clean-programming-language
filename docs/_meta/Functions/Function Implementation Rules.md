@@ -5,7 +5,7 @@ dg-publish: true
 > [!info] Prerequisites
 > To properly understand each implementation rule, understanding of function signatures is required.
 > 
-> See [[Functions/Function Signature|Function Signature]].
+> See [[Function Signature|Function Signature]].
 
 
 # Function Implementation Rules

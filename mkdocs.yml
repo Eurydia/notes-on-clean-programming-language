@@ -41,6 +41,9 @@ markdown_extensions:
 plugins:
   - search
   - roamlinks 
+  - exclude:
+    glob:
+      - _meta/*
 
 
 extra_javascript:

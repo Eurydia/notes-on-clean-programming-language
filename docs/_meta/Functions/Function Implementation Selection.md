@@ -12,11 +12,11 @@ When a function is called, exactly one function implementation must be selected 
 > Implementations are tried in descending order.
 > The first implementation, whose parameters match with every argument, is selected.
 
-Visit this [[Functions/Example/Function Implementation Selection Steps In Action|example]] to see the steps in action.
+Visit this [[Function Implementation Selection Steps In Action|example]] to see the steps in action.
 
 > [!warning]
 > When no function implementation can be selected, the function call results in a run-time error 
 
-Visit this [[Functions/Example/No Function Implementation Is Selected|example]] to see the how a run-time error occurs.
+Visit this [[No Function Implementation Is Selected|example]] to see the how a run-time error occurs.
 
 ---

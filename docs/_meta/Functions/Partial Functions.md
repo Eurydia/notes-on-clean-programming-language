@@ -7,7 +7,7 @@ A partially defined function is a function which results in a run-time error whe
 
 They are caused by an oversight where not all possible arguments, which can be given to a function, is not accounted for.
 
-In a practical environment, however, it is easier to accidentally defined a partial function with [[Functions/Guarded Bodies|guarded bodies]] than with [[Functions/Control Form of Function Implementation|function implementations]].
+In a practical environment, however, it is easier to accidentally defined a partial function with [[Guarded Bodies|guarded bodies]] than with [[Control Form of Function Implementation|function implementations]].
 
 
 

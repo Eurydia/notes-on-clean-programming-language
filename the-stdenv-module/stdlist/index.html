@@ -1,0 +1,2906 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../stdint/">
+      
+      
+        <link rel="next" href="../stdmisc/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>StdList - Notes on CLEAN (programming language)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Serif";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stdlist" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Notes on CLEAN (programming language)" class="md-header__button md-logo" aria-label="Notes on CLEAN (programming language)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes on CLEAN (programming language)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              StdList
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Notes on CLEAN (programming language)" class="md-nav__button md-logo" aria-label="Notes on CLEAN (programming language)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Notes on CLEAN (programming language)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes on CLEAN (programming language)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../puzzles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Puzzles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Predefined data types
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Predefined data types
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Predefined data types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20P%20Integer%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integer Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20P%20Real%20Number%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real Number Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20Array%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Array Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20Arrow%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDT S Arrow Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20Comprehensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comprehensions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20List%20Type%20Dot-Dot%20Expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dot-Dot Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20List%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20Tuple%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDT S Tuple Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/boolean-type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Boolean type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/character-type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    The stdenv module
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            The stdenv module
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The StdEnv module
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdarray/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdArray
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdbool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdBool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdchar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdChar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdcharlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdCharList
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdclass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdClass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdInt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    StdList
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    StdList
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concatenation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concatenation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indexing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slicing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relational operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equal to
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Not equal to
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less-than" class="md-nav__link">
+    <span class="md-ellipsis">
+      Less than
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less-than-or-equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Less than or equal to
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greater-than" class="md-nav__link">
+    <span class="md-ellipsis">
+      Greater than
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greater-than-or-equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Greater than or equal to
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#length" class="md-nav__link">
+    <span class="md-ellipsis">
+      length
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flatten" class="md-nav__link">
+    <span class="md-ellipsis">
+      flatten
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hd" class="md-nav__link">
+    <span class="md-ellipsis">
+      hd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tl" class="md-nav__link">
+    <span class="md-ellipsis">
+      tl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#last" class="md-nav__link">
+    <span class="md-ellipsis">
+      last
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    <span class="md-ellipsis">
+      init
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#take" class="md-nav__link">
+    <span class="md-ellipsis">
+      take
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drop" class="md-nav__link">
+    <span class="md-ellipsis">
+      drop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      reverse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertat" class="md-nav__link">
+    <span class="md-ellipsis">
+      insertAt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      removeAt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updateat" class="md-nav__link">
+    <span class="md-ellipsis">
+      updateAt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      splitAt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      indexList
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      repeat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeatn" class="md-nav__link">
+    <span class="md-ellipsis">
+      repeatn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ismember" class="md-nav__link">
+    <span class="md-ellipsis">
+      isMember
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isanymember" class="md-nav__link">
+    <span class="md-ellipsis">
+      isAnyMember
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removedup" class="md-nav__link">
+    <span class="md-ellipsis">
+      removeDup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removemember" class="md-nav__link">
+    <span class="md-ellipsis">
+      removeMember
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removemembers" class="md-nav__link">
+    <span class="md-ellipsis">
+      removeMembers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      removeIndex
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sum" class="md-nav__link">
+    <span class="md-ellipsis">
+      sum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prod" class="md-nav__link">
+    <span class="md-ellipsis">
+      prod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avg" class="md-nav__link">
+    <span class="md-ellipsis">
+      avg
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#and" class="md-nav__link">
+    <span class="md-ellipsis">
+      and
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    <span class="md-ellipsis">
+      or
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#higher-order-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Higher-order functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Higher-order functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takewhile" class="md-nav__link">
+    <span class="md-ellipsis">
+      takeWhile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropwhile" class="md-nav__link">
+    <span class="md-ellipsis">
+      dropWhile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      filter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      foldr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foldl" class="md-nav__link">
+    <span class="md-ellipsis">
+      foldl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterate" class="md-nav__link">
+    <span class="md-ellipsis">
+      iterate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      scan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all" class="md-nav__link">
+    <span class="md-ellipsis">
+      all
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any" class="md-nav__link">
+    <span class="md-ellipsis">
+      any
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validator-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validator functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validator functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#isempty" class="md-nav__link">
+    <span class="md-ellipsis">
+      isEmpty
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdmisc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdMisc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdordlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdOrdList
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdoverloaded/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdOverloaded
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdreal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdReal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdstring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdtuple/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdTuple
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concatenation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concatenation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indexing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slicing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relational operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equal to
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Not equal to
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less-than" class="md-nav__link">
+    <span class="md-ellipsis">
+      Less than
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less-than-or-equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Less than or equal to
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greater-than" class="md-nav__link">
+    <span class="md-ellipsis">
+      Greater than
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greater-than-or-equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Greater than or equal to
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#length" class="md-nav__link">
+    <span class="md-ellipsis">
+      length
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flatten" class="md-nav__link">
+    <span class="md-ellipsis">
+      flatten
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hd" class="md-nav__link">
+    <span class="md-ellipsis">
+      hd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tl" class="md-nav__link">
+    <span class="md-ellipsis">
+      tl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#last" class="md-nav__link">
+    <span class="md-ellipsis">
+      last
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    <span class="md-ellipsis">
+      init
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#take" class="md-nav__link">
+    <span class="md-ellipsis">
+      take
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drop" class="md-nav__link">
+    <span class="md-ellipsis">
+      drop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      reverse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertat" class="md-nav__link">
+    <span class="md-ellipsis">
+      insertAt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      removeAt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updateat" class="md-nav__link">
+    <span class="md-ellipsis">
+      updateAt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      splitAt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      indexList
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      repeat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeatn" class="md-nav__link">
+    <span class="md-ellipsis">
+      repeatn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ismember" class="md-nav__link">
+    <span class="md-ellipsis">
+      isMember
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isanymember" class="md-nav__link">
+    <span class="md-ellipsis">
+      isAnyMember
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removedup" class="md-nav__link">
+    <span class="md-ellipsis">
+      removeDup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removemember" class="md-nav__link">
+    <span class="md-ellipsis">
+      removeMember
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removemembers" class="md-nav__link">
+    <span class="md-ellipsis">
+      removeMembers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      removeIndex
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sum" class="md-nav__link">
+    <span class="md-ellipsis">
+      sum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prod" class="md-nav__link">
+    <span class="md-ellipsis">
+      prod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avg" class="md-nav__link">
+    <span class="md-ellipsis">
+      avg
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#and" class="md-nav__link">
+    <span class="md-ellipsis">
+      and
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    <span class="md-ellipsis">
+      or
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#higher-order-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Higher-order functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Higher-order functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#takewhile" class="md-nav__link">
+    <span class="md-ellipsis">
+      takeWhile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropwhile" class="md-nav__link">
+    <span class="md-ellipsis">
+      dropWhile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      filter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      foldr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foldl" class="md-nav__link">
+    <span class="md-ellipsis">
+      foldl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterate" class="md-nav__link">
+    <span class="md-ellipsis">
+      iterate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      scan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all" class="md-nav__link">
+    <span class="md-ellipsis">
+      all
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any" class="md-nav__link">
+    <span class="md-ellipsis">
+      any
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validator-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validator functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validator functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#isempty" class="md-nav__link">
+    <span class="md-ellipsis">
+      isEmpty
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="stdlist">StdList<a class="headerlink" href="#stdlist" title="Permanent link">&para;</a></h1>
+<p>This module can be imported directly or as a part of the <code>StdEnv</code> module.
+It provides definitions for operators and functions critical for interaction of lists.</p>
+<p>Visit <a href="https://cloogle.org/src/#base-stdenv/StdList;icl;icl;line=1">StdList</a> on Cloogle for source code of this module.</p>
+<h2 id="basic-operations">Basic operations<a class="headerlink" href="#basic-operations" title="Permanent link">&para;</a></h2>
+<p>These operators provide ways to manipulate lists.
+Some of these operators have great importance since they are the only way of interacting with lists.</p>
+<h3 id="concatenation">Concatenation<a class="headerlink" href="#concatenation" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="k">infixr</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="p">(</span><span class="o">++</span><span class="p">)</span><span class="w">             </span><span class="n">lsA</span><span class="w"> </span><span class="n">lsB</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Concatenates the list <code>lsB</code> to the end of list <code>lsA</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2, 3, 4, 5]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w">     </span><span class="c1">// [1, 2, 3, 4]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p">[]</span><span class="w">      </span><span class="c1">// [1, 2, 3]</span>
+</code></pre></div>
+<h3 id="indexing">Indexing<a class="headerlink" href="#indexing" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">!!</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+<span class="p">(</span><span class="o">!!</span><span class="p">)</span><span class="w">             </span><span class="n">ls</span><span class="w">  </span><span class="n">idx</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the element at position <code>idx</code> of the list <code>ls</code>.
+CLEAN starts counting index from zero.</p>
+<p>Results in a run-time error when over-indexing or under-indexing.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>Subscript<span class="w"> </span>error<span class="w"> </span><span class="k">in</span><span class="w"> </span>!!,index<span class="w"> </span>too<span class="w"> </span>large
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">!!</span><span class="w">   </span><span class="mi">5</span><span class="w">   </span><span class="c1">// Run-time error</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">!!</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// 3</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">!!</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="c1">// 1</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">!!</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w">  </span><span class="c1">// Run-time error</span>
+</code></pre></div>
+<h3 id="slicing">Slicing<a class="headerlink" href="#slicing" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">%</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="nc">Int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="p">(</span><span class="o">%</span><span class="p">)</span><span class="w">             </span><span class="n">ls</span><span class="w">  </span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w">     </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns elements inclusively between position <code>l</code> and position <code>r</code> of the list  <code>A</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="mi">2</span><span class="p">,</span><span class="w">  </span><span class="mi">4</span><span class="p">)</span><span class="w">  </span><span class="c1">// [3]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="mi">0</span><span class="p">,</span><span class="w">  </span><span class="mi">2</span><span class="p">)</span><span class="w">  </span><span class="c1">// [1, 2, 3]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">((</span><span class="mi">-1</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">  </span><span class="c1">// [1, 2]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">((</span><span class="mi">-2</span><span class="p">),</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">  </span><span class="c1">// [1, 2, 3]</span>
+</code></pre></div>
+<hr />
+<h2 id="relational-operations">Relational operations<a class="headerlink" href="#relational-operations" title="Permanent link">&para;</a></h2>
+<p>CLEAN performs pairwise to compare two lists, so by extension, two lists are only comparable if they contain the same element type.</p>
+<p>Additionally, if the relational operation is not defined on the element type, it is not meaningful to compare two lists containing such type.</p>
+<p>I suggest that if the behavior is unclear, check the usage example.
+I try to include a comprehensive use case for each operators.</p>
+<h3 id="equal-to">Equal to<a class="headerlink" href="#equal-to" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">==</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nc">T</span>
+<span class="p">(</span><span class="o">==</span><span class="p">)</span><span class="w">            </span><span class="n">lsA</span><span class="w"> </span><span class="n">lsB</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>The type <code>T</code> must be an instance of the <code>Equality</code> class from the <code>StdOverloaded</code> module.</p>
+<p><strong>Behavior</strong></p>
+<p>Returns true if the list <code>lsA</code> and the list <code>lsB</code> are pairwise equal.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">[]</span><span class="w">     </span><span class="o">==</span><span class="w"> </span><span class="p">[]</span><span class="w">      </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">     </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">    </span><span class="o">==</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+</code></pre></div>
+<h3 id="not-equal-to">Not equal to<a class="headerlink" href="#not-equal-to" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nc">T</span>
+<span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span><span class="w">            </span><span class="nc">A</span><span class="w">   </span><span class="nc">B</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>The type <code>T</code> must be an instance of the <code>Equality</code> class from the <code>StdOverloaded</code> module.</p>
+<p><strong>Behavior</strong></p>
+<p>Returns true if list <code>A</code> and list <code>B</code> are not pairwise equal.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">[]</span><span class="w">     </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="p">[]</span><span class="w">      </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">     </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">    </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+</code></pre></div>
+<h3 id="less-than">Less than<a class="headerlink" href="#less-than" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">&lt;</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nc">Ord</span><span class="w"> </span><span class="nc">T</span>
+<span class="p">(</span><span class="o">&lt;</span><span class="p">)</span><span class="w">            </span><span class="n">lsA</span><span class="w"> </span><span class="n">lsB</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>The type <code>T</code> must be and instance of the <code>Ord</code> class from the <code>StdClass</code> module.</p>
+<p><strong>Behavior</strong></p>
+<p>Returns true if list <code>lsA</code> and list <code>lsB</code> are pairwise less than.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">[]</span><span class="w">     </span><span class="o">&lt;</span><span class="w"> </span><span class="p">[]</span><span class="w">      </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">     </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">    </span><span class="o">&lt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+</code></pre></div>
+<h3 id="less-than-or-equal-to">Less than or equal to<a class="headerlink" href="#less-than-or-equal-to" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">&lt;=</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nc">Ord</span><span class="w"> </span><span class="nc">T</span>
+<span class="p">(</span><span class="o">&lt;=</span><span class="p">)</span><span class="w">            </span><span class="n">lsA</span><span class="w"> </span><span class="n">lsB</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>The type <code>T</code> must be and instance of the <code>Ord</code> class from the <code>StdClass</code> module.</p>
+<p><strong>Behavior</strong></p>
+<p>Returns true if list <code>lsA</code> and list <code>lsB</code> are pairwise less than or equal.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">[]</span><span class="w">     </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">[]</span><span class="w">     </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">    </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">    </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="c1">// False</span>
+</code></pre></div>
+<h3 id="greater-than">Greater than<a class="headerlink" href="#greater-than" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">&lt;=</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nc">Ord</span><span class="w"> </span><span class="nc">T</span>
+<span class="p">(</span><span class="o">&lt;=</span><span class="p">)</span><span class="w">            </span><span class="n">lsA</span><span class="w"> </span><span class="n">lsB</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>The type <code>T</code> must be and instance of the <code>Ord</code> class from the <code>StdClass</code> module.</p>
+<p><strong>Behavior</strong></p>
+<p>Returns true if list <code>lsA</code> and list <code>lsB</code> are pairwise greater than.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">[]</span><span class="w">     </span><span class="o">&gt;</span><span class="w"> </span><span class="p">[]</span><span class="w">      </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">     </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">    </span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+</code></pre></div>
+<h3 id="greater-than-or-equal-to">Greater than or equal to<a class="headerlink" href="#greater-than-or-equal-to" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">&gt;=</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nc">Ord</span><span class="w"> </span><span class="nc">T</span>
+<span class="p">(</span><span class="o">&gt;=</span><span class="p">)</span><span class="w">            </span><span class="n">lsA</span><span class="w"> </span><span class="n">lsB</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>The type <code>T</code> must be and instance of the <code>Ord</code> class from the <code>StdClass</code> module.</p>
+<p><strong>Behavior</strong></p>
+<p>Returns true if list <code>lsA</code> and list <code>lsB</code> are pairwise greater than or equal.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">[]</span><span class="w">     </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">[]</span><span class="w">      </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">     </span><span class="c1">// True</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">    </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+</code></pre></div>
+<hr />
+<h2 id="basic-functions">Basic functions<a class="headerlink" href="#basic-functions" title="Permanent link">&para;</a></h2>
+<p>These functions provide methods to interacting with lists.
+Unlike some operations, the behaviors of these functions can be achieved using regular CLEAN syntax, but they are provided mostly for convenience purposes.</p>
+<h3 id="length"><code>length</code><a class="headerlink" href="#length" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">length</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="n">length</span><span class="w">    </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the number of elements in the list.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">length</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// 3</span>
+<span class="n">length</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">     </span><span class="c1">// 2</span>
+<span class="n">length</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">        </span><span class="c1">// 1</span>
+<span class="n">length</span><span class="w"> </span><span class="p">[]</span><span class="w">         </span><span class="c1">// 0</span>
+</code></pre></div>
+<h3 id="flatten"><code>flatten</code><a class="headerlink" href="#flatten" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">flatten</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[[</span><span class="nc">T</span><span class="p">]]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">flatten</span><span class="w">    </span><span class="n">mat</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Transforms a two-dimensional list into a one-dimensional list.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">flatten</span><span class="w"> </span><span class="p">[[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span><span class="w">  </span><span class="c1">// [1, 2, 3]</span>
+<span class="n">flatten</span><span class="w"> </span><span class="p">[[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]]</span><span class="w">    </span><span class="c1">// [1, 2, 3]</span>
+<span class="n">flatten</span><span class="w"> </span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]]</span><span class="w">      </span><span class="c1">// [1, 2, 3]</span>
+<span class="n">flatten</span><span class="w"> </span><span class="p">[]</span><span class="w">               </span><span class="c1">// []</span>
+</code></pre></div>
+<h3 id="hd"><code>hd</code><a class="headerlink" href="#hd" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">hd</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+<span class="n">hd</span><span class="w">    </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the first element of the list.</p>
+<p>Results in a run-time error if the given list is empty.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>hd<span class="w"> </span>of<span class="w"> </span><span class="o">[]</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">hd</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// 1</span>
+<span class="n">hd</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">     </span><span class="c1">// 1</span>
+<span class="n">hd</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">        </span><span class="c1">// 1</span>
+<span class="n">hd</span><span class="w"> </span><span class="p">[]</span><span class="w">         </span><span class="c1">// run-time error</span>
+</code></pre></div>
+<h3 id="tl"><code>tl</code><a class="headerlink" href="#tl" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">tl</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">tl</span><span class="w">    </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the list with the first element excluded.</p>
+<p>Results in a run-time error if the list is empty.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>tl<span class="w"> </span>of<span class="w"> </span><span class="o">[]</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">tl</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [2, 3]</span>
+<span class="n">tl</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">     </span><span class="c1">// [2]</span>
+<span class="n">tl</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">        </span><span class="c1">// []</span>
+<span class="n">tl</span><span class="w"> </span><span class="p">[]</span><span class="w">         </span><span class="c1">// run-time error</span>
+</code></pre></div>
+<h3 id="last"><code>last</code><a class="headerlink" href="#last" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">last</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+<span class="n">last</span><span class="w">    </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the last element of the list.</p>
+<p>Results in a run-time error if the given list is empty.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>last<span class="w"> </span>of<span class="w"> </span><span class="o">[]</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">last</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// 3</span>
+<span class="n">last</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">     </span><span class="c1">// 2</span>
+<span class="n">last</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">        </span><span class="c1">// 1</span>
+<span class="n">last</span><span class="w"> </span><span class="p">[]</span><span class="w">         </span><span class="c1">// run-time error</span>
+</code></pre></div>
+<h3 id="init"><code>init</code><a class="headerlink" href="#init" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">init</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">init</span><span class="w">    </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the list with the last element excluded.</p>
+<p>Results in a run-time error if the given list is empty.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>init<span class="w"> </span>of<span class="w"> </span><span class="o">[]</span>
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">init</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2]</span>
+<span class="n">init</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">     </span><span class="c1">// [1]</span>
+<span class="n">init</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">        </span><span class="c1">// []</span>
+<span class="n">init</span><span class="w"> </span><span class="p">[]</span><span class="w">         </span><span class="c1">// NOT OK</span>
+</code></pre></div>
+<h3 id="take"><code>take</code><a class="headerlink" href="#take" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">take</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">take</span><span class="w">    </span><span class="n">cnt</span><span class="w"> </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the first <code>cnt</code> elements of of the list.</p>
+<p>If <code>cnt</code> is greater than or equal to the length of the list, returns the entire list.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">take</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2]</span>
+<span class="n">take</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">     </span><span class="c1">// [1]</span>
+<span class="n">take</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">        </span><span class="c1">// []</span>
+<span class="n">take</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">[]</span><span class="w">         </span><span class="c1">// []</span>
+</code></pre></div>
+<h3 id="drop"><code>drop</code><a class="headerlink" href="#drop" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">drop</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">drop</span><span class="w">    </span><span class="n">cnt</span><span class="w"> </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the list with the first <code>cnt</code> elements excluded.</p>
+<p>If <code>cnt</code> is greater than or equal to the length of the list, returns an empty list.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">drop</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [3]</span>
+<span class="n">drop</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">     </span><span class="c1">// [2]</span>
+<span class="n">drop</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">        </span><span class="c1">// []</span>
+<span class="n">drop</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">[]</span><span class="w">         </span><span class="c1">// []</span>
+</code></pre></div>
+<h3 id="reverse"><code>reverse</code><a class="headerlink" href="#reverse" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">reverse</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">reverse</span><span class="w">    </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the list in reversed order.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">reverse</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [3, 2, 1]</span>
+<span class="n">reverse</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">     </span><span class="c1">// [2, 1]</span>
+<span class="n">reverse</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">        </span><span class="c1">// [1]</span>
+<span class="n">reverse</span><span class="w"> </span><span class="p">[]</span><span class="w">         </span><span class="c1">// []</span>
+</code></pre></div>
+<h3 id="insertat"><code>insertAt</code><a class="headerlink" href="#insertat" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">insertAt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">insertAt</span><span class="w">    </span><span class="n">idx</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Inserts an element <code>e</code> into the position <code>idx</code> of the list.
+The previous element at the position <code>idx</code> is moved to the right if there is such an element.</p>
+<p>The position starts from zero.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">insertAt</span><span class="w">   </span><span class="mi">2</span><span class="w">  </span><span class="mi">9</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2, 9]</span>
+<span class="n">insertAt</span><span class="w">   </span><span class="mi">1</span><span class="w">  </span><span class="mi">9</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 9, 2]</span>
+<span class="n">insertAt</span><span class="w">   </span><span class="mi">0</span><span class="w">  </span><span class="mi">9</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// [9, 1, 2]</span>
+<span class="n">insertAt</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2, 9]</span>
+</code></pre></div>
+<h3 id="removeat"><code>removeAt</code><a class="headerlink" href="#removeat" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">removeAt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">removeAt</span><span class="w">    </span><span class="n">idx</span><span class="w"> </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Removes the element at position <code>idx</code> from the list.
+The position starts from zero.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">removeAt</span><span class="w">   </span><span class="mi">2</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2]</span>
+<span class="n">removeAt</span><span class="w">   </span><span class="mi">1</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1]</span>
+<span class="n">removeAt</span><span class="w">   </span><span class="mi">0</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// [2]</span>
+<span class="n">removeAt</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1,2]</span>
+</code></pre></div>
+<h3 id="updateat"><code>updateAt</code><a class="headerlink" href="#updateat" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">updateAt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">updateAt</span><span class="w">    </span><span class="n">idx</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Overrides the element at position <code>idx</code> with a new element <code>e</code>.</p>
+<p>If the <code>idx</code> is not a valid index of the list, does nothing.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">updateAt</span><span class="w">   </span><span class="mi">2</span><span class="w">  </span><span class="mi">9</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2]</span>
+<span class="n">updateAt</span><span class="w">   </span><span class="mi">1</span><span class="w">  </span><span class="mi">9</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 9]</span>
+<span class="n">updateAt</span><span class="w">   </span><span class="mi">0</span><span class="w">  </span><span class="mi">9</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// [9, 2]</span>
+<span class="n">updateAt</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2]</span>
+</code></pre></div>
+<h3 id="splitat"><code>splitAt</code><a class="headerlink" href="#splitat" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">splitAt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">([</span><span class="nc">T</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">])</span>
+<span class="n">splitAt</span><span class="w">    </span><span class="n">idx</span><span class="w"> </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Splits the list into two smaller lists at position <code>idx</code>.
+The element at position <code>idx</code> moves to the second list.</p>
+<p>The position starts from zero.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">splitAt</span><span class="w">   </span><span class="mi">2</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// ([1, 2], [])</span>
+<span class="n">splitAt</span><span class="w">   </span><span class="mi">1</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// ([1], [2])</span>
+<span class="n">splitAt</span><span class="w">   </span><span class="mi">0</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// ([], [1, 2])</span>
+<span class="n">splitAt</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// ([1, 2], [])</span>
+</code></pre></div>
+<h3 id="indexlist"><code>indexList</code><a class="headerlink" href="#indexlist" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Clean</span>
+
+<span class="n">indexList</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">Int</span><span class="p">]</span>
+<span class="n">indexList</span><span class="w">    </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns a list of indexes equal to the length of the list.
+If the given list is empty, returns an empty list.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">indexList</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w">  </span><span class="c1">// [0, 1, 2]</span>
+<span class="n">indexList</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">     </span><span class="c1">// [0, 1]</span>
+<span class="n">indexList</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w">        </span><span class="c1">// [0]</span>
+<span class="n">indexList</span><span class="w"> </span><span class="p">[]</span><span class="w">         </span><span class="c1">// []</span>
+</code></pre></div>
+<h3 id="repeat"><code>repeat</code><a class="headerlink" href="#repeat" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">repeat</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">repeat</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns a list of containing infinitely many of the given element <code>e</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">repeat</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1">// [0, 0, 0, ...]</span>
+<span class="n">repeat</span><span class="w"> </span><span class="mf">1.0</span><span class="w">   </span><span class="c1">// [1.0, 1.0, 1.0, ...]</span>
+<span class="n">repeat</span><span class="w"> </span><span class="l l-Char">&#39;a&#39;</span><span class="w">   </span><span class="c1">// [&#39;a&#39;, &#39;a&#39;, &#39;a&#39;, ...] </span>
+<span class="n">repeat</span><span class="w"> </span><span class="l">True</span><span class="w">  </span><span class="c1">// [True, True, True, ...]</span>
+</code></pre></div>
+<h3 id="repeatn"><code>repeatn</code><a class="headerlink" href="#repeatn" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">repeatn</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">repeat</span><span class="w">     </span><span class="n">cnt</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Generates a list of length <code>cnt</code> contain a single element <code>e</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">repeatn</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1">// []</span>
+<span class="n">repeatn</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">1.0</span><span class="w">   </span><span class="c1">// [1.0]</span>
+<span class="n">repeatn</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="l l-Char">&#39;a&#39;</span><span class="w">   </span><span class="c1">// [&#39;a&#39;, &#39;a&#39;] </span>
+<span class="n">repeatn</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="l">True</span><span class="w">  </span><span class="c1">// [True, True, True]</span>
+</code></pre></div>
+<h3 id="ismember"><code>isMember</code><a class="headerlink" href="#ismember" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">isMember</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nc">T</span>
+<span class="n">isMember</span><span class="w">    </span><span class="n">e</span><span class="w"> </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>The type <code>T</code> must be an instance of the <code>Equality</code> class from <code>StdOverloaded</code> module.</p>
+<p><strong>Behavior</strong></p>
+<p>Returns true if the list contains the given element.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">isMember</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="n">isMember</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+<span class="n">isMember</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[]</span><span class="w">         </span><span class="c1">// False</span>
+</code></pre></div>
+<h3 id="isanymember"><code>isAnyMember</code><a class="headerlink" href="#isanymember" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">isAnyMember</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nc">T</span>
+<span class="n">isAnyMember</span><span class="w">    </span><span class="n">lsA</span><span class="w"> </span><span class="n">lsB</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>The type <code>T</code> must be an instance of the <code>Equality</code> class from <code>StdOverloaded</code> module.</p>
+<p><strong>Behavior</strong></p>
+<p>Returns true if at least one element of the list <code>lsB</code> is an element of the list <code>lsA</code>.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">isAnyMember</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+<span class="n">isAnyMember</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">     </span><span class="c1">// True</span>
+<span class="n">isAnyMember</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="n">isAnyMember</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">[]</span><span class="w">      </span><span class="c1">// False</span>
+<span class="n">isAnyMember</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">      </span><span class="c1">// False</span>
+</code></pre></div>
+<h3 id="removedup"><code>removeDup</code><a class="headerlink" href="#removedup" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">removeDup</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nc">T</span>
+<span class="n">removeDup</span><span class="w">    </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>The type <code>T</code> must be an instance of the class <code>Equality</code> from the <code>StdOverloaded</code> module.</p>
+<p><strong>Behavior</strong></p>
+<p>Removes duplicate elements from the given list.
+Only the first occurrence of each element and discard other occurrences.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">removeDup</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2, 3]</span>
+<span class="n">removeDup</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2, 3, 4]</span>
+<span class="n">removeDup</span><span class="w"> </span><span class="p">[]</span><span class="w">            </span><span class="c1">// []</span>
+</code></pre></div>
+<h3 id="removemember"><code>removeMember</code><a class="headerlink" href="#removemember" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">removeMember</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nc">T</span>
+<span class="n">removeMember</span><span class="w">    </span><span class="n">e</span><span class="w"> </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>The type <code>T</code> must be an instance of the <code>Equality</code> class from <code>StdOverloaded</code> module.</p>
+<p><strong>Behavior</strong></p>
+<p>Removes the first occurrence of the given element from the list.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">removeMember</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2, 2, 3]</span>
+<span class="n">removeMember</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2, 3]</span>
+<span class="n">removeMember</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [2, 2, 3]</span>
+<span class="n">removeMember</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">[]</span><span class="w">            </span><span class="c1">// []</span>
+</code></pre></div>
+<h3 id="removemembers"><code>removeMembers</code><a class="headerlink" href="#removemembers" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">removeMember</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nc">T</span>
+<span class="n">removeMember</span><span class="w">    </span><span class="n">oLs</span><span class="w"> </span><span class="n">rLs</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>The type <code>T</code> must be an instance of the <code>Equality</code> class from <code>StdOverloaded</code> module.</p>
+<p><strong>Behavior</strong></p>
+<p>Removes the first occurrence of each element in the list <code>rLs</code> from the list <code>oLs</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">removeMembers</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="p">[]</span><span class="w">  </span><span class="c1">// [1, 2, 3]</span>
+<span class="n">removeMembers</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">    </span><span class="c1">// [2, 3]</span>
+<span class="n">removeMembers</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">    </span><span class="c1">// [1]</span>
+<span class="n">removeMembers</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">     </span><span class="c1">// []</span>
+</code></pre></div>
+<h3 id="removeindex"><code>removeIndex</code><a class="headerlink" href="#removeindex" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">removeIndex</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">])</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nc">T</span>
+<span class="n">removeIndex</span><span class="w">    </span><span class="n">e</span><span class="w"> </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>The type <code>T</code> must be an instance of the <code>Equality</code> class from the <code>StdOverloaded</code> module.</p>
+<p><strong>Behavior</strong></p>
+<p>Removes the first occurrence of the given element <code>e</code> from the list <code>ls</code>, then returns its index and the modified list.</p>
+<p>Results in a run-time error the list does not contain the given element.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>Error<span class="w"> </span><span class="k">in</span><span class="w"> </span>removeIndex:<span class="w"> </span>element<span class="w"> </span>not<span class="w"> </span>found
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">removeIndex</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// (1, [1, 2, 3])</span>
+<span class="n">removeIndex</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// (0, [2, 2, 3])</span>
+<span class="n">removeIndex</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// (2, [1, 2, 2])</span>
+<span class="n">removeIndex</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// run-time error</span>
+</code></pre></div>
+<h3 id="sum"><code>sum</code><a class="headerlink" href="#sum" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">sum</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="w"> </span><span class="nc">T</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">zero</span><span class="w"> </span><span class="nc">T</span><span class="p">)</span>
+<span class="n">sum</span><span class="w">    </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span><span class="w"> </span>
+</code></pre></div>
+<p>The type <code>T</code> must be an instance of the <code>zero</code> and <code>Addition</code> class from <code>StdOverloaded</code>.</p>
+<p><strong>Behavior</strong></p>
+<p>Returns the sum of the list.</p>
+<p>Under the hood, the function adds every element together using the defined addition operation and zero unit on the type <code>T</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">sum</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w">  </span><span class="c1">// 10</span>
+<span class="n">sum</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">     </span><span class="c1">// 6</span>
+<span class="n">sum</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">        </span><span class="c1">// 3</span>
+<span class="n">sum</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">           </span><span class="c1">// 1</span>
+</code></pre></div>
+<h3 id="prod"><code>prod</code><a class="headerlink" href="#prod" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">prod</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="w"> </span><span class="nc">T</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">zero</span><span class="w"> </span><span class="nc">T</span><span class="p">)</span>
+<span class="n">prod</span><span class="w">    </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span><span class="w"> </span>
+</code></pre></div>
+<p>The type <code>T</code> must be an instance of the <code>one</code> and <code>Multiplication</code> class from <code>StdOverloaded</code>.</p>
+<p><strong>Behavior</strong></p>
+<p>Returns the product of the list.</p>
+<p>Under the hood, the function multiplies every element together using the defined multiplication operation and one unit on the type <code>T</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">prod</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w">  </span><span class="c1">// 24</span>
+<span class="n">prod</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">     </span><span class="c1">// 6</span>
+<span class="n">prod</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">        </span><span class="c1">// 3</span>
+<span class="n">prod</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">           </span><span class="c1">// 1</span>
+</code></pre></div>
+<h3 id="avg"><code>avg</code><a class="headerlink" href="#avg" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">avg</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nc">IncDec</span><span class="w"> </span><span class="nc">T</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="w"> </span><span class="nc">T</span><span class="p">)</span>
+<span class="n">avg</span><span class="w">    </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span><span class="w"> </span>
+</code></pre></div>
+<p>The type <code>T</code> must be an instance of the <code>IncDec</code> class from <code>StdClass</code> module and the <code>Division</code> class from <code>StdOverloaded</code>.</p>
+<p><strong>Behavior</strong></p>
+<p>Returns the average of the list.</p>
+<p>Under the hood, the function adds every element together using the defined addition operation and zero unit on the type <code>T</code>, then it divides the sum by the length of the list.</p>
+<p>Results in a run-time error if the given list is empty.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>avg<span class="w"> </span>called<span class="w"> </span>with<span class="w"> </span>empty<span class="w"> </span>list
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">avg</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w">  </span><span class="c1">// 2</span>
+<span class="n">avg</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">     </span><span class="c1">// 2</span>
+<span class="n">avg</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">        </span><span class="c1">// 1</span>
+<span class="n">avg</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">           </span><span class="c1">// 1</span>
+<span class="n">avg</span><span class="w"> </span><span class="p">[]</span><span class="w">            </span><span class="c1">// run-time error</span>
+</code></pre></div>
+<h3 id="and"><code>and</code><a class="headerlink" href="#and" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAn</span>
+
+<span class="n">and</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">Bool</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="n">and</span><span class="w">    </span><span class="n">bLs</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns true if every element in the given list is true.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">and</span><span class="w"> </span><span class="p">[</span><span class="l">False</span><span class="p">,</span><span class="w"> </span><span class="l">False</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="n">and</span><span class="w"> </span><span class="p">[</span><span class="l">False</span><span class="p">,</span><span class="w"> </span><span class="l">True</span><span class="p">]</span><span class="w">   </span><span class="c1">// True</span>
+<span class="n">and</span><span class="w"> </span><span class="p">[</span><span class="l">True</span><span class="p">,</span><span class="w"> </span><span class="l">True</span><span class="p">]</span><span class="w">    </span><span class="c1">// True</span>
+<span class="n">and</span><span class="w"> </span><span class="p">[</span><span class="l">False</span><span class="p">]</span><span class="w">         </span><span class="c1">// False</span>
+<span class="n">and</span><span class="w"> </span><span class="p">[</span><span class="l">True</span><span class="p">]</span><span class="w">          </span><span class="c1">// True</span>
+<span class="n">and</span><span class="w"> </span><span class="p">[]</span><span class="w">              </span><span class="c1">// True</span>
+</code></pre></div>
+<h3 id="or"><code>or</code><a class="headerlink" href="#or" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAn</span>
+
+<span class="n">or</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">Bool</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="n">or</span><span class="w">    </span><span class="n">bLs</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns true if at least one element in the given list is true.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">or</span><span class="w"> </span><span class="p">[</span><span class="l">False</span><span class="p">,</span><span class="w"> </span><span class="l">False</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="n">or</span><span class="w"> </span><span class="p">[</span><span class="l">False</span><span class="p">,</span><span class="w"> </span><span class="l">True</span><span class="p">]</span><span class="w">   </span><span class="c1">// True</span>
+<span class="n">or</span><span class="w"> </span><span class="p">[</span><span class="l">True</span><span class="p">,</span><span class="w"> </span><span class="l">True</span><span class="p">]</span><span class="w">    </span><span class="c1">// True</span>
+<span class="n">or</span><span class="w"> </span><span class="p">[</span><span class="l">False</span><span class="p">]</span><span class="w">         </span><span class="c1">// False</span>
+<span class="n">or</span><span class="w"> </span><span class="p">[</span><span class="l">True</span><span class="p">]</span><span class="w">          </span><span class="c1">// True</span>
+<span class="n">or</span><span class="w"> </span><span class="p">[]</span><span class="w">              </span><span class="c1">// False</span>
+</code></pre></div>
+<hr />
+<h2 id="higher-order-functions">Higher-order functions<a class="headerlink" href="#higher-order-functions" title="Permanent link">&para;</a></h2>
+<p>These are functions which accepts a list and another functions as arguments.
+They provided a similar functionality to their basic counterpart but with additional flexibility.</p>
+<h3 id="takewhile"><code>takeWhile</code><a class="headerlink" href="#takewhile" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">takeWhile</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">(</span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">takeWhile</span><span class="w">    </span><span class="n">predicate</span><span class="w">   </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>It performs the <code>predicate</code> on each element of the given list starting from the left.</p>
+<p>If the predicate returns true for an element, it will be collected into the result.</p>
+<p>If the predicate returns false for an element, the function stops and returns the element it has collected so far.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">takeWhile</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 1, 1]</span>
+<span class="n">takeWhile</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1]</span>
+<span class="n">takeWhile</span><span class="w"> </span><span class="n">isEven</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// []</span>
+<span class="n">takeWhile</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[]</span><span class="w">         </span><span class="c1">// []</span>
+</code></pre></div>
+<h3 id="dropwhile"><code>dropWhile</code><a class="headerlink" href="#dropwhile" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">dropWhile</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">(</span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">dropWhile</span><span class="w">    </span><span class="n">predicate</span><span class="w">   </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>It performs the <code>predicate</code> on each element of the given list starting from the left.</p>
+<p>If the predicate returns true for an element, it will be discarded.</p>
+<p>If the predicate returns false for an element, the function stops and the rest of the list.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">dropWhile</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w">  </span><span class="c1">// []</span>
+<span class="n">dropWhile</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [2, 3]</span>
+<span class="n">dropWhile</span><span class="w"> </span><span class="n">isEven</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1, 2, 3]</span>
+<span class="n">dropWhile</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[]</span><span class="w">         </span><span class="c1">// []</span>
+</code></pre></div>
+<h3 id="filter"><code>filter</code><a class="headerlink" href="#filter" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">filter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">(</span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">filter</span><span class="w">    </span><span class="n">predicate</span><span class="w">   </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Filters the list using the given predicate, keeping only the element which yields true.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">filter</span><span class="w"> </span><span class="n">isEven</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w">  </span><span class="c1">// [2, 4]</span>
+<span class="n">filter</span><span class="w"> </span><span class="n">isEven</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [2, 3]</span>
+<span class="n">filter</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1]</span>
+<span class="n">filter</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w">  </span><span class="c1">// [3]</span>
+<span class="n">filter</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[]</span><span class="w">         </span><span class="c1">// []</span>
+</code></pre></div>
+<h3 id="foldr"><code>foldr</code><a class="headerlink" href="#foldr" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">foldr</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">(</span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">K</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">K</span><span class="p">)</span><span class="w"> </span><span class="nc">K</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">K</span>
+<span class="n">foldr</span><span class="w">    </span><span class="n">func</span><span class="w">          </span><span class="n">s</span><span class="w"> </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Folds the list from left to right using the given <code>func</code>.
+The starting value is determined by the argument <code>s</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">foldr</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// 1 + (2 + (3 + 0))</span>
+<span class="n">foldr</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w">  </span><span class="c1">// 3 + (2 + (1 + 0))</span>
+<span class="n">foldr</span><span class="w"> </span><span class="p">(</span><span class="o">^</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// 1 ^ (2 ^ (3 ^ 1))</span>
+<span class="n">foldr</span><span class="w"> </span><span class="p">(</span><span class="o">^</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w">  </span><span class="c1">// 3 ^ (2 ^ (1 ^ 1))</span>
+</code></pre></div>
+<h3 id="foldl"><code>foldl</code><a class="headerlink" href="#foldl" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">foldl</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">(</span><span class="nc">K</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">K</span><span class="p">)</span><span class="w"> </span><span class="nc">K</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+<span class="n">foldl</span><span class="w">    </span><span class="n">func</span><span class="w">          </span><span class="n">s</span><span class="w"> </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Folds the list from right to left using the given <code>func</code>.
+The starting value is determined by the argument <code>s</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">foldl</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// ((0 + 1) + 2) + 3</span>
+<span class="n">foldr</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w">  </span><span class="c1">// ((0 + 3) + 2) + 1</span>
+<span class="n">foldl</span><span class="w"> </span><span class="p">(</span><span class="o">^</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// ((1 ^ 1) ^ 2) ^ 3</span>
+<span class="n">foldl</span><span class="w"> </span><span class="p">(</span><span class="o">^</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w">  </span><span class="c1">// ((1 ^ 3) ^ 2) ^ 1</span>
+</code></pre></div>
+<h3 id="iterate"><code>iterate</code><a class="headerlink" href="#iterate" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">iterate</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">(</span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span><span class="p">)</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">iterate</span><span class="w">    </span><span class="n">func</span><span class="w">     </span><span class="n">e</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns an infinite list by repeatedly apply the <code>func</code> to <code>e</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">iterate</span><span class="w"> </span><span class="p">((</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="c1">// [0, 1, 2, ...]</span>
+<span class="n">iterate</span><span class="w"> </span><span class="p">((</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="c1">// [1, 2, 4, ...]</span>
+<span class="n">iterate</span><span class="w"> </span><span class="n">toInt</span><span class="w">   </span><span class="mi">1</span><span class="w">  </span><span class="c1">// [1, 1, 1, ...]</span>
+</code></pre></div>
+<h3 id="map"><code>map</code><a class="headerlink" href="#map" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">map</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">(</span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">K</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">K</span><span class="p">]</span>
+<span class="n">map</span><span class="w">    </span><span class="n">func</span><span class="w">     </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Applies the function <code>func</code> to every element of the given list.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">map</span><span class="w"> </span><span class="n">isEven</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [False, True, False]</span>
+<span class="n">map</span><span class="w"> </span><span class="n">toReal</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [1.0, 2.0, 3.0]</span>
+<span class="n">map</span><span class="w"> </span><span class="p">((</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// [3, 4, 5]</span>
+</code></pre></div>
+<h3 id="scan"><code>scan</code><a class="headerlink" href="#scan" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">scan</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">(</span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">K</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span><span class="p">)</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="p">[</span><span class="nc">K</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span>
+<span class="n">scan</span><span class="w">    </span><span class="n">func</span><span class="w">          </span><span class="n">e</span><span class="w"> </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Generates a list of reduced values from apply the function <code>func</code> to elements in the given list.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">scan</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+<span class="c1">// [0, 0 + 1, (0 + 1) + 2, ((0 + 1) + 2) + 3]</span>
+<span class="c1">// [0, 1, 3, 6]</span>
+
+<span class="n">scan</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+<span class="c1">// [0, 0 + 3, (0 + 3) + 2, ((0 + 3) + 2) + 1]</span>
+<span class="c1">// [0, 3, 5, 6]</span>
+
+<span class="n">scan</span><span class="w"> </span><span class="p">(</span><span class="o">^</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+<span class="c1">// [1, 1 ^ 1, (1 ^ 1) ^ 2, ((1 ^ 1) ^ 2) ^ 3]</span>
+<span class="c1">// [1, 1, 1, 1]</span>
+
+<span class="n">scan</span><span class="w"> </span><span class="p">(</span><span class="o">^</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+<span class="c1">// [1, 1 ^ 3, (1 ^ 3) ^ 2, ((1 ^ 3) ^ 2) ^ 1]</span>
+<span class="c1">// [1, 1, 1, 1]</span>
+</code></pre></div>
+<h3 id="all"><code>all</code><a class="headerlink" href="#all" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">all</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">(</span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="n">all</span><span class="w">    </span><span class="n">predicate</span><span class="w">   </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Applies the function <code>predicate</code> to every element in the given list and returns true if at every element yields true.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">all</span><span class="w"> </span><span class="n">isEven</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="n">all</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="n">all</span><span class="w"> </span><span class="n">isEven</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+<span class="n">all</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+<span class="n">all</span><span class="w"> </span><span class="n">isEven</span><span class="w"> </span><span class="p">[]</span><span class="w">         </span><span class="c1">// True</span>
+<span class="n">all</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[]</span><span class="w">         </span><span class="c1">// True</span>
+</code></pre></div>
+<h3 id="any"><code>any</code><a class="headerlink" href="#any" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">any</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">(</span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="n">any</span><span class="w">    </span><span class="n">predicate</span><span class="w">   </span><span class="n">ls</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Applies the function <code>predicate</code> to every element in the given list and returns true if at least one element yields true.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">any</span><span class="w"> </span><span class="n">isEven</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+<span class="n">any</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">  </span><span class="c1">// True</span>
+<span class="n">any</span><span class="w"> </span><span class="n">isEven</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="n">any</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+<span class="n">any</span><span class="w"> </span><span class="n">isEven</span><span class="w"> </span><span class="p">[]</span><span class="w">         </span><span class="c1">// False</span>
+<span class="n">any</span><span class="w"> </span><span class="n">isOdd</span><span class="w">  </span><span class="p">[]</span><span class="w">         </span><span class="c1">// False</span>
+</code></pre></div>
+<hr />
+<h2 id="validator-functions">Validator functions<a class="headerlink" href="#validator-functions" title="Permanent link">&para;</a></h2>
+<p>The function is not so difficult to defined, but they are convenient to use.</p>
+<h3 id="isempty"><code>isEmpty</code><a class="headerlink" href="#isempty" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">isEmpty</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="n">isEmpty</span><span class="w">    </span><span class="nc">A</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns true if the list is empty.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">isEmpty</span><span class="w"> </span><span class="p">[]</span><span class="w">   </span><span class="c1">// True</span>
+<span class="n">isEmpty</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">  </span><span class="c1">// False</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

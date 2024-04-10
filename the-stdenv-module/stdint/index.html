@@ -1,0 +1,2466 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../stdclass/">
+      
+      
+        <link rel="next" href="../stdlist/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>StdInt - Notes on CLEAN (programming language)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Serif";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stdint" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Notes on CLEAN (programming language)" class="md-header__button md-logo" aria-label="Notes on CLEAN (programming language)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes on CLEAN (programming language)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              StdInt
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Notes on CLEAN (programming language)" class="md-nav__button md-logo" aria-label="Notes on CLEAN (programming language)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Notes on CLEAN (programming language)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes on CLEAN (programming language)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../puzzles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Puzzles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Predefined data types
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Predefined data types
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Predefined data types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20P%20Integer%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integer Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20P%20Real%20Number%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real Number Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20Array%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Array Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20Arrow%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDT S Arrow Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20Comprehensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comprehensions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20List%20Type%20Dot-Dot%20Expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dot-Dot Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20List%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20Tuple%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDT S Tuple Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/boolean-type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Boolean type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/character-type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    The stdenv module
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            The stdenv module
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The StdEnv module
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdarray/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdArray
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdbool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdBool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdchar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdChar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdcharlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdCharList
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdclass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdClass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    StdInt
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    StdInt
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#units" class="md-nav__link">
+    <span class="md-ellipsis">
+      Units
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Units">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zero
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one" class="md-nav__link">
+    <span class="md-ellipsis">
+      One
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#math-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Math operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subtraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subtraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiplication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floor-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      Floor Division
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reminder-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reminder Division
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponentiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exponentiation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#math-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Math functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#negation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Negation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sign" class="md-nav__link">
+    <span class="md-ellipsis">
+      sign
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abs" class="md-nav__link">
+    <span class="md-ellipsis">
+      abs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      gcd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lcm" class="md-nav__link">
+    <span class="md-ellipsis">
+      lcm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relational operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equal to
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Not equal to
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less-than" class="md-nav__link">
+    <span class="md-ellipsis">
+      Less Than
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less-than-or-equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Less than or equal to
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greater-than" class="md-nav__link">
+    <span class="md-ellipsis">
+      Greater than
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greater-than-or-equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Greater than or equal to
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bitwise operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-and" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise and
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-or" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise or
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-exclusive-or" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise exclusive or
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-left-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise left shift
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-right-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise right shift
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bitwise functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitnot" class="md-nav__link">
+    <span class="md-ellipsis">
+      bitnot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validator-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validator functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validator functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iseven" class="md-nav__link">
+    <span class="md-ellipsis">
+      isEven
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isodd" class="md-nav__link">
+    <span class="md-ellipsis">
+      isOdd
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conversions-to-integer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conversions to integer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conversions to integer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-real-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      From real number
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-character" class="md-nav__link">
+    <span class="md-ellipsis">
+      From character
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      From string
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conversions-from-integer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conversions from integer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conversions from integer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-real-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      To real number
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-character" class="md-nav__link">
+    <span class="md-ellipsis">
+      To character
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      To string
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdList
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdmisc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdMisc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdordlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdOrdList
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdoverloaded/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdOverloaded
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdreal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdReal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdstring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdtuple/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdTuple
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#units" class="md-nav__link">
+    <span class="md-ellipsis">
+      Units
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Units">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zero
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one" class="md-nav__link">
+    <span class="md-ellipsis">
+      One
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#math-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Math operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subtraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subtraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiplication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floor-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      Floor Division
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reminder-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reminder Division
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponentiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exponentiation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#math-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Math functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#negation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Negation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sign" class="md-nav__link">
+    <span class="md-ellipsis">
+      sign
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abs" class="md-nav__link">
+    <span class="md-ellipsis">
+      abs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      gcd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lcm" class="md-nav__link">
+    <span class="md-ellipsis">
+      lcm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relational operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equal to
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Not equal to
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less-than" class="md-nav__link">
+    <span class="md-ellipsis">
+      Less Than
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less-than-or-equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Less than or equal to
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greater-than" class="md-nav__link">
+    <span class="md-ellipsis">
+      Greater than
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#greater-than-or-equal-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Greater than or equal to
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bitwise operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-and" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise and
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-or" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise or
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-exclusive-or" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise exclusive or
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-left-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise left shift
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-right-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise right shift
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bitwise functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitnot" class="md-nav__link">
+    <span class="md-ellipsis">
+      bitnot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validator-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validator functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validator functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iseven" class="md-nav__link">
+    <span class="md-ellipsis">
+      isEven
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isodd" class="md-nav__link">
+    <span class="md-ellipsis">
+      isOdd
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conversions-to-integer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conversions to integer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conversions to integer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-real-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      From real number
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-character" class="md-nav__link">
+    <span class="md-ellipsis">
+      From character
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      From string
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conversions-from-integer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conversions from integer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conversions from integer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-real-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      To real number
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-character" class="md-nav__link">
+    <span class="md-ellipsis">
+      To character
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      To string
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="stdint">StdInt<a class="headerlink" href="#stdint" title="Permanent link">&para;</a></h1>
+<p>This module can be imported directly or as a part of the <code>StdEnv</code> module.
+It provides definition for many critical operations and functions on integers.</p>
+<p>Visit <a href="https://cloogle.org/src/#base-stdenv/StdInt;icl;line=1">StdInt</a> on Cloogle for source code of this module.</p>
+<h2 id="units">Units<a class="headerlink" href="#units" title="Permanent link">&para;</a></h2>
+<p>The integer units follow their definitions in mathematics.</p>
+<h3 id="zero">Zero<a class="headerlink" href="#zero" title="Permanent link">&para;</a></h3>
+<p><strong>Implementation</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">zero</span><span class="w"> </span><span class="o">::</span><span class="w">  </span><span class="nc">Int</span>
+<span class="n">zero</span><span class="w"> </span><span class="o">:==</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Represents the additive identity of integers.</p>
+<h3 id="one">One<a class="headerlink" href="#one" title="Permanent link">&para;</a></h3>
+<p><strong>Implementation</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">one</span><span class="w"> </span><span class="o">::</span><span class="w">  </span><span class="nc">Int</span>
+<span class="n">one</span><span class="w"> </span><span class="o">:==</span><span class="w"> </span><span class="mi">1</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Represents the multiplicative identity of integers.</p>
+<hr />
+<h2 id="math-operations">Math operations<a class="headerlink" href="#math-operations" title="Permanent link">&para;</a></h2>
+<p>The definition and behavior of these operators follow their mathematic counterpart.
+It is worth noting that, natively, these operations only work with integer operands, but the programmer can define additional behaviors and functionalities.</p>
+<h3 id="addition">Addition<a class="headerlink" href="#addition" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="p">(</span><span class="o">+</span><span class="p">)</span><span class="w">             </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Adds <code>a</code> and <code>b</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="c1">//  2</span>
+<span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w">  </span><span class="c1">//  0</span>
+<span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="c1">//  0</span>
+<span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w">  </span><span class="c1">// -2</span>
+</code></pre></div>
+<h3 id="subtraction">Subtraction<a class="headerlink" href="#subtraction" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">-</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="p">(</span><span class="o">-</span><span class="p">)</span><span class="w">             </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Subtracts <code>b</code> from <code>a</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="o">-</span><span class="w">   </span><span class="mi">1</span><span class="w">  </span><span class="c1">//  0</span>
+<span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="c1">//  2</span>
+<span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w">   </span><span class="mi">1</span><span class="w">  </span><span class="c1">// -2</span>
+<span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="c1">//  0</span>
+</code></pre></div>
+<h3 id="multiplication">Multiplication<a class="headerlink" href="#multiplication" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w">             </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Multiplies <code>a</code> and <code>b</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="o">*</span><span class="w">   </span><span class="mi">1</span><span class="w">  </span><span class="c1">//  1</span>
+<span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="c1">// -1</span>
+<span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w">   </span><span class="mi">1</span><span class="w">  </span><span class="c1">// -1</span>
+<span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="c1">//  1</span>
+</code></pre></div>
+<h3 id="floor-division">Floor Division<a class="headerlink" href="#floor-division" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">/</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="p">(</span><span class="o">/</span><span class="p">)</span><span class="w">             </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Divides <code>a</code> by <code>b</code> rounds the result down to the nearest integer..</p>
+<p>Results in a silent run-time crash if <code>b</code> is zero.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="o">/</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="c1">//  1</span>
+<span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w">  </span><span class="c1">// -1</span>
+<span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="c1">// -1</span>
+<span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w">  </span><span class="c1">//  1</span>
+<span class="w">  </span><span class="mi">7</span><span class="w">  </span><span class="o">/</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="c1">//  silently crashes</span>
+</code></pre></div>
+<h3 id="reminder-division">Reminder Division<a class="headerlink" href="#reminder-division" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="n">rem</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="p">(</span><span class="n">rem</span><span class="p">)</span><span class="w">            </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p>and</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="n">mod</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="p">(</span><span class="n">mod</span><span class="p">)</span><span class="w">            </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the reminder after dividing <code>a</code> by <code>b</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="n">mod</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">//  1</span>
+<span class="p">(</span><span class="mi">-3</span><span class="p">)</span><span class="w"> </span><span class="n">mod</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// -1</span>
+<span class="p">(</span><span class="mi">-3</span><span class="p">)</span><span class="w"> </span><span class="n">mod</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// -1</span>
+<span class="w">  </span><span class="mi">3</span><span class="w">  </span><span class="n">mod</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">//  1</span>
+</code></pre></div>
+<h3 id="exponentiation">Exponentiation<a class="headerlink" href="#exponentiation" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">^</span><span class="p">)</span><span class="w"> </span><span class="k">infixr</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="p">(</span><span class="o">^</span><span class="p">)</span><span class="w">             </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Raises <code>a</code> to the power of <code>b</code>.</p>
+<p>Results in a run-time error if <code>b</code> is negative.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>^<span class="w"> </span><span class="o">(</span>Int<span class="o">)</span><span class="w"> </span>called<span class="w"> </span>with<span class="w"> </span>negative<span class="w"> </span>power<span class="w"> </span>argument
+</code></pre></div>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="o">^</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="c1">//  1</span>
+<span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w">  </span><span class="c1">//  Run-time error</span>
+<span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="c1">// -1</span>
+<span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w">  </span><span class="c1">//  Run-time error</span>
+</code></pre></div>
+<hr />
+<h2 id="math-functions">Math functions<a class="headerlink" href="#math-functions" title="Permanent link">&para;</a></h2>
+<p>Some of these "functions" are unary operators, but there is no such thing as a unary operator in CLEAN, so to keep things tidy, I have decided to place them here.</p>
+<h3 id="negation">Negation<a class="headerlink" href="#negation" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="o">~</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="o">~</span><span class="w">    </span><span class="n">a</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Inverts the sign <code>a</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="o">~</span><span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="c1">//  0</span>
+<span class="o">~</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="c1">// -1</span>
+<span class="o">~</span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w">  </span><span class="c1">//  1</span>
+</code></pre></div>
+<h3 id="sign"><code>sign</code><a class="headerlink" href="#sign" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">sign</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="n">sign</span><span class="w">    </span><span class="n">a</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the sign of <code>a</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">sign</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="c1">//  1</span>
+<span class="n">sign</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="c1">//  0</span>
+<span class="n">sign</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w">  </span><span class="c1">// -1</span>
+</code></pre></div>
+<h3 id="abs"><code>abs</code><a class="headerlink" href="#abs" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">abs</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="n">abs</span><span class="w">    </span><span class="n">a</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the absolute value of <code>a</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">abs</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="c1">// 1</span>
+<span class="n">abs</span><span class="w">   </span><span class="mi">0</span><span class="w">   </span><span class="c1">// 0</span>
+<span class="n">abs</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w">  </span><span class="c1">// 1</span>
+</code></pre></div>
+<h3 id="gcd"><code>gcd</code><a class="headerlink" href="#gcd" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">gcd</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="n">gcd</span><span class="w">    </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the greatest common divisor of <code>a</code> and <code>b</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">gcd</span><span class="w">   </span><span class="mi">3</span><span class="w">    </span><span class="mi">2</span><span class="w">   </span><span class="c1">// 1</span>
+<span class="n">gcd</span><span class="w"> </span><span class="p">(</span><span class="mi">-3</span><span class="p">)</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// 1</span>
+<span class="n">gcd</span><span class="w">   </span><span class="mi">3</span><span class="w">  </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// 1</span>
+<span class="n">gcd</span><span class="w"> </span><span class="p">(</span><span class="mi">-3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// 1</span>
+</code></pre></div>
+<h3 id="lcm"><code>lcm</code><a class="headerlink" href="#lcm" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">lcm</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="n">lcm</span><span class="w">    </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the least common multiple of <code>a</code> and <code>b</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">lcm</span><span class="w">   </span><span class="mi">3</span><span class="w">    </span><span class="mi">2</span><span class="w">   </span><span class="c1">// 6</span>
+<span class="n">lcm</span><span class="w"> </span><span class="p">(</span><span class="mi">-3</span><span class="p">)</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// 6</span>
+<span class="n">lcm</span><span class="w">   </span><span class="mi">3</span><span class="w">  </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// 6</span>
+<span class="n">lcm</span><span class="w"> </span><span class="p">(</span><span class="mi">-3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// 6</span>
+</code></pre></div>
+<hr />
+<h2 id="relational-operations">Relational operations<a class="headerlink" href="#relational-operations" title="Permanent link">&para;</a></h2>
+<p>These relations behave in the exact same way as their math counterpart.</p>
+<h3 id="equal-to">Equal to<a class="headerlink" href="#equal-to" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">==</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="p">(</span><span class="o">==</span><span class="p">)</span><span class="w">            </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns true if <code>a</code> is equal to <code>b</code>.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">==</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// False</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// False</span>
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// True</span>
+</code></pre></div>
+<h3 id="not-equal-to">Not equal to<a class="headerlink" href="#not-equal-to" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span><span class="w">            </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns true if <code>a</code> is not equal to <code>b</code>.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&lt;&gt;</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// True</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// True</span>
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// True</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// True</span>
+<span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// False</span>
+</code></pre></div>
+<h3 id="less-than">Less Than<a class="headerlink" href="#less-than" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">&lt;</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="p">(</span><span class="o">&lt;</span><span class="p">)</span><span class="w">            </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns true if <code>a</code> is strictly less than <code>b</code>.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&lt;</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// False</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// True</span>
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// True</span>
+<span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// False</span>
+</code></pre></div>
+<h3 id="less-than-or-equal-to">Less than or equal to<a class="headerlink" href="#less-than-or-equal-to" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">&lt;=</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="p">(</span><span class="o">&lt;=</span><span class="p">)</span><span class="w">            </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns true if <code>a</code> is less than or equal to <code>b</code>.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&lt;=</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// False</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// True</span>
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// True</span>
+<span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// True</span>
+</code></pre></div>
+<h3 id="greater-than">Greater than<a class="headerlink" href="#greater-than" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="p">(</span><span class="o">&gt;</span><span class="p">)</span><span class="w">            </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns true if <code>a</code> is strictly greater than <code>b</code>.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&gt;</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// True</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// False</span>
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// True</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// False</span>
+</code></pre></div>
+<h3 id="greater-than-or-equal-to">Greater than or equal to<a class="headerlink" href="#greater-than-or-equal-to" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">&gt;=</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="p">(</span><span class="o">&gt;=</span><span class="p">)</span><span class="w">            </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns true if <code>a</code> is greater than or equal to <code>b</code>.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&gt;=</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// True</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// False</span>
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// True</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// False</span>
+<span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// True</span>
+</code></pre></div>
+<hr />
+<h2 id="bitwise-operations">Bitwise operations<a class="headerlink" href="#bitwise-operations" title="Permanent link">&para;</a></h2>
+<p>These operators and functions provide a method to interact with the bits of integers.</p>
+<p>A quick web search should provide more details about the formal definition of each bitwise operator.</p>
+<h3 id="bitwise-and">Bitwise and<a class="headerlink" href="#bitwise-and" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="n">bitand</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="p">(</span><span class="n">bitand</span><span class="p">)</span><span class="w">             </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns bitwise AND of <code>a</code> and <code>b</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="n">bitand</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">//  0</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="n">bitand</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">//  2</span>
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="n">bitand</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">//  4</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="n">bitand</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// -6</span>
+</code></pre></div>
+<h3 id="bitwise-or">Bitwise or<a class="headerlink" href="#bitwise-or" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="n">bitor</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="p">(</span><span class="n">bitor</span><span class="p">)</span><span class="w">             </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns bitwise OR of <code>a</code> and <code>b</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="n">bitor</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">//  7</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="n">bitor</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// -5</span>
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="n">bitor</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// -1</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="n">bitor</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// -1</span>
+</code></pre></div>
+<h3 id="bitwise-exclusive-or">Bitwise exclusive or<a class="headerlink" href="#bitwise-exclusive-or" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="n">bitxor</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="p">(</span><span class="n">bitxor</span><span class="p">)</span><span class="w">             </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns bitwise XOR of <code>a</code> and <code>b</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="n">bitxor</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">//  7</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="n">bitxor</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// -7</span>
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="n">bitxor</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// -5</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="n">bitxor</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">//  5</span>
+</code></pre></div>
+<h3 id="bitwise-left-shift">Bitwise left shift<a class="headerlink" href="#bitwise-left-shift" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">&lt;&lt;</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="p">(</span><span class="o">&lt;&lt;</span><span class="p">)</span><span class="w">            </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Shifts <code>a</code> to the left by <code>b</code> bits.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">//  20</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// -20</span>
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">//  4611686018427387904</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// -4611686018427387904</span>
+</code></pre></div>
+<h3 id="bitwise-right-shift">Bitwise right shift<a class="headerlink" href="#bitwise-right-shift" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="p">(</span><span class="o">&gt;&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">infix</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="p">(</span><span class="o">&gt;&gt;</span><span class="p">)</span><span class="w">            </span><span class="n">a</span><span class="w">   </span><span class="n">b</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Shifts <code>a</code> to the right by <code>b</code> bits.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&gt;&gt;</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">//  1</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">// -2</span>
+<span class="w">  </span><span class="mi">5</span><span class="w">  </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">//  0</span>
+<span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">// -1</span>
+</code></pre></div>
+<hr />
+<h2 id="bitwise-functions">Bitwise functions<a class="headerlink" href="#bitwise-functions" title="Permanent link">&para;</a></h2>
+<p>There is only one function which classifies under this section, its behavior is not well-documented.</p>
+<h3 id="bitnot"><code>bitnot</code><a class="headerlink" href="#bitnot" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">bitnot</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="n">bitnot</span><span class="w">    </span><span class="n">a</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns bitwise one-complement of <code>a</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">bitnot</span><span class="w"> </span><span class="p">(</span><span class="mi">-5</span><span class="p">)</span><span class="w">  </span><span class="c1">//  -4</span>
+<span class="n">bitnot</span><span class="w"> </span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w">  </span><span class="c1">//   1</span>
+<span class="n">bitnot</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="c1">//  -3</span>
+<span class="n">bitnot</span><span class="w">   </span><span class="mi">5</span><span class="w">   </span><span class="c1">//  -6</span>
+</code></pre></div>
+<hr />
+<h2 id="validator-functions">Validator functions<a class="headerlink" href="#validator-functions" title="Permanent link">&para;</a></h2>
+<p>These function takes an integer as an argument and check whether it has a certain property or not.</p>
+<h3 id="iseven"><code>isEven</code><a class="headerlink" href="#iseven" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">isEven</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="n">isEven</span><span class="w">    </span><span class="n">a</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns true if <code>a</code> is an even integer.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">isEven</span><span class="w">  </span><span class="mi">2</span><span class="w">  </span><span class="c1">// False</span>
+<span class="n">isEven</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="c1">// True</span>
+<span class="n">isEven</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="c1">// True</span>
+<span class="n">isEven</span><span class="w"> </span><span class="mi">-1</span><span class="w">  </span><span class="c1">// True</span>
+<span class="n">isEven</span><span class="w"> </span><span class="mi">-2</span><span class="w">  </span><span class="c1">// False</span>
+</code></pre></div>
+<h3 id="isodd"><code>isOdd</code><a class="headerlink" href="#isodd" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">isOdd</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+<span class="n">isOdd</span><span class="w">    </span><span class="n">a</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns true if <code>a</code> is an odd integer.
+Otherwise, returns false.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">isOdd</span><span class="w">  </span><span class="mi">2</span><span class="w">  </span><span class="c1">// True</span>
+<span class="n">isOdd</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="c1">// False</span>
+<span class="n">isOdd</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="c1">// False</span>
+<span class="n">isOdd</span><span class="w"> </span><span class="mi">-1</span><span class="w">  </span><span class="c1">// False</span>
+<span class="n">isOdd</span><span class="w"> </span><span class="mi">-2</span><span class="w">  </span><span class="c1">// True</span>
+</code></pre></div>
+<hr />
+<h2 id="conversions-to-integer">Conversions to integer<a class="headerlink" href="#conversions-to-integer" title="Permanent link">&para;</a></h2>
+<p>Natively, three types can convert to integer, namely, real numbers, characters, and strings.</p>
+<h3 id="from-real-number">From real number<a class="headerlink" href="#from-real-number" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">toInt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Real</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="n">toInt</span><span class="w">    </span><span class="n">a</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Rounds <code>a</code> up or down to its nearest integer.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">toInt</span><span class="w">   </span><span class="mf">1.5</span><span class="w">   </span><span class="c1">//  2</span>
+<span class="n">toInt</span><span class="w">   </span><span class="mf">1.4</span><span class="w">   </span><span class="c1">//  1</span>
+<span class="n">toInt</span><span class="w">   </span><span class="mf">0.0</span><span class="w">   </span><span class="c1">//  0</span>
+<span class="n">toInt</span><span class="w"> </span><span class="p">(</span><span class="mf">-1.4</span><span class="p">)</span><span class="w">  </span><span class="c1">// -1</span>
+<span class="n">toInt</span><span class="w"> </span><span class="p">(</span><span class="mf">-1.5</span><span class="p">)</span><span class="w">  </span><span class="c1">// -2</span>
+</code></pre></div>
+<h3 id="from-character">From character<a class="headerlink" href="#from-character" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">toInt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Char</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="n">toInt</span><span class="w">    </span><span class="n">a</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the ASCII encoding of <code>a</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">toInt</span><span class="w"> </span><span class="l l-Char">&#39;1&#39;</span><span class="w">  </span><span class="c1">//  49</span>
+<span class="n">toInt</span><span class="w"> </span><span class="l l-Char">&#39;9&#39;</span><span class="w">  </span><span class="c1">//  59</span>
+<span class="n">toInt</span><span class="w"> </span><span class="l l-Char">&#39;A&#39;</span><span class="w">  </span><span class="c1">//  65</span>
+<span class="n">toInt</span><span class="w"> </span><span class="l l-Char">&#39;Z&#39;</span><span class="w">  </span><span class="c1">//  90</span>
+<span class="n">toInt</span><span class="w"> </span><span class="l l-Char">&#39;a&#39;</span><span class="w">  </span><span class="c1">//  97</span>
+<span class="n">toInt</span><span class="w"> </span><span class="l l-Char">&#39;z&#39;</span><span class="w">  </span><span class="c1">// 122</span>
+</code></pre></div>
+<h3 id="from-string">From string<a class="headerlink" href="#from-string" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">toInt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">{</span><span class="o">#</span><span class="nc">Char</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+<span class="n">toInt</span><span class="w">    </span><span class="n">a</span><span class="w">       </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Parses <code>a</code> as an integer.
+Returns zero if when the parsing is unsuccessful.</p>
+<p>The string should only contain decimal digits and the minus sign.
+The parsing step will be unsuccessful if it contains any other character.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">toInt</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="w">   </span><span class="c1">//  0</span>
+<span class="n">toInt</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w">     </span><span class="c1">//  1</span>
+<span class="n">toInt</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w">     </span><span class="c1">//  0</span>
+<span class="n">toInt</span><span class="w"> </span><span class="s2">&quot;-1&quot;</span><span class="w">    </span><span class="c1">// -1</span>
+<span class="n">toInt</span><span class="w"> </span><span class="s2">&quot;-1.0&quot;</span><span class="w">  </span><span class="c1">//  0</span>
+</code></pre></div>
+<hr />
+<h2 id="conversions-from-integer">Conversions from integer<a class="headerlink" href="#conversions-from-integer" title="Permanent link">&para;</a></h2>
+<p>The function responsible for type conversion is overloaded, it has the same parameter but different return type, so to use it, the desired type must be unambiguous.</p>
+<h3 id="to-real-number">To real number<a class="headerlink" href="#to-real-number" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">fromInt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Real</span>
+<span class="n">fromInt</span><span class="w">    </span><span class="n">a</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Sets the decimal places of <code>a</code> to zeroes.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">expr</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Real</span>
+<span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">fromInt</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="c1">//  1.0</span>
+<span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">fromInt</span><span class="w">  </span><span class="mi">19</span><span class="w">  </span><span class="c1">// 19.0</span>
+<span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">fromInt</span><span class="w">  </span><span class="mi">0</span><span class="w">   </span><span class="c1">//  0.0</span>
+</code></pre></div>
+<h3 id="to-character">To character<a class="headerlink" href="#to-character" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">fromInt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Char</span>
+<span class="n">fromInt</span><span class="w">    </span><span class="n">a</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the character whose ASCII encoding is <code>a</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">expr</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Char</span>
+<span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">fromInt</span><span class="w"> </span><span class="mi">49</span><span class="w">   </span><span class="c1">// &#39;1&#39;</span>
+<span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">fromInt</span><span class="w"> </span><span class="mi">59</span><span class="w">   </span><span class="c1">// &#39;9&#39;</span>
+<span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">fromInt</span><span class="w"> </span><span class="mi">65</span><span class="w">   </span><span class="c1">// &#39;A&#39;</span>
+<span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">fromInt</span><span class="w"> </span><span class="mi">90</span><span class="w">   </span><span class="c1">// &#39;Z&#39;</span>
+<span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">fromInt</span><span class="w"> </span><span class="mi">97</span><span class="w">   </span><span class="c1">// &#39;a&#39;</span>
+<span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">fromInt</span><span class="w"> </span><span class="mi">122</span><span class="w">  </span><span class="c1">// &#39;z&#39;</span>
+</code></pre></div>
+<h3 id="to-string">To string<a class="headerlink" href="#to-string" title="Permanent link">&para;</a></h3>
+<p><strong>Signature</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">fromInt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="o">#</span><span class="nc">Char</span><span class="p">}</span>
+<span class="n">fromInt</span><span class="w">    </span><span class="n">a</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+<p><strong>Behavior</strong></p>
+<p>Returns the string representation of <code>a</code>.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="n">expr</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">{</span><span class="o">#</span><span class="nc">Char</span><span class="p">}</span>
+<span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">fromInt</span><span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="c1">// &quot;1&quot;</span>
+<span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">fromInt</span><span class="w"> </span><span class="mi">19</span><span class="w">  </span><span class="c1">// &quot;19&quot;</span>
+<span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">fromInt</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="c1">// &quot;0&quot;</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

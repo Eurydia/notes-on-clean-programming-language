@@ -1,0 +1,2653 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../stdordlist/">
+      
+      
+        <link rel="next" href="../stdreal/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>StdOverloaded - Notes on CLEAN (programming language)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Serif";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stdoverloaded" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Notes on CLEAN (programming language)" class="md-header__button md-logo" aria-label="Notes on CLEAN (programming language)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes on CLEAN (programming language)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              StdOverloaded
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Notes on CLEAN (programming language)" class="md-nav__button md-logo" aria-label="Notes on CLEAN (programming language)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Notes on CLEAN (programming language)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes on CLEAN (programming language)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../puzzles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Puzzles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Predefined data types
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Predefined data types
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Predefined data types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20P%20Integer%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integer Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20P%20Real%20Number%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real Number Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20Array%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Array Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20Arrow%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDT S Arrow Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20Comprehensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comprehensions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20List%20Type%20Dot-Dot%20Expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dot-Dot Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20List%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/PDT%20S%20Tuple%20Type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDT S Tuple Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/boolean-type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Boolean type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predefined-data-types/character-type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    The stdenv module
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            The stdenv module
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The StdEnv module
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdarray/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdArray
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdbool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdBool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdchar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdChar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdcharlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdCharList
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdclass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdClass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdInt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdList
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdmisc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdMisc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdordlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdOrdList
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    StdOverloaded
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    StdOverloaded
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unit-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unit classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      zero
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one" class="md-nav__link">
+    <span class="md-ellipsis">
+      one
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manipulation-operation-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manipulation operation classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manipulation operation classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#negation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Negation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slicing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concatenation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concatenation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#math-operation-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math operation classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Math operation classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subtraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subtraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiplication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#division" class="md-nav__link">
+    <span class="md-ellipsis">
+      Division
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reminder-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reminder division
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modulo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponentiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exponentiation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#math-function-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math function classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Math function classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inc" class="md-nav__link">
+    <span class="md-ellipsis">
+      inc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dec" class="md-nav__link">
+    <span class="md-ellipsis">
+      dec
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      gcd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lcm" class="md-nav__link">
+    <span class="md-ellipsis">
+      lcm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abs" class="md-nav__link">
+    <span class="md-ellipsis">
+      abs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sign" class="md-nav__link">
+    <span class="md-ellipsis">
+      sign
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ln" class="md-nav__link">
+    <span class="md-ellipsis">
+      ln
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exp" class="md-nav__link">
+    <span class="md-ellipsis">
+      exp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      sqrt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log10" class="md-nav__link">
+    <span class="md-ellipsis">
+      log10
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigonometric-function-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigonometric function classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trigonometric function classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sin" class="md-nav__link">
+    <span class="md-ellipsis">
+      sin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cos" class="md-nav__link">
+    <span class="md-ellipsis">
+      cos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tan" class="md-nav__link">
+    <span class="md-ellipsis">
+      tan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asin" class="md-nav__link">
+    <span class="md-ellipsis">
+      asin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acos" class="md-nav__link">
+    <span class="md-ellipsis">
+      acos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atan" class="md-nav__link">
+    <span class="md-ellipsis">
+      atan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      sinh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cosh" class="md-nav__link">
+    <span class="md-ellipsis">
+      cosh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      tanh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      asinh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acosh" class="md-nav__link">
+    <span class="md-ellipsis">
+      acosh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      atanh
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validator-function-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validator function classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validator function classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iseven" class="md-nav__link">
+    <span class="md-ellipsis">
+      isEven
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isodd" class="md-nav__link">
+    <span class="md-ellipsis">
+      isOdd
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-function-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Property function classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Property function classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#length" class="md-nav__link">
+    <span class="md-ellipsis">
+      length
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-conversion-function-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type conversion function classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Type conversion function classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#toint" class="md-nav__link">
+    <span class="md-ellipsis">
+      toInt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toreal" class="md-nav__link">
+    <span class="md-ellipsis">
+      toReal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tochar" class="md-nav__link">
+    <span class="md-ellipsis">
+      toChar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tobool" class="md-nav__link">
+    <span class="md-ellipsis">
+      toBool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tostring" class="md-nav__link">
+    <span class="md-ellipsis">
+      toString
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fromint" class="md-nav__link">
+    <span class="md-ellipsis">
+      fromInt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fromreal" class="md-nav__link">
+    <span class="md-ellipsis">
+      fromReal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fromchar" class="md-nav__link">
+    <span class="md-ellipsis">
+      fromChar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frombool" class="md-nav__link">
+    <span class="md-ellipsis">
+      fromBool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fromstring" class="md-nav__link">
+    <span class="md-ellipsis">
+      fromString
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-operation-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational operation classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relational operation classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less-than" class="md-nav__link">
+    <span class="md-ellipsis">
+      Less than
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdreal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdReal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdstring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdtuple/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    StdTuple
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unit-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unit classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      zero
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one" class="md-nav__link">
+    <span class="md-ellipsis">
+      one
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manipulation-operation-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manipulation operation classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manipulation operation classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#negation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Negation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slicing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concatenation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concatenation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#math-operation-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math operation classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Math operation classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subtraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subtraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiplication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#division" class="md-nav__link">
+    <span class="md-ellipsis">
+      Division
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reminder-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reminder division
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modulo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponentiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exponentiation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#math-function-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math function classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Math function classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inc" class="md-nav__link">
+    <span class="md-ellipsis">
+      inc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dec" class="md-nav__link">
+    <span class="md-ellipsis">
+      dec
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      gcd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lcm" class="md-nav__link">
+    <span class="md-ellipsis">
+      lcm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abs" class="md-nav__link">
+    <span class="md-ellipsis">
+      abs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sign" class="md-nav__link">
+    <span class="md-ellipsis">
+      sign
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ln" class="md-nav__link">
+    <span class="md-ellipsis">
+      ln
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exp" class="md-nav__link">
+    <span class="md-ellipsis">
+      exp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      sqrt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log10" class="md-nav__link">
+    <span class="md-ellipsis">
+      log10
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigonometric-function-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigonometric function classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trigonometric function classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sin" class="md-nav__link">
+    <span class="md-ellipsis">
+      sin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cos" class="md-nav__link">
+    <span class="md-ellipsis">
+      cos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tan" class="md-nav__link">
+    <span class="md-ellipsis">
+      tan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asin" class="md-nav__link">
+    <span class="md-ellipsis">
+      asin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acos" class="md-nav__link">
+    <span class="md-ellipsis">
+      acos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atan" class="md-nav__link">
+    <span class="md-ellipsis">
+      atan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      sinh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cosh" class="md-nav__link">
+    <span class="md-ellipsis">
+      cosh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      tanh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      asinh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acosh" class="md-nav__link">
+    <span class="md-ellipsis">
+      acosh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      atanh
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validator-function-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validator function classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validator function classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iseven" class="md-nav__link">
+    <span class="md-ellipsis">
+      isEven
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isodd" class="md-nav__link">
+    <span class="md-ellipsis">
+      isOdd
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-function-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Property function classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Property function classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#length" class="md-nav__link">
+    <span class="md-ellipsis">
+      length
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-conversion-function-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type conversion function classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Type conversion function classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#toint" class="md-nav__link">
+    <span class="md-ellipsis">
+      toInt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toreal" class="md-nav__link">
+    <span class="md-ellipsis">
+      toReal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tochar" class="md-nav__link">
+    <span class="md-ellipsis">
+      toChar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tobool" class="md-nav__link">
+    <span class="md-ellipsis">
+      toBool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tostring" class="md-nav__link">
+    <span class="md-ellipsis">
+      toString
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fromint" class="md-nav__link">
+    <span class="md-ellipsis">
+      fromInt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fromreal" class="md-nav__link">
+    <span class="md-ellipsis">
+      fromReal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fromchar" class="md-nav__link">
+    <span class="md-ellipsis">
+      fromChar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frombool" class="md-nav__link">
+    <span class="md-ellipsis">
+      fromBool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fromstring" class="md-nav__link">
+    <span class="md-ellipsis">
+      fromString
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-operation-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational operation classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relational operation classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#less-than" class="md-nav__link">
+    <span class="md-ellipsis">
+      Less than
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="stdoverloaded">StdOverloaded<a class="headerlink" href="#stdoverloaded" title="Permanent link">&para;</a></h1>
+<p>This module can be imported directly or as a part of the <code>StdEnv</code> module.
+It provides definitions for important classes in CLEAN.</p>
+<p>Visit <a href="https://cloogle.org/src/#base-stdenv/StdOverloaded;icl;line=1">StdOverloaded</a> on Cloogle for source code of this module.</p>
+<h2 id="unit-classes">Unit classes<a class="headerlink" href="#unit-classes" title="Permanent link">&para;</a></h2>
+<h3 id="zero"><code>zero</code><a class="headerlink" href="#zero" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">zero</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">zero</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the additive identity on type <code>T</code>.</p>
+<h3 id="one"><code>one</code><a class="headerlink" href="#one" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">one</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the multiplicative identity on type <code>T</code>.</p>
+<hr />
+<h2 id="manipulation-operation-classes">Manipulation operation classes<a class="headerlink" href="#manipulation-operation-classes" title="Permanent link">&para;</a></h2>
+<h3 id="negation">Negation<a class="headerlink" href="#negation" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="o">~</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the negation operation on type <code>T</code>.</p>
+<h3 id="slicing">Slicing<a class="headerlink" href="#slicing" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="p">(</span><span class="o">%</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="p">(</span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="nc">Int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the slicing operation on type <code>T</code>.</p>
+<h3 id="concatenation">Concatenation<a class="headerlink" href="#concatenation" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="o">+++</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="p">(</span><span class="o">+++</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the concatenation operation on type <code>T</code>.</p>
+<hr />
+<h2 id="math-operation-classes">Math operation classes<a class="headerlink" href="#math-operation-classes" title="Permanent link">&para;</a></h2>
+<h3 id="addition">Addition<a class="headerlink" href="#addition" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="p">(</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the addition operation on type <code>T</code>.</p>
+<h3 id="subtraction">Subtraction<a class="headerlink" href="#subtraction" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="p">(</span><span class="o">-</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the subtraction operation on type <code>T</code>.</p>
+<h3 id="multiplication">Multiplication<a class="headerlink" href="#multiplication" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the multiplication operation on type <code>T</code>.</p>
+<h3 id="division">Division<a class="headerlink" href="#division" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="p">(</span><span class="o">/</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the division operation on type <code>T</code>.</p>
+<h3 id="reminder-division">Reminder division<a class="headerlink" href="#reminder-division" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">rem</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="p">(</span><span class="n">rem</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the reminder division operation on type <code>T</code>.</p>
+<h3 id="modulo">Modulo<a class="headerlink" href="#modulo" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">mod</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="p">(</span><span class="n">mod</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the modulo operation on type <code>T</code>.</p>
+<h3 id="exponentiation">Exponentiation<a class="headerlink" href="#exponentiation" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="p">(</span><span class="o">^</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the exponentiation operation on type <code>T</code>.</p>
+<hr />
+<h2 id="math-function-classes">Math function classes<a class="headerlink" href="#math-function-classes" title="Permanent link">&para;</a></h2>
+<h3 id="inc"><code>inc</code><a class="headerlink" href="#inc" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">inc</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">inc</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines unit increment on type <code>T</code>.</p>
+<h3 id="dec"><code>dec</code><a class="headerlink" href="#dec" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">dec</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">dec</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines unit decrement on type <code>T</code>.</p>
+<h3 id="gcd"><code>gcd</code><a class="headerlink" href="#gcd" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code>// CLEAN
+
+class gcd T
+where
+    gcd :: T T -&gt; T
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the greatest common divisor operation on type <code>T</code>.</p>
+<h3 id="lcm"><code>lcm</code><a class="headerlink" href="#lcm" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">lcm</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">lcm</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the least common multiple operation on type <code>T</code>.</p>
+<h3 id="abs"><code>abs</code><a class="headerlink" href="#abs" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">abs</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">abs</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the absolute value function on type <code>T</code>.</p>
+<h3 id="sign"><code>sign</code><a class="headerlink" href="#sign" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">sign</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">sign</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the sign function on type <code>T</code>.</p>
+<h3 id="ln"><code>ln</code><a class="headerlink" href="#ln" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code>// CLEAN
+
+class ln T
+where
+    ln :: T -&gt; T
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the natural logarithm function on type <code>T</code>.</p>
+<h3 id="exp"><code>exp</code><a class="headerlink" href="#exp" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">exp</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">exp</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the exponential function on type <code>T</code>.</p>
+<h3 id="sqrt"><code>sqrt</code><a class="headerlink" href="#sqrt" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">sqrt</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">sqrt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the square root function on type <code>T</code>.</p>
+<h3 id="log10"><code>log10</code><a class="headerlink" href="#log10" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">log10</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">log10</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the base-ten logarithm function on type <code>T</code>.</p>
+<hr />
+<h2 id="trigonometric-function-classes">Trigonometric function classes<a class="headerlink" href="#trigonometric-function-classes" title="Permanent link">&para;</a></h2>
+<h3 id="sin"><code>sin</code><a class="headerlink" href="#sin" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">sin</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">sin</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the sine function on type <code>T</code>.</p>
+<h3 id="cos"><code>cos</code><a class="headerlink" href="#cos" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">cos</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">cos</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the cosine function on type <code>T</code>.</p>
+<h3 id="tan"><code>tan</code><a class="headerlink" href="#tan" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">tan</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">tan</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the tangent function on type <code>T</code>.</p>
+<h3 id="asin"><code>asin</code><a class="headerlink" href="#asin" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">asin</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">asin</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the inverse of sine function on type <code>T</code>.</p>
+<h3 id="acos"><code>acos</code><a class="headerlink" href="#acos" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">acos</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">acos</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the inverse of cosine function on type <code>T</code>.</p>
+<h3 id="atan"><code>atan</code><a class="headerlink" href="#atan" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">atan</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">atan</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the inverse of tangent function on type <code>T</code>.</p>
+<h3 id="sinh"><code>sinh</code><a class="headerlink" href="#sinh" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">sinh</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">sinh</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the hyperbolic sine function on type <code>T</code>.</p>
+<h3 id="cosh"><code>cosh</code><a class="headerlink" href="#cosh" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">cosh</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">cosh</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the hyperbolic cosine function on type <code>T</code>.</p>
+<h3 id="tanh"><code>tanh</code><a class="headerlink" href="#tanh" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">tanh</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">tanh</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the hyperbolic tangent function on type <code>T</code>.</p>
+<h3 id="asinh"><code>asinh</code><a class="headerlink" href="#asinh" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">asinh</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">asinh</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the inverse of hyperbolic sine function on type <code>T</code>.</p>
+<h3 id="acosh"><code>acosh</code><a class="headerlink" href="#acosh" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">acosh</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">acosh</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the inverse of hyperbolic cosine function on type <code>T</code>.</p>
+<h3 id="atanh"><code>atanh</code><a class="headerlink" href="#atanh" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">atanh</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">atanh</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the inverse of hyperbolic tangent function on type <code>T</code>.</p>
+<hr />
+<h2 id="validator-function-classes">Validator function classes<a class="headerlink" href="#validator-function-classes" title="Permanent link">&para;</a></h2>
+<h3 id="iseven"><code>isEven</code><a class="headerlink" href="#iseven" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code>// CLEAN
+
+class isEven T
+where
+    isEven :: T -&gt; Bool
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the <code>isEven</code> function on type <code>T</code>.</p>
+<h3 id="isodd"><code>isOdd</code><a class="headerlink" href="#isodd" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">isOdd</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">isOdd</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the <code>isOdd</code> function on type <code>T</code>.</p>
+<hr />
+<h2 id="property-function-classes">Property function classes<a class="headerlink" href="#property-function-classes" title="Permanent link">&para;</a></h2>
+<h3 id="length"><code>length</code><a class="headerlink" href="#length" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">length</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="p">(</span><span class="nc">T</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the <code>length</code> function on type <code>T</code>.</p>
+<h2 id="type-conversion-function-classes">Type conversion function classes<a class="headerlink" href="#type-conversion-function-classes" title="Permanent link">&para;</a></h2>
+<h3 id="toint"><code>toInt</code><a class="headerlink" href="#toint" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">toInt</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">toInt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines conversion from type <code>T</code> to integer.</p>
+<h3 id="toreal"><code>toReal</code><a class="headerlink" href="#toreal" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">toReal</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">toReal</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Real</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines conversion from type <code>T</code> to real numbers.</p>
+<h3 id="tochar"><code>toChar</code><a class="headerlink" href="#tochar" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">toChar</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">toChar</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Char</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines conversion from type <code>T</code> to character.</p>
+<h3 id="tobool"><code>toBool</code><a class="headerlink" href="#tobool" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">toBool</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">toBool</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Bool</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines conversion from type <code>T</code> to Boolean.</p>
+<h3 id="tostring"><code>toString</code><a class="headerlink" href="#tostring" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">toString</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">toString</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">String</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines conversion from type <code>T</code> to string.</p>
+<h3 id="fromint"><code>fromInt</code><a class="headerlink" href="#fromint" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">fromInt</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">fromInt</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines conversion from integer to type <code>T</code>.</p>
+<h3 id="fromreal"><code>fromReal</code><a class="headerlink" href="#fromreal" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">fromReal</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">fromReal</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Real</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines conversion from real number to type <code>T</code>.</p>
+<h3 id="fromchar"><code>fromChar</code><a class="headerlink" href="#fromchar" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">fromChar</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">fromChar</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Char</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines conversion from character to type <code>T</code>.</p>
+<h3 id="frombool"><code>fromBool</code><a class="headerlink" href="#frombool" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">fromBool</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">fromBool</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">Bool</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines conversion from Boolean to type <code>T</code>.</p>
+<h3 id="fromstring"><code>fromString</code><a class="headerlink" href="#fromstring" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="n">fromString</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="n">fromString</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">String</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines conversion from string to type <code>T</code>.</p>
+<h2 id="relational-operation-classes">Relational operation classes<a class="headerlink" href="#relational-operation-classes" title="Permanent link">&para;</a></h2>
+<h3 id="equality">Equality<a class="headerlink" href="#equality" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="p">(</span><span class="o">==</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the equality operation on type <code>T</code>.</p>
+<h3 id="less-than">Less than<a class="headerlink" href="#less-than" title="Permanent link">&para;</a></h3>
+<p><strong>Declaration</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// CLEAN</span>
+
+<span class="k">class</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nc">T</span>
+<span class="k">where</span>
+<span class="w">    </span><span class="p">(</span><span class="o">&lt;</span><span class="p">)</span><span class="w"> </span><span class="k">infixl</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">T</span>
+</code></pre></div>
+<p><strong>Definition</strong></p>
+<p>Defines the less than operation on type <code>T</code>.</p>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
